@@ -1,0 +1,76 @@
+{
+  "issueNumber": 2,
+  "issueUrl": "https://github.com/mgifford/alt-text-scan/issues/2",
+  "issueTitle": "SCAN: https://www.cms.gov",
+  "scanTitle": "https://www.cms.gov",
+  "submittedBy": "mgifford",
+  "engines": [
+    "axe",
+    "qualweb"
+  ],
+  "scannedAt": "2026-03-17T18:10:08.489Z",
+  "totalElapsedMs": 4,
+  "totalSubmitted": 0,
+  "acceptedCount": 0,
+  "scannedCount": 0,
+  "skippedDueToTimeout": 0,
+  "skippedDueToErrAborted": 0,
+  "rejectedCount": 0,
+  "rejected": [],
+  "alfaTotals": {
+    "passed": 0,
+    "failed": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "axeTotals": {
+    "passed": 0,
+    "failed": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "equalAccessTotals": {
+    "passed": 0,
+    "failed": 0,
+    "uniqueFailed": 0,
+    "duplicates": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "accesslintTotals": {
+    "passed": 0,
+    "failed": 0,
+    "uniqueFailed": 0,
+    "duplicates": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "qualwebTotals": {
+    "passed": 0,
+    "failed": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "duplicateFindingTotals": 0,
+  "darkModeUrlCount": 0,
+  "reducedMotionUrlCount": 0,
+  "highContrastUrlCount": 0,
+  "forcedColorsUrlCount": 0,
+  "reducedTransparencyUrlCount": 0,
+  "results": [],
+  "enhanced": {
+    "consolidatedFailures": [],
+    "roleStats": {
+      "UX Designer": 0,
+      "Visual Designer": 0,
+      "Content Author": 0,
+      "Front-End Developer": 0
+    },
+    "severityStats": {
+      "Critical": 0,
+      "Serious": 0,
+      "Moderate": 0,
+      "Minor": 0
+    }
+  }
+}
