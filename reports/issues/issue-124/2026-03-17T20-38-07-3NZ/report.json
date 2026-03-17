@@ -2,7 +2,7 @@
   "reportType": "alt-text",
   "issueNumber": 124,
   "issueUrl": "https://github.com/mgifford/alt-text-scan/issues/124",
-  "scanTitle": "Test",
+  "scanTitle": "W3C WAI sample alt-text run",
   "scanDomain": null,
   "discoveryMethod": "explicit",
   "discoveredTotal": 1,
@@ -13,7 +13,7 @@
   "skippedDueToTimeout": 0,
   "urlsRequested": 1,
   "urlsScanned": 1,
-  "scannedAt": "2026-03-17T20:28:47.198Z",
+  "scannedAt": "2026-03-17T20:38:05.913Z",
   "totalImages": 6,
   "uniqueImages": 6,
   "imagesWithIssues": 0,
@@ -253,7 +253,7 @@
     "reportType": "alt-text",
     "issueNumber": 124,
     "issueUrl": "https://github.com/mgifford/alt-text-scan/issues/124",
-    "scanTitle": "Test",
+    "scanTitle": "W3C WAI sample alt-text run",
     "scanDomain": null,
     "discoveryMethod": "explicit",
     "discoveredTotal": 1,
@@ -276,6 +276,6 @@
       "TOO_LONG": 0,
       "GOOD": 0
     },
-    "scannedAt": "2026-03-17T20:28:47.198Z"
+    "scannedAt": "2026-03-17T20:38:05.913Z"
   }
 }
