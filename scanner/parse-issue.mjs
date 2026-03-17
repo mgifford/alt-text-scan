@@ -215,6 +215,20 @@ export function parseScanIssue(issueEvent) {
     }
   }
 
+  // If no body URLs and the scanTitle itself is a valid http/https URL,
+  // treat it as a domain scan — discover pages from sitemap or crawl.
+  let scanDomain = null;
+  if (requestedUrls.length === 0 && titleInfo.scanTitle) {
+    try {
+      const parsed = new URL(titleInfo.scanTitle);
+      if (["http:", "https:"].includes(parsed.protocol) && parsed.hostname) {
+        scanDomain = parsed.origin;
+      }
+    } catch {
+      // scanTitle is not a URL — leave scanDomain null
+    }
+  }
+
   // Engine selection priority: body "Engine:" line > title keywords > default (axe + random)
   const bodyEngines = extractBodyEngines(body);
   const titleEngines = titleInfo.engines;
@@ -235,6 +249,10 @@ export function parseScanIssue(issueEvent) {
     pageLoadDelay: titleInfo.pageLoadDelay ?? 2
   };
 
+  if (scanDomain) {
+    request.scanDomain = scanDomain;
+  }
+
   const validation = validateScanRequest(request);
   return {
     ok: validation.ok,
@@ -245,7 +263,8 @@ export function parseScanIssue(issueEvent) {
     isRunnableIssue: titleInfo.isRunnableIssue,
     triggerType: titleInfo.triggerType,
     engines,
-    pageLoadDelay: titleInfo.pageLoadDelay ?? 2
+    pageLoadDelay: titleInfo.pageLoadDelay ?? 2,
+    scanDomain
   };
 }
 
@@ -278,8 +297,14 @@ export function validateScanRequest(candidate) {
   if (!Array.isArray(candidate.requestedUrls)) {
     errors.push("requestedUrls must be an array");
   } else {
-    if (candidate.requestedUrls.length < 1 || candidate.requestedUrls.length > 500) {
-      errors.push("requestedUrls must contain between 1 and 500 URLs");
+    const hasScanDomain = Boolean(candidate.scanDomain);
+    const minUrls = hasScanDomain ? 0 : 1;
+    if (candidate.requestedUrls.length < minUrls || candidate.requestedUrls.length > 500) {
+      if (hasScanDomain) {
+        errors.push("requestedUrls must contain at most 500 URLs");
+      } else {
+        errors.push("requestedUrls must contain between 1 and 500 URLs");
+      }
     }
 
     candidate.requestedUrls.forEach((value, index) => {
@@ -287,6 +312,10 @@ export function validateScanRequest(candidate) {
         errors.push(`requestedUrls[${index}] is not a valid http/https URL`);
       }
     });
+  }
+
+  if (candidate.scanDomain && !validateUriLike(candidate.scanDomain)) {
+    errors.push("scanDomain must be a valid http/https URL");
   }
 
   const knownKeys = new Set(Object.keys(scanRequestSchema.properties));

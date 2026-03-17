@@ -1,0 +1,287 @@
+/**
+ * URL Discovery module.
+ *
+ * Given a root domain, discovers page URLs by:
+ *   1. Attempting to fetch and parse /sitemap.xml (including sitemap indexes)
+ *   2. Falling back to a breadth-first crawl of same-domain HTML links
+ *
+ * Only uses Node.js built-in `fetch` (available in Node ≥ 18) — no extra deps.
+ *
+ * stdout: JSON output only
+ * stderr: progress/diagnostic messages
+ */
+
+const IMAGE_EXTENSIONS = new Set([
+  "jpg", "jpeg", "png", "gif", "bmp", "svg", "ico", "webp", "tiff", "tif", "avif",
+  "mp3", "wav", "ogg", "mp4", "avi", "mov", "wmv", "mkv", "webm",
+  "pdf", "doc", "docx", "xls", "xlsx", "ppt", "pptx",
+  "zip", "tar", "gz", "bz2", "rar",
+  "exe", "dmg", "pkg", "msi",
+  "css", "js", "json", "xml", "rss", "atom",
+  "ttf", "otf", "woff", "woff2"
+]);
+
+/**
+ * Return true when a URL pathname ends with a non-HTML extension.
+ * @param {string} urlStr
+ * @returns {boolean}
+ */
+function isNonHtmlUrl(urlStr) {
+  try {
+    const pathname = new URL(urlStr).pathname.toLowerCase();
+    const dot = pathname.lastIndexOf(".");
+    if (dot === -1) return false;
+    const ext = pathname.slice(dot + 1);
+    return IMAGE_EXTENSIONS.has(ext);
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Normalise a URL: strip fragment, trailing slash (except root), lowercase scheme+host.
+ * @param {string} urlStr
+ * @returns {string|null}
+ */
+function normalizeUrl(urlStr) {
+  try {
+    const u = new URL(urlStr);
+    u.hash = "";
+    // Collapse duplicate trailing slashes on path
+    if (u.pathname.length > 1 && u.pathname.endsWith("/")) {
+      u.pathname = u.pathname.replace(/\/+$/, "");
+    }
+    return u.toString();
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Return true if `url` belongs to `origin` (same scheme+host+port).
+ * @param {string} urlStr
+ * @param {string} origin  e.g. "https://example.com"
+ * @returns {boolean}
+ */
+function isSameOrigin(urlStr, origin) {
+  try {
+    return new URL(urlStr).origin === origin;
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Fetch a URL with a timeout, returning the response or null on error.
+ * @param {string} urlStr
+ * @param {number} timeoutMs
+ * @returns {Promise<Response|null>}
+ */
+async function fetchWithTimeout(urlStr, timeoutMs = 15000) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    const resp = await fetch(urlStr, {
+      signal: controller.signal,
+      headers: {
+        "User-Agent":
+          "alt-text-scanner/1.0 (https://github.com/mgifford/alt-text-scan; accessibility bot)",
+        Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+      },
+      redirect: "follow"
+    });
+    return resp;
+  } catch {
+    return null;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+/**
+ * Extract URLs from a sitemap XML string.
+ * Handles both <loc> entries and nested <sitemap><loc> indexes.
+ * @param {string} xmlText
+ * @returns {{pageUrls: string[], sitemapUrls: string[]}}
+ */
+export function parseSitemapXml(xmlText) {
+  const pageUrls = [];
+  const sitemapUrls = [];
+
+  // Sitemap index: <sitemap><loc>…</loc></sitemap>
+  const sitemapRe = /<sitemap[\s\S]*?<loc>([\s\S]*?)<\/loc>/gi;
+  let m;
+  while ((m = sitemapRe.exec(xmlText)) !== null) {
+    const url = m[1].trim();
+    if (url) sitemapUrls.push(url);
+  }
+
+  if (sitemapUrls.length > 0) {
+    return { pageUrls: [], sitemapUrls };
+  }
+
+  // Standard sitemap: <url><loc>…</loc></url>
+  const urlRe = /<url[\s\S]*?<loc>([\s\S]*?)<\/loc>/gi;
+  while ((m = urlRe.exec(xmlText)) !== null) {
+    const url = m[1].trim();
+    if (url) pageUrls.push(url);
+  }
+
+  return { pageUrls, sitemapUrls: [] };
+}
+
+/**
+ * Recursively fetch a sitemap (and any nested sitemaps) and collect page URLs.
+ * @param {string} sitemapUrl
+ * @param {string} origin  Root origin (used to filter off-domain URLs)
+ * @param {number} maxUrls
+ * @param {number} depth  Max recursion depth for sitemap indexes
+ * @returns {Promise<string[]>}
+ */
+async function fetchSitemap(sitemapUrl, origin, maxUrls, depth = 3) {
+  if (depth <= 0) return [];
+
+  const resp = await fetchWithTimeout(sitemapUrl);
+  if (!resp || !resp.ok) {
+    console.error(`[discover-urls] Sitemap fetch failed: ${sitemapUrl} (${resp?.status ?? "no response"})`);
+    return [];
+  }
+
+  const text = await resp.text();
+  const { pageUrls, sitemapUrls } = parseSitemapXml(text);
+
+  if (sitemapUrls.length > 0) {
+    // Sitemap index — recurse into each child sitemap
+    const all = [];
+    for (const childUrl of sitemapUrls) {
+      if (all.length >= maxUrls) break;
+      const childPages = await fetchSitemap(childUrl, origin, maxUrls - all.length, depth - 1);
+      all.push(...childPages);
+    }
+    return all;
+  }
+
+  // Filter to same-origin HTML pages only
+  return pageUrls
+    .filter((u) => isSameOrigin(u, origin) && !isNonHtmlUrl(u))
+    .slice(0, maxUrls);
+}
+
+/**
+ * Extract same-origin HTML links from a page's HTML content.
+ * @param {string} html
+ * @param {string} pageUrl  The URL of the page (for resolving relative links)
+ * @param {string} origin
+ * @returns {string[]}
+ */
+export function extractLinksFromHtml(html, pageUrl, origin) {
+  const links = [];
+  const hrefRe = /href=["']([^"']+)["']/gi;
+  let m;
+  while ((m = hrefRe.exec(html)) !== null) {
+    const raw = m[1].trim();
+    // Skip fragment-only, javascript, mailto, and data links
+    if (!raw || raw.startsWith("#") || raw.startsWith("javascript:") ||
+        raw.startsWith("mailto:") || raw.startsWith("tel:") || raw.startsWith("data:")) {
+      continue;
+    }
+    try {
+      const abs = new URL(raw, pageUrl).toString();
+      const norm = normalizeUrl(abs);
+      if (norm && isSameOrigin(norm, origin) && !isNonHtmlUrl(norm)) {
+        links.push(norm);
+      }
+    } catch {
+      // skip malformed
+    }
+  }
+  return links;
+}
+
+/**
+ * Breadth-first crawl of a domain, collecting HTML page URLs.
+ * @param {string} startUrl  The root URL to start from (e.g. "https://example.com")
+ * @param {number} maxPages
+ * @returns {Promise<string[]>}
+ */
+async function crawlDomain(startUrl, maxPages = 100) {
+  const origin = new URL(startUrl).origin;
+  const visited = new Set();
+  const queue = [normalizeUrl(startUrl)];
+  const found = [];
+
+  while (queue.length > 0 && found.length < maxPages) {
+    const url = queue.shift();
+    if (!url || visited.has(url)) continue;
+    visited.add(url);
+
+    console.error(`[discover-urls] Crawling ${url}`);
+    const resp = await fetchWithTimeout(url, 20000);
+    if (!resp || !resp.ok) continue;
+
+    const contentType = resp.headers.get("content-type") ?? "";
+    if (!contentType.includes("text/html")) continue;
+
+    found.push(url);
+
+    const html = await resp.text();
+    const links = extractLinksFromHtml(html, url, origin);
+    for (const link of links) {
+      if (!visited.has(link)) {
+        queue.push(link);
+      }
+    }
+  }
+
+  return found;
+}
+
+/**
+ * Discover page URLs for a given domain.
+ *
+ * Strategy:
+ *   1. Try /sitemap.xml (including sitemap indexes)
+ *   2. If no sitemap pages found, fall back to BFS crawl
+ *
+ * @param {string} domain   Root domain, e.g. "https://example.com"
+ * @param {number} maxUrls  Maximum number of page URLs to return (default 100)
+ * @returns {Promise<{urls: string[], method: "sitemap"|"crawl", total: number}>}
+ */
+export async function discoverUrls(domain, maxUrls = 100) {
+  const origin = new URL(domain).origin;
+  const sitemapUrl = `${origin}/sitemap.xml`;
+
+  console.error(`[discover-urls] Trying sitemap at ${sitemapUrl}`);
+  const sitemapPages = await fetchSitemap(sitemapUrl, origin, maxUrls);
+
+  if (sitemapPages.length > 0) {
+    console.error(`[discover-urls] Found ${sitemapPages.length} URLs via sitemap`);
+    return {
+      urls: sitemapPages.slice(0, maxUrls),
+      method: "sitemap",
+      total: sitemapPages.length
+    };
+  }
+
+  console.error(`[discover-urls] No sitemap pages found, falling back to crawl`);
+  const crawlPages = await crawlDomain(origin, maxUrls);
+  console.error(`[discover-urls] Found ${crawlPages.length} URLs via crawl`);
+
+  return {
+    urls: crawlPages,
+    method: "crawl",
+    total: crawlPages.length
+  };
+}
+
+if (import.meta.url === `file://${process.argv[1]}`) {
+  const domain = process.argv[2];
+  const maxUrls = parseInt(process.argv[3] || "100", 10);
+  if (!domain) {
+    console.error("Usage: node scanner/discover-urls.mjs <domain> [maxUrls]");
+    process.exitCode = 1;
+  } else {
+    const result = await discoverUrls(domain, maxUrls);
+    process.stdout.write(JSON.stringify(result, null, 2));
+  }
+}
