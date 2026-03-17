@@ -11,9 +11,10 @@
  * stdout: meta.json (JSON) — consumed by the GitHub Actions workflow
  * stderr: all progress / diagnostic messages
  * Output files written to <output-dir>:
- *   alt-text-report.json   — full structured results
- *   alt-text-report.csv    — flat table, one row per image
- *   alt-text-report.html   — human-readable summary
+ *   report.json / alt-text-report.json  — full structured results
+ *   report.csv / alt-text-report.csv    — flat table, one row per image
+ *   report.html / alt-text-report.html  — human-readable summary
+ *   report.md / alt-text-report.md      — markdown summary
  */
 
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -28,6 +29,32 @@ const MAX_DISCOVER = parseInt(process.env.MAX_DISCOVER_URLS || "100", 10);
 const PAGE_LOAD_DELAY = parseInt(process.env.PAGE_LOAD_DELAY_MS || "500", 10);
 const NAV_TIMEOUT = parseInt(process.env.NAV_TIMEOUT_MS || "30000", 10);
 const TOTAL_TIMEOUT = parseInt(process.env.TOTAL_SCAN_TIMEOUT_MS || "3000000", 10);
+
+const STATUS_LABELS = {
+  MISSING: "Missing Alt",
+  SUSPICIOUS: "Suspicious",
+  FILENAME: "Filename as Alt",
+  DECORATIVE: "Decorative (empty alt)",
+  GOOD: "Good",
+  TOO_SHORT: "Too Short",
+  TOO_LONG: "Too Long"
+};
+
+function escapeHtml(text) {
+  return String(text ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/\"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+function escapeMarkdown(text) {
+  return String(text ?? "")
+    .replace(/\|/g, "\\|")
+    .replace(/\n/g, " ")
+    .trim();
+}
 
 /**
  * Convert scan results to a CSV string.
@@ -101,21 +128,11 @@ function toHtml(scanResult, meta) {
     TOO_LONG: "#f57c00"
   };
 
-  const statusLabels = {
-    MISSING: "Missing Alt",
-    SUSPICIOUS: "Suspicious",
-    FILENAME: "Filename as Alt",
-    DECORATIVE: "Decorative (empty alt)",
-    GOOD: "Good",
-    TOO_SHORT: "Too Short",
-    TOO_LONG: "Too Long"
-  };
-
   const countRows = Object.entries(statusCounts)
     .filter(([, count]) => count > 0)
     .map(([status, count]) => {
       const color = statusColors[status] || "#555";
-      const label = statusLabels[status] || status;
+      const label = STATUS_LABELS[status] || status;
       return `<tr><td><span style="color:${color};font-weight:bold">${label}</span></td><td>${count}</td></tr>`;
     })
     .join("\n");
@@ -126,10 +143,10 @@ function toHtml(scanResult, meta) {
       const color = statusColors[img.status] || "#555";
       const altDisplay = img.alt === null ? '<em style="color:#999">missing</em>'
         : img.alt === "" ? '<em style="color:#999">empty (decorative)</em>'
-        : `<code>${img.alt.replace(/</g, "&lt;")}</code>`;
-      const issues = img.issues.map((i) => `<li>${i.replace(/</g, "&lt;")}</li>`).join("");
+        : `<code>${escapeHtml(img.alt)}</code>`;
+      const issues = img.issues.map((i) => `<li>${escapeHtml(i)}</li>`).join("");
       const pages = (img.pages || []).slice(0, 3)
-        .map((p) => `<a href="${p}" target="_blank" rel="noopener">${p.replace(/</g, "&lt;")}</a>`)
+        .map((p) => `<a href="${p}" target="_blank" rel="noopener">${escapeHtml(p)}</a>`)
         .join("<br>");
       return `
         <tr>
@@ -137,7 +154,7 @@ function toHtml(scanResult, meta) {
             img.src.length > 60 ? img.src.slice(0, 60) + "…" : img.src
           }</a></td>
           <td>${altDisplay}</td>
-          <td><span style="color:${color};font-weight:bold">${statusLabels[img.status] || img.status}</span></td>
+          <td><span style="color:${color};font-weight:bold">${STATUS_LABELS[img.status] || img.status}</span></td>
           <td><ul style="margin:0;padding-left:1.2em">${issues}</ul></td>
           <td style="font-size:0.85em">${pages}</td>
         </tr>`;
@@ -193,6 +210,46 @@ function toHtml(scanResult, meta) {
 </html>`;
 }
 
+function toMarkdown(scanResult, meta) {
+  const domainDisplay = meta.scanDomain || meta.scanTitle || "Unknown domain";
+  const statusLines = Object.entries(scanResult.statusCounts)
+    .filter(([, count]) => count > 0)
+    .map(([status, count]) => `- ${STATUS_LABELS[status] || status}: ${count}`)
+    .join("\n");
+
+  const issueRows = scanResult.uniqueImageList
+    .filter((img) => img.issues && img.issues.length > 0)
+    .map((img) => {
+      const altDisplay = img.alt === null
+        ? "(missing)"
+        : img.alt === ""
+          ? "(empty decorative)"
+          : escapeMarkdown(img.alt);
+      const pages = (img.pages || []).slice(0, 3).map((page) => escapeMarkdown(page)).join("; ");
+      const issues = (img.issues || []).map((issue) => escapeMarkdown(issue)).join("; ");
+      return `| ${escapeMarkdown(img.src)} | ${altDisplay} | ${STATUS_LABELS[img.status] || img.status} | ${issues} | ${pages} |`;
+    })
+    .join("\n");
+
+  return `# Alt Text Scan Report: ${escapeMarkdown(domainDisplay)}
+
+${meta.issueUrl ? `- Issue: ${meta.issueUrl}\n` : ""}- Scanned at: ${scanResult.scannedAt}
+- Discovery method: ${meta.discoveryMethod || "explicit URLs"}
+- Pages scanned: ${scanResult.urlsScanned}
+- Images found: ${scanResult.totalImages}
+- Unique images: ${scanResult.uniqueImages}
+- Images with issues: ${scanResult.imagesWithIssues}
+
+## Status breakdown
+
+${statusLines || "- No statuses recorded"}
+
+## Images with issues
+
+${issueRows ? `| Image URL | Alt Text | Status | Issues | Found on |\n| --- | --- | --- | --- | --- |\n${issueRows}` : "No issues found."}
+`;
+}
+
 async function main() {
   const issueEventPath = process.argv[2];
   const outputDir = process.argv[3] || ".scan-output";
@@ -211,6 +268,8 @@ async function main() {
   let urlsToScan = [];
   let discoveryMethod = "explicit";
   let discoveredTotal = 0;
+  let requestedCount = 0;
+  let rejectedCount = 0;
   let scanDomain = parsed.scanDomain || null;
 
   if (parsed.scanDomain) {
@@ -220,12 +279,15 @@ async function main() {
     urlsToScan = discovery.urls;
     discoveryMethod = discovery.method;
     discoveredTotal = discovery.total;
+    requestedCount = urlsToScan.length;
     console.error(
       `[run-alt-text-scan] Discovered ${urlsToScan.length} URLs via ${discoveryMethod}`
     );
   } else if (parsed.value && parsed.value.requestedUrls.length > 0) {
     // Explicit URL list from issue body
     const { accepted, rejected } = validateTargets(parsed.value.requestedUrls);
+    requestedCount = parsed.value.requestedUrls.length;
+    rejectedCount = rejected.length;
     urlsToScan = accepted.map((r) => r.normalizedUrl);
     discoveredTotal = urlsToScan.length;
 
@@ -241,7 +303,11 @@ async function main() {
     const metaError = {
       ok: false,
       errors: parsed.errors,
+      reportType: "alt-text",
       scanTitle: parsed.value?.scanTitle ?? "",
+      acceptedCount: 0,
+      rejectedCount: 0,
+      scannedCount: 0,
       urlsScanned: 0,
       scannedAt: new Date().toISOString()
     };
@@ -255,7 +321,11 @@ async function main() {
     const metaEmpty = {
       ok: false,
       errors: ["No URLs discovered"],
+      reportType: "alt-text",
       scanTitle: parsed.value?.scanTitle ?? scanDomain ?? "",
+      acceptedCount: 0,
+      rejectedCount,
+      scannedCount: 0,
       urlsScanned: 0,
       scannedAt: new Date().toISOString()
     };
@@ -272,14 +342,22 @@ async function main() {
     totalTimeout: TOTAL_TIMEOUT
   });
 
+  const skippedDueToTimeout = Math.max(urlsToScan.length - scanResult.urlsScanned, 0);
+
   const meta = {
     ok: true,
+    reportType: "alt-text",
     issueNumber: issueEvent.issue?.number,
     issueUrl: issueEvent.issue?.html_url,
     scanTitle: parsed.value?.scanTitle ?? scanDomain ?? "",
     scanDomain,
     discoveryMethod,
     discoveredTotal,
+    requestedCount,
+    acceptedCount: urlsToScan.length,
+    rejectedCount,
+    scannedCount: scanResult.urlsScanned,
+    skippedDueToTimeout,
     urlsRequested: urlsToScan.length,
     urlsScanned: scanResult.urlsScanned,
     totalImages: scanResult.totalImages,
@@ -290,10 +368,47 @@ async function main() {
   };
 
   // Write report files
-  const reportData = { meta, ...scanResult };
-  writeFileSync(join(outputDir, "alt-text-report.json"), JSON.stringify(reportData, null, 2), "utf8");
-  writeFileSync(join(outputDir, "alt-text-report.csv"), toCsv(scanResult.uniqueImageList), "utf8");
-  writeFileSync(join(outputDir, "alt-text-report.html"), toHtml(scanResult, meta), "utf8");
+  const reportData = {
+    reportType: "alt-text",
+    issueNumber: meta.issueNumber,
+    issueUrl: meta.issueUrl,
+    scanTitle: meta.scanTitle,
+    scanDomain: meta.scanDomain,
+    discoveryMethod: meta.discoveryMethod,
+    discoveredTotal: meta.discoveredTotal,
+    requestedCount: meta.requestedCount,
+    acceptedCount: meta.acceptedCount,
+    rejectedCount: meta.rejectedCount,
+    scannedCount: meta.scannedCount,
+    skippedDueToTimeout: meta.skippedDueToTimeout,
+    urlsRequested: meta.urlsRequested,
+    urlsScanned: meta.urlsScanned,
+    scannedAt: meta.scannedAt,
+    totalImages: meta.totalImages,
+    uniqueImages: meta.uniqueImages,
+    imagesWithIssues: meta.imagesWithIssues,
+    statusCounts: meta.statusCounts,
+    urlResults: scanResult.urlResults,
+    uniqueImageList: scanResult.uniqueImageList,
+    meta
+  };
+  const reportJson = JSON.stringify(reportData, null, 2);
+  const reportCsv = toCsv(scanResult.uniqueImageList);
+  const reportHtml = toHtml(scanResult, meta);
+  const reportMarkdown = toMarkdown(scanResult, meta);
+
+  for (const [name, content] of [
+    ["report.json", reportJson],
+    ["report.csv", reportCsv],
+    ["report.html", reportHtml],
+    ["report.md", reportMarkdown],
+    ["alt-text-report.json", reportJson],
+    ["alt-text-report.csv", reportCsv],
+    ["alt-text-report.html", reportHtml],
+    ["alt-text-report.md", reportMarkdown]
+  ]) {
+    writeFileSync(join(outputDir, name), content, "utf8");
+  }
 
   console.error(
     `[run-alt-text-scan] Done. ${scanResult.urlsScanned} pages, ` +

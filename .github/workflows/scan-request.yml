@@ -55,7 +55,7 @@ jobs:
       - name: Run issue scan
         run: |
           mkdir -p .scan-output
-          node scanner/run-scan.mjs .tmp/issue-event.json .scan-output > .scan-output/meta.json
+          node scanner/run-alt-text-scan.mjs .tmp/issue-event.json .scan-output > .scan-output/meta.json
         # Uncomment and adjust these environment variables to customize timeouts:
         # env:
         #   FETCH_TIMEOUT_MS: "30000"           # 30s for initial HTTP fetch
@@ -80,9 +80,6 @@ jobs:
           const markdownPath = `${reportDir}/report.md`;
           const htmlPath = `${reportDir}/report.html`;
           const csvPath = `${reportDir}/report.csv`;
-          const overlapJsonPath = `${reportDir}/report-overlap.json`;
-          const overlapMarkdownPath = `${reportDir}/report-overlap.md`;
-
           const output = process.env.GITHUB_OUTPUT;
           const lines = [
             `accepted_count=${meta.acceptedCount ?? 0}`,
@@ -95,8 +92,6 @@ jobs:
             `markdown_path=${markdownPath}`,
             `html_path=${htmlPath}`,
             `csv_path=${csvPath}`,
-            `overlap_json_path=${overlapJsonPath}`,
-            `overlap_markdown_path=${overlapMarkdownPath}`,
             `stamp=${stamp}`
           ].join('\n') + '\n';
 
@@ -112,8 +107,6 @@ jobs:
           cp .scan-output/report.md "${{ steps.meta.outputs.markdown_path }}"
           cp .scan-output/report.html "${{ steps.meta.outputs.html_path }}"
           cp .scan-output/report.csv "${{ steps.meta.outputs.csv_path }}"
-          cp .scan-output/report-overlap.json "${{ steps.meta.outputs.overlap_json_path }}"
-          cp .scan-output/report-overlap.md "${{ steps.meta.outputs.overlap_markdown_path }}"
 
       - name: Regenerate reports.html
         run: node scanner/generate-reports-html.mjs
@@ -179,18 +172,15 @@ jobs:
             const markdownPath = process.env.MARKDOWN_PATH;
             const htmlPath = process.env.HTML_PATH;
             const csvPath = process.env.CSV_PATH;
-            const overlapMarkdownPath = process.env.OVERLAP_MARKDOWN_PATH;
             const acceptedCount = process.env.ACCEPTED_COUNT;
             const rejectedCount = process.env.REJECTED_COUNT;
             const pagesUrl = `https://${owner}.github.io/${repo}/${htmlPath}`;
             const csvPagesUrl = `https://${owner}.github.io/${repo}/${csvPath}`;
-            const overlapPagesUrl = `https://${owner}.github.io/${repo}/${overlapMarkdownPath}`;
             const blobUrl = `https://github.com/${owner}/${repo}/blob/main/${markdownPath}`;
             const csvBlobUrl = `https://github.com/${owner}/${repo}/blob/main/${csvPath}`;
-            const overlapBlobUrl = `https://github.com/${owner}/${repo}/blob/main/${overlapMarkdownPath}`;
 
             const body = [
-              `Scan complete for **${process.env.SCAN_TITLE || context.payload.issue.title}**.`,
+              `Alt text review complete for **${process.env.SCAN_TITLE || context.payload.issue.title}**.`,
               "",
               `- Accepted URLs: ${acceptedCount}`,
               `- Scanned URLs: ${process.env.SCANNED_COUNT || acceptedCount}`,
@@ -209,19 +199,17 @@ jobs:
             // Add recommendation if only 1 URL was scanned
             if (parseInt(acceptedCount) === 1) {
               body.push(``);
-              body.push(`💡 **Only 1 URL was scanned.** Open Scans works best with multiple URLs. To generate a list of related URLs for a more thorough accessibility scan, try the [Top Task Finder](https://mgifford.github.io/top-task-finder/). You can edit this issue to add more URLs and reopen it to trigger a new scan.`);
+              body.push(`💡 **Only 1 URL was scanned.** Alt Text Scan works best with multiple URLs. To generate a list of related URLs for a more thorough alt text review, try the [Top Task Finder](https://mgifford.github.io/top-task-finder/). You can edit this issue to add more URLs and reopen it to trigger a new scan.`);
               body.push(``);
             }
             
             body.push(
               `- Rejected URLs: ${rejectedCount}`,
               "",
-              `Report (Pages): ${pagesUrl}`,
-              `Fallback (GitHub): ${blobUrl}`,
+              `Report (Pages, HTML): ${pagesUrl}`,
+              `Report fallback (GitHub Markdown): ${blobUrl}`,
               `CSV (Pages): ${csvPagesUrl}`,
-              `CSV Fallback (GitHub): ${csvBlobUrl}`,
-              `Scanner Overlap (Pages): ${overlapPagesUrl}`,
-              `Scanner Overlap Fallback (GitHub): ${overlapBlobUrl}`
+              `CSV Fallback (GitHub): ${csvBlobUrl}`
             );
             
             const commentBody = body.join("\n");
@@ -252,7 +240,6 @@ jobs:
           MARKDOWN_PATH: ${{ steps.meta.outputs.markdown_path }}
           HTML_PATH: ${{ steps.meta.outputs.html_path }}
           CSV_PATH: ${{ steps.meta.outputs.csv_path }}
-          OVERLAP_MARKDOWN_PATH: ${{ steps.meta.outputs.overlap_markdown_path }}
           ACCEPTED_COUNT: ${{ steps.meta.outputs.accepted_count }}
           SCANNED_COUNT: ${{ steps.meta.outputs.scanned_count }}
           SKIPPED_DUE_TO_TIMEOUT: ${{ steps.meta.outputs.skipped_due_to_timeout }}

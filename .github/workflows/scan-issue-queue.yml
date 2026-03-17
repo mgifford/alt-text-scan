@@ -130,7 +130,7 @@ jobs:
                 const scanProcess = await new Promise((resolve, reject) => {
                   const child = spawn(
                     process.execPath,
-                    ['scanner/run-scan.mjs', eventPath, scanOutputDir],
+                    ['scanner/run-alt-text-scan.mjs', eventPath, scanOutputDir],
                     { env: process.env }
                   );
 
@@ -293,7 +293,7 @@ jobs:
                 const csvBlobUrl = `https://github.com/${owner}/${repo}/blob/${encodeURIComponent(defaultBranch)}/${encodedCsvPath}`;
 
                 const body = [
-                  `Scheduled scan complete for **${meta.scanTitle}**.`,
+                  `Scheduled alt text review complete for **${meta.scanTitle}**.`,
                   "",
                   `- Accepted URLs: ${meta.acceptedCount}`,
                   `- Scanned URLs: ${meta.scannedCount ?? meta.acceptedCount}`
@@ -307,7 +307,7 @@ jobs:
                 // Add recommendation if only 1 URL was scanned
                 if (meta.acceptedCount === 1) {
                   body.push(``);
-                  body.push(`💡 **Only 1 URL was scanned.** Open Scans works best with multiple URLs. To generate a list of related URLs for a more thorough accessibility scan, try the [Top Task Finder](https://mgifford.github.io/top-task-finder/). You can edit this issue to add more URLs and reopen it to trigger a new scan.`);
+                  body.push(`💡 **Only 1 URL was scanned.** Alt Text Scan works best with multiple URLs. To generate a list of related URLs for a more thorough alt text review, try the [Top Task Finder](https://mgifford.github.io/top-task-finder/). You can edit this issue to add more URLs and reopen it to trigger a new scan.`);
                   body.push(``);
                 }
                 
