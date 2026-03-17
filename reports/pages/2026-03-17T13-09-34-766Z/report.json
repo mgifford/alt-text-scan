@@ -1,0 +1,789 @@
+{
+  "issueNumber": 1,
+  "issueUrl": "https://github.com/mgifford/alt-text-scan/actions/runs/23195685472",
+  "issueTitle": "SCAN: AXE GitHub Pages accessibility check",
+  "scanTitle": "GitHub Pages accessibility check",
+  "submittedBy": "github-actions[bot]",
+  "engines": [
+    "axe"
+  ],
+  "scannedAt": "2026-03-17T13:08:10.093Z",
+  "totalElapsedMs": 5400,
+  "totalSubmitted": 1,
+  "acceptedCount": 1,
+  "scannedCount": 1,
+  "skippedDueToTimeout": 0,
+  "skippedDueToErrAborted": 0,
+  "rejectedCount": 0,
+  "rejected": [],
+  "alfaTotals": {
+    "passed": 0,
+    "failed": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "axeTotals": {
+    "passed": 25,
+    "failed": 18,
+    "cantTell": 1,
+    "inapplicable": 74
+  },
+  "equalAccessTotals": {
+    "passed": 0,
+    "failed": 0,
+    "uniqueFailed": 0,
+    "duplicates": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "accesslintTotals": {
+    "passed": 0,
+    "failed": 0,
+    "uniqueFailed": 0,
+    "duplicates": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "qualwebTotals": {
+    "passed": 0,
+    "failed": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "duplicateFindingTotals": 0,
+  "darkModeUrlCount": 0,
+  "reducedMotionUrlCount": 0,
+  "highContrastUrlCount": 0,
+  "forcedColorsUrlCount": 0,
+  "reducedTransparencyUrlCount": 0,
+  "results": [
+    {
+      "submittedUrl": "https://mgifford.github.io/alt-text-scan/",
+      "finalUrl": "https://mgifford.github.io/alt-text-scan/",
+      "redirected": false,
+      "statusCode": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "Page not found &middot; GitHub Pages",
+      "elapsedMs": 5392,
+      "error": null,
+      "alfa": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "axe": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 25,
+          "failed": 18,
+          "cantTell": 1,
+          "inapplicable": 74
+        },
+        "failedRules": [
+          "color-contrast",
+          "html-has-lang",
+          "landmark-one-main",
+          "link-in-text-block",
+          "link-name",
+          "region"
+        ],
+        "passedRules": [
+          "aria-hidden-body",
+          "bypass",
+          "color-contrast",
+          "document-title",
+          "empty-heading",
+          "heading-order",
+          "image-alt",
+          "image-redundant-alt",
+          "link-name",
+          "page-has-heading-one",
+          "presentation-role-conflict",
+          "region"
+        ],
+        "failures": [
+          {
+            "rule": "color-contrast",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
+            "impact": "serious",
+            "wcagSc": [
+              "wcag2aa",
+              "wcag143"
+            ],
+            "xpath": "p:nth-child(2) > strong",
+            "html": "<strong>File not found</strong>",
+            "message": "Elements must meet minimum color contrast ratio thresholds",
+            "fixSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.85 (foreground color: #797979, background color: #f1f1f1, font size: 12.0pt (16px), font weight: bold). Expected contrast ratio of 4.5:1",
+            "relatedPaths": [
+              "body"
+            ],
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "color-contrast",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
+            "impact": "serious",
+            "wcagSc": [
+              "wcag2aa",
+              "wcag143"
+            ],
+            "xpath": "p:nth-child(3)",
+            "html": "<p>\n        The site configured at this address does not\n        contain the requested file.\n      </p>",
+            "message": "Elements must meet minimum color contrast ratio thresholds",
+            "fixSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.85 (foreground color: #797979, background color: #f1f1f1, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
+            "relatedPaths": [
+              "body"
+            ],
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "color-contrast",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
+            "impact": "serious",
+            "wcagSc": [
+              "wcag2aa",
+              "wcag143"
+            ],
+            "xpath": "p:nth-child(4)",
+            "html": "<p>\n        If this is your site, make sure that the filename case matches the URL\n        as well as any file permissions.<br>\n        For root URLs (like <code>http://example.com/</code>) you must provide an\n        <code>index.html</code> file.\n      </p>",
+            "message": "Elements must meet minimum color contrast ratio thresholds",
+            "fixSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.85 (foreground color: #797979, background color: #f1f1f1, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
+            "relatedPaths": [
+              "body"
+            ],
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "color-contrast",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
+            "impact": "serious",
+            "wcagSc": [
+              "wcag2aa",
+              "wcag143"
+            ],
+            "xpath": "code:nth-child(2)",
+            "html": "<code>http://example.com/</code>",
+            "message": "Elements must meet minimum color contrast ratio thresholds",
+            "fixSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.85 (foreground color: #797979, background color: #f1f1f1, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1",
+            "relatedPaths": [
+              "body"
+            ],
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "color-contrast",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
+            "impact": "serious",
+            "wcagSc": [
+              "wcag2aa",
+              "wcag143"
+            ],
+            "xpath": "code:nth-child(3)",
+            "html": "<code>index.html</code>",
+            "message": "Elements must meet minimum color contrast ratio thresholds",
+            "fixSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.85 (foreground color: #797979, background color: #f1f1f1, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1",
+            "relatedPaths": [
+              "body"
+            ],
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "color-contrast",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
+            "impact": "serious",
+            "wcagSc": [
+              "wcag2aa",
+              "wcag143"
+            ],
+            "xpath": "p:nth-child(5)",
+            "html": "<p>\n        <a href=\"https://help.github.com/pages/\">Read the full documentation</a>\n        for more information about using <strong>GitHub Pages</strong>.\n      </p>",
+            "message": "Elements must meet minimum color contrast ratio thresholds",
+            "fixSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.85 (foreground color: #797979, background color: #f1f1f1, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
+            "relatedPaths": [
+              "body"
+            ],
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "color-contrast",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
+            "impact": "serious",
+            "wcagSc": [
+              "wcag2aa",
+              "wcag143"
+            ],
+            "xpath": "a[href$=\"pages/\"]",
+            "html": "<a href=\"https://help.github.com/pages/\">Read the full documentation</a>",
+            "message": "Elements must meet minimum color contrast ratio thresholds",
+            "fixSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.52 (foreground color: #4183c4, background color: #f1f1f1, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
+            "relatedPaths": [
+              "body"
+            ],
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "color-contrast",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
+            "impact": "serious",
+            "wcagSc": [
+              "wcag2aa",
+              "wcag143"
+            ],
+            "xpath": "p:nth-child(5) > strong",
+            "html": "<strong>GitHub Pages</strong>",
+            "message": "Elements must meet minimum color contrast ratio thresholds",
+            "fixSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.85 (foreground color: #797979, background color: #f1f1f1, font size: 12.0pt (16px), font weight: bold). Expected contrast ratio of 4.5:1",
+            "relatedPaths": [
+              "body"
+            ],
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "html-has-lang",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/html-has-lang?application=playwright",
+            "impact": "serious",
+            "wcagSc": [
+              "wcag2a",
+              "wcag311"
+            ],
+            "xpath": "html",
+            "html": "<html>",
+            "message": "<html> element must have a lang attribute",
+            "fixSummary": "Fix any of the following:\n  The <html> element does not have a lang attribute",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "landmark-one-main",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-one-main?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": "html",
+            "html": "<html>",
+            "message": "Document should have one main landmark",
+            "fixSummary": "Fix all of the following:\n  Document does not have a main landmark",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "link-in-text-block",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/link-in-text-block?application=playwright",
+            "impact": "serious",
+            "wcagSc": [
+              "wcag2a",
+              "wcag141"
+            ],
+            "xpath": "a[href$=\"pages/\"]",
+            "html": "<a href=\"https://help.github.com/pages/\">Read the full documentation</a>",
+            "message": "Links must be distinguishable without relying on color",
+            "fixSummary": "Fix any of the following:\n  The link has insufficient color contrast of 1.09:1 with the surrounding text. (Minimum contrast is 3:1, link text: #4183c4, surrounding text: #797979)\n  The link has no styling (such as underline) to distinguish it from the surrounding text",
+            "relatedPaths": [
+              "p:nth-child(5)"
+            ],
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "link-name",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/link-name?application=playwright",
+            "impact": "serious",
+            "wcagSc": [
+              "wcag2a",
+              "wcag244",
+              "wcag412"
+            ],
+            "xpath": ".logo-img-1x",
+            "html": "<a href=\"/\" class=\"logo logo-img-1x\">",
+            "message": "Links must have discernible text",
+            "fixSummary": "Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": "h1",
+            "html": "<h1>404</h1>",
+            "message": "All page content should be contained by landmarks",
+            "fixSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": "p:nth-child(2)",
+            "html": "<p><strong>File not found</strong></p>",
+            "message": "All page content should be contained by landmarks",
+            "fixSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": "p:nth-child(3)",
+            "html": "<p>\n        The site configured at this address does not\n        contain the requested file.\n      </p>",
+            "message": "All page content should be contained by landmarks",
+            "fixSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": "p:nth-child(4)",
+            "html": "<p>\n        If this is your site, make sure that the filename case matches the URL\n        as well as any file permissions.<br>\n        For root URLs (like <code>http://example.com/</code>) you must provide an\n        <code>index.html</code> file.\n      </p>",
+            "message": "All page content should be contained by landmarks",
+            "fixSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": "p:nth-child(5)",
+            "html": "<p>\n        <a href=\"https://help.github.com/pages/\">Read the full documentation</a>\n        for more information about using <strong>GitHub Pages</strong>.\n      </p>",
+            "message": "All page content should be contained by landmarks",
+            "fixSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": "#suggestions",
+            "html": "<div id=\"suggestions\">\n        <a href=\"https://githubstatus.com\">GitHub Status</a> —\n        <a href=\"https://twitter.com/githubstatus\">@githubstatus</a>\n      </div>",
+            "message": "All page content should be contained by landmarks",
+            "fixSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          }
+        ],
+        "outcomeCount": 118,
+        "darkModeScanned": false,
+        "mediaQuerySupport": {
+          "darkMode": false,
+          "reducedMotion": false,
+          "highContrast": false,
+          "forcedColors": false,
+          "reducedTransparency": false
+        },
+        "duplicateFailedCount": 0,
+        "uniqueFailedCount": 18
+      },
+      "equalAccess": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "accesslint": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "qualweb": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "duplicateFindingCount": 0
+    }
+  ],
+  "enhanced": {
+    "consolidatedFailures": [
+      {
+        "rule": "color-contrast",
+        "engine": "axe",
+        "metadata": {
+          "roles": [
+            "Visual Designer"
+          ],
+          "severity": "Serious",
+          "blocking": false,
+          "wcagCriteria": [
+            "1.4.3"
+          ],
+          "conformanceLevel": "AA"
+        },
+        "wcag": {
+          "scs": [
+            "1.4.3"
+          ],
+          "level": "AA"
+        },
+        "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
+        "pages": {},
+        "totalOccurrences": 8,
+        "examples": [
+          {
+            "url": "https://mgifford.github.io/alt-text-scan/",
+            "html": "<strong>File not found</strong>",
+            "xpath": "p:nth-child(2) > strong",
+            "message": "Elements must meet minimum color contrast ratio thresholds",
+            "fixSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.85 (foreground color: #797979, background color: #f1f1f1, font size: 12.0pt (16px), font weight: bold). Expected contrast ratio of 4.5:1",
+            "relatedPaths": [
+              "body"
+            ],
+            "colorScheme": "light"
+          },
+          {
+            "url": "https://mgifford.github.io/alt-text-scan/",
+            "html": "<p>\n        The site configured at this address does not\n        contain the requested file.\n      </p>",
+            "xpath": "p:nth-child(3)",
+            "message": "Elements must meet minimum color contrast ratio thresholds",
+            "fixSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.85 (foreground color: #797979, background color: #f1f1f1, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
+            "relatedPaths": [
+              "body"
+            ],
+            "colorScheme": "light"
+          },
+          {
+            "url": "https://mgifford.github.io/alt-text-scan/",
+            "html": "<p>\n        If this is your site, make sure that the filename case matches the URL\n        as well as any file permissions.<br>\n        For root URLs (like <code>http://example.com/</code>) you must provide an\n        <code>index.html</code> file.\n      </p>",
+            "xpath": "p:nth-child(4)",
+            "message": "Elements must meet minimum color contrast ratio thresholds",
+            "fixSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.85 (foreground color: #797979, background color: #f1f1f1, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
+            "relatedPaths": [
+              "body"
+            ],
+            "colorScheme": "light"
+          },
+          {
+            "url": "https://mgifford.github.io/alt-text-scan/",
+            "html": "<code>http://example.com/</code>",
+            "xpath": "code:nth-child(2)",
+            "message": "Elements must meet minimum color contrast ratio thresholds",
+            "fixSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.85 (foreground color: #797979, background color: #f1f1f1, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1",
+            "relatedPaths": [
+              "body"
+            ],
+            "colorScheme": "light"
+          },
+          {
+            "url": "https://mgifford.github.io/alt-text-scan/",
+            "html": "<code>index.html</code>",
+            "xpath": "code:nth-child(3)",
+            "message": "Elements must meet minimum color contrast ratio thresholds",
+            "fixSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.85 (foreground color: #797979, background color: #f1f1f1, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1",
+            "relatedPaths": [
+              "body"
+            ],
+            "colorScheme": "light"
+          }
+        ]
+      },
+      {
+        "rule": "region",
+        "engine": "axe",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+        "pages": {},
+        "totalOccurrences": 6,
+        "examples": [
+          {
+            "url": "https://mgifford.github.io/alt-text-scan/",
+            "html": "<h1>404</h1>",
+            "xpath": "h1",
+            "message": "All page content should be contained by landmarks",
+            "fixSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+            "relatedPaths": null,
+            "colorScheme": "light"
+          },
+          {
+            "url": "https://mgifford.github.io/alt-text-scan/",
+            "html": "<p><strong>File not found</strong></p>",
+            "xpath": "p:nth-child(2)",
+            "message": "All page content should be contained by landmarks",
+            "fixSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+            "relatedPaths": null,
+            "colorScheme": "light"
+          },
+          {
+            "url": "https://mgifford.github.io/alt-text-scan/",
+            "html": "<p>\n        The site configured at this address does not\n        contain the requested file.\n      </p>",
+            "xpath": "p:nth-child(3)",
+            "message": "All page content should be contained by landmarks",
+            "fixSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+            "relatedPaths": null,
+            "colorScheme": "light"
+          },
+          {
+            "url": "https://mgifford.github.io/alt-text-scan/",
+            "html": "<p>\n        If this is your site, make sure that the filename case matches the URL\n        as well as any file permissions.<br>\n        For root URLs (like <code>http://example.com/</code>) you must provide an\n        <code>index.html</code> file.\n      </p>",
+            "xpath": "p:nth-child(4)",
+            "message": "All page content should be contained by landmarks",
+            "fixSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+            "relatedPaths": null,
+            "colorScheme": "light"
+          },
+          {
+            "url": "https://mgifford.github.io/alt-text-scan/",
+            "html": "<p>\n        <a href=\"https://help.github.com/pages/\">Read the full documentation</a>\n        for more information about using <strong>GitHub Pages</strong>.\n      </p>",
+            "xpath": "p:nth-child(5)",
+            "message": "All page content should be contained by landmarks",
+            "fixSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+            "relatedPaths": null,
+            "colorScheme": "light"
+          }
+        ]
+      },
+      {
+        "rule": "html-has-lang",
+        "engine": "axe",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Serious",
+          "blocking": false,
+          "wcagCriteria": [
+            "3.1.1"
+          ],
+          "conformanceLevel": "A"
+        },
+        "wcag": {
+          "scs": [
+            "3.1.1"
+          ],
+          "level": "A"
+        },
+        "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/html-has-lang?application=playwright",
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://mgifford.github.io/alt-text-scan/",
+            "html": "<html>",
+            "xpath": "html",
+            "message": "<html> element must have a lang attribute",
+            "fixSummary": "Fix any of the following:\n  The <html> element does not have a lang attribute",
+            "relatedPaths": null,
+            "colorScheme": "light"
+          }
+        ]
+      },
+      {
+        "rule": "landmark-one-main",
+        "engine": "axe",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-one-main?application=playwright",
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://mgifford.github.io/alt-text-scan/",
+            "html": "<html>",
+            "xpath": "html",
+            "message": "Document should have one main landmark",
+            "fixSummary": "Fix all of the following:\n  Document does not have a main landmark",
+            "relatedPaths": null,
+            "colorScheme": "light"
+          }
+        ]
+      },
+      {
+        "rule": "link-in-text-block",
+        "engine": "axe",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [
+            "1.4.1"
+          ],
+          "level": "A"
+        },
+        "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/link-in-text-block?application=playwright",
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://mgifford.github.io/alt-text-scan/",
+            "html": "<a href=\"https://help.github.com/pages/\">Read the full documentation</a>",
+            "xpath": "a[href$=\"pages/\"]",
+            "message": "Links must be distinguishable without relying on color",
+            "fixSummary": "Fix any of the following:\n  The link has insufficient color contrast of 1.09:1 with the surrounding text. (Minimum contrast is 3:1, link text: #4183c4, surrounding text: #797979)\n  The link has no styling (such as underline) to distinguish it from the surrounding text",
+            "relatedPaths": [
+              "p:nth-child(5)"
+            ],
+            "colorScheme": "light"
+          }
+        ]
+      },
+      {
+        "rule": "link-name",
+        "engine": "axe",
+        "metadata": {
+          "roles": [
+            "Content Author",
+            "UX Designer"
+          ],
+          "severity": "Serious",
+          "blocking": true,
+          "wcagCriteria": [
+            "2.4.4",
+            "4.1.2"
+          ],
+          "conformanceLevel": "A"
+        },
+        "wcag": {
+          "scs": [
+            "2.4.4",
+            "4.1.2"
+          ],
+          "level": "A"
+        },
+        "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/link-name?application=playwright",
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://mgifford.github.io/alt-text-scan/",
+            "html": "<a href=\"/\" class=\"logo logo-img-1x\">",
+            "xpath": ".logo-img-1x",
+            "message": "Links must have discernible text",
+            "fixSummary": "Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute",
+            "relatedPaths": null,
+            "colorScheme": "light"
+          }
+        ]
+      }
+    ],
+    "roleStats": {
+      "UX Designer": 1,
+      "Visual Designer": 8,
+      "Content Author": 1,
+      "Front-End Developer": 9
+    },
+    "severityStats": {
+      "Critical": 0,
+      "Serious": 10,
+      "Moderate": 8,
+      "Minor": 0
+    }
+  }
+}
