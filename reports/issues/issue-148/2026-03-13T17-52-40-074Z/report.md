@@ -1,6 +1,6 @@
 # Scan Report: gnb.ca —
 
-- Issue: https://github.com/mgifford/open-scans/issues/148
+- Issue: https://github.com/mgifford/alt-text-scan/issues/148
 - Submitted by: mgifford
 - Scanned at: 2026-03-13T17:51:58.089Z
 - Engines used: All engines (AXE, ALFA, Equal Access, AccessLint, QualWeb)

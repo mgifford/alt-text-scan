@@ -1,6 +1,6 @@
 # Scan Report: Nova Scotia
 
-- Issue: https://github.com/mgifford/open-scans/issues/54
+- Issue: https://github.com/mgifford/alt-text-scan/issues/54
 - Submitted by: mgifford
 - Scanned at: 2026-02-28T18:32:08.021Z
 - Engines used: All engines (AXE, ALFA, Equal Access, AccessLint, QualWeb)

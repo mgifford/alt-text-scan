@@ -1,6 +1,6 @@
 # Scan Report: bundesregierung.de
 
-- Issue: https://github.com/mgifford/open-scans/issues/112
+- Issue: https://github.com/mgifford/alt-text-scan/issues/112
 - Submitted by: mgifford
 - Scanned at: 2026-03-10T20:17:03.153Z
 - Engines used: All engines (AXE, ALFA, Equal Access, AccessLint, QualWeb)

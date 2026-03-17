@@ -1,6 +1,6 @@
 # Scan Report: Estonia valitsus.ee
 
-- Issue: https://github.com/mgifford/open-scans/issues/77
+- Issue: https://github.com/mgifford/alt-text-scan/issues/77
 - Submitted by: mgifford
 - Scanned at: 2026-03-11T01:49:07.943Z
 - Engines used: All engines (AXE, ALFA, Equal Access, AccessLint, QualWeb)

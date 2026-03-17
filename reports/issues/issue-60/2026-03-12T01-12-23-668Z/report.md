@@ -1,6 +1,6 @@
 # Scan Report: Ottawa.ca —
 
-- Issue: https://github.com/mgifford/open-scans/issues/60
+- Issue: https://github.com/mgifford/alt-text-scan/issues/60
 - Submitted by: mgifford
 - Scanned at: 2026-03-12T01:11:27.351Z
 - Engines used: ALFA, AXE

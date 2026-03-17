@@ -1,6 +1,6 @@
 # Scan Report: NSF.gov —
 
-- Issue: https://github.com/mgifford/open-scans/issues/169
+- Issue: https://github.com/mgifford/alt-text-scan/issues/169
 - Submitted by: mgifford
 - Scanned at: 2026-03-16T17:26:14.532Z
 - Engines used: AXE, ALFA, EQUALACCESS

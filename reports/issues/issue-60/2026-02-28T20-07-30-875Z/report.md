@@ -1,6 +1,6 @@
 # Scan Report: Ottawa.ca
 
-- Issue: https://github.com/mgifford/open-scans/issues/60
+- Issue: https://github.com/mgifford/alt-text-scan/issues/60
 - Submitted by: mgifford
 - Scanned at: 2026-02-28T20:06:35.249Z
 - Engines used: All engines (AXE, ALFA, Equal Access, AccessLint, QualWeb)

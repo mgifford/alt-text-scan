@@ -1,6 +1,6 @@
 # Scan Report: Energy.gov
 
-- Issue: https://github.com/mgifford/open-scans/issues/61
+- Issue: https://github.com/mgifford/alt-text-scan/issues/61
 - Submitted by: mgifford
 - Scanned at: 2026-03-10T00:51:45.475Z
 - Engines used: All engines (AXE, ALFA, Equal Access, AccessLint, QualWeb)

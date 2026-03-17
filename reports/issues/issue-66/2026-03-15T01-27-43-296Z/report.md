@@ -1,6 +1,6 @@
 # Scan Report: Sweden's Government
 
-- Issue: https://github.com/mgifford/open-scans/issues/66
+- Issue: https://github.com/mgifford/alt-text-scan/issues/66
 - Submitted by: mgifford
 - Scanned at: 2026-03-15T01:26:48.963Z
 - Engines used: AXE, ALFA

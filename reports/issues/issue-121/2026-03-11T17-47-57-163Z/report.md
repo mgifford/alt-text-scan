@@ -1,6 +1,6 @@
 # Scan Report: edf-feph.org
 
-- Issue: https://github.com/mgifford/open-scans/issues/121
+- Issue: https://github.com/mgifford/alt-text-scan/issues/121
 - Submitted by: mgifford
 - Scanned at: 2026-03-11T17:47:04.576Z
 - Engines used: AXE, QUALWEB

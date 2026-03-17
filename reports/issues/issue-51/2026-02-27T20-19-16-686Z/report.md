@@ -1,6 +1,6 @@
 # Scan Report: California
 
-- Issue: https://github.com/mgifford/alfa-scan/issues/51
+- Issue: https://github.com/mgifford/alt-text-scan/issues/51
 - Submitted by: mgifford
 - Scanned at: 2026-02-27T20:18:24.692Z
 - Engines used: All engines (AXE, ALFA, Equal Access, AccessLint)

@@ -175,10 +175,10 @@ function getGitHubRepoInfo() {
   const pagesMatch = hostname.match(/^(.+)\.github\.io$/);
   if (!pagesMatch) return null;
   const owner = pagesMatch[1];
-  // Extract repo name from pathname (e.g., /open-scans/ -> open-scans)
-  // Fallback to "open-scans" matches the deployed GitHub Pages URL path for this project
+  // Extract repo name from pathname (e.g., /alt-text-scan/ -> alt-text-scan)
+  // Fallback to "alt-text-scan" matches the deployed GitHub Pages URL path for this project
   const pathMatch = pathname.match(/^\/([^/]+)/);
-  const repo = pathMatch ? pathMatch[1] : "open-scans";
+  const repo = pathMatch ? pathMatch[1] : "alt-text-scan";
   return { owner, repo };
 }
 

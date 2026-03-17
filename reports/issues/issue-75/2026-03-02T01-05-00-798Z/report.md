@@ -1,6 +1,6 @@
 # Scan Report: NL Gov
 
-- Issue: https://github.com/mgifford/open-scans/issues/75
+- Issue: https://github.com/mgifford/alt-text-scan/issues/75
 - Submitted by: mgifford
 - Scanned at: 2026-03-02T01:04:14.546Z
 - Engines used: All engines (AXE, ALFA, Equal Access, AccessLint, QualWeb)

@@ -1,6 +1,6 @@
 # Scan Report: Commerce Maryland WCAG Scan – Top Task Finder URLs
 
-- Issue: https://github.com/mgifford/open-scans/issues/155
+- Issue: https://github.com/mgifford/alt-text-scan/issues/155
 - Submitted by: emilyan0810
 - Scanned at: 2026-03-14T18:59:43.456Z
 - Engines used: AXE, ACCESSLINT

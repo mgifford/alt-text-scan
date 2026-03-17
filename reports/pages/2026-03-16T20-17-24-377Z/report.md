@@ -1,6 +1,6 @@
 # Scan Report: GitHub Pages accessibility check
 
-- Issue: https://github.com/mgifford/open-scans/actions/runs/23163875720
+- Issue: https://github.com/mgifford/alt-text-scan/actions/runs/23163875720
 - Submitted by: github-actions[bot]
 - Scanned at: 2026-03-16T20:15:58.766Z
 - Engines used: AXE
@@ -27,7 +27,7 @@ Focus your efforts on these pages to make the biggest impact (combined scanner u
 
 | Page | axe Unique | Total Unique | Page Title |
 |---|---:|---:|---|
-| [View Page](https://mgifford.github.io/open-scans/) | 5 | **5** | Open Scans - Free Automated Accessibility Scanning |
+| [View Page](https://mgifford.github.io/alt-text-scan/) | 5 | **5** | Alt Text Scan - Free Automated Accessibility Scanning |
 
 ## 🔧 Most Common Issues (ALFA)
 
@@ -60,14 +60,14 @@ Complete scan results for all tested pages:
 
 | Submitted URL | Final URL | Status | HTTP | Redirected | Time (ms) | axe Unique | ALFA Unique | Equal Access Unique | AccessLint Unique | Duplicates | Notes |
 |---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
-| https://mgifford.github.io/open-scans/ | https://mgifford.github.io/open-scans/ | OK | 200 | no | 4451 | 5 | 0 | 0 | 0 | 0 | Skipped (not requested) |
+| https://mgifford.github.io/alt-text-scan/ | https://mgifford.github.io/alt-text-scan/ | OK | 200 | no | 4451 | 5 | 0 | 0 | 0 | 0 | Skipped (not requested) |
 |  |  |  |  |  |  |  |  |  |  | axe failed rules: landmark-one-main, region |
 
 ## Detailed Failure Information (ALFA)
 
 ## Detailed Failure Information (axe)
 
-### https://mgifford.github.io/open-scans/
+### https://mgifford.github.io/alt-text-scan/
 
 #### Rule: [landmark-one-main](https://dequeuniversity.com/rules/axe/4.11/landmark-one-main?application=playwright)
 **Impact**: moderate

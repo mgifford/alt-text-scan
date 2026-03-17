@@ -1,6 +1,6 @@
 # Scan Report: London
 
-- Issue: https://github.com/mgifford/open-scans/issues/68
+- Issue: https://github.com/mgifford/alt-text-scan/issues/68
 - Submitted by: mgifford
 - Scanned at: 2026-03-14T01:07:01.094Z
 - Engines used: AXE, ALFA

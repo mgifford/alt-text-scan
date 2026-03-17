@@ -1,6 +1,6 @@
 # Scan Report: Texas.gov —
 
-- Issue: https://github.com/mgifford/open-scans/issues/137
+- Issue: https://github.com/mgifford/alt-text-scan/issues/137
 - Submitted by: mgifford
 - Scanned at: 2026-03-13T14:34:17.689Z
 - Engines used: All engines (AXE, ALFA, Equal Access, AccessLint, QualWeb)

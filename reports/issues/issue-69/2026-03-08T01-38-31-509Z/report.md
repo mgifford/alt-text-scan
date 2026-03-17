@@ -1,6 +1,6 @@
 # Scan Report: Spain
 
-- Issue: https://github.com/mgifford/open-scans/issues/69
+- Issue: https://github.com/mgifford/alt-text-scan/issues/69
 - Submitted by: mgifford
 - Scanned at: 2026-03-08T01:38:02.437Z
 - Engines used: All engines (AXE, ALFA, Equal Access, AccessLint, QualWeb)

@@ -1,6 +1,6 @@
 # Scan Report: Preserve Chunk 1 Scan
 
-- Issue: https://github.com/mgifford/open-scans/issues/139
+- Issue: https://github.com/mgifford/alt-text-scan/issues/139
 - Submitted by: NicoleMBytes
 - Scanned at: 2026-03-13T16:53:04.079Z
 - Engines used: All engines (AXE, ALFA, Equal Access, AccessLint, QualWeb)

@@ -1,6 +1,6 @@
 # Scan Report: GSA.gov
 
-- Issue: https://github.com/mgifford/alfa-scan/issues/1
+- Issue: https://github.com/mgifford/alt-text-scan/issues/1
 - Submitted by: mgifford
 - Scanned at: 2026-02-21T22:06:20.167Z
 - Total URLs submitted: 13

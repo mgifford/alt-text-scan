@@ -1,6 +1,6 @@
 # Scan Report: US States and Territories
 
-- Issue: https://github.com/mgifford/alfa-scan/issues/25
+- Issue: https://github.com/mgifford/alt-text-scan/issues/25
 - Submitted by: mgifford
 - Scanned at: 2026-02-25T22:22:56.312Z
 - Scan duration: 45.1 minutes

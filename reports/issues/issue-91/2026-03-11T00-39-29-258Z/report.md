@@ -1,6 +1,6 @@
 # Scan Report: Homepage
 
-- Issue: https://github.com/mgifford/open-scans/issues/91
+- Issue: https://github.com/mgifford/alt-text-scan/issues/91
 - Submitted by: Siddarthsingh49
 - Scanned at: 2026-03-11T00:38:34.213Z
 - Engines used: QUALWEB

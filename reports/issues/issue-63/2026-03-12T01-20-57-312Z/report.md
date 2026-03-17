@@ -1,6 +1,6 @@
 # Scan Report: WA.gov Washington State
 
-- Issue: https://github.com/mgifford/open-scans/issues/63
+- Issue: https://github.com/mgifford/alt-text-scan/issues/63
 - Submitted by: mgifford
 - Scanned at: 2026-03-12T01:20:00.603Z
 - Engines used: AXE, ACCESSLINT

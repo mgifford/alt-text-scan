@@ -1,6 +1,6 @@
 # Scan Report: bayern.de
 
-- Issue: https://github.com/mgifford/open-scans/issues/102
+- Issue: https://github.com/mgifford/alt-text-scan/issues/102
 - Submitted by: rpkoller
 - Scanned at: 2026-03-09T22:31:51.428Z
 - Engines used: All engines (AXE, ALFA, Equal Access, AccessLint, QualWeb)

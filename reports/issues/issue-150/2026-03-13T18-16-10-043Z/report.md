@@ -1,6 +1,6 @@
 # Scan Report: PEI Gov —
 
-- Issue: https://github.com/mgifford/open-scans/issues/150
+- Issue: https://github.com/mgifford/alt-text-scan/issues/150
 - Submitted by: mgifford
 - Scanned at: 2026-03-13T18:15:22.853Z
 - Engines used: All engines (AXE, ALFA, Equal Access, AccessLint, QualWeb)

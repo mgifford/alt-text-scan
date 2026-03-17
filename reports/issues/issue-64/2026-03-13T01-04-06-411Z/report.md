@@ -1,6 +1,6 @@
 # Scan Report: France.fr
 
-- Issue: https://github.com/mgifford/open-scans/issues/64
+- Issue: https://github.com/mgifford/alt-text-scan/issues/64
 - Submitted by: mgifford
 - Scanned at: 2026-03-13T01:03:13.320Z
 - Engines used: AXE, ACCESSLINT

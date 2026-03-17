@@ -1,6 +1,6 @@
 # Scan Report: Kalamuna test
 
-- Issue: https://github.com/mgifford/open-scans/issues/100
+- Issue: https://github.com/mgifford/alt-text-scan/issues/100
 - Submitted by: andrewmallis
 - Scanned at: 2026-03-09T14:34:09.270Z
 - Engines used: All engines (AXE, ALFA, Equal Access, AccessLint, QualWeb)

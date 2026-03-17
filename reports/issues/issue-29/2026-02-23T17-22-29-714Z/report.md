@@ -1,6 +1,6 @@
 # Scan Report: European Cities
 
-- Issue: https://github.com/mgifford/alfa-scan/issues/29
+- Issue: https://github.com/mgifford/alt-text-scan/issues/29
 - Submitted by: mgifford
 - Scanned at: 2026-02-23T17:22:29.619Z
 - Total URLs submitted: 40

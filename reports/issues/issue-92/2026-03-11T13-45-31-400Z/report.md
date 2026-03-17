@@ -1,6 +1,6 @@
 # Scan Report: Bob's first try —
 
-- Issue: https://github.com/mgifford/open-scans/issues/92
+- Issue: https://github.com/mgifford/alt-text-scan/issues/92
 - Submitted by: bobdodd
 - Scanned at: 2026-03-11T13:44:49.247Z
 - Engines used: All engines (AXE, ALFA, Equal Access, AccessLint, QualWeb)

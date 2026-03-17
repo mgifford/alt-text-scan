@@ -1,6 +1,6 @@
 # Scan Report: Government of Canada
 
-- Issue: https://github.com/mgifford/alfa-scan/issues/18
+- Issue: https://github.com/mgifford/alt-text-scan/issues/18
 - Submitted by: mgifford
 - Scanned at: 2026-02-21T20:55:47.367Z
 - Total URLs submitted: 46

@@ -1,6 +1,6 @@
 # Scan Report: US States and Territories
 
-- Issue: https://github.com/mgifford/alfa-scan/issues/25
+- Issue: https://github.com/mgifford/alt-text-scan/issues/25
 - Submitted by: mgifford
 - Scanned at: 2026-02-21T23:43:52.343Z
 - Total URLs submitted: 278

@@ -183,7 +183,7 @@ function generateIndexHtml(reports) {
       <tbody>
         ${reports.map(report => `
         <tr>
-          <td><a href="https://github.com/${process.env.GITHUB_REPOSITORY || 'mgifford/open-scans'}/issues/${report.issueNumber}">#${report.issueNumber}</a></td>
+          <td><a href="https://github.com/${process.env.GITHUB_REPOSITORY || 'mgifford/alt-text-scan'}/issues/${report.issueNumber}">#${report.issueNumber}</a></td>
           <td>${escapeHtml(report.scanTitle)}</td>
           <td class="date">${new Date(report.scannedAt).toLocaleString()}</td>
           <td>${report.acceptedCount} accepted${report.rejectedCount > 0 ? `, ${report.rejectedCount} rejected` : ''}</td>

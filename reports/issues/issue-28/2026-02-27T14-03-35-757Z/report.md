@@ -1,6 +1,6 @@
 # Scan Report: USA Cities over 100k
 
-- Issue: https://github.com/mgifford/alfa-scan/issues/28
+- Issue: https://github.com/mgifford/alt-text-scan/issues/28
 - Submitted by: mgifford
 - Scanned at: 2026-02-27T14:03:06.044Z
 - Engines used: All engines (AXE, ALFA, Equal Access, AccessLint)

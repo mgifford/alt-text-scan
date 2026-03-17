@@ -1,6 +1,6 @@
 {
   "issueNumber": 14,
-  "issueUrl": "https://github.com/mgifford/open-scans/actions/runs/23166500805",
+  "issueUrl": "https://github.com/mgifford/alt-text-scan/actions/runs/23166500805",
   "issueTitle": "SCAN: AXE GitHub Pages accessibility check",
   "scanTitle": "GitHub Pages accessibility check",
   "submittedBy": "github-actions[bot]",
@@ -58,13 +58,13 @@
   "reducedTransparencyUrlCount": 0,
   "results": [
     {
-      "submittedUrl": "https://mgifford.github.io/open-scans/",
-      "finalUrl": "https://mgifford.github.io/open-scans/",
+      "submittedUrl": "https://mgifford.github.io/alt-text-scan/",
+      "finalUrl": "https://mgifford.github.io/alt-text-scan/",
       "redirected": false,
       "statusCode": 200,
       "ok": true,
       "contentType": "text/html; charset=utf-8",
-      "pageTitle": "Open Scans - Free Automated Accessibility Scanning",
+      "pageTitle": "Alt Text Scan - Free Automated Accessibility Scanning",
       "elapsedMs": 6042,
       "error": null,
       "alfa": {
@@ -284,7 +284,7 @@
         "totalOccurrences": 4,
         "examples": [
           {
-            "url": "https://mgifford.github.io/open-scans/",
+            "url": "https://mgifford.github.io/alt-text-scan/",
             "html": "<h1>Submit URLs for Accessibility Scanning</h1>",
             "xpath": "h1",
             "message": "All page content should be contained by landmarks",
@@ -293,7 +293,7 @@
             "colorScheme": "light"
           },
           {
-            "url": "https://mgifford.github.io/open-scans/",
+            "url": "https://mgifford.github.io/alt-text-scan/",
             "html": "<p class=\"subtitle\">Enter up to 500 URLs to scan for accessibility issues using multiple WCAG 2.2 checking engines</p>",
             "xpath": ".subtitle",
             "message": "All page content should be contained by landmarks",
@@ -302,7 +302,7 @@
             "colorScheme": "light"
           },
           {
-            "url": "https://mgifford.github.io/open-scans/",
+            "url": "https://mgifford.github.io/alt-text-scan/",
             "html": "<div class=\"form-group\">",
             "xpath": ".form-group:nth-child(1)",
             "message": "All page content should be contained by landmarks",
@@ -311,7 +311,7 @@
             "colorScheme": "light"
           },
           {
-            "url": "https://mgifford.github.io/open-scans/",
+            "url": "https://mgifford.github.io/alt-text-scan/",
             "html": "<div class=\"form-group\">",
             "xpath": ".form-group:nth-child(2)",
             "message": "All page content should be contained by landmarks",
@@ -342,7 +342,7 @@
         "totalOccurrences": 1,
         "examples": [
           {
-            "url": "https://mgifford.github.io/open-scans/",
+            "url": "https://mgifford.github.io/alt-text-scan/",
             "html": "<html lang=\"en\">",
             "xpath": "html",
             "message": "Document should have one main landmark",

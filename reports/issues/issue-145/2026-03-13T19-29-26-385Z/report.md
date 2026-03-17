@@ -1,6 +1,6 @@
 # Scan Report: welcometofrance.com —
 
-- Issue: https://github.com/mgifford/open-scans/issues/145
+- Issue: https://github.com/mgifford/alt-text-scan/issues/145
 - Submitted by: mgifford
 - Scanned at: 2026-03-13T19:28:37.824Z
 - Engines used: AXE, EQUALACCESS

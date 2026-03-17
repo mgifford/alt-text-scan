@@ -1,6 +1,6 @@
 # Scan Report: California
 
-- Issue: https://github.com/mgifford/open-scans/issues/51
+- Issue: https://github.com/mgifford/alt-text-scan/issues/51
 - Submitted by: mgifford
 - Scanned at: 2026-03-14T18:28:34.658Z
 - Engines used: AXE, EQUALACCESS

@@ -1,6 +1,6 @@
 # Scan Report: Bob's first try
 
-- Issue: https://github.com/mgifford/open-scans/issues/92
+- Issue: https://github.com/mgifford/alt-text-scan/issues/92
 - Submitted by: bobdodd
 - Scanned at: 2026-03-11T00:18:08.482Z
 - Engines used: AXE, ALFA

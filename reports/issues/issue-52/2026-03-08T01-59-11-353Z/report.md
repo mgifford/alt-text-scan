@@ -1,6 +1,6 @@
 # Scan Report: Alberta
 
-- Issue: https://github.com/mgifford/open-scans/issues/52
+- Issue: https://github.com/mgifford/alt-text-scan/issues/52
 - Submitted by: mgifford
 - Scanned at: 2026-03-08T01:58:11.466Z
 - Engines used: All engines (AXE, ALFA, Equal Access, AccessLint, QualWeb)

@@ -1,6 +1,6 @@
 # Scan Report: DGS digital.georgia.gov
 
-- Issue: https://github.com/mgifford/open-scans/issues/136
+- Issue: https://github.com/mgifford/alt-text-scan/issues/136
 - Submitted by: mgifford
 - Scanned at: 2026-03-13T13:54:07.101Z
 - Engines used: AXE, QUALWEB

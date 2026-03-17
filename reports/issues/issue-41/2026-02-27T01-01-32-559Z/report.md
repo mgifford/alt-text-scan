@@ -1,6 +1,6 @@
 # Scan Report: All UK Councils 2/2 (182)
 
-- Issue: https://github.com/mgifford/alfa-scan/issues/41
+- Issue: https://github.com/mgifford/alt-text-scan/issues/41
 - Submitted by: mgifford
 - Scanned at: 2026-02-27T01:00:55.430Z
 - Scan duration: 34.1 minutes

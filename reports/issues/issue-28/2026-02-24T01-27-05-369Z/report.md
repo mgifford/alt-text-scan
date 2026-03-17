@@ -1,6 +1,6 @@
 # Scan Report: USA Cities over 100k
 
-- Issue: https://github.com/mgifford/alfa-scan/issues/28
+- Issue: https://github.com/mgifford/alt-text-scan/issues/28
 - Submitted by: mgifford
 - Scanned at: 2026-02-24T01:27:05.106Z
 - Total URLs submitted: 327

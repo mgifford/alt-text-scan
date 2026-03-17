@@ -1,6 +1,6 @@
 # Scan Report: ASC CANADA
 
-- Issue: https://github.com/mgifford/open-scans/issues/73
+- Issue: https://github.com/mgifford/alt-text-scan/issues/73
 - Submitted by: mgifford
 - Scanned at: 2026-02-28T19:47:18.645Z
 - Engines used: All engines (AXE, ALFA, Equal Access, AccessLint, QualWeb)

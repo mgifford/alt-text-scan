@@ -1,6 +1,6 @@
 # Scan Report: Test
 
-- Issue: https://github.com/mgifford/open-scans/issues/124
+- Issue: https://github.com/mgifford/alt-text-scan/issues/124
 - Submitted by: pattonwebz
 - Scanned at: 2026-03-12T00:13:33.212Z
 - Engines used: AXE, EQUALACCESS

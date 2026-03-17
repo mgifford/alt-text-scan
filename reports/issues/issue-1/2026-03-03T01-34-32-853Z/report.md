@@ -1,6 +1,6 @@
 # Scan Report: GSA.gov
 
-- Issue: https://github.com/mgifford/open-scans/issues/1
+- Issue: https://github.com/mgifford/alt-text-scan/issues/1
 - Submitted by: mgifford
 - Scanned at: 2026-03-03T01:33:54.057Z
 - Engines used: All engines (AXE, ALFA, Equal Access, AccessLint, QualWeb)

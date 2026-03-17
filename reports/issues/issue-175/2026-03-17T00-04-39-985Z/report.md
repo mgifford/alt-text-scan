@@ -1,6 +1,6 @@
 # Scan Report: NH.gov
 
-- Issue: https://github.com/mgifford/open-scans/issues/175
+- Issue: https://github.com/mgifford/alt-text-scan/issues/175
 - Submitted by: maggiewachs
 - Scanned at: 2026-03-17T00:03:45.492Z
 - Engines used: AXE, QUALWEB

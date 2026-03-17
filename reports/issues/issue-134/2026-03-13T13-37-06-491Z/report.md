@@ -1,6 +1,6 @@
 # Scan Report: NFP
 
-- Issue: https://github.com/mgifford/open-scans/issues/134
+- Issue: https://github.com/mgifford/alt-text-scan/issues/134
 - Submitted by: mgifford
 - Scanned at: 2026-03-13T13:36:09.810Z
 - Engines used: AXE, QUALWEB

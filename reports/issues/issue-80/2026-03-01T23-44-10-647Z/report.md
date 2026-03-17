@@ -1,6 +1,6 @@
 # Scan Report: DARK MODE https://re-scripted.com/
 
-- Issue: https://github.com/mgifford/open-scans/issues/80
+- Issue: https://github.com/mgifford/alt-text-scan/issues/80
 - Submitted by: mgifford
 - Scanned at: 2026-03-01T23:43:19.803Z
 - Engines used: All engines (AXE, ALFA, Equal Access, AccessLint, QualWeb)

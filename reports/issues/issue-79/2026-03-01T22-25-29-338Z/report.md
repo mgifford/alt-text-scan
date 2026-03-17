@@ -1,6 +1,6 @@
 # Scan Report: DARK MODE TEST nexxt.com.au
 
-- Issue: https://github.com/mgifford/open-scans/issues/79
+- Issue: https://github.com/mgifford/alt-text-scan/issues/79
 - Submitted by: mgifford
 - Scanned at: 2026-03-01T22:25:04.160Z
 - Engines used: All engines (AXE, ALFA, Equal Access, AccessLint, QualWeb)

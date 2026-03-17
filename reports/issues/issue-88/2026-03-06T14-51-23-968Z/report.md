@@ -1,6 +1,6 @@
 # Scan Report: week 8
 
-- Issue: https://github.com/mgifford/open-scans/issues/88
+- Issue: https://github.com/mgifford/alt-text-scan/issues/88
 - Submitted by: Thomas-Irwin
 - Scanned at: 2026-03-06T14:51:02.968Z
 - Engines used: All engines (AXE, ALFA, Equal Access, AccessLint, QualWeb)

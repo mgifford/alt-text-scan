@@ -1,6 +1,6 @@
 # Scan Report: Barcelona.cat
 
-- Issue: https://github.com/mgifford/open-scans/issues/62
+- Issue: https://github.com/mgifford/alt-text-scan/issues/62
 - Submitted by: mgifford
 - Scanned at: 2026-03-11T00:59:07.382Z
 - Engines used: AXE, ACCESSLINT

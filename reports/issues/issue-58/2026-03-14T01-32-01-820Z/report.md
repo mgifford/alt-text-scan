@@ -1,6 +1,6 @@
 # Scan Report: GOV.UK
 
-- Issue: https://github.com/mgifford/open-scans/issues/58
+- Issue: https://github.com/mgifford/alt-text-scan/issues/58
 - Submitted by: mgifford
 - Scanned at: 2026-03-14T01:31:08.384Z
 - Engines used: AXE, QUALWEB

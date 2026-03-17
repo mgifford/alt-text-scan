@@ -1,6 +1,6 @@
 # Scan Report: MN.gov
 
-- Issue: https://github.com/mgifford/open-scans/issues/146
+- Issue: https://github.com/mgifford/alt-text-scan/issues/146
 - Submitted by: mgifford
 - Scanned at: 2026-03-13T16:56:16.432Z
 - Engines used: AXE, EQUALACCESS

@@ -1,6 +1,6 @@
 # Scan Report: Mgov
 
-- Issue: https://github.com/mgifford/open-scans/issues/122
+- Issue: https://github.com/mgifford/alt-text-scan/issues/122
 - Submitted by: maggiewachs
 - Scanned at: 2026-03-11T19:29:20.913Z
 - Engines used: AXE, EQUALACCESS

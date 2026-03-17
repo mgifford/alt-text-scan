@@ -1,6 +1,6 @@
 # Scan Report: Fel website
 
-- Issue: https://github.com/mgifford/open-scans/issues/93
+- Issue: https://github.com/mgifford/alt-text-scan/issues/93
 - Submitted by: JayNiker
 - Scanned at: 2026-03-11T00:23:56.193Z
 - Engines used: ALFA

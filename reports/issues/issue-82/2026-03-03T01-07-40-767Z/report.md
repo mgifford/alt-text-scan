@@ -1,6 +1,6 @@
 # Scan Report: DARK MODE cloudscape.design
 
-- Issue: https://github.com/mgifford/open-scans/issues/82
+- Issue: https://github.com/mgifford/alt-text-scan/issues/82
 - Submitted by: mgifford
 - Scanned at: 2026-03-03T01:07:08.038Z
 - Engines used: All engines (AXE, ALFA, Equal Access, AccessLint, QualWeb)

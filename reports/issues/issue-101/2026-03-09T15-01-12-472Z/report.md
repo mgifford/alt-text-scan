@@ -1,6 +1,6 @@
 # Scan Report: PKP Website request
 
-- Issue: https://github.com/mgifford/open-scans/issues/101
+- Issue: https://github.com/mgifford/alt-text-scan/issues/101
 - Submitted by: israelcefrin
 - Scanned at: 2026-03-09T15:00:22.364Z
 - Engines used: All engines (AXE, ALFA, Equal Access, AccessLint, QualWeb)

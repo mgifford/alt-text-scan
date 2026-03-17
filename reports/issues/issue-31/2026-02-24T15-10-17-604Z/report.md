@@ -1,6 +1,6 @@
 # Scan Report: Logan's Nerdy Scan
 
-- Issue: https://github.com/mgifford/alfa-scan/issues/31
+- Issue: https://github.com/mgifford/alt-text-scan/issues/31
 - Submitted by: lhouse24
 - Scanned at: 2026-02-24T15:10:17.530Z
 - Total URLs submitted: 1

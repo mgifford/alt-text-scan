@@ -1,6 +1,6 @@
 # Scan Report: Youtube
 
-- Issue: https://github.com/mgifford/open-scans/issues/81
+- Issue: https://github.com/mgifford/alt-text-scan/issues/81
 - Submitted by: mgifford
 - Scanned at: 2026-03-01T23:37:51.693Z
 - Engines used: All engines (AXE, ALFA, Equal Access, AccessLint, QualWeb)

@@ -1,6 +1,6 @@
 # Scan Report: fosdem.org
 
-- Issue: https://github.com/mgifford/open-scans/issues/138
+- Issue: https://github.com/mgifford/alt-text-scan/issues/138
 - Submitted by: mgifford
 - Scanned at: 2026-03-14T00:39:05.494Z
 - Engines used: AXE, QUALWEB

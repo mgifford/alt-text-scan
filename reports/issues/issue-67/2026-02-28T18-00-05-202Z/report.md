@@ -1,6 +1,6 @@
 # Scan Report: Colorado.gov
 
-- Issue: https://github.com/mgifford/alfa-scan/issues/67
+- Issue: https://github.com/mgifford/alt-text-scan/issues/67
 - Submitted by: mgifford
 - Scanned at: 2026-02-28T17:59:20.403Z
 - Engines used: All engines (AXE, ALFA, Equal Access, AccessLint)

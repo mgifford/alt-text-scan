@@ -1,6 +1,6 @@
 # Scan Report: LocalGov Drupal
 
-- Issue: https://github.com/mgifford/open-scans/issues/38
+- Issue: https://github.com/mgifford/alt-text-scan/issues/38
 - Submitted by: mgifford
 - Scanned at: 2026-03-16T01:12:08.660Z
 - Engines used: AXE, QUALWEB

@@ -115,9 +115,27 @@ Additional requirements:
 - Do not run a process unless its output will be consumed.
 - Gate CI steps on relevant path filters to avoid unconditional always-on execution.
 - Do not use AI for trivial formatting or deterministic transformations.
+- Prefer local/self-hosted models (for example, Ollama) before commercial hosted models.
+- If commercial AI is used, note why local models were insufficient for that task.
 - Keep prompts small, scoped, and non-duplicative.
 - Disclose meaningful AI assistance in pull requests.
 - Do not activate browser built-in AI features automatically; require explicit user opt-in.
+
+### 3a) Track AI usage by source
+
+When AI assistance is used, record each model/tool in one of two buckets:
+
+- **Local**: on-device or self-hosted models (for example, Ollama)
+- **Commercial**: third-party hosted APIs/services (for example, Copilot, Gemini)
+
+Minimum fields to record in each PR:
+
+- `bucket` (`local` or `commercial`)
+- `tool_or_model`
+- `approx_prompt_count`
+- `purpose`
+
+The goal is directional tracking (trends), not exact billing reconciliation.
 
 ### 4) Shift processing in time and space
 - Shift deferrable jobs to lower-carbon time windows when possible.
@@ -151,7 +169,7 @@ Each PR should include:
 - Sustainability impact (`improves` / `neutral` / `regresses`)
 - Page weight/request impact summary
 - Third-party impact summary
-- AI usage disclosure (if used)
+- AI usage disclosure (if used), separated into `local` and `commercial`
 
 ## Release gate criteria
 
@@ -173,7 +191,7 @@ Document active sustainability debt here. Each entry needs an owner and a target
 | :--- | :--- | :--- | :--- | :--- |
 | Green hosting status unknown — GitHub Pages CDN energy mix is not published | open | @mgifford | 2026-06-30 | Monitor GitHub/Azure sustainability disclosures; consider self-hosted alternative if data becomes material |
 | No formal carbon budget established for page weight or CI compute | open | @mgifford | 2026-06-30 | Run baseline measurement; set initial budget thresholds in CI |
-| AI call volume per PR is tracked informally | open | @mgifford | 2026-09-30 | Add structured AI usage field to PR template; review monthly |
+| AI usage tracking is documented in PR template but not yet auto-checked in CI | open | @mgifford | 2026-09-30 | Add CI check that PR descriptions include local/commercial usage fields |
 | Grid-aware serving not yet implemented | open | @mgifford | 2026-12-31 | Evaluate feasibility; document in github-actions-sustainability.md |
 | Living metrics table has no current measured baseline values | open | @mgifford | 2026-06-30 | Run Lighthouse on production; record and publish initial baselines |
 | Accessibility scan jobs run on every issue regardless of content | open | @mgifford | 2026-09-30 | Add path/content filters so scans only trigger when relevant |
@@ -183,7 +201,7 @@ Document active sustainability debt here. Each entry needs an owner and a target
 - Page weight on key templates (target: establish baseline via Lighthouse CI, then set a budget ≤ current measured value)
 - Request counts and third-party requests (target: minimize; justify each third-party request)
 - CI minutes and heavy-job frequency (target: downward trend; gate non-critical jobs on path filters)
-- AI calls per PR (target: downward trend; disclose in PR descriptions)
+- AI usage per PR split by bucket (local vs commercial), plus prompt counts (target: local-first, commercial only when needed)
 - Deferrable scan jobs shifted to lower-carbon windows (target: track and increase over time)
 
 ## Trusted references
@@ -209,6 +227,7 @@ This section documents actual AI usage in this project, separate from the AI usa
 
 ### In building
 
+- Preferred approach is local-first AI assistance (Ollama where quality is sufficient), with hosted AI as fallback.
 - Documentation, policy text, and templates were drafted and edited with AI assistance (GitHub Copilot / GPT-4-class models), with human review before publishing.
 - Code suggestions and CI workflow configuration used AI assistance with human oversight.
 - Policy review and improvement was assisted by AI with human editorial control.
@@ -223,6 +242,7 @@ This section documents actual AI usage in this project, separate from the AI usa
 
 | Purpose | Model / tool | When used |
 | :--- | :--- | :--- |
+| Local drafting and coding support | Ollama (local models, as available) | Preferred default during development |
 | Code assistance and PR support | GitHub Copilot (OpenAI Codex / GPT-4-class) | During development |
 | Content drafting and policy editing | OpenAI GPT-4-class via Copilot Chat | During development |
 | Policy review and improvement | OpenAI GPT-4-class via Copilot Chat | During development |

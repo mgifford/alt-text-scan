@@ -47,6 +47,21 @@ npm run run:scan
 - **Reports**: Published to `/reports/` for GitHub Pages
 - **Spec Kitty specs**: `kitty-specs/` (for project management)
 
+### AI Model Preference and Tracking
+
+Use this model-selection order for AI-assisted development:
+
+1. **Local first**: Use Ollama (or other local models) whenever the task quality is acceptable.
+2. **Commercial fallback**: Use Copilot, Gemini, or other hosted services only when local models are insufficient.
+3. **Smallest capable model**: Choose the lowest-cost model that can reliably complete the task.
+
+When AI is used, record usage in PR metadata using two buckets:
+
+- **Local**: on-device or self-hosted models (for example, Ollama)
+- **Commercial**: third-party hosted APIs/services (for example, Copilot, Gemini)
+
+Include at minimum: model/tool, bucket (`local` or `commercial`), rough prompt count, and brief purpose.
+
 ### Never Commit
 
 - `node_modules/` (in .gitignore)

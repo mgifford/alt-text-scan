@@ -1,6 +1,6 @@
 # Scan Report: Georgia.gov
 
-- Issue: https://github.com/mgifford/open-scans/issues/65
+- Issue: https://github.com/mgifford/alt-text-scan/issues/65
 - Submitted by: mgifford
 - Scanned at: 2026-03-14T01:19:21.353Z
 - Engines used: AXE, ACCESSLINT

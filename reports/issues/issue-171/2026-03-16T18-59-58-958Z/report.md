@@ -1,6 +1,6 @@
 # Scan Report: commerce.maryland.gov LLM lists
 
-- Issue: https://github.com/mgifford/open-scans/issues/171
+- Issue: https://github.com/mgifford/alt-text-scan/issues/171
 - Submitted by: emilyan0810
 - Scanned at: 2026-03-16T18:59:11.566Z
 - Engines used: AXE, ALFA

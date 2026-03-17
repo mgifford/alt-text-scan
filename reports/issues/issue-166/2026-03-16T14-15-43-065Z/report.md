@@ -1,6 +1,6 @@
 # Scan Report: Medicaid.gov —
 
-- Issue: https://github.com/mgifford/open-scans/issues/166
+- Issue: https://github.com/mgifford/alt-text-scan/issues/166
 - Submitted by: mgifford
 - Scanned at: 2026-03-16T14:14:52.594Z
 - Engines used: ALFA, AXE

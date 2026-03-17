@@ -1,6 +1,6 @@
 # Scan Report: Green Software Foundation - 1 Page Sample
 
-- Issue: https://github.com/mgifford/open-scans/issues/120
+- Issue: https://github.com/mgifford/alt-text-scan/issues/120
 - Submitted by: mgifford
 - Scanned at: 2026-03-11T13:46:46.708Z
 - Engines used: AXE, EQUALACCESS
