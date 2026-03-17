@@ -1,4 +1,4 @@
-# Open Scans
+# Alt Text Scans
 
 Issue-driven accessibility scanning prototype using GitHub Pages and GitHub Actions.
 
