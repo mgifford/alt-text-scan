@@ -614,3 +614,96 @@ test("parseScanIssue handles mixed HTML, Markdown, and plain URLs (like AI-gener
   // Google wrapper itself should not be in the list
   assert.ok(!result.value.requestedUrls.some((u) => u.includes("google.com")), "should not include google.com wrapper URLs");
 });
+
+test("parseScanIssue extracts scanDomain when title has a URL and body is empty", () => {
+  const payload = {
+    issue: {
+      number: 300,
+      html_url: "https://github.com/example/repo/issues/300",
+      title: "SCAN: https://example.com",
+      created_at: "2026-02-20T20:00:00Z",
+      user: { login: "octocat" },
+      body: ""
+    }
+  };
+
+  const result = parseScanIssue(payload);
+  assert.equal(result.ok, true);
+  assert.equal(result.scanDomain, "https://example.com");
+  assert.equal(result.value.scanDomain, "https://example.com");
+  assert.deepEqual(result.value.requestedUrls, []);
+});
+
+test("parseScanIssue extracts scanDomain with trailing path stripped to origin", () => {
+  const payload = {
+    issue: {
+      number: 301,
+      html_url: "https://github.com/example/repo/issues/301",
+      title: "SCAN: https://example.com/some/path",
+      created_at: "2026-02-20T20:00:00Z",
+      user: { login: "octocat" },
+      body: ""
+    }
+  };
+
+  const result = parseScanIssue(payload);
+  assert.equal(result.ok, true);
+  assert.equal(result.scanDomain, "https://example.com");
+});
+
+test("parseScanIssue does NOT set scanDomain when body has URLs", () => {
+  const payload = {
+    issue: {
+      number: 302,
+      html_url: "https://github.com/example/repo/issues/302",
+      title: "SCAN: https://example.com",
+      created_at: "2026-02-20T20:00:00Z",
+      user: { login: "octocat" },
+      body: "# URLs\nhttps://example.com/page1\nhttps://example.com/page2"
+    }
+  };
+
+  const result = parseScanIssue(payload);
+  assert.equal(result.ok, true);
+  assert.equal(result.scanDomain, null);
+  assert.equal(result.value.requestedUrls.length, 2);
+  assert.equal(result.value.scanDomain, undefined);
+});
+
+test("validateScanRequest accepts empty requestedUrls when scanDomain is set", () => {
+  const request = {
+    requestId: "test-domain-request",
+    issueNumber: 303,
+    issueUrl: "https://github.com/example/repo/issues/303",
+    submittedBy: "octocat",
+    submittedAt: "2026-02-20T20:00:00Z",
+    requestLabel: "scan-request",
+    scanTitle: "https://example.com",
+    scanDomain: "https://example.com",
+    requestedUrls: [],
+    engines: ["axe"],
+    pageLoadDelay: 2
+  };
+
+  const result = validateScanRequest(request);
+  assert.equal(result.ok, true, `unexpected errors: ${result.errors.join(", ")}`);
+});
+
+test("validateScanRequest rejects empty requestedUrls when scanDomain is not set", () => {
+  const request = {
+    requestId: "test-no-domain",
+    issueNumber: 304,
+    issueUrl: "https://github.com/example/repo/issues/304",
+    submittedBy: "octocat",
+    submittedAt: "2026-02-20T20:00:00Z",
+    requestLabel: "scan-request",
+    scanTitle: "Homepage scan",
+    requestedUrls: [],
+    engines: ["axe"],
+    pageLoadDelay: 2
+  };
+
+  const result = validateScanRequest(request);
+  assert.equal(result.ok, false);
+  assert.ok(result.errors.some((e) => e.includes("between 1 and 500")));
+});

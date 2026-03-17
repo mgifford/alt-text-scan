@@ -1,0 +1,12 @@
+{
+  "issue": {
+    "number": 99,
+    "html_url": "https://github.com/example/repo/issues/99",
+    "title": "SCAN: https://example.com",
+    "created_at": "2026-02-20T20:00:00Z",
+    "user": {
+      "login": "octocat"
+    },
+    "body": ""
+  }
+}
