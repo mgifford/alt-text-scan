@@ -1,0 +1,605 @@
+/**
+ * Accessibility Rule Metadata
+ * 
+ * Maps rules from various engines (Axe, Alfa, IBM) to:
+ * - Roles: UX Designer, Visual Designer, Content Author, Front-End Developer
+ * - Severity: Critical, Serious, Moderate, Minor
+ * - Task Impact: Task-Blocking vs. Non-Blocking
+ * - WCAG criteria: Success Criterion number(s) (e.g. ["1.1.1", "2.4.4"])
+ * - Conformance level: "A", "AA", "AAA", or "best-practice"
+ */
+
+export const ROLES = {
+  UX: "UX Designer",
+  VISUAL: "Visual Designer",
+  CONTENT: "Content Author",
+  DEV: "Front-End Developer"
+};
+
+export const SEVERITY = {
+  CRITICAL: "Critical",
+  SERIOUS: "Serious",
+  MODERATE: "Moderate",
+  MINOR: "Minor"
+};
+
+// Default mappings for unknown rules
+export const DEFAULT_MAPPING = {
+  roles: [ROLES.DEV],
+  severity: SEVERITY.MODERATE,
+  blocking: false,
+  wcagCriteria: [],
+  conformanceLevel: null
+};
+
+/**
+ * Parse an axe-core WCAG tag into a formatted SC number.
+ * E.g. "wcag111" → "1.1.1", "wcag412" → "4.1.2", "wcag1411" → "1.4.11"
+ * Returns null for conformance-level tags like "wcag2a", "wcag2aa".
+ * @param {string} tag
+ * @returns {string|null}
+ */
+export function parseWcagScTag(tag) {
+  // SC tags: wcag followed by 3+ digits with no trailing letters
+  const scMatch = tag.match(/^wcag(\d{3,})$/i);
+  if (!scMatch) return null;
+  const digits = scMatch[1];
+  if (digits.length === 3) {
+    return `${digits[0]}.${digits[1]}.${digits[2]}`;
+  }
+  if (digits.length === 4) {
+    return `${digits[0]}.${digits[1]}.${digits.slice(2)}`;
+  }
+  // 5+ digits: e.g. wcag14101 → 1.4.101
+  return `${digits[0]}.${digits[1]}.${digits.slice(2)}`;
+}
+
+/**
+ * Determine conformance level from axe-core tag array.
+ * Looks for tags like "wcag2a", "wcag2aa", "wcag21aa", "wcag22aa", "wcag21a".
+ * @param {string[]} tags
+ * @returns {"A"|"AA"|"AAA"|"best-practice"|null}
+ */
+export function parseConformanceLevelFromTags(tags) {
+  if (tags.includes("best-practice")) return "best-practice";
+  const levelTags = tags.filter(t => /^wcag\d+a{1,3}$/i.test(t));
+  if (levelTags.some(t => /aaa$/i.test(t))) return "AAA";
+  if (levelTags.some(t => /aa$/i.test(t))) return "AA";
+  if (levelTags.some(t => /a$/i.test(t))) return "A";
+  return null;
+}
+
+/**
+ * Format WCAG criteria for display.
+ * Accepts an array of axe wcag tags or pre-formatted SC strings.
+ * Returns an object { scs: string[], level: string|null }.
+ * @param {string[]} wcagTags - Axe wcag tags (e.g. ["wcag111", "wcag2a", "wcag2aa"])
+ * @returns {{ scs: string[], level: string|null }}
+ */
+export function formatWcagFromTags(wcagTags) {
+  const tags = Array.isArray(wcagTags) ? wcagTags : [];
+  const scs = [...new Set(
+    tags.map(parseWcagScTag).filter(Boolean)
+  )].sort();
+  const level = parseConformanceLevelFromTags(tags);
+  return { scs, level };
+}
+
+/**
+ * WCAG 2.2 Success Criteria to Understanding page anchor mapping.
+ * Used to build links to the WCAG Understanding documents.
+ */
+export const WCAG_SC_ANCHORS = {
+  "1.1.1": "non-text-content",
+  "1.2.1": "audio-only-and-video-only-prerecorded",
+  "1.2.2": "captions-prerecorded",
+  "1.2.3": "audio-description-or-media-alternative-prerecorded",
+  "1.2.4": "captions-live",
+  "1.2.5": "audio-description-prerecorded",
+  "1.3.1": "info-and-relationships",
+  "1.3.2": "meaningful-sequence",
+  "1.3.3": "sensory-characteristics",
+  "1.3.4": "orientation",
+  "1.3.5": "identify-input-purpose",
+  "1.3.6": "identify-purpose",
+  "1.4.1": "use-of-color",
+  "1.4.2": "audio-control",
+  "1.4.3": "contrast-minimum",
+  "1.4.4": "resize-text",
+  "1.4.5": "images-of-text",
+  "1.4.6": "contrast-enhanced",
+  "1.4.10": "reflow",
+  "1.4.11": "non-text-contrast",
+  "1.4.12": "text-spacing",
+  "1.4.13": "content-on-hover-or-focus",
+  "2.1.1": "keyboard",
+  "2.1.2": "no-keyboard-trap",
+  "2.1.3": "keyboard-no-exception",
+  "2.1.4": "character-key-shortcuts",
+  "2.2.1": "timing-adjustable",
+  "2.2.2": "pause-stop-hide",
+  "2.4.1": "bypass-blocks",
+  "2.4.2": "page-titled",
+  "2.4.3": "focus-order",
+  "2.4.4": "link-purpose-in-context",
+  "2.4.5": "multiple-ways",
+  "2.4.6": "headings-and-labels",
+  "2.4.7": "focus-visible",
+  "2.4.11": "focus-not-obscured-minimum",
+  "2.4.12": "focus-not-obscured-enhanced",
+  "2.5.1": "pointer-gestures",
+  "2.5.2": "pointer-cancellation",
+  "2.5.3": "label-in-name",
+  "2.5.4": "motion-actuation",
+  "2.5.7": "dragging-movements",
+  "2.5.8": "target-size-minimum",
+  "3.1.1": "language-of-page",
+  "3.1.2": "language-of-parts",
+  "3.2.1": "on-focus",
+  "3.2.2": "on-input",
+  "3.3.1": "error-identification",
+  "3.3.2": "labels-or-instructions",
+  "3.3.3": "error-suggestion",
+  "3.3.4": "error-prevention-legal-financial-data",
+  "4.1.1": "parsing",
+  "4.1.2": "name-role-value",
+  "4.1.3": "status-messages"
+};
+
+/**
+ * Build a link to the WCAG 2.2 Understanding page for a given SC number.
+ * @param {string} sc - SC number (e.g. "1.4.3")
+ * @returns {string} URL
+ */
+export function wcagScUrl(sc) {
+  const anchor = WCAG_SC_ANCHORS[sc];
+  if (anchor) {
+    return `https://www.w3.org/WAI/WCAG22/Understanding/${anchor}`;
+  }
+  // Fall back to WCAG 2.2 spec with query parameter
+  return `https://www.w3.org/TR/WCAG22/`;
+}
+
+/**
+ * Mapping from WCAG 2.x Success Criterion numbers to the disability categories they affect.
+ * Categories: "visual", "hearing", "motor", "cognitive"
+ *
+ * Derived from the W3C's WCAG 2 guidance and the How People with Disabilities Use the Web document.
+ * Each SC can affect one or more disability categories.
+ */
+export const WCAG_SC_TO_DISABILITIES = {
+  // Principle 1 – Perceivable
+  "1.1.1": ["visual"],                         // Non-text Content: blind users need text alts
+  "1.2.1": ["visual", "hearing"],              // Audio-only / Video-only: needs alt for both
+  "1.2.2": ["hearing"],                        // Captions (Prerecorded): deaf users
+  "1.2.3": ["visual"],                         // Audio Description / Media Alt (Prerecorded)
+  "1.2.4": ["hearing"],                        // Captions (Live)
+  "1.2.5": ["visual"],                         // Audio Description (Prerecorded)
+  "1.3.1": ["visual", "cognitive"],            // Info and Relationships: screen readers, cognition
+  "1.3.2": ["visual", "cognitive"],            // Meaningful Sequence
+  "1.3.3": ["visual", "cognitive"],            // Sensory Characteristics (e.g. "click the red button")
+  "1.3.4": ["motor", "cognitive"],             // Orientation: locked rotation affects motor/cognitive
+  "1.3.5": ["cognitive", "motor"],             // Identify Input Purpose: autofill, cognitive load
+  "1.3.6": ["cognitive"],                      // Identify Purpose
+  "1.4.1": ["visual", "cognitive"],            // Use of Color: color blindness, cognitive
+  "1.4.2": ["hearing", "cognitive"],           // Audio Control: autoplaying audio
+  "1.4.3": ["visual"],                         // Contrast (Minimum): low vision
+  "1.4.4": ["visual"],                         // Resize Text: low vision
+  "1.4.5": ["visual"],                         // Images of Text: low vision
+  "1.4.6": ["visual"],                         // Contrast (Enhanced): low vision
+  "1.4.10": ["visual", "motor"],               // Reflow: low vision at 400%, single-column
+  "1.4.11": ["visual"],                        // Non-text Contrast: UI components, low vision
+  "1.4.12": ["visual", "cognitive"],           // Text Spacing: dyslexia, low vision
+  "1.4.13": ["visual", "motor"],               // Content on Hover or Focus: fine motor, low vision
+
+  // Principle 2 – Operable
+  "2.1.1": ["motor"],                          // Keyboard: keyboard-only, switch access
+  "2.1.2": ["motor"],                          // No Keyboard Trap
+  "2.1.3": ["motor"],                          // Keyboard (No Exception)
+  "2.1.4": ["motor", "cognitive"],             // Character Key Shortcuts
+  "2.2.1": ["cognitive", "motor"],             // Timing Adjustable
+  "2.2.2": ["cognitive"],                      // Pause, Stop, Hide
+  "2.3.1": ["visual"],                         // Three Flashes: photosensitive seizures
+  "2.3.2": ["visual"],                         // Three Flashes (No Exception)
+  "2.4.1": ["motor", "visual"],                // Bypass Blocks: skip nav, keyboard users
+  "2.4.2": ["cognitive", "visual"],            // Page Titled
+  "2.4.3": ["motor", "visual", "cognitive"],   // Focus Order
+  "2.4.4": ["visual", "cognitive"],            // Link Purpose (In Context)
+  "2.4.5": ["cognitive"],                      // Multiple Ways
+  "2.4.6": ["visual", "cognitive"],            // Headings and Labels
+  "2.4.7": ["motor", "visual"],                // Focus Visible: keyboard users
+  "2.4.11": ["motor", "visual"],               // Focus Not Obscured (Minimum)
+  "2.4.12": ["motor", "visual"],               // Focus Not Obscured (Enhanced)
+  "2.4.13": ["motor", "visual"],               // Focus Appearance
+  "2.5.1": ["motor"],                          // Pointer Gestures
+  "2.5.2": ["motor"],                          // Pointer Cancellation
+  "2.5.3": ["cognitive", "visual"],            // Label in Name: voice control, low vision
+  "2.5.4": ["motor"],                          // Motion Actuation: tremors, restricted movement
+  "2.5.5": ["motor"],                          // Target Size (Enhanced)
+  "2.5.6": ["motor"],                          // Concurrent Input Mechanisms
+  "2.5.7": ["motor"],                          // Dragging Movements
+  "2.5.8": ["motor"],                          // Target Size (Minimum)
+
+  // Principle 3 – Understandable
+  "3.1.1": ["cognitive"],                      // Language of Page: screen reader pronunciation
+  "3.1.2": ["cognitive"],                      // Language of Parts
+  "3.2.1": ["cognitive"],                      // On Focus: no unexpected context changes
+  "3.2.2": ["cognitive"],                      // On Input
+  "3.2.3": ["cognitive"],                      // Consistent Navigation
+  "3.2.4": ["cognitive"],                      // Consistent Identification
+  "3.2.6": ["cognitive"],                      // Consistent Help
+  "3.3.1": ["cognitive"],                      // Error Identification
+  "3.3.2": ["cognitive"],                      // Labels or Instructions
+  "3.3.3": ["cognitive"],                      // Error Suggestion
+  "3.3.4": ["cognitive"],                      // Error Prevention (Legal, Financial, Data)
+  "3.3.7": ["cognitive", "motor"],             // Redundant Entry
+  "3.3.8": ["cognitive"],                      // Accessible Authentication (Minimum)
+  "3.3.9": ["cognitive"],                      // Accessible Authentication (Enhanced)
+
+  // Principle 4 – Robust
+  "4.1.1": ["visual", "cognitive"],            // Parsing: affects all AT users
+  "4.1.2": ["visual", "cognitive", "motor"],   // Name, Role, Value: all AT users
+  "4.1.3": ["visual", "cognitive"],            // Status Messages
+};
+
+/**
+ * Get the set of disability categories affected by a list of WCAG success criteria.
+ * @param {string[]} scs - Array of SC numbers (e.g. ["1.4.3", "2.4.4"])
+ * @returns {string[]} Sorted, deduplicated array of disability categories
+ */
+export function getDisabilitiesFromScs(scs) {
+  if (!scs || !Array.isArray(scs) || scs.length === 0) return [];
+  const result = new Set();
+  for (const sc of scs) {
+    const cats = WCAG_SC_TO_DISABILITIES[sc];
+    if (cats) cats.forEach(c => result.add(c));
+  }
+  // Return in a stable display order
+  const ORDER = ["visual", "hearing", "motor", "cognitive"];
+  return ORDER.filter(c => result.has(c));
+}
+
+/**
+ * Mapping of Rule IDs to Metadata
+ * We use prefix-based keys: 'axe:', 'alfa:', 'ibm:'
+ */
+export const ruleMapping = {
+  // --- axe-core rules ---
+  "axe:accesskeys": {
+    roles: [ROLES.DEV],
+    severity: SEVERITY.MINOR,
+    blocking: false,
+    wcagCriteria: ["4.1.1"],
+    conformanceLevel: "A"
+  },
+  "axe:area-alt": {
+    roles: [ROLES.CONTENT, ROLES.UX],
+    severity: SEVERITY.CRITICAL,
+    blocking: true,
+    wcagCriteria: ["1.1.1", "2.4.4"],
+    conformanceLevel: "A"
+  },
+  "axe:aria-allowed-attr": {
+    roles: [ROLES.DEV],
+    severity: SEVERITY.SERIOUS,
+    blocking: false,
+    wcagCriteria: ["4.1.2"],
+    conformanceLevel: "A"
+  },
+  "axe:aria-hidden-focus": {
+    roles: [ROLES.DEV],
+    severity: SEVERITY.SERIOUS,
+    blocking: true,
+    wcagCriteria: ["4.1.2"],
+    conformanceLevel: "A"
+  },
+  "axe:aria-input-field-name": {
+    roles: [ROLES.DEV, ROLES.CONTENT],
+    severity: SEVERITY.SERIOUS,
+    blocking: true,
+    wcagCriteria: ["4.1.2"],
+    conformanceLevel: "A"
+  },
+  "axe:aria-roles": {
+    roles: [ROLES.DEV],
+    severity: SEVERITY.SERIOUS,
+    blocking: false,
+    wcagCriteria: ["4.1.2"],
+    conformanceLevel: "A"
+  },
+  "axe:aria-valid-attr-value": {
+    roles: [ROLES.DEV],
+    severity: SEVERITY.SERIOUS,
+    blocking: false,
+    wcagCriteria: ["4.1.2"],
+    conformanceLevel: "A"
+  },
+  "axe:aria-valid-attr": {
+    roles: [ROLES.DEV],
+    severity: SEVERITY.SERIOUS,
+    blocking: false,
+    wcagCriteria: ["4.1.2"],
+    conformanceLevel: "A"
+  },
+  "axe:button-name": {
+    roles: [ROLES.DEV, ROLES.CONTENT],
+    severity: SEVERITY.CRITICAL,
+    blocking: true,
+    wcagCriteria: ["4.1.2"],
+    conformanceLevel: "A"
+  },
+  "axe:color-contrast": {
+    roles: [ROLES.VISUAL],
+    severity: SEVERITY.SERIOUS,
+    blocking: false,
+    wcagCriteria: ["1.4.3"],
+    conformanceLevel: "AA"
+  },
+  "axe:document-title": {
+    roles: [ROLES.CONTENT, ROLES.UX],
+    severity: SEVERITY.SERIOUS,
+    blocking: false,
+    wcagCriteria: ["2.4.2"],
+    conformanceLevel: "A"
+  },
+  "axe:duplicate-id-active": {
+    roles: [ROLES.DEV],
+    severity: SEVERITY.SERIOUS,
+    blocking: true,
+    wcagCriteria: ["4.1.1"],
+    conformanceLevel: "A"
+  },
+  "axe:duplicate-id": {
+    roles: [ROLES.DEV],
+    severity: SEVERITY.MINOR,
+    blocking: false,
+    wcagCriteria: ["4.1.1"],
+    conformanceLevel: "A"
+  },
+  "axe:form-field-multiple-labels": {
+    roles: [ROLES.DEV, ROLES.UX],
+    severity: SEVERITY.MODERATE,
+    blocking: false,
+    wcagCriteria: ["3.3.2"],
+    conformanceLevel: "A"
+  },
+  "axe:frame-title": {
+    roles: [ROLES.DEV, ROLES.CONTENT],
+    severity: SEVERITY.SERIOUS,
+    blocking: false,
+    wcagCriteria: ["2.4.1", "4.1.2"],
+    conformanceLevel: "A"
+  },
+  "axe:heading-order": {
+    roles: [ROLES.CONTENT, ROLES.UX],
+    severity: SEVERITY.MODERATE,
+    blocking: false,
+    wcagCriteria: [],
+    conformanceLevel: "best-practice"
+  },
+  "axe:html-has-lang": {
+    roles: [ROLES.DEV],
+    severity: SEVERITY.SERIOUS,
+    blocking: false,
+    wcagCriteria: ["3.1.1"],
+    conformanceLevel: "A"
+  },
+  "axe:image-alt": {
+    roles: [ROLES.CONTENT],
+    severity: SEVERITY.CRITICAL,
+    blocking: true,
+    wcagCriteria: ["1.1.1"],
+    conformanceLevel: "A"
+  },
+  "axe:input-image-alt": {
+    roles: [ROLES.CONTENT, ROLES.DEV],
+    severity: SEVERITY.CRITICAL,
+    blocking: true,
+    wcagCriteria: ["1.1.1"],
+    conformanceLevel: "A"
+  },
+  "axe:label": {
+    roles: [ROLES.DEV, ROLES.UX],
+    severity: SEVERITY.CRITICAL,
+    blocking: true,
+    wcagCriteria: ["1.3.1", "4.1.2"],
+    conformanceLevel: "A"
+  },
+  "axe:link-name": {
+    roles: [ROLES.CONTENT, ROLES.UX],
+    severity: SEVERITY.SERIOUS,
+    blocking: true,
+    wcagCriteria: ["2.4.4", "4.1.2"],
+    conformanceLevel: "A"
+  },
+  "axe:list": {
+    roles: [ROLES.CONTENT, ROLES.DEV],
+    severity: SEVERITY.SERIOUS,
+    blocking: false,
+    wcagCriteria: ["1.3.1"],
+    conformanceLevel: "A"
+  },
+  "axe:listitem": {
+    roles: [ROLES.CONTENT, ROLES.DEV],
+    severity: SEVERITY.SERIOUS,
+    blocking: false,
+    wcagCriteria: ["1.3.1"],
+    conformanceLevel: "A"
+  },
+  "axe:meta-viewport": {
+    roles: [ROLES.DEV, ROLES.UX],
+    severity: SEVERITY.CRITICAL,
+    blocking: true,
+    wcagCriteria: ["1.4.4"],
+    conformanceLevel: "AA"
+  },
+  "axe:tabindex": {
+    roles: [ROLES.DEV],
+    severity: SEVERITY.SERIOUS,
+    blocking: true,
+    wcagCriteria: [],
+    conformanceLevel: "best-practice"
+  },
+  "axe:td-headers-attr": {
+    roles: [ROLES.DEV],
+    severity: SEVERITY.SERIOUS,
+    blocking: false,
+    wcagCriteria: ["1.3.1"],
+    conformanceLevel: "A"
+  },
+  "axe:valid-lang": {
+    roles: [ROLES.CONTENT, ROLES.DEV],
+    severity: SEVERITY.SERIOUS,
+    blocking: false,
+    wcagCriteria: ["3.1.2"],
+    conformanceLevel: "AA"
+  },
+  "axe:video-caption": {
+    roles: [ROLES.CONTENT],
+    severity: SEVERITY.CRITICAL,
+    blocking: true,
+    wcagCriteria: ["1.2.2"],
+    conformanceLevel: "A"
+  },
+
+  // --- ALFA (SIA) rules ---
+  "alfa:sia-r1": { // Unique IDs
+    roles: [ROLES.DEV],
+    severity: SEVERITY.MINOR,
+    blocking: false,
+    wcagCriteria: ["4.1.1"],
+    conformanceLevel: "A"
+  },
+  "alfa:sia-r2": { // lang attribute
+    roles: [ROLES.DEV],
+    severity: SEVERITY.SERIOUS,
+    blocking: false,
+    wcagCriteria: ["3.1.1"],
+    conformanceLevel: "A"
+  },
+  "alfa:sia-r4": { // Page title
+    roles: [ROLES.CONTENT, ROLES.UX],
+    severity: SEVERITY.SERIOUS,
+    blocking: false,
+    wcagCriteria: ["2.4.2"],
+    conformanceLevel: "A"
+  },
+  "alfa:sia-r8": { // Form elements labeled
+    roles: [ROLES.DEV, ROLES.UX],
+    severity: SEVERITY.CRITICAL,
+    blocking: true,
+    wcagCriteria: ["1.3.1", "4.1.2"],
+    conformanceLevel: "A"
+  },
+  "alfa:sia-r11": { // Button has accessible name
+    roles: [ROLES.DEV, ROLES.CONTENT],
+    severity: SEVERITY.CRITICAL,
+    blocking: true,
+    wcagCriteria: ["4.1.2"],
+    conformanceLevel: "A"
+  },
+  "alfa:sia-r12": { // Link has accessible name
+    roles: [ROLES.CONTENT, ROLES.UX],
+    severity: SEVERITY.SERIOUS,
+    blocking: true,
+    wcagCriteria: ["2.4.4", "4.1.2"],
+    conformanceLevel: "A"
+  },
+  "alfa:sia-r14": { // Image has accessible name
+    roles: [ROLES.CONTENT],
+    severity: SEVERITY.CRITICAL,
+    blocking: true,
+    wcagCriteria: ["1.1.1"],
+    conformanceLevel: "A"
+  },
+  "alfa:sia-r53": { // Heading hierarchy
+    roles: [ROLES.CONTENT, ROLES.UX],
+    severity: SEVERITY.MODERATE,
+    blocking: false,
+    wcagCriteria: [],
+    conformanceLevel: "best-practice"
+  },
+  "alfa:sia-r61": { // Documents start with heading
+    roles: [ROLES.CONTENT, ROLES.UX],
+    severity: SEVERITY.MODERATE,
+    blocking: false,
+    wcagCriteria: [],
+    conformanceLevel: "best-practice"
+  },
+  "alfa:sia-r64": { // Heading has accessible name
+    roles: [ROLES.CONTENT, ROLES.DEV],
+    severity: SEVERITY.MODERATE,
+    blocking: false,
+    wcagCriteria: [],
+    conformanceLevel: "best-practice"
+  },
+  "alfa:sia-r71": { // Text is not justified
+    roles: [ROLES.VISUAL, ROLES.CONTENT],
+    severity: SEVERITY.MODERATE,
+    blocking: false,
+    wcagCriteria: [],
+    conformanceLevel: "best-practice"
+  },
+  "alfa:sia-r85": { // Text is not all italics
+    roles: [ROLES.VISUAL, ROLES.CONTENT],
+    severity: SEVERITY.MODERATE,
+    blocking: false,
+    wcagCriteria: [],
+    conformanceLevel: "best-practice"
+  },
+  "alfa:sia-r62": { // Links are distinguishable
+    roles: [ROLES.VISUAL, ROLES.UX],
+    severity: SEVERITY.SERIOUS,
+    blocking: false,
+    wcagCriteria: ["1.4.1"],
+    conformanceLevel: "A"
+  },
+  "alfa:sia-r66": { // Contrast (enhanced)
+    roles: [ROLES.VISUAL],
+    severity: SEVERITY.MODERATE,
+    blocking: false,
+    wcagCriteria: ["1.4.6"],
+    conformanceLevel: "AAA"
+  },
+  "alfa:sia-r69": { // Contrast (minimum)
+    roles: [ROLES.VISUAL],
+    severity: SEVERITY.SERIOUS,
+    blocking: false,
+    wcagCriteria: ["1.4.3"],
+    conformanceLevel: "AA"
+  },
+  "alfa:sia-r111": { // Target size
+    roles: [ROLES.UX, ROLES.VISUAL],
+    severity: SEVERITY.SERIOUS,
+    blocking: true,
+    wcagCriteria: ["2.5.8"],
+    conformanceLevel: "AA"
+  }
+};
+
+/**
+ * Get metadata for a rule from any engine
+ * @param {string} engine - Engine name ('axe', 'alfa', 'equalAccess')
+ * @param {string} ruleId - Rule ID
+ * @returns {Object} Metadata object
+ */
+export function getRuleMetadata(engine, ruleId) {
+  const normalizedEngine = engine.toLowerCase();
+  const key = `${normalizedEngine}:${ruleId.toLowerCase()}`;
+  
+  // Try exact match
+  if (ruleMapping[key]) {
+    return ruleMapping[key];
+  }
+  
+  // For ALFA, handle full URLs if passed
+  if (normalizedEngine === 'alfa' && ruleId.startsWith('http')) {
+    const match = ruleId.match(/sia-r(\d+)$/);
+    if (match) {
+      const siaKey = `alfa:sia-r${match[1]}`;
+      if (ruleMapping[siaKey]) return ruleMapping[siaKey];
+    }
+  }
+
+  return DEFAULT_MAPPING;
+}
