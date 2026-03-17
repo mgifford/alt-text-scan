@@ -3,6 +3,45 @@
 import { readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
+function getCanonicalRepo() {
+  return process.env.GITHUB_REPOSITORY || 'mgifford/alt-text-scan';
+}
+
+function normalizeIssueUrl(issueUrl, issueNumber) {
+  const canonicalRepo = getCanonicalRepo();
+  const [canonicalOwner, canonicalName] = canonicalRepo.split('/');
+
+  if (!issueUrl || typeof issueUrl !== 'string') {
+    return `https://github.com/${canonicalRepo}/issues/${issueNumber}`;
+  }
+
+  try {
+    const parsed = new URL(issueUrl);
+    if (parsed.hostname !== 'github.com') {
+      return issueUrl;
+    }
+
+    const segments = parsed.pathname.split('/').filter(Boolean);
+    if (segments.length < 3) {
+      return issueUrl;
+    }
+
+    const [owner, repo, ...rest] = segments;
+    if (owner === canonicalOwner && repo === canonicalName) {
+      return issueUrl;
+    }
+
+    if (!['issues', 'actions'].includes(rest[0])) {
+      return issueUrl;
+    }
+
+    const normalizedPath = `/${canonicalOwner}/${canonicalName}/${rest.join('/')}`;
+    return `${parsed.origin}${normalizedPath}${parsed.search}${parsed.hash}`;
+  } catch {
+    return `https://github.com/${canonicalRepo}/issues/${issueNumber}`;
+  }
+}
+
 /**
  * Recursively find all report.json files in the reports directory
  * Reads from both reports/issues/ (issue-triggered scans) and
@@ -76,6 +115,52 @@ export function sortReportsByTime(reports) {
   });
 }
 
+function isAltTextReport(data) {
+  return data?.reportType === 'alt-text' || (data?.statusCounts && typeof data?.totalImages === 'number');
+}
+
+function buildResultsBadges(data) {
+  if (isAltTextReport(data)) {
+    const reviewed = data.uniqueImages ?? data.totalImages ?? 0;
+    const flagged = data.imagesWithIssues ?? 0;
+    const missing = data.statusCounts?.MISSING ?? 0;
+
+    return [
+      `<span class="badge badge-success">${reviewed} reviewed</span>`,
+      `<span class="badge badge-danger">${flagged} flagged</span>`,
+      `<span class="badge badge-warning">${missing} missing</span>`
+    ].join(' ');
+  }
+
+  const alfaTotals = data.alfaTotals || { passed: 0, failed: 0, cantTell: 0 };
+  const axeTotals = data.axeTotals || { passed: 0, failed: 0, cantTell: 0 };
+  const totalPassed = alfaTotals.passed + axeTotals.passed;
+  const totalFailed = alfaTotals.failed + axeTotals.failed;
+  const totalCantTell = alfaTotals.cantTell + axeTotals.cantTell;
+
+  return [
+    `<span class="badge badge-success">${totalPassed} passed</span>`,
+    `<span class="badge badge-danger">${totalFailed} failed</span>`,
+    `<span class="badge badge-warning">${totalCantTell} can't tell</span>`
+  ].join(' ');
+}
+
+function buildLinks(path, data) {
+  const links = [
+    `<a href="${path}/report.html">HTML</a>`,
+    `<a href="${path}/report.md">Markdown</a>`,
+    `<a href="${path}/report.csv">CSV</a>`
+  ];
+
+  if (!isAltTextReport(data)) {
+    links.push(`<a href="${path}/report-overlap.md">Overlap</a>`);
+  }
+
+  links.push(`<a href="${path}/report.json">JSON</a>`);
+
+  return links.join('\n            ');
+}
+
 /**
  * Generate HTML table rows for reports
  * @param {Array<{path: string, data: object}>} reports
@@ -93,31 +178,22 @@ export function generateTableRows(reports) {
       second: 'numeric'
     });
     
-    // Calculate total results from both scanners
-    // Handle both old (ALFA-only) and new (ALFA + axe) report formats
-    const alfaTotals = data.alfaTotals || { passed: 0, failed: 0, cantTell: 0 };
-    const axeTotals = data.axeTotals || { passed: 0, failed: 0, cantTell: 0 };
-    const totalPassed = alfaTotals.passed + axeTotals.passed;
-    const totalFailed = alfaTotals.failed + axeTotals.failed;
-    const totalCantTell = alfaTotals.cantTell + axeTotals.cantTell;
-    
+    const issueUrl = normalizeIssueUrl(data.issueUrl, data.issueNumber);
+    const urlLabel = data.acceptedCount != null
+      ? `${data.acceptedCount} accepted`
+      : `${data.scannedCount ?? data.urlsScanned ?? 0} scanned`;
+
     return `
         <tr data-issue="${data.issueNumber}" data-title="${escapeHtml(data.scanTitle)}" data-date="${escapeHtml(data.scannedAt)}" data-urls="${data.acceptedCount}">
-          <td data-label="Issue"><a href="${data.issueUrl}">#${data.issueNumber}</a></td>
+          <td data-label="Issue"><a href="${issueUrl}">#${data.issueNumber}</a></td>
           <td data-label="Scan Title">${escapeHtml(data.scanTitle)}</td>
           <td class="date" data-label="Scanned At">${formattedDate}</td>
-          <td data-label="URLs">${data.acceptedCount} accepted</td>
+          <td data-label="URLs">${urlLabel}</td>
           <td data-label="Results">
-            <span class="badge badge-success">${totalPassed} passed</span>
-            <span class="badge badge-danger">${totalFailed} failed</span>
-            <span class="badge badge-warning">${totalCantTell} can't tell</span>
+            ${buildResultsBadges(data)}
           </td>
           <td class="links" data-label="Reports">
-            <a href="${path}/report.html">HTML</a>
-            <a href="${path}/report.md">Markdown</a>
-            <a href="${path}/report.csv">CSV</a>
-            <a href="${path}/report-overlap.md">Overlap</a>
-            <a href="${path}/report.json">JSON</a>
+            ${buildLinks(path, data)}
           </td>
         </tr>`;
   }).join('\n        ');
@@ -152,7 +228,7 @@ export function generateReportsHtml(reports) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Scan Reports</title>
+  <title>Alt Text Scan Reports</title>
   <style>
     * {
       margin: 0;
@@ -261,7 +337,6 @@ export function generateReportsHtml(reports) {
     
     .table-wrapper {
       overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
     }
     
     @media (max-width: 599px) {
@@ -471,8 +546,8 @@ export function generateReportsHtml(reports) {
       <a href="reports.html">View Reports</a>
     </nav>
     
-    <h1>Scan Reports</h1>
-    <p class="subtitle">Accessibility scan reports generated by GitHub Actions</p>
+    <h1>Alt Text Scan Reports</h1>
+    <p class="subtitle">Review artifacts generated by GitHub Actions</p>
     
     ${reports.length === 0 ? '<div class="no-reports">No reports available yet. Submit URLs to generate your first report.</div>' : `
     <div class="table-wrapper">
@@ -496,7 +571,7 @@ export function generateReportsHtml(reports) {
     <div id="pagination"></div>`}
     
     <footer>
-      <a href="https://github.com/mgifford/open-scans">Join our GitHub Community</a>
+      <a href="https://github.com/${getCanonicalRepo()}">Join our GitHub Community</a>
     </footer>
   </div>
   <script>
