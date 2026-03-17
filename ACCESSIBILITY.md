@@ -49,7 +49,7 @@ This project uses two accessibility scanning engines:
 ### CI/CD Integration
 
 All scans run in GitHub Actions workflows:
-- **scan-request.yml**: Triggered on issue creation/edit
+- **scan-request.yml**: Triggered on issue creation/reopen
 - **scan-issue-queue.yml**: Daily scheduled scans + manual trigger
 
 ### Automated Guardrails

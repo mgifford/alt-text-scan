@@ -8,7 +8,8 @@ import {
   findAllReports, 
   sortReportsByTime, 
   generateTableRows,
-  generateReportsHtml
+  generateReportsHtml,
+  generateLegacyReportsHtml
 } from '../../scanner/generate-reports-html.mjs';
 
 describe('generate-reports-html', () => {
@@ -48,7 +49,7 @@ describe('generate-reports-html', () => {
         mkdirSync(pagesDir, { recursive: true });
         const reportData = {
           issueNumber: 6,
-          issueUrl: 'https://github.com/mgifford/open-scans/actions/runs/23149256539',
+          issueUrl: 'https://github.com/mgifford/alt-text-scan/actions/runs/23149256539',
           scanTitle: 'SCAN: AXE GitHub Pages accessibility check',
           scannedAt: '2026-03-16T14:37:54.000Z',
           acceptedCount: 1,
@@ -74,7 +75,7 @@ describe('generate-reports-html', () => {
         const issueDir = join(tmp, 'issues', 'issue-5', issueStamp);
         mkdirSync(issueDir, { recursive: true });
         writeFileSync(join(issueDir, 'report.json'), JSON.stringify({
-          issueNumber: 5, issueUrl: 'https://github.com/mgifford/open-scans/issues/5',
+          issueNumber: 5, issueUrl: 'https://github.com/mgifford/alt-text-scan/issues/5',
           scanTitle: 'Issue scan', scannedAt: '2026-03-01T10:00:00.000Z',
           acceptedCount: 2, alfaTotals: { passed: 5, failed: 0, cantTell: 0 },
           axeTotals: { passed: 3, failed: 0, cantTell: 0 }
@@ -84,7 +85,7 @@ describe('generate-reports-html', () => {
         const pagesDir = join(tmp, 'pages', pagesStamp);
         mkdirSync(pagesDir, { recursive: true });
         writeFileSync(join(pagesDir, 'report.json'), JSON.stringify({
-          issueNumber: 6, issueUrl: 'https://github.com/mgifford/open-scans/actions/runs/100',
+          issueNumber: 6, issueUrl: 'https://github.com/mgifford/alt-text-scan/actions/runs/100',
           scanTitle: 'Pages scan', scannedAt: '2026-03-16T14:37:54.000Z',
           acceptedCount: 1, alfaTotals: { passed: 0, failed: 0, cantTell: 0 },
           axeTotals: { passed: 10, failed: 2, cantTell: 1 }
@@ -133,7 +134,7 @@ describe('generate-reports-html', () => {
           path: 'reports/issues/issue-1/2026-02-21T16-37-55-764Z',
           data: {
             issueNumber: 1,
-            issueUrl: 'https://github.com/mgifford/open-scans/issues/1',
+            issueUrl: 'https://github.com/mgifford/alt-text-scan/issues/1',
             scanTitle: 'GSA.gov',
             scannedAt: '2026-02-21T16:37:55.764Z',
             acceptedCount: 13,
@@ -157,13 +158,41 @@ describe('generate-reports-html', () => {
       assert.ok(html.includes('/report.json'), 'Should include JSON link');
     });
 
+    it('should generate alt-text summary rows without overlap links', () => {
+      const reports = [
+        {
+          path: 'reports/issues/issue-200/2026-03-17T18-00-00-000Z',
+          data: {
+            reportType: 'alt-text',
+            issueNumber: 200,
+            issueUrl: 'https://github.com/mgifford/alt-text-scan/issues/200',
+            scanTitle: 'Commerce site alt text review',
+            scannedAt: '2026-03-17T18:00:00.000Z',
+            acceptedCount: 25,
+            totalImages: 420,
+            uniqueImages: 180,
+            imagesWithIssues: 42,
+            statusCounts: { MISSING: 10, DECORATIVE: 15, SUSPICIOUS: 12, FILENAME: 8, TOO_SHORT: 7, TOO_LONG: 5, GOOD: 123 }
+          }
+        }
+      ];
+
+      const html = generateTableRows(reports);
+
+      assert.ok(html.includes('180 reviewed'), 'Should include reviewed image count');
+      assert.ok(html.includes('42 flagged'), 'Should include flagged image count');
+      assert.ok(html.includes('10 missing'), 'Should include missing count');
+      assert.ok(!html.includes('/report-overlap.md'), 'Should not include overlap link for alt-text reports');
+      assert.ok(html.includes('/report.md'), 'Should include markdown link');
+    });
+
     it('should handle reports without axeTotals (old format)', () => {
       const reports = [
         {
           path: 'reports/issues/issue-1/2026-02-21T12-48-19-132Z',
           data: {
             issueNumber: 1,
-            issueUrl: 'https://github.com/mgifford/open-scans/issues/1',
+            issueUrl: 'https://github.com/mgifford/alt-text-scan/issues/1',
             scanTitle: 'GSA.gov',
             scannedAt: '2026-02-21T12:48:19.132Z',
             acceptedCount: 13,
@@ -186,7 +215,7 @@ describe('generate-reports-html', () => {
           path: 'reports/issues/issue-18/2026-02-21T20-55-47-400Z',
           data: {
             issueNumber: 18,
-            issueUrl: 'https://github.com/mgifford/open-scans/issues/18',
+            issueUrl: 'https://github.com/mgifford/alt-text-scan/issues/18',
             scanTitle: 'Government of Canada',
             scannedAt: '2026-02-21T20:55:47.400Z',
             acceptedCount: 46,
@@ -213,13 +242,16 @@ describe('generate-reports-html', () => {
         {
           path: 'reports/issues/issue-1/2026-02-21T16-37-55-764Z',
           data: {
+            reportType: 'alt-text',
             issueNumber: 1,
-            issueUrl: 'https://github.com/mgifford/open-scans/issues/1',
+            issueUrl: 'https://github.com/mgifford/alt-text-scan/issues/1',
             scanTitle: 'GSA.gov',
             scannedAt: '2026-02-21T16:37:55.764Z',
             acceptedCount: 13,
-            alfaTotals: { passed: 23694, failed: 1698, cantTell: 125 },
-            axeTotals: { passed: 0, failed: 0, cantTell: 0 }
+            totalImages: 200,
+            uniqueImages: 120,
+            imagesWithIssues: 14,
+            statusCounts: { MISSING: 5, DECORATIVE: 15, SUSPICIOUS: 6, FILENAME: 2, TOO_SHORT: 1, TOO_LONG: 0, GOOD: 91 }
           }
         }
       ];
@@ -228,7 +260,7 @@ describe('generate-reports-html', () => {
       
       assert.ok(html.includes('<!DOCTYPE html>'), 'Should include DOCTYPE');
       assert.ok(html.includes('<html lang="en">'), 'Should include html tag');
-      assert.ok(html.includes('Scan Reports'), 'Should include title');
+      assert.ok(html.includes('Alt Text Scan Reports'), 'Should include title');
       assert.ok(html.includes('GSA.gov'), 'Should include report data');
       assert.ok(html.includes('Join our GitHub Community'), 'Should include footer');
     });
@@ -238,6 +270,101 @@ describe('generate-reports-html', () => {
       
       assert.ok(html.includes('No reports available yet'), 'Should show no reports message');
       assert.ok(!html.includes('<table>'), 'Should not include table when no reports');
+    });
+
+    it('should exclude legacy accessibility reports from the main index', () => {
+      const html = generateReportsHtml([
+        {
+          path: 'reports/issues/issue-1/2026-03-17T18-00-00-000Z',
+          data: {
+            issueNumber: 1,
+            issueUrl: 'https://github.com/mgifford/alt-text-scan/issues/1',
+            scanTitle: 'Legacy scan',
+            scannedAt: '2026-03-17T18:00:00.000Z',
+            acceptedCount: 10,
+            alfaTotals: { passed: 20, failed: 2, cantTell: 1 },
+            axeTotals: { passed: 10, failed: 1, cantTell: 0 }
+          }
+        }
+      ]);
+
+      assert.ok(html.includes('No alt-text reports available yet'), 'Should explain that only legacy reports exist');
+      assert.ok(html.includes('1 legacy accessibility reports are excluded from this page'), 'Should disclose excluded legacy reports');
+      assert.ok(html.includes('legacy-reports.html'), 'Should link to the legacy archive');
+      assert.ok(!html.includes('Legacy scan'), 'Should not render legacy report rows in the main table');
+    });
+
+    it('should show only alt-text reports when both report types exist', () => {
+      const html = generateReportsHtml([
+        {
+          path: 'reports/issues/issue-1/2026-03-17T18-00-00-000Z',
+          data: {
+            issueNumber: 1,
+            issueUrl: 'https://github.com/mgifford/alt-text-scan/issues/1',
+            scanTitle: 'Legacy scan',
+            scannedAt: '2026-03-17T18:00:00.000Z',
+            acceptedCount: 10,
+            alfaTotals: { passed: 20, failed: 2, cantTell: 1 },
+            axeTotals: { passed: 10, failed: 1, cantTell: 0 }
+          }
+        },
+        {
+          path: 'reports/issues/issue-200/2026-03-17T19-00-00-000Z',
+          data: {
+            reportType: 'alt-text',
+            issueNumber: 200,
+            issueUrl: 'https://github.com/mgifford/alt-text-scan/issues/200',
+            scanTitle: 'Commerce site alt text review',
+            scannedAt: '2026-03-17T19:00:00.000Z',
+            acceptedCount: 25,
+            totalImages: 420,
+            uniqueImages: 180,
+            imagesWithIssues: 42,
+            statusCounts: { MISSING: 10, DECORATIVE: 15, SUSPICIOUS: 12, FILENAME: 8, TOO_SHORT: 7, TOO_LONG: 5, GOOD: 123 }
+          }
+        }
+      ]);
+
+      assert.ok(html.includes('Commerce site alt text review'), 'Should include alt-text report rows');
+      assert.ok(!html.includes('Legacy scan'), 'Should omit legacy report rows');
+      assert.ok(html.includes('1 legacy accessibility reports are excluded from this page'), 'Should disclose omitted legacy reports');
+    });
+
+    it('should generate a separate legacy archive page', () => {
+      const html = generateLegacyReportsHtml([
+        {
+          path: 'reports/issues/issue-1/2026-03-17T18-00-00-000Z',
+          data: {
+            issueNumber: 1,
+            issueUrl: 'https://github.com/mgifford/alt-text-scan/issues/1',
+            scanTitle: 'Legacy scan',
+            scannedAt: '2026-03-17T18:00:00.000Z',
+            acceptedCount: 10,
+            alfaTotals: { passed: 20, failed: 2, cantTell: 1 },
+            axeTotals: { passed: 10, failed: 1, cantTell: 0 }
+          }
+        },
+        {
+          path: 'reports/issues/issue-200/2026-03-17T19-00-00-000Z',
+          data: {
+            reportType: 'alt-text',
+            issueNumber: 200,
+            issueUrl: 'https://github.com/mgifford/alt-text-scan/issues/200',
+            scanTitle: 'Commerce site alt text review',
+            scannedAt: '2026-03-17T19:00:00.000Z',
+            acceptedCount: 25,
+            totalImages: 420,
+            uniqueImages: 180,
+            imagesWithIssues: 42,
+            statusCounts: { MISSING: 10, DECORATIVE: 15, SUSPICIOUS: 12, FILENAME: 8, TOO_SHORT: 7, TOO_LONG: 5, GOOD: 123 }
+          }
+        }
+      ]);
+
+      assert.ok(html.includes('Legacy Accessibility Report Archive'), 'Should render legacy archive title');
+      assert.ok(html.includes('Legacy scan'), 'Should include legacy report rows');
+      assert.ok(!html.includes('Commerce site alt text review'), 'Should omit alt-text rows from the legacy archive');
+      assert.ok(html.includes('reports.html'), 'Should link back to the main alt-text index');
     });
   });
 });

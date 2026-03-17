@@ -1,42 +1,61 @@
 # Alt Text Scans
 
-Issue-driven accessibility scanning prototype using GitHub Pages and GitHub Actions.
+Issue-driven alt-text analysis prototype using GitHub Pages and GitHub Actions.
 
 ## What it is
 
 - Accepts URL batches from a GitHub Pages form
 - Creates scan-request GitHub issues
-- Runs accessibility scans in GitHub Actions
-- Publishes comparison-ready results to GitHub Pages
+- Runs batch analysis in GitHub Actions
+- Publishes review-ready results to GitHub Pages
+
+## Project Direction
+
+The point of this project is not just to detect whether an image has an `alt` attribute.
+
+The alt-text-specific scanner in this repository is designed to go further by flagging cases such as:
+
+- missing alt text
+- decorative images with conflicting non-empty alt text
+- filenames used as alt text
+- redundant phrases like `image of`
+- alt text that is too short to be useful
+- alt text that is so long it likely needs a different pattern
+
+Some broader accessibility-engine infrastructure still exists in the repository and workflows. That is supporting or legacy plumbing, not the core product claim.
 
 ## Getting Started
 
 ### Quick Start: Submit Your Scan in 5 Minutes
 
 1. **Prepare your URLs**: Gather a list of web pages you want to scan for accessibility issues (recommended: 100-150 URLs per scan)
-2. **Submit your scan**: Go to [https://mgifford.github.io/open-scans/](https://mgifford.github.io/open-scans/)
+2. **Submit your scan**: Go to [https://mgifford.github.io/alt-text-scan/](https://mgifford.github.io/alt-text-scan/)
    - Enter a descriptive title for your scan
    - Paste your URLs (one per line or comma-separated)
    - Click "Create Scan Request" - this creates a GitHub issue that triggers the scan
 3. **Wait for results**: Scans typically complete in 30-60 minutes depending on the number of URLs
-4. **View your report**: Check [https://mgifford.github.io/open-scans/reports.html](https://mgifford.github.io/open-scans/reports.html) for your completed scan results
+4. **View your report**: Check [https://mgifford.github.io/alt-text-scan/reports.html](https://mgifford.github.io/alt-text-scan/reports.html) for your completed scan results
 
 ### Integration with Top Task Finder
 
-If you're using the [Top Task Finder](https://mgifford.github.io/top-task-finder/) to identify your most important pages, open-scans is the perfect next step:
+If you're using the [Top Task Finder](https://mgifford.github.io/top-task-finder/) to identify your most important pages, alt-text-scan is a practical next step:
 
 1. **Identify your top tasks**: Use the Top Task Finder to determine which pages are most critical for your users
 2. **Export your URLs**: Get the list of URLs corresponding to your top tasks
-3. **Scan for accessibility**: Paste those URLs into open-scans to check for accessibility issues
-4. **Prioritize fixes**: Focus on fixing accessibility issues on your most important pages first
+3. **Scan for alt text quality**: Paste those URLs into alt-text-scan to review image descriptions at scale
+4. **Prioritize fixes**: Focus on the pages where weak or missing alt text creates the biggest usability barriers first
 
-Even if you haven't completed a formal top tasks analysis, open-scans can help you get started by scanning your key pages (homepage, main navigation pages, common user journeys, etc.).
+Even if you haven't completed a formal top tasks analysis, alt-text-scan can help you get started by reviewing your key pages first (homepage, main navigation pages, common user journeys, and high-value content types).
+
+### Acknowledgement
+
+This project builds on work from [open-scans](https://github.com/mgifford/open-scans), which remains a useful option for broader HTML accessibility scanning workflows.
 
 ## How to Use
 
 ### Submit URLs for Scanning
 
-1. Visit the [GitHub Pages site](https://mgifford.github.io/open-scans/)
+1. Visit the [GitHub Pages site](https://mgifford.github.io/alt-text-scan/)
 2. Enter a descriptive scan title (e.g., "GSA.gov Homepage and Key Pages")
 3. Enter up to 100 URLs to scan (one per line or comma-separated)
 4. Review the validation preview showing accepted/rejected URLs
@@ -44,6 +63,7 @@ Even if you haven't completed a formal top tasks analysis, open-scans can help y
 6. Review and submit the pre-filled issue to start the scan
 
 The form validates URLs in real-time and blocks:
+
 - Localhost URLs
 - Private IP addresses (10.x.x.x, 172.16-31.x.x, 192.168.x.x)
 - Link-local addresses (169.254.x.x)
@@ -53,22 +73,25 @@ The form validates URLs in real-time and blocks:
 
 ### View Scan Results
 
-Visit the [Reports page](https://mgifford.github.io/open-scans/reports.html) to see all completed scans with:
+Visit the [Reports page](https://mgifford.github.io/alt-text-scan/reports.html) to see all completed scans with:
+
 - Issue number and scan title
 - Scan timestamp
 - Number of URLs scanned
-- Pass/fail/can't tell statistics
+- Report summaries and downloadable artifacts
 - Links to detailed reports (Markdown, CSV, JSON)
 
 ### Troubleshooting
 
 **Scan not appearing after 30-60 minutes?**
-- [View workflow history in GitHub Actions](https://github.com/mgifford/open-scans/actions) to check for errors
+
+- [View workflow history in GitHub Actions](https://github.com/mgifford/alt-text-scan/actions) to check for errors
 - Look for your scan issue number in the workflow runs
 - Common issues include invalid URLs or network timeouts
 
 **Need help?**
-- Review [workflow run logs in GitHub Actions](https://github.com/mgifford/open-scans/actions) for detailed error messages
+
+- Review [workflow run logs in GitHub Actions](https://github.com/mgifford/alt-text-scan/actions) for detailed error messages
 - Check that your URLs are publicly accessible
 - Ensure URLs don't include localhost or private IP addresses
 
@@ -78,7 +101,7 @@ Visit the [Reports page](https://mgifford.github.io/open-scans/reports.html) to 
 
 If you find the scan results useful and want to run the same scan regularly:
 
-1. **Find your scan issue**: Go to [https://github.com/mgifford/open-scans/issues](https://github.com/mgifford/open-scans/issues)
+1. **Find your scan issue**: Go to [https://github.com/mgifford/alt-text-scan/issues](https://github.com/mgifford/alt-text-scan/issues)
    - Your issue may be closed after the scan completes - use the search/filter if needed
    - Look for your issue number (e.g., `#54`)
 
@@ -115,17 +138,20 @@ To stop recurring scans when you no longer need them:
 
 Scans can be triggered in multiple ways:
 
-### 1. Automatic On Issue Creation/Edit
+### 1. Automatic On Issue Creation/Reopen
 
-When an issue with a title starting with "SCAN:" is created or edited, it automatically triggers a scan via the "Scan Request" workflow.
+When an issue with a title starting with "SCAN:" is created, it automatically triggers a scan via the "Scan Request" workflow. If you update the request later, close and reopen the issue to run it again.
 
 **Multiple Scans Processing**: If you create multiple SCAN issues at once, they will be processed sequentially (one after another) rather than simultaneously. This ensures stable operation and prevents conflicts when pushing scan results to the repository. Each scan will wait for the previous one to complete before starting.
 
-**Specifying Accessibility Engines**: You can optionally specify which accessibility engines to run. If no engines are specified, the default behaviour is to run **axe** plus one randomly chosen engine from [ALFA, Equal Access, AccessLint, QualWeb] — giving thorough-but-fast results without running all five engines every time.
+**Structured requests**: The issue template includes a `## URLs` section. Put one full URL per line there for the most reliable results. If that section is empty, the scanner falls back to searching the body for URLs, and if none are found it may treat a URL in the title as a domain-discovery request.
+
+**Legacy engine selection**: The existing issue workflow still supports choosing from the older accessibility-engine stack. That support remains for compatibility, but it is not the main differentiator of this project.
 
 There are two ways to specify engines:
 
 **1. In the issue title** — include one or more engine keywords:
+
 - `AXE` - axe-core scanner
 - `ALFA` - Siteimprove ALFA scanner
 - `EQUALACCESS` - IBM Equal Access Checker
@@ -136,12 +162,15 @@ There are two ways to specify engines:
 The engine keywords are removed from the scan title automatically. You can combine multiple keywords.
 
 **2. In the first line of the issue body** — use an `Engine:` prefix:
-```
+
+```text
 Engine: axe, alfa
 ```
+
 List engine names separated by spaces or commas. This overrides any engine keywords in the title. Supported values: `axe`, `alfa`, `equalaccess`, `accesslint`, `qualweb`, `all`.
 
 **Examples**:
+
 - `SCAN: AXE Homepage accessibility check` — Runs only axe-core
 - `SCAN: ALFA EQUALACCESS Government site scan` — Runs ALFA and Equal Access Checker
 - `SCAN: ALL Complete accessibility audit` — Runs all five engines
@@ -153,6 +182,7 @@ List engine names separated by spaces or commas. This overrides any engine keywo
 **All Open SCAN Issues** - The "Scan All Open SCAN Issues" workflow runs daily at midnight UTC and scans ALL open issues with titles starting with "SCAN:". This ensures that any pending scan requests are processed regularly.
 
 **Timed Issues Only** - The "Scan Timed Issues (WEEKLY, MONTHLY, etc.)" workflow runs daily at 00:15 UTC but ONLY processes issues with timed prefixes that are due on that day:
+
 - `WEEKLY:` - Scans on the same day of the week the issue was created
 - `MONTHLY:` - Scans on the 1st of each month
 - `QUARTERLY:` - Scans on Jan 1, Apr 1, Jul 1, Oct 1
@@ -163,7 +193,8 @@ List engine names separated by spaces or commas. This overrides any engine keywo
 ### 3. Manual Trigger
 
 You can manually trigger scans by:
-1. Going to the [Actions tab](https://github.com/mgifford/open-scans/actions)
+
+1. Going to the [Actions tab](https://github.com/mgifford/alt-text-scan/actions)
 2. Selecting the appropriate workflow:
    - **"Scan All Open SCAN Issues"** - To scan all pending "SCAN:" issues (recommended for regular scan requests)
    - **"Scan Timed Issues (WEEKLY, MONTHLY, etc.)"** - To scan recurring timed issues (only if timed issues are due today)
@@ -181,32 +212,35 @@ You can manually trigger scans by:
 ## Architecture
 
 ### Frontend (GitHub Pages)
+
 - **index.html**: URL submission form with real-time validation
 - **reports.html**: Scan results dashboard
 - **submit.js**: Client-side URL parsing, validation, and GitHub integration
 
 ### Backend (GitHub Actions)
+
 - **scanner/parse-issue.mjs**: Extracts URLs and engine specifications from scan request issues
 - **scanner/validate-targets.mjs**: Server-side URL validation
 - **scanner/run-scan.mjs**: Executes accessibility scans with selected engines and generates reports
 
-### Accessibility Scanners
+### Alt Text Analysis
 
-The system supports multiple accessibility scanning engines that can be run individually or in combination:
+The dedicated alt-text scanner in this repository evaluates image descriptions across pages and classifies them into review categories such as:
 
-1. **axe-core** - Deque's industry-standard accessibility testing engine
-2. **Siteimprove ALFA** - Siteimprove's open-source accessibility rules engine
-3. **IBM Equal Access Checker** - IBM's comprehensive accessibility checker
-4. **AccessLint** - Automated accessibility testing tool
-5. **QualWeb** - University of Lisbon's WCAG and ACT Rules evaluator
+1. **Missing** - no alt attribute is present
+2. **Decorative** - intentionally empty alt text or presentation roles
+3. **Filename-based** - file names used as descriptions
+4. **Suspicious** - redundant phrasing or weak wording
+5. **Too short / too long** - descriptions that likely need revision
+6. **Good** - descriptions that pass the current automated checks
 
-By default, **axe** plus one randomly selected engine run for a balanced result without the overhead of all five scanners. Use `ALL` in the title or `Engine: all` in the body to run every scanner. You can specify which scanners to use via the issue title or body (see [Scanning Triggers](#scanning-triggers) above).
+This gives the project a more useful focus than a simple present-versus-absent alt check.
 
 ## Configuration
 
-### Equal Access Checker (.achecker.yml)
+### Legacy Engine Configuration
 
-The scanner uses IBM's Equal Access Checker (accessibility-checker) alongside Alfa and axe-core. Configuration is stored in `.achecker.yml`:
+The repository still includes configuration for IBM's Equal Access Checker (`accessibility-checker`) and related browser-based tooling used by the older workflow:
 
 - **Policies**: IBM_Accessibility ruleset
 - **Fail Levels**: violation, potentialviolation

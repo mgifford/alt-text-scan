@@ -1,4 +1,4 @@
-# GitHub Copilot Instructions for open-scans
+# GitHub Copilot Instructions for alt-text-scan
 
 ## Primary References
 
@@ -8,36 +8,40 @@ Before making any changes, read these documents in the repository root:
 - **[ACCESSIBILITY.md](../ACCESSIBILITY.md)** - WCAG 2.2 AA requirements, accessible development best practices, and quality gates.
 - **[SUSTAINABILITY.md](../SUSTAINABILITY.md)** - Digital sustainability policy: minimize compute waste, assess third-party dependencies, and disclose AI usage in PRs.
 
-For Spec Kitty project management rules (work packages, path references, encoding), see **[.kittify/AGENTS.md](../.kittify/AGENTS.md)**.
+For Spec Kitty project management rules (work packages, path references, encoding), see **[.kittify/AGENTS.md](https://github.com/mgifford/alfa-scan/blob/main/.kittify/AGENTS.md)**.
+
+## AI Model Routing Policy
+
+Prefer local models by default:
+
+1. Use Ollama/local models first whenever quality is sufficient.
+2. Use hosted/commercial models (Copilot, Gemini, etc.) only when local output is not adequate.
+3. Keep prompts tight and avoid repeated retries across multiple providers.
+
+When AI assistance is used, track usage in PR notes with these fields:
+
+- `bucket`: `local` or `commercial`
+- `tool_or_model`: e.g., `ollama/llama3.2`, `copilot/gpt-5.3-codex`, `gemini-2.5-pro`
+- `approx_prompt_count`: rough integer count
+- `purpose`: short description of what AI was used for
 
 ---
 
 ## Project Overview
 
-`open-scans` is an issue-driven accessibility scanning tool hosted on GitHub Pages and GitHub Actions. It accepts URL batches via a form, creates GitHub issues, runs multi-engine accessibility scans in CI, and publishes comparison-ready reports to GitHub Pages.
+`alt-text-scan` is an issue-driven alt-text analysis tool hosted on GitHub Pages and GitHub Actions. It accepts URL batches via a form, creates GitHub issues, and is evolving toward deeper image-description review instead of only flagging whether an alt attribute exists.
 
-- **Live site**: <https://mgifford.github.io/open-scans/>
-- **Reports**: <https://mgifford.github.io/open-scans/reports.html>
-- **Repository**: <https://github.com/mgifford/open-scans>
+- **Live site**: <https://mgifford.github.io/alt-text-scan/>
+- **Reports**: <https://mgifford.github.io/alt-text-scan/reports.html>
+- **Repository**: <https://github.com/mgifford/alt-text-scan>
 
 ### Architecture
 
 - **Frontend** (`index.html`, `reports.html`, `submit.js`): GitHub Pages form for submitting URL batches and viewing results
-- **Scanner** (`scanner/*.mjs`): Node.js ES modules that parse issues, validate URLs, run scans, and generate reports
+- **Scanner** (`scanner/*.mjs`): Node.js ES modules for issue parsing, URL validation, legacy accessibility scans, and newer alt-text-specific analysis
 - **Workflows** (`.github/workflows/`): GitHub Actions workflows triggered by issues or schedules
 - **Reports** (`reports/`): Generated scan output published to GitHub Pages
 
-### Scanning Engines
-
-Five accessibility engines are supported (run individually or in combination via the issue title or body):
-
-1. **axe-core** (`@axe-core/playwright`) - Deque's industry-standard engine
-2. **Siteimprove ALFA** (`@siteimprove/alfa-cli`) - Standards-first, ACT-rules-based
-3. **IBM Equal Access Checker** (`accessibility-checker`) - IBM's comprehensive checker
-4. **AccessLint** (`@accesslint/core`) - Automated accessibility testing
-5. **QualWeb** (`@qualweb/core`) - University of Lisbon WCAG/ACT evaluator
-
-Default: **axe** plus one randomly chosen engine. Use `ALL` in the issue title or `Engine: all` in the body to run all five.
 
 ---
 
@@ -107,7 +111,7 @@ console.log(`[1/100] Scanned ${url}`);
 
 ### Workflows
 
-- **`scan-request.yml`**: Triggered on issue creation/edit for `SCAN:` issues
+- **`scan-request.yml`**: Triggered on issue creation/reopen for `SCAN:` issues
 - **`scan-issue-queue.yml`**: Daily scheduled scan of all open `SCAN:` issues + manual trigger
 - **`scheduled-scan-queue.yml`**: Timed issues (`WEEKLY:`, `MONTHLY:`, etc.)
 - All workflows share the `scan-repository` concurrency group (sequential processing)
