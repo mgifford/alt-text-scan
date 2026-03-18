@@ -346,10 +346,11 @@ jobs:
                 body.push(
                   `- Rejected URLs: ${meta.rejectedCount}`,
                   "",
+                  '- Image inventory CSV contains one row per unique image with alt text and semantic metadata (title, aria-label, aria-describedby, longdesc, role, dimensions, source pages).',
                   `Report (Pages): ${pagesUrl}`,
                   `Fallback (GitHub): ${blobUrl}`,
-                  `CSV (Pages): ${csvPagesUrl}`,
-                  `CSV Fallback (GitHub): ${csvBlobUrl}`
+                  `Image inventory CSV (Pages): ${csvPagesUrl}`,
+                  `Image inventory CSV fallback (GitHub): ${csvBlobUrl}`
                 );
                 
                 const commentBody = body.join("\n");

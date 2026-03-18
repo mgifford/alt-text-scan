@@ -307,9 +307,11 @@ jobs:
               }
               
               commentLines.push(
+                'Image inventory CSV includes one row per unique image with alt text and semantic metadata (title, aria-label, aria-describedby, longdesc, role, dimensions, source pages).',
+                '',
                 `Latest report (Pages, HTML): ${pagesHtmlUrl}`,
                 `Latest report (Pages, Markdown): ${pagesMdUrl}`,
-                `Latest CSV (Pages): ${pagesCsvUrl}`,
+                `Latest image inventory CSV (Pages): ${pagesCsvUrl}`,
                 `Fallback (GitHub): ${ghMdUrl}`,
                 '',
                 '_Issue remains open for future scheduled scans._'

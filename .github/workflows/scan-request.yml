@@ -336,7 +336,8 @@ jobs:
               `- [Reports history](${reportsHistoryUrl})`,
               `- [Markdown report](${markdownUrl})`,
               `- [JSON report](${jsonUrl})`,
-              `- [CSV report](${csvUrl})`,
+              `- [Image inventory CSV (unique images)](${csvUrl})`,
+              '- Includes alt text, title, aria-label, aria-describedby, longdesc, role, visibility, dimensions, and source pages.',
               `- [View workflow run](${workflowRunUrl})`
             );
 
