@@ -1,0 +1,1425 @@
+{
+  "reportType": "alt-text",
+  "issueNumber": 7,
+  "issueUrl": "https://github.com/mgifford/alt-text-scan/issues/7",
+  "scanTitle": "https://bluebutton.cms.gov/api-documentation/",
+  "scanDomain": "https://bluebutton.cms.gov",
+  "discoveryMethod": "crawl",
+  "discoveredTotal": 26,
+  "requestedCount": 26,
+  "acceptedCount": 26,
+  "rejectedCount": 0,
+  "scannedCount": 26,
+  "skippedDueToTimeout": 0,
+  "urlsRequested": 26,
+  "urlsScanned": 26,
+  "scannedAt": "2026-03-18T18:52:45.543Z",
+  "totalImages": 48,
+  "uniqueImages": 19,
+  "imagesWithIssues": 0,
+  "statusCounts": {
+    "MISSING": 0,
+    "DECORATIVE": 33,
+    "SUSPICIOUS": 0,
+    "FILENAME": 0,
+    "TOO_SHORT": 0,
+    "TOO_LONG": 0,
+    "GOOD": 15
+  },
+  "urlResults": [
+    {
+      "url": "https://bluebutton.cms.gov/",
+      "finalUrl": "https://bluebutton.cms.gov/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bluebutton.cms.gov/_astro/us_flag_small.NpELm1F7.png",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 64,
+          "height": 44,
+          "isVisible": true,
+          "pageUrl": "https://bluebutton.cms.gov/",
+          "status": "DECORATIVE",
+          "issues": []
+        },
+        {
+          "src": "https://bluebutton.cms.gov/_astro/browsers.C9I83MKs_HlA2o.svg",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 244,
+          "height": 202,
+          "isVisible": true,
+          "pageUrl": "https://bluebutton.cms.gov/",
+          "status": "DECORATIVE",
+          "issues": []
+        },
+        {
+          "src": "https://bluebutton.cms.gov/_astro/whiteboard.BgceD4QH_7ReHn.svg",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 370,
+          "height": 213,
+          "isVisible": true,
+          "pageUrl": "https://bluebutton.cms.gov/",
+          "status": "DECORATIVE",
+          "issues": []
+        },
+        {
+          "src": "https://bluebutton.cms.gov/_astro/home.BTlNWnAk_1Kblpj.svg",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 340,
+          "height": 202,
+          "isVisible": true,
+          "pageUrl": "https://bluebutton.cms.gov/",
+          "status": "DECORATIVE",
+          "issues": []
+        },
+        {
+          "src": "https://bluebutton.cms.gov/_astro/whiteboard.BgceD4QH_7ReHn.svg",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 370,
+          "height": 213,
+          "isVisible": true,
+          "pageUrl": "https://bluebutton.cms.gov/",
+          "status": "DECORATIVE",
+          "issues": []
+        },
+        {
+          "src": "https://bluebutton.cms.gov/_astro/home.BTlNWnAk_1Kblpj.svg",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 340,
+          "height": 202,
+          "isVisible": true,
+          "pageUrl": "https://bluebutton.cms.gov/",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bluebutton.cms.gov/use-cases",
+      "finalUrl": "https://bluebutton.cms.gov/use-cases/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bluebutton.cms.gov/_astro/us_flag_small.NpELm1F7.png",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 64,
+          "height": 44,
+          "isVisible": true,
+          "pageUrl": "https://bluebutton.cms.gov/use-cases/",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bluebutton.cms.gov/api-documentation",
+      "finalUrl": "https://bluebutton.cms.gov/api-documentation/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bluebutton.cms.gov/_astro/us_flag_small.NpELm1F7.png",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 64,
+          "height": 44,
+          "isVisible": true,
+          "pageUrl": "https://bluebutton.cms.gov/api-documentation/",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bluebutton.cms.gov/api-documentation/explore-the-api",
+      "finalUrl": "https://bluebutton.cms.gov/api-documentation/explore-the-api/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bluebutton.cms.gov/_astro/us_flag_small.NpELm1F7.png",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 64,
+          "height": 44,
+          "isVisible": true,
+          "pageUrl": "https://bluebutton.cms.gov/api-documentation/explore-the-api/",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bluebutton.cms.gov/api-documentation/developer-sandbox",
+      "finalUrl": "https://bluebutton.cms.gov/api-documentation/developer-sandbox/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bluebutton.cms.gov/_astro/us_flag_small.NpELm1F7.png",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 64,
+          "height": 44,
+          "isVisible": true,
+          "pageUrl": "https://bluebutton.cms.gov/api-documentation/developer-sandbox/",
+          "status": "DECORATIVE",
+          "issues": []
+        },
+        {
+          "src": "https://bluebutton.cms.gov/_astro/register-new-application.DnlkRveV_Z1W05hA.webp",
+          "alt": "New application registration screen",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1073,
+          "height": 946,
+          "isVisible": true,
+          "pageUrl": "https://bluebutton.cms.gov/api-documentation/developer-sandbox/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://bluebutton.cms.gov/_astro/demographic-info-yes.CGdCwJDg_Z1tfjBC.webp",
+          "alt": "Authorization screen with demographic info option",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 832,
+          "height": 876,
+          "isVisible": true,
+          "pageUrl": "https://bluebutton.cms.gov/api-documentation/developer-sandbox/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://bluebutton.cms.gov/_astro/demographic-info-no.Cn_BGXv8_Zyk3KU.webp",
+          "alt": "Authorization screen without demographic info option",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 832,
+          "height": 716,
+          "isVisible": true,
+          "pageUrl": "https://bluebutton.cms.gov/api-documentation/developer-sandbox/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://bluebutton.cms.gov/_astro/bb-postman-02.C5hWaVMs_Z4Buhk.webp",
+          "alt": "View/Edit App link",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 510,
+          "height": 373,
+          "isVisible": true,
+          "pageUrl": "https://bluebutton.cms.gov/api-documentation/developer-sandbox/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://bluebutton.cms.gov/_astro/bb-postman-03.DacqWUjo_1XBsjN.webp",
+          "alt": "Edit Application button",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 483,
+          "height": 218,
+          "isVisible": true,
+          "pageUrl": "https://bluebutton.cms.gov/api-documentation/developer-sandbox/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://bluebutton.cms.gov/_astro/bb-postman-05.BeRXTOiA_Z1vaOF0.webp",
+          "alt": "Save Application button",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 492,
+          "height": 141,
+          "isVisible": true,
+          "pageUrl": "https://bluebutton.cms.gov/api-documentation/developer-sandbox/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://bluebutton.cms.gov/_astro/bb-postman-12.BodpBqKd_Z1hlVPL.webp",
+          "alt": "Sandbox Logout button",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 609,
+          "height": 75,
+          "isVisible": true,
+          "pageUrl": "https://bluebutton.cms.gov/api-documentation/developer-sandbox/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://bluebutton.cms.gov/_astro/bb-postman-10.M63yHuNT_Z6GmI9.webp",
+          "alt": "Medicare login window",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 377,
+          "height": 555,
+          "isVisible": true,
+          "pageUrl": "https://bluebutton.cms.gov/api-documentation/developer-sandbox/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://bluebutton.cms.gov/_astro/bb-postman-11.G7kFs1Ci_UY830.webp",
+          "alt": "Connect button",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 609,
+          "height": 120,
+          "isVisible": true,
+          "pageUrl": "https://bluebutton.cms.gov/api-documentation/developer-sandbox/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://bluebutton.cms.gov/_astro/bb-postman-06.rvFV7ZF9_GXgjA.webp",
+          "alt": "Log Out to Continue button",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 609,
+          "height": 119,
+          "isVisible": true,
+          "pageUrl": "https://bluebutton.cms.gov/api-documentation/developer-sandbox/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://bluebutton.cms.gov/_astro/bb-postman-07.DMh-famz_ZFDS2R.webp",
+          "alt": "Get a Sample Authorization button",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 609,
+          "height": 129,
+          "isVisible": true,
+          "pageUrl": "https://bluebutton.cms.gov/api-documentation/developer-sandbox/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://bluebutton.cms.gov/_astro/bb-postman-08.o_7Nnfxm_ZLy65e.webp",
+          "alt": "Authorize as a Beneficiary button",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 609,
+          "height": 625,
+          "isVisible": true,
+          "pageUrl": "https://bluebutton.cms.gov/api-documentation/developer-sandbox/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://bluebutton.cms.gov/_astro/bb-postman-10.M63yHuNT_Z6GmI9.webp",
+          "alt": "Medicare login window",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 377,
+          "height": 555,
+          "isVisible": true,
+          "pageUrl": "https://bluebutton.cms.gov/api-documentation/developer-sandbox/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://bluebutton.cms.gov/_astro/bb-postman-11.G7kFs1Ci_UY830.webp",
+          "alt": "Connect button",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 609,
+          "height": 120,
+          "isVisible": true,
+          "pageUrl": "https://bluebutton.cms.gov/api-documentation/developer-sandbox/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://bluebutton.cms.gov/_astro/bb-postman-09.9gRqw-HF_1yJHaT.webp",
+          "alt": "JSON object with access token highlighted",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 609,
+          "height": 65,
+          "isVisible": true,
+          "pageUrl": "https://bluebutton.cms.gov/api-documentation/developer-sandbox/",
+          "status": "GOOD",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bluebutton.cms.gov/api-documentation/authorization",
+      "finalUrl": "https://bluebutton.cms.gov/api-documentation/authorization/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bluebutton.cms.gov/_astro/us_flag_small.NpELm1F7.png",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 64,
+          "height": 44,
+          "isVisible": true,
+          "pageUrl": "https://bluebutton.cms.gov/api-documentation/authorization/",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bluebutton.cms.gov/api-documentation/consuming-the-data",
+      "finalUrl": "https://bluebutton.cms.gov/api-documentation/consuming-the-data/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bluebutton.cms.gov/_astro/us_flag_small.NpELm1F7.png",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 64,
+          "height": 44,
+          "isVisible": true,
+          "pageUrl": "https://bluebutton.cms.gov/api-documentation/consuming-the-data/",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bluebutton.cms.gov/api-documentation/calling-the-api",
+      "finalUrl": "https://bluebutton.cms.gov/api-documentation/calling-the-api/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bluebutton.cms.gov/_astro/us_flag_small.NpELm1F7.png",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 64,
+          "height": 44,
+          "isVisible": true,
+          "pageUrl": "https://bluebutton.cms.gov/api-documentation/calling-the-api/",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bluebutton.cms.gov/api-documentation/optimizing-your-app",
+      "finalUrl": "https://bluebutton.cms.gov/api-documentation/optimizing-your-app/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bluebutton.cms.gov/_astro/us_flag_small.NpELm1F7.png",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 64,
+          "height": 44,
+          "isVisible": true,
+          "pageUrl": "https://bluebutton.cms.gov/api-documentation/optimizing-your-app/",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bluebutton.cms.gov/api-documentation/implementation-guides",
+      "finalUrl": "https://bluebutton.cms.gov/api-documentation/implementation-guides/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bluebutton.cms.gov/_astro/us_flag_small.NpELm1F7.png",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 64,
+          "height": 44,
+          "isVisible": true,
+          "pageUrl": "https://bluebutton.cms.gov/api-documentation/implementation-guides/",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bluebutton.cms.gov/data",
+      "finalUrl": "https://bluebutton.cms.gov/data/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bluebutton.cms.gov/_astro/us_flag_small.NpELm1F7.png",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 64,
+          "height": 44,
+          "isVisible": true,
+          "pageUrl": "https://bluebutton.cms.gov/data/",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bluebutton.cms.gov/data/understanding-the-data",
+      "finalUrl": "https://bluebutton.cms.gov/data/understanding-the-data/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bluebutton.cms.gov/_astro/us_flag_small.NpELm1F7.png",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 64,
+          "height": 44,
+          "isVisible": true,
+          "pageUrl": "https://bluebutton.cms.gov/data/understanding-the-data/",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bluebutton.cms.gov/data/resources",
+      "finalUrl": "https://bluebutton.cms.gov/data/resources/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bluebutton.cms.gov/_astro/us_flag_small.NpELm1F7.png",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 64,
+          "height": 44,
+          "isVisible": true,
+          "pageUrl": "https://bluebutton.cms.gov/data/resources/",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bluebutton.cms.gov/production-access",
+      "finalUrl": "https://bluebutton.cms.gov/production-access/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bluebutton.cms.gov/_astro/us_flag_small.NpELm1F7.png",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 64,
+          "height": 44,
+          "isVisible": true,
+          "pageUrl": "https://bluebutton.cms.gov/production-access/",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bluebutton.cms.gov/support",
+      "finalUrl": "https://bluebutton.cms.gov/support/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bluebutton.cms.gov/_astro/us_flag_small.NpELm1F7.png",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 64,
+          "height": 44,
+          "isVisible": true,
+          "pageUrl": "https://bluebutton.cms.gov/support/",
+          "status": "DECORATIVE",
+          "issues": []
+        },
+        {
+          "src": "https://bluebutton.cms.gov/_astro/discussion.BgDw6z48_PlzM5.svg",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 229,
+          "height": 150,
+          "isVisible": true,
+          "pageUrl": "https://bluebutton.cms.gov/support/",
+          "status": "DECORATIVE",
+          "issues": []
+        },
+        {
+          "src": "https://bluebutton.cms.gov/_astro/experts.BIsdDSt2_1n8OCd.svg",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 599,
+          "height": 341,
+          "isVisible": true,
+          "pageUrl": "https://bluebutton.cms.gov/support/",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bluebutton.cms.gov/terms",
+      "finalUrl": "https://bluebutton.cms.gov/terms/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bluebutton.cms.gov/_astro/us_flag_small.NpELm1F7.png",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 64,
+          "height": 44,
+          "isVisible": true,
+          "pageUrl": "https://bluebutton.cms.gov/terms/",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bluebutton.cms.gov/sitemap",
+      "finalUrl": "https://bluebutton.cms.gov/sitemap/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bluebutton.cms.gov/_astro/us_flag_small.NpELm1F7.png",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 64,
+          "height": 44,
+          "isVisible": true,
+          "pageUrl": "https://bluebutton.cms.gov/sitemap/",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bluebutton.cms.gov/resources/variables/nch_near_line_rec_ident_cd",
+      "finalUrl": "https://bluebutton.cms.gov/resources/variables/nch_near_line_rec_ident_cd/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bluebutton.cms.gov/_astro/us_flag_small.NpELm1F7.png",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 64,
+          "height": 44,
+          "isVisible": true,
+          "pageUrl": "https://bluebutton.cms.gov/resources/variables/nch_near_line_rec_ident_cd/",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bluebutton.cms.gov/resources/variables/carr_num",
+      "finalUrl": "https://bluebutton.cms.gov/resources/variables/carr_num/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bluebutton.cms.gov/_astro/us_flag_small.NpELm1F7.png",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 64,
+          "height": 44,
+          "isVisible": true,
+          "pageUrl": "https://bluebutton.cms.gov/resources/variables/carr_num/",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bluebutton.cms.gov/resources/codesystem/eob-type",
+      "finalUrl": "https://bluebutton.cms.gov/resources/codesystem/eob-type/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bluebutton.cms.gov/_astro/us_flag_small.NpELm1F7.png",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 64,
+          "height": 44,
+          "isVisible": true,
+          "pageUrl": "https://bluebutton.cms.gov/resources/codesystem/eob-type/",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bluebutton.cms.gov/resources/variables/nch_clm_type_cd",
+      "finalUrl": "https://bluebutton.cms.gov/resources/variables/nch_clm_type_cd/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bluebutton.cms.gov/_astro/us_flag_small.NpELm1F7.png",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 64,
+          "height": 44,
+          "isVisible": true,
+          "pageUrl": "https://bluebutton.cms.gov/resources/variables/nch_clm_type_cd/",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bluebutton.cms.gov/terms/terms-index",
+      "finalUrl": "https://bluebutton.cms.gov/terms/terms-index/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bluebutton.cms.gov/_astro/us_flag_small.NpELm1F7.png",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 64,
+          "height": 44,
+          "isVisible": true,
+          "pageUrl": "https://bluebutton.cms.gov/terms/terms-index/",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bluebutton.cms.gov/terms/v2",
+      "finalUrl": "https://bluebutton.cms.gov/terms/v2/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bluebutton.cms.gov/_astro/us_flag_small.NpELm1F7.png",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 64,
+          "height": 44,
+          "isVisible": true,
+          "pageUrl": "https://bluebutton.cms.gov/terms/v2/",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bluebutton.cms.gov/terms/v1",
+      "finalUrl": "https://bluebutton.cms.gov/terms/v1/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bluebutton.cms.gov/_astro/us_flag_small.NpELm1F7.png",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 64,
+          "height": 44,
+          "isVisible": true,
+          "pageUrl": "https://bluebutton.cms.gov/terms/v1/",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bluebutton.cms.gov/guide",
+      "finalUrl": "https://bluebutton.cms.gov/production-access/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bluebutton.cms.gov/_astro/us_flag_small.NpELm1F7.png",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 64,
+          "height": 44,
+          "isVisible": true,
+          "pageUrl": "https://bluebutton.cms.gov/production-access/",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bluebutton.cms.gov/developers",
+      "finalUrl": "https://bluebutton.cms.gov/api-documentation/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bluebutton.cms.gov/_astro/us_flag_small.NpELm1F7.png",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 64,
+          "height": 44,
+          "isVisible": true,
+          "pageUrl": "https://bluebutton.cms.gov/api-documentation/",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    }
+  ],
+  "uniqueImageList": [
+    {
+      "src": "https://bluebutton.cms.gov/_astro/us_flag_small.NpELm1F7.png",
+      "alt": "",
+      "title": null,
+      "role": null,
+      "ariaHidden": "true",
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "width": 64,
+      "height": 44,
+      "isVisible": true,
+      "pageUrl": "https://bluebutton.cms.gov/",
+      "status": "DECORATIVE",
+      "issues": [],
+      "pages": [
+        "https://bluebutton.cms.gov/",
+        "https://bluebutton.cms.gov/use-cases",
+        "https://bluebutton.cms.gov/api-documentation",
+        "https://bluebutton.cms.gov/api-documentation/explore-the-api",
+        "https://bluebutton.cms.gov/api-documentation/developer-sandbox",
+        "https://bluebutton.cms.gov/api-documentation/authorization",
+        "https://bluebutton.cms.gov/api-documentation/consuming-the-data",
+        "https://bluebutton.cms.gov/api-documentation/calling-the-api",
+        "https://bluebutton.cms.gov/api-documentation/optimizing-your-app",
+        "https://bluebutton.cms.gov/api-documentation/implementation-guides",
+        "https://bluebutton.cms.gov/data",
+        "https://bluebutton.cms.gov/data/understanding-the-data",
+        "https://bluebutton.cms.gov/data/resources",
+        "https://bluebutton.cms.gov/production-access",
+        "https://bluebutton.cms.gov/support",
+        "https://bluebutton.cms.gov/terms",
+        "https://bluebutton.cms.gov/sitemap",
+        "https://bluebutton.cms.gov/resources/variables/nch_near_line_rec_ident_cd",
+        "https://bluebutton.cms.gov/resources/variables/carr_num",
+        "https://bluebutton.cms.gov/resources/codesystem/eob-type",
+        "https://bluebutton.cms.gov/resources/variables/nch_clm_type_cd",
+        "https://bluebutton.cms.gov/terms/terms-index",
+        "https://bluebutton.cms.gov/terms/v2",
+        "https://bluebutton.cms.gov/terms/v1",
+        "https://bluebutton.cms.gov/guide",
+        "https://bluebutton.cms.gov/developers"
+      ]
+    },
+    {
+      "src": "https://bluebutton.cms.gov/_astro/browsers.C9I83MKs_HlA2o.svg",
+      "alt": "",
+      "title": null,
+      "role": null,
+      "ariaHidden": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "width": 244,
+      "height": 202,
+      "isVisible": true,
+      "pageUrl": "https://bluebutton.cms.gov/",
+      "status": "DECORATIVE",
+      "issues": [],
+      "pages": [
+        "https://bluebutton.cms.gov/"
+      ]
+    },
+    {
+      "src": "https://bluebutton.cms.gov/_astro/whiteboard.BgceD4QH_7ReHn.svg",
+      "alt": "",
+      "title": null,
+      "role": null,
+      "ariaHidden": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "width": 370,
+      "height": 213,
+      "isVisible": true,
+      "pageUrl": "https://bluebutton.cms.gov/",
+      "status": "DECORATIVE",
+      "issues": [],
+      "pages": [
+        "https://bluebutton.cms.gov/"
+      ]
+    },
+    {
+      "src": "https://bluebutton.cms.gov/_astro/home.BTlNWnAk_1Kblpj.svg",
+      "alt": "",
+      "title": null,
+      "role": null,
+      "ariaHidden": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "width": 340,
+      "height": 202,
+      "isVisible": true,
+      "pageUrl": "https://bluebutton.cms.gov/",
+      "status": "DECORATIVE",
+      "issues": [],
+      "pages": [
+        "https://bluebutton.cms.gov/"
+      ]
+    },
+    {
+      "src": "https://bluebutton.cms.gov/_astro/register-new-application.DnlkRveV_Z1W05hA.webp",
+      "alt": "New application registration screen",
+      "title": null,
+      "role": null,
+      "ariaHidden": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "width": 1073,
+      "height": 946,
+      "isVisible": true,
+      "pageUrl": "https://bluebutton.cms.gov/api-documentation/developer-sandbox/",
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://bluebutton.cms.gov/api-documentation/developer-sandbox"
+      ]
+    },
+    {
+      "src": "https://bluebutton.cms.gov/_astro/demographic-info-yes.CGdCwJDg_Z1tfjBC.webp",
+      "alt": "Authorization screen with demographic info option",
+      "title": null,
+      "role": null,
+      "ariaHidden": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "width": 832,
+      "height": 876,
+      "isVisible": true,
+      "pageUrl": "https://bluebutton.cms.gov/api-documentation/developer-sandbox/",
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://bluebutton.cms.gov/api-documentation/developer-sandbox"
+      ]
+    },
+    {
+      "src": "https://bluebutton.cms.gov/_astro/demographic-info-no.Cn_BGXv8_Zyk3KU.webp",
+      "alt": "Authorization screen without demographic info option",
+      "title": null,
+      "role": null,
+      "ariaHidden": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "width": 832,
+      "height": 716,
+      "isVisible": true,
+      "pageUrl": "https://bluebutton.cms.gov/api-documentation/developer-sandbox/",
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://bluebutton.cms.gov/api-documentation/developer-sandbox"
+      ]
+    },
+    {
+      "src": "https://bluebutton.cms.gov/_astro/bb-postman-02.C5hWaVMs_Z4Buhk.webp",
+      "alt": "View/Edit App link",
+      "title": null,
+      "role": null,
+      "ariaHidden": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "width": 510,
+      "height": 373,
+      "isVisible": true,
+      "pageUrl": "https://bluebutton.cms.gov/api-documentation/developer-sandbox/",
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://bluebutton.cms.gov/api-documentation/developer-sandbox"
+      ]
+    },
+    {
+      "src": "https://bluebutton.cms.gov/_astro/bb-postman-03.DacqWUjo_1XBsjN.webp",
+      "alt": "Edit Application button",
+      "title": null,
+      "role": null,
+      "ariaHidden": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "width": 483,
+      "height": 218,
+      "isVisible": true,
+      "pageUrl": "https://bluebutton.cms.gov/api-documentation/developer-sandbox/",
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://bluebutton.cms.gov/api-documentation/developer-sandbox"
+      ]
+    },
+    {
+      "src": "https://bluebutton.cms.gov/_astro/bb-postman-05.BeRXTOiA_Z1vaOF0.webp",
+      "alt": "Save Application button",
+      "title": null,
+      "role": null,
+      "ariaHidden": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "width": 492,
+      "height": 141,
+      "isVisible": true,
+      "pageUrl": "https://bluebutton.cms.gov/api-documentation/developer-sandbox/",
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://bluebutton.cms.gov/api-documentation/developer-sandbox"
+      ]
+    },
+    {
+      "src": "https://bluebutton.cms.gov/_astro/bb-postman-12.BodpBqKd_Z1hlVPL.webp",
+      "alt": "Sandbox Logout button",
+      "title": null,
+      "role": null,
+      "ariaHidden": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "width": 609,
+      "height": 75,
+      "isVisible": true,
+      "pageUrl": "https://bluebutton.cms.gov/api-documentation/developer-sandbox/",
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://bluebutton.cms.gov/api-documentation/developer-sandbox"
+      ]
+    },
+    {
+      "src": "https://bluebutton.cms.gov/_astro/bb-postman-10.M63yHuNT_Z6GmI9.webp",
+      "alt": "Medicare login window",
+      "title": null,
+      "role": null,
+      "ariaHidden": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "width": 377,
+      "height": 555,
+      "isVisible": true,
+      "pageUrl": "https://bluebutton.cms.gov/api-documentation/developer-sandbox/",
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://bluebutton.cms.gov/api-documentation/developer-sandbox"
+      ]
+    },
+    {
+      "src": "https://bluebutton.cms.gov/_astro/bb-postman-11.G7kFs1Ci_UY830.webp",
+      "alt": "Connect button",
+      "title": null,
+      "role": null,
+      "ariaHidden": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "width": 609,
+      "height": 120,
+      "isVisible": true,
+      "pageUrl": "https://bluebutton.cms.gov/api-documentation/developer-sandbox/",
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://bluebutton.cms.gov/api-documentation/developer-sandbox"
+      ]
+    },
+    {
+      "src": "https://bluebutton.cms.gov/_astro/bb-postman-06.rvFV7ZF9_GXgjA.webp",
+      "alt": "Log Out to Continue button",
+      "title": null,
+      "role": null,
+      "ariaHidden": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "width": 609,
+      "height": 119,
+      "isVisible": true,
+      "pageUrl": "https://bluebutton.cms.gov/api-documentation/developer-sandbox/",
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://bluebutton.cms.gov/api-documentation/developer-sandbox"
+      ]
+    },
+    {
+      "src": "https://bluebutton.cms.gov/_astro/bb-postman-07.DMh-famz_ZFDS2R.webp",
+      "alt": "Get a Sample Authorization button",
+      "title": null,
+      "role": null,
+      "ariaHidden": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "width": 609,
+      "height": 129,
+      "isVisible": true,
+      "pageUrl": "https://bluebutton.cms.gov/api-documentation/developer-sandbox/",
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://bluebutton.cms.gov/api-documentation/developer-sandbox"
+      ]
+    },
+    {
+      "src": "https://bluebutton.cms.gov/_astro/bb-postman-08.o_7Nnfxm_ZLy65e.webp",
+      "alt": "Authorize as a Beneficiary button",
+      "title": null,
+      "role": null,
+      "ariaHidden": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "width": 609,
+      "height": 625,
+      "isVisible": true,
+      "pageUrl": "https://bluebutton.cms.gov/api-documentation/developer-sandbox/",
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://bluebutton.cms.gov/api-documentation/developer-sandbox"
+      ]
+    },
+    {
+      "src": "https://bluebutton.cms.gov/_astro/bb-postman-09.9gRqw-HF_1yJHaT.webp",
+      "alt": "JSON object with access token highlighted",
+      "title": null,
+      "role": null,
+      "ariaHidden": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "width": 609,
+      "height": 65,
+      "isVisible": true,
+      "pageUrl": "https://bluebutton.cms.gov/api-documentation/developer-sandbox/",
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://bluebutton.cms.gov/api-documentation/developer-sandbox"
+      ]
+    },
+    {
+      "src": "https://bluebutton.cms.gov/_astro/discussion.BgDw6z48_PlzM5.svg",
+      "alt": "",
+      "title": null,
+      "role": null,
+      "ariaHidden": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "width": 229,
+      "height": 150,
+      "isVisible": true,
+      "pageUrl": "https://bluebutton.cms.gov/support/",
+      "status": "DECORATIVE",
+      "issues": [],
+      "pages": [
+        "https://bluebutton.cms.gov/support"
+      ]
+    },
+    {
+      "src": "https://bluebutton.cms.gov/_astro/experts.BIsdDSt2_1n8OCd.svg",
+      "alt": "",
+      "title": null,
+      "role": null,
+      "ariaHidden": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "width": 599,
+      "height": 341,
+      "isVisible": true,
+      "pageUrl": "https://bluebutton.cms.gov/support/",
+      "status": "DECORATIVE",
+      "issues": [],
+      "pages": [
+        "https://bluebutton.cms.gov/support"
+      ]
+    }
+  ],
+  "meta": {
+    "ok": true,
+    "reportType": "alt-text",
+    "issueNumber": 7,
+    "issueUrl": "https://github.com/mgifford/alt-text-scan/issues/7",
+    "scanTitle": "https://bluebutton.cms.gov/api-documentation/",
+    "scanDomain": "https://bluebutton.cms.gov",
+    "discoveryMethod": "crawl",
+    "discoveredTotal": 26,
+    "requestedCount": 26,
+    "acceptedCount": 26,
+    "rejectedCount": 0,
+    "scannedCount": 26,
+    "skippedDueToTimeout": 0,
+    "urlsRequested": 26,
+    "urlsScanned": 26,
+    "totalImages": 48,
+    "uniqueImages": 19,
+    "imagesWithIssues": 0,
+    "statusCounts": {
+      "MISSING": 0,
+      "DECORATIVE": 33,
+      "SUSPICIOUS": 0,
+      "FILENAME": 0,
+      "TOO_SHORT": 0,
+      "TOO_LONG": 0,
+      "GOOD": 15
+    },
+    "scannedAt": "2026-03-18T18:52:45.543Z"
+  }
+}
