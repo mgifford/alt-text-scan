@@ -316,11 +316,14 @@ jobs:
                 failureState.phase = 'posting success comment';
                 const owner = context.repo.owner;
                 const repo = context.repo.repo;
+                const encodedJsonPath = summaryPath.split('/').map(encodeURIComponent).join('/');
                 const encodedMarkdownPath = markdownPath.split('/').map(encodeURIComponent).join('/');
                 const encodedHtmlPath = htmlPath.split('/').map(encodeURIComponent).join('/');
                 const encodedCsvPath = csvPath.split('/').map(encodeURIComponent).join('/');
+                const jsonPagesUrl = `https://${owner}.github.io/${repo}/${encodedJsonPath}`;
                 const pagesUrl = `https://${owner}.github.io/${repo}/${encodedHtmlPath}`;
                 const csvPagesUrl = `https://${owner}.github.io/${repo}/${encodedCsvPath}`;
+                const jsonBlobUrl = `https://github.com/${owner}/${repo}/blob/${encodeURIComponent(defaultBranch)}/${encodedJsonPath}`;
                 const blobUrl = `https://github.com/${owner}/${repo}/blob/${encodeURIComponent(defaultBranch)}/${encodedMarkdownPath}`;
                 const csvBlobUrl = `https://github.com/${owner}/${repo}/blob/${encodeURIComponent(defaultBranch)}/${encodedCsvPath}`;
 
@@ -347,9 +350,11 @@ jobs:
                   `- Rejected URLs: ${meta.rejectedCount}`,
                   "",
                   '- Image inventory CSV contains one row per unique image with alt text and semantic metadata (title, aria-label, aria-describedby, longdesc, role, dimensions, source pages).',
-                  `Report (Pages): ${pagesUrl}`,
+                  `Report (Pages, HTML): ${pagesUrl}`,
+                  `Report (Pages, JSON): ${jsonPagesUrl}`,
                   `Fallback (GitHub): ${blobUrl}`,
                   `Image inventory CSV (Pages): ${csvPagesUrl}`,
+                  `JSON fallback (GitHub): ${jsonBlobUrl}`,
                   `Image inventory CSV fallback (GitHub): ${csvBlobUrl}`
                 );
                 

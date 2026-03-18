@@ -56,6 +56,26 @@ function escapeMarkdown(text) {
     .trim();
 }
 
+function renderVariantLabel(value) {
+  if (value === null || value === undefined) {
+    return "(missing)";
+  }
+  if (value === "") {
+    return "(empty)";
+  }
+  return String(value);
+}
+
+function formatVariantSummary(variants) {
+  if (!Array.isArray(variants) || variants.length === 0) {
+    return "";
+  }
+
+  return variants
+    .map((variant) => `${renderVariantLabel(variant.value)} [${variant.count}]`)
+    .join(" | ");
+}
+
 /**
  * Convert scan results to a CSV string.
  * @param {object[]} uniqueImageList
@@ -65,16 +85,22 @@ function toCsv(uniqueImageList) {
   const headers = [
     "Image URL",
     "Alt Text",
+    "Alt Text Variants",
     "Status",
     "Issues",
     "Title",
+    "Title Variants",
     "ARIA Label",
+    "ARIA Label Variants",
     "ARIA Describedby",
+    "ARIA Describedby Variants",
     "Longdesc",
     "Role",
     "Visible",
     "Width",
     "Height",
+    "Occurrences",
+    "Page Count",
     "Found On Pages"
   ];
 
@@ -90,16 +116,22 @@ function toCsv(uniqueImageList) {
       [
         escape(img.src),
         escape(img.alt),
+        escape(formatVariantSummary(img.altVariants)),
         escape(img.status),
         escape((img.issues ?? []).join("; ")),
         escape(img.title),
+        escape(formatVariantSummary(img.titleVariants)),
         escape(img.ariaLabel),
+        escape(formatVariantSummary(img.ariaLabelVariants)),
         escape(img.ariaDescribedby),
+        escape(formatVariantSummary(img.ariaDescribedbyVariants)),
         escape(img.longdesc),
         escape(img.role),
         escape(img.isVisible),
         escape(img.width),
         escape(img.height),
+        escape(img.occurrences ?? ""),
+        escape((img.pages ?? []).length),
         escape((img.pages ?? []).join("; "))
       ].join(",")
     );
@@ -161,6 +193,33 @@ function toHtml(scanResult, meta) {
     })
     .join("\n");
 
+  const inventoryRows = scanResult.uniqueImageList
+    .map((img) => {
+      const color = statusColors[img.status] || "#555";
+      const altDisplay = img.alt === null ? '<em style="color:#999">missing</em>'
+        : img.alt === "" ? '<em style="color:#999">empty (decorative)</em>'
+        : `<code>${escapeHtml(img.alt)}</code>`;
+      const altVariants = (img.altVariants || [])
+        .map((variant) => `${escapeHtml(renderVariantLabel(variant.value))} (${variant.count})`)
+        .join("<br>");
+      const pages = (img.pages || []).slice(0, 2)
+        .map((p) => `<a href="${p}" target="_blank" rel="noopener">${escapeHtml(p)}</a>`)
+        .join("<br>");
+      return `
+        <tr>
+          <td><a href="${img.src.replace(/"/g, "&quot;")}" target="_blank" rel="noopener">${
+            img.src.length > 60 ? img.src.slice(0, 60) + "…" : img.src
+          }</a></td>
+          <td><span style="color:${color};font-weight:bold">${STATUS_LABELS[img.status] || img.status}</span></td>
+          <td>${altDisplay}</td>
+          <td style="font-size:0.85em">${altVariants || '<em style="color:#999">none</em>'}</td>
+          <td>${img.title ? `<code>${escapeHtml(img.title)}</code>` : '<em style="color:#999">none</em>'}</td>
+          <td>${img.ariaLabel ? `<code>${escapeHtml(img.ariaLabel)}</code>` : '<em style="color:#999">none</em>'}</td>
+          <td>${(img.pages || []).length}${pages ? `<div style="font-size:0.8em;margin-top:0.35rem">${pages}</div>` : ""}</td>
+        </tr>`;
+    })
+    .join("\n");
+
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -185,6 +244,7 @@ function toHtml(scanResult, meta) {
   <p><strong>Domain:</strong> ${domainDisplay.replace(/</g, "&lt;")} &nbsp;|&nbsp;
      <strong>Scanned:</strong> ${new Date(scanResult.scannedAt).toLocaleString()} &nbsp;|&nbsp;
      <strong>Discovery method:</strong> ${meta.discoveryMethod || "explicit URLs"}</p>
+  <p><a href="report.csv">Download image inventory CSV</a> &nbsp;|&nbsp; <a href="report.json">View full JSON</a></p>
 
   <div class="summary">
     <div class="stat"><strong>${urlsScanned}</strong> Pages scanned</div>
@@ -197,6 +257,13 @@ function toHtml(scanResult, meta) {
   <table>
     <thead><tr><th>Status</th><th>Count</th></tr></thead>
     <tbody>${countRows}</tbody>
+  </table>
+
+  <h2>Unique image inventory</h2>
+  <p>One row per unique image URL. Use the CSV for a complete export.</p>
+  <table>
+    <thead><tr><th>Image</th><th>Status</th><th>Alt Text</th><th>Alt Variants</th><th>Title</th><th>ARIA Label</th><th>Pages</th></tr></thead>
+    <tbody>${inventoryRows}</tbody>
   </table>
 
   <h2>Images with issues</h2>
@@ -231,6 +298,20 @@ function toMarkdown(scanResult, meta) {
     })
     .join("\n");
 
+  const inventoryRows = scanResult.uniqueImageList
+    .map((img) => {
+      const altDisplay = img.alt === null
+        ? "(missing)"
+        : img.alt === ""
+          ? "(empty decorative)"
+          : escapeMarkdown(img.alt);
+      const altVariants = (img.altVariants || [])
+        .map((variant) => `${escapeMarkdown(renderVariantLabel(variant.value))} (${variant.count})`)
+        .join("; ");
+      return `| ${escapeMarkdown(img.src)} | ${STATUS_LABELS[img.status] || img.status} | ${altDisplay} | ${escapeMarkdown(altVariants)} | ${escapeMarkdown(img.title || "")} | ${escapeMarkdown(img.ariaLabel || "")} | ${(img.pages || []).length} |`;
+    })
+    .join("\n");
+
   return `# Alt Text Scan Report: ${escapeMarkdown(domainDisplay)}
 
 ${meta.issueUrl ? `- Issue: ${meta.issueUrl}\n` : ""}- Scanned at: ${scanResult.scannedAt}
@@ -239,6 +320,8 @@ ${meta.issueUrl ? `- Issue: ${meta.issueUrl}\n` : ""}- Scanned at: ${scanResult.
 - Images found: ${scanResult.totalImages}
 - Unique images: ${scanResult.uniqueImages}
 - Images with issues: ${scanResult.imagesWithIssues}
+- JSON: report.json
+- CSV image inventory: report.csv
 
 ## Status breakdown
 
@@ -247,6 +330,10 @@ ${statusLines || "- No statuses recorded"}
 ## Images with issues
 
 ${issueRows ? `| Image URL | Alt Text | Status | Issues | Found on |\n| --- | --- | --- | --- | --- |\n${issueRows}` : "No issues found."}
+
+## Unique image inventory
+
+${inventoryRows ? `| Image URL | Status | Alt Text | Alt Variants | Title | ARIA Label | Pages |\n| --- | --- | --- | --- | --- | --- | --- |\n${inventoryRows}` : "No images found."}
 `;
 }
 

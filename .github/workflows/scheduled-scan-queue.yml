@@ -206,6 +206,7 @@ jobs:
               acceptedCount: meta.acceptedCount ?? 0,
               rejectedCount: meta.rejectedCount ?? 0,
               scannedCount: meta.scannedCount ?? 0,
+              jsonPath,
               markdownPath,
               htmlPath,
               csvPath,
@@ -286,9 +287,11 @@ jobs:
 
             for (const line of lines) {
               const item = JSON.parse(line);
+              const pagesJsonUrl = `https://${owner}.github.io/${repo}/${item.jsonPath}`;
               const pagesMdUrl = `https://${owner}.github.io/${repo}/${item.markdownPath}`;
               const pagesHtmlUrl = `https://${owner}.github.io/${repo}/${item.htmlPath}`;
               const pagesCsvUrl = `https://${owner}.github.io/${repo}/${item.csvPath}`;
+              const ghJsonUrl = `https://github.com/${owner}/${repo}/blob/main/${item.jsonPath}`;
               const ghMdUrl = `https://github.com/${owner}/${repo}/blob/main/${item.markdownPath}`;
 
               const commentLines = [
@@ -310,8 +313,10 @@ jobs:
                 'Image inventory CSV includes one row per unique image with alt text and semantic metadata (title, aria-label, aria-describedby, longdesc, role, dimensions, source pages).',
                 '',
                 `Latest report (Pages, HTML): ${pagesHtmlUrl}`,
+                `Latest report (Pages, JSON): ${pagesJsonUrl}`,
                 `Latest report (Pages, Markdown): ${pagesMdUrl}`,
                 `Latest image inventory CSV (Pages): ${pagesCsvUrl}`,
+                `JSON fallback (GitHub): ${ghJsonUrl}`,
                 `Fallback (GitHub): ${ghMdUrl}`,
                 '',
                 '_Issue remains open for future scheduled scans._'

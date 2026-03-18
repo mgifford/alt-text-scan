@@ -61,6 +61,101 @@ const MEANINGLESS_VALUES = new Set([
  */
 const DECORATIVE_ROLES = new Set(["presentation", "none"]);
 
+const STATUS_SEVERITY = {
+  GOOD: 0,
+  DECORATIVE: 1,
+  SUSPICIOUS: 2,
+  TOO_SHORT: 3,
+  TOO_LONG: 3,
+  FILENAME: 4,
+  MISSING: 5
+};
+
+function normalizeVariantValue(value) {
+  if (value === undefined || value === null) {
+    return null;
+  }
+
+  if (typeof value === "string") {
+    const trimmed = value.trim();
+    return trimmed === "" ? "" : trimmed;
+  }
+
+  return String(value);
+}
+
+function variantKey(value) {
+  if (value === null) {
+    return "__NULL__";
+  }
+  if (value === "") {
+    return "__EMPTY__";
+  }
+  return value;
+}
+
+function addVariant(variantMap, value, pageUrl) {
+  const normalized = normalizeVariantValue(value);
+  const key = variantKey(normalized);
+  const existing = variantMap.get(key) || {
+    value: normalized,
+    count: 0,
+    pages: new Set()
+  };
+
+  existing.count += 1;
+  existing.pages.add(pageUrl);
+  variantMap.set(key, existing);
+}
+
+function finalizeVariants(variantMap) {
+  return Array.from(variantMap.values())
+    .map((entry) => ({
+      value: entry.value,
+      count: entry.count,
+      pages: Array.from(entry.pages)
+    }))
+    .sort((a, b) => {
+      if (b.count !== a.count) {
+        return b.count - a.count;
+      }
+      const aLabel = a.value === null ? "" : String(a.value);
+      const bLabel = b.value === null ? "" : String(b.value);
+      return aLabel.localeCompare(bLabel);
+    });
+}
+
+function pickRepresentativeValue(variants, preferNonEmpty = false) {
+  if (!variants || variants.length === 0) {
+    return null;
+  }
+
+  if (!preferNonEmpty) {
+    return variants[0].value;
+  }
+
+  const nonEmpty = variants.find((variant) => variant.value !== null && variant.value !== "");
+  return nonEmpty ? nonEmpty.value : variants[0].value;
+}
+
+function pickAggregateStatus(statusCountsMap) {
+  let bestStatus = "GOOD";
+  let bestScore = -1;
+
+  for (const [status, count] of statusCountsMap.entries()) {
+    if (!count) {
+      continue;
+    }
+    const score = STATUS_SEVERITY[status] ?? 0;
+    if (score > bestScore) {
+      bestScore = score;
+      bestStatus = status;
+    }
+  }
+
+  return bestStatus;
+}
+
 /**
  * Classify alt text quality for a single image.
  *
@@ -297,7 +392,7 @@ export async function scanAltText(urls, options = {}) {
   // Aggregate statistics
   const totalImages = urlResults.reduce((sum, r) => sum + r.images.length, 0);
   const statusCounts = { MISSING: 0, DECORATIVE: 0, SUSPICIOUS: 0, FILENAME: 0, TOO_SHORT: 0, TOO_LONG: 0, GOOD: 0 };
-  const imageMap = new Map(); // src → {image, pages[]}
+  const imageMap = new Map(); // src → aggregate
 
   for (const r of urlResults) {
     for (const img of r.images) {
@@ -306,17 +401,82 @@ export async function scanAltText(urls, options = {}) {
       // Aggregate by image src for cross-page deduplication
       const key = img.src;
       if (!imageMap.has(key)) {
-        imageMap.set(key, { ...img, pages: [r.url] });
-      } else {
-        const existing = imageMap.get(key);
-        if (!existing.pages.includes(r.url)) {
-          existing.pages.push(r.url);
-        }
+        imageMap.set(key, {
+          src: img.src,
+          isVisible: Boolean(img.isVisible),
+          width: img.width ?? null,
+          height: img.height ?? null,
+          occurrences: 0,
+          pages: new Set(),
+          issues: new Set(),
+          statusCounts: new Map(),
+          altVariants: new Map(),
+          titleVariants: new Map(),
+          ariaLabelVariants: new Map(),
+          ariaDescribedbyVariants: new Map(),
+          longdescVariants: new Map(),
+          roleVariants: new Map()
+        });
       }
+
+      const aggregate = imageMap.get(key);
+      aggregate.occurrences += 1;
+      aggregate.pages.add(r.url);
+      aggregate.isVisible = aggregate.isVisible || Boolean(img.isVisible);
+      if (aggregate.width === null && img.width !== null && img.width !== undefined) {
+        aggregate.width = img.width;
+      }
+      if (aggregate.height === null && img.height !== null && img.height !== undefined) {
+        aggregate.height = img.height;
+      }
+
+      addVariant(aggregate.altVariants, img.alt, r.url);
+      addVariant(aggregate.titleVariants, img.title, r.url);
+      addVariant(aggregate.ariaLabelVariants, img.ariaLabel, r.url);
+      addVariant(aggregate.ariaDescribedbyVariants, img.ariaDescribedby, r.url);
+      addVariant(aggregate.longdescVariants, img.longdesc, r.url);
+      addVariant(aggregate.roleVariants, img.role, r.url);
+
+      for (const issue of img.issues || []) {
+        aggregate.issues.add(issue);
+      }
+
+      aggregate.statusCounts.set(img.status, (aggregate.statusCounts.get(img.status) ?? 0) + 1);
     }
   }
 
-  const uniqueImages = Array.from(imageMap.values());
+  const uniqueImages = Array.from(imageMap.values()).map((entry) => {
+    const altVariants = finalizeVariants(entry.altVariants);
+    const titleVariants = finalizeVariants(entry.titleVariants);
+    const ariaLabelVariants = finalizeVariants(entry.ariaLabelVariants);
+    const ariaDescribedbyVariants = finalizeVariants(entry.ariaDescribedbyVariants);
+    const longdescVariants = finalizeVariants(entry.longdescVariants);
+    const roleVariants = finalizeVariants(entry.roleVariants);
+
+    return {
+      src: entry.src,
+      alt: pickRepresentativeValue(altVariants, false),
+      title: pickRepresentativeValue(titleVariants, true),
+      ariaLabel: pickRepresentativeValue(ariaLabelVariants, true),
+      ariaDescribedby: pickRepresentativeValue(ariaDescribedbyVariants, true),
+      longdesc: pickRepresentativeValue(longdescVariants, true),
+      role: pickRepresentativeValue(roleVariants, true),
+      isVisible: entry.isVisible,
+      width: entry.width,
+      height: entry.height,
+      status: pickAggregateStatus(entry.statusCounts),
+      issues: Array.from(entry.issues),
+      pages: Array.from(entry.pages),
+      occurrences: entry.occurrences,
+      altVariants,
+      titleVariants,
+      ariaLabelVariants,
+      ariaDescribedbyVariants,
+      longdescVariants,
+      roleVariants
+    };
+  });
+
   const imagesWithIssues = uniqueImages.filter((img) => img.issues && img.issues.length > 0).length;
 
   return {
