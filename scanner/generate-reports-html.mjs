@@ -352,6 +352,53 @@ function generateReportsPage({
       padding: 0;
       box-sizing: border-box;
     }
+
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 1rem;
+      padding: 0.5rem 1rem;
+      background: #000;
+      color: #fff;
+      font-weight: bold;
+      text-decoration: none;
+      z-index: 9999;
+      border-radius: 0 0 4px 4px;
+    }
+
+    .skip-link:focus {
+      top: 0;
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    :target {
+      scroll-margin-top: 1rem;
+    }
+
+    h1:focus,
+    h2:focus,
+    h3:focus {
+      outline: 3px solid #005fcc;
+      outline-offset: 2px;
+      scroll-margin-top: 1rem;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .skip-link {
+        transition: top 0.1s ease;
+      }
+    }
     
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
@@ -663,7 +710,8 @@ function generateReportsPage({
   </style>
 </head>
 <body>
-  <div class="container">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <main class="container" id="main-content" tabindex="-1">
     <nav class="nav">
       <a href="index.html">Submit URLs</a>
       <a href="reports.html">View Reports</a>
@@ -699,7 +747,7 @@ function generateReportsPage({
     <footer>
       <a href="https://github.com/${getCanonicalRepo()}">Join our GitHub Community</a>
     </footer>
-  </div>
+  </main>
   <script>
   (function () {
     var PAGE_SIZE = 50;
