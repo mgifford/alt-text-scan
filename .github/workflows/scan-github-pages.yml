@@ -5,23 +5,20 @@
 #      which requires a GH_TOKEN secret with write access — see README for setup.
 #
 # Triggers:
-#   - On push to main when GitHub Pages content files or this workflow change
 #   - Monthly on the 1st of each month at 02:00 UTC
 #   - Manually via workflow_dispatch
+#
+# Note: Push triggers were removed to avoid duplication with deploy-pages.yml.
+# This workflow scans the live GitHub Pages URL, so it must run after the site has
+# been deployed. Triggering on push would create a race condition (site not yet updated)
+# and also cause deploy-pages.yml to fire twice (once on push, once after this
+# workflow commits its scan reports back to the repo).
 #
 # Reference: https://github.com/github/accessibility-scanner
 
 name: Scan GitHub Pages (axe-core)
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'index.html'
-      - 'reports.html'
-      - 'submit.js'
-      - '.github/workflows/scan-github-pages.yml'
   schedule:
     # Monthly on the 1st at 02:00 UTC
     - cron: '0 2 1 * *'
