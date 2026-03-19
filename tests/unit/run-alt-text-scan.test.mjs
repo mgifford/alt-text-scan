@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 
-import { sortUniqueImageList, toHtml } from "../../scanner/run-alt-text-scan.mjs";
+import { sortUniqueImageList, toHtml, truncateUrl } from "../../scanner/run-alt-text-scan.mjs";
 
 function createImage(overrides = {}) {
   return {
@@ -88,4 +88,45 @@ test("toHtml includes hidden thumbnail columns and preview dialog controls", () 
     html.indexOf("https://example.com/suspicious.png") < html.indexOf("https://example.com/good.png"),
     "Flagged images should appear before non-flagged images in the inventory"
   );
+  assert.match(html, /id="image-preview-view-full"/, "Modal should include view full image link");
+});
+
+test("truncateUrl returns short URLs unchanged", () => {
+  assert.equal(truncateUrl("https://example.com/img.jpg"), "https://example.com/img.jpg");
+});
+
+test("truncateUrl truncates long URLs keeping protocol start and filename", () => {
+  const long = "https://storage.googleapis.com/ca-it-prod-home-5918-strapi/production/chianti_lomax_4765e8b1ed/chianti_lomax_4765e8b1ed.jpg";
+  const result = truncateUrl(long);
+  assert.ok(result.length < long.length, "Result should be shorter than the original URL");
+  assert.ok(result.startsWith("https://"), "Result should start with the protocol");
+  assert.ok(result.includes("chianti_lomax_4765e8b1ed.jpg"), "Result should include the filename");
+  assert.ok(result.includes("\u2026"), "Result should contain an ellipsis character");
+});
+
+test("truncateUrl uses simple truncation when filename alone exceeds maxLength", () => {
+  const longFilename = "https://example.com/" + "x".repeat(70) + ".jpg";
+  const result = truncateUrl(longFilename);
+  assert.ok(result.endsWith("\u2026"), "Should end with ellipsis for simple truncation");
+  assert.ok(result.length <= 61, "Simple truncation result should be at most maxLength + 1 (for ellipsis)");
+});
+
+test("toHtml uses mid-truncated URLs with tooltip for long image srcs", () => {
+  const longSrc = "https://storage.googleapis.com/long-bucket/path/to/deeply/nested/unique_image_file.jpg";
+  const scanResult = {
+    statusCounts: { GOOD: 1 },
+    urlsScanned: 1,
+    totalImages: 1,
+    uniqueImages: 1,
+    imagesWithIssues: 0,
+    scannedAt: "2026-03-19T00:00:00.000Z",
+    uniqueImageList: [
+      createImage({ src: longSrc, status: "GOOD" })
+    ]
+  };
+  const meta = { scanDomain: "https://example.com", discoveryMethod: "explicit URLs" };
+  const html = toHtml(scanResult, meta);
+  assert.match(html, /url-cell/, "URL cell class should be present");
+  assert.match(html, /url-tooltip/, "URL tooltip class should be present");
+  assert.match(html, /unique_image_file\.jpg/, "Filename portion of URL should be visible");
 });
