@@ -21,6 +21,21 @@ export function getDefaultEngines() {
 }
 
 /**
+ * Parse a "Max Pages: N" directive from the issue body.
+ * Values are clamped to the range [1, 2500]. Returns null if not found or unparseable.
+ * @param {string} body - The issue body text
+ * @returns {number|null} Parsed (and clamped) maxPages value, or null if not found
+ */
+function extractBodyMaxPages(body) {
+  if (!body || typeof body !== "string") return null;
+  const match = body.match(/^Max Pages:\s*(\d+)\s*$/im);
+  if (!match) return null;
+  const value = parseInt(match[1], 10);
+  if (!Number.isFinite(value) || value < 1) return null;
+  return Math.min(value, 2500);
+}
+
+/**
  * Parse engine names from an "Engine: ..." line at the start of an issue body.
  * @param {string} body - The issue body text
  * @returns {string[]|null} Array of valid engine names, or null if not found
@@ -234,6 +249,11 @@ export function parseScanIssue(issueEvent) {
   const titleEngines = titleInfo.engines;
   const engines = bodyEngines ?? (titleEngines.length > 0 ? titleEngines : getDefaultEngines());
 
+  // Max pages for domain scan discovery: "Max Pages: N" in body, clamped 1–2500, default 100
+  const DEFAULT_MAX_PAGES = 100;
+  const bodyMaxPages = extractBodyMaxPages(body);
+  const maxPages = bodyMaxPages !== null ? bodyMaxPages : DEFAULT_MAX_PAGES;
+
   const requestId = `${issue.number}-${randomUUID()}`;
   const request = {
     requestId,
@@ -246,7 +266,8 @@ export function parseScanIssue(issueEvent) {
     scanTitle: titleInfo.scanTitle,
     requestedUrls,
     engines,
-    pageLoadDelay: titleInfo.pageLoadDelay ?? 2
+    pageLoadDelay: titleInfo.pageLoadDelay ?? 2,
+    maxPages
   };
 
   if (scanDomain) {
@@ -264,7 +285,8 @@ export function parseScanIssue(issueEvent) {
     triggerType: titleInfo.triggerType,
     engines,
     pageLoadDelay: titleInfo.pageLoadDelay ?? 2,
-    scanDomain
+    scanDomain,
+    maxPages
   };
 }
 
@@ -316,6 +338,12 @@ export function validateScanRequest(candidate) {
 
   if (candidate.scanDomain && !validateUriLike(candidate.scanDomain)) {
     errors.push("scanDomain must be a valid http/https URL");
+  }
+
+  if (candidate.maxPages !== undefined) {
+    if (!Number.isInteger(candidate.maxPages) || candidate.maxPages < 1 || candidate.maxPages > 2500) {
+      errors.push("maxPages must be an integer between 1 and 2500");
+    }
   }
 
   const knownKeys = new Set(Object.keys(scanRequestSchema.properties));

@@ -53,6 +53,12 @@
       },
       "minItems": 1
     },
+    "maxPages": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 2500,
+      "description": "Maximum number of pages to discover in domain scan mode. Defaults to 100."
+    },
     "pageLoadDelay": {
       "type": "integer",
       "minimum": 0,

@@ -107,6 +107,28 @@ test('formatIssueBody creates proper markdown format', () => {
   assert.match(body, /https:\/\/example\.org/);
 });
 
+test('formatIssueBody includes Max Pages directive when maxPages is not 100', () => {
+  const scanTitle = 'Big Domain Scan';
+  const urls = [];
+  const body = formatIssueBody(scanTitle, urls, { maxPages: 500 });
+  assert.match(body, /Max Pages: 500/);
+  assert.match(body, /# URLs/);
+});
+
+test('formatIssueBody omits Max Pages directive when maxPages is 100 (default)', () => {
+  const scanTitle = 'Default Scan';
+  const urls = ['https://example.com'];
+  const body = formatIssueBody(scanTitle, urls, { maxPages: 100 });
+  assert.doesNotMatch(body, /Max Pages:/);
+});
+
+test('formatIssueBody omits Max Pages directive when options not provided', () => {
+  const scanTitle = 'Default Scan';
+  const urls = ['https://example.com'];
+  const body = formatIssueBody(scanTitle, urls);
+  assert.doesNotMatch(body, /Max Pages:/);
+});
+
 /**
  * Helper function to mock global.window.location for GitHub issue tests
  * Sets up a GitHub Pages-style location object required by createGitHubIssue
