@@ -40,6 +40,16 @@ const STATUS_LABELS = {
   TOO_LONG: "Too Long"
 };
 
+const STATUS_PRIORITY = {
+  MISSING: 0,
+  FILENAME: 1,
+  SUSPICIOUS: 2,
+  TOO_SHORT: 3,
+  TOO_LONG: 4,
+  DECORATIVE: 5,
+  GOOD: 6
+};
+
 function escapeHtml(text) {
   return String(text ?? "")
     .replace(/&/g, "&amp;")
@@ -76,12 +86,64 @@ function formatVariantSummary(variants) {
     .join(" | ");
 }
 
+function renderPreviewLabel(img) {
+  if (img.alt && img.alt !== "") {
+    return img.alt;
+  }
+
+  if (img.title && img.title !== "") {
+    return img.title;
+  }
+
+  return img.src;
+}
+
+function renderThumbnailButton(img) {
+  const width = Number(img.width) > 0 ? Number(img.width) : "";
+  const height = Number(img.height) > 0 ? Number(img.height) : "";
+  const previewLabel = renderPreviewLabel(img);
+
+  return `<button type="button" class="thumbnail-trigger" data-preview-src="${escapeHtml(img.src)}" data-preview-alt="${escapeHtml(img.alt ?? "")}" data-preview-label="${escapeHtml(previewLabel)}" data-preview-width="${width}" data-preview-height="${height}" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: ${escapeHtml(previewLabel)}"><img src="${escapeHtml(img.src)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button>`;
+}
+
+export function sortUniqueImageList(uniqueImageList) {
+  return [...(uniqueImageList || [])].sort((left, right) => {
+    const leftHasIssues = Array.isArray(left.issues) && left.issues.length > 0 ? 0 : 1;
+    const rightHasIssues = Array.isArray(right.issues) && right.issues.length > 0 ? 0 : 1;
+
+    if (leftHasIssues !== rightHasIssues) {
+      return leftHasIssues - rightHasIssues;
+    }
+
+    const leftPriority = STATUS_PRIORITY[left.status] ?? 99;
+    const rightPriority = STATUS_PRIORITY[right.status] ?? 99;
+    if (leftPriority !== rightPriority) {
+      return leftPriority - rightPriority;
+    }
+
+    const leftPages = Array.isArray(left.pages) ? left.pages.length : 0;
+    const rightPages = Array.isArray(right.pages) ? right.pages.length : 0;
+    if (rightPages !== leftPages) {
+      return rightPages - leftPages;
+    }
+
+    const leftOccurrences = Number(left.occurrences || 0);
+    const rightOccurrences = Number(right.occurrences || 0);
+    if (rightOccurrences !== leftOccurrences) {
+      return rightOccurrences - leftOccurrences;
+    }
+
+    return String(left.src || "").localeCompare(String(right.src || ""));
+  });
+}
+
 /**
  * Convert scan results to a CSV string.
  * @param {object[]} uniqueImageList
  * @returns {string}
  */
-function toCsv(uniqueImageList) {
+export function toCsv(uniqueImageList) {
+  const sortedUniqueImages = sortUniqueImageList(uniqueImageList);
   const headers = [
     "Image URL",
     "Alt Text",
@@ -111,7 +173,7 @@ function toCsv(uniqueImageList) {
   };
 
   const rows = [headers.join(",")];
-  for (const img of uniqueImageList) {
+  for (const img of sortedUniqueImages) {
     rows.push(
       [
         escape(img.src),
@@ -146,9 +208,10 @@ function toCsv(uniqueImageList) {
  * @param {object} meta
  * @returns {string}
  */
-function toHtml(scanResult, meta) {
+export function toHtml(scanResult, meta) {
   const { statusCounts, urlsScanned, totalImages, uniqueImages, imagesWithIssues } = scanResult;
   const domainDisplay = meta.scanDomain || meta.scanTitle || "Unknown domain";
+  const sortedUniqueImages = sortUniqueImageList(scanResult.uniqueImageList);
 
   const statusColors = {
     MISSING: "#d32f2f",
@@ -169,7 +232,7 @@ function toHtml(scanResult, meta) {
     })
     .join("\n");
 
-  const issueRows = scanResult.uniqueImageList
+  const issueRows = sortedUniqueImages
     .filter((img) => img.issues && img.issues.length > 0)
     .map((img) => {
       const color = statusColors[img.status] || "#555";
@@ -185,6 +248,7 @@ function toHtml(scanResult, meta) {
           <td><a href="${img.src.replace(/"/g, "&quot;")}" target="_blank" rel="noopener">${
             img.src.length > 60 ? img.src.slice(0, 60) + "…" : img.src
           }</a></td>
+          <td class="thumbnail-column" hidden>${renderThumbnailButton(img)}</td>
           <td>${altDisplay}</td>
           <td><span style="color:${color};font-weight:bold">${STATUS_LABELS[img.status] || img.status}</span></td>
           <td><ul style="margin:0;padding-left:1.2em">${issues}</ul></td>
@@ -193,7 +257,7 @@ function toHtml(scanResult, meta) {
     })
     .join("\n");
 
-  const inventoryRows = scanResult.uniqueImageList
+  const inventoryRows = sortedUniqueImages
     .map((img) => {
       const color = statusColors[img.status] || "#555";
       const altDisplay = img.alt === null ? '<em style="color:#999">missing</em>'
@@ -210,6 +274,7 @@ function toHtml(scanResult, meta) {
           <td><a href="${img.src.replace(/"/g, "&quot;")}" target="_blank" rel="noopener">${
             img.src.length > 60 ? img.src.slice(0, 60) + "…" : img.src
           }</a></td>
+          <td class="thumbnail-column" hidden>${renderThumbnailButton(img)}</td>
           <td><span style="color:${color};font-weight:bold">${STATUS_LABELS[img.status] || img.status}</span></td>
           <td>${altDisplay}</td>
           <td style="font-size:0.85em">${altVariants || '<em style="color:#999">none</em>'}</td>
@@ -232,11 +297,34 @@ function toHtml(scanResult, meta) {
     .summary { display: flex; gap: 1.5rem; flex-wrap: wrap; margin: 1rem 0; }
     .stat { background: #f5f5f5; border-radius: 6px; padding: 0.75rem 1.25rem; }
     .stat strong { display: block; font-size: 1.8rem; }
+    .report-controls { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; margin: 1rem 0; }
+    .toggle-thumbnails { border: 1px solid #333; background: #fff; color: #222; border-radius: 999px; padding: 0.55rem 0.95rem; font: inherit; cursor: pointer; }
+    .toggle-thumbnails[aria-pressed="true"] { background: #222; color: #fff; }
     table { border-collapse: collapse; width: 100%; margin-top: 1.5rem; }
     th { background: #333; color: #fff; text-align: left; padding: 0.5rem 0.75rem; }
     td { padding: 0.5rem 0.75rem; border-bottom: 1px solid #ddd; vertical-align: top; }
     tr:hover td { background: #fafafa; }
     code { background: #f0f0f0; padding: 0.1em 0.3em; border-radius: 3px; font-size: 0.9em; }
+    .thumbnail-column { width: 8.5rem; }
+    .thumbnail-trigger { display: inline-flex; flex-direction: column; align-items: center; gap: 0.35rem; width: 7rem; padding: 0.45rem; border: 1px solid #ccc; border-radius: 8px; background: #fff; cursor: pointer; }
+    .thumbnail-trigger:hover, .thumbnail-trigger:focus-visible { border-color: #333; box-shadow: 0 0 0 3px rgba(33, 33, 33, 0.15); outline: none; }
+    .thumbnail-trigger__image { display: block; width: 100%; height: 4.5rem; object-fit: contain; background: #f5f5f5; border-radius: 4px; }
+    .thumbnail-trigger__text { font-size: 0.8rem; color: #444; }
+    dialog::backdrop { background: rgba(17, 24, 39, 0.72); }
+    .preview-dialog { border: none; border-radius: 12px; padding: 0; width: min(92vw, 960px); max-height: 90vh; overflow: hidden; }
+    .preview-dialog__inner { display: grid; gap: 0.75rem; padding: 1rem; background: #fff; }
+    .preview-dialog__header { display: flex; justify-content: space-between; gap: 1rem; align-items: start; }
+    .preview-dialog__title { margin: 0; font-size: 1.1rem; }
+    .preview-dialog__close { border: 1px solid #333; background: #fff; color: #222; border-radius: 999px; padding: 0.45rem 0.8rem; font: inherit; cursor: pointer; }
+    .preview-dialog__figure { margin: 0; display: grid; gap: 0.5rem; justify-items: center; }
+    .preview-dialog__image { display: block; max-width: min(88vw, 100%); max-height: 70vh; width: auto; height: auto; background: #f5f5f5; }
+    .preview-dialog__caption { font-size: 0.9rem; color: #444; word-break: break-word; }
+    @media (max-width: 720px) {
+      .summary { gap: 0.75rem; }
+      .stat { flex: 1 1 9rem; }
+      .thumbnail-trigger { width: 5.75rem; }
+      .thumbnail-trigger__image { height: 3.75rem; }
+    }
   </style>
 </head>
 <body>
@@ -245,6 +333,10 @@ function toHtml(scanResult, meta) {
      <strong>Scanned:</strong> ${new Date(scanResult.scannedAt).toLocaleString()} &nbsp;|&nbsp;
      <strong>Discovery method:</strong> ${meta.discoveryMethod || "explicit URLs"}</p>
   <p><a href="report.csv">Download image inventory CSV</a> &nbsp;|&nbsp; <a href="report.json">View full JSON</a></p>
+  <div class="report-controls">
+    <button type="button" id="toggle-thumbnails" class="toggle-thumbnails" aria-pressed="false">Show thumbnails</button>
+    <span id="thumbnail-help">Thumbnails are hidden by default. Turn them on to preview images in a dialog.</span>
+  </div>
 
   <div class="summary">
     <div class="stat"><strong>${urlsScanned}</strong> Pages scanned</div>
@@ -260,31 +352,140 @@ function toHtml(scanResult, meta) {
   </table>
 
   <h2>Unique image inventory</h2>
-  <p>One row per unique image URL. Use the CSV for a complete export.</p>
+  <p>Showing all ${uniqueImages} unique image URLs, with flagged items listed first. Use the CSV for a complete export.</p>
   <table>
-    <thead><tr><th>Image</th><th>Status</th><th>Alt Text</th><th>Alt Variants</th><th>Title</th><th>ARIA Label</th><th>Pages</th></tr></thead>
+    <thead><tr><th>Image</th><th class="thumbnail-column" hidden>Thumbnail</th><th>Status</th><th>Alt Text</th><th>Alt Variants</th><th>Title</th><th>ARIA Label</th><th>Pages</th></tr></thead>
     <tbody>${inventoryRows}</tbody>
   </table>
 
   <h2>Images with issues</h2>
   ${issueRows
     ? `<table>
-    <thead><tr><th>Image</th><th>Alt Text</th><th>Status</th><th>Issues</th><th>Found on</th></tr></thead>
+    <thead><tr><th>Image</th><th class="thumbnail-column" hidden>Thumbnail</th><th>Alt Text</th><th>Status</th><th>Issues</th><th>Found on</th></tr></thead>
     <tbody>${issueRows}</tbody>
   </table>`
     : "<p>No issues found! 🎉</p>"}
+
+  <dialog id="image-preview-dialog" class="preview-dialog" aria-labelledby="image-preview-title">
+    <div class="preview-dialog__inner">
+      <div class="preview-dialog__header">
+        <h2 id="image-preview-title" class="preview-dialog__title">Image preview</h2>
+        <form method="dialog">
+          <button type="submit" class="preview-dialog__close" id="close-image-preview">Close</button>
+        </form>
+      </div>
+      <figure class="preview-dialog__figure">
+        <img id="image-preview-image" class="preview-dialog__image" alt="">
+        <figcaption id="image-preview-caption" class="preview-dialog__caption"></figcaption>
+      </figure>
+    </div>
+  </dialog>
+
+  <script>
+    (() => {
+      const toggleButton = document.getElementById("toggle-thumbnails");
+      const thumbnailColumns = Array.from(document.querySelectorAll(".thumbnail-column"));
+      const dialog = document.getElementById("image-preview-dialog");
+      const previewImage = document.getElementById("image-preview-image");
+      const previewCaption = document.getElementById("image-preview-caption");
+      const previewTitle = document.getElementById("image-preview-title");
+      const closeButton = document.getElementById("close-image-preview");
+      const previewTriggers = Array.from(document.querySelectorAll(".thumbnail-trigger"));
+      let lastTrigger = null;
+      let lastOpenMode = "click";
+
+      if (toggleButton) {
+        toggleButton.addEventListener("click", () => {
+          const shouldShow = toggleButton.getAttribute("aria-pressed") !== "true";
+          toggleButton.setAttribute("aria-pressed", String(shouldShow));
+          toggleButton.textContent = shouldShow ? "Hide thumbnails" : "Show thumbnails";
+          thumbnailColumns.forEach((column) => {
+            column.hidden = !shouldShow;
+          });
+        });
+      }
+
+      if (!(dialog instanceof HTMLDialogElement) || !previewImage || !previewCaption || !previewTitle) {
+        return;
+      }
+
+      const setPreviewContent = (trigger) => {
+        const src = trigger.dataset.previewSrc || "";
+        const alt = trigger.dataset.previewAlt || "";
+        const label = trigger.dataset.previewLabel || src;
+        const width = Number(trigger.dataset.previewWidth || 0);
+        const height = Number(trigger.dataset.previewHeight || 0);
+        const availableWidth = Math.max(window.innerWidth - 80, 320);
+
+        previewImage.src = src;
+        previewImage.alt = alt;
+        previewImage.style.width = width > 0 ? String(Math.min(width, availableWidth)) + "px" : "auto";
+        previewImage.style.height = "auto";
+        previewImage.style.maxWidth = "100%";
+        previewTitle.textContent = label;
+        previewCaption.textContent = [
+          alt ? "Alt text: " + alt : "Alt text: none",
+          width > 0 && height > 0 ? "Displayed size: " + width + " × " + height + "px" : "Displayed size: not captured",
+          src
+        ].join(" | ");
+      };
+
+      const openPreview = (trigger, mode) => {
+        lastTrigger = trigger;
+        lastOpenMode = mode;
+        setPreviewContent(trigger);
+        if (!dialog.open) {
+          dialog.showModal();
+        }
+        if (mode === "click") {
+          closeButton.focus();
+        }
+      };
+
+      previewTriggers.forEach((trigger) => {
+        trigger.addEventListener("click", (event) => {
+          event.preventDefault();
+          openPreview(trigger, "click");
+        });
+
+        trigger.addEventListener("mouseenter", () => {
+          openPreview(trigger, "hover");
+        });
+
+        trigger.addEventListener("focus", () => {
+          openPreview(trigger, "focus");
+        });
+      });
+
+      dialog.addEventListener("click", (event) => {
+        const bounds = dialog.getBoundingClientRect();
+        const isOutside = event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom;
+        if (isOutside) {
+          dialog.close();
+        }
+      });
+
+      dialog.addEventListener("close", () => {
+        previewImage.removeAttribute("src");
+        if (lastOpenMode === "click" && lastTrigger && document.contains(lastTrigger)) {
+          lastTrigger.focus();
+        }
+      });
+    })();
+  </script>
 </body>
 </html>`;
 }
 
-function toMarkdown(scanResult, meta) {
+export function toMarkdown(scanResult, meta) {
   const domainDisplay = meta.scanDomain || meta.scanTitle || "Unknown domain";
+  const sortedUniqueImages = sortUniqueImageList(scanResult.uniqueImageList);
   const statusLines = Object.entries(scanResult.statusCounts)
     .filter(([, count]) => count > 0)
     .map(([status, count]) => `- ${STATUS_LABELS[status] || status}: ${count}`)
     .join("\n");
 
-  const issueRows = scanResult.uniqueImageList
+  const issueRows = sortedUniqueImages
     .filter((img) => img.issues && img.issues.length > 0)
     .map((img) => {
       const altDisplay = img.alt === null
@@ -298,7 +499,7 @@ function toMarkdown(scanResult, meta) {
     })
     .join("\n");
 
-  const inventoryRows = scanResult.uniqueImageList
+  const inventoryRows = sortedUniqueImages
     .map((img) => {
       const altDisplay = img.alt === null
         ? "(missing)"

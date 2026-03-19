@@ -10,18 +10,46 @@
     .summary { display: flex; gap: 1.5rem; flex-wrap: wrap; margin: 1rem 0; }
     .stat { background: #f5f5f5; border-radius: 6px; padding: 0.75rem 1.25rem; }
     .stat strong { display: block; font-size: 1.8rem; }
+    .report-controls { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; margin: 1rem 0; }
+    .toggle-thumbnails { border: 1px solid #333; background: #fff; color: #222; border-radius: 999px; padding: 0.55rem 0.95rem; font: inherit; cursor: pointer; }
+    .toggle-thumbnails[aria-pressed="true"] { background: #222; color: #fff; }
     table { border-collapse: collapse; width: 100%; margin-top: 1.5rem; }
     th { background: #333; color: #fff; text-align: left; padding: 0.5rem 0.75rem; }
     td { padding: 0.5rem 0.75rem; border-bottom: 1px solid #ddd; vertical-align: top; }
     tr:hover td { background: #fafafa; }
     code { background: #f0f0f0; padding: 0.1em 0.3em; border-radius: 3px; font-size: 0.9em; }
+    .thumbnail-column { width: 8.5rem; }
+    .thumbnail-trigger { display: inline-flex; flex-direction: column; align-items: center; gap: 0.35rem; width: 7rem; padding: 0.45rem; border: 1px solid #ccc; border-radius: 8px; background: #fff; cursor: pointer; }
+    .thumbnail-trigger:hover, .thumbnail-trigger:focus-visible { border-color: #333; box-shadow: 0 0 0 3px rgba(33, 33, 33, 0.15); outline: none; }
+    .thumbnail-trigger__image { display: block; width: 100%; height: 4.5rem; object-fit: contain; background: #f5f5f5; border-radius: 4px; }
+    .thumbnail-trigger__text { font-size: 0.8rem; color: #444; }
+    dialog::backdrop { background: rgba(17, 24, 39, 0.72); }
+    .preview-dialog { border: none; border-radius: 12px; padding: 0; width: min(92vw, 960px); max-height: 90vh; overflow: hidden; }
+    .preview-dialog__inner { display: grid; gap: 0.75rem; padding: 1rem; background: #fff; }
+    .preview-dialog__header { display: flex; justify-content: space-between; gap: 1rem; align-items: start; }
+    .preview-dialog__title { margin: 0; font-size: 1.1rem; }
+    .preview-dialog__close { border: 1px solid #333; background: #fff; color: #222; border-radius: 999px; padding: 0.45rem 0.8rem; font: inherit; cursor: pointer; }
+    .preview-dialog__figure { margin: 0; display: grid; gap: 0.5rem; justify-items: center; }
+    .preview-dialog__image { display: block; max-width: min(88vw, 100%); max-height: 70vh; width: auto; height: auto; background: #f5f5f5; }
+    .preview-dialog__caption { font-size: 0.9rem; color: #444; word-break: break-word; }
+    @media (max-width: 720px) {
+      .summary { gap: 0.75rem; }
+      .stat { flex: 1 1 9rem; }
+      .thumbnail-trigger { width: 5.75rem; }
+      .thumbnail-trigger__image { height: 3.75rem; }
+    }
   </style>
 </head>
 <body>
   <h1>Alt Text Scan Report</h1>
   <p><strong>Domain:</strong> https://10x.gsa.gov &nbsp;|&nbsp;
-     <strong>Scanned:</strong> 3/18/2026, 4:02:17 PM &nbsp;|&nbsp;
+     <strong>Scanned:</strong> 3/18/2026, 12:02:17 PM &nbsp;|&nbsp;
      <strong>Discovery method:</strong> sitemap</p>
+  <p><a href="report.csv">Download image inventory CSV</a> &nbsp;|&nbsp; <a href="report.json">View full JSON</a></p>
+  <div class="report-controls">
+    <button type="button" id="toggle-thumbnails" class="toggle-thumbnails" aria-pressed="false">Show thumbnails</button>
+    <span id="thumbnail-help">Thumbnails are hidden by default. Turn them on to preview images in a dialog.</span>
+  </div>
 
   <div class="summary">
     <div class="stat"><strong>50</strong> Pages scanned</div>
@@ -38,12 +66,338 @@
 <tr><td><span style="color:#2e7d32;font-weight:bold">Good</span></td><td>245</td></tr></tbody>
   </table>
 
-  <h2>Images with issues</h2>
+  <h2>Unique image inventory</h2>
+  <p>Showing all 29 unique image URLs, with flagged items listed first. Use the CSV for a complete export.</p>
   <table>
-    <thead><tr><th>Image</th><th>Alt Text</th><th>Status</th><th>Issues</th><th>Found on</th></tr></thead>
+    <thead><tr><th>Image</th><th class="thumbnail-column" hidden>Thumbnail</th><th>Status</th><th>Alt Text</th><th>Alt Variants</th><th>Title</th><th>ARIA Label</th><th>Pages</th></tr></thead>
     <tbody>
         <tr>
           <td><a href="https://touchpoints.app.cloud.gov/img/us_flag_small.png" target="_blank" rel="noopener">https://touchpoints.app.cloud.gov/img/us_flag_small.png</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://touchpoints.app.cloud.gov/img/us_flag_small.png" data-preview-alt="U.S. flag" data-preview-label="U.S. flag" data-preview-width="64" data-preview-height="44" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: U.S. flag"><img src="https://touchpoints.app.cloud.gov/img/us_flag_small.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#f57c00;font-weight:bold">Suspicious</span></td>
+          <td><code>U.S. flag</code></td>
+          <td style="font-size:0.85em"><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>49<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://10x.gsa.gov/news/public-sector-innovation-winners/" target="_blank" rel="noopener">https://10x.gsa.gov/news/public-sector-innovation-winners/</a><br><a href="https://10x.gsa.gov/news/government-reinvention-venture-capitalist-mindset/" target="_blank" rel="noopener">https://10x.gsa.gov/news/government-reinvention-venture-capitalist-mindset/</a></div></td>
+        </tr>
+
+        <tr>
+          <td><a href="https://10x.gsa.gov/assets/images/access-to-data-icon.webp" target="_blank" rel="noopener">https://10x.gsa.gov/assets/images/access-to-data-icon.webp</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://10x.gsa.gov/assets/images/access-to-data-icon.webp" data-preview-alt="10x&#039;s Data Science Portfolio" data-preview-label="10x&#039;s Data Science Portfolio" data-preview-width="310" data-preview-height="330" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: 10x&#039;s Data Science Portfolio"><img src="https://10x.gsa.gov/assets/images/access-to-data-icon.webp" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#f57c00;font-weight:bold">Suspicious</span></td>
+          <td><code>10x&#039;s Data Science Portfolio</code></td>
+          <td style="font-size:0.85em"><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://10x.gsa.gov/investments/" target="_blank" rel="noopener">https://10x.gsa.gov/investments/</a></div></td>
+        </tr>
+
+        <tr>
+          <td><a href="https://10x.gsa.gov/assets/images/benefits-eligibility-icon.webp" target="_blank" rel="noopener">https://10x.gsa.gov/assets/images/benefits-eligibility-icon.…</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://10x.gsa.gov/assets/images/benefits-eligibility-icon.webp" data-preview-alt="10x&#039;s Benefits eligibility and delivery portfolio" data-preview-label="10x&#039;s Benefits eligibility and delivery portfolio" data-preview-width="310" data-preview-height="330" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: 10x&#039;s Benefits eligibility and delivery portfolio"><img src="https://10x.gsa.gov/assets/images/benefits-eligibility-icon.webp" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#f57c00;font-weight:bold">Suspicious</span></td>
+          <td><code>10x&#039;s Benefits eligibility and delivery portfolio</code></td>
+          <td style="font-size:0.85em"><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://10x.gsa.gov/investments/" target="_blank" rel="noopener">https://10x.gsa.gov/investments/</a></div></td>
+        </tr>
+
+        <tr>
+          <td><a href="https://10x.gsa.gov/assets/images/customer-experience-icon.webp" target="_blank" rel="noopener">https://10x.gsa.gov/assets/images/customer-experience-icon.w…</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://10x.gsa.gov/assets/images/customer-experience-icon.webp" data-preview-alt="10x&#039;s CX Portfolio" data-preview-label="10x&#039;s CX Portfolio" data-preview-width="310" data-preview-height="330" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: 10x&#039;s CX Portfolio"><img src="https://10x.gsa.gov/assets/images/customer-experience-icon.webp" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#f57c00;font-weight:bold">Suspicious</span></td>
+          <td><code>10x&#039;s CX Portfolio</code></td>
+          <td style="font-size:0.85em"><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://10x.gsa.gov/investments/" target="_blank" rel="noopener">https://10x.gsa.gov/investments/</a></div></td>
+        </tr>
+
+        <tr>
+          <td><a href="https://10x.gsa.gov/assets/images/public-service-icon.webp" target="_blank" rel="noopener">https://10x.gsa.gov/assets/images/public-service-icon.webp</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://10x.gsa.gov/assets/images/public-service-icon.webp" data-preview-alt="10x&#039;s Tools for Federal Teams Portfolio" data-preview-label="10x&#039;s Tools for Federal Teams Portfolio" data-preview-width="310" data-preview-height="330" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: 10x&#039;s Tools for Federal Teams Portfolio"><img src="https://10x.gsa.gov/assets/images/public-service-icon.webp" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#f57c00;font-weight:bold">Suspicious</span></td>
+          <td><code>10x&#039;s Tools for Federal Teams Portfolio</code></td>
+          <td style="font-size:0.85em"><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://10x.gsa.gov/investments/" target="_blank" rel="noopener">https://10x.gsa.gov/investments/</a></div></td>
+        </tr>
+
+        <tr>
+          <td><a href="https://10x.gsa.gov/assets/images/security-project-icon.webp" target="_blank" rel="noopener">https://10x.gsa.gov/assets/images/security-project-icon.webp</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://10x.gsa.gov/assets/images/security-project-icon.webp" data-preview-alt="10x&#039;s Digital Trust and Security Portfolio" data-preview-label="10x&#039;s Digital Trust and Security Portfolio" data-preview-width="310" data-preview-height="330" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: 10x&#039;s Digital Trust and Security Portfolio"><img src="https://10x.gsa.gov/assets/images/security-project-icon.webp" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#f57c00;font-weight:bold">Suspicious</span></td>
+          <td><code>10x&#039;s Digital Trust and Security Portfolio</code></td>
+          <td style="font-size:0.85em"><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://10x.gsa.gov/investments/" target="_blank" rel="noopener">https://10x.gsa.gov/investments/</a></div></td>
+        </tr>
+
+        <tr>
+          <td><a href="https://10x.gsa.gov/assets/images/technology-services.svg" target="_blank" rel="noopener">https://10x.gsa.gov/assets/images/technology-services.svg</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://10x.gsa.gov/assets/images/technology-services.svg" data-preview-alt="Technology Services" data-preview-label="Technology Services" data-preview-width="515" data-preview-height="435" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Technology Services"><img src="https://10x.gsa.gov/assets/images/technology-services.svg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#f57c00;font-weight:bold">Suspicious</span></td>
+          <td><code>Technology Services</code></td>
+          <td style="font-size:0.85em"><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://10x.gsa.gov/" target="_blank" rel="noopener">https://10x.gsa.gov/</a></div></td>
+        </tr>
+
+        <tr>
+          <td><a href="https://10x.gsa.gov/assets/assets/homepage-gradient-bg-mobile-7NX7I3DV.jpg" target="_blank" rel="noopener">https://10x.gsa.gov/assets/assets/homepage-gradient-bg-mobil…</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://10x.gsa.gov/assets/assets/homepage-gradient-bg-mobile-7NX7I3DV.jpg" data-preview-alt="" data-preview-label="https://10x.gsa.gov/assets/assets/homepage-gradient-bg-mobile-7NX7I3DV.jpg" data-preview-width="2905" data-preview-height="594" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://10x.gsa.gov/assets/assets/homepage-gradient-bg-mobile-7NX7I3DV.jpg"><img src="https://10x.gsa.gov/assets/assets/homepage-gradient-bg-mobile-7NX7I3DV.jpg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">empty (decorative)</em></td>
+          <td style="font-size:0.85em"><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>49<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://10x.gsa.gov/news/public-sector-innovation-winners/" target="_blank" rel="noopener">https://10x.gsa.gov/news/public-sector-innovation-winners/</a><br><a href="https://10x.gsa.gov/news/government-reinvention-venture-capitalist-mindset/" target="_blank" rel="noopener">https://10x.gsa.gov/news/government-reinvention-venture-capitalist-mindset/</a></div></td>
+        </tr>
+
+        <tr>
+          <td><a href="https://10x.gsa.gov/assets/images/uswds/icon-dot-gov.svg" target="_blank" rel="noopener">https://10x.gsa.gov/assets/images/uswds/icon-dot-gov.svg</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://10x.gsa.gov/assets/images/uswds/icon-dot-gov.svg" data-preview-alt="" data-preview-label="https://10x.gsa.gov/assets/images/uswds/icon-dot-gov.svg" data-preview-width="64" data-preview-height="64" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://10x.gsa.gov/assets/images/uswds/icon-dot-gov.svg"><img src="https://10x.gsa.gov/assets/images/uswds/icon-dot-gov.svg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">empty (decorative)</em></td>
+          <td style="font-size:0.85em"><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>49<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://10x.gsa.gov/news/public-sector-innovation-winners/" target="_blank" rel="noopener">https://10x.gsa.gov/news/public-sector-innovation-winners/</a><br><a href="https://10x.gsa.gov/news/government-reinvention-venture-capitalist-mindset/" target="_blank" rel="noopener">https://10x.gsa.gov/news/government-reinvention-venture-capitalist-mindset/</a></div></td>
+        </tr>
+
+        <tr>
+          <td><a href="https://10x.gsa.gov/assets/images/uswds/icon-https.svg" target="_blank" rel="noopener">https://10x.gsa.gov/assets/images/uswds/icon-https.svg</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://10x.gsa.gov/assets/images/uswds/icon-https.svg" data-preview-alt="" data-preview-label="https://10x.gsa.gov/assets/images/uswds/icon-https.svg" data-preview-width="64" data-preview-height="64" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://10x.gsa.gov/assets/images/uswds/icon-https.svg"><img src="https://10x.gsa.gov/assets/images/uswds/icon-https.svg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">empty (decorative)</em></td>
+          <td style="font-size:0.85em"><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>49<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://10x.gsa.gov/news/public-sector-innovation-winners/" target="_blank" rel="noopener">https://10x.gsa.gov/news/public-sector-innovation-winners/</a><br><a href="https://10x.gsa.gov/news/government-reinvention-venture-capitalist-mindset/" target="_blank" rel="noopener">https://10x.gsa.gov/news/government-reinvention-venture-capitalist-mindset/</a></div></td>
+        </tr>
+
+        <tr>
+          <td><a href="https://10x.gsa.gov/assets/images/current-report-icon-floated.svg" target="_blank" rel="noopener">https://10x.gsa.gov/assets/images/current-report-icon-floate…</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://10x.gsa.gov/assets/images/current-report-icon-floated.svg" data-preview-alt="" data-preview-label="https://10x.gsa.gov/assets/images/current-report-icon-floated.svg" data-preview-width="150" data-preview-height="150" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://10x.gsa.gov/assets/images/current-report-icon-floated.svg"><img src="https://10x.gsa.gov/assets/images/current-report-icon-floated.svg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">empty (decorative)</em></td>
+          <td style="font-size:0.85em"><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://10x.gsa.gov/impact/" target="_blank" rel="noopener">https://10x.gsa.gov/impact/</a></div></td>
+        </tr>
+
+        <tr>
+          <td><a href="https://10x.gsa.gov/assets/images/deriskingicon.svg" target="_blank" rel="noopener">https://10x.gsa.gov/assets/images/deriskingicon.svg</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://10x.gsa.gov/assets/images/deriskingicon.svg" data-preview-alt="" data-preview-label="https://10x.gsa.gov/assets/images/deriskingicon.svg" data-preview-width="589" data-preview-height="503" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://10x.gsa.gov/assets/images/deriskingicon.svg"><img src="https://10x.gsa.gov/assets/images/deriskingicon.svg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">empty (decorative)</em></td>
+          <td style="font-size:0.85em"><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://10x.gsa.gov/" target="_blank" rel="noopener">https://10x.gsa.gov/</a></div></td>
+        </tr>
+
+        <tr>
+          <td><a href="https://10x.gsa.gov/assets/images/impact-reports/dark-matter-planet.svg" target="_blank" rel="noopener">https://10x.gsa.gov/assets/images/impact-reports/dark-matter…</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://10x.gsa.gov/assets/images/impact-reports/dark-matter-planet.svg" data-preview-alt="" data-preview-label="https://10x.gsa.gov/assets/images/impact-reports/dark-matter-planet.svg" data-preview-width="767" data-preview-height="372" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://10x.gsa.gov/assets/images/impact-reports/dark-matter-planet.svg"><img src="https://10x.gsa.gov/assets/images/impact-reports/dark-matter-planet.svg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">empty (decorative)</em></td>
+          <td style="font-size:0.85em"><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://10x.gsa.gov/impact/fy23-report/" target="_blank" rel="noopener">https://10x.gsa.gov/impact/fy23-report/</a></div></td>
+        </tr>
+
+        <tr>
+          <td><a href="https://10x.gsa.gov/assets/images/impact-reports/making-waves.svg" target="_blank" rel="noopener">https://10x.gsa.gov/assets/images/impact-reports/making-wave…</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://10x.gsa.gov/assets/images/impact-reports/making-waves.svg" data-preview-alt="" data-preview-label="https://10x.gsa.gov/assets/images/impact-reports/making-waves.svg" data-preview-width="557" data-preview-height="192" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://10x.gsa.gov/assets/images/impact-reports/making-waves.svg"><img src="https://10x.gsa.gov/assets/images/impact-reports/making-waves.svg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">empty (decorative)</em></td>
+          <td style="font-size:0.85em"><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://10x.gsa.gov/impact/fy23-report/" target="_blank" rel="noopener">https://10x.gsa.gov/impact/fy23-report/</a></div></td>
+        </tr>
+
+        <tr>
+          <td><a href="https://10x.gsa.gov/assets/images/impact-reports/the-10x-team-22.webp" target="_blank" rel="noopener">https://10x.gsa.gov/assets/images/impact-reports/the-10x-tea…</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://10x.gsa.gov/assets/images/impact-reports/the-10x-team-22.webp" data-preview-alt="" data-preview-label="https://10x.gsa.gov/assets/images/impact-reports/the-10x-team-22.webp" data-preview-width="1135" data-preview-height="463" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://10x.gsa.gov/assets/images/impact-reports/the-10x-team-22.webp"><img src="https://10x.gsa.gov/assets/images/impact-reports/the-10x-team-22.webp" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">empty (decorative)</em></td>
+          <td style="font-size:0.85em"><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://10x.gsa.gov/impact/fy22-report/" target="_blank" rel="noopener">https://10x.gsa.gov/impact/fy22-report/</a></div></td>
+        </tr>
+
+        <tr>
+          <td><a href="https://10x.gsa.gov/assets/images/impact-reports/the-10x-team-24.png" target="_blank" rel="noopener">https://10x.gsa.gov/assets/images/impact-reports/the-10x-tea…</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://10x.gsa.gov/assets/images/impact-reports/the-10x-team-24.png" data-preview-alt="" data-preview-label="https://10x.gsa.gov/assets/images/impact-reports/the-10x-team-24.png" data-preview-width="767" data-preview-height="302" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://10x.gsa.gov/assets/images/impact-reports/the-10x-team-24.png"><img src="https://10x.gsa.gov/assets/images/impact-reports/the-10x-team-24.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">empty (decorative)</em></td>
+          <td style="font-size:0.85em"><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://10x.gsa.gov/impact/fy23-report/" target="_blank" rel="noopener">https://10x.gsa.gov/impact/fy23-report/</a></div></td>
+        </tr>
+
+        <tr>
+          <td><a href="https://10x.gsa.gov/assets/images/impact-reports/the-10x-team.webp" target="_blank" rel="noopener">https://10x.gsa.gov/assets/images/impact-reports/the-10x-tea…</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://10x.gsa.gov/assets/images/impact-reports/the-10x-team.webp" data-preview-alt="" data-preview-label="https://10x.gsa.gov/assets/images/impact-reports/the-10x-team.webp" data-preview-width="898" data-preview-height="213" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://10x.gsa.gov/assets/images/impact-reports/the-10x-team.webp"><img src="https://10x.gsa.gov/assets/images/impact-reports/the-10x-team.webp" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">empty (decorative)</em></td>
+          <td style="font-size:0.85em"><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://10x.gsa.gov/impact/fy21-report/" target="_blank" rel="noopener">https://10x.gsa.gov/impact/fy21-report/</a></div></td>
+        </tr>
+
+        <tr>
+          <td><a href="https://10x.gsa.gov/assets/images/impact-reports/tracing-ripples.svg" target="_blank" rel="noopener">https://10x.gsa.gov/assets/images/impact-reports/tracing-rip…</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://10x.gsa.gov/assets/images/impact-reports/tracing-ripples.svg" data-preview-alt="" data-preview-label="https://10x.gsa.gov/assets/images/impact-reports/tracing-ripples.svg" data-preview-width="528" data-preview-height="337" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://10x.gsa.gov/assets/images/impact-reports/tracing-ripples.svg"><img src="https://10x.gsa.gov/assets/images/impact-reports/tracing-ripples.svg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">empty (decorative)</em></td>
+          <td style="font-size:0.85em"><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://10x.gsa.gov/impact/fy23-report/" target="_blank" rel="noopener">https://10x.gsa.gov/impact/fy23-report/</a></div></td>
+        </tr>
+
+        <tr>
+          <td><a href="https://10x.gsa.gov/assets/images/impact-reports/whats-next-arrows.svg" target="_blank" rel="noopener">https://10x.gsa.gov/assets/images/impact-reports/whats-next-…</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://10x.gsa.gov/assets/images/impact-reports/whats-next-arrows.svg" data-preview-alt="" data-preview-label="https://10x.gsa.gov/assets/images/impact-reports/whats-next-arrows.svg" data-preview-width="525" data-preview-height="98" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://10x.gsa.gov/assets/images/impact-reports/whats-next-arrows.svg"><img src="https://10x.gsa.gov/assets/images/impact-reports/whats-next-arrows.svg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">empty (decorative)</em></td>
+          <td style="font-size:0.85em"><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://10x.gsa.gov/impact/fy23-report/" target="_blank" rel="noopener">https://10x.gsa.gov/impact/fy23-report/</a></div></td>
+        </tr>
+
+        <tr>
+          <td><a href="https://10x.gsa.gov/assets/images/logingov.svg" target="_blank" rel="noopener">https://10x.gsa.gov/assets/images/logingov.svg</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://10x.gsa.gov/assets/images/logingov.svg" data-preview-alt="" data-preview-label="https://10x.gsa.gov/assets/images/logingov.svg" data-preview-width="50" data-preview-height="50" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://10x.gsa.gov/assets/images/logingov.svg"><img src="https://10x.gsa.gov/assets/images/logingov.svg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">empty (decorative)</em></td>
+          <td style="font-size:0.85em"><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://10x.gsa.gov/" target="_blank" rel="noopener">https://10x.gsa.gov/</a></div></td>
+        </tr>
+
+        <tr>
+          <td><a href="https://10x.gsa.gov/assets/images/notify.svg" target="_blank" rel="noopener">https://10x.gsa.gov/assets/images/notify.svg</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://10x.gsa.gov/assets/images/notify.svg" data-preview-alt="" data-preview-label="https://10x.gsa.gov/assets/images/notify.svg" data-preview-width="41" data-preview-height="50" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://10x.gsa.gov/assets/images/notify.svg"><img src="https://10x.gsa.gov/assets/images/notify.svg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">empty (decorative)</em></td>
+          <td style="font-size:0.85em"><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://10x.gsa.gov/" target="_blank" rel="noopener">https://10x.gsa.gov/</a></div></td>
+        </tr>
+
+        <tr>
+          <td><a href="https://10x.gsa.gov/assets/images/PRA.svg" target="_blank" rel="noopener">https://10x.gsa.gov/assets/images/PRA.svg</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://10x.gsa.gov/assets/images/PRA.svg" data-preview-alt="" data-preview-label="https://10x.gsa.gov/assets/images/PRA.svg" data-preview-width="44" data-preview-height="44" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://10x.gsa.gov/assets/images/PRA.svg"><img src="https://10x.gsa.gov/assets/images/PRA.svg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">empty (decorative)</em></td>
+          <td style="font-size:0.85em"><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://10x.gsa.gov/" target="_blank" rel="noopener">https://10x.gsa.gov/</a></div></td>
+        </tr>
+
+        <tr>
+          <td><a href="https://10x.gsa.gov/assets/images/site-scanning.svg" target="_blank" rel="noopener">https://10x.gsa.gov/assets/images/site-scanning.svg</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://10x.gsa.gov/assets/images/site-scanning.svg" data-preview-alt="" data-preview-label="https://10x.gsa.gov/assets/images/site-scanning.svg" data-preview-width="1326" data-preview-height="1326" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://10x.gsa.gov/assets/images/site-scanning.svg"><img src="https://10x.gsa.gov/assets/images/site-scanning.svg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">empty (decorative)</em></td>
+          <td style="font-size:0.85em"><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://10x.gsa.gov/" target="_blank" rel="noopener">https://10x.gsa.gov/</a></div></td>
+        </tr>
+
+        <tr>
+          <td><a href="https://10x.gsa.gov/assets/images/uswds.svg" target="_blank" rel="noopener">https://10x.gsa.gov/assets/images/uswds.svg</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://10x.gsa.gov/assets/images/uswds.svg" data-preview-alt="" data-preview-label="https://10x.gsa.gov/assets/images/uswds.svg" data-preview-width="54" data-preview-height="50" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://10x.gsa.gov/assets/images/uswds.svg"><img src="https://10x.gsa.gov/assets/images/uswds.svg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">empty (decorative)</em></td>
+          <td style="font-size:0.85em"><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://10x.gsa.gov/" target="_blank" rel="noopener">https://10x.gsa.gov/</a></div></td>
+        </tr>
+
+        <tr>
+          <td><a href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAALCAMAAABBPP0LAAAAG1BMVEUdM7EeNLIeM7HgQCDaPh/bPh/bPx/////bPyBEby41AAAAUElEQVQI123MNw4CABDEwD3jC/9/MQ1BQrgeOSkIqYe2o2FZtthXgQLgbHVMZdlsfUQFQnHtjP1+8BUhBDKOqtmfot6ojqPzR7TjdU+f6vkED+IDPhTBcMAAAAAASUVORK5CYII=" target="_blank" rel="noopener">data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAALCAMAAA…</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAALCAMAAABBPP0LAAAAG1BMVEUdM7EeNLIeM7HgQCDaPh/bPh/bPx/////bPyBEby41AAAAUElEQVQI123MNw4CABDEwD3jC/9/MQ1BQrgeOSkIqYe2o2FZtthXgQLgbHVMZdlsfUQFQnHtjP1+8BUhBDKOqtmfot6ojqPzR7TjdU+f6vkED+IDPhTBcMAAAAAASUVORK5CYII=" data-preview-alt="U.S. flag" data-preview-label="U.S. flag" data-preview-width="16" data-preview-height="11" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: U.S. flag"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAALCAMAAABBPP0LAAAAG1BMVEUdM7EeNLIeM7HgQCDaPh/bPh/bPx/////bPyBEby41AAAAUElEQVQI123MNw4CABDEwD3jC/9/MQ1BQrgeOSkIqYe2o2FZtthXgQLgbHVMZdlsfUQFQnHtjP1+8BUhBDKOqtmfot6ojqPzR7TjdU+f6vkED+IDPhTBcMAAAAAASUVORK5CYII=" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>U.S. flag</code></td>
+          <td style="font-size:0.85em"><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>49<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://10x.gsa.gov/news/public-sector-innovation-winners/" target="_blank" rel="noopener">https://10x.gsa.gov/news/public-sector-innovation-winners/</a><br><a href="https://10x.gsa.gov/news/government-reinvention-venture-capitalist-mindset/" target="_blank" rel="noopener">https://10x.gsa.gov/news/government-reinvention-venture-capitalist-mindset/</a></div></td>
+        </tr>
+
+        <tr>
+          <td><a href="https://10x.gsa.gov/assets/images/10x-logo.webp" target="_blank" rel="noopener">https://10x.gsa.gov/assets/images/10x-logo.webp</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://10x.gsa.gov/assets/images/10x-logo.webp" data-preview-alt="10 x home" data-preview-label="10 x home" data-preview-width="150" data-preview-height="74" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: 10 x home"><img src="https://10x.gsa.gov/assets/images/10x-logo.webp" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>10 x home</code></td>
+          <td style="font-size:0.85em"><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>49<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://10x.gsa.gov/news/public-sector-innovation-winners/" target="_blank" rel="noopener">https://10x.gsa.gov/news/public-sector-innovation-winners/</a><br><a href="https://10x.gsa.gov/news/government-reinvention-venture-capitalist-mindset/" target="_blank" rel="noopener">https://10x.gsa.gov/news/government-reinvention-venture-capitalist-mindset/</a></div></td>
+        </tr>
+
+        <tr>
+          <td><a href="https://10x.gsa.gov/assets/images/close-x.svg" target="_blank" rel="noopener">https://10x.gsa.gov/assets/images/close-x.svg</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://10x.gsa.gov/assets/images/close-x.svg" data-preview-alt="Close" data-preview-label="Close" data-preview-width="400" data-preview-height="386" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Close"><img src="https://10x.gsa.gov/assets/images/close-x.svg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Close</code></td>
+          <td style="font-size:0.85em"><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>49<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://10x.gsa.gov/news/public-sector-innovation-winners/" target="_blank" rel="noopener">https://10x.gsa.gov/news/public-sector-innovation-winners/</a><br><a href="https://10x.gsa.gov/news/government-reinvention-venture-capitalist-mindset/" target="_blank" rel="noopener">https://10x.gsa.gov/news/government-reinvention-venture-capitalist-mindset/</a></div></td>
+        </tr>
+
+        <tr>
+          <td><a href="https://10x.gsa.gov/assets/images/gsa-logo.svg" target="_blank" rel="noopener">https://10x.gsa.gov/assets/images/gsa-logo.svg</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://10x.gsa.gov/assets/images/gsa-logo.svg" data-preview-alt="GSA.gov home." data-preview-label="GSA.gov home." data-preview-width="719" data-preview-height="720" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: GSA.gov home."><img src="https://10x.gsa.gov/assets/images/gsa-logo.svg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>GSA.gov home.</code></td>
+          <td style="font-size:0.85em"><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>49<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://10x.gsa.gov/news/public-sector-innovation-winners/" target="_blank" rel="noopener">https://10x.gsa.gov/news/public-sector-innovation-winners/</a><br><a href="https://10x.gsa.gov/news/government-reinvention-venture-capitalist-mindset/" target="_blank" rel="noopener">https://10x.gsa.gov/news/government-reinvention-venture-capitalist-mindset/</a></div></td>
+        </tr>
+
+        <tr>
+          <td><a href="https://cg-1b082c1b-3db7-477f-9ca5-bd51a786b41e.s3-us-gov-west-1.amazonaws.com/uploads/form/logo/4711/tag_logo-alt-centered-342x80.png" target="_blank" rel="noopener">https://cg-1b082c1b-3db7-477f-9ca5-bd51a786b41e.s3-us-gov-we…</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://cg-1b082c1b-3db7-477f-9ca5-bd51a786b41e.s3-us-gov-west-1.amazonaws.com/uploads/form/logo/4711/tag_logo-alt-centered-342x80.png" data-preview-alt="General Services Administration banner" data-preview-label="General Services Administration banner" data-preview-width="342" data-preview-height="80" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: General Services Administration banner"><img src="https://cg-1b082c1b-3db7-477f-9ca5-bd51a786b41e.s3-us-gov-west-1.amazonaws.com/uploads/form/logo/4711/tag_logo-alt-centered-342x80.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>General Services Administration banner</code></td>
+          <td style="font-size:0.85em"><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>49<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://10x.gsa.gov/news/public-sector-innovation-winners/" target="_blank" rel="noopener">https://10x.gsa.gov/news/public-sector-innovation-winners/</a><br><a href="https://10x.gsa.gov/news/government-reinvention-venture-capitalist-mindset/" target="_blank" rel="noopener">https://10x.gsa.gov/news/government-reinvention-venture-capitalist-mindset/</a></div></td>
+        </tr></tbody>
+  </table>
+
+  <h2>Images with issues</h2>
+  <table>
+    <thead><tr><th>Image</th><th class="thumbnail-column" hidden>Thumbnail</th><th>Alt Text</th><th>Status</th><th>Issues</th><th>Found on</th></tr></thead>
+    <tbody>
+        <tr>
+          <td><a href="https://touchpoints.app.cloud.gov/img/us_flag_small.png" target="_blank" rel="noopener">https://touchpoints.app.cloud.gov/img/us_flag_small.png</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://touchpoints.app.cloud.gov/img/us_flag_small.png" data-preview-alt="U.S. flag" data-preview-label="U.S. flag" data-preview-width="64" data-preview-height="44" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: U.S. flag"><img src="https://touchpoints.app.cloud.gov/img/us_flag_small.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
           <td><code>U.S. flag</code></td>
           <td><span style="color:#f57c00;font-weight:bold">Suspicious</span></td>
           <td><ul style="margin:0;padding-left:1.2em"><li>Image is marked decorative (aria-hidden or role=&quot;presentation/none&quot;) but has non-empty alt text</li></ul></td>
@@ -51,23 +405,8 @@
         </tr>
 
         <tr>
-          <td><a href="https://10x.gsa.gov/assets/images/technology-services.svg" target="_blank" rel="noopener">https://10x.gsa.gov/assets/images/technology-services.svg</a></td>
-          <td><code>Technology Services</code></td>
-          <td><span style="color:#f57c00;font-weight:bold">Suspicious</span></td>
-          <td><ul style="margin:0;padding-left:1.2em"><li>Image is marked decorative (aria-hidden or role=&quot;presentation/none&quot;) but has non-empty alt text</li></ul></td>
-          <td style="font-size:0.85em"><a href="https://10x.gsa.gov/" target="_blank" rel="noopener">https://10x.gsa.gov/</a></td>
-        </tr>
-
-        <tr>
-          <td><a href="https://10x.gsa.gov/assets/images/benefits-eligibility-icon.webp" target="_blank" rel="noopener">https://10x.gsa.gov/assets/images/benefits-eligibility-icon.…</a></td>
-          <td><code>10x&#039;s Benefits eligibility and delivery portfolio</code></td>
-          <td><span style="color:#f57c00;font-weight:bold">Suspicious</span></td>
-          <td><ul style="margin:0;padding-left:1.2em"><li>Image is marked decorative (aria-hidden or role=&quot;presentation/none&quot;) but has non-empty alt text</li></ul></td>
-          <td style="font-size:0.85em"><a href="https://10x.gsa.gov/investments/" target="_blank" rel="noopener">https://10x.gsa.gov/investments/</a></td>
-        </tr>
-
-        <tr>
           <td><a href="https://10x.gsa.gov/assets/images/access-to-data-icon.webp" target="_blank" rel="noopener">https://10x.gsa.gov/assets/images/access-to-data-icon.webp</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://10x.gsa.gov/assets/images/access-to-data-icon.webp" data-preview-alt="10x&#039;s Data Science Portfolio" data-preview-label="10x&#039;s Data Science Portfolio" data-preview-width="310" data-preview-height="330" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: 10x&#039;s Data Science Portfolio"><img src="https://10x.gsa.gov/assets/images/access-to-data-icon.webp" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
           <td><code>10x&#039;s Data Science Portfolio</code></td>
           <td><span style="color:#f57c00;font-weight:bold">Suspicious</span></td>
           <td><ul style="margin:0;padding-left:1.2em"><li>Image is marked decorative (aria-hidden or role=&quot;presentation/none&quot;) but has non-empty alt text</li></ul></td>
@@ -75,16 +414,9 @@
         </tr>
 
         <tr>
-          <td><a href="https://10x.gsa.gov/assets/images/security-project-icon.webp" target="_blank" rel="noopener">https://10x.gsa.gov/assets/images/security-project-icon.webp</a></td>
-          <td><code>10x&#039;s Digital Trust and Security Portfolio</code></td>
-          <td><span style="color:#f57c00;font-weight:bold">Suspicious</span></td>
-          <td><ul style="margin:0;padding-left:1.2em"><li>Image is marked decorative (aria-hidden or role=&quot;presentation/none&quot;) but has non-empty alt text</li></ul></td>
-          <td style="font-size:0.85em"><a href="https://10x.gsa.gov/investments/" target="_blank" rel="noopener">https://10x.gsa.gov/investments/</a></td>
-        </tr>
-
-        <tr>
-          <td><a href="https://10x.gsa.gov/assets/images/public-service-icon.webp" target="_blank" rel="noopener">https://10x.gsa.gov/assets/images/public-service-icon.webp</a></td>
-          <td><code>10x&#039;s Tools for Federal Teams Portfolio</code></td>
+          <td><a href="https://10x.gsa.gov/assets/images/benefits-eligibility-icon.webp" target="_blank" rel="noopener">https://10x.gsa.gov/assets/images/benefits-eligibility-icon.…</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://10x.gsa.gov/assets/images/benefits-eligibility-icon.webp" data-preview-alt="10x&#039;s Benefits eligibility and delivery portfolio" data-preview-label="10x&#039;s Benefits eligibility and delivery portfolio" data-preview-width="310" data-preview-height="330" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: 10x&#039;s Benefits eligibility and delivery portfolio"><img src="https://10x.gsa.gov/assets/images/benefits-eligibility-icon.webp" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><code>10x&#039;s Benefits eligibility and delivery portfolio</code></td>
           <td><span style="color:#f57c00;font-weight:bold">Suspicious</span></td>
           <td><ul style="margin:0;padding-left:1.2em"><li>Image is marked decorative (aria-hidden or role=&quot;presentation/none&quot;) but has non-empty alt text</li></ul></td>
           <td style="font-size:0.85em"><a href="https://10x.gsa.gov/investments/" target="_blank" rel="noopener">https://10x.gsa.gov/investments/</a></td>
@@ -92,11 +424,147 @@
 
         <tr>
           <td><a href="https://10x.gsa.gov/assets/images/customer-experience-icon.webp" target="_blank" rel="noopener">https://10x.gsa.gov/assets/images/customer-experience-icon.w…</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://10x.gsa.gov/assets/images/customer-experience-icon.webp" data-preview-alt="10x&#039;s CX Portfolio" data-preview-label="10x&#039;s CX Portfolio" data-preview-width="310" data-preview-height="330" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: 10x&#039;s CX Portfolio"><img src="https://10x.gsa.gov/assets/images/customer-experience-icon.webp" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
           <td><code>10x&#039;s CX Portfolio</code></td>
           <td><span style="color:#f57c00;font-weight:bold">Suspicious</span></td>
           <td><ul style="margin:0;padding-left:1.2em"><li>Image is marked decorative (aria-hidden or role=&quot;presentation/none&quot;) but has non-empty alt text</li></ul></td>
           <td style="font-size:0.85em"><a href="https://10x.gsa.gov/investments/" target="_blank" rel="noopener">https://10x.gsa.gov/investments/</a></td>
+        </tr>
+
+        <tr>
+          <td><a href="https://10x.gsa.gov/assets/images/public-service-icon.webp" target="_blank" rel="noopener">https://10x.gsa.gov/assets/images/public-service-icon.webp</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://10x.gsa.gov/assets/images/public-service-icon.webp" data-preview-alt="10x&#039;s Tools for Federal Teams Portfolio" data-preview-label="10x&#039;s Tools for Federal Teams Portfolio" data-preview-width="310" data-preview-height="330" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: 10x&#039;s Tools for Federal Teams Portfolio"><img src="https://10x.gsa.gov/assets/images/public-service-icon.webp" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><code>10x&#039;s Tools for Federal Teams Portfolio</code></td>
+          <td><span style="color:#f57c00;font-weight:bold">Suspicious</span></td>
+          <td><ul style="margin:0;padding-left:1.2em"><li>Image is marked decorative (aria-hidden or role=&quot;presentation/none&quot;) but has non-empty alt text</li></ul></td>
+          <td style="font-size:0.85em"><a href="https://10x.gsa.gov/investments/" target="_blank" rel="noopener">https://10x.gsa.gov/investments/</a></td>
+        </tr>
+
+        <tr>
+          <td><a href="https://10x.gsa.gov/assets/images/security-project-icon.webp" target="_blank" rel="noopener">https://10x.gsa.gov/assets/images/security-project-icon.webp</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://10x.gsa.gov/assets/images/security-project-icon.webp" data-preview-alt="10x&#039;s Digital Trust and Security Portfolio" data-preview-label="10x&#039;s Digital Trust and Security Portfolio" data-preview-width="310" data-preview-height="330" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: 10x&#039;s Digital Trust and Security Portfolio"><img src="https://10x.gsa.gov/assets/images/security-project-icon.webp" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><code>10x&#039;s Digital Trust and Security Portfolio</code></td>
+          <td><span style="color:#f57c00;font-weight:bold">Suspicious</span></td>
+          <td><ul style="margin:0;padding-left:1.2em"><li>Image is marked decorative (aria-hidden or role=&quot;presentation/none&quot;) but has non-empty alt text</li></ul></td>
+          <td style="font-size:0.85em"><a href="https://10x.gsa.gov/investments/" target="_blank" rel="noopener">https://10x.gsa.gov/investments/</a></td>
+        </tr>
+
+        <tr>
+          <td><a href="https://10x.gsa.gov/assets/images/technology-services.svg" target="_blank" rel="noopener">https://10x.gsa.gov/assets/images/technology-services.svg</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://10x.gsa.gov/assets/images/technology-services.svg" data-preview-alt="Technology Services" data-preview-label="Technology Services" data-preview-width="515" data-preview-height="435" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Technology Services"><img src="https://10x.gsa.gov/assets/images/technology-services.svg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><code>Technology Services</code></td>
+          <td><span style="color:#f57c00;font-weight:bold">Suspicious</span></td>
+          <td><ul style="margin:0;padding-left:1.2em"><li>Image is marked decorative (aria-hidden or role=&quot;presentation/none&quot;) but has non-empty alt text</li></ul></td>
+          <td style="font-size:0.85em"><a href="https://10x.gsa.gov/" target="_blank" rel="noopener">https://10x.gsa.gov/</a></td>
         </tr></tbody>
   </table>
+
+  <dialog id="image-preview-dialog" class="preview-dialog" aria-labelledby="image-preview-title">
+    <div class="preview-dialog__inner">
+      <div class="preview-dialog__header">
+        <h2 id="image-preview-title" class="preview-dialog__title">Image preview</h2>
+        <form method="dialog">
+          <button type="submit" class="preview-dialog__close" id="close-image-preview">Close</button>
+        </form>
+      </div>
+      <figure class="preview-dialog__figure">
+        <img id="image-preview-image" class="preview-dialog__image" alt="">
+        <figcaption id="image-preview-caption" class="preview-dialog__caption"></figcaption>
+      </figure>
+    </div>
+  </dialog>
+
+  <script>
+    (() => {
+      const toggleButton = document.getElementById("toggle-thumbnails");
+      const thumbnailColumns = Array.from(document.querySelectorAll(".thumbnail-column"));
+      const dialog = document.getElementById("image-preview-dialog");
+      const previewImage = document.getElementById("image-preview-image");
+      const previewCaption = document.getElementById("image-preview-caption");
+      const previewTitle = document.getElementById("image-preview-title");
+      const closeButton = document.getElementById("close-image-preview");
+      const previewTriggers = Array.from(document.querySelectorAll(".thumbnail-trigger"));
+      let lastTrigger = null;
+      let lastOpenMode = "click";
+
+      if (toggleButton) {
+        toggleButton.addEventListener("click", () => {
+          const shouldShow = toggleButton.getAttribute("aria-pressed") !== "true";
+          toggleButton.setAttribute("aria-pressed", String(shouldShow));
+          toggleButton.textContent = shouldShow ? "Hide thumbnails" : "Show thumbnails";
+          thumbnailColumns.forEach((column) => {
+            column.hidden = !shouldShow;
+          });
+        });
+      }
+
+      if (!(dialog instanceof HTMLDialogElement) || !previewImage || !previewCaption || !previewTitle) {
+        return;
+      }
+
+      const setPreviewContent = (trigger) => {
+        const src = trigger.dataset.previewSrc || "";
+        const alt = trigger.dataset.previewAlt || "";
+        const label = trigger.dataset.previewLabel || src;
+        const width = Number(trigger.dataset.previewWidth || 0);
+        const height = Number(trigger.dataset.previewHeight || 0);
+        const availableWidth = Math.max(window.innerWidth - 80, 320);
+
+        previewImage.src = src;
+        previewImage.alt = alt;
+        previewImage.style.width = width > 0 ? String(Math.min(width, availableWidth)) + "px" : "auto";
+        previewImage.style.height = "auto";
+        previewImage.style.maxWidth = "100%";
+        previewTitle.textContent = label;
+        previewCaption.textContent = [
+          alt ? "Alt text: " + alt : "Alt text: none",
+          width > 0 && height > 0 ? "Displayed size: " + width + " × " + height + "px" : "Displayed size: not captured",
+          src
+        ].join(" | ");
+      };
+
+      const openPreview = (trigger, mode) => {
+        lastTrigger = trigger;
+        lastOpenMode = mode;
+        setPreviewContent(trigger);
+        if (!dialog.open) {
+          dialog.showModal();
+        }
+        if (mode === "click") {
+          closeButton.focus();
+        }
+      };
+
+      previewTriggers.forEach((trigger) => {
+        trigger.addEventListener("click", (event) => {
+          event.preventDefault();
+          openPreview(trigger, "click");
+        });
+
+        trigger.addEventListener("mouseenter", () => {
+          openPreview(trigger, "hover");
+        });
+
+        trigger.addEventListener("focus", () => {
+          openPreview(trigger, "focus");
+        });
+      });
+
+      dialog.addEventListener("click", (event) => {
+        const bounds = dialog.getBoundingClientRect();
+        const isOutside = event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom;
+        if (isOutside) {
+          dialog.close();
+        }
+      });
+
+      dialog.addEventListener("close", () => {
+        previewImage.removeAttribute("src");
+        if (lastOpenMode === "click" && lastTrigger && document.contains(lastTrigger)) {
+          lastTrigger.focus();
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
