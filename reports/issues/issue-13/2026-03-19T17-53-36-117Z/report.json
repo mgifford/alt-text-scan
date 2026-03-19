@@ -1,0 +1,762 @@
+{
+  "reportType": "alt-text",
+  "issueNumber": 13,
+  "issueUrl": "https://github.com/mgifford/alt-text-scan/issues/13",
+  "scanTitle": "https://www.nsf.gov/",
+  "scanDomain": "https://www.nsf.gov",
+  "discoveryMethod": "sitemap",
+  "discoveredTotal": 100,
+  "requestedCount": 100,
+  "acceptedCount": 100,
+  "rejectedCount": 0,
+  "scannedCount": 100,
+  "skippedDueToTimeout": 0,
+  "urlsRequested": 100,
+  "urlsScanned": 100,
+  "scannedAt": "2026-03-19T17:52:24.513Z",
+  "totalImages": 0,
+  "uniqueImages": 0,
+  "imagesWithIssues": 0,
+  "statusCounts": {
+    "MISSING": 0,
+    "DECORATIVE": 0,
+    "SUSPICIOUS": 0,
+    "FILENAME": 0,
+    "TOO_SHORT": 0,
+    "TOO_LONG": 0,
+    "GOOD": 0
+  },
+  "urlResults": [
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/walcz-water-landscape-critical-zone-processes/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/walcz-water-landscape-critical-zone-processes/announcements",
+      "httpStatus": 404,
+      "images": [],
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/ags-ic-infrastructure-cluster/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/ags-ic-infrastructure-cluster/announcements",
+      "httpStatus": 404,
+      "images": [],
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/national-science-foundation-research-traineeship/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/national-science-foundation-research-traineeship/announcements",
+      "httpStatus": 404,
+      "images": [],
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/hsielpse-hispanic-serving-institutions-enriching-learning-programs/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/hsielpse-hispanic-serving-institutions-enriching-learning-programs/announcements",
+      "httpStatus": 404,
+      "images": [],
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/gcr-growing-convergence-research/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/gcr-growing-convergence-research/announcements",
+      "httpStatus": 404,
+      "images": [],
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/iusepfe-red-iuseprofessional-formation-engineers-revolutionizing/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/iusepfe-red-iuseprofessional-formation-engineers-revolutionizing/announcements",
+      "httpStatus": 404,
+      "images": [],
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/stem-k-12-nsf-stem-k-12/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/stem-k-12-nsf-stem-k-12/announcements",
+      "httpStatus": 404,
+      "images": [],
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/mri-major-research-instrumentation-program/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/mri-major-research-instrumentation-program/announcements",
+      "httpStatus": 404,
+      "images": [],
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/ecrcore-edu-core-research/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/ecrcore-edu-core-research/announcements",
+      "httpStatus": 404,
+      "images": [],
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/sprf-sbe-postdoctoral-research-fellowships/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/sprf-sbe-postdoctoral-research-fellowships/announcements",
+      "httpStatus": 404,
+      "images": [],
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/trailblazer-nsf-trailblazer-engineering-impact-award/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/trailblazer-nsf-trailblazer-engineering-impact-award/announcements",
+      "httpStatus": 404,
+      "images": [],
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/caig-collaborations-artificial-intelligence-geosciences/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/caig-collaborations-artificial-intelligence-geosciences/announcements",
+      "httpStatus": 404,
+      "images": [],
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/ires-international-research-experiences-students/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/ires-international-research-experiences-students/announcements",
+      "httpStatus": 404,
+      "images": [],
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/hbcu-historically-black-colleges-universities-undergraduate/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/hbcu-historically-black-colleges-universities-undergraduate/announcements",
+      "httpStatus": 404,
+      "images": [],
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/ca-sr-cultural-anthropology-program-senior-research-awards/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/ca-sr-cultural-anthropology-program-senior-research-awards/announcements",
+      "httpStatus": 404,
+      "images": [],
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/mca-mid-career-advancement/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/mca-mid-career-advancement/announcements",
+      "httpStatus": 404,
+      "images": [],
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/drms-decision-risk-management-sciences/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/drms-decision-risk-management-sciences/announcements",
+      "httpStatus": 404,
+      "images": [],
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/nsf-engines-nsf-regional-innovation-engines/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/nsf-engines-nsf-regional-innovation-engines/announcements",
+      "httpStatus": 404,
+      "images": [],
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/linguistics/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/linguistics/announcements",
+      "httpStatus": 404,
+      "images": [],
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/fm-future-manufacturing/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/fm-future-manufacturing/announcements",
+      "httpStatus": 404,
+      "images": [],
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/ityc-iuse-innovation-two-year-college-stem-education/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/ityc-iuse-innovation-two-year-college-stem-education/announcements",
+      "httpStatus": 404,
+      "images": [],
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/spse-structure-physics-solid-earth/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/spse-structure-physics-solid-earth/announcements",
+      "httpStatus": 404,
+      "images": [],
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/hnds-human-networks-data-science/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/hnds-human-networks-data-science/announcements",
+      "httpStatus": 404,
+      "images": [],
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/cesev-chemical-evolution-solid-earth-volcanology/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/cesev-chemical-evolution-solid-earth-volcanology/announcements",
+      "httpStatus": 404,
+      "images": [],
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/eri-engineering-research-initiation/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/eri-engineering-research-initiation/announcements",
+      "httpStatus": 404,
+      "images": [],
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/geo-ose-geosciences-open-science-ecosystem/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/geo-ose-geosciences-open-science-ecosystem/announcements",
+      "httpStatus": 404,
+      "images": [],
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/rui-roa-pui-facilitating-research-predominantly-undergraduate/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/rui-roa-pui-facilitating-research-predominantly-undergraduate/announcements",
+      "httpStatus": 404,
+      "images": [],
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/ios-division-integrative-organismal-systems-core-programs/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/ios-division-integrative-organismal-systems-core-programs/announcements",
+      "httpStatus": 404,
+      "images": [],
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/us-national-science-foundation-research-traineeship-program/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/us-national-science-foundation-research-traineeship-program/announcements",
+      "httpStatus": 404,
+      "images": [],
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/cfs-combustion-fire-systems/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/cfs-combustion-fire-systems/announcements",
+      "httpStatus": 404,
+      "images": [],
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/exlent-experiential-learning-emerging-novel-technologies/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/exlent-experiential-learning-emerging-novel-technologies/announcements",
+      "httpStatus": 404,
+      "images": [],
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/mms-methodology-measurement-statistics/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/mms-methodology-measurement-statistics/announcements",
+      "httpStatus": 404,
+      "images": [],
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/robert-noyce-teacher-scholarship-program/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/robert-noyce-teacher-scholarship-program/announcements",
+      "httpStatus": 404,
+      "images": [],
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/ihbem-incorporating-human-behavior-epidemiological-models/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/ihbem-incorporating-human-behavior-epidemiological-models/announcements",
+      "httpStatus": 404,
+      "images": [],
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/mid-scale-ri-1-mid-scale-research-infrastructure-1/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/mid-scale-ri-1-mid-scale-research-infrastructure-1/announcements",
+      "httpStatus": 404,
+      "images": [],
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/plant-biotic-interactions/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/plant-biotic-interactions/announcements",
+      "httpStatus": 404,
+      "images": [],
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/aiming-artificial-intelligence-formal-methods-mathematical/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/aiming-artificial-intelligence-formal-methods-mathematical/announcements",
+      "httpStatus": 404,
+      "images": [],
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/t-ap-trans-atlantic-platform/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/t-ap-trans-atlantic-platform/announcements",
+      "httpStatus": 404,
+      "images": [],
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/accelnet-accelerating-research-through-international-network-network/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/accelnet-accelerating-research-through-international-network-network/announcements",
+      "httpStatus": 404,
+      "images": [],
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/hbcu-eir-historically-black-colleges-universities-excellence-research/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/hbcu-eir-historically-black-colleges-universities-excellence-research/announcements",
+      "httpStatus": 404,
+      "images": [],
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/satc-20-security-privacy-trust-cyberspace/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/satc-20-security-privacy-trust-cyberspace/announcements",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/fire-fire-science-innovations-through-research-education/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/fire-fire-science-innovations-through-research-education/announcements",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/reu-research-experiences-undergraduates/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/reu-research-experiences-undergraduates/announcements",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/science-technology-centers-integrative-partnerships/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/science-technology-centers-integrative-partnerships/announcements",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/arctic-research-opportunities/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/arctic-research-opportunities/announcements",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/nsf-ttp-national-science-foundation-translation-practice/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/nsf-ttp-national-science-foundation-translation-practice/announcements",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/sl-science-learning-augmented-intelligence/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/sl-science-learning-augmented-intelligence/announcements",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/pcl-test-bed-test-bed-toward-network-programmable-cloud-laboratories/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/pcl-test-bed-test-bed-toward-network-programmable-cloud-laboratories/announcements",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/sch-smart-health-biomedical-research-era-artificial-intelligence/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/sch-smart-health-biomedical-research-era-artificial-intelligence/announcements",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/safe-ose-safety-security-privacy-open-source-ecosystems/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/safe-ose-safety-security-privacy-open-source-ecosystems/announcements",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/sts-science-technology-studies/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/sts-science-technology-studies/announcements",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/dli-del-nsf-dynamic-language-infrastructure-neh-documenting/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/dli-del-nsf-dynamic-language-infrastructure-neh-documenting/announcements",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/cyberai-sfs-cyberaicorps-scholarship-service/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/cyberai-sfs-cyberaicorps-scholarship-service/announcements",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/frr-foundational-research-robotics/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/frr-foundational-research-robotics/announcements",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/pfe-rief-pfe-research-initiation-engineering-formation/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/pfe-rief-pfe-research-initiation-engineering-formation/announcements",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/soo-science-organizations/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/soo-science-organizations/announcements",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/innovations-graduate-education-program/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/innovations-graduate-education-program/announcements",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/pesose-pathways-enable-secure-open-source-ecosystems/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/pesose-pathways-enable-secure-open-source-ecosystems/announcements",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/m3x-mind-machine-motor-nexus/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/m3x-mind-machine-motor-nexus/announcements",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/epscor-research-infrastructure-improvement-program-focused/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/epscor-research-infrastructure-improvement-program-focused/announcements",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/gc-global-centers/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/gc-global-centers/announcements",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/career-faculty-early-career-development-program/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/career-faculty-early-career-development-program/announcements",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/msi-manufacturing-systems-integration/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/msi-manufacturing-systems-integration/announcements",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/egfp-nsf-epscor-graduate-fellowship-program/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/egfp-nsf-epscor-graduate-fellowship-program/announcements",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/msprf-mathematical-sciences-postdoctoral-research-fellowships/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/msprf-mathematical-sciences-postdoctoral-research-fellowships/announcements",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/hegs-human-environment-geographical-sciences-program/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/hegs-human-environment-geographical-sciences-program/announcements",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/art-accelerating-research-translation/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/art-accelerating-research-translation/announcements",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/s-stem-nsf-scholarships-science-technology-engineering-mathematics/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/s-stem-nsf-scholarships-science-technology-engineering-mathematics/announcements",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/mid-scale-ri-2-mid-scale-research-infrastructure-2/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/mid-scale-ri-2-mid-scale-research-infrastructure-2/announcements",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/crest-rise-centers-research-excellence-science-technology-research/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/crest-rise-centers-research-excellence-science-technology-research/announcements",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/let-life-environments-through-time/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/let-life-environments-through-time/announcements",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/qlci-quantum-leap-challenge-institutes/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/qlci-quantum-leap-challenge-institutes/announcements",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/s-stem-net-scholarships-stem-network/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/s-stem-net-scholarships-stem-network/announcements",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/nsf-national-innovation-corps-teams-nsf-national-i-corps-tm/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/nsf-national-innovation-corps-teams-nsf-national-i-corps-tm/announcements",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/cope-coastlines-people-hubs-research-broadening-participation/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/cope-coastlines-people-hubs-research-broadening-participation/announcements",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/iuse-edu-improving-undergraduate-stem-education-directorate-stem/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/iuse-edu-improving-undergraduate-stem-education-directorate-stem/announcements",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/ba-sr-biological-anthropology-program-senior-research-awards/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/ba-sr-biological-anthropology-program-senior-research-awards/announcements",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/physical-oceanography/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/physical-oceanography/announcements",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/rfe-research-formation-engineers/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/rfe-research-formation-engineers/announcements",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/crcns-collaborative-research-computational-neuroscience/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/crcns-collaborative-research-computational-neuroscience/announcements",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/drk-12-rc-discovery-research-prek-12-program-resource-center/announcements",
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/drk-12-rc-discovery-research-prek-12-program-resource-center/announcements",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/sbe/ses/updates",
+      "finalUrl": "https://www.nsf.gov/sbe/ses/updates",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/nsb/updates",
+      "finalUrl": "https://www.nsf.gov/nsb/updates",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/edu/due/updates",
+      "finalUrl": "https://www.nsf.gov/edu/due/updates",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/geo/opp/updates",
+      "finalUrl": "https://www.nsf.gov/geo/opp/updates",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/eng/eccs/updates",
+      "finalUrl": "https://www.nsf.gov/eng/eccs/updates",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/eng/efma/updates",
+      "finalUrl": "https://www.nsf.gov/eng/efma/updates",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/eng/eec/updates",
+      "finalUrl": "https://www.nsf.gov/eng/eec/updates",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/geo/ear/updates",
+      "finalUrl": "https://www.nsf.gov/geo/ear/updates",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/edu/dge/updates",
+      "finalUrl": "https://www.nsf.gov/edu/dge/updates",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/od/updates",
+      "finalUrl": "https://www.nsf.gov/od/updates",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/sbe/updates",
+      "finalUrl": "https://www.nsf.gov/sbe/updates",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/cise/oac/updates",
+      "finalUrl": "https://www.nsf.gov/cise/oac/updates",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/edu/drl/updates",
+      "finalUrl": "https://www.nsf.gov/edu/drl/updates",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/cise/iis/updates",
+      "finalUrl": "https://www.nsf.gov/cise/iis/updates",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/mps/ast/updates",
+      "finalUrl": "https://www.nsf.gov/mps/ast/updates",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/bio/ios/updates",
+      "finalUrl": "https://www.nsf.gov/bio/ios/updates",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/mps/che/updates",
+      "finalUrl": "https://www.nsf.gov/mps/che/updates",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/mps/phy/updates",
+      "finalUrl": "https://www.nsf.gov/mps/phy/updates",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.nsf.gov/mps/dms/updates",
+      "finalUrl": "https://www.nsf.gov/mps/dms/updates",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    }
+  ],
+  "uniqueImageList": [],
+  "meta": {
+    "ok": true,
+    "reportType": "alt-text",
+    "issueNumber": 13,
+    "issueUrl": "https://github.com/mgifford/alt-text-scan/issues/13",
+    "scanTitle": "https://www.nsf.gov/",
+    "scanDomain": "https://www.nsf.gov",
+    "discoveryMethod": "sitemap",
+    "discoveredTotal": 100,
+    "requestedCount": 100,
+    "acceptedCount": 100,
+    "rejectedCount": 0,
+    "scannedCount": 100,
+    "skippedDueToTimeout": 0,
+    "urlsRequested": 100,
+    "urlsScanned": 100,
+    "totalImages": 0,
+    "uniqueImages": 0,
+    "imagesWithIssues": 0,
+    "statusCounts": {
+      "MISSING": 0,
+      "DECORATIVE": 0,
+      "SUSPICIOUS": 0,
+      "FILENAME": 0,
+      "TOO_SHORT": 0,
+      "TOO_LONG": 0,
+      "GOOD": 0
+    },
+    "scannedAt": "2026-03-19T17:52:24.513Z"
+  }
+}
