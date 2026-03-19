@@ -98,6 +98,50 @@ function renderPreviewLabel(img) {
   return img.src;
 }
 
+/**
+ * Truncate a URL for display, preserving the start and the filename.
+ * For long URLs, shows "https://start… /filename.ext" with the tail after a mid-ellipsis.
+ * @param {string} src - Full URL
+ * @param {number} maxLength - Approximate maximum character length (default 60)
+ * @returns {string}
+ */
+export function truncateUrl(src, maxLength = 60) {
+  if (src.length <= maxLength) return src;
+
+  const lastSlash = src.lastIndexOf("/");
+  const tail = lastSlash >= 0 ? src.slice(lastSlash) : "";
+  const sep = " \u2026 "; // " … " — 3 chars (space + U+2026 + space)
+  const startLen = maxLength - sep.length - tail.length;
+
+  // Require at least 10 characters for the start so the truncated form is
+  // still recognisably the original URL (e.g. shows "https://host…").
+  if (startLen < 10 || tail.length <= 1) {
+    return src.slice(0, maxLength) + "\u2026";
+  }
+
+  return src.slice(0, startLen) + sep + tail;
+}
+
+/**
+ * Render a table cell for an image URL, with a mid-truncated display value,
+ * a native title attribute, and a CSS tooltip that breaks out of the cell
+ * bounds on hover/focus without causing the table to reflow.
+ * @param {string} src
+ * @returns {string} HTML <td> element string
+ */
+function renderUrlCell(src) {
+  const escapedSrc = src.replace(/"/g, "&quot;");
+  const truncated = truncateUrl(src);
+  const escaped = escapeHtml(truncated);
+
+  if (truncated === src) {
+    return `<td class="url-cell"><a href="${escapedSrc}" target="_blank" rel="noopener">${escaped}</a></td>`;
+  }
+
+  const fullEscaped = escapeHtml(src);
+  return `<td class="url-cell"><a href="${escapedSrc}" target="_blank" rel="noopener" title="${fullEscaped}">${escaped}</a><span class="url-tooltip" aria-hidden="true">${fullEscaped}</span></td>`;
+}
+
 function renderThumbnailButton(img) {
   const width = Number(img.width) > 0 ? Number(img.width) : "";
   const height = Number(img.height) > 0 ? Number(img.height) : "";
@@ -245,9 +289,7 @@ export function toHtml(scanResult, meta) {
         .join("<br>");
       return `
         <tr>
-          <td><a href="${img.src.replace(/"/g, "&quot;")}" target="_blank" rel="noopener">${
-            img.src.length > 60 ? img.src.slice(0, 60) + "…" : img.src
-          }</a></td>
+          ${renderUrlCell(img.src)}
           <td class="thumbnail-column" hidden>${renderThumbnailButton(img)}</td>
           <td>${altDisplay}</td>
           <td><span style="color:${color};font-weight:bold">${STATUS_LABELS[img.status] || img.status}</span></td>
@@ -271,9 +313,7 @@ export function toHtml(scanResult, meta) {
         .join("<br>");
       return `
         <tr>
-          <td><a href="${img.src.replace(/"/g, "&quot;")}" target="_blank" rel="noopener">${
-            img.src.length > 60 ? img.src.slice(0, 60) + "…" : img.src
-          }</a></td>
+          ${renderUrlCell(img.src)}
           <td class="thumbnail-column" hidden>${renderThumbnailButton(img)}</td>
           <td><span style="color:${color};font-weight:bold">${STATUS_LABELS[img.status] || img.status}</span></td>
           <td>${altDisplay}</td>
@@ -310,6 +350,9 @@ export function toHtml(scanResult, meta) {
     .thumbnail-trigger:hover, .thumbnail-trigger:focus-visible { border-color: #333; box-shadow: 0 0 0 3px rgba(33, 33, 33, 0.15); outline: none; }
     .thumbnail-trigger__image { display: block; width: 100%; height: 4.5rem; object-fit: contain; background: #f5f5f5; border-radius: 4px; }
     .thumbnail-trigger__text { font-size: 0.8rem; color: #444; }
+    .url-cell { position: relative; max-width: 20rem; }
+    .url-tooltip { display: none; position: absolute; z-index: 10; left: 0; top: 100%; margin-top: 0.2rem; background: #333; color: #fff; padding: 0.4rem 0.6rem; border-radius: 4px; font-size: 0.8rem; max-width: 44rem; word-break: break-all; white-space: normal; pointer-events: none; box-shadow: 0 2px 8px rgba(0,0,0,0.35); }
+    .url-cell:hover .url-tooltip, .url-cell:focus-within .url-tooltip { display: block; }
     dialog::backdrop { background: rgba(17, 24, 39, 0.72); }
     .preview-dialog { border: none; border-radius: 12px; padding: 0; width: min(92vw, 960px); max-height: 90vh; overflow: hidden; }
     .preview-dialog__inner { display: grid; gap: 0.75rem; padding: 1rem; background: #fff; }
@@ -319,6 +362,8 @@ export function toHtml(scanResult, meta) {
     .preview-dialog__figure { margin: 0; display: grid; gap: 0.5rem; justify-items: center; }
     .preview-dialog__image { display: block; max-width: min(88vw, 100%); max-height: 70vh; width: auto; height: auto; background: #f5f5f5; }
     .preview-dialog__caption { font-size: 0.9rem; color: #444; word-break: break-word; }
+    .preview-dialog__actions { margin: 0; font-size: 0.9rem; }
+    .preview-dialog__view-full { color: #1565c0; }
     @media (max-width: 720px) {
       .summary { gap: 0.75rem; }
       .stat { flex: 1 1 9rem; }
@@ -378,6 +423,9 @@ export function toHtml(scanResult, meta) {
         <img id="image-preview-image" class="preview-dialog__image" alt="">
         <figcaption id="image-preview-caption" class="preview-dialog__caption"></figcaption>
       </figure>
+      <p class="preview-dialog__actions">
+        <a id="image-preview-view-full" href="#" target="_blank" rel="noopener" class="preview-dialog__view-full">View full image ↗</a>
+      </p>
     </div>
   </dialog>
 
@@ -390,6 +438,7 @@ export function toHtml(scanResult, meta) {
       const previewCaption = document.getElementById("image-preview-caption");
       const previewTitle = document.getElementById("image-preview-title");
       const closeButton = document.getElementById("close-image-preview");
+      const viewFullLink = document.getElementById("image-preview-view-full");
       const previewTriggers = Array.from(document.querySelectorAll(".thumbnail-trigger"));
       let lastTrigger = null;
       let lastOpenMode = "click";
@@ -423,11 +472,21 @@ export function toHtml(scanResult, meta) {
         previewImage.style.height = "auto";
         previewImage.style.maxWidth = "100%";
         previewTitle.textContent = label;
-        previewCaption.textContent = [
-          alt ? "Alt text: " + alt : "Alt text: none",
-          width > 0 && height > 0 ? "Displayed size: " + width + " × " + height + "px" : "Displayed size: not captured",
-          src
-        ].join(" | ");
+
+        if (viewFullLink) {
+          viewFullLink.href = src;
+        }
+
+        const altInfo = alt ? "Alt text: " + alt : "Alt text: none";
+        const sizeInfo = width > 0 && height > 0 ? "Displayed size: " + width + " \u00d7 " + height + "px" : "Displayed size: not captured";
+        previewCaption.textContent = [altInfo, sizeInfo, src].join(" | ");
+
+        previewImage.onload = function() {
+          const nw = this.naturalWidth;
+          const nh = this.naturalHeight;
+          const naturalInfo = nw > 0 && nh > 0 ? "Natural size: " + nw + " \u00d7 " + nh + "px" : "";
+          previewCaption.textContent = [altInfo, sizeInfo, naturalInfo, src].filter(Boolean).join(" | ");
+        };
       };
 
       const openPreview = (trigger, mode) => {
