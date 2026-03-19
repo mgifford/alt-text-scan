@@ -9,7 +9,16 @@ on:
     # Run daily at midnight UTC
     - cron: '0 0 * * *'
   workflow_dispatch:
-    # Allow manual triggering
+    inputs:
+      issue_number:
+        description: Optional issue number to prioritize from the queue
+        required: false
+        type: string
+      source:
+        description: Why the queue worker was triggered
+        required: false
+        default: manual
+        type: string
 
 permissions:
   contents: write
@@ -54,8 +63,11 @@ jobs:
       - name: Fetch open SCAN issues
         id: fetch-issues
         uses: actions/github-script@v8
+        env:
+          REQUESTED_ISSUE_NUMBER: ${{ github.event.inputs.issue_number || '' }}
         with:
           script: |
+            const requestedIssueNumber = Number(process.env.REQUESTED_ISSUE_NUMBER || 0);
             const issues = await github.paginate(github.rest.issues.listForRepo, {
               owner: context.repo.owner,
               repo: context.repo.repo,
@@ -63,13 +75,54 @@ jobs:
               per_page: 100
             });
 
-            const scanIssues = issues.filter(issue =>
-              issue.title.startsWith('SCAN:') && !issue.pull_request
-            );
+            const scanIssues = issues
+              .filter(issue => issue.title.startsWith('SCAN:') && !issue.pull_request)
+              .sort((left, right) => {
+                const leftPriority = requestedIssueNumber > 0 && left.number === requestedIssueNumber ? 0 : 1;
+                const rightPriority = requestedIssueNumber > 0 && right.number === requestedIssueNumber ? 0 : 1;
+                if (leftPriority !== rightPriority) {
+                  return leftPriority - rightPriority;
+                }
+                return new Date(left.created_at).getTime() - new Date(right.created_at).getTime();
+              });
 
-            console.log(`Found ${scanIssues.length} open SCAN issues`);
-            return scanIssues.map(issue => issue.number);
+            const queueBatchSize = Math.min(scanIssues.length, 5);
+            const queuedIssues = scanIssues.slice(0, queueBatchSize);
+
+            console.log(`Found ${scanIssues.length} open SCAN issues, processing ${queuedIssues.length} this run`);
+            return queuedIssues.map(issue => issue.number);
           result-encoding: json
+
+      - name: Mark queued issues as active
+        if: steps.fetch-issues.outputs.result != '[]'
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const issueNumbers = ${{ steps.fetch-issues.outputs.result }};
+
+            for (const issueNumber of issueNumbers) {
+              for (const name of ['scan-failed', 'scan-complete']) {
+                try {
+                  await github.rest.issues.removeLabel({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: issueNumber,
+                    name
+                  });
+                } catch (error) {
+                  if (error.status !== 404) {
+                    throw error;
+                  }
+                }
+              }
+
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issueNumber,
+                labels: ['scan-in-progress']
+              });
+            }
 
       - name: Scan each issue
         if: steps.fetch-issues.outputs.result != '[]'
@@ -128,6 +181,28 @@ jobs:
                   owner: context.repo.owner,
                   repo: context.repo.repo,
                   issue_number: issueNumber
+                });
+
+                for (const name of ['scan-failed', 'scan-complete']) {
+                  try {
+                    await github.rest.issues.removeLabel({
+                      owner: context.repo.owner,
+                      repo: context.repo.repo,
+                      issue_number: issueNumber,
+                      name
+                    });
+                  } catch (error) {
+                    if (error.status !== 404) {
+                      throw error;
+                    }
+                  }
+                }
+
+                await github.rest.issues.addLabels({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issueNumber,
+                  labels: ['scan-in-progress']
                 });
 
                 // Create event payload for the scanner
@@ -387,6 +462,28 @@ jobs:
                   console.error(`Failed to post success comment after 3 attempts`);
                 }
 
+                for (const name of ['scan-in-progress', 'scan-failed']) {
+                  try {
+                    await github.rest.issues.removeLabel({
+                      owner,
+                      repo,
+                      issue_number: issueNumber,
+                      name
+                    });
+                  } catch (error) {
+                    if (error.status !== 404) {
+                      throw error;
+                    }
+                  }
+                }
+
+                await github.rest.issues.addLabels({
+                  owner,
+                  repo,
+                  issue_number: issueNumber,
+                  labels: ['scan-complete']
+                });
+
                 // Close the issue if URLs were successfully scanned
                 // Note: Issues with zero accepted URLs remain open for review
                 if (meta.acceptedCount > 0) {
@@ -465,6 +562,28 @@ jobs:
                       '',
                       `Please check the [workflow logs](https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}) for details.`
                     ].join('\n')
+                  });
+
+                  for (const name of ['scan-in-progress', 'scan-complete']) {
+                    try {
+                      await github.rest.issues.removeLabel({
+                        owner: context.repo.owner,
+                        repo: context.repo.repo,
+                        issue_number: issueNumber,
+                        name
+                      });
+                    } catch (labelError) {
+                      if (labelError.status !== 404) {
+                        throw labelError;
+                      }
+                    }
+                  }
+
+                  await github.rest.issues.addLabels({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: issueNumber,
+                    labels: ['scan-failed']
                   });
                 } catch (commentError) {
                   console.error(`Failed to post error comment:`, commentError.message);

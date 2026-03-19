@@ -9,51 +9,18 @@ on:
 permissions:
   contents: write
   issues: write
+  actions: write
 
 concurrency:
-  group: scan-repository
+  group: scan-request-${{ github.event.issue.number || github.run_id }}
   cancel-in-progress: false
 
 jobs:
-  run-scan-request:
+  enqueue-scan-request:
     if: startsWith(github.event.issue.title, 'SCAN:')
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v6
-        with:
-          fetch-depth: 0
-
-      - name: Setup Node
-        uses: actions/setup-node@v6
-        with:
-          node-version: 24
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Install Playwright browsers
-        run: npx playwright install --with-deps chromium
-
-      # Timeout configuration (optional, defaults shown):
-      # - FETCH_TIMEOUT_MS: Maximum time for initial HTTP fetch (default: 30000ms = 30s)
-      # - PER_URL_TIMEOUT_MS: Maximum time per URL including fetch and all audits (default: 60000ms = 60s)
-      # - TOTAL_SCAN_TIMEOUT_MS: Maximum total scan time (default: 3000000ms = 50min)
-      # - ALFA_PAGE_TIMEOUT_MS: ALFA CLI page load timeout (default: 30000ms = 30s)
-      # - ALFA_COMMAND_TIMEOUT_MS: ALFA command execution timeout (default: 180000ms = 3min)
-      # - PLAYWRIGHT_NAV_TIMEOUT_MS: Playwright page navigation timeout (default: 30000ms = 30s)
-      # - PLAYWRIGHT_LAUNCH_TIMEOUT_MS: Playwright browser launch timeout (default: 30000ms = 30s)
-      #
-      # To customize timeouts, add them to the "Run issue scan" step's env section
-
-      - name: Persist event payload
-        run: |
-          mkdir -p .tmp
-          cat > .tmp/issue-event.json <<'EOF'
-          ${{ toJson(github.event) }}
-          EOF
-
       - name: Acknowledge scan request
         id: acknowledge_scan
         if: github.event_name == 'issues'
@@ -84,16 +51,16 @@ jobs:
 
             const commentLines = isRestart
               ? [
-                  `🔄 **Alt text review restarted** for \`${scanLabel}\`.`,
+                  `🔄 **Alt text review re-queued** for \`${scanLabel}\`.`,
                   '',
-                  'The previous run did not finish successfully. The workflow is trying this request again.',
+                  'The request has been placed back in the scan queue. It will run after any scans already in progress finish.',
                   '',
                   '_No further edits to this issue will trigger additional scans. Close and reopen the issue to retry._'
                 ]
               : [
-                  `🔍 **Alt text review started** for \`${scanLabel}\`.`,
+                  `🗂️ **Alt text review queued** for \`${scanLabel}\`.`,
                   '',
-                  'The workflow is collecting URLs and reviewing image descriptions now. A completion comment with report links will be posted here when the scan finishes.',
+                  'The request has been added to the scan queue. A worker workflow will process queued requests one at a time and post the report links here when the scan finishes.',
                   '',
                   '_No further edits to this issue will trigger additional scans. Close and reopen the issue to retry._'
                 ];
@@ -111,320 +78,29 @@ jobs:
               issue_number: context.issue.number,
               labels: ['scan-in-progress']
             });
-
-      - name: Run issue scan
-        id: run_scan
-        run: |
-          mkdir -p .scan-output
-          node scanner/run-alt-text-scan.mjs .tmp/issue-event.json .scan-output > .scan-output/meta.json
-        # Uncomment and adjust these environment variables to customize timeouts:
-        # env:
-        #   FETCH_TIMEOUT_MS: "30000"           # 30s for initial HTTP fetch
-        #   PER_URL_TIMEOUT_MS: "60000"         # 60s per URL total
-        #   TOTAL_SCAN_TIMEOUT_MS: "3000000"    # 50min total scan time
-        #   ALFA_PAGE_TIMEOUT_MS: "30000"       # 30s ALFA page load
-        #   ALFA_COMMAND_TIMEOUT_MS: "180000"   # 3min ALFA command execution
-        #   PLAYWRIGHT_NAV_TIMEOUT_MS: "30000"  # 30s Playwright navigation
-        #   PLAYWRIGHT_LAUNCH_TIMEOUT_MS: "30000" # 30s Playwright browser launch
-
-      - name: Read scan metadata
-        id: meta
-        run: |
-          node --input-type=module <<'NODE'
-          import { appendFileSync, readFileSync } from 'node:fs';
-
-          const meta = JSON.parse(readFileSync('.scan-output/meta.json', 'utf8'));
-          const issueNumber = Number(process.env.ISSUE_NUMBER);
-          const stamp = new Date().toISOString().replace(/[:.]/g, '-');
-          const reportDir = `reports/issues/issue-${issueNumber}/${stamp}`;
-          const summaryPath = `${reportDir}/report.json`;
-          const markdownPath = `${reportDir}/report.md`;
-          const htmlPath = `${reportDir}/report.html`;
-          const csvPath = `${reportDir}/report.csv`;
-          const output = process.env.GITHUB_OUTPUT;
-          const lines = [
-            `accepted_count=${meta.acceptedCount ?? 0}`,
-            `scanned_count=${meta.scannedCount ?? meta.acceptedCount ?? 0}`,
-            `skipped_due_to_timeout=${meta.skippedDueToTimeout ?? 0}`,
-            `rejected_count=${meta.rejectedCount ?? 0}`,
-            `total_images=${meta.totalImages ?? 0}`,
-            `unique_images=${meta.uniqueImages ?? 0}`,
-            `images_with_issues=${meta.imagesWithIssues ?? 0}`,
-            `missing_count=${meta.statusCounts?.MISSING ?? 0}`,
-            `suspicious_count=${meta.statusCounts?.SUSPICIOUS ?? 0}`,
-            `filename_count=${meta.statusCounts?.FILENAME ?? 0}`,
-            `decorative_count=${meta.statusCounts?.DECORATIVE ?? 0}`,
-            `good_count=${meta.statusCounts?.GOOD ?? 0}`,
-            `too_short_count=${meta.statusCounts?.TOO_SHORT ?? 0}`,
-            `too_long_count=${meta.statusCounts?.TOO_LONG ?? 0}`,
-            `scan_title=${(meta.scanTitle ?? '').replace(/\n/g, ' ')}`,
-            `report_dir=${reportDir}`,
-            `summary_path=${summaryPath}`,
-            `markdown_path=${markdownPath}`,
-            `html_path=${htmlPath}`,
-            `csv_path=${csvPath}`,
-            `stamp=${stamp}`
-          ].join('\n') + '\n';
-
-          appendFileSync(output, lines, 'utf8');
-          NODE
+      - name: Trigger queue worker
+        uses: actions/github-script@v8
         env:
           ISSUE_NUMBER: ${{ github.event.issue.number }}
-
-      - name: Persist reports into repository
-        id: persist_reports
-        run: |
-          mkdir -p "${{ steps.meta.outputs.report_dir }}"
-          cp .scan-output/report.json "${{ steps.meta.outputs.summary_path }}"
-          cp .scan-output/report.md "${{ steps.meta.outputs.markdown_path }}"
-          cp .scan-output/report.html "${{ steps.meta.outputs.html_path }}"
-          cp .scan-output/report.csv "${{ steps.meta.outputs.csv_path }}"
-
-      - name: Regenerate reports.html
-        run: node scanner/generate-reports-html.mjs
-
-      - name: Commit and push report artifacts
-        id: commit_artifacts
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "${{ steps.meta.outputs.report_dir }}" reports.html legacy-reports.html
-          if git diff --cached --quiet; then
-            echo "No report changes to commit."
-          else
-            git commit -m "chore(scan): issue #${{ github.event.issue.number }} ${{ steps.meta.outputs.scan_title }}"
-            
-            # Retry push with rebase up to 3 times
-            PUSH_SUCCESS=false
-            for attempt in 1 2 3; do
-              echo "Push attempt $attempt..."
-              if git pull --rebase origin main; then
-                if git push origin HEAD:main; then
-                  echo "Successfully pushed on attempt $attempt"
-                  PUSH_SUCCESS=true
-                  break
-                fi
-              else
-                # reports.html and legacy-reports.html are generated files — resolve conflicts by regenerating them
-                if git status | grep -q "rebase in progress"; then
-                  if git diff --name-only --diff-filter=U 2>/dev/null | grep -qE "^(reports|legacy-reports)\.html$"; then
-                    echo "Conflict in generated reports HTML — resolving by regenerating..."
-                    node scanner/generate-reports-html.mjs
-                    git add reports.html legacy-reports.html
-                    if GIT_EDITOR=true git rebase --continue; then
-                      if git push origin HEAD:main; then
-                        echo "Successfully pushed on attempt $attempt (after resolving reports HTML conflict)"
-                        PUSH_SUCCESS=true
-                        break
-                      fi
-                    fi
-                  fi
-                  git rebase --abort 2>/dev/null || true
-                fi
-              fi
-              
-              if [ $attempt -lt 3 ]; then
-                sleep $((attempt * 2))
-                echo "Retrying..."
-              fi
-            done
-            
-            if [ "$PUSH_SUCCESS" = false ]; then
-              echo "Failed to push after 3 attempts" >&2
-              exit 1
-            fi
-          fi
-
-      - name: Comment scan completion
-        id: comment_complete
-        uses: actions/github-script@v8
+          ISSUE_ACTION: ${{ github.event.action }}
         with:
           script: |
-            const issueNumber = context.payload.issue.number;
-            const owner = context.repo.owner;
-            const repo = context.repo.repo;
-            const summaryPath = process.env.SUMMARY_PATH;
-            const markdownPath = process.env.MARKDOWN_PATH;
-            const htmlPath = process.env.HTML_PATH;
-            const csvPath = process.env.CSV_PATH;
-            const acceptedCount = Number(process.env.ACCEPTED_COUNT || 0);
-            const scannedCount = Number(process.env.SCANNED_COUNT || acceptedCount);
-            const rejectedCount = Number(process.env.REJECTED_COUNT || 0);
-            const skippedDueToTimeout = Number(process.env.SKIPPED_DUE_TO_TIMEOUT || 0);
-            const totalImages = Number(process.env.TOTAL_IMAGES || 0);
-            const uniqueImages = Number(process.env.UNIQUE_IMAGES || 0);
-            const imagesWithIssues = Number(process.env.IMAGES_WITH_ISSUES || 0);
-            const pagesUrl = `https://${owner}.github.io/${repo}/${htmlPath}`;
-            const reportsHistoryUrl = `https://${owner}.github.io/${repo}/reports.html`;
-            const markdownUrl = `https://github.com/${owner}/${repo}/blob/main/${markdownPath}`;
-            const jsonUrl = `https://github.com/${owner}/${repo}/blob/main/${summaryPath}`;
-            const csvUrl = `https://github.com/${owner}/${repo}/blob/main/${csvPath}`;
-            const workflowRunUrl = `https://github.com/${owner}/${repo}/actions/runs/${context.runId}`;
-            const scanLabel = process.env.SCAN_TITLE || context.payload.issue.title;
+            const issueNumber = Number(process.env.ISSUE_NUMBER);
+            const attemptSource = process.env.ISSUE_ACTION === 'reopened' ? 'reopen' : 'new-issue';
 
-            for (const name of ['scan-in-progress', 'scan-failed']) {
-              try {
-                await github.rest.issues.removeLabel({
-                  owner,
-                  repo,
-                  issue_number: issueNumber,
-                  name
-                });
-              } catch (error) {
-                if (error.status !== 404) {
-                  throw error;
-                }
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'scan-issue-queue.yml',
+              ref: context.payload.repository.default_branch,
+              inputs: {
+                issue_number: String(issueNumber),
+                source: attemptSource
               }
-            }
-
-            await github.rest.issues.addLabels({
-              owner,
-              repo,
-              issue_number: issueNumber,
-              labels: ['scan-complete']
             });
 
-            const statusRows = [
-              ['Missing alt', Number(process.env.MISSING_COUNT || 0)],
-              ['Suspicious', Number(process.env.SUSPICIOUS_COUNT || 0)],
-              ['Filename as alt', Number(process.env.FILENAME_COUNT || 0)],
-              ['Decorative', Number(process.env.DECORATIVE_COUNT || 0)],
-              ['Too short', Number(process.env.TOO_SHORT_COUNT || 0)],
-              ['Too long', Number(process.env.TOO_LONG_COUNT || 0)],
-              ['Good', Number(process.env.GOOD_COUNT || 0)]
-            ].filter(([, count]) => count > 0);
-
-            const body = [
-              `📊 **Alt text review complete** for \`${scanLabel}\`.`,
-              '',
-              '## Summary',
-              '| Metric | Value |',
-              '| --- | ---: |',
-              `| Accepted URLs | ${acceptedCount} |`,
-              `| Scanned URLs | ${scannedCount} |`,
-              `| Rejected URLs | ${rejectedCount} |`,
-              `| Images found | ${totalImages} |`,
-              `| Unique images reviewed | ${uniqueImages} |`,
-              `| Images with issues | ${imagesWithIssues} |`
-            ];
-
-            if (skippedDueToTimeout > 0) {
-              body.push(`| Skipped due to timeout | ${skippedDueToTimeout} |`);
-            }
-
-            if (statusRows.length > 0) {
-              body.push(
-                '',
-                '## Status Breakdown',
-                '| Status | Count |',
-                '| --- | ---: |',
-                ...statusRows.map(([label, count]) => `| ${label} | ${count} |`)
-              );
-            }
-
-            if (skippedDueToTimeout > 0) {
-              body.push(
-                '',
-                `Note: ${skippedDueToTimeout} URLs were skipped because the scan reached the workflow time limit. Split large requests into smaller batches if you need broader coverage.`
-              );
-            }
-
-            body.push(
-              '',
-              '## Full Reports',
-              `- [HTML report](${pagesUrl})`,
-              `- [Reports history](${reportsHistoryUrl})`,
-              `- [Markdown report](${markdownUrl})`,
-              `- [JSON report](${jsonUrl})`,
-              `- [Image inventory CSV (unique images)](${csvUrl})`,
-              '- Includes alt text, title, aria-label, aria-describedby, longdesc, role, visibility, dimensions, and source pages.',
-              `- [View workflow run](${workflowRunUrl})`
-            );
-
-            const commentBody = body.join('\n');
-
-            // Retry posting comment with exponential backoff
-            for (let attempt = 0; attempt < 3; attempt++) {
-              try {
-                await github.rest.issues.createComment({
-                  owner,
-                  repo,
-                  issue_number: issueNumber,
-                  body: commentBody
-                });
-                console.log(`Comment posted successfully`);
-                break;
-              } catch (error) {
-                console.warn(`Attempt ${attempt + 1} failed to post comment:`, error.message);
-                if (attempt < 2) {
-                  const delay = Math.pow(2, attempt) * 1000; // 1s, 2s
-                  console.log(`Retrying in ${delay}ms...`);
-                  await new Promise(resolve => setTimeout(resolve, delay));
-                } else {
-                  throw error; // Re-throw on final attempt to fail the workflow
-                }
-              }
-            }
-        env:
-          SUMMARY_PATH: ${{ steps.meta.outputs.summary_path }}
-          MARKDOWN_PATH: ${{ steps.meta.outputs.markdown_path }}
-          HTML_PATH: ${{ steps.meta.outputs.html_path }}
-          CSV_PATH: ${{ steps.meta.outputs.csv_path }}
-          ACCEPTED_COUNT: ${{ steps.meta.outputs.accepted_count }}
-          SCANNED_COUNT: ${{ steps.meta.outputs.scanned_count }}
-          SKIPPED_DUE_TO_TIMEOUT: ${{ steps.meta.outputs.skipped_due_to_timeout }}
-          REJECTED_COUNT: ${{ steps.meta.outputs.rejected_count }}
-          TOTAL_IMAGES: ${{ steps.meta.outputs.total_images }}
-          UNIQUE_IMAGES: ${{ steps.meta.outputs.unique_images }}
-          IMAGES_WITH_ISSUES: ${{ steps.meta.outputs.images_with_issues }}
-          MISSING_COUNT: ${{ steps.meta.outputs.missing_count }}
-          SUSPICIOUS_COUNT: ${{ steps.meta.outputs.suspicious_count }}
-          FILENAME_COUNT: ${{ steps.meta.outputs.filename_count }}
-          DECORATIVE_COUNT: ${{ steps.meta.outputs.decorative_count }}
-          GOOD_COUNT: ${{ steps.meta.outputs.good_count }}
-          TOO_SHORT_COUNT: ${{ steps.meta.outputs.too_short_count }}
-          TOO_LONG_COUNT: ${{ steps.meta.outputs.too_long_count }}
-          SCAN_TITLE: ${{ steps.meta.outputs.scan_title }}
-
-      - name: Close issue after scan
-        id: close_issue
-        if: ${{ steps.meta.outputs.accepted_count != '0' }}
-        uses: actions/github-script@v8
-        with:
-          script: |
-            // Retry closing issue with exponential backoff
-            for (let attempt = 0; attempt < 3; attempt++) {
-              try {
-                await github.rest.issues.update({
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  issue_number: context.payload.issue.number,
-                  state: 'closed'
-                });
-                console.log(`Issue closed successfully`);
-                break;
-              } catch (error) {
-                console.warn(`Attempt ${attempt + 1} failed to close issue:`, error.message);
-                if (attempt < 2) {
-                  const delay = Math.pow(2, attempt) * 1000; // 1s, 2s
-                  console.log(`Retrying in ${delay}ms...`);
-                  await new Promise(resolve => setTimeout(resolve, delay));
-                } else {
-                  throw error; // Re-throw on final attempt to fail the workflow
-                }
-              }
-            }
-
-      - name: Comment scan failure
-        if: >-
-          failure() &&
-          github.event_name == 'issues' &&
-          (
-            steps.run_scan.outcome == 'failure' ||
-            steps.meta.outcome == 'failure' ||
-            steps.persist_reports.outcome == 'failure' ||
-            steps.commit_artifacts.outcome == 'failure'
-          )
+      - name: Comment queue dispatch failure
+        if: failure()
         uses: actions/github-script@v8
         env:
           ISSUE_TITLE: ${{ github.event.issue.title }}
@@ -437,12 +113,11 @@ jobs:
             const issueTitle = process.env.ISSUE_TITLE || context.payload.issue.title;
             const scanLabel = issueTitle.replace(/^SCAN:\s*/i, '').trim() || issueTitle;
             const body = [
-              `❌ **Alt text review failed** for \`${scanLabel}\`.`,
+              `❌ **Queueing failed** for \`${scanLabel}\`.`,
               '',
-              `The workflow did not complete successfully. Check the [workflow run](${process.env.RUN_URL}) for details.`,
+              `The request could not be placed in the scan queue. Check the [workflow run](${process.env.RUN_URL}) for details.`,
               '',
-              'If the request body needs changes, update it and then close and reopen this issue to retry.',
-              'For the most reliable results, put one full URL per line in the `## URLs` section of the issue body.'
+              'Close and reopen the issue to retry queueing the request.'
             ].join('\n');
 
             for (const name of ['scan-in-progress', 'scan-complete']) {
