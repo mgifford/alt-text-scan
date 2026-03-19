@@ -1,0 +1,726 @@
+{
+  "reportType": "alt-text",
+  "issueNumber": 6,
+  "issueUrl": "https://github.com/mgifford/alt-text-scan/issues/6",
+  "scanTitle": "https://bankruptcynotices.uscourts.gov/",
+  "scanDomain": "https://bankruptcynotices.uscourts.gov",
+  "discoveryMethod": "sitemap",
+  "discoveredTotal": 18,
+  "requestedCount": 18,
+  "acceptedCount": 18,
+  "rejectedCount": 0,
+  "scannedCount": 18,
+  "skippedDueToTimeout": 0,
+  "urlsRequested": 18,
+  "urlsScanned": 18,
+  "scannedAt": "2026-03-19T05:28:54.875Z",
+  "totalImages": 18,
+  "uniqueImages": 2,
+  "imagesWithIssues": 0,
+  "statusCounts": {
+    "MISSING": 0,
+    "DECORATIVE": 0,
+    "SUSPICIOUS": 0,
+    "FILENAME": 0,
+    "TOO_SHORT": 0,
+    "TOO_LONG": 0,
+    "GOOD": 18
+  },
+  "urlResults": [
+    {
+      "url": "https://bankruptcynotices.uscourts.gov/",
+      "finalUrl": "https://bankruptcynotices.uscourts.gov/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bankruptcynotices.uscourts.gov/assets/img/bnc-seal.png",
+          "alt": "Logo image",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 115,
+          "height": 113,
+          "isVisible": true,
+          "pageUrl": "https://bankruptcynotices.uscourts.gov/",
+          "status": "GOOD",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bankruptcynotices.uscourts.gov/overview",
+      "finalUrl": "https://bankruptcynotices.uscourts.gov/overview",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bankruptcynotices.uscourts.gov/assets/img/bnc-seal.png",
+          "alt": "Logo image",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": null,
+          "height": 100,
+          "isVisible": true,
+          "pageUrl": "https://bankruptcynotices.uscourts.gov/overview",
+          "status": "GOOD",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bankruptcynotices.uscourts.gov/FAQ",
+      "finalUrl": "https://bankruptcynotices.uscourts.gov/FAQ",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bankruptcynotices.uscourts.gov/assets/img/bnc-seal.png",
+          "alt": "Logo image",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 115,
+          "height": 113,
+          "isVisible": true,
+          "pageUrl": "https://bankruptcynotices.uscourts.gov/FAQ",
+          "status": "GOOD",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bankruptcynotices.uscourts.gov/name-and-address-matching",
+      "finalUrl": "https://bankruptcynotices.uscourts.gov/name-and-address-matching",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bankruptcynotices.uscourts.gov/assets/img/bnc-seal.png",
+          "alt": "Logo image",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 115,
+          "height": 113,
+          "isVisible": true,
+          "pageUrl": "https://bankruptcynotices.uscourts.gov/name-and-address-matching",
+          "status": "GOOD",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bankruptcynotices.uscourts.gov/xml",
+      "finalUrl": "https://bankruptcynotices.uscourts.gov/xml",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bankruptcynotices.uscourts.gov/assets/img/bnc-seal.png",
+          "alt": "Logo image",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 115,
+          "height": 113,
+          "isVisible": true,
+          "pageUrl": "https://bankruptcynotices.uscourts.gov/xml",
+          "status": "GOOD",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bankruptcynotices.uscourts.gov/edi-faq",
+      "finalUrl": "https://bankruptcynotices.uscourts.gov/edi-faq",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bankruptcynotices.uscourts.gov/assets/img/bnc-seal.png",
+          "alt": "Logo image",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 115,
+          "height": 113,
+          "isVisible": true,
+          "pageUrl": "https://bankruptcynotices.uscourts.gov/edi-faq",
+          "status": "GOOD",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bankruptcynotices.uscourts.gov/register/new-user-agreement",
+      "finalUrl": "https://bankruptcynotices.uscourts.gov/register/new-user-agreement",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bankruptcynotices.uscourts.gov/assets/img/bnc-seal.png",
+          "alt": "Logo image",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 115,
+          "height": 113,
+          "isVisible": true,
+          "pageUrl": "https://bankruptcynotices.uscourts.gov/register/new-user-agreement",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://bankruptcynotices.uscourts.gov/assets/img/info.png",
+          "alt": "info",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 298,
+          "height": 298,
+          "isVisible": true,
+          "pageUrl": "https://bankruptcynotices.uscourts.gov/register/new-user-agreement",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://bankruptcynotices.uscourts.gov/assets/img/info.png",
+          "alt": "info",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 298,
+          "height": 298,
+          "isVisible": true,
+          "pageUrl": "https://bankruptcynotices.uscourts.gov/register/new-user-agreement",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://bankruptcynotices.uscourts.gov/assets/img/info.png",
+          "alt": "info",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 298,
+          "height": 298,
+          "isVisible": true,
+          "pageUrl": "https://bankruptcynotices.uscourts.gov/register/new-user-agreement",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://bankruptcynotices.uscourts.gov/assets/img/info.png",
+          "alt": "info",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 298,
+          "height": 298,
+          "isVisible": true,
+          "pageUrl": "https://bankruptcynotices.uscourts.gov/register/new-user-agreement",
+          "status": "GOOD",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bankruptcynotices.uscourts.gov/resources",
+      "finalUrl": "https://bankruptcynotices.uscourts.gov/resources",
+      "httpStatus": null,
+      "images": [],
+      "error": "page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://bankruptcynotices.uscourts.gov/resources\", waiting until \"domcontentloaded\"\n"
+    },
+    {
+      "url": "https://bankruptcynotices.uscourts.gov/edi-templates",
+      "finalUrl": "https://bankruptcynotices.uscourts.gov/edi-templates",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bankruptcynotices.uscourts.gov/assets/img/bnc-seal.png",
+          "alt": "Logo image",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 115,
+          "height": 113,
+          "isVisible": true,
+          "pageUrl": "https://bankruptcynotices.uscourts.gov/edi-templates",
+          "status": "GOOD",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bankruptcynotices.uscourts.gov/for-debtors",
+      "finalUrl": "https://bankruptcynotices.uscourts.gov/for-debtors",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bankruptcynotices.uscourts.gov/assets/img/bnc-seal.png",
+          "alt": "Logo image",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 115,
+          "height": 113,
+          "isVisible": true,
+          "pageUrl": "https://bankruptcynotices.uscourts.gov/for-debtors",
+          "status": "GOOD",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bankruptcynotices.uscourts.gov/contact-us",
+      "finalUrl": "https://bankruptcynotices.uscourts.gov/contact-us",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bankruptcynotices.uscourts.gov/assets/img/bnc-seal.png",
+          "alt": "Logo image",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 115,
+          "height": 113,
+          "isVisible": true,
+          "pageUrl": "https://bankruptcynotices.uscourts.gov/contact-us",
+          "status": "GOOD",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bankruptcynotices.uscourts.gov/user/login",
+      "finalUrl": "https://bankruptcynotices.uscourts.gov/user/login",
+      "httpStatus": 404,
+      "images": [],
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://bankruptcynotices.uscourts.gov/make-changes",
+      "finalUrl": "https://bankruptcynotices.uscourts.gov/make-changes",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bankruptcynotices.uscourts.gov/assets/img/bnc-seal.png",
+          "alt": "Logo image",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 115,
+          "height": 113,
+          "isVisible": true,
+          "pageUrl": "https://bankruptcynotices.uscourts.gov/make-changes",
+          "status": "GOOD",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bankruptcynotices.uscourts.gov/assets/docs/ExtractXML.java",
+      "finalUrl": "https://bankruptcynotices.uscourts.gov/assets/docs/ExtractXML.java",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bankruptcynotices.uscourts.gov/assets/docs/yournotice.html",
+      "finalUrl": "https://bankruptcynotices.uscourts.gov/assets/docs/yournotice.html",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bankruptcynotices.uscourts.gov/edi-templates/new-updated",
+      "finalUrl": "https://bankruptcynotices.uscourts.gov/edi-templates/new-updated",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bankruptcynotices.uscourts.gov/assets/img/bnc-seal.png",
+          "alt": "Logo image",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 115,
+          "height": 113,
+          "isVisible": true,
+          "pageUrl": "https://bankruptcynotices.uscourts.gov/edi-templates/new-updated",
+          "status": "GOOD",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bankruptcynotices.uscourts.gov/user/username",
+      "finalUrl": "https://bankruptcynotices.uscourts.gov/user/username",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bankruptcynotices.uscourts.gov/assets/img/bnc-seal.png",
+          "alt": "Logo image",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 115,
+          "height": 113,
+          "isVisible": true,
+          "pageUrl": "https://bankruptcynotices.uscourts.gov/user/username",
+          "status": "GOOD",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bankruptcynotices.uscourts.gov/user/forgot-username",
+      "finalUrl": "https://bankruptcynotices.uscourts.gov/user/forgot-username",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bankruptcynotices.uscourts.gov/assets/img/bnc-seal.png",
+          "alt": "Logo image",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 115,
+          "height": 113,
+          "isVisible": true,
+          "pageUrl": "https://bankruptcynotices.uscourts.gov/user/forgot-username",
+          "status": "GOOD",
+          "issues": []
+        }
+      ],
+      "error": null
+    }
+  ],
+  "uniqueImageList": [
+    {
+      "src": "https://bankruptcynotices.uscourts.gov/assets/img/bnc-seal.png",
+      "alt": "Logo image",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 115,
+      "height": 113,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://bankruptcynotices.uscourts.gov/",
+        "https://bankruptcynotices.uscourts.gov/overview",
+        "https://bankruptcynotices.uscourts.gov/FAQ",
+        "https://bankruptcynotices.uscourts.gov/name-and-address-matching",
+        "https://bankruptcynotices.uscourts.gov/xml",
+        "https://bankruptcynotices.uscourts.gov/edi-faq",
+        "https://bankruptcynotices.uscourts.gov/register/new-user-agreement",
+        "https://bankruptcynotices.uscourts.gov/edi-templates",
+        "https://bankruptcynotices.uscourts.gov/for-debtors",
+        "https://bankruptcynotices.uscourts.gov/contact-us",
+        "https://bankruptcynotices.uscourts.gov/make-changes",
+        "https://bankruptcynotices.uscourts.gov/edi-templates/new-updated",
+        "https://bankruptcynotices.uscourts.gov/user/username",
+        "https://bankruptcynotices.uscourts.gov/user/forgot-username"
+      ],
+      "occurrences": 14,
+      "altVariants": [
+        {
+          "value": "Logo image",
+          "count": 14,
+          "pages": [
+            "https://bankruptcynotices.uscourts.gov/",
+            "https://bankruptcynotices.uscourts.gov/overview",
+            "https://bankruptcynotices.uscourts.gov/FAQ",
+            "https://bankruptcynotices.uscourts.gov/name-and-address-matching",
+            "https://bankruptcynotices.uscourts.gov/xml",
+            "https://bankruptcynotices.uscourts.gov/edi-faq",
+            "https://bankruptcynotices.uscourts.gov/register/new-user-agreement",
+            "https://bankruptcynotices.uscourts.gov/edi-templates",
+            "https://bankruptcynotices.uscourts.gov/for-debtors",
+            "https://bankruptcynotices.uscourts.gov/contact-us",
+            "https://bankruptcynotices.uscourts.gov/make-changes",
+            "https://bankruptcynotices.uscourts.gov/edi-templates/new-updated",
+            "https://bankruptcynotices.uscourts.gov/user/username",
+            "https://bankruptcynotices.uscourts.gov/user/forgot-username"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 14,
+          "pages": [
+            "https://bankruptcynotices.uscourts.gov/",
+            "https://bankruptcynotices.uscourts.gov/overview",
+            "https://bankruptcynotices.uscourts.gov/FAQ",
+            "https://bankruptcynotices.uscourts.gov/name-and-address-matching",
+            "https://bankruptcynotices.uscourts.gov/xml",
+            "https://bankruptcynotices.uscourts.gov/edi-faq",
+            "https://bankruptcynotices.uscourts.gov/register/new-user-agreement",
+            "https://bankruptcynotices.uscourts.gov/edi-templates",
+            "https://bankruptcynotices.uscourts.gov/for-debtors",
+            "https://bankruptcynotices.uscourts.gov/contact-us",
+            "https://bankruptcynotices.uscourts.gov/make-changes",
+            "https://bankruptcynotices.uscourts.gov/edi-templates/new-updated",
+            "https://bankruptcynotices.uscourts.gov/user/username",
+            "https://bankruptcynotices.uscourts.gov/user/forgot-username"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 14,
+          "pages": [
+            "https://bankruptcynotices.uscourts.gov/",
+            "https://bankruptcynotices.uscourts.gov/overview",
+            "https://bankruptcynotices.uscourts.gov/FAQ",
+            "https://bankruptcynotices.uscourts.gov/name-and-address-matching",
+            "https://bankruptcynotices.uscourts.gov/xml",
+            "https://bankruptcynotices.uscourts.gov/edi-faq",
+            "https://bankruptcynotices.uscourts.gov/register/new-user-agreement",
+            "https://bankruptcynotices.uscourts.gov/edi-templates",
+            "https://bankruptcynotices.uscourts.gov/for-debtors",
+            "https://bankruptcynotices.uscourts.gov/contact-us",
+            "https://bankruptcynotices.uscourts.gov/make-changes",
+            "https://bankruptcynotices.uscourts.gov/edi-templates/new-updated",
+            "https://bankruptcynotices.uscourts.gov/user/username",
+            "https://bankruptcynotices.uscourts.gov/user/forgot-username"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 14,
+          "pages": [
+            "https://bankruptcynotices.uscourts.gov/",
+            "https://bankruptcynotices.uscourts.gov/overview",
+            "https://bankruptcynotices.uscourts.gov/FAQ",
+            "https://bankruptcynotices.uscourts.gov/name-and-address-matching",
+            "https://bankruptcynotices.uscourts.gov/xml",
+            "https://bankruptcynotices.uscourts.gov/edi-faq",
+            "https://bankruptcynotices.uscourts.gov/register/new-user-agreement",
+            "https://bankruptcynotices.uscourts.gov/edi-templates",
+            "https://bankruptcynotices.uscourts.gov/for-debtors",
+            "https://bankruptcynotices.uscourts.gov/contact-us",
+            "https://bankruptcynotices.uscourts.gov/make-changes",
+            "https://bankruptcynotices.uscourts.gov/edi-templates/new-updated",
+            "https://bankruptcynotices.uscourts.gov/user/username",
+            "https://bankruptcynotices.uscourts.gov/user/forgot-username"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 14,
+          "pages": [
+            "https://bankruptcynotices.uscourts.gov/",
+            "https://bankruptcynotices.uscourts.gov/overview",
+            "https://bankruptcynotices.uscourts.gov/FAQ",
+            "https://bankruptcynotices.uscourts.gov/name-and-address-matching",
+            "https://bankruptcynotices.uscourts.gov/xml",
+            "https://bankruptcynotices.uscourts.gov/edi-faq",
+            "https://bankruptcynotices.uscourts.gov/register/new-user-agreement",
+            "https://bankruptcynotices.uscourts.gov/edi-templates",
+            "https://bankruptcynotices.uscourts.gov/for-debtors",
+            "https://bankruptcynotices.uscourts.gov/contact-us",
+            "https://bankruptcynotices.uscourts.gov/make-changes",
+            "https://bankruptcynotices.uscourts.gov/edi-templates/new-updated",
+            "https://bankruptcynotices.uscourts.gov/user/username",
+            "https://bankruptcynotices.uscourts.gov/user/forgot-username"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 14,
+          "pages": [
+            "https://bankruptcynotices.uscourts.gov/",
+            "https://bankruptcynotices.uscourts.gov/overview",
+            "https://bankruptcynotices.uscourts.gov/FAQ",
+            "https://bankruptcynotices.uscourts.gov/name-and-address-matching",
+            "https://bankruptcynotices.uscourts.gov/xml",
+            "https://bankruptcynotices.uscourts.gov/edi-faq",
+            "https://bankruptcynotices.uscourts.gov/register/new-user-agreement",
+            "https://bankruptcynotices.uscourts.gov/edi-templates",
+            "https://bankruptcynotices.uscourts.gov/for-debtors",
+            "https://bankruptcynotices.uscourts.gov/contact-us",
+            "https://bankruptcynotices.uscourts.gov/make-changes",
+            "https://bankruptcynotices.uscourts.gov/edi-templates/new-updated",
+            "https://bankruptcynotices.uscourts.gov/user/username",
+            "https://bankruptcynotices.uscourts.gov/user/forgot-username"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://bankruptcynotices.uscourts.gov/assets/img/info.png",
+      "alt": "info",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 298,
+      "height": 298,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://bankruptcynotices.uscourts.gov/register/new-user-agreement"
+      ],
+      "occurrences": 4,
+      "altVariants": [
+        {
+          "value": "info",
+          "count": 4,
+          "pages": [
+            "https://bankruptcynotices.uscourts.gov/register/new-user-agreement"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 4,
+          "pages": [
+            "https://bankruptcynotices.uscourts.gov/register/new-user-agreement"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 4,
+          "pages": [
+            "https://bankruptcynotices.uscourts.gov/register/new-user-agreement"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 4,
+          "pages": [
+            "https://bankruptcynotices.uscourts.gov/register/new-user-agreement"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 4,
+          "pages": [
+            "https://bankruptcynotices.uscourts.gov/register/new-user-agreement"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 4,
+          "pages": [
+            "https://bankruptcynotices.uscourts.gov/register/new-user-agreement"
+          ]
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "ok": true,
+    "reportType": "alt-text",
+    "issueNumber": 6,
+    "issueUrl": "https://github.com/mgifford/alt-text-scan/issues/6",
+    "scanTitle": "https://bankruptcynotices.uscourts.gov/",
+    "scanDomain": "https://bankruptcynotices.uscourts.gov",
+    "discoveryMethod": "sitemap",
+    "discoveredTotal": 18,
+    "requestedCount": 18,
+    "acceptedCount": 18,
+    "rejectedCount": 0,
+    "scannedCount": 18,
+    "skippedDueToTimeout": 0,
+    "urlsRequested": 18,
+    "urlsScanned": 18,
+    "totalImages": 18,
+    "uniqueImages": 2,
+    "imagesWithIssues": 0,
+    "statusCounts": {
+      "MISSING": 0,
+      "DECORATIVE": 0,
+      "SUSPICIOUS": 0,
+      "FILENAME": 0,
+      "TOO_SHORT": 0,
+      "TOO_LONG": 0,
+      "GOOD": 18
+    },
+    "scannedAt": "2026-03-19T05:28:54.875Z"
+  }
+}
