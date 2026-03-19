@@ -249,6 +249,10 @@ function generateReportsPage({
   emptyMessage
 }) {
   const tableRows = generateTableRows(reports);
+  const latestReportHref = reports.length > 0 ? `${reports[0].path}/report.html` : null;
+  const latestReportLink = latestReportHref
+    ? `<a href="${latestReportHref}">Latest Report</a>`
+    : '';
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -577,6 +581,7 @@ function generateReportsPage({
     <nav class="nav">
       <a href="index.html">Submit URLs</a>
       <a href="reports.html">View Reports</a>
+      ${latestReportLink}
       <a href="${navLinkHref}">${navLinkLabel}</a>
     </nav>
     

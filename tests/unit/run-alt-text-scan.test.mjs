@@ -82,6 +82,7 @@ test("toHtml includes hidden thumbnail columns and preview dialog controls", () 
   assert.match(html, /class="thumbnail-column" hidden/);
   assert.match(html, /class="thumbnail-trigger"/);
   assert.match(html, /id="image-preview-dialog"/);
+  assert.ok(!html.includes('addEventListener("mouseenter"'), 'Hover should not open the preview dialog');
   assert.match(html, /Showing all 2 unique image URLs, with flagged items listed first/);
   assert.ok(
     html.indexOf("https://example.com/suspicious.png") < html.indexOf("https://example.com/good.png"),

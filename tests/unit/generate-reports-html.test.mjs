@@ -262,6 +262,8 @@ describe('generate-reports-html', () => {
       assert.ok(html.includes('<html lang="en">'), 'Should include html tag');
       assert.ok(html.includes('Alt Text Scan Reports'), 'Should include title');
       assert.ok(html.includes('GSA.gov'), 'Should include report data');
+      assert.ok(html.includes('reports/issues/issue-1/2026-02-21T16-37-55-764Z/report.html'), 'Should include Latest Report navigation link');
+      assert.ok(html.includes('Latest Report'), 'Should include Latest Report label');
       assert.ok(html.includes('Join our GitHub Community'), 'Should include footer');
     });
 
@@ -270,6 +272,7 @@ describe('generate-reports-html', () => {
       
       assert.ok(html.includes('No reports available yet'), 'Should show no reports message');
       assert.ok(!html.includes('<table>'), 'Should not include table when no reports');
+      assert.ok(!html.includes('Latest Report'), 'Should not include Latest Report link without reports');
     });
 
     it('should exclude legacy accessibility reports from the main index', () => {

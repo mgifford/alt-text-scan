@@ -48,7 +48,7 @@
   <p><a href="report.csv">Download image inventory CSV</a> &nbsp;|&nbsp; <a href="report.json">View full JSON</a></p>
   <div class="report-controls">
     <button type="button" id="toggle-thumbnails" class="toggle-thumbnails" aria-pressed="false">Show thumbnails</button>
-    <span id="thumbnail-help">Thumbnails are hidden by default. Turn them on to preview images in a dialog.</span>
+    <span id="thumbnail-help">Thumbnails are hidden by default. Turn them on and click or focus a preview button to open the dialog.</span>
   </div>
 
   <div class="summary">
@@ -539,10 +539,6 @@
         trigger.addEventListener("click", (event) => {
           event.preventDefault();
           openPreview(trigger, "click");
-        });
-
-        trigger.addEventListener("mouseenter", () => {
-          openPreview(trigger, "hover");
         });
 
         trigger.addEventListener("focus", () => {
