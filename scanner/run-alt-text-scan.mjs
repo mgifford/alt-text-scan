@@ -617,8 +617,9 @@ async function main() {
 
   if (parsed.scanDomain) {
     // Domain scan mode — discover URLs from sitemap or crawl
-    console.error(`[run-alt-text-scan] Domain scan mode: ${parsed.scanDomain}`);
-    const discovery = await discoverUrls(parsed.scanDomain, MAX_DISCOVER);
+    const maxPages = parsed.value?.maxPages ?? MAX_DISCOVER;
+    console.error(`[run-alt-text-scan] Domain scan mode: ${parsed.scanDomain} (max pages: ${maxPages})`);
+    const discovery = await discoverUrls(parsed.scanDomain, maxPages);
     urlsToScan = discovery.urls;
     discoveryMethod = discovery.method;
     discoveredTotal = discovery.total;

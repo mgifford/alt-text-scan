@@ -160,8 +160,14 @@ export function validateUrls(urls) {
 }
 
 // Format issue body for GitHub issue creation
-export function formatIssueBody(scanTitle, urls) {
-  return `# URLs
+export function formatIssueBody(scanTitle, urls, options = {}) {
+  const { maxPages } = options;
+  const directives = [];
+  if (maxPages !== undefined && maxPages !== 100) {
+    directives.push(`Max Pages: ${maxPages}`);
+  }
+  const header = directives.length > 0 ? `${directives.join("\n")}\n\n` : "";
+  return `${header}# URLs
 
 ${urls.join("\n")}
 `;
@@ -210,7 +216,7 @@ export function applyGitHubUrlLimit(accepted, owner, repo, scanTitle) {
 }
 
 // Create GitHub issue via authenticated API call
-export async function createGitHubIssue(scanTitle, urls) {
+export async function createGitHubIssue(scanTitle, urls, options = {}) {
   const repoInfo = getGitHubRepoInfo();
   if (!repoInfo) {
     throw new Error("Could not determine GitHub repository from URL");
@@ -224,7 +230,7 @@ export async function createGitHubIssue(scanTitle, urls) {
   // Prepend "SCAN: " and normalize any existing prefix (case-insensitive)
   // replace() returns the original string if pattern doesn't match
   const issueTitle = `SCAN: ${scanTitle.replace(SCAN_PREFIX_REGEX, "")}`;
-  const issueBody = formatIssueBody(scanTitle, urls);
+  const issueBody = formatIssueBody(scanTitle, urls, options);
 
   // Encode the issue title and body for URL
   const encodedTitle = encodeURIComponent(issueTitle);
@@ -342,6 +348,12 @@ function initForm() {
     const urls = parseUrls(rawText);
     const { accepted: validUrls } = validateUrls(urls);
 
+    // Read and validate maxPages field (default 100, max 2500)
+    const maxPagesRaw = parseInt(document.getElementById("max-pages")?.value ?? "100", 10);
+    const maxPages = Number.isFinite(maxPagesRaw) && maxPagesRaw >= 1 && maxPagesRaw <= 2500
+      ? maxPagesRaw
+      : 100;
+
     // Apply GitHub URL length limit so the generated URL doesn't exceed GitHub's limit
     const repoInfo = getGitHubRepoInfo();
     const accepted = (repoInfo && validUrls.length > 0)
@@ -367,7 +379,7 @@ function initForm() {
 
     try {
       // Create GitHub issue URL
-      const githubUrl = await createGitHubIssue(scanTitle, accepted);
+      const githubUrl = await createGitHubIssue(scanTitle, accepted, { maxPages });
       
       // Show success message with redirect info
       successDiv.innerHTML = `

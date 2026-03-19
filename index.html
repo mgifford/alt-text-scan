@@ -347,11 +347,20 @@
         <p class="help-text">A descriptive name for this scan batch (e.g., "GSA.gov Homepage and Key Pages")</p>
         <input type="text" id="scan-title" name="scan-title" required placeholder="My Accessibility Scan">
       </div>
+
+      <div class="form-group">
+        <label for="max-pages">Max Pages to Discover</label>
+        <p class="help-text">
+          When scanning a domain (leave URLs empty and enter a domain URL as the Scan Title), this controls how many pages are auto-discovered.
+          Default is 100. Maximum is 2500.
+        </p>
+        <input type="number" id="max-pages" name="max-pages" min="1" max="2500" value="100" placeholder="100">
+      </div>
       
       <div class="form-group">
         <label for="urls">URLs to Scan</label>
         <p class="help-text">
-          Enter URLs one per line or comma-separated. Maximum 100 URLs.<br>
+          Enter URLs one per line or comma-separated. Maximum 500 URLs.<br>
           Only public HTTPS/HTTP URLs are accepted. Local, private, and internal URLs will be rejected.
         </p>
         <textarea 

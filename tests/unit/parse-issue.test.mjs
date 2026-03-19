@@ -707,3 +707,127 @@ test("validateScanRequest rejects empty requestedUrls when scanDomain is not set
   assert.equal(result.ok, false);
   assert.ok(result.errors.some((e) => e.includes("between 1 and 500")));
 });
+
+// ── maxPages tests ────────────────────────────────────────────────────────────
+
+test("parseScanIssue defaults maxPages to 100 when not specified", () => {
+  const payload = {
+    issue: {
+      number: 400,
+      html_url: "https://github.com/example/repo/issues/400",
+      title: "SCAN: https://example.com",
+      created_at: "2026-02-20T20:00:00Z",
+      user: { login: "octocat" },
+      body: "# URLs\n\n"
+    }
+  };
+  const result = parseScanIssue(payload);
+  assert.equal(result.ok, true);
+  assert.equal(result.maxPages, 100);
+  assert.equal(result.value.maxPages, 100);
+});
+
+test("parseScanIssue parses Max Pages directive from body", () => {
+  const payload = {
+    issue: {
+      number: 401,
+      html_url: "https://github.com/example/repo/issues/401",
+      title: "SCAN: https://example.com",
+      created_at: "2026-02-20T20:00:00Z",
+      user: { login: "octocat" },
+      body: "Max Pages: 500\n\n# URLs\n\n"
+    }
+  };
+  const result = parseScanIssue(payload);
+  assert.equal(result.ok, true);
+  assert.equal(result.maxPages, 500);
+  assert.equal(result.value.maxPages, 500);
+});
+
+test("parseScanIssue clamps maxPages to maximum of 2500", () => {
+  const payload = {
+    issue: {
+      number: 402,
+      html_url: "https://github.com/example/repo/issues/402",
+      title: "SCAN: https://example.com",
+      created_at: "2026-02-20T20:00:00Z",
+      user: { login: "octocat" },
+      body: "Max Pages: 9999\n\n# URLs\n\n"
+    }
+  };
+  const result = parseScanIssue(payload);
+  assert.equal(result.ok, true);
+  assert.equal(result.maxPages, 2500);
+  assert.equal(result.value.maxPages, 2500);
+});
+
+test("parseScanIssue uses default maxPages when Max Pages value is out of range (0)", () => {
+  const payload = {
+    issue: {
+      number: 403,
+      html_url: "https://github.com/example/repo/issues/403",
+      title: "SCAN: https://example.com",
+      created_at: "2026-02-20T20:00:00Z",
+      user: { login: "octocat" },
+      body: "Max Pages: 0\n\n# URLs\n\n"
+    }
+  };
+  const result = parseScanIssue(payload);
+  assert.equal(result.ok, true);
+  assert.equal(result.maxPages, 100);
+});
+
+test("parseScanIssue accepts maxPages of 2500 (maximum)", () => {
+  const payload = {
+    issue: {
+      number: 404,
+      html_url: "https://github.com/example/repo/issues/404",
+      title: "SCAN: https://example.com",
+      created_at: "2026-02-20T20:00:00Z",
+      user: { login: "octocat" },
+      body: "Max Pages: 2500\n\n# URLs\n\n"
+    }
+  };
+  const result = parseScanIssue(payload);
+  assert.equal(result.ok, true);
+  assert.equal(result.maxPages, 2500);
+  assert.equal(result.value.maxPages, 2500);
+});
+
+test("validateScanRequest rejects maxPages outside valid range", () => {
+  const request = {
+    requestId: "test-request",
+    issueNumber: 405,
+    issueUrl: "https://github.com/example/repo/issues/405",
+    submittedBy: "octocat",
+    submittedAt: "2026-02-20T20:00:00Z",
+    requestLabel: "scan-request",
+    scanTitle: "Domain scan",
+    requestedUrls: ["https://example.com"],
+    engines: ["axe"],
+    pageLoadDelay: 2,
+    maxPages: 3000
+  };
+  const result = validateScanRequest(request);
+  assert.equal(result.ok, false);
+  assert.ok(result.errors.some((e) => e.includes("maxPages") && e.includes("2500")));
+});
+
+test("validateScanRequest accepts maxPages within valid range", () => {
+  const request = {
+    requestId: "test-request",
+    issueNumber: 406,
+    issueUrl: "https://github.com/example/repo/issues/406",
+    submittedBy: "octocat",
+    submittedAt: "2026-02-20T20:00:00Z",
+    requestLabel: "scan-request",
+    scanTitle: "Domain scan",
+    requestedUrls: ["https://example.com"],
+    engines: ["axe"],
+    pageLoadDelay: 2,
+    maxPages: 250
+  };
+  const result = validateScanRequest(request);
+  assert.equal(result.ok, true);
+  assert.equal(result.errors.length, 0);
+});
