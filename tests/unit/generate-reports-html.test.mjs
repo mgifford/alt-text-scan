@@ -364,9 +364,11 @@ describe('generate-reports-html', () => {
         }
       ]);
 
-      assert.ok(html.includes('Legacy Accessibility Report Archive'), 'Should render legacy archive title');
+      assert.ok(html.includes('Legacy Scan Archives'), 'Should render legacy archive title');
       assert.ok(html.includes('Legacy scan'), 'Should include legacy report rows');
       assert.ok(!html.includes('Commerce site alt text review'), 'Should omit alt-text rows from the legacy archive');
+      assert.ok(html.includes('Download ZIP'), 'Should include ZIP download link for legacy archives');
+      assert.ok(html.includes('reports/archives/legacy/issues/issue-1/2026-03-17T18-00-00-000Z.zip'), 'Should include issue/date archive path');
       assert.ok(html.includes('reports.html'), 'Should link back to the main alt-text index');
     });
   });

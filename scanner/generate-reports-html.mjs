@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
-import { readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs';
+import { spawnSync } from 'node:child_process';
 import { dirname, join } from 'node:path';
 
 function getCanonicalRepo() {
@@ -135,6 +136,18 @@ function splitReportsByType(reports) {
 }
 
 function buildResultsBadges(data) {
+  if (data.archivePath) {
+    const pages = Number(data.archivePages || 0);
+    const images = data.archiveImages == null ? 'n/a' : data.archiveImages;
+    const archiveSize = data.archiveSizeLabel || 'pending';
+
+    return [
+      `<span class="badge badge-success">${pages} pages</span>`,
+      `<span class="badge badge-warning">${images} images</span>`,
+      `<span class="badge badge-danger">${archiveSize}</span>`
+    ].join(' ');
+  }
+
   if (isAltTextReport(data)) {
     const reviewed = data.uniqueImages ?? data.totalImages ?? 0;
     const flagged = data.imagesWithIssues ?? 0;
@@ -161,6 +174,10 @@ function buildResultsBadges(data) {
 }
 
 function buildLinks(path, data) {
+  if (data.archivePath) {
+    return `<a href="${data.archivePath}">Download ZIP</a>`;
+  }
+
   const links = [
     `<a href="${path}/report.html">HTML</a>`,
     `<a href="${path}/report.md">Markdown</a>`,
@@ -218,6 +235,73 @@ function deriveLegacyOutputFile(outputFile) {
   return join(dirname(outputFile), 'legacy-reports.html');
 }
 
+function deriveLegacyArchivePath(reportPath) {
+  const relativePath = String(reportPath || '').replace(/^reports\//, '');
+  return `reports/archives/legacy/${relativePath}.zip`;
+}
+
+function formatBytes(bytes) {
+  if (!Number.isFinite(bytes) || bytes <= 0) {
+    return '0 B';
+  }
+
+  const units = ['B', 'KB', 'MB', 'GB'];
+  let value = bytes;
+  let unitIndex = 0;
+
+  while (value >= 1024 && unitIndex < units.length - 1) {
+    value /= 1024;
+    unitIndex += 1;
+  }
+
+  const rounded = value >= 10 || unitIndex === 0 ? Math.round(value) : Number(value.toFixed(1));
+  return `${rounded} ${units[unitIndex]}`;
+}
+
+export function createLegacyArchives(reports) {
+  const { legacyReports } = splitReportsByType(reports);
+  const metadata = new Map();
+
+  if (legacyReports.length === 0) {
+    return metadata;
+  }
+
+  const zipAvailable = spawnSync('zip', ['-v'], { encoding: 'utf8' });
+  if (zipAvailable.status !== 0) {
+    console.error('zip command not available; legacy archives will not be generated.');
+    return metadata;
+  }
+
+  for (const report of legacyReports) {
+    const reportPath = report.path;
+    const archivePath = deriveLegacyArchivePath(reportPath);
+    const archiveAbsolutePath = join(process.cwd(), archivePath);
+    const archiveDir = dirname(archiveAbsolutePath);
+    mkdirSync(archiveDir, { recursive: true });
+
+    if (!existsSync(archiveAbsolutePath)) {
+      const zipResult = spawnSync('zip', ['-rq', archiveAbsolutePath, '.'], {
+        cwd: reportPath,
+        encoding: 'utf8'
+      });
+
+      if (zipResult.status !== 0) {
+        console.error(`Failed to archive ${reportPath}: ${(zipResult.stderr || zipResult.stdout || '').trim()}`);
+        continue;
+      }
+    }
+
+    const archiveSizeBytes = existsSync(archiveAbsolutePath) ? statSync(archiveAbsolutePath).size : null;
+    metadata.set(reportPath, {
+      archivePath,
+      archiveSizeBytes,
+      archiveSizeLabel: archiveSizeBytes == null ? 'pending' : formatBytes(archiveSizeBytes)
+    });
+  }
+
+  return metadata;
+}
+
 /**
  * Escape HTML special characters
  * @param {string} text
@@ -245,13 +329,15 @@ function generateReportsPage({
   subtitle,
   navLinkHref,
   navLinkLabel,
+  latestLinkHref,
+  latestLinkLabel = 'Latest Report',
   sectionNote = '',
   emptyMessage
 }) {
   const tableRows = generateTableRows(reports);
-  const latestReportHref = reports.length > 0 ? `${reports[0].path}/report.html` : null;
+  const latestReportHref = latestLinkHref || (reports.length > 0 ? `${reports[0].path}/report.html` : null);
   const latestReportLink = latestReportHref
-    ? `<a href="${latestReportHref}">Latest Report</a>`
+    ? `<a href="${latestReportHref}">${latestLinkLabel}</a>`
     : '';
 
   return `<!DOCTYPE html>
@@ -786,20 +872,41 @@ export function generateReportsHtml(reports) {
   });
 }
 
-export function generateLegacyReportsHtml(reports) {
+export function generateLegacyReportsHtml(reports, archiveMetadata = new Map()) {
   const { legacyReports } = splitReportsByType(reports);
-  const sectionNote = legacyReports.length > 0
-    ? `<p class="section-note">Showing ${legacyReports.length} legacy accessibility reports from the earlier multi-engine workflow. These entries are excluded from the main alt-text index. <a href="reports.html">Return to the alt-text reports</a>.</p>`
+  const archiveReports = legacyReports.map(({ path, data }) => {
+    const existingArchive = archiveMetadata.get(path) || {};
+    const archivePath = existingArchive.archivePath || deriveLegacyArchivePath(path);
+    const archiveSizeLabel = existingArchive.archiveSizeLabel || (existsSync(archivePath) ? formatBytes(statSync(archivePath).size) : 'pending');
+
+    return {
+      path,
+      data: {
+        ...data,
+        acceptedCount: data.acceptedCount ?? data.scannedCount ?? data.urlsScanned ?? 0,
+        archivePath,
+        archiveSizeLabel,
+        archivePages: data.acceptedCount ?? data.scannedCount ?? data.urlsScanned ?? 0,
+        archiveImages: data.totalImages ?? data.uniqueImages ?? null
+      }
+    };
+  });
+
+  const sectionNote = archiveReports.length > 0
+    ? `<p class="section-note">Showing ${archiveReports.length} archived legacy scans as downloadable ZIP files keyed by trigger issue and scan date. <a href="reports.html">Return to the alt-text reports</a>.</p>`
     : '';
+  const latestArchivePath = archiveReports.length > 0 ? archiveReports[0].data.archivePath : null;
 
   return generateReportsPage({
-    reports: legacyReports,
-    title: 'Legacy Accessibility Report Archive',
-    subtitle: 'Historical multi-engine accessibility reports kept separate from the alt-text index',
+    reports: archiveReports,
+    title: 'Legacy Scan Archives',
+    subtitle: 'Download archived legacy scan bundles by trigger issue and scan date',
     navLinkHref: 'reports.html',
     navLinkLabel: 'Alt-Text Reports',
+    latestLinkHref: latestArchivePath,
+    latestLinkLabel: 'Latest Archive ZIP',
     sectionNote,
-    emptyMessage: 'No legacy accessibility reports are available.'
+    emptyMessage: 'No legacy scan archives are available.'
   });
 }
 
@@ -820,9 +927,12 @@ export function main() {
   
   const sortedReports = sortReportsByTime(reports);
   console.log(`Sorted reports by time (most recent first)`);
+
+  const legacyArchiveMetadata = createLegacyArchives(sortedReports);
+  console.log(`Prepared ${legacyArchiveMetadata.size} legacy ZIP archives`);
   
   const html = generateReportsHtml(sortedReports);
-  const legacyHtml = generateLegacyReportsHtml(sortedReports);
+  const legacyHtml = generateLegacyReportsHtml(sortedReports, legacyArchiveMetadata);
 
   writeFileSync(outputFile, html, 'utf8');
   writeFileSync(legacyOutputFile, legacyHtml, 'utf8');
