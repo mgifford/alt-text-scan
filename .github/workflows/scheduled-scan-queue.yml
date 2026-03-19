@@ -233,7 +233,7 @@ jobs:
             PUSH_SUCCESS=false
             for attempt in 1 2 3; do
               echo "Push attempt $attempt..."
-              if git pull --rebase origin main; then
+              if git pull --rebase --autostash origin main; then
                 if git push origin HEAD:main; then
                   echo "Successfully pushed on attempt $attempt"
                   PUSH_SUCCESS=true
