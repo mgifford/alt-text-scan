@@ -7,6 +7,7 @@ import { tmpdir } from 'node:os';
 import { 
   findAllReports, 
   sortReportsByTime, 
+  deduplicateReports,
   generateTableRows,
   generateReportsHtml,
   generateLegacyReportsHtml
@@ -126,6 +127,66 @@ describe('generate-reports-html', () => {
       assert.equal(sorted[2].data.scannedAt, '2026-02-21T12:48:19.091Z');
     });
   });
+
+  describe('deduplicateReports', () => {
+    it('should keep only the most recent report per issue number', () => {
+      const reports = [
+        {
+          path: 'reports/issues/issue-2/2026-03-18T17-51-39-464Z',
+          data: { issueNumber: 2, scannedAt: '2026-03-18T17:51:39.464Z', scanTitle: 'Issue 2 latest' }
+        },
+        {
+          path: 'reports/issues/issue-2/2026-03-18T16-05-32-873Z',
+          data: { issueNumber: 2, scannedAt: '2026-03-18T16:05:32.873Z', scanTitle: 'Issue 2 older' }
+        },
+        {
+          path: 'reports/issues/issue-2/2026-03-17T18-10-08-906Z',
+          data: { issueNumber: 2, scannedAt: '2026-03-17T18:10:08.906Z', scanTitle: 'Issue 2 oldest' }
+        },
+        {
+          path: 'reports/issues/issue-3/2026-03-19T05-22-53-747Z',
+          data: { issueNumber: 3, scannedAt: '2026-03-19T05:22:53.747Z', scanTitle: 'Issue 3 latest' }
+        },
+        {
+          path: 'reports/issues/issue-3/2026-03-18T16-02-57-925Z',
+          data: { issueNumber: 3, scannedAt: '2026-03-18T16:02:57.925Z', scanTitle: 'Issue 3 older' }
+        }
+      ];
+
+      // Reports must be sorted most-recent-first before deduplication
+      const sorted = sortReportsByTime(reports);
+      const deduped = deduplicateReports(sorted);
+
+      assert.equal(deduped.length, 2, 'Should have one entry per unique issue number');
+      assert.ok(deduped.some(r => r.data.scanTitle === 'Issue 2 latest'), 'Should keep the latest Issue 2 scan');
+      assert.ok(deduped.some(r => r.data.scanTitle === 'Issue 3 latest'), 'Should keep the latest Issue 3 scan');
+      assert.ok(!deduped.some(r => r.data.scanTitle === 'Issue 2 older'), 'Should omit older Issue 2 scans');
+      assert.ok(!deduped.some(r => r.data.scanTitle === 'Issue 2 oldest'), 'Should omit oldest Issue 2 scans');
+      assert.ok(!deduped.some(r => r.data.scanTitle === 'Issue 3 older'), 'Should omit older Issue 3 scans');
+    });
+
+    it('should return all reports when each issue number is unique', () => {
+      const reports = [
+        {
+          path: 'reports/issues/issue-1/2026-02-21T16-37-55-764Z',
+          data: { issueNumber: 1, scannedAt: '2026-02-21T16:37:55.764Z' }
+        },
+        {
+          path: 'reports/issues/issue-18/2026-02-21T20-55-47-400Z',
+          data: { issueNumber: 18, scannedAt: '2026-02-21T20:55:47.400Z' }
+        }
+      ];
+
+      const deduped = deduplicateReports(reports);
+
+      assert.equal(deduped.length, 2, 'Should keep all reports when no duplicates');
+    });
+
+    it('should return an empty array when given an empty array', () => {
+      assert.deepEqual(deduplicateReports([]), []);
+    });
+  });
+
 
   describe('generateTableRows', () => {
     it('should generate HTML table rows for reports', () => {
@@ -332,6 +393,48 @@ describe('generate-reports-html', () => {
       assert.ok(!html.includes('Legacy scan'), 'Should omit legacy report rows');
       assert.ok(html.includes('1 legacy accessibility reports are excluded from this page'), 'Should disclose omitted legacy reports');
     });
+
+    it('should show only the latest scan when the same issue has been scanned multiple times', () => {
+      // Reports must be sorted most-recent-first (as done in main()) before passing to generateReportsHtml
+      const html = generateReportsHtml(sortReportsByTime([
+        // Older scan for issue 2 (should be omitted)
+        {
+          path: 'reports/issues/issue-2/2026-03-17T18-10-08-906Z',
+          data: {
+            reportType: 'alt-text',
+            issueNumber: 2,
+            issueUrl: 'https://github.com/mgifford/alt-text-scan/issues/2',
+            scanTitle: 'Older scan',
+            scannedAt: '2026-03-17T18:10:08.906Z',
+            acceptedCount: 5,
+            totalImages: 100,
+            uniqueImages: 80,
+            imagesWithIssues: 10,
+            statusCounts: { MISSING: 3, DECORATIVE: 5, SUSPICIOUS: 2, FILENAME: 0, TOO_SHORT: 0, TOO_LONG: 0, GOOD: 70 }
+          }
+        },
+        // Latest scan for issue 2 (should be kept)
+        {
+          path: 'reports/issues/issue-2/2026-03-18T17-51-39-464Z',
+          data: {
+            reportType: 'alt-text',
+            issueNumber: 2,
+            issueUrl: 'https://github.com/mgifford/alt-text-scan/issues/2',
+            scanTitle: 'Latest scan',
+            scannedAt: '2026-03-18T17:51:39.464Z',
+            acceptedCount: 5,
+            totalImages: 110,
+            uniqueImages: 90,
+            imagesWithIssues: 8,
+            statusCounts: { MISSING: 2, DECORATIVE: 5, SUSPICIOUS: 1, FILENAME: 0, TOO_SHORT: 0, TOO_LONG: 0, GOOD: 82 }
+          }
+        }
+      ]));
+
+      assert.ok(html.includes('Latest scan'), 'Should include the most recent scan');
+      assert.ok(!html.includes('Older scan'), 'Should omit the older scan for the same issue');
+    });
+
 
     it('should generate a separate legacy archive page', () => {
       const html = generateLegacyReportsHtml([
