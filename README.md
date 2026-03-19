@@ -258,6 +258,29 @@ The `puppeteerArgs` configuration is critical for running in GitHub Actions wher
 - **[TIMEOUT-CONFIG.md](./TIMEOUT-CONFIG.md)** - Timeout configuration and tuning guide for scan optimization
 - **[.kittify/AGENTS.md](.kittify/AGENTS.md)** - Spec Kitty project management rules
 
+## AI Disclosure
+
+This section documents how AI has been used in this project. It is updated whenever an AI tool contributes to the codebase. See [`SUSTAINABILITY.md`](./SUSTAINABILITY.md) for the full AI usage policy.
+
+### How AI was used to build the project
+
+Documentation, policy text, and code were drafted and edited with AI assistance, with human review before publishing. Code suggestions and CI workflow configuration used AI assistance with human oversight.
+
+| Model / tool | Bucket | Used for |
+| :--- | :--- | :--- |
+| Ollama (local models, as available) | local | Preferred default for local drafting and coding support during development |
+| GitHub Copilot (OpenAI Codex / GPT-4-class) | commercial | Code assistance, PR support, and workflow configuration |
+| OpenAI GPT-4-class via Copilot Chat | commercial | Content drafting, documentation, and policy editing |
+| GitHub Copilot coding agent (gpt-5.3-codex) | commercial | Automated code changes in response to issues (e.g., this disclosure section) |
+
+### AI used at runtime
+
+No AI runs at runtime. The site is a static GitHub Pages build. Scan workflows execute deterministic Node.js scripts and the Alfa CLI accessibility engine; no language model is invoked during a scan.
+
+### Browser-based AI
+
+No browser-built-in AI features are activated automatically. Any future browser AI integration will require explicit user opt-in, as required by the sustainability policy in [`SUSTAINABILITY.md`](./SUSTAINABILITY.md).
+
 ## Next workflow steps
 
 1. ✅ ~~Review WP01~~

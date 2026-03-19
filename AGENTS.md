@@ -62,6 +62,16 @@ When AI is used, record usage in PR metadata using two buckets:
 
 Include at minimum: model/tool, bucket (`local` or `commercial`), rough prompt count, and brief purpose.
 
+### AI Disclosure in README.md
+
+**REQUIRED**: When you contribute to this project using an AI model or tool, add or update your entry in the `## AI Disclosure` section of `README.md`. Record:
+
+- The model/tool name and version (if known)
+- Whether it is `local` or `commercial`
+- What you used it for (building, code review, documentation, etc.)
+
+Do **not** list models you did not actually use. Each AI agent or developer is responsible for disclosing only their own usage.
+
 ### Never Commit
 
 - `node_modules/` (in .gitignore)
