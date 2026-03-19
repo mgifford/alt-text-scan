@@ -8,6 +8,7 @@ on:
       - 'reports/**'
       - 'index.html'
       - 'reports.html'
+      - 'legacy-reports.html'
       - 'submit.js'
   workflow_dispatch:
 
