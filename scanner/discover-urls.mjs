@@ -147,7 +147,13 @@ async function fetchSitemap(sitemapUrl, origin, maxUrls, depth = 3) {
     return [];
   }
 
-  const text = await resp.text();
+  let text;
+  try {
+    text = await resp.text();
+  } catch (err) {
+    console.error(`[discover-urls] Sitemap body read failed: ${sitemapUrl} (${err.message || err})`);
+    return [];
+  }
   const { pageUrls, sitemapUrls } = parseSitemapXml(text);
 
   if (sitemapUrls.length > 0) {
@@ -224,7 +230,13 @@ async function crawlDomain(startUrl, maxPages = 100) {
 
     found.push(url);
 
-    const html = await resp.text();
+    let html;
+    try {
+      html = await resp.text();
+    } catch (err) {
+      console.error(`[discover-urls] Page body read failed: ${url} (${err.message || err})`);
+      continue;
+    }
     const links = extractLinksFromHtml(html, url, origin);
     for (const link of links) {
       if (!visited.has(link)) {

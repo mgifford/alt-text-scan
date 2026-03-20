@@ -625,7 +625,26 @@ async function main() {
     // Domain scan mode — discover URLs from sitemap or crawl
     const maxPages = parsed.value?.maxPages ?? MAX_DISCOVER;
     console.error(`[run-alt-text-scan] Domain scan mode: ${parsed.scanDomain} (max pages: ${maxPages})`);
-    const discovery = await discoverUrls(parsed.scanDomain, maxPages);
+    let discovery;
+    try {
+      discovery = await discoverUrls(parsed.scanDomain, maxPages);
+    } catch (err) {
+      console.error(`[run-alt-text-scan] URL discovery failed: ${err.message || err}`);
+      const metaDiscoveryError = {
+        ok: false,
+        errors: [`URL discovery failed: ${err.message || err}`],
+        reportType: "alt-text",
+        scanTitle: parsed.value?.scanTitle ?? scanDomain ?? "",
+        acceptedCount: 0,
+        rejectedCount: 0,
+        scannedCount: 0,
+        urlsScanned: 0,
+        scannedAt: new Date().toISOString()
+      };
+      process.stdout.write(JSON.stringify(metaDiscoveryError));
+      process.exitCode = 1;
+      return;
+    }
     urlsToScan = discovery.urls;
     discoveryMethod = discovery.method;
     discoveredTotal = discovery.total;
