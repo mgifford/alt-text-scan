@@ -89,6 +89,20 @@ test("toHtml includes hidden thumbnail columns and preview dialog controls", () 
     "Flagged images should appear before non-flagged images in the inventory"
   );
   assert.match(html, /id="image-preview-view-full"/, "Modal should include view full image link");
+
+  // Toggle button must appear immediately after the "Unique image inventory" heading
+  const headingPos = html.indexOf("Unique image inventory");
+  const buttonPos = html.indexOf('id="toggle-thumbnails"');
+  assert.ok(headingPos > -1, "Unique image inventory heading should be present");
+  assert.ok(buttonPos > headingPos, "Toggle button should appear after the Unique image inventory heading");
+
+  // Summary section must appear before the toggle button (toggle is under the inventory heading, not at top of page)
+  const summaryPos = html.indexOf('class="summary"');
+  assert.ok(summaryPos > -1, "Summary section should be present");
+  assert.ok(summaryPos < headingPos, "Summary section should precede the Unique image inventory heading");
+
+  // skipNextFocusTrigger guard must be present to prevent dialog re-opening loop
+  assert.match(html, /skipNextFocusTrigger/, "Focus guard variable should be present to prevent dialog re-open on return focus");
 });
 
 test("truncateUrl returns short URLs unchanged", () => {

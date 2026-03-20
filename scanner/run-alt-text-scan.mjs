@@ -378,10 +378,6 @@ export function toHtml(scanResult, meta) {
      <strong>Scanned:</strong> ${new Date(scanResult.scannedAt).toLocaleString()} &nbsp;|&nbsp;
      <strong>Discovery method:</strong> ${meta.discoveryMethod || "explicit URLs"}</p>
   <p><a href="report.csv">Download image inventory CSV</a> &nbsp;|&nbsp; <a href="report.json">View full JSON</a></p>
-  <div class="report-controls">
-    <button type="button" id="toggle-thumbnails" class="toggle-thumbnails" aria-pressed="false">Show thumbnails</button>
-    <span id="thumbnail-help">Thumbnails are hidden by default. Turn them on and click or focus a preview button to open the dialog.</span>
-  </div>
 
   <div class="summary">
     <div class="stat"><strong>${urlsScanned}</strong> Pages scanned</div>
@@ -397,6 +393,10 @@ export function toHtml(scanResult, meta) {
   </table>
 
   <h2>Unique image inventory</h2>
+  <div class="report-controls">
+    <button type="button" id="toggle-thumbnails" class="toggle-thumbnails" aria-pressed="false">Show thumbnails</button>
+    <span id="thumbnail-help">Thumbnails are hidden by default. Turn them on and click or focus a preview button to open the dialog.</span>
+  </div>
   <p>Showing all ${uniqueImages} unique image URLs, with flagged items listed first. Use the CSV for a complete export.</p>
   <table>
     <thead><tr><th>Image</th><th class="thumbnail-column" hidden>Thumbnail</th><th>Status</th><th>Alt Text</th><th>Alt Variants</th><th>Title</th><th>ARIA Label</th><th>Pages</th></tr></thead>
@@ -442,6 +442,7 @@ export function toHtml(scanResult, meta) {
       const previewTriggers = Array.from(document.querySelectorAll(".thumbnail-trigger"));
       let lastTrigger = null;
       let lastOpenMode = "click";
+      let skipNextFocusTrigger = null;
 
       if (toggleButton) {
         toggleButton.addEventListener("click", () => {
@@ -508,6 +509,10 @@ export function toHtml(scanResult, meta) {
         });
 
         trigger.addEventListener("focus", () => {
+          if (skipNextFocusTrigger === trigger) {
+            skipNextFocusTrigger = null;
+            return;
+          }
           openPreview(trigger, "focus");
         });
       });
@@ -523,6 +528,7 @@ export function toHtml(scanResult, meta) {
       dialog.addEventListener("close", () => {
         previewImage.removeAttribute("src");
         if (lastOpenMode === "click" && lastTrigger && document.contains(lastTrigger)) {
+          skipNextFocusTrigger = lastTrigger;
           lastTrigger.focus();
         }
       });
