@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alt Text Scan – https://www.cms.gov</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 1200px; margin: 2rem auto; padding: 0 1rem; color: #222; }
+    h1 { font-size: 1.5rem; }
+    .summary { display: flex; gap: 1.5rem; flex-wrap: wrap; margin: 1rem 0; }
+    .stat { background: #f5f5f5; border-radius: 6px; padding: 0.75rem 1.25rem; }
+    .stat strong { display: block; font-size: 1.8rem; }
+    .report-controls { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; margin: 1rem 0; }
+    .toggle-thumbnails { border: 1px solid #333; background: #fff; color: #222; border-radius: 999px; padding: 0.55rem 0.95rem; font: inherit; cursor: pointer; }
+    .toggle-thumbnails[aria-pressed="true"] { background: #222; color: #fff; }
+    table { border-collapse: collapse; width: 100%; margin-top: 1.5rem; }
+    th { background: #333; color: #fff; text-align: left; padding: 0.5rem 0.75rem; }
+    td { padding: 0.5rem 0.75rem; border-bottom: 1px solid #ddd; vertical-align: top; }
+    tr:hover td { background: #fafafa; }
+    code { background: #f0f0f0; padding: 0.1em 0.3em; border-radius: 3px; font-size: 0.9em; }
+    .thumbnail-column { width: 8.5rem; }
+    .thumbnail-trigger { display: inline-flex; flex-direction: column; align-items: center; gap: 0.35rem; width: 7rem; padding: 0.45rem; border: 1px solid #ccc; border-radius: 8px; background: #fff; cursor: pointer; }
+    .thumbnail-trigger:hover, .thumbnail-trigger:focus-visible { border-color: #333; box-shadow: 0 0 0 3px rgba(33, 33, 33, 0.15); outline: none; }
+    .thumbnail-trigger__image { display: block; width: 100%; height: 4.5rem; object-fit: contain; background: #f5f5f5; border-radius: 4px; }
+    .thumbnail-trigger__text { font-size: 0.8rem; color: #444; }
+    .url-cell { position: relative; max-width: 20rem; }
+    .url-tooltip { display: none; position: absolute; z-index: 10; left: 0; top: 100%; margin-top: 0.2rem; background: #333; color: #fff; padding: 0.4rem 0.6rem; border-radius: 4px; font-size: 0.8rem; max-width: 44rem; word-break: break-all; white-space: normal; pointer-events: none; box-shadow: 0 2px 8px rgba(0,0,0,0.35); }
+    .url-cell:hover .url-tooltip, .url-cell:focus-within .url-tooltip { display: block; }
+    dialog::backdrop { background: rgba(17, 24, 39, 0.72); }
+    .preview-dialog { border: none; border-radius: 12px; padding: 0; width: min(92vw, 960px); max-height: 90vh; overflow: hidden; }
+    .preview-dialog__inner { display: grid; gap: 0.75rem; padding: 1rem; background: #fff; }
+    .preview-dialog__header { display: flex; justify-content: space-between; gap: 1rem; align-items: start; }
+    .preview-dialog__title { margin: 0; font-size: 1.1rem; }
+    .preview-dialog__close { border: 1px solid #333; background: #fff; color: #222; border-radius: 999px; padding: 0.45rem 0.8rem; font: inherit; cursor: pointer; }
+    .preview-dialog__figure { margin: 0; display: grid; gap: 0.5rem; justify-items: center; }
+    .preview-dialog__image { display: block; max-width: min(88vw, 100%); max-height: 70vh; width: auto; height: auto; background: #f5f5f5; }
+    .preview-dialog__caption { font-size: 0.9rem; color: #444; word-break: break-word; }
+    .preview-dialog__actions { margin: 0; font-size: 0.9rem; }
+    .preview-dialog__view-full { color: #1565c0; }
+    @media (max-width: 720px) {
+      .summary { gap: 0.75rem; }
+      .stat { flex: 1 1 9rem; }
+      .thumbnail-trigger { width: 5.75rem; }
+      .thumbnail-trigger__image { height: 3.75rem; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Alt Text Scan Report</h1>
+  <p><strong>Domain:</strong> https://www.cms.gov &nbsp;|&nbsp;
+     <strong>Scanned:</strong> 3/20/2026, 3:18:04 PM &nbsp;|&nbsp;
+     <strong>Discovery method:</strong> sitemap</p>
+  <p><a href="report.csv">Download image inventory CSV</a> &nbsp;|&nbsp; <a href="report.json">View full JSON</a></p>
+  <div class="report-controls">
+    <button type="button" id="toggle-thumbnails" class="toggle-thumbnails" aria-pressed="false">Show thumbnails</button>
+    <span id="thumbnail-help">Thumbnails are hidden by default. Turn them on and click or focus a preview button to open the dialog.</span>
+  </div>
+
+  <div class="summary">
+    <div class="stat"><strong>100</strong> Pages scanned</div>
+    <div class="stat"><strong>341</strong> Images found</div>
+    <div class="stat"><strong>24</strong> Unique images</div>
+    <div class="stat"><strong style="color:#2e7d32">0</strong> Images with issues</div>
+  </div>
+
+  <h2>Status breakdown</h2>
+  <table>
+    <thead><tr><th>Status</th><th>Count</th></tr></thead>
+    <tbody><tr><td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td><td>8</td></tr>
+<tr><td><span style="color:#2e7d32;font-weight:bold">Good</span></td><td>333</td></tr></tbody>
+  </table>
+
+  <h2>Unique image inventory</h2>
+  <p>Showing all 24 unique image URLs, with flagged items listed first. Use the CSV for a complete export.</p>
+  <table>
+    <thead><tr><th>Image</th><th class="thumbnail-column" hidden>Thumbnail</th><th>Status</th><th>Alt Text</th><th>Alt Variants</th><th>Title</th><th>ARIA Label</th><th>Pages</th></tr></thead>
+    <tbody>
+        <tr>
+          <td class="url-cell"><a href="https://www.cms.gov/files/image/peog-homeaccess-pecos.png" target="_blank" rel="noopener">https://www.cms.gov/files/image/peog-homeaccess-pecos.png</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.cms.gov/files/image/peog-homeaccess-pecos.png" data-preview-alt="" data-preview-label="https://www.cms.gov/files/image/peog-homeaccess-pecos.png" data-preview-width="70" data-preview-height="70" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://www.cms.gov/files/image/peog-homeaccess-pecos.png"><img src="https://www.cms.gov/files/image/peog-homeaccess-pecos.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">empty (decorative)</em></td>
+          <td style="font-size:0.85em">(empty) (1)</td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.cms.gov/medicare/enrollment-renewal/providers-suppliers/chain-ownership-system-pecos" target="_blank" rel="noopener">https://www.cms.gov/medicare/enrollment-renewal/providers-suppliers/chain-ownership-system-pecos</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.cms.gov/files/image/peog-homebecome-medicare-provider-or-supplier.png" target="_blank" rel="noopener" title="https://www.cms.gov/files/image/peog-homebecome-medicare-provider-or-supplier.png">https://www.cms.gov/files/image/peog-homebecome-medicare-pro…</a><span class="url-tooltip" aria-hidden="true">https://www.cms.gov/files/image/peog-homebecome-medicare-provider-or-supplier.png</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.cms.gov/files/image/peog-homebecome-medicare-provider-or-supplier.png" data-preview-alt="" data-preview-label="https://www.cms.gov/files/image/peog-homebecome-medicare-provider-or-supplier.png" data-preview-width="70" data-preview-height="70" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://www.cms.gov/files/image/peog-homebecome-medicare-provider-or-supplier.png"><img src="https://www.cms.gov/files/image/peog-homebecome-medicare-provider-or-supplier.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">empty (decorative)</em></td>
+          <td style="font-size:0.85em">(empty) (1)</td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.cms.gov/medicare/enrollment-renewal/providers-suppliers/chain-ownership-system-pecos" target="_blank" rel="noopener">https://www.cms.gov/medicare/enrollment-renewal/providers-suppliers/chain-ownership-system-pecos</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.cms.gov/files/image/peog-homeenroll-dmepos-supplier.png" target="_blank" rel="noopener" title="https://www.cms.gov/files/image/peog-homeenroll-dmepos-supplier.png">https://www.cms.gov/f … /peog-homeenroll-dmepos-supplier.png</a><span class="url-tooltip" aria-hidden="true">https://www.cms.gov/files/image/peog-homeenroll-dmepos-supplier.png</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.cms.gov/files/image/peog-homeenroll-dmepos-supplier.png" data-preview-alt="" data-preview-label="https://www.cms.gov/files/image/peog-homeenroll-dmepos-supplier.png" data-preview-width="70" data-preview-height="70" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://www.cms.gov/files/image/peog-homeenroll-dmepos-supplier.png"><img src="https://www.cms.gov/files/image/peog-homeenroll-dmepos-supplier.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">empty (decorative)</em></td>
+          <td style="font-size:0.85em">(empty) (1)</td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.cms.gov/medicare/enrollment-renewal/providers-suppliers/chain-ownership-system-pecos" target="_blank" rel="noopener">https://www.cms.gov/medicare/enrollment-renewal/providers-suppliers/chain-ownership-system-pecos</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.cms.gov/files/image/peog-homeget-help-your-medicare-enrollment.png" target="_blank" rel="noopener" title="https://www.cms.gov/files/image/peog-homeget-help-your-medicare-enrollment.png">https://ww … /peog-homeget-help-your-medicare-enrollment.png</a><span class="url-tooltip" aria-hidden="true">https://www.cms.gov/files/image/peog-homeget-help-your-medicare-enrollment.png</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.cms.gov/files/image/peog-homeget-help-your-medicare-enrollment.png" data-preview-alt="" data-preview-label="https://www.cms.gov/files/image/peog-homeget-help-your-medicare-enrollment.png" data-preview-width="70" data-preview-height="70" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://www.cms.gov/files/image/peog-homeget-help-your-medicare-enrollment.png"><img src="https://www.cms.gov/files/image/peog-homeget-help-your-medicare-enrollment.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">empty (decorative)</em></td>
+          <td style="font-size:0.85em">(empty) (1)</td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.cms.gov/medicare/enrollment-renewal/providers-suppliers/chain-ownership-system-pecos" target="_blank" rel="noopener">https://www.cms.gov/medicare/enrollment-renewal/providers-suppliers/chain-ownership-system-pecos</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.cms.gov/files/image/peog-homelearn-about-ordering-and-certifying.png" target="_blank" rel="noopener" title="https://www.cms.gov/files/image/peog-homelearn-about-ordering-and-certifying.png">https://www.cms.gov/files/image/peog-homelearn-about-orderin…</a><span class="url-tooltip" aria-hidden="true">https://www.cms.gov/files/image/peog-homelearn-about-ordering-and-certifying.png</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.cms.gov/files/image/peog-homelearn-about-ordering-and-certifying.png" data-preview-alt="" data-preview-label="https://www.cms.gov/files/image/peog-homelearn-about-ordering-and-certifying.png" data-preview-width="70" data-preview-height="70" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://www.cms.gov/files/image/peog-homelearn-about-ordering-and-certifying.png"><img src="https://www.cms.gov/files/image/peog-homelearn-about-ordering-and-certifying.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">empty (decorative)</em></td>
+          <td style="font-size:0.85em">(empty) (1)</td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.cms.gov/medicare/enrollment-renewal/providers-suppliers/chain-ownership-system-pecos" target="_blank" rel="noopener">https://www.cms.gov/medicare/enrollment-renewal/providers-suppliers/chain-ownership-system-pecos</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.cms.gov/files/image/peog-homepay-medicare-application-fee.png" target="_blank" rel="noopener" title="https://www.cms.gov/files/image/peog-homepay-medicare-application-fee.png">https://www.cms … /peog-homepay-medicare-application-fee.png</a><span class="url-tooltip" aria-hidden="true">https://www.cms.gov/files/image/peog-homepay-medicare-application-fee.png</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.cms.gov/files/image/peog-homepay-medicare-application-fee.png" data-preview-alt="" data-preview-label="https://www.cms.gov/files/image/peog-homepay-medicare-application-fee.png" data-preview-width="70" data-preview-height="70" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://www.cms.gov/files/image/peog-homepay-medicare-application-fee.png"><img src="https://www.cms.gov/files/image/peog-homepay-medicare-application-fee.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">empty (decorative)</em></td>
+          <td style="font-size:0.85em">(empty) (1)</td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.cms.gov/medicare/enrollment-renewal/providers-suppliers/chain-ownership-system-pecos" target="_blank" rel="noopener">https://www.cms.gov/medicare/enrollment-renewal/providers-suppliers/chain-ownership-system-pecos</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.cms.gov/files/image/peog-homerevalidations-renewing-your-enrollment.png" target="_blank" rel="noopener" title="https://www.cms.gov/files/image/peog-homerevalidations-renewing-your-enrollment.png">https://www.cms.gov/files/image/peog-homerevalidations-renew…</a><span class="url-tooltip" aria-hidden="true">https://www.cms.gov/files/image/peog-homerevalidations-renewing-your-enrollment.png</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.cms.gov/files/image/peog-homerevalidations-renewing-your-enrollment.png" data-preview-alt="" data-preview-label="https://www.cms.gov/files/image/peog-homerevalidations-renewing-your-enrollment.png" data-preview-width="70" data-preview-height="70" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://www.cms.gov/files/image/peog-homerevalidations-renewing-your-enrollment.png"><img src="https://www.cms.gov/files/image/peog-homerevalidations-renewing-your-enrollment.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">empty (decorative)</em></td>
+          <td style="font-size:0.85em">(empty) (1)</td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.cms.gov/medicare/enrollment-renewal/providers-suppliers/chain-ownership-system-pecos" target="_blank" rel="noopener">https://www.cms.gov/medicare/enrollment-renewal/providers-suppliers/chain-ownership-system-pecos</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.cms.gov/files/image/peoghomefind-your-taxonomy-code.png" target="_blank" rel="noopener" title="https://www.cms.gov/files/image/peoghomefind-your-taxonomy-code.png">https://www.cms.gov/f … /peoghomefind-your-taxonomy-code.png</a><span class="url-tooltip" aria-hidden="true">https://www.cms.gov/files/image/peoghomefind-your-taxonomy-code.png</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.cms.gov/files/image/peoghomefind-your-taxonomy-code.png" data-preview-alt="" data-preview-label="https://www.cms.gov/files/image/peoghomefind-your-taxonomy-code.png" data-preview-width="70" data-preview-height="70" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://www.cms.gov/files/image/peoghomefind-your-taxonomy-code.png"><img src="https://www.cms.gov/files/image/peoghomefind-your-taxonomy-code.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">empty (decorative)</em></td>
+          <td style="font-size:0.85em">(empty) (1)</td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.cms.gov/medicare/enrollment-renewal/providers-suppliers/chain-ownership-system-pecos" target="_blank" rel="noopener">https://www.cms.gov/medicare/enrollment-renewal/providers-suppliers/chain-ownership-system-pecos</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.cms.gov/themes/custom/cms_evo/logo.svg" target="_blank" rel="noopener">https://www.cms.gov/themes/custom/cms_evo/logo.svg</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.cms.gov/themes/custom/cms_evo/logo.svg" data-preview-alt="CMS.gov" data-preview-label="CMS.gov" data-preview-width="300" data-preview-height="72" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: CMS.gov"><img src="https://www.cms.gov/themes/custom/cms_evo/logo.svg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>CMS.gov</code></td>
+          <td style="font-size:0.85em">CMS.gov (200)</td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>100<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.cms.gov/" target="_blank" rel="noopener">https://www.cms.gov/</a><br><a href="https://www.cms.gov/acronyms" target="_blank" rel="noopener">https://www.cms.gov/acronyms</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.cms.gov/themes/custom/cms_evo/images/hhslogo.png" target="_blank" rel="noopener">https://www.cms.gov/themes/custom/cms_evo/images/hhslogo.png</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.cms.gov/themes/custom/cms_evo/images/hhslogo.png" data-preview-alt="HHS Logo" data-preview-label="HHS Logo" data-preview-width="65" data-preview-height="65" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: HHS Logo"><img src="https://www.cms.gov/themes/custom/cms_evo/images/hhslogo.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>HHS Logo</code></td>
+          <td style="font-size:0.85em">HHS Logo (100)</td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>100<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.cms.gov/" target="_blank" rel="noopener">https://www.cms.gov/</a><br><a href="https://www.cms.gov/acronyms" target="_blank" rel="noopener">https://www.cms.gov/acronyms</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-11/PEOG_Question%20Mark.png?itok=vrdQmUll" target="_blank" rel="noopener" title="https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-11/PEOG_Question%20Mark.png?itok=vrdQmUll">https://www.cms.go … /PEOG_Question%20Mark.png?itok=vrdQmUll</a><span class="url-tooltip" aria-hidden="true">https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-11/PEOG_Question%20Mark.png?itok=vrdQmUll</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-11/PEOG_Question%20Mark.png?itok=vrdQmUll" data-preview-alt="Question Mark" data-preview-label="Question Mark" data-preview-width="233" data-preview-height="226" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Question Mark"><img src="https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-11/PEOG_Question%20Mark.png?itok=vrdQmUll" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Question Mark</code></td>
+          <td style="font-size:0.85em">Question Mark (18)</td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>5<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.cms.gov/medicare/enrollment-renewal/providers-suppliers/health-care-taxonomy" target="_blank" rel="noopener">https://www.cms.gov/medicare/enrollment-renewal/providers-suppliers/health-care-taxonomy</a><br><a href="https://www.cms.gov/medicare/enrollment-renewal/providers-suppliers/revalidations" target="_blank" rel="noopener">https://www.cms.gov/medicare/enrollment-renewal/providers-suppliers/revalidations</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.cms.gov/sites/default/files/styles/cms_circular_card_350_x_350/public/2025-09/mln-connects-envelope-icon-2025refresh_0.png?h=c10a13fc&itok=8jUMld0g" target="_blank" rel="noopener" title="https://www.cms.gov/sites/default/files/styles/cms_circular_card_350_x_350/public/2025-09/mln-connects-envelope-icon-2025refresh_0.png?h=c10a13fc&amp;itok=8jUMld0g">https://www.cms.gov/sites/default/files/styles/cms_circular_…</a><span class="url-tooltip" aria-hidden="true">https://www.cms.gov/sites/default/files/styles/cms_circular_card_350_x_350/public/2025-09/mln-connects-envelope-icon-2025refresh_0.png?h=c10a13fc&amp;itok=8jUMld0g</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.cms.gov/sites/default/files/styles/cms_circular_card_350_x_350/public/2025-09/mln-connects-envelope-icon-2025refresh_0.png?h=c10a13fc&amp;itok=8jUMld0g" data-preview-alt="MLN Connects Envelope Icon" data-preview-label="MLN Connects Envelope Icon" data-preview-width="350" data-preview-height="350" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: MLN Connects Envelope Icon"><img src="https://www.cms.gov/sites/default/files/styles/cms_circular_card_350_x_350/public/2025-09/mln-connects-envelope-icon-2025refresh_0.png?h=c10a13fc&amp;itok=8jUMld0g" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>MLN Connects Envelope Icon</code></td>
+          <td style="font-size:0.85em">MLN Connects Envelope Icon (2)</td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>2<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.cms.gov/medicare/coverage/preventive-services-coverage" target="_blank" rel="noopener">https://www.cms.gov/medicare/coverage/preventive-services-coverage</a><br><a href="https://www.cms.gov/medicare/coverage/telehealth/remote-patient-monitoring" target="_blank" rel="noopener">https://www.cms.gov/medicare/coverage/telehealth/remote-patient-monitoring</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.cms.gov/sites/default/files/styles/max_width_tabs/public/2026-03/responsive-tabs-priorities-photo.png?itok=AWrOCaqx" target="_blank" rel="noopener" title="https://www.cms.gov/sites/default/files/styles/max_width_tabs/public/2026-03/responsive-tabs-priorities-photo.png?itok=AWrOCaqx">https://www.cms.gov/sites/default/files/styles/max_width_tab…</a><span class="url-tooltip" aria-hidden="true">https://www.cms.gov/sites/default/files/styles/max_width_tabs/public/2026-03/responsive-tabs-priorities-photo.png?itok=AWrOCaqx</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.cms.gov/sites/default/files/styles/max_width_tabs/public/2026-03/responsive-tabs-priorities-photo.png?itok=AWrOCaqx" data-preview-alt="a doctor and patient smiling" data-preview-label="a doctor and patient smiling" data-preview-width="374" data-preview-height="265" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: a doctor and patient smiling"><img src="https://www.cms.gov/sites/default/files/styles/max_width_tabs/public/2026-03/responsive-tabs-priorities-photo.png?itok=AWrOCaqx" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>a doctor and patient smiling</code></td>
+          <td style="font-size:0.85em">a doctor and patient smiling (2)</td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.cms.gov/" target="_blank" rel="noopener">https://www.cms.gov/</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-07/shutterstock_85958077-a_0.jpg?itok=oAAshlY6" target="_blank" rel="noopener" title="https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-07/shutterstock_85958077-a_0.jpg?itok=oAAshlY6">https://www.c … /shutterstock_85958077-a_0.jpg?itok=oAAshlY6</a><span class="url-tooltip" aria-hidden="true">https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-07/shutterstock_85958077-a_0.jpg?itok=oAAshlY6</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-07/shutterstock_85958077-a_0.jpg?itok=oAAshlY6" data-preview-alt="EMS standing in front of an ambulance smiling" data-preview-label="EMS standing in front of an ambulance smiling" data-preview-width="266" data-preview-height="177" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: EMS standing in front of an ambulance smiling"><img src="https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-07/shutterstock_85958077-a_0.jpg?itok=oAAshlY6" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>EMS standing in front of an ambulance smiling</code></td>
+          <td style="font-size:0.85em">EMS standing in front of an ambulance smiling (1)</td>
+          <td><code>EMS standing in front of an ambulance smiling</code></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.cms.gov/medicare/coverage/ambulances-services-center" target="_blank" rel="noopener">https://www.cms.gov/medicare/coverage/ambulances-services-center</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-11/Manage%20Your%20Enrollment_Access%20PECOS.png?itok=m-8GwZ3p" target="_blank" rel="noopener" title="https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-11/Manage%20Your%20Enrollment_Access%20PECOS.png?itok=m-8GwZ3p">https://www.cms.gov/sites/default/files/styles/desktop_width…</a><span class="url-tooltip" aria-hidden="true">https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-11/Manage%20Your%20Enrollment_Access%20PECOS.png?itok=m-8GwZ3p</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-11/Manage%20Your%20Enrollment_Access%20PECOS.png?itok=m-8GwZ3p" data-preview-alt="Access PECOS" data-preview-label="Access PECOS" data-preview-width="70" data-preview-height="70" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Access PECOS"><img src="https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-11/Manage%20Your%20Enrollment_Access%20PECOS.png?itok=m-8GwZ3p" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Access PECOS</code></td>
+          <td style="font-size:0.85em">Access PECOS (1)</td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.cms.gov/medicare/enrollment-renewal/providers-suppliers/chain-ownership-system-pecos/manage-your-enrollment" target="_blank" rel="noopener">https://www.cms.gov/medicare/enrollment-renewal/providers-suppliers/chain-ownership-system-pecos/manage-your-enrollment</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-11/Manage%20Your%20Enrollment_Opt%20Out%20of%20Medicare.png?itok=tuNhfPHC" target="_blank" rel="noopener" title="https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-11/Manage%20Your%20Enrollment_Opt%20Out%20of%20Medicare.png?itok=tuNhfPHC">https://www.cms.gov/sites/default/files/styles/desktop_width…</a><span class="url-tooltip" aria-hidden="true">https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-11/Manage%20Your%20Enrollment_Opt%20Out%20of%20Medicare.png?itok=tuNhfPHC</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-11/Manage%20Your%20Enrollment_Opt%20Out%20of%20Medicare.png?itok=tuNhfPHC" data-preview-alt="Opt Out of Medicare" data-preview-label="Opt Out of Medicare" data-preview-width="70" data-preview-height="70" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Opt Out of Medicare"><img src="https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-11/Manage%20Your%20Enrollment_Opt%20Out%20of%20Medicare.png?itok=tuNhfPHC" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Opt Out of Medicare</code></td>
+          <td style="font-size:0.85em">Opt Out of Medicare (1)</td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.cms.gov/medicare/enrollment-renewal/providers-suppliers/chain-ownership-system-pecos/manage-your-enrollment" target="_blank" rel="noopener">https://www.cms.gov/medicare/enrollment-renewal/providers-suppliers/chain-ownership-system-pecos/manage-your-enrollment</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-11/Manage%20Your%20Enrollment_Revalidations%20-%20Renewing%20Your%20Enrollment.png?itok=jrAgFYsu" target="_blank" rel="noopener" title="https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-11/Manage%20Your%20Enrollment_Revalidations%20-%20Renewing%20Your%20Enrollment.png?itok=jrAgFYsu">https://www.cms.gov/sites/default/files/styles/desktop_width…</a><span class="url-tooltip" aria-hidden="true">https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-11/Manage%20Your%20Enrollment_Revalidations%20-%20Renewing%20Your%20Enrollment.png?itok=jrAgFYsu</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-11/Manage%20Your%20Enrollment_Revalidations%20-%20Renewing%20Your%20Enrollment.png?itok=jrAgFYsu" data-preview-alt="Renewing Your Enrollment" data-preview-label="Renewing Your Enrollment" data-preview-width="70" data-preview-height="70" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Renewing Your Enrollment"><img src="https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-11/Manage%20Your%20Enrollment_Revalidations%20-%20Renewing%20Your%20Enrollment.png?itok=jrAgFYsu" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Renewing Your Enrollment</code></td>
+          <td style="font-size:0.85em">Renewing Your Enrollment (1)</td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.cms.gov/medicare/enrollment-renewal/providers-suppliers/chain-ownership-system-pecos/manage-your-enrollment" target="_blank" rel="noopener">https://www.cms.gov/medicare/enrollment-renewal/providers-suppliers/chain-ownership-system-pecos/manage-your-enrollment</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-11/Manage%20Your%20Enrollment_Withdraw%20From%20Medicare.png?itok=zvYVSfi3" target="_blank" rel="noopener" title="https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-11/Manage%20Your%20Enrollment_Withdraw%20From%20Medicare.png?itok=zvYVSfi3">https://www.cms.gov/sites/default/files/styles/desktop_width…</a><span class="url-tooltip" aria-hidden="true">https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-11/Manage%20Your%20Enrollment_Withdraw%20From%20Medicare.png?itok=zvYVSfi3</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-11/Manage%20Your%20Enrollment_Withdraw%20From%20Medicare.png?itok=zvYVSfi3" data-preview-alt="Withdraw From Medicare" data-preview-label="Withdraw From Medicare" data-preview-width="70" data-preview-height="70" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Withdraw From Medicare"><img src="https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-11/Manage%20Your%20Enrollment_Withdraw%20From%20Medicare.png?itok=zvYVSfi3" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Withdraw From Medicare</code></td>
+          <td style="font-size:0.85em">Withdraw From Medicare (1)</td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.cms.gov/medicare/enrollment-renewal/providers-suppliers/chain-ownership-system-pecos/manage-your-enrollment" target="_blank" rel="noopener">https://www.cms.gov/medicare/enrollment-renewal/providers-suppliers/chain-ownership-system-pecos/manage-your-enrollment</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-11/Preclusion%20List_Calendar.png?itok=RLbCO5Us" target="_blank" rel="noopener" title="https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-11/Preclusion%20List_Calendar.png?itok=RLbCO5Us">https://www. … /Preclusion%20List_Calendar.png?itok=RLbCO5Us</a><span class="url-tooltip" aria-hidden="true">https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-11/Preclusion%20List_Calendar.png?itok=RLbCO5Us</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-11/Preclusion%20List_Calendar.png?itok=RLbCO5Us" data-preview-alt="Calendar" data-preview-label="Calendar" data-preview-width="120" data-preview-height="120" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Calendar"><img src="https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-11/Preclusion%20List_Calendar.png?itok=RLbCO5Us" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Calendar</code></td>
+          <td style="font-size:0.85em">Calendar (1)</td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.cms.gov/medicare/enrollment-renewal/providers-suppliers/chain-ownership-system-pecos/preclusion-list" target="_blank" rel="noopener">https://www.cms.gov/medicare/enrollment-renewal/providers-suppliers/chain-ownership-system-pecos/preclusion-list</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-11/Preclusion%20List_Envelope1.png?itok=5TigirV6" target="_blank" rel="noopener" title="https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-11/Preclusion%20List_Envelope1.png?itok=5TigirV6">https://www … /Preclusion%20List_Envelope1.png?itok=5TigirV6</a><span class="url-tooltip" aria-hidden="true">https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-11/Preclusion%20List_Envelope1.png?itok=5TigirV6</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-11/Preclusion%20List_Envelope1.png?itok=5TigirV6" data-preview-alt="Envelope" data-preview-label="Envelope" data-preview-width="100" data-preview-height="100" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Envelope"><img src="https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-11/Preclusion%20List_Envelope1.png?itok=5TigirV6" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Envelope</code></td>
+          <td style="font-size:0.85em">Envelope (1)</td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.cms.gov/medicare/enrollment-renewal/providers-suppliers/chain-ownership-system-pecos/preclusion-list" target="_blank" rel="noopener">https://www.cms.gov/medicare/enrollment-renewal/providers-suppliers/chain-ownership-system-pecos/preclusion-list</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-11/Preclusion%20List_Envelope2.png?itok=yVhZg2LP" target="_blank" rel="noopener" title="https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-11/Preclusion%20List_Envelope2.png?itok=yVhZg2LP">https://www … /Preclusion%20List_Envelope2.png?itok=yVhZg2LP</a><span class="url-tooltip" aria-hidden="true">https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-11/Preclusion%20List_Envelope2.png?itok=yVhZg2LP</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-11/Preclusion%20List_Envelope2.png?itok=yVhZg2LP" data-preview-alt="Envelope" data-preview-label="Envelope" data-preview-width="100" data-preview-height="100" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Envelope"><img src="https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-11/Preclusion%20List_Envelope2.png?itok=yVhZg2LP" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Envelope</code></td>
+          <td style="font-size:0.85em">Envelope (1)</td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.cms.gov/medicare/enrollment-renewal/providers-suppliers/chain-ownership-system-pecos/preclusion-list" target="_blank" rel="noopener">https://www.cms.gov/medicare/enrollment-renewal/providers-suppliers/chain-ownership-system-pecos/preclusion-list</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-11/Preclusion%20List_Letter.png?itok=QWDfhT_Y" target="_blank" rel="noopener" title="https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-11/Preclusion%20List_Letter.png?itok=QWDfhT_Y">https://www.cm … /Preclusion%20List_Letter.png?itok=QWDfhT_Y</a><span class="url-tooltip" aria-hidden="true">https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-11/Preclusion%20List_Letter.png?itok=QWDfhT_Y</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-11/Preclusion%20List_Letter.png?itok=QWDfhT_Y" data-preview-alt="Letter" data-preview-label="Letter" data-preview-width="100" data-preview-height="100" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Letter"><img src="https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-11/Preclusion%20List_Letter.png?itok=QWDfhT_Y" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Letter</code></td>
+          <td style="font-size:0.85em">Letter (1)</td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.cms.gov/medicare/enrollment-renewal/providers-suppliers/chain-ownership-system-pecos/preclusion-list" target="_blank" rel="noopener">https://www.cms.gov/medicare/enrollment-renewal/providers-suppliers/chain-ownership-system-pecos/preclusion-list</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-12/program_websites_section_.png?itok=dgV8aovq" target="_blank" rel="noopener" title="https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-12/program_websites_section_.png?itok=dgV8aovq">https://www.c … /program_websites_section_.png?itok=dgV8aovq</a><span class="url-tooltip" aria-hidden="true">https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-12/program_websites_section_.png?itok=dgV8aovq</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-12/program_websites_section_.png?itok=dgV8aovq" data-preview-alt="Two healthcare professionals" data-preview-label="Two healthcare professionals" data-preview-width="794" data-preview-height="738" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Two healthcare professionals"><img src="https://www.cms.gov/sites/default/files/styles/desktop_width/public/2022-12/program_websites_section_.png?itok=dgV8aovq" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Two healthcare professionals</code></td>
+          <td style="font-size:0.85em">Two healthcare professionals (1)</td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.cms.gov/" target="_blank" rel="noopener">https://www.cms.gov/</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.cms.gov/sites/default/files/styles/desktop_width/public/repo-new/3/SignUpForEmailUpdates.png?itok=Wf9VPJLB" target="_blank" rel="noopener" title="https://www.cms.gov/sites/default/files/styles/desktop_width/public/repo-new/3/SignUpForEmailUpdates.png?itok=Wf9VPJLB">https://www.cms.g … /SignUpForEmailUpdates.png?itok=Wf9VPJLB</a><span class="url-tooltip" aria-hidden="true">https://www.cms.gov/sites/default/files/styles/desktop_width/public/repo-new/3/SignUpForEmailUpdates.png?itok=Wf9VPJLB</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.cms.gov/sites/default/files/styles/desktop_width/public/repo-new/3/SignUpForEmailUpdates.png?itok=Wf9VPJLB" data-preview-alt="Subscribe for email updates" data-preview-label="Subscribe for email updates" data-preview-width="100" data-preview-height="101" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Subscribe for email updates"><img src="https://www.cms.gov/sites/default/files/styles/desktop_width/public/repo-new/3/SignUpForEmailUpdates.png?itok=Wf9VPJLB" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Subscribe for email updates</code></td>
+          <td style="font-size:0.85em">Subscribe for email updates (1)</td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.cms.gov/medicare/coverage/ambulances-services-center" target="_blank" rel="noopener">https://www.cms.gov/medicare/coverage/ambulances-services-center</a></div></td>
+        </tr></tbody>
+  </table>
+
+  <h2>Images with issues</h2>
+  <p>No issues found! 🎉</p>
+
+  <dialog id="image-preview-dialog" class="preview-dialog" aria-labelledby="image-preview-title">
+    <div class="preview-dialog__inner">
+      <div class="preview-dialog__header">
+        <h2 id="image-preview-title" class="preview-dialog__title">Image preview</h2>
+        <form method="dialog">
+          <button type="submit" class="preview-dialog__close" id="close-image-preview">Close</button>
+        </form>
+      </div>
+      <figure class="preview-dialog__figure">
+        <img id="image-preview-image" class="preview-dialog__image" alt="">
+        <figcaption id="image-preview-caption" class="preview-dialog__caption"></figcaption>
+      </figure>
+      <p class="preview-dialog__actions">
+        <a id="image-preview-view-full" href="#" target="_blank" rel="noopener" class="preview-dialog__view-full">View full image ↗</a>
+      </p>
+    </div>
+  </dialog>
+
+  <script>
+    (() => {
+      const toggleButton = document.getElementById("toggle-thumbnails");
+      const thumbnailColumns = Array.from(document.querySelectorAll(".thumbnail-column"));
+      const dialog = document.getElementById("image-preview-dialog");
+      const previewImage = document.getElementById("image-preview-image");
+      const previewCaption = document.getElementById("image-preview-caption");
+      const previewTitle = document.getElementById("image-preview-title");
+      const closeButton = document.getElementById("close-image-preview");
+      const viewFullLink = document.getElementById("image-preview-view-full");
+      const previewTriggers = Array.from(document.querySelectorAll(".thumbnail-trigger"));
+      let lastTrigger = null;
+      let lastOpenMode = "click";
+
+      if (toggleButton) {
+        toggleButton.addEventListener("click", () => {
+          const shouldShow = toggleButton.getAttribute("aria-pressed") !== "true";
+          toggleButton.setAttribute("aria-pressed", String(shouldShow));
+          toggleButton.textContent = shouldShow ? "Hide thumbnails" : "Show thumbnails";
+          thumbnailColumns.forEach((column) => {
+            column.hidden = !shouldShow;
+          });
+        });
+      }
+
+      if (!(dialog instanceof HTMLDialogElement) || !previewImage || !previewCaption || !previewTitle) {
+        return;
+      }
+
+      const setPreviewContent = (trigger) => {
+        const src = trigger.dataset.previewSrc || "";
+        const alt = trigger.dataset.previewAlt || "";
+        const label = trigger.dataset.previewLabel || src;
+        const width = Number(trigger.dataset.previewWidth || 0);
+        const height = Number(trigger.dataset.previewHeight || 0);
+        const availableWidth = Math.max(window.innerWidth - 80, 320);
+
+        previewImage.src = src;
+        previewImage.alt = alt;
+        previewImage.style.width = width > 0 ? String(Math.min(width, availableWidth)) + "px" : "auto";
+        previewImage.style.height = "auto";
+        previewImage.style.maxWidth = "100%";
+        previewTitle.textContent = label;
+
+        if (viewFullLink) {
+          viewFullLink.href = src;
+        }
+
+        const altInfo = alt ? "Alt text: " + alt : "Alt text: none";
+        const sizeInfo = width > 0 && height > 0 ? "Displayed size: " + width + " × " + height + "px" : "Displayed size: not captured";
+        previewCaption.textContent = [altInfo, sizeInfo, src].join(" | ");
+
+        previewImage.onload = function() {
+          const nw = this.naturalWidth;
+          const nh = this.naturalHeight;
+          const naturalInfo = nw > 0 && nh > 0 ? "Natural size: " + nw + " × " + nh + "px" : "";
+          previewCaption.textContent = [altInfo, sizeInfo, naturalInfo, src].filter(Boolean).join(" | ");
+        };
+      };
+
+      const openPreview = (trigger, mode) => {
+        lastTrigger = trigger;
+        lastOpenMode = mode;
+        setPreviewContent(trigger);
+        if (!dialog.open) {
+          dialog.showModal();
+        }
+        if (mode === "click") {
+          closeButton.focus();
+        }
+      };
+
+      previewTriggers.forEach((trigger) => {
+        trigger.addEventListener("click", (event) => {
+          event.preventDefault();
+          openPreview(trigger, "click");
+        });
+
+        trigger.addEventListener("focus", () => {
+          openPreview(trigger, "focus");
+        });
+      });
+
+      dialog.addEventListener("click", (event) => {
+        const bounds = dialog.getBoundingClientRect();
+        const isOutside = event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom;
+        if (isOutside) {
+          dialog.close();
+        }
+      });
+
+      dialog.addEventListener("close", () => {
+        previewImage.removeAttribute("src");
+        if (lastOpenMode === "click" && lastTrigger && document.contains(lastTrigger)) {
+          lastTrigger.focus();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
