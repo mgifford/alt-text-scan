@@ -1,6 +1,12 @@
 # This workflow scans ALL open issues with titles starting with "SCAN:"
 # It runs daily at midnight UTC and can also be triggered manually.
 # Use this workflow to process regular scan requests submitted via the web form.
+#
+# Architecture: two-job design to prevent the single-job 6-hour timeout:
+#   1. prepare  — fetches the issue list and marks issues as active (fast, seconds)
+#   2. scan-issue — matrix job, one runner per issue, timeout-minutes: 90 each
+#                   max-parallel: 1 keeps git pushes sequential; fail-fast: false
+#                   lets other issues finish even when one times out or errors.
 
 name: Scan All Open SCAN Issues
 
@@ -29,37 +35,16 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  scan-open-issues:
+  # ---------------------------------------------------------------------------
+  # Job 1: fetch the queue and mark issues as active
+  # ---------------------------------------------------------------------------
+  prepare:
+    name: Fetch open SCAN issues
     runs-on: ubuntu-latest
+    outputs:
+      issue-matrix: ${{ steps.fetch-issues.outputs.result }}
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v6
-        with:
-          fetch-depth: 0
-
-      - name: Setup Node
-        uses: actions/setup-node@v6
-        with:
-          node-version: 24
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Install Playwright browsers
-        run: npx playwright install --with-deps chromium
-
-      # Timeout configuration (optional, defaults shown):
-      # - FETCH_TIMEOUT_MS: Maximum time for initial HTTP fetch (default: 30000ms = 30s)
-      # - PER_URL_TIMEOUT_MS: Maximum time per URL including fetch and all audits (default: 60000ms = 60s)
-      # - TOTAL_SCAN_TIMEOUT_MS: Maximum total scan time (default: 3000000ms = 50min)
-      # - ALFA_PAGE_TIMEOUT_MS: ALFA CLI page load timeout (default: 30000ms = 30s)
-      # - ALFA_COMMAND_TIMEOUT_MS: ALFA command execution timeout (default: 180000ms = 3min)
-      # - PLAYWRIGHT_NAV_TIMEOUT_MS: Playwright page navigation timeout (default: 30000ms = 30s)
-      # - PLAYWRIGHT_LAUNCH_TIMEOUT_MS: Playwright browser launch timeout (default: 30000ms = 30s)
-      #
-      # To customize timeouts, add environment variables to the spawnSync call in the "Scan each issue" step
-
       - name: Fetch open SCAN issues
         id: fetch-issues
         uses: actions/github-script@v8
@@ -124,17 +109,61 @@ jobs:
               });
             }
 
-      - name: Scan each issue
-        if: steps.fetch-issues.outputs.result != '[]'
+  # ---------------------------------------------------------------------------
+  # Job 2: scan one issue per matrix slot
+  #   - timeout-minutes: 90  → each issue gets at most 90 min before GitHub
+  #                             cancels only that slot, not the whole run
+  #   - max-parallel: 1      → sequential git pushes, no rebase conflicts
+  #   - fail-fast: false     → a timed-out issue does not cancel the others
+  # ---------------------------------------------------------------------------
+  scan-issue:
+    name: Scan issue #${{ matrix.issue_number }}
+    needs: prepare
+    if: needs.prepare.outputs.issue-matrix != '[]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      matrix:
+        issue_number: ${{ fromJSON(needs.prepare.outputs.issue-matrix) }}
+      max-parallel: 1
+      fail-fast: false
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      # Timeout configuration (optional, defaults shown):
+      # - FETCH_TIMEOUT_MS: Maximum time for initial HTTP fetch (default: 30000ms = 30s)
+      # - PER_URL_TIMEOUT_MS: Maximum time per URL including fetch and all audits (default: 60000ms = 60s)
+      # - TOTAL_SCAN_TIMEOUT_MS: Maximum total scan time (default: 3000000ms = 50min)
+      # - ALFA_PAGE_TIMEOUT_MS: ALFA CLI page load timeout (default: 30000ms = 30s)
+      # - ALFA_COMMAND_TIMEOUT_MS: ALFA command execution timeout (default: 180000ms = 3min)
+      # - PLAYWRIGHT_NAV_TIMEOUT_MS: Playwright page navigation timeout (default: 30000ms = 30s)
+      # - PLAYWRIGHT_LAUNCH_TIMEOUT_MS: Playwright browser launch timeout (default: 30000ms = 30s)
+
+      - name: Scan issue
         uses: actions/github-script@v8
         with:
           script: |
-            const { execSync, spawnSync, spawn } = require('child_process');
+            // Use spawn (not execSync) to avoid command-injection risks with user-supplied input.
+            const { spawnSync, spawn } = require('child_process');
             const fs = require('fs');
-            const path = require('path');
 
-            const issueNumbers = ${{ steps.fetch-issues.outputs.result }};
-            const failedIssues = [];
+            const issueNumber = ${{ matrix.issue_number }};
+            const MAX_STDERR_TAIL = 5000; // characters of stderr to include in error messages
 
             function summarizeCommandOutput(output) {
               return (output || '')
@@ -145,311 +174,369 @@ jobs:
                 .join(' | ');
             }
 
-            if (!issueNumbers || issueNumbers.length === 0) {
-              console.log('No SCAN issues to process');
+            // Validate issue number is a positive integer
+            if (!Number.isInteger(issueNumber) || issueNumber <= 0) {
+              core.setFailed(`Invalid issue number: ${issueNumber}`);
               return;
             }
 
-            console.log(`Processing ${issueNumbers.length} issues: ${issueNumbers.join(', ')}`);
+            console.log(`\n=== Processing issue #${issueNumber} ===`);
+            const failureState = {
+              phase: 'starting scan',
+              lastScannedUrl: null,
+              reportDir: null,
+              meta: null,
+              lastGitError: null
+            };
 
-            const defaultBranch = context.payload.repository.default_branch || 'main';
-            console.log(`Using default branch: ${defaultBranch}`);
+            const defaultBranch = context.payload.repository?.default_branch || 'main';
+            const eventPath = `.tmp/issue-${issueNumber}-event.json`;
+            const scanOutputDir = `.scan-output-${issueNumber}`;
 
-            for (const issueNumber of issueNumbers) {
-              console.log(`\n=== Processing issue #${issueNumber} ===`);
-              const failureState = {
-                phase: 'starting scan',
-                lastScannedUrl: null,
-                reportDir: null,
-                meta: null,
-                lastGitError: null
-              };
+            try {
+              failureState.phase = 'fetching issue details';
+              const { data: issue } = await github.rest.issues.get({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issueNumber
+              });
 
-              // Validate issue number is a positive integer
-              if (!Number.isInteger(issueNumber) || issueNumber <= 0) {
-                console.error(`Invalid issue number: ${issueNumber}`);
-                continue;
-              }
-
-              const eventPath = `.tmp/issue-${issueNumber}-event.json`;
-              const scanOutputDir = `.scan-output-${issueNumber}`;
-
-              try {
-                failureState.phase = 'fetching issue details';
-                // Fetch the issue details
-                const { data: issue } = await github.rest.issues.get({
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  issue_number: issueNumber
-                });
-
-                for (const name of ['scan-failed', 'scan-complete']) {
-                  try {
-                    await github.rest.issues.removeLabel({
-                      owner: context.repo.owner,
-                      repo: context.repo.repo,
-                      issue_number: issueNumber,
-                      name
-                    });
-                  } catch (error) {
-                    if (error.status !== 404) {
-                      throw error;
-                    }
+              for (const name of ['scan-failed', 'scan-complete']) {
+                try {
+                  await github.rest.issues.removeLabel({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: issueNumber,
+                    name
+                  });
+                } catch (error) {
+                  if (error.status !== 404) {
+                    throw error;
                   }
                 }
+              }
 
-                await github.rest.issues.addLabels({
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  issue_number: issueNumber,
-                  labels: ['scan-in-progress']
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issueNumber,
+                labels: ['scan-in-progress']
+              });
+
+              // Create event payload for the scanner
+              const eventPayload = {
+                action: 'scheduled-scan',
+                issue: issue
+              };
+
+              // Create temp directory and event file
+              fs.mkdirSync('.tmp', { recursive: true });
+              fs.writeFileSync(eventPath, JSON.stringify(eventPayload, null, 2));
+
+              // Create scan output directory
+              fs.mkdirSync(scanOutputDir, { recursive: true });
+
+              // Run the scan using spawn for better security.
+              // SCAN_KILL_MS (75 min) is intentionally 15 minutes shorter than the job-level
+              // timeout-minutes: 90.  This buffer lets the catch block post an error comment
+              // and update issue labels before GitHub forcibly cancels the runner at 90 min.
+              console.log(`Running scan for issue #${issueNumber}...`);
+              failureState.phase = 'running alt-text scan';
+              const SCAN_KILL_MS = 75 * 60 * 1000;    // 75 minutes
+              const KILL_GRACE_PERIOD_MS = 5000;         // time between SIGTERM and SIGKILL
+              const scanProcess = await new Promise((resolve, reject) => {
+                const child = spawn(
+                  process.execPath,
+                  ['scanner/run-alt-text-scan.mjs', eventPath, scanOutputDir],
+                  { env: process.env }
+                );
+
+                // Kill the child if it runs longer than SCAN_KILL_MS
+                let sigkillTimer = null;
+                const killTimer = setTimeout(() => {
+                  console.error(`[issue #${issueNumber}] Scan exceeded ${SCAN_KILL_MS / 60000} minutes — killing process`);
+                  child.kill('SIGTERM');
+                  sigkillTimer = setTimeout(() => child.kill('SIGKILL'), KILL_GRACE_PERIOD_MS);
+                }, SCAN_KILL_MS);
+
+                let stdout = '';
+                let stderr = '';
+
+                child.stdout.on('data', (chunk) => {
+                  stdout += chunk.toString();
                 });
 
-                // Create event payload for the scanner
-                const eventPayload = {
-                  action: 'scheduled-scan',
-                  issue: issue
-                };
-
-                // Create temp directory and event file
-                fs.mkdirSync('.tmp', { recursive: true });
-                fs.writeFileSync(eventPath, JSON.stringify(eventPayload, null, 2));
-
-                // Create scan output directory
-                fs.mkdirSync(scanOutputDir, { recursive: true });
-
-                // Run the scan using spawn for better security
-                console.log(`Running scan for issue #${issueNumber}...`);
-                failureState.phase = 'running alt-text scan';
-                const scanProcess = await new Promise((resolve, reject) => {
-                  const child = spawn(
-                    process.execPath,
-                    ['scanner/run-alt-text-scan.mjs', eventPath, scanOutputDir],
-                    { env: process.env }
-                  );
-
-                  let stdout = '';
-                  let stderr = '';
-
-                  child.stdout.on('data', (chunk) => {
-                    stdout += chunk.toString();
-                  });
-
-                  child.stderr.on('data', (chunk) => {
-                    const text = chunk.toString();
-                    stderr += text;
-                    for (const line of text.split('\n')) {
-                      const trimmed = line.trim();
-                      if (trimmed) {
-                        console.log(`[issue #${issueNumber}] ${trimmed}`);
-                      }
+                child.stderr.on('data', (chunk) => {
+                  const text = chunk.toString();
+                  stderr += text;
+                  for (const line of text.split('\n')) {
+                    const trimmed = line.trim();
+                    if (trimmed) {
+                      console.log(`[issue #${issueNumber}] ${trimmed}`);
                     }
-                  });
-
-                  child.on('error', (error) => {
-                    reject(new Error(`Failed to run scan: ${error.message}`));
-                  });
-
-                  child.on('close', (code) => {
-                    if (code !== 0) {
-                      reject(new Error(`Scan process exited with code ${code}\n${stderr.slice(-5000)}`));
-                      return;
-                    }
-                    resolve({ stdout, stderr });
-                  });
+                  }
                 });
 
-                const scanResult = scanProcess.stdout;
-                let meta;
-                try {
-                  meta = JSON.parse(scanResult);
-                  failureState.meta = meta;
-                } catch (parseError) {
-                  throw new Error(`Failed to parse scan output as JSON: ${parseError.message}`);
-                }
-                console.log(`Scan completed:`, meta);
+                child.on('error', (error) => {
+                  clearTimeout(killTimer);
+                  if (sigkillTimer) clearTimeout(sigkillTimer);
+                  reject(new Error(`Failed to run scan: ${error.message}`));
+                });
 
-                const lastScannedMatch = [...scanProcess.stderr.matchAll(/\[(\d+)\/(\d+)\]\s+Scanned\s+(.+?)\s+in\s+(\d+)ms/g)].pop();
-                if (lastScannedMatch) {
-                  const [, current, total, url, elapsedMs] = lastScannedMatch;
-                  console.log(`Last scanned URL for issue #${issueNumber}: ${url} (${elapsedMs}ms, ${current}/${total})`);
-                  failureState.lastScannedUrl = url;
-                }
+                child.on('close', (code) => {
+                  clearTimeout(killTimer);
+                  if (sigkillTimer) clearTimeout(sigkillTimer);
+                  if (code !== 0) {
+                    reject(new Error(`Scan process exited with code ${code}\n${stderr.slice(-MAX_STDERR_TAIL)}`));
+                    return;
+                  }
+                  resolve({ stdout, stderr });
+                });
+              });
 
-                if (meta.skipped) {
-                  console.log(`Issue #${issueNumber} was skipped: ${meta.reason}`);
-                  // Clean up temporary files
-                  fs.rmSync(eventPath, { force: true });
-                  fs.rmSync(scanOutputDir, { recursive: true, force: true });
-                  continue;
-                }
+              const scanResult = scanProcess.stdout;
+              let meta;
+              try {
+                meta = JSON.parse(scanResult);
+                failureState.meta = meta;
+              } catch (parseError) {
+                throw new Error(`Failed to parse scan output as JSON: ${parseError.message}`);
+              }
+              console.log(`Scan completed:`, meta);
 
-                // Prepare report paths
-                const stamp = new Date().toISOString().replace(/[:.]/g, '-');
-                const reportDir = `reports/issues/issue-${issueNumber}/${stamp}`;
-                const summaryPath = `${reportDir}/report.json`;
-                const markdownPath = `${reportDir}/report.md`;
-                const htmlPath = `${reportDir}/report.html`;
-                const csvPath = `${reportDir}/report.csv`;
-                failureState.reportDir = reportDir;
+              const lastScannedMatch = [...scanProcess.stderr.matchAll(/\[(\d+)\/(\d+)\]\s+Scanned\s+(.+?)\s+in\s+(\d+)ms/g)].pop();
+              if (lastScannedMatch) {
+                const [, current, total, url, elapsedMs] = lastScannedMatch;
+                console.log(`Last scanned URL for issue #${issueNumber}: ${url} (${elapsedMs}ms, ${current}/${total})`);
+                failureState.lastScannedUrl = url;
+              }
 
-                // Create report directory and copy files
-                failureState.phase = 'writing report artifacts';
-                fs.mkdirSync(reportDir, { recursive: true });
-                fs.copyFileSync(`${scanOutputDir}/report.json`, summaryPath);
-                fs.copyFileSync(`${scanOutputDir}/report.md`, markdownPath);
-                fs.copyFileSync(`${scanOutputDir}/report.html`, htmlPath);
-                fs.copyFileSync(`${scanOutputDir}/report.csv`, csvPath);
-
+              if (meta.skipped) {
+                console.log(`Issue #${issueNumber} was skipped: ${meta.reason}`);
                 // Clean up temporary files
                 fs.rmSync(eventPath, { force: true });
                 fs.rmSync(scanOutputDir, { recursive: true, force: true });
+                return;
+              }
 
-                // Regenerate reports.html
-                console.log('Regenerating reports.html...');
-                failureState.phase = 'regenerating report index';
-                const generateResult = spawnSync(process.execPath, ['scanner/generate-reports-html.mjs']);
-                if (generateResult.status !== 0) {
-                  console.warn('Failed to regenerate reports.html:', generateResult.stderr);
+              // Prepare report paths
+              const stamp = new Date().toISOString().replace(/[:.]/g, '-');
+              const reportDir = `reports/issues/issue-${issueNumber}/${stamp}`;
+              const summaryPath = `${reportDir}/report.json`;
+              const markdownPath = `${reportDir}/report.md`;
+              const htmlPath = `${reportDir}/report.html`;
+              const csvPath = `${reportDir}/report.csv`;
+              failureState.reportDir = reportDir;
+
+              // Create report directory and copy files
+              failureState.phase = 'writing report artifacts';
+              fs.mkdirSync(reportDir, { recursive: true });
+              fs.copyFileSync(`${scanOutputDir}/report.json`, summaryPath);
+              fs.copyFileSync(`${scanOutputDir}/report.md`, markdownPath);
+              fs.copyFileSync(`${scanOutputDir}/report.html`, htmlPath);
+              fs.copyFileSync(`${scanOutputDir}/report.csv`, csvPath);
+
+              // Clean up temporary files
+              fs.rmSync(eventPath, { force: true });
+              fs.rmSync(scanOutputDir, { recursive: true, force: true });
+
+              // Regenerate reports.html
+              console.log('Regenerating reports.html...');
+              failureState.phase = 'regenerating report index';
+              const generateResult = spawnSync(process.execPath, ['scanner/generate-reports-html.mjs']);
+              if (generateResult.status !== 0) {
+                console.warn('Failed to regenerate reports.html:', generateResult.stderr);
+              }
+
+              // Commit and push the report using spawnSync for security
+              failureState.phase = 'committing report artifacts';
+              spawnSync('git', ['config', 'user.name', 'github-actions[bot]']);
+              spawnSync('git', ['config', 'user.email', '41898282+github-actions[bot]@users.noreply.github.com']);
+              spawnSync('git', ['add', reportDir]);
+              spawnSync('git', ['add', 'reports.html']);
+              spawnSync('git', ['add', 'legacy-reports.html']);
+
+              // Check if there are changes to commit
+              const statusResult = spawnSync('git', ['status', '--porcelain'], { encoding: 'utf8' });
+              if (statusResult.stdout.trim()) {
+                const commitMessage = `chore(scan): scheduled scan for issue #${issueNumber}`;
+                const commitResult = spawnSync('git', ['commit', '-m', commitMessage]);
+                if (commitResult.status !== 0) {
+                  throw new Error(`Failed to commit: ${commitResult.stderr}`);
                 }
 
-                // Commit and push the report using spawnSync for security
-                failureState.phase = 'committing report artifacts';
-                spawnSync('git', ['config', 'user.name', 'github-actions[bot]']);
-                spawnSync('git', ['config', 'user.email', '41898282+github-actions[bot]@users.noreply.github.com']);
-                spawnSync('git', ['add', reportDir]);
-                spawnSync('git', ['add', 'reports.html']);
-                spawnSync('git', ['add', 'legacy-reports.html']);
-
-                // Check if there are changes to commit
-                const statusResult = spawnSync('git', ['status', '--porcelain'], { encoding: 'utf8' });
-                if (statusResult.stdout.trim()) {
-                  const commitMessage = `chore(scan): scheduled scan for issue #${issueNumber}`;
-                  const commitResult = spawnSync('git', ['commit', '-m', commitMessage]);
-                  if (commitResult.status !== 0) {
-                    throw new Error(`Failed to commit: ${commitResult.stderr}`);
-                  }
-                  
-                  // Retry push with rebase up to 3 times
-                  failureState.phase = 'pushing report artifacts';
-                  let pushSucceeded = false;
-                  for (let attempt = 1; attempt <= 3; attempt++) {
-                    console.log(`Push attempt ${attempt}...`);
-                    const pullResult = spawnSync('git', ['pull', '--rebase', 'origin', defaultBranch], { encoding: 'utf8' });
-                    if (pullResult.status === 0) {
-                      const pushResult = spawnSync('git', ['push', 'origin', `HEAD:${defaultBranch}`], { encoding: 'utf8' });
-                      if (pushResult.status === 0) {
-                        console.log(`Report committed and pushed for issue #${issueNumber} on attempt ${attempt}`);
-                        pushSucceeded = true;
-                        break;
-                      } else {
-                        failureState.lastGitError = `Push attempt ${attempt} failed: ${summarizeCommandOutput(pushResult.stderr || pushResult.stdout) || 'No push output captured.'}`;
-                        console.warn(`Push failed on attempt ${attempt}: ${pushResult.stderr}`);
-                      }
+                // Retry push with rebase up to 3 times
+                failureState.phase = 'pushing report artifacts';
+                let pushSucceeded = false;
+                for (let attempt = 1; attempt <= 3; attempt++) {
+                  console.log(`Push attempt ${attempt}...`);
+                  const pullResult = spawnSync('git', ['pull', '--rebase', 'origin', defaultBranch], { encoding: 'utf8' });
+                  if (pullResult.status === 0) {
+                    const pushResult = spawnSync('git', ['push', 'origin', `HEAD:${defaultBranch}`], { encoding: 'utf8' });
+                    if (pushResult.status === 0) {
+                      console.log(`Report committed and pushed for issue #${issueNumber} on attempt ${attempt}`);
+                      pushSucceeded = true;
+                      break;
                     } else {
-                      failureState.lastGitError = `Rebase attempt ${attempt} failed: ${summarizeCommandOutput(pullResult.stderr || pullResult.stdout) || 'No rebase output captured.'}`;
-                      console.warn(`Rebase failed on attempt ${attempt}: ${pullResult.stderr}`);
-                      // reports.html and legacy-reports.html are generated files — resolve conflicts by regenerating them
-                      const statusCheck = spawnSync('git', ['status'], { encoding: 'utf8' });
-                      if (statusCheck.stdout.includes('rebase in progress')) {
-                        const conflictCheck = spawnSync('git', ['diff', '--name-only', '--diff-filter=U'], { encoding: 'utf8' });
-                        const conflictFiles = conflictCheck.stdout.trim().split('\n');
-                        if (conflictFiles.some(f => f === 'reports.html' || f === 'legacy-reports.html')) {
-                          console.log('Conflict in generated reports HTML — resolving by regenerating...');
-                          spawnSync(process.execPath, ['scanner/generate-reports-html.mjs']);
-                          spawnSync('git', ['add', 'reports.html']);
-                          spawnSync('git', ['add', 'legacy-reports.html']);
-                          const continueResult = spawnSync('git', ['rebase', '--continue'], { encoding: 'utf8', env: { ...process.env, GIT_EDITOR: 'true' } });
-                          if (continueResult.status === 0) {
-                            const pushResult = spawnSync('git', ['push', 'origin', `HEAD:${defaultBranch}`], { encoding: 'utf8' });
-                            if (pushResult.status === 0) {
-                              console.log(`Report committed and pushed for issue #${issueNumber} on attempt ${attempt} (after resolving reports HTML conflict)`);
-                              pushSucceeded = true;
-                              break;
-                            }
+                      failureState.lastGitError = `Push attempt ${attempt} failed: ${summarizeCommandOutput(pushResult.stderr || pushResult.stdout) || 'No push output captured.'}`;
+                      console.warn(`Push failed on attempt ${attempt}: ${pushResult.stderr}`);
+                    }
+                  } else {
+                    failureState.lastGitError = `Rebase attempt ${attempt} failed: ${summarizeCommandOutput(pullResult.stderr || pullResult.stdout) || 'No rebase output captured.'}`;
+                    console.warn(`Rebase failed on attempt ${attempt}: ${pullResult.stderr}`);
+                    // reports.html and legacy-reports.html are generated files — resolve conflicts by regenerating them
+                    const statusCheck = spawnSync('git', ['status'], { encoding: 'utf8' });
+                    if (statusCheck.stdout.includes('rebase in progress')) {
+                      const conflictCheck = spawnSync('git', ['diff', '--name-only', '--diff-filter=U'], { encoding: 'utf8' });
+                      const conflictFiles = conflictCheck.stdout.trim().split('\n');
+                      if (conflictFiles.some(f => f === 'reports.html' || f === 'legacy-reports.html')) {
+                        console.log('Conflict in generated reports HTML — resolving by regenerating...');
+                        spawnSync(process.execPath, ['scanner/generate-reports-html.mjs']);
+                        spawnSync('git', ['add', 'reports.html']);
+                        spawnSync('git', ['add', 'legacy-reports.html']);
+                        const continueResult = spawnSync('git', ['rebase', '--continue'], { encoding: 'utf8', env: { ...process.env, GIT_EDITOR: 'true' } });
+                        if (continueResult.status === 0) {
+                          const pushResult = spawnSync('git', ['push', 'origin', `HEAD:${defaultBranch}`], { encoding: 'utf8' });
+                          if (pushResult.status === 0) {
+                            console.log(`Report committed and pushed for issue #${issueNumber} on attempt ${attempt} (after resolving reports HTML conflict)`);
+                            pushSucceeded = true;
+                            break;
                           }
                         }
-                        spawnSync('git', ['rebase', '--abort']);
                       }
-                    }
-                    
-                    if (attempt < 3) {
-                      const delay = attempt * 2000; // Wait 2s before 2nd attempt, 4s before 3rd attempt
-                      console.log(`Waiting ${delay}ms before retry...`);
-                      await new Promise(resolve => setTimeout(resolve, delay));
+                      spawnSync('git', ['rebase', '--abort']);
                     }
                   }
-                  
-                  if (!pushSucceeded) {
-                    throw new Error(`Failed to push after 3 attempts. ${failureState.lastGitError || 'No git error details captured.'}`);
+
+                  if (attempt < 3) {
+                    const delay = attempt * 2000; // Wait 2s before 2nd attempt, 4s before 3rd attempt
+                    console.log(`Waiting ${delay}ms before retry...`);
+                    await new Promise(resolve => setTimeout(resolve, delay));
                   }
-                } else {
-                  console.log(`No changes to commit for issue #${issueNumber}`);
                 }
 
-                // Post comment with results
-                failureState.phase = 'posting success comment';
-                const owner = context.repo.owner;
-                const repo = context.repo.repo;
-                const encodedJsonPath = summaryPath.split('/').map(encodeURIComponent).join('/');
-                const encodedMarkdownPath = markdownPath.split('/').map(encodeURIComponent).join('/');
-                const encodedHtmlPath = htmlPath.split('/').map(encodeURIComponent).join('/');
-                const encodedCsvPath = csvPath.split('/').map(encodeURIComponent).join('/');
-                const jsonPagesUrl = `https://${owner}.github.io/${repo}/${encodedJsonPath}`;
-                const pagesUrl = `https://${owner}.github.io/${repo}/${encodedHtmlPath}`;
-                const csvPagesUrl = `https://${owner}.github.io/${repo}/${encodedCsvPath}`;
-                const jsonBlobUrl = `https://github.com/${owner}/${repo}/blob/${encodeURIComponent(defaultBranch)}/${encodedJsonPath}`;
-                const blobUrl = `https://github.com/${owner}/${repo}/blob/${encodeURIComponent(defaultBranch)}/${encodedMarkdownPath}`;
-                const csvBlobUrl = `https://github.com/${owner}/${repo}/blob/${encodeURIComponent(defaultBranch)}/${encodedCsvPath}`;
-
-                const body = [
-                  `Scheduled alt text review complete for **${meta.scanTitle}**.`,
-                  "",
-                  `- Accepted URLs: ${meta.acceptedCount}`,
-                  `- Scanned URLs: ${meta.scannedCount ?? meta.acceptedCount}`
-                ];
-                
-                // Add warning if some URLs were skipped
-                if (meta.skippedDueToTimeout && meta.skippedDueToTimeout > 0) {
-                  body.push(`- ⚠️ **${meta.skippedDueToTimeout} URLs skipped due to timeout** (scan exceeded time limit)`);
+                if (!pushSucceeded) {
+                  throw new Error(`Failed to push after 3 attempts. ${failureState.lastGitError || 'No git error details captured.'}`);
                 }
-                
-                // Add recommendation if only 1 URL was scanned
-                if (meta.acceptedCount === 1) {
-                  body.push(``);
-                  body.push(`💡 **Only 1 URL was scanned.** Alt Text Scan works best with multiple URLs. To generate a list of related URLs for a more thorough alt text review, try the [Top Task Finder](https://mgifford.github.io/top-task-finder/). You can edit this issue to add more URLs and reopen it to trigger a new scan.`);
-                  body.push(``);
-                }
-                
-                body.push(
-                  `- Rejected URLs: ${meta.rejectedCount}`,
-                  "",
-                  '- Image inventory CSV contains one row per unique image with alt text and semantic metadata (title, aria-label, aria-describedby, longdesc, role, dimensions, source pages).',
-                  `Report (Pages, HTML): ${pagesUrl}`,
-                  `Report (Pages, JSON): ${jsonPagesUrl}`,
-                  `Fallback (GitHub): ${blobUrl}`,
-                  `Image inventory CSV (Pages): ${csvPagesUrl}`,
-                  `JSON fallback (GitHub): ${jsonBlobUrl}`,
-                  `Image inventory CSV fallback (GitHub): ${csvBlobUrl}`
-                );
-                
-                const commentBody = body.join("\n");
+              } else {
+                console.log(`No changes to commit for issue #${issueNumber}`);
+              }
 
-                // Retry posting comment with exponential backoff
-                let commentPosted = false;
+              // Post comment with results
+              failureState.phase = 'posting success comment';
+              const owner = context.repo.owner;
+              const repo = context.repo.repo;
+              const encodedJsonPath = summaryPath.split('/').map(encodeURIComponent).join('/');
+              const encodedMarkdownPath = markdownPath.split('/').map(encodeURIComponent).join('/');
+              const encodedHtmlPath = htmlPath.split('/').map(encodeURIComponent).join('/');
+              const encodedCsvPath = csvPath.split('/').map(encodeURIComponent).join('/');
+              const jsonPagesUrl = `https://${owner}.github.io/${repo}/${encodedJsonPath}`;
+              const pagesUrl = `https://${owner}.github.io/${repo}/${encodedHtmlPath}`;
+              const csvPagesUrl = `https://${owner}.github.io/${repo}/${encodedCsvPath}`;
+              const jsonBlobUrl = `https://github.com/${owner}/${repo}/blob/${encodeURIComponent(defaultBranch)}/${encodedJsonPath}`;
+              const blobUrl = `https://github.com/${owner}/${repo}/blob/${encodeURIComponent(defaultBranch)}/${encodedMarkdownPath}`;
+              const csvBlobUrl = `https://github.com/${owner}/${repo}/blob/${encodeURIComponent(defaultBranch)}/${encodedCsvPath}`;
+
+              const body = [
+                `Scheduled alt text review complete for **${meta.scanTitle}**.`,
+                "",
+                `- Accepted URLs: ${meta.acceptedCount}`,
+                `- Scanned URLs: ${meta.scannedCount ?? meta.acceptedCount}`
+              ];
+
+              // Add warning if some URLs were skipped
+              if (meta.skippedDueToTimeout && meta.skippedDueToTimeout > 0) {
+                body.push(`- ⚠️ **${meta.skippedDueToTimeout} URLs skipped due to timeout** (scan exceeded time limit)`);
+              }
+
+              // Add recommendation if only 1 URL was scanned
+              if (meta.acceptedCount === 1) {
+                body.push(``);
+                body.push(`💡 **Only 1 URL was scanned.** Alt Text Scan works best with multiple URLs. To generate a list of related URLs for a more thorough alt text review, try the [Top Task Finder](https://mgifford.github.io/top-task-finder/). You can edit this issue to add more URLs and reopen it to trigger a new scan.`);
+                body.push(``);
+              }
+
+              body.push(
+                `- Rejected URLs: ${meta.rejectedCount}`,
+                "",
+                '- Image inventory CSV contains one row per unique image with alt text and semantic metadata (title, aria-label, aria-describedby, longdesc, role, dimensions, source pages).',
+                `Report (Pages, HTML): ${pagesUrl}`,
+                `Report (Pages, JSON): ${jsonPagesUrl}`,
+                `Fallback (GitHub): ${blobUrl}`,
+                `Image inventory CSV (Pages): ${csvPagesUrl}`,
+                `JSON fallback (GitHub): ${jsonBlobUrl}`,
+                `Image inventory CSV fallback (GitHub): ${csvBlobUrl}`
+              );
+
+              const commentBody = body.join("\n");
+
+              // Retry posting comment with exponential backoff
+              let commentPosted = false;
+              for (let attempt = 0; attempt < 3; attempt++) {
+                try {
+                  await github.rest.issues.createComment({
+                    owner,
+                    repo,
+                    issue_number: issueNumber,
+                    body: commentBody
+                  });
+                  console.log(`Comment posted to issue #${issueNumber}`);
+                  commentPosted = true;
+                  break;
+                } catch (commentError) {
+                  console.warn(`Attempt ${attempt + 1} failed to post comment:`, commentError.message);
+                  if (attempt < 2) {
+                    const delay = Math.pow(2, attempt) * 1000; // 1s, 2s
+                    console.log(`Retrying in ${delay}ms...`);
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                  }
+                }
+              }
+
+              if (!commentPosted) {
+                console.error(`Failed to post success comment after 3 attempts`);
+              }
+
+              for (const name of ['scan-in-progress', 'scan-failed']) {
+                try {
+                  await github.rest.issues.removeLabel({
+                    owner,
+                    repo,
+                    issue_number: issueNumber,
+                    name
+                  });
+                } catch (error) {
+                  if (error.status !== 404) {
+                    throw error;
+                  }
+                }
+              }
+
+              await github.rest.issues.addLabels({
+                owner,
+                repo,
+                issue_number: issueNumber,
+                labels: ['scan-complete']
+              });
+
+              // Close the issue if URLs were successfully scanned
+              // Note: Issues with zero accepted URLs remain open for review
+              if (meta.acceptedCount > 0) {
+                failureState.phase = 'closing issue';
+                let issueClosed = false;
                 for (let attempt = 0; attempt < 3; attempt++) {
                   try {
-                    await github.rest.issues.createComment({
+                    await github.rest.issues.update({
                       owner,
                       repo,
                       issue_number: issueNumber,
-                      body: commentBody
+                      state: 'closed'
                     });
-                    console.log(`Comment posted to issue #${issueNumber}`);
-                    commentPosted = true;
+                    console.log(`Issue #${issueNumber} closed`);
+                    issueClosed = true;
                     break;
-                  } catch (commentError) {
-                    console.warn(`Attempt ${attempt + 1} failed to post comment:`, commentError.message);
+                  } catch (closeError) {
+                    console.warn(`Attempt ${attempt + 1} failed to close issue:`, closeError.message);
                     if (attempt < 2) {
                       const delay = Math.pow(2, attempt) * 1000; // 1s, 2s
                       console.log(`Retrying in ${delay}ms...`);
@@ -457,140 +544,80 @@ jobs:
                     }
                   }
                 }
-                
-                if (!commentPosted) {
-                  console.error(`Failed to post success comment after 3 attempts`);
+
+                if (!issueClosed) {
+                  console.error(`Failed to close issue after 3 attempts. Scan completed successfully but issue remains open.`);
+                }
+              }
+
+            } catch (error) {
+              console.error(`Error processing issue #${issueNumber}:`, error);
+
+              // Clean up temporary files on error
+              try {
+                fs.rmSync(eventPath, { force: true });
+                fs.rmSync(scanOutputDir, { recursive: true, force: true });
+              } catch (cleanupError) {
+                console.error(`Failed to clean up temporary files:`, cleanupError);
+              }
+
+              // Post error comment (no retry - best effort)
+              try {
+                const detailLines = [];
+                if (failureState.meta) {
+                  detailLines.push(
+                    `- Accepted URLs: ${failureState.meta.acceptedCount ?? 0}`,
+                    `- Scanned URLs: ${failureState.meta.scannedCount ?? 0}`,
+                    `- Rejected URLs: ${failureState.meta.rejectedCount ?? 0}`
+                  );
+                }
+                if (failureState.lastScannedUrl) {
+                  detailLines.push(`- Last scanned URL: ${failureState.lastScannedUrl}`);
+                }
+                if (failureState.reportDir) {
+                  detailLines.push(`- Report directory prepared locally: ${failureState.reportDir}`);
+                }
+                if (failureState.lastGitError) {
+                  detailLines.push(`- Last git error: ${failureState.lastGitError}`);
                 }
 
-                for (const name of ['scan-in-progress', 'scan-failed']) {
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issueNumber,
+                  body: [
+                    `❌ Scheduled scan encountered an error during ${failureState.phase}: ${error.message}`,
+                    '',
+                    ...detailLines,
+                    '',
+                    `Please check the [workflow logs](https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}) for details.`
+                  ].join('\n')
+                });
+
+                for (const name of ['scan-in-progress', 'scan-complete']) {
                   try {
                     await github.rest.issues.removeLabel({
-                      owner,
-                      repo,
+                      owner: context.repo.owner,
+                      repo: context.repo.repo,
                       issue_number: issueNumber,
                       name
                     });
-                  } catch (error) {
-                    if (error.status !== 404) {
-                      throw error;
+                  } catch (labelError) {
+                    if (labelError.status !== 404) {
+                      throw labelError;
                     }
                   }
                 }
 
                 await github.rest.issues.addLabels({
-                  owner,
-                  repo,
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
                   issue_number: issueNumber,
-                  labels: ['scan-complete']
+                  labels: ['scan-failed']
                 });
-
-                // Close the issue if URLs were successfully scanned
-                // Note: Issues with zero accepted URLs remain open for review
-                if (meta.acceptedCount > 0) {
-                  failureState.phase = 'closing issue';
-                  let issueClosed = false;
-                  for (let attempt = 0; attempt < 3; attempt++) {
-                    try {
-                      await github.rest.issues.update({
-                        owner,
-                        repo,
-                        issue_number: issueNumber,
-                        state: 'closed'
-                      });
-                      console.log(`Issue #${issueNumber} closed`);
-                      issueClosed = true;
-                      break;
-                    } catch (closeError) {
-                      console.warn(`Attempt ${attempt + 1} failed to close issue:`, closeError.message);
-                      if (attempt < 2) {
-                        const delay = Math.pow(2, attempt) * 1000; // 1s, 2s
-                        console.log(`Retrying in ${delay}ms...`);
-                        await new Promise(resolve => setTimeout(resolve, delay));
-                      }
-                    }
-                  }
-                  
-                  if (!issueClosed) {
-                    console.error(`Failed to close issue after 3 attempts. Scan completed successfully but issue remains open.`);
-                  }
-                }
-
-              } catch (error) {
-                console.error(`Error processing issue #${issueNumber}:`, error);
-                failedIssues.push({
-                  issueNumber,
-                  phase: failureState.phase,
-                  message: error.message
-                });
-
-                // Clean up temporary files on error
-                try {
-                  fs.rmSync(eventPath, { force: true });
-                  fs.rmSync(scanOutputDir, { recursive: true, force: true });
-                } catch (cleanupError) {
-                  console.error(`Failed to clean up temporary files:`, cleanupError);
-                }
-
-                // Post error comment (no retry - best effort)
-                try {
-                  const detailLines = [];
-                  if (failureState.meta) {
-                    detailLines.push(
-                      `- Accepted URLs: ${failureState.meta.acceptedCount ?? 0}`,
-                      `- Scanned URLs: ${failureState.meta.scannedCount ?? 0}`,
-                      `- Rejected URLs: ${failureState.meta.rejectedCount ?? 0}`
-                    );
-                  }
-                  if (failureState.lastScannedUrl) {
-                    detailLines.push(`- Last scanned URL: ${failureState.lastScannedUrl}`);
-                  }
-                  if (failureState.reportDir) {
-                    detailLines.push(`- Report directory prepared locally: ${failureState.reportDir}`);
-                  }
-                  if (failureState.lastGitError) {
-                    detailLines.push(`- Last git error: ${failureState.lastGitError}`);
-                  }
-
-                  await github.rest.issues.createComment({
-                    owner: context.repo.owner,
-                    repo: context.repo.repo,
-                    issue_number: issueNumber,
-                    body: [
-                      `❌ Scheduled scan encountered an error during ${failureState.phase}: ${error.message}`,
-                      '',
-                      ...detailLines,
-                      '',
-                      `Please check the [workflow logs](https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}) for details.`
-                    ].join('\n')
-                  });
-
-                  for (const name of ['scan-in-progress', 'scan-complete']) {
-                    try {
-                      await github.rest.issues.removeLabel({
-                        owner: context.repo.owner,
-                        repo: context.repo.repo,
-                        issue_number: issueNumber,
-                        name
-                      });
-                    } catch (labelError) {
-                      if (labelError.status !== 404) {
-                        throw labelError;
-                      }
-                    }
-                  }
-
-                  await github.rest.issues.addLabels({
-                    owner: context.repo.owner,
-                    repo: context.repo.repo,
-                    issue_number: issueNumber,
-                    labels: ['scan-failed']
-                  });
-                } catch (commentError) {
-                  console.error(`Failed to post error comment:`, commentError.message);
-                }
+              } catch (commentError) {
+                console.error(`Failed to post error comment:`, commentError.message);
               }
-            }
 
-            if (failedIssues.length > 0) {
-              throw new Error(`Failed issues: ${failedIssues.map((failure) => `#${failure.issueNumber} (${failure.phase}: ${failure.message})`).join('; ')}`);
+              core.setFailed(`Failed to process issue #${issueNumber} during ${failureState.phase}: ${error.message}`);
             }
