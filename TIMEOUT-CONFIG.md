@@ -8,7 +8,8 @@ The scanner implements multiple layers of timeout protection:
 
 1. **Per-URL timeouts** - Prevent individual problematic pages from blocking the entire scan
 2. **Overall scan timeout** - Ensure the entire scan completes within the desired time frame
-3. **Component-specific timeouts** - Fine-grained control over different phases of the scan
+3. **Sitemap discovery timeout** - Prevent runaway URL discovery on sites with huge or malformed sitemaps
+4. **Component-specific timeouts** - Fine-grained control over different phases of the scan
 
 ## Default Timeout Values
 
@@ -23,12 +24,16 @@ All timeouts are configured in milliseconds:
 | `ALFA_COMMAND_TIMEOUT_MS` | 180000 (3min) | ALFA command execution timeout |
 | `PLAYWRIGHT_NAV_TIMEOUT_MS` | 30000 (30s) | Playwright page navigation timeout |
 | `PLAYWRIGHT_LAUNCH_TIMEOUT_MS` | 30000 (30s) | Playwright browser launch timeout |
+| `SITEMAP_DISCOVERY_TIMEOUT_MS` | 300000 (5min) | Maximum wall-clock time for sitemap-based URL discovery |
+| `MAX_SITEMAP_CHILDREN` | 50 | Maximum number of child sitemaps to fetch from a sitemap index |
 
 ## Why These Defaults?
 
 - **50-minute total timeout**: Allows completion within 1 hour GitHub Actions limit with buffer for report generation
 - **2-minute per-URL timeout**: Accommodates slow-loading pages while preventing indefinite hangs
 - **30-second fetch timeout**: Reasonable time for initial HTTP response
+- **5-minute sitemap discovery timeout**: Prevents runaway processing on sites like energy.gov that have sitemap indexes with thousands of entries (many returning 404/500)
+- **50 max sitemap children**: Caps the number of child sitemaps fetched from a sitemap index, preventing sequential timeouts when an index has hundreds of failing entries
 - **Component timeouts**: Match the per-URL timeout budget, allowing graceful failure of individual components
 
 ## Customizing Timeouts
@@ -84,6 +89,23 @@ When the total scan time approaches `TOTAL_SCAN_TIMEOUT_MS`:
 - Helpful tips are shown for splitting large URL lists
 
 **Note:** After implementing proper cleanup (v0.2+), the scanner explicitly closes all browser instances from the Equal Access Checker to prevent "No usable sandbox" errors that occurred in earlier versions.
+
+### Sitemap Discovery Timeout
+
+Some sites (e.g. energy.gov) have sitemap indexes with thousands of child entries, many of which return 404 or 500 errors. Without bounds, fetching each child sequentially at 15 seconds each could consume the entire job allocation.
+
+Two limits protect against this:
+
+1. **`SITEMAP_DISCOVERY_TIMEOUT_MS`** (default 5 min): An absolute wall-clock deadline for all sitemap fetching. Once reached, whatever URLs have been collected so far are used (or the crawl fallback is attempted).
+2. **`MAX_SITEMAP_CHILDREN`** (default 50): Caps how many child sitemaps are fetched from a sitemap index. If the index has more entries, a warning is logged and the remaining entries are skipped.
+
+When either limit is hit, the scanner logs a message like:
+```
+[discover-urls] Sitemap index has 5000 child sitemaps; processing first 50 (set MAX_SITEMAP_CHILDREN to override)
+[discover-urls] Sitemap discovery deadline exceeded after 23 child sitemaps
+```
+
+If no URLs are found via sitemap within the deadline, the scanner falls back to the BFS crawl from the site root.
 
 ### Component Timeout Cascade
 

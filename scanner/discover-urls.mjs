@@ -11,6 +11,18 @@
  * stderr: progress/diagnostic messages
  */
 
+// Maximum number of child sitemaps to fetch from a sitemap index.
+// Prevents runaway processing when a sitemap index has thousands of entries.
+const MAX_SITEMAP_CHILDREN = parseInt(process.env.MAX_SITEMAP_CHILDREN || "50", 10);
+
+// Maximum wall-clock time (ms) to spend on sitemap-based URL discovery.
+// If exceeded, the partially-collected URL list is returned (or the crawl
+// fallback is skipped) so the scan can proceed with what was found.
+const SITEMAP_DISCOVERY_TIMEOUT_MS = parseInt(
+  process.env.SITEMAP_DISCOVERY_TIMEOUT_MS || "300000",   // 5 minutes
+  10
+);
+
 const IMAGE_EXTENSIONS = new Set([
   "jpg", "jpeg", "png", "gif", "bmp", "svg", "ico", "webp", "tiff", "tif", "avif",
   "mp3", "wav", "ogg", "mp4", "avi", "mov", "wmv", "mkv", "webm",
@@ -136,10 +148,15 @@ export function parseSitemapXml(xmlText) {
  * @param {string} origin  Root origin (used to filter off-domain URLs)
  * @param {number} maxUrls
  * @param {number} depth  Max recursion depth for sitemap indexes
+ * @param {number} deadline  Absolute timestamp (ms) after which to stop fetching
  * @returns {Promise<string[]>}
  */
-async function fetchSitemap(sitemapUrl, origin, maxUrls, depth = 3) {
+async function fetchSitemap(sitemapUrl, origin, maxUrls, depth = 3, deadline = Infinity) {
   if (depth <= 0) return [];
+  if (Date.now() >= deadline) {
+    console.error(`[discover-urls] Sitemap discovery deadline exceeded, skipping ${sitemapUrl}`);
+    return [];
+  }
 
   const resp = await fetchWithTimeout(sitemapUrl);
   if (!resp || !resp.ok) {
@@ -157,11 +174,28 @@ async function fetchSitemap(sitemapUrl, origin, maxUrls, depth = 3) {
   const { pageUrls, sitemapUrls } = parseSitemapXml(text);
 
   if (sitemapUrls.length > 0) {
-    // Sitemap index — recurse into each child sitemap
+    // Sitemap index — recurse into each child sitemap.
+    // Cap the number of children tried to avoid runaway processing on huge indexes.
+    const childLimit = Math.min(sitemapUrls.length, MAX_SITEMAP_CHILDREN);
+    if (sitemapUrls.length > childLimit) {
+      console.error(
+        `[discover-urls] Sitemap index has ${sitemapUrls.length} child sitemaps; ` +
+        `processing first ${childLimit} (set MAX_SITEMAP_CHILDREN to override)`
+      );
+    }
     const all = [];
-    for (const childUrl of sitemapUrls) {
+    for (let i = 0; i < childLimit; i++) {
       if (all.length >= maxUrls) break;
-      const childPages = await fetchSitemap(childUrl, origin, maxUrls - all.length, depth - 1);
+      // Check deadline before each child fetch — if already exceeded, stop here
+      // rather than entering fetchSitemap only to return immediately at the top.
+      if (Date.now() >= deadline) {
+        console.error(
+          `[discover-urls] Sitemap discovery deadline exceeded after processing ` +
+          `${i} of ${childLimit} child sitemaps`
+        );
+        break;
+      }
+      const childPages = await fetchSitemap(sitemapUrls[i], origin, maxUrls - all.length, depth - 1, deadline);
       all.push(...childPages);
     }
     return all;
@@ -255,6 +289,10 @@ async function crawlDomain(startUrl, maxPages = 100) {
  *   1. Try /sitemap.xml (including sitemap indexes)
  *   2. If no sitemap pages found, fall back to BFS crawl
  *
+ * Sitemap discovery is bounded by SITEMAP_DISCOVERY_TIMEOUT_MS (default 5 min)
+ * and MAX_SITEMAP_CHILDREN (default 50) to prevent runaway processing on sites
+ * with huge or malformed sitemap indexes.
+ *
  * @param {string} domain   Root domain, e.g. "https://example.com"
  * @param {number} maxUrls  Maximum number of page URLs to return (default 100)
  * @returns {Promise<{urls: string[], method: "sitemap"|"crawl", total: number}>}
@@ -262,9 +300,10 @@ async function crawlDomain(startUrl, maxPages = 100) {
 export async function discoverUrls(domain, maxUrls = 100) {
   const origin = new URL(domain).origin;
   const sitemapUrl = `${origin}/sitemap.xml`;
+  const deadline = Date.now() + SITEMAP_DISCOVERY_TIMEOUT_MS;
 
   console.error(`[discover-urls] Trying sitemap at ${sitemapUrl}`);
-  const sitemapPages = await fetchSitemap(sitemapUrl, origin, maxUrls);
+  const sitemapPages = await fetchSitemap(sitemapUrl, origin, maxUrls, 3, deadline);
 
   if (sitemapPages.length > 0) {
     console.error(`[discover-urls] Found ${sitemapPages.length} URLs via sitemap`);
