@@ -153,6 +153,8 @@ jobs:
       # - ALFA_COMMAND_TIMEOUT_MS: ALFA command execution timeout (default: 180000ms = 3min)
       # - PLAYWRIGHT_NAV_TIMEOUT_MS: Playwright page navigation timeout (default: 30000ms = 30s)
       # - PLAYWRIGHT_LAUNCH_TIMEOUT_MS: Playwright browser launch timeout (default: 30000ms = 30s)
+      # - SITEMAP_DISCOVERY_TIMEOUT_MS: Max time to spend discovering URLs via sitemap (default: 300000ms = 5min)
+      # - MAX_SITEMAP_CHILDREN: Max child sitemaps to fetch from a sitemap index (default: 50)
 
       - name: Scan issue
         uses: actions/github-script@v8
