@@ -83,7 +83,8 @@ test("toHtml includes hidden thumbnail columns and preview dialog controls", () 
   assert.match(html, /class="thumbnail-trigger"/);
   assert.match(html, /id="image-preview-dialog"/);
   assert.ok(!html.includes('addEventListener("mouseenter"'), 'Hover should not open the preview dialog');
-  assert.match(html, /Showing all 2 unique image URLs, with flagged items listed first/);
+  assert.match(html, /Showing 2 images with alt text, with flagged items listed first/);
+  assert.match(html, /Show thumbnails for images with alt text/);
   assert.ok(
     html.indexOf("https://example.com/suspicious.png") < html.indexOf("https://example.com/good.png"),
     "Flagged images should appear before non-flagged images in the inventory"
@@ -123,6 +124,61 @@ test("truncateUrl uses simple truncation when filename alone exceeds maxLength",
   const result = truncateUrl(longFilename);
   assert.ok(result.endsWith("\u2026"), "Should end with ellipsis for simple truncation");
   assert.ok(result.length <= 61, "Simple truncation result should be at most maxLength + 1 (for ellipsis)");
+});
+
+test("toHtml shows decorative images section with visible thumbnails when decorative images are present", () => {
+  const scanResult = {
+    statusCounts: { DECORATIVE: 2, GOOD: 1 },
+    urlsScanned: 1,
+    totalImages: 3,
+    uniqueImages: 3,
+    imagesWithIssues: 0,
+    scannedAt: "2026-03-19T00:00:00.000Z",
+    uniqueImageList: [
+      createImage({ src: "https://example.com/dec1.png", alt: "", status: "DECORATIVE", issues: [] }),
+      createImage({ src: "https://example.com/dec2.png", alt: "", status: "DECORATIVE", ariaLabel: "team photo", issues: [] }),
+      createImage({ src: "https://example.com/good.png", status: "GOOD" })
+    ]
+  };
+  const meta = { scanDomain: "https://example.com", discoveryMethod: "explicit URLs" };
+  const html = toHtml(scanResult, meta);
+
+  // Decorative section heading and callout should be present
+  assert.match(html, /Decorative images.*please review/i, "Decorative section heading should be present");
+  assert.match(html, /review-callout/, "Review callout should be present");
+  assert.match(html, /does it convey meaningful/, "Challenge message should be present");
+
+  // Decorative thumbnail columns must NOT have hidden attribute
+  assert.match(html, /thumbnail-column-decorative/, "Decorative thumbnail column class should be present");
+  assert.ok(!html.includes('class="thumbnail-column-decorative" hidden'), "Decorative thumbnails should not be hidden");
+
+  // Non-decorative inventory should still have hidden thumbnails
+  assert.match(html, /class="thumbnail-column" hidden/, "Non-decorative thumbnail columns should be hidden");
+
+  // Toggle button reflects new label
+  assert.match(html, /Show thumbnails for images with alt text/, "Toggle button should clarify it targets images with alt text");
+
+  // ARIA label shown for decorative images that have one
+  assert.match(html, /team photo/, "ARIA label value should appear in the decorative section");
+});
+
+test("toHtml omits decorative section when no decorative images are present", () => {
+  const scanResult = {
+    statusCounts: { GOOD: 1 },
+    urlsScanned: 1,
+    totalImages: 1,
+    uniqueImages: 1,
+    imagesWithIssues: 0,
+    scannedAt: "2026-03-19T00:00:00.000Z",
+    uniqueImageList: [
+      createImage({ src: "https://example.com/good.png", status: "GOOD" })
+    ]
+  };
+  const meta = { scanDomain: "https://example.com", discoveryMethod: "explicit URLs" };
+  const html = toHtml(scanResult, meta);
+
+  assert.ok(!html.includes("Decorative images \u2014 please review"), "Decorative section heading should not appear when there are no decorative images");
+  assert.ok(!html.includes('class="review-callout"'), "Review callout element should not appear when there are no decorative images");
 });
 
 test("toHtml uses mid-truncated URLs with tooltip for long image srcs", () => {

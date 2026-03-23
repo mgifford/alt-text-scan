@@ -91,7 +91,7 @@ test("assessAltText accepts 3+ character non-meaningless alt text", () => {
   assert.equal(result.status, "GOOD");
 });
 
-test("assessAltText flags very long alt text", () => {
+test("assessAltText flags very long alt text (over 250 chars)", () => {
   const longAlt = "This is a very detailed description. ".repeat(10); // 370 chars
   const result = assessAltText({ alt: longAlt, role: null, ariaHidden: null });
   assert.equal(result.status, "TOO_LONG");
