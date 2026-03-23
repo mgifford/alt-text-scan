@@ -117,8 +117,21 @@ function unwrapGoogleUrl(url) {
 }
 
 function extractSection(body, sectionName) {
-  const sectionPattern = new RegExp(`(?:^|\\n)#{1,6}\\s*${sectionName}\\s*\\n([\\s\\S]*?)(?=\\n#{1,6}\\s|$)`, "i");
-  const match = body.match(sectionPattern);
+  // Two-pass approach to avoid a regex bug where `|$` in the lookahead
+  // causes lazy `[\s\S]*?` to capture content from the next section when
+  // the current section is empty (e.g. "## URLs\n\n## Request Label\n...").
+  //
+  // Pass 1: section is followed by another heading — stop before it.
+  const patternWithNext = new RegExp(
+    `(?:^|\\n)#{1,6}\\s*${sectionName}\\s*\\n([\\s\\S]*?)(?=\\n#{1,6}\\s)`,
+    "i"
+  );
+  // Pass 2: section runs to end of document.
+  const patternToEnd = new RegExp(
+    `(?:^|\\n)#{1,6}\\s*${sectionName}\\s*\\n([\\s\\S]*)$`,
+    "i"
+  );
+  const match = body.match(patternWithNext) || body.match(patternToEnd);
   return match ? match[1].trim() : "";
 }
 
