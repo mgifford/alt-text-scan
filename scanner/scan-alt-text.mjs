@@ -219,9 +219,9 @@ export function assessAltText(img) {
   if (trimmed.length < 3) {
     issues.push(`Alt text "${trimmed}" is too short (${trimmed.length} chars)`);
     return { status: "TOO_SHORT", issues };
-  } else if (trimmed.length > 250) {
+  } else if (trimmed.length > 500) {
     issues.push(
-      `Alt text is very long (${trimmed.length} chars); consider a shorter description or use aria-describedby for extended descriptions`
+      `Alt text is very long (${trimmed.length} chars); should this be shortened, or use aria-describedby for extended descriptions?`
     );
     return { status: "TOO_LONG", issues };
   }
