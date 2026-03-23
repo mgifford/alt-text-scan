@@ -634,6 +634,30 @@ test("parseScanIssue extracts scanDomain when title has a URL and body is empty"
   assert.deepEqual(result.value.requestedUrls, []);
 });
 
+test("parseScanIssue extracts scanDomain when title has a URL and body has empty ## URLs section followed by another section", () => {
+  // Regression test: issue #4 body pattern — empty URLs section followed by Request Label
+  // The extractSection regex previously captured the next section's content instead of empty string,
+  // causing requestedUrls to contain non-URL text like "## Request Label" and "scan-request",
+  // which prevented scanDomain from being set from the title URL.
+  const payload = {
+    issue: {
+      number: 4,
+      html_url: "https://github.com/mgifford/alt-text-scan/issues/4",
+      title: "MONDAY: https://www.adlnet.gov/",
+      created_at: "2026-03-18T15:24:30Z",
+      user: { login: "mgifford" },
+      body: "\n\n\n\n## URLs\n\n\n\n## Request Label\n\nscan-request\n\n"
+    }
+  };
+
+  const result = parseScanIssue(payload);
+  assert.equal(result.ok, true, `unexpected errors: ${result.errors.join(", ")}`);
+  assert.equal(result.scanDomain, "https://www.adlnet.gov");
+  assert.equal(result.value.scanDomain, "https://www.adlnet.gov");
+  assert.deepEqual(result.value.requestedUrls, []);
+  assert.equal(result.value.requestLabel, "scan-request");
+});
+
 test("parseScanIssue extracts scanDomain with trailing path stripped to origin", () => {
   const payload = {
     issue: {
