@@ -86,6 +86,60 @@ function formatVariantSummary(variants) {
     .join(" | ");
 }
 
+/**
+ * Render the "Alt Variants" cell for the HTML image inventory table.
+ *
+ * - 0 variants → "(none)"
+ * - 1 variant  → green "✓ Consistent" tick (same alt text found every time; no
+ *                need to repeat the value already shown in the "Alt Text" column)
+ * - 2+ variants → each distinct value listed with its occurrence count, which
+ *                 signals that the same image has different alt text on different
+ *                 pages and may need review
+ *
+ * @param {Array<{value: string|null, count: number}>} variants
+ * @returns {string} HTML string safe to embed directly in a <td>
+ */
+export function renderAltVariantsHtml(variants) {
+  if (!Array.isArray(variants) || variants.length === 0) {
+    return '<em style="color:#999">none</em>';
+  }
+  if (variants.length === 1) {
+    const n = variants[0].count;
+    const times = n === 1 ? "1 occurrence" : `${n} occurrences`;
+    return `<span style="color:#2e7d32" title="The same alt text was found on all ${times} of this image"><span aria-hidden="true">✓</span> Consistent</span>`;
+  }
+  return variants
+    .map((variant) => {
+      const label = escapeHtml(renderVariantLabel(variant.value));
+      const n = variant.count;
+      const countLabel = `${n} occurrence${n !== 1 ? "s" : ""}`;
+      return `${label} <span style="color:#888"><span aria-hidden="true">×${n}</span><span class="visually-hidden"> (${countLabel})</span></span>`;
+    })
+    .join("<br>");
+}
+
+/**
+ * Render the "Alt Variants" value for plain-text / Markdown output.
+ *
+ * - 0 variants → ""
+ * - 1 variant  → "consistent"
+ * - 2+ variants → "value1 (×N); value2 (×M); …"
+ *
+ * @param {Array<{value: string|null, count: number}>} variants
+ * @returns {string}
+ */
+export function renderAltVariantsText(variants) {
+  if (!Array.isArray(variants) || variants.length === 0) {
+    return "";
+  }
+  if (variants.length === 1) {
+    return "consistent";
+  }
+  return variants
+    .map((variant) => `${renderVariantLabel(variant.value)} (×${variant.count})`)
+    .join("; ");
+}
+
 function renderPreviewLabel(img) {
   if (img.alt && img.alt !== "") {
     return img.alt;
@@ -324,9 +378,7 @@ export function toHtml(scanResult, meta) {
       const altDisplay = img.alt === null ? '<em style="color:#999">missing</em>'
         : img.alt === "" ? '<em style="color:#999">empty (decorative)</em>'
         : `<code>${escapeHtml(img.alt)}</code>`;
-      const altVariants = (img.altVariants || [])
-        .map((variant) => `${escapeHtml(renderVariantLabel(variant.value))} (${variant.count})`)
-        .join("<br>");
+      const altVariantsHtml = renderAltVariantsHtml(img.altVariants);
       const pages = (img.pages || []).slice(0, 2)
         .map((p) => `<a href="${p}" target="_blank" rel="noopener">${escapeHtml(p)}</a>`)
         .join("<br>");
@@ -336,7 +388,7 @@ export function toHtml(scanResult, meta) {
           <td class="thumbnail-column" hidden>${renderThumbnailButton(img)}</td>
           <td><span style="color:${color};font-weight:bold">${STATUS_LABELS[img.status] || img.status}</span></td>
           <td>${altDisplay}</td>
-          <td style="font-size:0.85em">${altVariants || '<em style="color:#999">none</em>'}</td>
+          <td style="font-size:0.85em">${altVariantsHtml}</td>
           <td>${img.title ? `<code>${escapeHtml(img.title)}</code>` : '<em style="color:#999">none</em>'}</td>
           <td>${img.ariaLabel ? `<code>${escapeHtml(img.ariaLabel)}</code>` : '<em style="color:#999">none</em>'}</td>
           <td>${(img.pages || []).length}${pages ? `<div style="font-size:0.8em;margin-top:0.35rem">${pages}</div>` : ""}</td>
@@ -385,6 +437,7 @@ export function toHtml(scanResult, meta) {
     .preview-dialog__caption { font-size: 0.9rem; color: #444; word-break: break-word; }
     .preview-dialog__actions { margin: 0; font-size: 0.9rem; }
     .preview-dialog__view-full { color: #1565c0; }
+    .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
     @media (max-width: 720px) {
       .summary { gap: 0.75rem; }
       .stat { flex: 1 1 9rem; }
@@ -420,7 +473,16 @@ export function toHtml(scanResult, meta) {
   </div>
   <p>Showing ${nonDecorativeImages.length} image${nonDecorativeImages.length !== 1 ? "s" : ""} with alt text, with flagged items listed first. Use the CSV for a complete export.</p>
   <table>
-    <thead><tr><th>Image</th><th class="thumbnail-column" hidden>Thumbnail</th><th>Status</th><th>Alt Text</th><th>Alt Variants</th><th>Title</th><th>ARIA Label</th><th>Pages</th></tr></thead>
+    <thead><tr>
+      <th>Image</th>
+      <th class="thumbnail-column" hidden>Thumbnail</th>
+      <th>Status</th>
+      <th>Alt Text</th>
+      <th title="All distinct alt text values found for this image across all scanned pages, with how many times each value appeared. A Consistent result means the same alt text was used everywhere. Multiple entries mean the same image has different alt text on different pages and may need review.">Alt Variants</th>
+      <th>Title</th>
+      <th>ARIA Label</th>
+      <th>Pages</th>
+    </tr></thead>
     <tbody>${inventoryRows}</tbody>
   </table>
 
@@ -600,10 +662,8 @@ export function toMarkdown(scanResult, meta) {
         : img.alt === ""
           ? "(empty decorative)"
           : escapeMarkdown(img.alt);
-      const altVariants = (img.altVariants || [])
-        .map((variant) => `${escapeMarkdown(renderVariantLabel(variant.value))} (${variant.count})`)
-        .join("; ");
-      return `| ${escapeMarkdown(img.src)} | ${STATUS_LABELS[img.status] || img.status} | ${altDisplay} | ${escapeMarkdown(altVariants)} | ${escapeMarkdown(img.title || "")} | ${escapeMarkdown(img.ariaLabel || "")} | ${(img.pages || []).length} |`;
+      const altVariants = escapeMarkdown(renderAltVariantsText(img.altVariants));
+      return `| ${escapeMarkdown(img.src)} | ${STATUS_LABELS[img.status] || img.status} | ${altDisplay} | ${altVariants} | ${escapeMarkdown(img.title || "")} | ${escapeMarkdown(img.ariaLabel || "")} | ${(img.pages || []).length} |`;
     })
     .join("\n");
 
