@@ -310,6 +310,8 @@ export function toHtml(scanResult, meta) {
   const { statusCounts, urlsScanned, totalImages, uniqueImages, imagesWithIssues } = scanResult;
   const domainDisplay = meta.scanDomain || meta.scanTitle || "Unknown domain";
   const sortedUniqueImages = sortUniqueImageList(scanResult.uniqueImageList);
+  const decorativeImages = sortedUniqueImages.filter((img) => img.status === "DECORATIVE");
+  const nonDecorativeImages = sortedUniqueImages.filter((img) => img.status !== "DECORATIVE");
 
   const statusColors = {
     MISSING: "#d32f2f",
@@ -353,7 +355,24 @@ export function toHtml(scanResult, meta) {
     })
     .join("\n");
 
-  const inventoryRows = sortedUniqueImages
+  const decorativeRows = decorativeImages
+    .map((img) => {
+      const pages = (img.pages || []).slice(0, 2)
+        .map((p) => `<a href="${p}" target="_blank" rel="noopener">${escapeHtml(p)}</a>`)
+        .join("<br>");
+      return `
+        <tr>
+          ${renderUrlCell(img.src)}
+          <td class="thumbnail-column-decorative">${renderThumbnailButton(img)}</td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td>${img.role ? `<code>${escapeHtml(img.role)}</code>` : '<em style="color:#999">none</em>'}</td>
+          <td>${img.ariaLabel ? `<code>${escapeHtml(img.ariaLabel)}</code>` : '<em style="color:#999">none</em>'}</td>
+          <td>${(img.pages || []).length}${pages ? `<div style="font-size:0.8em;margin-top:0.35rem">${pages}</div>` : ""}</td>
+        </tr>`;
+    })
+    .join("\n");
+
+  const inventoryRows = nonDecorativeImages
     .map((img) => {
       const color = statusColors[img.status] || "#555";
       const altDisplay = img.alt === null ? '<em style="color:#999">missing</em>'
@@ -398,6 +417,8 @@ export function toHtml(scanResult, meta) {
     tr:hover td { background: #fafafa; }
     code { background: #f0f0f0; padding: 0.1em 0.3em; border-radius: 3px; font-size: 0.9em; }
     .thumbnail-column { width: 8.5rem; }
+    .thumbnail-column-decorative { width: 8.5rem; }
+    .review-callout { background: #e8f4fd; border-left: 4px solid #1565c0; padding: 0.75rem 1rem; margin: 1rem 0; font-size: 0.95em; border-radius: 0 6px 6px 0; }
     .thumbnail-trigger { display: inline-flex; flex-direction: column; align-items: center; gap: 0.35rem; width: 7rem; padding: 0.45rem; border: 1px solid #ccc; border-radius: 8px; background: #fff; cursor: pointer; }
     .thumbnail-trigger:hover, .thumbnail-trigger:focus-visible { border-color: #333; box-shadow: 0 0 0 3px rgba(33, 33, 33, 0.15); outline: none; }
     .thumbnail-trigger__image { display: block; width: 100%; height: 4.5rem; object-fit: contain; background: #f5f5f5; border-radius: 4px; }
@@ -447,10 +468,10 @@ export function toHtml(scanResult, meta) {
 
   <h2>Unique image inventory</h2>
   <div class="report-controls">
-    <button type="button" id="toggle-thumbnails" class="toggle-thumbnails" aria-pressed="false">Show thumbnails</button>
-    <span id="thumbnail-help">Thumbnails are hidden by default. Turn them on and click or focus a preview button to open the dialog.</span>
+    <button type="button" id="toggle-thumbnails" class="toggle-thumbnails" aria-pressed="false">Show thumbnails for images with alt text</button>
+    <span id="thumbnail-help">Thumbnails for images with alt text are hidden by default. Decorative images always show thumbnails for visual review.</span>
   </div>
-  <p>Showing all ${uniqueImages} unique image URLs, with flagged items listed first. Use the CSV for a complete export.</p>
+  <p>Showing ${nonDecorativeImages.length} image${nonDecorativeImages.length !== 1 ? "s" : ""} with alt text, with flagged items listed first. Use the CSV for a complete export.</p>
   <table>
     <thead><tr>
       <th>Image</th>
@@ -464,6 +485,18 @@ export function toHtml(scanResult, meta) {
     </tr></thead>
     <tbody>${inventoryRows}</tbody>
   </table>
+
+  ${decorativeImages.length > 0 ? `
+  <h2>Decorative images — please review</h2>
+  <div class="review-callout" role="note">
+    <strong>Review recommended:</strong> These ${decorativeImages.length} image${decorativeImages.length !== 1 ? "s" : ""} have empty alt text and are marked as decorative.
+    Please look at each thumbnail: does it convey meaningful information that sighted users would benefit from knowing?
+    If so, it needs descriptive alt text. The <strong>Role</strong> and <strong>ARIA Label</strong> columns show any semantic markup that was applied.
+  </div>
+  <table>
+    <thead><tr><th>Image</th><th class="thumbnail-column-decorative">Thumbnail</th><th>Status</th><th>Role</th><th>ARIA Label</th><th>Pages</th></tr></thead>
+    <tbody>${decorativeRows}</tbody>
+  </table>` : ''}
 
   <h2>Images with issues</h2>
   ${issueRows
@@ -510,7 +543,7 @@ export function toHtml(scanResult, meta) {
         toggleButton.addEventListener("click", () => {
           const shouldShow = toggleButton.getAttribute("aria-pressed") !== "true";
           toggleButton.setAttribute("aria-pressed", String(shouldShow));
-          toggleButton.textContent = shouldShow ? "Hide thumbnails" : "Show thumbnails";
+          toggleButton.textContent = shouldShow ? "Hide thumbnails for images with alt text" : "Show thumbnails for images with alt text";
           thumbnailColumns.forEach((column) => {
             column.hidden = !shouldShow;
           });
