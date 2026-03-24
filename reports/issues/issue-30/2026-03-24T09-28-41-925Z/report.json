@@ -1,0 +1,4005 @@
+{
+  "reportType": "alt-text",
+  "issueNumber": 30,
+  "issueUrl": "https://github.com/mgifford/alt-text-scan/issues/30",
+  "scanTitle": "https://ontario.ca",
+  "scanDomain": "https://ontario.ca",
+  "discoveryMethod": "crawl",
+  "discoveredTotal": 100,
+  "requestedCount": 100,
+  "acceptedCount": 100,
+  "rejectedCount": 0,
+  "scannedCount": 100,
+  "skippedDueToTimeout": 0,
+  "urlsRequested": 100,
+  "urlsScanned": 100,
+  "scannedAt": "2026-03-24T09:27:49.989Z",
+  "totalImages": 80,
+  "uniqueImages": 19,
+  "imagesWithIssues": 2,
+  "statusCounts": {
+    "MISSING": 0,
+    "DECORATIVE": 15,
+    "SUSPICIOUS": 58,
+    "FILENAME": 0,
+    "TOO_SHORT": 0,
+    "TOO_LONG": 0,
+    "GOOD": 7
+  },
+  "urlResults": [
+    {
+      "url": "https://ontario.ca/",
+      "finalUrl": "https://www.ontario.ca/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--desktop.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 300,
+          "height": 75,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        },
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--mobile.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 46,
+          "height": 46,
+          "isVisible": false,
+          "pageUrl": "https://www.ontario.ca/",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        },
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario@2x-print.png",
+          "alt": "Government of Ontario | Gouvernement de l’Ontario",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 637,
+          "height": 162,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/",
+          "status": "GOOD",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://ontario.ca/page/benefits-and-taxes",
+      "finalUrl": "https://www.ontario.ca/page/benefits-and-taxes",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--desktop.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 300,
+          "height": 75,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/page/benefits-and-taxes",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        },
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--mobile.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 46,
+          "height": 46,
+          "isVisible": false,
+          "pageUrl": "https://www.ontario.ca/page/benefits-and-taxes",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://ontario.ca/page/business-and-economy",
+      "finalUrl": "https://www.ontario.ca/page/business-and-economy",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--desktop.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 300,
+          "height": 75,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/page/business-and-economy",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        },
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--mobile.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 46,
+          "height": 46,
+          "isVisible": false,
+          "pageUrl": "https://www.ontario.ca/page/business-and-economy",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        },
+        {
+          "src": "https://www.ontario.ca/files/2022-04/medjct-business-and-economy-start-a-business-en-544x272-2022-04-08.jpg",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 544,
+          "height": 272,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/page/business-and-economy",
+          "status": "DECORATIVE",
+          "issues": []
+        },
+        {
+          "src": "https://www.ontario.ca/files/2022-04/medjct-business-and-economy-get-custom-guide-544x272-2022-04-08.jpg",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 544,
+          "height": 272,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/page/business-and-economy",
+          "status": "DECORATIVE",
+          "issues": []
+        },
+        {
+          "src": "https://www.ontario.ca/files/2024-04/medjct-business-and-economy-start-a-business-en-544x272-2024-04-02_0.png",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 544,
+          "height": 272,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/page/business-and-economy",
+          "status": "DECORATIVE",
+          "issues": []
+        },
+        {
+          "src": "https://www.ontario.ca/files/2022-04/medjct-business-and-economy-program-by-region-520x371-2022-04-08.jpg",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 520,
+          "height": 371,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/page/business-and-economy",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://ontario.ca/page/courts-justice-and-law",
+      "finalUrl": "https://www.ontario.ca/page/courts-justice-and-law",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--desktop.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 300,
+          "height": 75,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/page/courts-justice-and-law",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        },
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--mobile.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 46,
+          "height": 46,
+          "isVisible": false,
+          "pageUrl": "https://www.ontario.ca/page/courts-justice-and-law",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://ontario.ca/page/driving-and-road-safety",
+      "finalUrl": "https://www.ontario.ca/page/driving-and-road-safety",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--desktop.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 300,
+          "height": 75,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/page/driving-and-road-safety",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        },
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--mobile.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 46,
+          "height": 46,
+          "isVisible": false,
+          "pageUrl": "https://www.ontario.ca/page/driving-and-road-safety",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://ontario.ca/page/education-and-apprenticeships",
+      "finalUrl": "https://www.ontario.ca/page/education-and-apprenticeships",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--desktop.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 300,
+          "height": 75,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/page/education-and-apprenticeships",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        },
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--mobile.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 46,
+          "height": 46,
+          "isVisible": false,
+          "pageUrl": "https://www.ontario.ca/page/education-and-apprenticeships",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://ontario.ca/page/environment-and-energy",
+      "finalUrl": "https://www.ontario.ca/page/environment-and-energy",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--desktop.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 300,
+          "height": 75,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/page/environment-and-energy",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        },
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--mobile.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 46,
+          "height": 46,
+          "isVisible": false,
+          "pageUrl": "https://www.ontario.ca/page/environment-and-energy",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://ontario.ca/page/family-and-social-services",
+      "finalUrl": "https://www.ontario.ca/page/family-and-social-services",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--desktop.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 300,
+          "height": 75,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/page/family-and-social-services",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        },
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--mobile.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 46,
+          "height": 46,
+          "isVisible": false,
+          "pageUrl": "https://www.ontario.ca/page/family-and-social-services",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://ontario.ca/page/government",
+      "finalUrl": "https://www.ontario.ca/page/government",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--desktop.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 300,
+          "height": 75,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/page/government",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        },
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--mobile.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 46,
+          "height": 46,
+          "isVisible": false,
+          "pageUrl": "https://www.ontario.ca/page/government",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://ontario.ca/page/your-health",
+      "finalUrl": "https://www.ontario.ca/page/your-health",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--desktop.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 300,
+          "height": 75,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/page/your-health",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        },
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--mobile.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 46,
+          "height": 46,
+          "isVisible": false,
+          "pageUrl": "https://www.ontario.ca/page/your-health",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        },
+        {
+          "src": "https://www.ontario.ca/files/2023-01/moh-your-health-banner-760x560-2023-01-11.jpg",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 760,
+          "height": 560,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/page/your-health",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://ontario.ca/page/heritage-arts-and-history",
+      "finalUrl": "https://www.ontario.ca/page/heritage-arts-and-history",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--desktop.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 300,
+          "height": 75,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/page/heritage-arts-and-history",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        },
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--mobile.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 46,
+          "height": 46,
+          "isVisible": false,
+          "pageUrl": "https://www.ontario.ca/page/heritage-arts-and-history",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://ontario.ca/page/home-and-housing",
+      "finalUrl": "https://www.ontario.ca/page/home-and-housing",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--desktop.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 300,
+          "height": 75,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/page/home-and-housing",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        },
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--mobile.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 46,
+          "height": 46,
+          "isVisible": false,
+          "pageUrl": "https://www.ontario.ca/page/home-and-housing",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://ontario.ca/page/immigrate-to-ontario",
+      "finalUrl": "https://www.ontario.ca/page/immigrate-to-ontario",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--desktop.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 300,
+          "height": 75,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/page/immigrate-to-ontario",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        },
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--mobile.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 46,
+          "height": 46,
+          "isVisible": false,
+          "pageUrl": "https://www.ontario.ca/page/immigrate-to-ontario",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://ontario.ca/page/jobs-and-employment",
+      "finalUrl": "https://www.ontario.ca/page/jobs-and-employment",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--desktop.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 300,
+          "height": 75,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/page/jobs-and-employment",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        },
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--mobile.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 46,
+          "height": 46,
+          "isVisible": false,
+          "pageUrl": "https://www.ontario.ca/page/jobs-and-employment",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        },
+        {
+          "src": "https://www.ontario.ca/files/2023-06/co-jobs-employment-banner-en-760x560-2023-06-02.jpg",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 760,
+          "height": 560,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/page/jobs-and-employment",
+          "status": "DECORATIVE",
+          "issues": []
+        },
+        {
+          "src": "https://files.ontario.ca/post-a-job-1122.jpg",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 930,
+          "height": 450,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/page/jobs-and-employment",
+          "status": "DECORATIVE",
+          "issues": []
+        },
+        {
+          "src": "https://files.ontario.ca/get-skills-2x.jpg",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 926,
+          "height": 500,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/page/jobs-and-employment",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://ontario.ca/page/land-use-planning",
+      "finalUrl": "https://www.ontario.ca/page/land-use-planning",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--desktop.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 300,
+          "height": 75,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/page/land-use-planning",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        },
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--mobile.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 46,
+          "height": 46,
+          "isVisible": false,
+          "pageUrl": "https://www.ontario.ca/page/land-use-planning",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://ontario.ca/page/recreation-and-tourism",
+      "finalUrl": "https://www.ontario.ca/page/recreation-and-tourism",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--desktop.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 300,
+          "height": 75,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/page/recreation-and-tourism",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        },
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--mobile.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 46,
+          "height": 46,
+          "isVisible": false,
+          "pageUrl": "https://www.ontario.ca/page/recreation-and-tourism",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://ontario.ca/page/rural-agriculture-and-north",
+      "finalUrl": "https://www.ontario.ca/page/rural-agriculture-and-north",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--desktop.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 300,
+          "height": 75,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/page/rural-agriculture-and-north",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        },
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--mobile.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 46,
+          "height": 46,
+          "isVisible": false,
+          "pageUrl": "https://www.ontario.ca/page/rural-agriculture-and-north",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://ontario.ca/page/government-ontario",
+      "finalUrl": "https://www.ontario.ca/page/government-ontario",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--desktop.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 300,
+          "height": 75,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/page/government-ontario",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        },
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--mobile.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 46,
+          "height": 46,
+          "isVisible": false,
+          "pageUrl": "https://www.ontario.ca/page/government-ontario",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        },
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/homepage/homepage-banner_1200x700.webp",
+          "alt": "Government of Ontario",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1200,
+          "height": 700,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/page/government-ontario",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/logo-serviceontario.svg",
+          "alt": "ServiceOntario logo",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 182,
+          "height": 21,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/page/government-ontario",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.ontario.ca/files/2024-03/serviceontario-plate-and-cards-417x311.png",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 417,
+          "height": 311,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/page/government-ontario",
+          "status": "DECORATIVE",
+          "issues": []
+        },
+        {
+          "src": "https://www.ontario.ca/files/2025-06/co-plan-to-protect-ontario-544x272-2025-06-24.jpg",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 544,
+          "height": 272,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/page/government-ontario",
+          "status": "DECORATIVE",
+          "issues": []
+        },
+        {
+          "src": "https://www.ontario.ca/files/2025-06/co-foodland-544x272.jpg",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 544,
+          "height": 272,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/page/government-ontario",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://ontario.ca/fr/page/gouvernement-de-lontario",
+      "finalUrl": "https://www.ontario.ca/fr/page/gouvernement-de-lontario",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--desktop.svg",
+          "alt": "Page d'accueil du gouvernement de l'Ontario",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 300,
+          "height": 75,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/fr/page/gouvernement-de-lontario",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        },
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--mobile.svg",
+          "alt": "Page d'accueil du gouvernement de l'Ontario",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 46,
+          "height": 46,
+          "isVisible": false,
+          "pageUrl": "https://www.ontario.ca/fr/page/gouvernement-de-lontario",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        },
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/homepage/homepage-banner_1200x700.webp",
+          "alt": "Government of Ontario",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1200,
+          "height": 700,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/fr/page/gouvernement-de-lontario",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/logo-serviceontario.svg",
+          "alt": "Logo de ServiceOntario",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 182,
+          "height": 21,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/fr/page/gouvernement-de-lontario",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.ontario.ca/files/2024-03/serviceontario-plate-and-cards-417x311.png",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 417,
+          "height": 311,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/fr/page/gouvernement-de-lontario",
+          "status": "DECORATIVE",
+          "issues": []
+        },
+        {
+          "src": "https://www.ontario.ca/files/2025-06/co-plan-to-protect-ontario-544x272-2025-06-24.jpg",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 544,
+          "height": 272,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/fr/page/gouvernement-de-lontario",
+          "status": "DECORATIVE",
+          "issues": []
+        },
+        {
+          "src": "https://www.ontario.ca/files/2025-06/co-foodland-544x272.jpg",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 544,
+          "height": 272,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/fr/page/gouvernement-de-lontario",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://ontario.ca/feedback/contact-us?id=7476&amp;nid=540561",
+      "finalUrl": "https://www.ontario.ca/feedback/contact-us?id=7476&amp;nid=540561",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--desktop.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 300,
+          "height": 75,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/feedback/contact-us?id=7476&amp;nid=540561",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        },
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--mobile.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 46,
+          "height": 46,
+          "isVisible": false,
+          "pageUrl": "https://www.ontario.ca/feedback/contact-us?id=7476&amp;nid=540561",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        },
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/contact.png",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 300,
+          "height": 200,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/feedback/contact-us?id=7476&amp;nid=540561",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://ontario.ca/fr/page/avantages-fiscaux-et-impots",
+      "finalUrl": "https://www.ontario.ca/fr/page/avantages-fiscaux-et-impots",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--desktop.svg",
+          "alt": "Page d'accueil du gouvernement de l'Ontario",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 300,
+          "height": 75,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/fr/page/avantages-fiscaux-et-impots",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        },
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--mobile.svg",
+          "alt": "Page d'accueil du gouvernement de l'Ontario",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 46,
+          "height": 46,
+          "isVisible": false,
+          "pageUrl": "https://www.ontario.ca/fr/page/avantages-fiscaux-et-impots",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://ontario.ca/page/tax-credits-and-benefits-people",
+      "finalUrl": "https://www.ontario.ca/page/tax-credits-and-benefits-people",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--desktop.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 300,
+          "height": 75,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/page/tax-credits-and-benefits-people",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        },
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--mobile.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 46,
+          "height": 46,
+          "isVisible": false,
+          "pageUrl": "https://www.ontario.ca/page/tax-credits-and-benefits-people",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://ontario.ca/page/tax-credits-and-benefits-topic",
+      "finalUrl": "https://www.ontario.ca/page/tax-credits-and-benefits-topic",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--desktop.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 300,
+          "height": 75,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/page/tax-credits-and-benefits-topic",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        },
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--mobile.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 46,
+          "height": 46,
+          "isVisible": false,
+          "pageUrl": "https://www.ontario.ca/page/tax-credits-and-benefits-topic",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://ontario.ca/page/find-benefits-and-programs",
+      "finalUrl": "https://www.ontario.ca/page/find-benefits-and-programs",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--desktop.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 300,
+          "height": 75,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/page/find-benefits-and-programs",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        },
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--mobile.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 46,
+          "height": 46,
+          "isVisible": false,
+          "pageUrl": "https://www.ontario.ca/page/find-benefits-and-programs",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://ontario.ca/page/ministry-finance-tax-talk-information-sessions",
+      "finalUrl": "https://www.ontario.ca/document/ontario-tax-talk-webinars",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--desktop.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 300,
+          "height": 75,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/document/ontario-tax-talk-webinars",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        },
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--mobile.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 46,
+          "height": 46,
+          "isVisible": false,
+          "pageUrl": "https://www.ontario.ca/document/ontario-tax-talk-webinars",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://ontario.ca/page/ontario-disability-support-program",
+      "finalUrl": "https://www.ontario.ca/page/ontario-disability-support-program",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--desktop.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 300,
+          "height": 75,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/page/ontario-disability-support-program",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        },
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--mobile.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 46,
+          "height": 46,
+          "isVisible": false,
+          "pageUrl": "https://www.ontario.ca/page/ontario-disability-support-program",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        },
+        {
+          "src": "https://www.ontario.ca/files/2023-10/mccss_sa_odsp_mobile_image_en.png",
+          "alt": "A picture containing text, mobile phone, gadget, person Description automatically generated",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 280,
+          "height": 273,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/page/ontario-disability-support-program",
+          "status": "GOOD",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://ontario.ca/page/ontario-trillium-benefit",
+      "finalUrl": "https://www.ontario.ca/page/ontario-trillium-benefit",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--desktop.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 300,
+          "height": 75,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/page/ontario-trillium-benefit",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        },
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--mobile.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 46,
+          "height": 46,
+          "isVisible": false,
+          "pageUrl": "https://www.ontario.ca/page/ontario-trillium-benefit",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://ontario.ca/page/ontario-works",
+      "finalUrl": "https://www.ontario.ca/page/ontario-works",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--desktop.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 300,
+          "height": 75,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/page/ontario-works",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        },
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--mobile.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 46,
+          "height": 46,
+          "isVisible": false,
+          "pageUrl": "https://www.ontario.ca/page/ontario-works",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        },
+        {
+          "src": "https://www.ontario.ca/files/2023-10/mccss_sa_ow_mobile_image_en.png",
+          "alt": "A picture containing text, mobile phone, gadget, person Description automatically generated",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 280,
+          "height": 273,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/page/ontario-works",
+          "status": "GOOD",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://ontario.ca/document/beer-and-wine-tax",
+      "finalUrl": "https://www.ontario.ca/document/beer-and-wine-tax",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--desktop.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 180,
+          "height": 46,
+          "isVisible": true,
+          "pageUrl": "https://www.ontario.ca/document/beer-and-wine-tax",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        },
+        {
+          "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--mobile.svg",
+          "alt": "Government of Ontario home page",
+          "title": null,
+          "role": null,
+          "ariaHidden": "true",
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 45,
+          "height": 46,
+          "isVisible": false,
+          "pageUrl": "https://www.ontario.ca/document/beer-and-wine-tax",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+          ]
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://ontario.ca/document/corporations-tax",
+      "finalUrl": "https://www.ontario.ca/document/corporations-tax",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/document/ontarios-tax-system",
+      "finalUrl": "https://www.ontario.ca/document/ontarios-tax-system",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/document/employer-health-tax-eht",
+      "finalUrl": "https://www.ontario.ca/document/employer-health-tax-eht",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/page/estate-administration-tax",
+      "finalUrl": "https://www.ontario.ca/page/estate-administration-tax",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/document/fuel-tax",
+      "finalUrl": "https://www.ontario.ca/document/fuel-tax",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/document/gasoline-tax",
+      "finalUrl": "https://www.ontario.ca/document/gasoline-tax",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/document/gross-revenue-charges-hydroelectric-generating-stations",
+      "finalUrl": "https://www.ontario.ca/document/gross-revenue-charges-hydroelectric-generating-stations",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/document/harmonized-sales-tax-hst",
+      "finalUrl": "https://www.ontario.ca/document/harmonized-sales-tax-hst",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/page/corporations-tax-insurance-premium-tax",
+      "finalUrl": "https://www.ontario.ca/page/corporations-tax-insurance-premium-tax",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/document/international-fuel-tax-agreement",
+      "finalUrl": "https://www.ontario.ca/document/international-fuel-tax-agreement",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/page/international-registration-plan",
+      "finalUrl": "https://www.ontario.ca/page/international-registration-plan",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/document/land-transfer-tax",
+      "finalUrl": "https://www.ontario.ca/document/land-transfer-tax",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/page/ontario-mining-tax",
+      "finalUrl": "https://www.ontario.ca/page/ontario-mining-tax",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/page/municipal-vacant-home-tax",
+      "finalUrl": "https://www.ontario.ca/page/municipal-vacant-home-tax",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/document/non-resident-speculation-tax",
+      "finalUrl": "https://www.ontario.ca/document/non-resident-speculation-tax",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/page/health-premium",
+      "finalUrl": "https://www.ontario.ca/page/health-premium",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/page/payments-lieu-additional-municipal-and-school-taxes",
+      "finalUrl": "https://www.ontario.ca/page/payments-lieu-additional-municipal-and-school-taxes",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/page/payments-lieu-federal-and-provincial-corporate-tax-hydro-pils",
+      "finalUrl": "https://www.ontario.ca/page/payments-lieu-federal-and-provincial-corporate-tax-hydro-pils",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/page/filing-your-tax-return",
+      "finalUrl": "https://www.ontario.ca/page/filing-your-tax-return",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/page/property-tax-0",
+      "finalUrl": "https://www.ontario.ca/page/property-tax-0",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/document/provincial-land-tax",
+      "finalUrl": "https://www.ontario.ca/document/provincial-land-tax",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/page/race-tracks-tax",
+      "finalUrl": "https://www.ontario.ca/page/race-tracks-tax",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/document/retail-sales-tax",
+      "finalUrl": "https://www.ontario.ca/document/retail-sales-tax",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/document/spirits-taxes",
+      "finalUrl": "https://www.ontario.ca/document/spirits-taxes",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/document/tobacco-tax",
+      "finalUrl": "https://www.ontario.ca/document/tobacco-tax",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/page/transfer-tax",
+      "finalUrl": "https://www.ontario.ca/page/transfer-tax",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/page/business-income-tax",
+      "finalUrl": "https://www.ontario.ca/page/business-income-tax",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/document/ont-taxs-online",
+      "finalUrl": "https://www.ontario.ca/document/ont-taxs-online",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/page/using-tax-services",
+      "finalUrl": "https://www.ontario.ca/page/using-tax-services",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/document/ontarios-tax-system/voluntary-disclosure",
+      "finalUrl": "https://www.ontario.ca/document/ontarios-tax-system/voluntary-disclosure",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/page/ministry-finance",
+      "finalUrl": "https://www.ontario.ca/page/ministry-finance",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/page/ministry-children-community-and-social-services",
+      "finalUrl": "https://www.ontario.ca/page/ministry-children-community-and-social-services",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/fr/page/affaires-et-economie",
+      "finalUrl": "https://www.ontario.ca/fr/page/affaires-et-economie",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/page/business/start",
+      "finalUrl": "https://www.ontario.ca/page/business/start",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/business/custom-guide",
+      "finalUrl": "https://www.ontario.ca/business/custom-guide",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/page/track-permit-or-licence",
+      "finalUrl": "https://www.ontario.ca/page/track-permit-or-licence",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/document/indigenous-business-development-toolkit",
+      "finalUrl": "https://www.ontario.ca/document/indigenous-business-development-toolkit",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/document/indigenous-business-development-toolkit/planning-your-business",
+      "finalUrl": "https://www.ontario.ca/document/indigenous-business-development-toolkit/planning-your-business",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/page/indigenous-procurement-program",
+      "finalUrl": "https://www.ontario.ca/page/indigenous-procurement-program",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/document/first-nations-community-economic-development-guide",
+      "finalUrl": "https://www.ontario.ca/document/first-nations-community-economic-development-guide",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/page/regional-innovation-centre-locations",
+      "finalUrl": "https://www.ontario.ca/page/regional-innovation-centre-locations",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/page/small-business-enterprise-centre-locations",
+      "finalUrl": "https://www.ontario.ca/page/small-business-enterprise-centre-locations",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/page/funding-indigenous-economic-development",
+      "finalUrl": "https://www.ontario.ca/page/funding-indigenous-economic-development",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/page/start-summer-company-students",
+      "finalUrl": "https://www.ontario.ca/page/start-summer-company-students",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/page/business-advisory-services-small-medium-sized-businesses",
+      "finalUrl": "https://www.ontario.ca/page/business-advisory-services-small-medium-sized-businesses",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/page/starter-company-plus",
+      "finalUrl": "https://www.ontario.ca/page/starter-company-plus",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/page/womens-economic-security-program-wesp",
+      "finalUrl": "https://www.ontario.ca/page/womens-economic-security-program-wesp",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/page/protect-ontario-financing-program",
+      "finalUrl": "https://www.ontario.ca/page/protect-ontario-financing-program",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/page/trade-impacted-communities-program-guidelines",
+      "finalUrl": "https://www.ontario.ca/page/trade-impacted-communities-program-guidelines",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/page/ontario-together-trade-fund",
+      "finalUrl": "https://www.ontario.ca/page/ontario-together-trade-fund",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/page/rural-ontario-development-program",
+      "finalUrl": "https://www.ontario.ca/page/rural-ontario-development-program",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/page/available-funding-opportunities-ontario-government",
+      "finalUrl": "https://www.ontario.ca/page/available-funding-opportunities-ontario-government",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/page/eastern-ontario-development-fund",
+      "finalUrl": "https://www.ontario.ca/page/eastern-ontario-development-fund",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/page/southwestern-ontario-development-fund",
+      "finalUrl": "https://www.ontario.ca/page/southwestern-ontario-development-fund",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/document/your-guide-employment-standards-act-0",
+      "finalUrl": "https://www.ontario.ca/document/your-guide-employment-standards-act-0",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/document/guide-occupational-health-and-safety-act",
+      "finalUrl": "https://www.ontario.ca/document/guide-occupational-health-and-safety-act",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/page/health-and-safety-small-businesses",
+      "finalUrl": "https://www.ontario.ca/page/health-and-safety-small-businesses",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/page/file-work-notice",
+      "finalUrl": "https://www.ontario.ca/page/file-work-notice",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/page/about-accessibility-laws",
+      "finalUrl": "https://www.ontario.ca/page/about-accessibility-laws",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/page/accessibility-ontario-information-businesses",
+      "finalUrl": "https://www.ontario.ca/page/accessibility-ontario-information-businesses",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/page/completing-your-accessibility-compliance-report",
+      "finalUrl": "https://www.ontario.ca/page/completing-your-accessibility-compliance-report",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/page/consumer-protection-information-businesses",
+      "finalUrl": "https://www.ontario.ca/page/consumer-protection-information-businesses",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/page/ontarios-agriculture-and-food-laws",
+      "finalUrl": "https://www.ontario.ca/page/ontarios-agriculture-and-food-laws",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/page/applying-meat-plant-operator-licence",
+      "finalUrl": "https://www.ontario.ca/page/applying-meat-plant-operator-licence",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/page/environmental-permissions",
+      "finalUrl": "https://www.ontario.ca/page/environmental-permissions",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/page/animal-welfare",
+      "finalUrl": "https://www.ontario.ca/page/animal-welfare",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/laws/statute/19p13",
+      "finalUrl": "https://www.ontario.ca/laws/statute/19p13",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/page/commercial-vehicles",
+      "finalUrl": "https://www.ontario.ca/page/commercial-vehicles",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/page/ontarios-building-code",
+      "finalUrl": "https://www.ontario.ca/page/ontarios-building-code",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/page/taxes-and-benefits",
+      "finalUrl": "https://www.ontario.ca/page/taxes-and-benefits",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    },
+    {
+      "url": "https://ontario.ca/page/grow-your-business-here-and-abroad",
+      "finalUrl": "https://www.ontario.ca/page/grow-your-business-here-and-abroad",
+      "httpStatus": 429,
+      "images": [],
+      "error": "HTTP 429"
+    }
+  ],
+  "uniqueImageList": [
+    {
+      "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--desktop.svg",
+      "alt": "Government of Ontario home page",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 300,
+      "height": 75,
+      "status": "SUSPICIOUS",
+      "issues": [
+        "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+      ],
+      "pages": [
+        "https://ontario.ca/",
+        "https://ontario.ca/page/benefits-and-taxes",
+        "https://ontario.ca/page/business-and-economy",
+        "https://ontario.ca/page/courts-justice-and-law",
+        "https://ontario.ca/page/driving-and-road-safety",
+        "https://ontario.ca/page/education-and-apprenticeships",
+        "https://ontario.ca/page/environment-and-energy",
+        "https://ontario.ca/page/family-and-social-services",
+        "https://ontario.ca/page/government",
+        "https://ontario.ca/page/your-health",
+        "https://ontario.ca/page/heritage-arts-and-history",
+        "https://ontario.ca/page/home-and-housing",
+        "https://ontario.ca/page/immigrate-to-ontario",
+        "https://ontario.ca/page/jobs-and-employment",
+        "https://ontario.ca/page/land-use-planning",
+        "https://ontario.ca/page/recreation-and-tourism",
+        "https://ontario.ca/page/rural-agriculture-and-north",
+        "https://ontario.ca/page/government-ontario",
+        "https://ontario.ca/fr/page/gouvernement-de-lontario",
+        "https://ontario.ca/feedback/contact-us?id=7476&amp;nid=540561",
+        "https://ontario.ca/fr/page/avantages-fiscaux-et-impots",
+        "https://ontario.ca/page/tax-credits-and-benefits-people",
+        "https://ontario.ca/page/tax-credits-and-benefits-topic",
+        "https://ontario.ca/page/find-benefits-and-programs",
+        "https://ontario.ca/page/ministry-finance-tax-talk-information-sessions",
+        "https://ontario.ca/page/ontario-disability-support-program",
+        "https://ontario.ca/page/ontario-trillium-benefit",
+        "https://ontario.ca/page/ontario-works",
+        "https://ontario.ca/document/beer-and-wine-tax"
+      ],
+      "occurrences": 29,
+      "altVariants": [
+        {
+          "value": "Government of Ontario home page",
+          "count": 27,
+          "pages": [
+            "https://ontario.ca/",
+            "https://ontario.ca/page/benefits-and-taxes",
+            "https://ontario.ca/page/business-and-economy",
+            "https://ontario.ca/page/courts-justice-and-law",
+            "https://ontario.ca/page/driving-and-road-safety",
+            "https://ontario.ca/page/education-and-apprenticeships",
+            "https://ontario.ca/page/environment-and-energy",
+            "https://ontario.ca/page/family-and-social-services",
+            "https://ontario.ca/page/government",
+            "https://ontario.ca/page/your-health",
+            "https://ontario.ca/page/heritage-arts-and-history",
+            "https://ontario.ca/page/home-and-housing",
+            "https://ontario.ca/page/immigrate-to-ontario",
+            "https://ontario.ca/page/jobs-and-employment",
+            "https://ontario.ca/page/land-use-planning",
+            "https://ontario.ca/page/recreation-and-tourism",
+            "https://ontario.ca/page/rural-agriculture-and-north",
+            "https://ontario.ca/page/government-ontario",
+            "https://ontario.ca/feedback/contact-us?id=7476&amp;nid=540561",
+            "https://ontario.ca/page/tax-credits-and-benefits-people",
+            "https://ontario.ca/page/tax-credits-and-benefits-topic",
+            "https://ontario.ca/page/find-benefits-and-programs",
+            "https://ontario.ca/page/ministry-finance-tax-talk-information-sessions",
+            "https://ontario.ca/page/ontario-disability-support-program",
+            "https://ontario.ca/page/ontario-trillium-benefit",
+            "https://ontario.ca/page/ontario-works",
+            "https://ontario.ca/document/beer-and-wine-tax"
+          ]
+        },
+        {
+          "value": "Page d'accueil du gouvernement de l'Ontario",
+          "count": 2,
+          "pages": [
+            "https://ontario.ca/fr/page/gouvernement-de-lontario",
+            "https://ontario.ca/fr/page/avantages-fiscaux-et-impots"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 29,
+          "pages": [
+            "https://ontario.ca/",
+            "https://ontario.ca/page/benefits-and-taxes",
+            "https://ontario.ca/page/business-and-economy",
+            "https://ontario.ca/page/courts-justice-and-law",
+            "https://ontario.ca/page/driving-and-road-safety",
+            "https://ontario.ca/page/education-and-apprenticeships",
+            "https://ontario.ca/page/environment-and-energy",
+            "https://ontario.ca/page/family-and-social-services",
+            "https://ontario.ca/page/government",
+            "https://ontario.ca/page/your-health",
+            "https://ontario.ca/page/heritage-arts-and-history",
+            "https://ontario.ca/page/home-and-housing",
+            "https://ontario.ca/page/immigrate-to-ontario",
+            "https://ontario.ca/page/jobs-and-employment",
+            "https://ontario.ca/page/land-use-planning",
+            "https://ontario.ca/page/recreation-and-tourism",
+            "https://ontario.ca/page/rural-agriculture-and-north",
+            "https://ontario.ca/page/government-ontario",
+            "https://ontario.ca/fr/page/gouvernement-de-lontario",
+            "https://ontario.ca/feedback/contact-us?id=7476&amp;nid=540561",
+            "https://ontario.ca/fr/page/avantages-fiscaux-et-impots",
+            "https://ontario.ca/page/tax-credits-and-benefits-people",
+            "https://ontario.ca/page/tax-credits-and-benefits-topic",
+            "https://ontario.ca/page/find-benefits-and-programs",
+            "https://ontario.ca/page/ministry-finance-tax-talk-information-sessions",
+            "https://ontario.ca/page/ontario-disability-support-program",
+            "https://ontario.ca/page/ontario-trillium-benefit",
+            "https://ontario.ca/page/ontario-works",
+            "https://ontario.ca/document/beer-and-wine-tax"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 29,
+          "pages": [
+            "https://ontario.ca/",
+            "https://ontario.ca/page/benefits-and-taxes",
+            "https://ontario.ca/page/business-and-economy",
+            "https://ontario.ca/page/courts-justice-and-law",
+            "https://ontario.ca/page/driving-and-road-safety",
+            "https://ontario.ca/page/education-and-apprenticeships",
+            "https://ontario.ca/page/environment-and-energy",
+            "https://ontario.ca/page/family-and-social-services",
+            "https://ontario.ca/page/government",
+            "https://ontario.ca/page/your-health",
+            "https://ontario.ca/page/heritage-arts-and-history",
+            "https://ontario.ca/page/home-and-housing",
+            "https://ontario.ca/page/immigrate-to-ontario",
+            "https://ontario.ca/page/jobs-and-employment",
+            "https://ontario.ca/page/land-use-planning",
+            "https://ontario.ca/page/recreation-and-tourism",
+            "https://ontario.ca/page/rural-agriculture-and-north",
+            "https://ontario.ca/page/government-ontario",
+            "https://ontario.ca/fr/page/gouvernement-de-lontario",
+            "https://ontario.ca/feedback/contact-us?id=7476&amp;nid=540561",
+            "https://ontario.ca/fr/page/avantages-fiscaux-et-impots",
+            "https://ontario.ca/page/tax-credits-and-benefits-people",
+            "https://ontario.ca/page/tax-credits-and-benefits-topic",
+            "https://ontario.ca/page/find-benefits-and-programs",
+            "https://ontario.ca/page/ministry-finance-tax-talk-information-sessions",
+            "https://ontario.ca/page/ontario-disability-support-program",
+            "https://ontario.ca/page/ontario-trillium-benefit",
+            "https://ontario.ca/page/ontario-works",
+            "https://ontario.ca/document/beer-and-wine-tax"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 29,
+          "pages": [
+            "https://ontario.ca/",
+            "https://ontario.ca/page/benefits-and-taxes",
+            "https://ontario.ca/page/business-and-economy",
+            "https://ontario.ca/page/courts-justice-and-law",
+            "https://ontario.ca/page/driving-and-road-safety",
+            "https://ontario.ca/page/education-and-apprenticeships",
+            "https://ontario.ca/page/environment-and-energy",
+            "https://ontario.ca/page/family-and-social-services",
+            "https://ontario.ca/page/government",
+            "https://ontario.ca/page/your-health",
+            "https://ontario.ca/page/heritage-arts-and-history",
+            "https://ontario.ca/page/home-and-housing",
+            "https://ontario.ca/page/immigrate-to-ontario",
+            "https://ontario.ca/page/jobs-and-employment",
+            "https://ontario.ca/page/land-use-planning",
+            "https://ontario.ca/page/recreation-and-tourism",
+            "https://ontario.ca/page/rural-agriculture-and-north",
+            "https://ontario.ca/page/government-ontario",
+            "https://ontario.ca/fr/page/gouvernement-de-lontario",
+            "https://ontario.ca/feedback/contact-us?id=7476&amp;nid=540561",
+            "https://ontario.ca/fr/page/avantages-fiscaux-et-impots",
+            "https://ontario.ca/page/tax-credits-and-benefits-people",
+            "https://ontario.ca/page/tax-credits-and-benefits-topic",
+            "https://ontario.ca/page/find-benefits-and-programs",
+            "https://ontario.ca/page/ministry-finance-tax-talk-information-sessions",
+            "https://ontario.ca/page/ontario-disability-support-program",
+            "https://ontario.ca/page/ontario-trillium-benefit",
+            "https://ontario.ca/page/ontario-works",
+            "https://ontario.ca/document/beer-and-wine-tax"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 29,
+          "pages": [
+            "https://ontario.ca/",
+            "https://ontario.ca/page/benefits-and-taxes",
+            "https://ontario.ca/page/business-and-economy",
+            "https://ontario.ca/page/courts-justice-and-law",
+            "https://ontario.ca/page/driving-and-road-safety",
+            "https://ontario.ca/page/education-and-apprenticeships",
+            "https://ontario.ca/page/environment-and-energy",
+            "https://ontario.ca/page/family-and-social-services",
+            "https://ontario.ca/page/government",
+            "https://ontario.ca/page/your-health",
+            "https://ontario.ca/page/heritage-arts-and-history",
+            "https://ontario.ca/page/home-and-housing",
+            "https://ontario.ca/page/immigrate-to-ontario",
+            "https://ontario.ca/page/jobs-and-employment",
+            "https://ontario.ca/page/land-use-planning",
+            "https://ontario.ca/page/recreation-and-tourism",
+            "https://ontario.ca/page/rural-agriculture-and-north",
+            "https://ontario.ca/page/government-ontario",
+            "https://ontario.ca/fr/page/gouvernement-de-lontario",
+            "https://ontario.ca/feedback/contact-us?id=7476&amp;nid=540561",
+            "https://ontario.ca/fr/page/avantages-fiscaux-et-impots",
+            "https://ontario.ca/page/tax-credits-and-benefits-people",
+            "https://ontario.ca/page/tax-credits-and-benefits-topic",
+            "https://ontario.ca/page/find-benefits-and-programs",
+            "https://ontario.ca/page/ministry-finance-tax-talk-information-sessions",
+            "https://ontario.ca/page/ontario-disability-support-program",
+            "https://ontario.ca/page/ontario-trillium-benefit",
+            "https://ontario.ca/page/ontario-works",
+            "https://ontario.ca/document/beer-and-wine-tax"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 29,
+          "pages": [
+            "https://ontario.ca/",
+            "https://ontario.ca/page/benefits-and-taxes",
+            "https://ontario.ca/page/business-and-economy",
+            "https://ontario.ca/page/courts-justice-and-law",
+            "https://ontario.ca/page/driving-and-road-safety",
+            "https://ontario.ca/page/education-and-apprenticeships",
+            "https://ontario.ca/page/environment-and-energy",
+            "https://ontario.ca/page/family-and-social-services",
+            "https://ontario.ca/page/government",
+            "https://ontario.ca/page/your-health",
+            "https://ontario.ca/page/heritage-arts-and-history",
+            "https://ontario.ca/page/home-and-housing",
+            "https://ontario.ca/page/immigrate-to-ontario",
+            "https://ontario.ca/page/jobs-and-employment",
+            "https://ontario.ca/page/land-use-planning",
+            "https://ontario.ca/page/recreation-and-tourism",
+            "https://ontario.ca/page/rural-agriculture-and-north",
+            "https://ontario.ca/page/government-ontario",
+            "https://ontario.ca/fr/page/gouvernement-de-lontario",
+            "https://ontario.ca/feedback/contact-us?id=7476&amp;nid=540561",
+            "https://ontario.ca/fr/page/avantages-fiscaux-et-impots",
+            "https://ontario.ca/page/tax-credits-and-benefits-people",
+            "https://ontario.ca/page/tax-credits-and-benefits-topic",
+            "https://ontario.ca/page/find-benefits-and-programs",
+            "https://ontario.ca/page/ministry-finance-tax-talk-information-sessions",
+            "https://ontario.ca/page/ontario-disability-support-program",
+            "https://ontario.ca/page/ontario-trillium-benefit",
+            "https://ontario.ca/page/ontario-works",
+            "https://ontario.ca/document/beer-and-wine-tax"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--mobile.svg",
+      "alt": "Government of Ontario home page",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": false,
+      "width": 46,
+      "height": 46,
+      "status": "SUSPICIOUS",
+      "issues": [
+        "Image is marked decorative (aria-hidden or role=\"presentation/none\") but has non-empty alt text"
+      ],
+      "pages": [
+        "https://ontario.ca/",
+        "https://ontario.ca/page/benefits-and-taxes",
+        "https://ontario.ca/page/business-and-economy",
+        "https://ontario.ca/page/courts-justice-and-law",
+        "https://ontario.ca/page/driving-and-road-safety",
+        "https://ontario.ca/page/education-and-apprenticeships",
+        "https://ontario.ca/page/environment-and-energy",
+        "https://ontario.ca/page/family-and-social-services",
+        "https://ontario.ca/page/government",
+        "https://ontario.ca/page/your-health",
+        "https://ontario.ca/page/heritage-arts-and-history",
+        "https://ontario.ca/page/home-and-housing",
+        "https://ontario.ca/page/immigrate-to-ontario",
+        "https://ontario.ca/page/jobs-and-employment",
+        "https://ontario.ca/page/land-use-planning",
+        "https://ontario.ca/page/recreation-and-tourism",
+        "https://ontario.ca/page/rural-agriculture-and-north",
+        "https://ontario.ca/page/government-ontario",
+        "https://ontario.ca/fr/page/gouvernement-de-lontario",
+        "https://ontario.ca/feedback/contact-us?id=7476&amp;nid=540561",
+        "https://ontario.ca/fr/page/avantages-fiscaux-et-impots",
+        "https://ontario.ca/page/tax-credits-and-benefits-people",
+        "https://ontario.ca/page/tax-credits-and-benefits-topic",
+        "https://ontario.ca/page/find-benefits-and-programs",
+        "https://ontario.ca/page/ministry-finance-tax-talk-information-sessions",
+        "https://ontario.ca/page/ontario-disability-support-program",
+        "https://ontario.ca/page/ontario-trillium-benefit",
+        "https://ontario.ca/page/ontario-works",
+        "https://ontario.ca/document/beer-and-wine-tax"
+      ],
+      "occurrences": 29,
+      "altVariants": [
+        {
+          "value": "Government of Ontario home page",
+          "count": 27,
+          "pages": [
+            "https://ontario.ca/",
+            "https://ontario.ca/page/benefits-and-taxes",
+            "https://ontario.ca/page/business-and-economy",
+            "https://ontario.ca/page/courts-justice-and-law",
+            "https://ontario.ca/page/driving-and-road-safety",
+            "https://ontario.ca/page/education-and-apprenticeships",
+            "https://ontario.ca/page/environment-and-energy",
+            "https://ontario.ca/page/family-and-social-services",
+            "https://ontario.ca/page/government",
+            "https://ontario.ca/page/your-health",
+            "https://ontario.ca/page/heritage-arts-and-history",
+            "https://ontario.ca/page/home-and-housing",
+            "https://ontario.ca/page/immigrate-to-ontario",
+            "https://ontario.ca/page/jobs-and-employment",
+            "https://ontario.ca/page/land-use-planning",
+            "https://ontario.ca/page/recreation-and-tourism",
+            "https://ontario.ca/page/rural-agriculture-and-north",
+            "https://ontario.ca/page/government-ontario",
+            "https://ontario.ca/feedback/contact-us?id=7476&amp;nid=540561",
+            "https://ontario.ca/page/tax-credits-and-benefits-people",
+            "https://ontario.ca/page/tax-credits-and-benefits-topic",
+            "https://ontario.ca/page/find-benefits-and-programs",
+            "https://ontario.ca/page/ministry-finance-tax-talk-information-sessions",
+            "https://ontario.ca/page/ontario-disability-support-program",
+            "https://ontario.ca/page/ontario-trillium-benefit",
+            "https://ontario.ca/page/ontario-works",
+            "https://ontario.ca/document/beer-and-wine-tax"
+          ]
+        },
+        {
+          "value": "Page d'accueil du gouvernement de l'Ontario",
+          "count": 2,
+          "pages": [
+            "https://ontario.ca/fr/page/gouvernement-de-lontario",
+            "https://ontario.ca/fr/page/avantages-fiscaux-et-impots"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 29,
+          "pages": [
+            "https://ontario.ca/",
+            "https://ontario.ca/page/benefits-and-taxes",
+            "https://ontario.ca/page/business-and-economy",
+            "https://ontario.ca/page/courts-justice-and-law",
+            "https://ontario.ca/page/driving-and-road-safety",
+            "https://ontario.ca/page/education-and-apprenticeships",
+            "https://ontario.ca/page/environment-and-energy",
+            "https://ontario.ca/page/family-and-social-services",
+            "https://ontario.ca/page/government",
+            "https://ontario.ca/page/your-health",
+            "https://ontario.ca/page/heritage-arts-and-history",
+            "https://ontario.ca/page/home-and-housing",
+            "https://ontario.ca/page/immigrate-to-ontario",
+            "https://ontario.ca/page/jobs-and-employment",
+            "https://ontario.ca/page/land-use-planning",
+            "https://ontario.ca/page/recreation-and-tourism",
+            "https://ontario.ca/page/rural-agriculture-and-north",
+            "https://ontario.ca/page/government-ontario",
+            "https://ontario.ca/fr/page/gouvernement-de-lontario",
+            "https://ontario.ca/feedback/contact-us?id=7476&amp;nid=540561",
+            "https://ontario.ca/fr/page/avantages-fiscaux-et-impots",
+            "https://ontario.ca/page/tax-credits-and-benefits-people",
+            "https://ontario.ca/page/tax-credits-and-benefits-topic",
+            "https://ontario.ca/page/find-benefits-and-programs",
+            "https://ontario.ca/page/ministry-finance-tax-talk-information-sessions",
+            "https://ontario.ca/page/ontario-disability-support-program",
+            "https://ontario.ca/page/ontario-trillium-benefit",
+            "https://ontario.ca/page/ontario-works",
+            "https://ontario.ca/document/beer-and-wine-tax"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 29,
+          "pages": [
+            "https://ontario.ca/",
+            "https://ontario.ca/page/benefits-and-taxes",
+            "https://ontario.ca/page/business-and-economy",
+            "https://ontario.ca/page/courts-justice-and-law",
+            "https://ontario.ca/page/driving-and-road-safety",
+            "https://ontario.ca/page/education-and-apprenticeships",
+            "https://ontario.ca/page/environment-and-energy",
+            "https://ontario.ca/page/family-and-social-services",
+            "https://ontario.ca/page/government",
+            "https://ontario.ca/page/your-health",
+            "https://ontario.ca/page/heritage-arts-and-history",
+            "https://ontario.ca/page/home-and-housing",
+            "https://ontario.ca/page/immigrate-to-ontario",
+            "https://ontario.ca/page/jobs-and-employment",
+            "https://ontario.ca/page/land-use-planning",
+            "https://ontario.ca/page/recreation-and-tourism",
+            "https://ontario.ca/page/rural-agriculture-and-north",
+            "https://ontario.ca/page/government-ontario",
+            "https://ontario.ca/fr/page/gouvernement-de-lontario",
+            "https://ontario.ca/feedback/contact-us?id=7476&amp;nid=540561",
+            "https://ontario.ca/fr/page/avantages-fiscaux-et-impots",
+            "https://ontario.ca/page/tax-credits-and-benefits-people",
+            "https://ontario.ca/page/tax-credits-and-benefits-topic",
+            "https://ontario.ca/page/find-benefits-and-programs",
+            "https://ontario.ca/page/ministry-finance-tax-talk-information-sessions",
+            "https://ontario.ca/page/ontario-disability-support-program",
+            "https://ontario.ca/page/ontario-trillium-benefit",
+            "https://ontario.ca/page/ontario-works",
+            "https://ontario.ca/document/beer-and-wine-tax"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 29,
+          "pages": [
+            "https://ontario.ca/",
+            "https://ontario.ca/page/benefits-and-taxes",
+            "https://ontario.ca/page/business-and-economy",
+            "https://ontario.ca/page/courts-justice-and-law",
+            "https://ontario.ca/page/driving-and-road-safety",
+            "https://ontario.ca/page/education-and-apprenticeships",
+            "https://ontario.ca/page/environment-and-energy",
+            "https://ontario.ca/page/family-and-social-services",
+            "https://ontario.ca/page/government",
+            "https://ontario.ca/page/your-health",
+            "https://ontario.ca/page/heritage-arts-and-history",
+            "https://ontario.ca/page/home-and-housing",
+            "https://ontario.ca/page/immigrate-to-ontario",
+            "https://ontario.ca/page/jobs-and-employment",
+            "https://ontario.ca/page/land-use-planning",
+            "https://ontario.ca/page/recreation-and-tourism",
+            "https://ontario.ca/page/rural-agriculture-and-north",
+            "https://ontario.ca/page/government-ontario",
+            "https://ontario.ca/fr/page/gouvernement-de-lontario",
+            "https://ontario.ca/feedback/contact-us?id=7476&amp;nid=540561",
+            "https://ontario.ca/fr/page/avantages-fiscaux-et-impots",
+            "https://ontario.ca/page/tax-credits-and-benefits-people",
+            "https://ontario.ca/page/tax-credits-and-benefits-topic",
+            "https://ontario.ca/page/find-benefits-and-programs",
+            "https://ontario.ca/page/ministry-finance-tax-talk-information-sessions",
+            "https://ontario.ca/page/ontario-disability-support-program",
+            "https://ontario.ca/page/ontario-trillium-benefit",
+            "https://ontario.ca/page/ontario-works",
+            "https://ontario.ca/document/beer-and-wine-tax"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 29,
+          "pages": [
+            "https://ontario.ca/",
+            "https://ontario.ca/page/benefits-and-taxes",
+            "https://ontario.ca/page/business-and-economy",
+            "https://ontario.ca/page/courts-justice-and-law",
+            "https://ontario.ca/page/driving-and-road-safety",
+            "https://ontario.ca/page/education-and-apprenticeships",
+            "https://ontario.ca/page/environment-and-energy",
+            "https://ontario.ca/page/family-and-social-services",
+            "https://ontario.ca/page/government",
+            "https://ontario.ca/page/your-health",
+            "https://ontario.ca/page/heritage-arts-and-history",
+            "https://ontario.ca/page/home-and-housing",
+            "https://ontario.ca/page/immigrate-to-ontario",
+            "https://ontario.ca/page/jobs-and-employment",
+            "https://ontario.ca/page/land-use-planning",
+            "https://ontario.ca/page/recreation-and-tourism",
+            "https://ontario.ca/page/rural-agriculture-and-north",
+            "https://ontario.ca/page/government-ontario",
+            "https://ontario.ca/fr/page/gouvernement-de-lontario",
+            "https://ontario.ca/feedback/contact-us?id=7476&amp;nid=540561",
+            "https://ontario.ca/fr/page/avantages-fiscaux-et-impots",
+            "https://ontario.ca/page/tax-credits-and-benefits-people",
+            "https://ontario.ca/page/tax-credits-and-benefits-topic",
+            "https://ontario.ca/page/find-benefits-and-programs",
+            "https://ontario.ca/page/ministry-finance-tax-talk-information-sessions",
+            "https://ontario.ca/page/ontario-disability-support-program",
+            "https://ontario.ca/page/ontario-trillium-benefit",
+            "https://ontario.ca/page/ontario-works",
+            "https://ontario.ca/document/beer-and-wine-tax"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 29,
+          "pages": [
+            "https://ontario.ca/",
+            "https://ontario.ca/page/benefits-and-taxes",
+            "https://ontario.ca/page/business-and-economy",
+            "https://ontario.ca/page/courts-justice-and-law",
+            "https://ontario.ca/page/driving-and-road-safety",
+            "https://ontario.ca/page/education-and-apprenticeships",
+            "https://ontario.ca/page/environment-and-energy",
+            "https://ontario.ca/page/family-and-social-services",
+            "https://ontario.ca/page/government",
+            "https://ontario.ca/page/your-health",
+            "https://ontario.ca/page/heritage-arts-and-history",
+            "https://ontario.ca/page/home-and-housing",
+            "https://ontario.ca/page/immigrate-to-ontario",
+            "https://ontario.ca/page/jobs-and-employment",
+            "https://ontario.ca/page/land-use-planning",
+            "https://ontario.ca/page/recreation-and-tourism",
+            "https://ontario.ca/page/rural-agriculture-and-north",
+            "https://ontario.ca/page/government-ontario",
+            "https://ontario.ca/fr/page/gouvernement-de-lontario",
+            "https://ontario.ca/feedback/contact-us?id=7476&amp;nid=540561",
+            "https://ontario.ca/fr/page/avantages-fiscaux-et-impots",
+            "https://ontario.ca/page/tax-credits-and-benefits-people",
+            "https://ontario.ca/page/tax-credits-and-benefits-topic",
+            "https://ontario.ca/page/find-benefits-and-programs",
+            "https://ontario.ca/page/ministry-finance-tax-talk-information-sessions",
+            "https://ontario.ca/page/ontario-disability-support-program",
+            "https://ontario.ca/page/ontario-trillium-benefit",
+            "https://ontario.ca/page/ontario-works",
+            "https://ontario.ca/document/beer-and-wine-tax"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://www.ontario.ca/themes/ontario_2021/assets/ontario@2x-print.png",
+      "alt": "Government of Ontario | Gouvernement de l’Ontario",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 637,
+      "height": 162,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://ontario.ca/"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "Government of Ontario | Gouvernement de l’Ontario",
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://www.ontario.ca/files/2022-04/medjct-business-and-economy-start-a-business-en-544x272-2022-04-08.jpg",
+      "alt": "",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 544,
+      "height": 272,
+      "status": "DECORATIVE",
+      "issues": [],
+      "pages": [
+        "https://ontario.ca/page/business-and-economy"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "",
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/business-and-economy"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/business-and-economy"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/business-and-economy"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/business-and-economy"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/business-and-economy"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/business-and-economy"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://www.ontario.ca/files/2022-04/medjct-business-and-economy-get-custom-guide-544x272-2022-04-08.jpg",
+      "alt": "",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 544,
+      "height": 272,
+      "status": "DECORATIVE",
+      "issues": [],
+      "pages": [
+        "https://ontario.ca/page/business-and-economy"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "",
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/business-and-economy"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/business-and-economy"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/business-and-economy"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/business-and-economy"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/business-and-economy"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/business-and-economy"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://www.ontario.ca/files/2024-04/medjct-business-and-economy-start-a-business-en-544x272-2024-04-02_0.png",
+      "alt": "",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 544,
+      "height": 272,
+      "status": "DECORATIVE",
+      "issues": [],
+      "pages": [
+        "https://ontario.ca/page/business-and-economy"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "",
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/business-and-economy"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/business-and-economy"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/business-and-economy"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/business-and-economy"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/business-and-economy"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/business-and-economy"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://www.ontario.ca/files/2022-04/medjct-business-and-economy-program-by-region-520x371-2022-04-08.jpg",
+      "alt": "",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 520,
+      "height": 371,
+      "status": "DECORATIVE",
+      "issues": [],
+      "pages": [
+        "https://ontario.ca/page/business-and-economy"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "",
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/business-and-economy"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/business-and-economy"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/business-and-economy"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/business-and-economy"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/business-and-economy"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/business-and-economy"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://www.ontario.ca/files/2023-01/moh-your-health-banner-760x560-2023-01-11.jpg",
+      "alt": "",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 760,
+      "height": 560,
+      "status": "DECORATIVE",
+      "issues": [],
+      "pages": [
+        "https://ontario.ca/page/your-health"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "",
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/your-health"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/your-health"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/your-health"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/your-health"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/your-health"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/your-health"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://www.ontario.ca/files/2023-06/co-jobs-employment-banner-en-760x560-2023-06-02.jpg",
+      "alt": "",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 760,
+      "height": 560,
+      "status": "DECORATIVE",
+      "issues": [],
+      "pages": [
+        "https://ontario.ca/page/jobs-and-employment"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "",
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/jobs-and-employment"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/jobs-and-employment"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/jobs-and-employment"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/jobs-and-employment"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/jobs-and-employment"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/jobs-and-employment"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://files.ontario.ca/post-a-job-1122.jpg",
+      "alt": "",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 930,
+      "height": 450,
+      "status": "DECORATIVE",
+      "issues": [],
+      "pages": [
+        "https://ontario.ca/page/jobs-and-employment"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "",
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/jobs-and-employment"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/jobs-and-employment"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/jobs-and-employment"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/jobs-and-employment"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/jobs-and-employment"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/jobs-and-employment"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://files.ontario.ca/get-skills-2x.jpg",
+      "alt": "",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 926,
+      "height": 500,
+      "status": "DECORATIVE",
+      "issues": [],
+      "pages": [
+        "https://ontario.ca/page/jobs-and-employment"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "",
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/jobs-and-employment"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/jobs-and-employment"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/jobs-and-employment"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/jobs-and-employment"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/jobs-and-employment"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/jobs-and-employment"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://www.ontario.ca/themes/ontario_2021/assets/homepage/homepage-banner_1200x700.webp",
+      "alt": "Government of Ontario",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 1200,
+      "height": 700,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://ontario.ca/page/government-ontario",
+        "https://ontario.ca/fr/page/gouvernement-de-lontario"
+      ],
+      "occurrences": 2,
+      "altVariants": [
+        {
+          "value": "Government of Ontario",
+          "count": 2,
+          "pages": [
+            "https://ontario.ca/page/government-ontario",
+            "https://ontario.ca/fr/page/gouvernement-de-lontario"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://ontario.ca/page/government-ontario",
+            "https://ontario.ca/fr/page/gouvernement-de-lontario"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://ontario.ca/page/government-ontario",
+            "https://ontario.ca/fr/page/gouvernement-de-lontario"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://ontario.ca/page/government-ontario",
+            "https://ontario.ca/fr/page/gouvernement-de-lontario"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://ontario.ca/page/government-ontario",
+            "https://ontario.ca/fr/page/gouvernement-de-lontario"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://ontario.ca/page/government-ontario",
+            "https://ontario.ca/fr/page/gouvernement-de-lontario"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://www.ontario.ca/themes/ontario_2021/assets/logo-serviceontario.svg",
+      "alt": "Logo de ServiceOntario",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 182,
+      "height": 21,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://ontario.ca/page/government-ontario",
+        "https://ontario.ca/fr/page/gouvernement-de-lontario"
+      ],
+      "occurrences": 2,
+      "altVariants": [
+        {
+          "value": "Logo de ServiceOntario",
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/fr/page/gouvernement-de-lontario"
+          ]
+        },
+        {
+          "value": "ServiceOntario logo",
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/government-ontario"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://ontario.ca/page/government-ontario",
+            "https://ontario.ca/fr/page/gouvernement-de-lontario"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://ontario.ca/page/government-ontario",
+            "https://ontario.ca/fr/page/gouvernement-de-lontario"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://ontario.ca/page/government-ontario",
+            "https://ontario.ca/fr/page/gouvernement-de-lontario"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://ontario.ca/page/government-ontario",
+            "https://ontario.ca/fr/page/gouvernement-de-lontario"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://ontario.ca/page/government-ontario",
+            "https://ontario.ca/fr/page/gouvernement-de-lontario"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://www.ontario.ca/files/2024-03/serviceontario-plate-and-cards-417x311.png",
+      "alt": "",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 417,
+      "height": 311,
+      "status": "DECORATIVE",
+      "issues": [],
+      "pages": [
+        "https://ontario.ca/page/government-ontario",
+        "https://ontario.ca/fr/page/gouvernement-de-lontario"
+      ],
+      "occurrences": 2,
+      "altVariants": [
+        {
+          "value": "",
+          "count": 2,
+          "pages": [
+            "https://ontario.ca/page/government-ontario",
+            "https://ontario.ca/fr/page/gouvernement-de-lontario"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://ontario.ca/page/government-ontario",
+            "https://ontario.ca/fr/page/gouvernement-de-lontario"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://ontario.ca/page/government-ontario",
+            "https://ontario.ca/fr/page/gouvernement-de-lontario"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://ontario.ca/page/government-ontario",
+            "https://ontario.ca/fr/page/gouvernement-de-lontario"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://ontario.ca/page/government-ontario",
+            "https://ontario.ca/fr/page/gouvernement-de-lontario"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://ontario.ca/page/government-ontario",
+            "https://ontario.ca/fr/page/gouvernement-de-lontario"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://www.ontario.ca/files/2025-06/co-plan-to-protect-ontario-544x272-2025-06-24.jpg",
+      "alt": "",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 544,
+      "height": 272,
+      "status": "DECORATIVE",
+      "issues": [],
+      "pages": [
+        "https://ontario.ca/page/government-ontario",
+        "https://ontario.ca/fr/page/gouvernement-de-lontario"
+      ],
+      "occurrences": 2,
+      "altVariants": [
+        {
+          "value": "",
+          "count": 2,
+          "pages": [
+            "https://ontario.ca/page/government-ontario",
+            "https://ontario.ca/fr/page/gouvernement-de-lontario"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://ontario.ca/page/government-ontario",
+            "https://ontario.ca/fr/page/gouvernement-de-lontario"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://ontario.ca/page/government-ontario",
+            "https://ontario.ca/fr/page/gouvernement-de-lontario"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://ontario.ca/page/government-ontario",
+            "https://ontario.ca/fr/page/gouvernement-de-lontario"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://ontario.ca/page/government-ontario",
+            "https://ontario.ca/fr/page/gouvernement-de-lontario"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://ontario.ca/page/government-ontario",
+            "https://ontario.ca/fr/page/gouvernement-de-lontario"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://www.ontario.ca/files/2025-06/co-foodland-544x272.jpg",
+      "alt": "",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 544,
+      "height": 272,
+      "status": "DECORATIVE",
+      "issues": [],
+      "pages": [
+        "https://ontario.ca/page/government-ontario",
+        "https://ontario.ca/fr/page/gouvernement-de-lontario"
+      ],
+      "occurrences": 2,
+      "altVariants": [
+        {
+          "value": "",
+          "count": 2,
+          "pages": [
+            "https://ontario.ca/page/government-ontario",
+            "https://ontario.ca/fr/page/gouvernement-de-lontario"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://ontario.ca/page/government-ontario",
+            "https://ontario.ca/fr/page/gouvernement-de-lontario"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://ontario.ca/page/government-ontario",
+            "https://ontario.ca/fr/page/gouvernement-de-lontario"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://ontario.ca/page/government-ontario",
+            "https://ontario.ca/fr/page/gouvernement-de-lontario"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://ontario.ca/page/government-ontario",
+            "https://ontario.ca/fr/page/gouvernement-de-lontario"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://ontario.ca/page/government-ontario",
+            "https://ontario.ca/fr/page/gouvernement-de-lontario"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://www.ontario.ca/themes/ontario_2021/assets/contact.png",
+      "alt": "",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 300,
+      "height": 200,
+      "status": "DECORATIVE",
+      "issues": [],
+      "pages": [
+        "https://ontario.ca/feedback/contact-us?id=7476&amp;nid=540561"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "",
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/feedback/contact-us?id=7476&amp;nid=540561"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/feedback/contact-us?id=7476&amp;nid=540561"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/feedback/contact-us?id=7476&amp;nid=540561"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/feedback/contact-us?id=7476&amp;nid=540561"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/feedback/contact-us?id=7476&amp;nid=540561"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/feedback/contact-us?id=7476&amp;nid=540561"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://www.ontario.ca/files/2023-10/mccss_sa_odsp_mobile_image_en.png",
+      "alt": "A picture containing text, mobile phone, gadget, person Description automatically generated",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 280,
+      "height": 273,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://ontario.ca/page/ontario-disability-support-program"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "A picture containing text, mobile phone, gadget, person Description automatically generated",
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/ontario-disability-support-program"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/ontario-disability-support-program"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/ontario-disability-support-program"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/ontario-disability-support-program"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/ontario-disability-support-program"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/ontario-disability-support-program"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://www.ontario.ca/files/2023-10/mccss_sa_ow_mobile_image_en.png",
+      "alt": "A picture containing text, mobile phone, gadget, person Description automatically generated",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 280,
+      "height": 273,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://ontario.ca/page/ontario-works"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "A picture containing text, mobile phone, gadget, person Description automatically generated",
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/ontario-works"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/ontario-works"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/ontario-works"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/ontario-works"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/ontario-works"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://ontario.ca/page/ontario-works"
+          ]
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "ok": true,
+    "reportType": "alt-text",
+    "issueNumber": 30,
+    "issueUrl": "https://github.com/mgifford/alt-text-scan/issues/30",
+    "scanTitle": "https://ontario.ca",
+    "scanDomain": "https://ontario.ca",
+    "discoveryMethod": "crawl",
+    "discoveredTotal": 100,
+    "requestedCount": 100,
+    "acceptedCount": 100,
+    "rejectedCount": 0,
+    "scannedCount": 100,
+    "skippedDueToTimeout": 0,
+    "urlsRequested": 100,
+    "urlsScanned": 100,
+    "totalImages": 80,
+    "uniqueImages": 19,
+    "imagesWithIssues": 2,
+    "statusCounts": {
+      "MISSING": 0,
+      "DECORATIVE": 15,
+      "SUSPICIOUS": 58,
+      "FILENAME": 0,
+      "TOO_SHORT": 0,
+      "TOO_LONG": 0,
+      "GOOD": 7
+    },
+    "scannedAt": "2026-03-24T09:27:49.989Z"
+  }
+}

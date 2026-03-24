@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alt Text Scan – https://ontario.ca</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 1200px; margin: 2rem auto; padding: 0 1rem; color: #222; }
+    h1 { font-size: 1.5rem; }
+    .summary { display: flex; gap: 1.5rem; flex-wrap: wrap; margin: 1rem 0; }
+    .stat { background: #f5f5f5; border-radius: 6px; padding: 0.75rem 1.25rem; }
+    .stat strong { display: block; font-size: 1.8rem; }
+    .report-controls { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; margin: 1rem 0; }
+    .toggle-thumbnails { border: 1px solid #333; background: #fff; color: #222; border-radius: 999px; padding: 0.55rem 0.95rem; font: inherit; cursor: pointer; }
+    .toggle-thumbnails[aria-pressed="true"] { background: #222; color: #fff; }
+    table { border-collapse: collapse; width: 100%; margin-top: 1.5rem; }
+    th { background: #333; color: #fff; text-align: left; padding: 0.5rem 0.75rem; }
+    td { padding: 0.5rem 0.75rem; border-bottom: 1px solid #ddd; vertical-align: top; }
+    tr:hover td { background: #fafafa; }
+    code { background: #f0f0f0; padding: 0.1em 0.3em; border-radius: 3px; font-size: 0.9em; }
+    .thumbnail-column { width: 8.5rem; }
+    .thumbnail-trigger { display: inline-flex; flex-direction: column; align-items: center; gap: 0.35rem; width: 7rem; padding: 0.45rem; border: 1px solid #ccc; border-radius: 8px; background: #fff; cursor: pointer; }
+    .thumbnail-trigger:hover, .thumbnail-trigger:focus-visible { border-color: #333; box-shadow: 0 0 0 3px rgba(33, 33, 33, 0.15); outline: none; }
+    .thumbnail-trigger__image { display: block; width: 100%; height: 4.5rem; object-fit: contain; background: #f5f5f5; border-radius: 4px; }
+    .thumbnail-trigger__text { font-size: 0.8rem; color: #444; }
+    .url-cell { position: relative; max-width: 20rem; }
+    .url-tooltip { display: none; position: absolute; z-index: 10; left: 0; top: 100%; margin-top: 0.2rem; background: #333; color: #fff; padding: 0.4rem 0.6rem; border-radius: 4px; font-size: 0.8rem; max-width: 44rem; word-break: break-all; white-space: normal; pointer-events: none; box-shadow: 0 2px 8px rgba(0,0,0,0.35); }
+    .url-cell:hover .url-tooltip, .url-cell:focus-within .url-tooltip { display: block; }
+    dialog::backdrop { background: rgba(17, 24, 39, 0.72); }
+    .preview-dialog { border: none; border-radius: 12px; padding: 0; width: min(92vw, 960px); max-height: 90vh; overflow: hidden; }
+    .preview-dialog__inner { display: grid; gap: 0.75rem; padding: 1rem; background: #fff; }
+    .preview-dialog__header { display: flex; justify-content: space-between; gap: 1rem; align-items: start; }
+    .preview-dialog__title { margin: 0; font-size: 1.1rem; }
+    .preview-dialog__close { border: 1px solid #333; background: #fff; color: #222; border-radius: 999px; padding: 0.45rem 0.8rem; font: inherit; cursor: pointer; }
+    .preview-dialog__figure { margin: 0; display: grid; gap: 0.5rem; justify-items: center; }
+    .preview-dialog__image { display: block; max-width: min(88vw, 100%); max-height: 70vh; width: auto; height: auto; background: #f5f5f5; }
+    .preview-dialog__caption { font-size: 0.9rem; color: #444; word-break: break-word; }
+    .preview-dialog__actions { margin: 0; font-size: 0.9rem; }
+    .preview-dialog__view-full { color: #1565c0; }
+    .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    @media (max-width: 720px) {
+      .summary { gap: 0.75rem; }
+      .stat { flex: 1 1 9rem; }
+      .thumbnail-trigger { width: 5.75rem; }
+      .thumbnail-trigger__image { height: 3.75rem; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Alt Text Scan Report</h1>
+  <p><strong>Domain:</strong> https://ontario.ca &nbsp;|&nbsp;
+     <strong>Scanned:</strong> 3/24/2026, 9:27:49 AM &nbsp;|&nbsp;
+     <strong>Discovery method:</strong> crawl</p>
+  <p><a href="report.csv">Download image inventory CSV</a> &nbsp;|&nbsp; <a href="report.json">View full JSON</a></p>
+
+  <div class="summary">
+    <div class="stat"><strong>100</strong> Pages scanned</div>
+    <div class="stat"><strong>80</strong> Images found</div>
+    <div class="stat"><strong>19</strong> Unique images</div>
+    <div class="stat"><strong style="color:#d32f2f">2</strong> Images with issues</div>
+  </div>
+
+  <h2>Status breakdown</h2>
+  <table>
+    <thead><tr><th>Status</th><th>Count</th></tr></thead>
+    <tbody><tr><td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td><td>15</td></tr>
+<tr><td><span style="color:#f57c00;font-weight:bold">Suspicious</span></td><td>58</td></tr>
+<tr><td><span style="color:#2e7d32;font-weight:bold">Good</span></td><td>7</td></tr></tbody>
+  </table>
+
+  <h2>Unique image inventory</h2>
+  <div class="report-controls">
+    <button type="button" id="toggle-thumbnails" class="toggle-thumbnails" aria-pressed="false">Show thumbnails</button>
+    <span id="thumbnail-help">Thumbnails are hidden by default. Turn them on and click or focus a preview button to open the dialog.</span>
+  </div>
+  <p>Showing all 19 unique image URLs, with flagged items listed first. Use the CSV for a complete export.</p>
+  <table>
+    <thead><tr>
+      <th>Image</th>
+      <th class="thumbnail-column" hidden>Thumbnail</th>
+      <th>Status</th>
+      <th>Alt Text</th>
+      <th title="All distinct alt text values found for this image across all scanned pages, with how many times each value appeared. A Consistent result means the same alt text was used everywhere. Multiple entries mean the same image has different alt text on different pages and may need review.">Alt Variants</th>
+      <th>Title</th>
+      <th>ARIA Label</th>
+      <th>Pages</th>
+    </tr></thead>
+    <tbody>
+        <tr>
+          <td class="url-cell"><a href="https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--desktop.svg" target="_blank" rel="noopener" title="https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--desktop.svg">https://www.ontario.ca/themes/o … /ontario-logo--desktop.svg</a><span class="url-tooltip" aria-hidden="true">https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--desktop.svg</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--desktop.svg" data-preview-alt="Government of Ontario home page" data-preview-label="Government of Ontario home page" data-preview-width="300" data-preview-height="75" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Government of Ontario home page"><img src="https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--desktop.svg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#f57c00;font-weight:bold">Suspicious</span></td>
+          <td><code>Government of Ontario home page</code></td>
+          <td style="font-size:0.85em">Government of Ontario home page <span style="color:#888"><span aria-hidden="true">×27</span><span class="visually-hidden"> (27 occurrences)</span></span><br>Page d&#039;accueil du gouvernement de l&#039;Ontario <span style="color:#888"><span aria-hidden="true">×2</span><span class="visually-hidden"> (2 occurrences)</span></span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>29<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://ontario.ca/" target="_blank" rel="noopener">https://ontario.ca/</a><br><a href="https://ontario.ca/page/benefits-and-taxes" target="_blank" rel="noopener">https://ontario.ca/page/benefits-and-taxes</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--mobile.svg" target="_blank" rel="noopener" title="https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--mobile.svg">https://www.ontario.ca/themes/on … /ontario-logo--mobile.svg</a><span class="url-tooltip" aria-hidden="true">https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--mobile.svg</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--mobile.svg" data-preview-alt="Government of Ontario home page" data-preview-label="Government of Ontario home page" data-preview-width="46" data-preview-height="46" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Government of Ontario home page"><img src="https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--mobile.svg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#f57c00;font-weight:bold">Suspicious</span></td>
+          <td><code>Government of Ontario home page</code></td>
+          <td style="font-size:0.85em">Government of Ontario home page <span style="color:#888"><span aria-hidden="true">×27</span><span class="visually-hidden"> (27 occurrences)</span></span><br>Page d&#039;accueil du gouvernement de l&#039;Ontario <span style="color:#888"><span aria-hidden="true">×2</span><span class="visually-hidden"> (2 occurrences)</span></span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>29<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://ontario.ca/" target="_blank" rel="noopener">https://ontario.ca/</a><br><a href="https://ontario.ca/page/benefits-and-taxes" target="_blank" rel="noopener">https://ontario.ca/page/benefits-and-taxes</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.ontario.ca/files/2024-03/serviceontario-plate-and-cards-417x311.png" target="_blank" rel="noopener" title="https://www.ontario.ca/files/2024-03/serviceontario-plate-and-cards-417x311.png">https://www.on … /serviceontario-plate-and-cards-417x311.png</a><span class="url-tooltip" aria-hidden="true">https://www.ontario.ca/files/2024-03/serviceontario-plate-and-cards-417x311.png</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.ontario.ca/files/2024-03/serviceontario-plate-and-cards-417x311.png" data-preview-alt="" data-preview-label="https://www.ontario.ca/files/2024-03/serviceontario-plate-and-cards-417x311.png" data-preview-width="417" data-preview-height="311" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://www.ontario.ca/files/2024-03/serviceontario-plate-and-cards-417x311.png"><img src="https://www.ontario.ca/files/2024-03/serviceontario-plate-and-cards-417x311.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">empty (decorative)</em></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 2 occurrences of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>2<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://ontario.ca/page/government-ontario" target="_blank" rel="noopener">https://ontario.ca/page/government-ontario</a><br><a href="https://ontario.ca/fr/page/gouvernement-de-lontario" target="_blank" rel="noopener">https://ontario.ca/fr/page/gouvernement-de-lontario</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.ontario.ca/files/2025-06/co-foodland-544x272.jpg" target="_blank" rel="noopener">https://www.ontario.ca/files/2025-06/co-foodland-544x272.jpg</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.ontario.ca/files/2025-06/co-foodland-544x272.jpg" data-preview-alt="" data-preview-label="https://www.ontario.ca/files/2025-06/co-foodland-544x272.jpg" data-preview-width="544" data-preview-height="272" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://www.ontario.ca/files/2025-06/co-foodland-544x272.jpg"><img src="https://www.ontario.ca/files/2025-06/co-foodland-544x272.jpg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">empty (decorative)</em></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 2 occurrences of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>2<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://ontario.ca/page/government-ontario" target="_blank" rel="noopener">https://ontario.ca/page/government-ontario</a><br><a href="https://ontario.ca/fr/page/gouvernement-de-lontario" target="_blank" rel="noopener">https://ontario.ca/fr/page/gouvernement-de-lontario</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.ontario.ca/files/2025-06/co-plan-to-protect-ontario-544x272-2025-06-24.jpg" target="_blank" rel="noopener" title="https://www.ontario.ca/files/2025-06/co-plan-to-protect-ontario-544x272-2025-06-24.jpg">https://www.ontario.ca/files/2025-06/co-plan-to-protect-onta…</a><span class="url-tooltip" aria-hidden="true">https://www.ontario.ca/files/2025-06/co-plan-to-protect-ontario-544x272-2025-06-24.jpg</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.ontario.ca/files/2025-06/co-plan-to-protect-ontario-544x272-2025-06-24.jpg" data-preview-alt="" data-preview-label="https://www.ontario.ca/files/2025-06/co-plan-to-protect-ontario-544x272-2025-06-24.jpg" data-preview-width="544" data-preview-height="272" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://www.ontario.ca/files/2025-06/co-plan-to-protect-ontario-544x272-2025-06-24.jpg"><img src="https://www.ontario.ca/files/2025-06/co-plan-to-protect-ontario-544x272-2025-06-24.jpg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">empty (decorative)</em></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 2 occurrences of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>2<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://ontario.ca/page/government-ontario" target="_blank" rel="noopener">https://ontario.ca/page/government-ontario</a><br><a href="https://ontario.ca/fr/page/gouvernement-de-lontario" target="_blank" rel="noopener">https://ontario.ca/fr/page/gouvernement-de-lontario</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://files.ontario.ca/get-skills-2x.jpg" target="_blank" rel="noopener">https://files.ontario.ca/get-skills-2x.jpg</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://files.ontario.ca/get-skills-2x.jpg" data-preview-alt="" data-preview-label="https://files.ontario.ca/get-skills-2x.jpg" data-preview-width="926" data-preview-height="500" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://files.ontario.ca/get-skills-2x.jpg"><img src="https://files.ontario.ca/get-skills-2x.jpg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">empty (decorative)</em></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://ontario.ca/page/jobs-and-employment" target="_blank" rel="noopener">https://ontario.ca/page/jobs-and-employment</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://files.ontario.ca/post-a-job-1122.jpg" target="_blank" rel="noopener">https://files.ontario.ca/post-a-job-1122.jpg</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://files.ontario.ca/post-a-job-1122.jpg" data-preview-alt="" data-preview-label="https://files.ontario.ca/post-a-job-1122.jpg" data-preview-width="930" data-preview-height="450" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://files.ontario.ca/post-a-job-1122.jpg"><img src="https://files.ontario.ca/post-a-job-1122.jpg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">empty (decorative)</em></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://ontario.ca/page/jobs-and-employment" target="_blank" rel="noopener">https://ontario.ca/page/jobs-and-employment</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.ontario.ca/files/2022-04/medjct-business-and-economy-get-custom-guide-544x272-2022-04-08.jpg" target="_blank" rel="noopener" title="https://www.ontario.ca/files/2022-04/medjct-business-and-economy-get-custom-guide-544x272-2022-04-08.jpg">https://www.ontario.ca/files/2022-04/medjct-business-and-eco…</a><span class="url-tooltip" aria-hidden="true">https://www.ontario.ca/files/2022-04/medjct-business-and-economy-get-custom-guide-544x272-2022-04-08.jpg</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.ontario.ca/files/2022-04/medjct-business-and-economy-get-custom-guide-544x272-2022-04-08.jpg" data-preview-alt="" data-preview-label="https://www.ontario.ca/files/2022-04/medjct-business-and-economy-get-custom-guide-544x272-2022-04-08.jpg" data-preview-width="544" data-preview-height="272" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://www.ontario.ca/files/2022-04/medjct-business-and-economy-get-custom-guide-544x272-2022-04-08.jpg"><img src="https://www.ontario.ca/files/2022-04/medjct-business-and-economy-get-custom-guide-544x272-2022-04-08.jpg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">empty (decorative)</em></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://ontario.ca/page/business-and-economy" target="_blank" rel="noopener">https://ontario.ca/page/business-and-economy</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.ontario.ca/files/2022-04/medjct-business-and-economy-program-by-region-520x371-2022-04-08.jpg" target="_blank" rel="noopener" title="https://www.ontario.ca/files/2022-04/medjct-business-and-economy-program-by-region-520x371-2022-04-08.jpg">https://www.ontario.ca/files/2022-04/medjct-business-and-eco…</a><span class="url-tooltip" aria-hidden="true">https://www.ontario.ca/files/2022-04/medjct-business-and-economy-program-by-region-520x371-2022-04-08.jpg</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.ontario.ca/files/2022-04/medjct-business-and-economy-program-by-region-520x371-2022-04-08.jpg" data-preview-alt="" data-preview-label="https://www.ontario.ca/files/2022-04/medjct-business-and-economy-program-by-region-520x371-2022-04-08.jpg" data-preview-width="520" data-preview-height="371" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://www.ontario.ca/files/2022-04/medjct-business-and-economy-program-by-region-520x371-2022-04-08.jpg"><img src="https://www.ontario.ca/files/2022-04/medjct-business-and-economy-program-by-region-520x371-2022-04-08.jpg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">empty (decorative)</em></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://ontario.ca/page/business-and-economy" target="_blank" rel="noopener">https://ontario.ca/page/business-and-economy</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.ontario.ca/files/2022-04/medjct-business-and-economy-start-a-business-en-544x272-2022-04-08.jpg" target="_blank" rel="noopener" title="https://www.ontario.ca/files/2022-04/medjct-business-and-economy-start-a-business-en-544x272-2022-04-08.jpg">https://www.ontario.ca/files/2022-04/medjct-business-and-eco…</a><span class="url-tooltip" aria-hidden="true">https://www.ontario.ca/files/2022-04/medjct-business-and-economy-start-a-business-en-544x272-2022-04-08.jpg</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.ontario.ca/files/2022-04/medjct-business-and-economy-start-a-business-en-544x272-2022-04-08.jpg" data-preview-alt="" data-preview-label="https://www.ontario.ca/files/2022-04/medjct-business-and-economy-start-a-business-en-544x272-2022-04-08.jpg" data-preview-width="544" data-preview-height="272" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://www.ontario.ca/files/2022-04/medjct-business-and-economy-start-a-business-en-544x272-2022-04-08.jpg"><img src="https://www.ontario.ca/files/2022-04/medjct-business-and-economy-start-a-business-en-544x272-2022-04-08.jpg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">empty (decorative)</em></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://ontario.ca/page/business-and-economy" target="_blank" rel="noopener">https://ontario.ca/page/business-and-economy</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.ontario.ca/files/2023-01/moh-your-health-banner-760x560-2023-01-11.jpg" target="_blank" rel="noopener" title="https://www.ontario.ca/files/2023-01/moh-your-health-banner-760x560-2023-01-11.jpg">https://www … /moh-your-health-banner-760x560-2023-01-11.jpg</a><span class="url-tooltip" aria-hidden="true">https://www.ontario.ca/files/2023-01/moh-your-health-banner-760x560-2023-01-11.jpg</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.ontario.ca/files/2023-01/moh-your-health-banner-760x560-2023-01-11.jpg" data-preview-alt="" data-preview-label="https://www.ontario.ca/files/2023-01/moh-your-health-banner-760x560-2023-01-11.jpg" data-preview-width="760" data-preview-height="560" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://www.ontario.ca/files/2023-01/moh-your-health-banner-760x560-2023-01-11.jpg"><img src="https://www.ontario.ca/files/2023-01/moh-your-health-banner-760x560-2023-01-11.jpg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">empty (decorative)</em></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://ontario.ca/page/your-health" target="_blank" rel="noopener">https://ontario.ca/page/your-health</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.ontario.ca/files/2023-06/co-jobs-employment-banner-en-760x560-2023-06-02.jpg" target="_blank" rel="noopener" title="https://www.ontario.ca/files/2023-06/co-jobs-employment-banner-en-760x560-2023-06-02.jpg">https://www.ontario.ca/files/2023-06/co-jobs-employment-bann…</a><span class="url-tooltip" aria-hidden="true">https://www.ontario.ca/files/2023-06/co-jobs-employment-banner-en-760x560-2023-06-02.jpg</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.ontario.ca/files/2023-06/co-jobs-employment-banner-en-760x560-2023-06-02.jpg" data-preview-alt="" data-preview-label="https://www.ontario.ca/files/2023-06/co-jobs-employment-banner-en-760x560-2023-06-02.jpg" data-preview-width="760" data-preview-height="560" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://www.ontario.ca/files/2023-06/co-jobs-employment-banner-en-760x560-2023-06-02.jpg"><img src="https://www.ontario.ca/files/2023-06/co-jobs-employment-banner-en-760x560-2023-06-02.jpg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">empty (decorative)</em></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://ontario.ca/page/jobs-and-employment" target="_blank" rel="noopener">https://ontario.ca/page/jobs-and-employment</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.ontario.ca/files/2024-04/medjct-business-and-economy-start-a-business-en-544x272-2024-04-02_0.png" target="_blank" rel="noopener" title="https://www.ontario.ca/files/2024-04/medjct-business-and-economy-start-a-business-en-544x272-2024-04-02_0.png">https://www.ontario.ca/files/2024-04/medjct-business-and-eco…</a><span class="url-tooltip" aria-hidden="true">https://www.ontario.ca/files/2024-04/medjct-business-and-economy-start-a-business-en-544x272-2024-04-02_0.png</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.ontario.ca/files/2024-04/medjct-business-and-economy-start-a-business-en-544x272-2024-04-02_0.png" data-preview-alt="" data-preview-label="https://www.ontario.ca/files/2024-04/medjct-business-and-economy-start-a-business-en-544x272-2024-04-02_0.png" data-preview-width="544" data-preview-height="272" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://www.ontario.ca/files/2024-04/medjct-business-and-economy-start-a-business-en-544x272-2024-04-02_0.png"><img src="https://www.ontario.ca/files/2024-04/medjct-business-and-economy-start-a-business-en-544x272-2024-04-02_0.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">empty (decorative)</em></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://ontario.ca/page/business-and-economy" target="_blank" rel="noopener">https://ontario.ca/page/business-and-economy</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.ontario.ca/themes/ontario_2021/assets/contact.png" target="_blank" rel="noopener" title="https://www.ontario.ca/themes/ontario_2021/assets/contact.png">https://www.ontario.ca/themes/ontario_2021/as … /contact.png</a><span class="url-tooltip" aria-hidden="true">https://www.ontario.ca/themes/ontario_2021/assets/contact.png</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.ontario.ca/themes/ontario_2021/assets/contact.png" data-preview-alt="" data-preview-label="https://www.ontario.ca/themes/ontario_2021/assets/contact.png" data-preview-width="300" data-preview-height="200" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://www.ontario.ca/themes/ontario_2021/assets/contact.png"><img src="https://www.ontario.ca/themes/ontario_2021/assets/contact.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">empty (decorative)</em></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://ontario.ca/feedback/contact-us?id=7476&amp;nid=540561" target="_blank" rel="noopener">https://ontario.ca/feedback/contact-us?id=7476&amp;amp;nid=540561</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.ontario.ca/themes/ontario_2021/assets/homepage/homepage-banner_1200x700.webp" target="_blank" rel="noopener" title="https://www.ontario.ca/themes/ontario_2021/assets/homepage/homepage-banner_1200x700.webp">https://www.ontario.ca/them … /homepage-banner_1200x700.webp</a><span class="url-tooltip" aria-hidden="true">https://www.ontario.ca/themes/ontario_2021/assets/homepage/homepage-banner_1200x700.webp</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.ontario.ca/themes/ontario_2021/assets/homepage/homepage-banner_1200x700.webp" data-preview-alt="Government of Ontario" data-preview-label="Government of Ontario" data-preview-width="1200" data-preview-height="700" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Government of Ontario"><img src="https://www.ontario.ca/themes/ontario_2021/assets/homepage/homepage-banner_1200x700.webp" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Government of Ontario</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 2 occurrences of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>2<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://ontario.ca/page/government-ontario" target="_blank" rel="noopener">https://ontario.ca/page/government-ontario</a><br><a href="https://ontario.ca/fr/page/gouvernement-de-lontario" target="_blank" rel="noopener">https://ontario.ca/fr/page/gouvernement-de-lontario</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.ontario.ca/themes/ontario_2021/assets/logo-serviceontario.svg" target="_blank" rel="noopener" title="https://www.ontario.ca/themes/ontario_2021/assets/logo-serviceontario.svg">https://www.ontario.ca/themes/ont … /logo-serviceontario.svg</a><span class="url-tooltip" aria-hidden="true">https://www.ontario.ca/themes/ontario_2021/assets/logo-serviceontario.svg</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.ontario.ca/themes/ontario_2021/assets/logo-serviceontario.svg" data-preview-alt="Logo de ServiceOntario" data-preview-label="Logo de ServiceOntario" data-preview-width="182" data-preview-height="21" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Logo de ServiceOntario"><img src="https://www.ontario.ca/themes/ontario_2021/assets/logo-serviceontario.svg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Logo de ServiceOntario</code></td>
+          <td style="font-size:0.85em">Logo de ServiceOntario <span style="color:#888"><span aria-hidden="true">×1</span><span class="visually-hidden"> (1 occurrence)</span></span><br>ServiceOntario logo <span style="color:#888"><span aria-hidden="true">×1</span><span class="visually-hidden"> (1 occurrence)</span></span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>2<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://ontario.ca/page/government-ontario" target="_blank" rel="noopener">https://ontario.ca/page/government-ontario</a><br><a href="https://ontario.ca/fr/page/gouvernement-de-lontario" target="_blank" rel="noopener">https://ontario.ca/fr/page/gouvernement-de-lontario</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.ontario.ca/files/2023-10/mccss_sa_odsp_mobile_image_en.png" target="_blank" rel="noopener" title="https://www.ontario.ca/files/2023-10/mccss_sa_odsp_mobile_image_en.png">https://www.ontario.ca/ … /mccss_sa_odsp_mobile_image_en.png</a><span class="url-tooltip" aria-hidden="true">https://www.ontario.ca/files/2023-10/mccss_sa_odsp_mobile_image_en.png</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.ontario.ca/files/2023-10/mccss_sa_odsp_mobile_image_en.png" data-preview-alt="A picture containing text, mobile phone, gadget, person Description automatically generated" data-preview-label="A picture containing text, mobile phone, gadget, person Description automatically generated" data-preview-width="280" data-preview-height="273" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: A picture containing text, mobile phone, gadget, person Description automatically generated"><img src="https://www.ontario.ca/files/2023-10/mccss_sa_odsp_mobile_image_en.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>A picture containing text, mobile phone, gadget, person Description automatically generated</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://ontario.ca/page/ontario-disability-support-program" target="_blank" rel="noopener">https://ontario.ca/page/ontario-disability-support-program</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.ontario.ca/files/2023-10/mccss_sa_ow_mobile_image_en.png" target="_blank" rel="noopener" title="https://www.ontario.ca/files/2023-10/mccss_sa_ow_mobile_image_en.png">https://www.ontario.ca/fi … /mccss_sa_ow_mobile_image_en.png</a><span class="url-tooltip" aria-hidden="true">https://www.ontario.ca/files/2023-10/mccss_sa_ow_mobile_image_en.png</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.ontario.ca/files/2023-10/mccss_sa_ow_mobile_image_en.png" data-preview-alt="A picture containing text, mobile phone, gadget, person Description automatically generated" data-preview-label="A picture containing text, mobile phone, gadget, person Description automatically generated" data-preview-width="280" data-preview-height="273" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: A picture containing text, mobile phone, gadget, person Description automatically generated"><img src="https://www.ontario.ca/files/2023-10/mccss_sa_ow_mobile_image_en.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>A picture containing text, mobile phone, gadget, person Description automatically generated</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://ontario.ca/page/ontario-works" target="_blank" rel="noopener">https://ontario.ca/page/ontario-works</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.ontario.ca/themes/ontario_2021/assets/ontario@2x-print.png" target="_blank" rel="noopener" title="https://www.ontario.ca/themes/ontario_2021/assets/ontario@2x-print.png">https://www.ontario.ca/themes/ontari … /ontario@2x-print.png</a><span class="url-tooltip" aria-hidden="true">https://www.ontario.ca/themes/ontario_2021/assets/ontario@2x-print.png</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.ontario.ca/themes/ontario_2021/assets/ontario@2x-print.png" data-preview-alt="Government of Ontario | Gouvernement de l’Ontario" data-preview-label="Government of Ontario | Gouvernement de l’Ontario" data-preview-width="637" data-preview-height="162" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Government of Ontario | Gouvernement de l’Ontario"><img src="https://www.ontario.ca/themes/ontario_2021/assets/ontario@2x-print.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Government of Ontario | Gouvernement de l’Ontario</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://ontario.ca/" target="_blank" rel="noopener">https://ontario.ca/</a></div></td>
+        </tr></tbody>
+  </table>
+
+  <h2>Images with issues</h2>
+  <table>
+    <thead><tr><th>Image</th><th class="thumbnail-column" hidden>Thumbnail</th><th>Alt Text</th><th>Status</th><th>Issues</th><th>Found on</th></tr></thead>
+    <tbody>
+        <tr>
+          <td class="url-cell"><a href="https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--desktop.svg" target="_blank" rel="noopener" title="https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--desktop.svg">https://www.ontario.ca/themes/o … /ontario-logo--desktop.svg</a><span class="url-tooltip" aria-hidden="true">https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--desktop.svg</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--desktop.svg" data-preview-alt="Government of Ontario home page" data-preview-label="Government of Ontario home page" data-preview-width="300" data-preview-height="75" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Government of Ontario home page"><img src="https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--desktop.svg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><code>Government of Ontario home page</code></td>
+          <td><span style="color:#f57c00;font-weight:bold">Suspicious</span></td>
+          <td><ul style="margin:0;padding-left:1.2em"><li>Image is marked decorative (aria-hidden or role=&quot;presentation/none&quot;) but has non-empty alt text</li></ul></td>
+          <td style="font-size:0.85em"><a href="https://ontario.ca/" target="_blank" rel="noopener">https://ontario.ca/</a><br><a href="https://ontario.ca/page/benefits-and-taxes" target="_blank" rel="noopener">https://ontario.ca/page/benefits-and-taxes</a><br><a href="https://ontario.ca/page/business-and-economy" target="_blank" rel="noopener">https://ontario.ca/page/business-and-economy</a></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--mobile.svg" target="_blank" rel="noopener" title="https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--mobile.svg">https://www.ontario.ca/themes/on … /ontario-logo--mobile.svg</a><span class="url-tooltip" aria-hidden="true">https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--mobile.svg</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--mobile.svg" data-preview-alt="Government of Ontario home page" data-preview-label="Government of Ontario home page" data-preview-width="46" data-preview-height="46" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Government of Ontario home page"><img src="https://www.ontario.ca/themes/ontario_2021/assets/ontario-logo--mobile.svg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><code>Government of Ontario home page</code></td>
+          <td><span style="color:#f57c00;font-weight:bold">Suspicious</span></td>
+          <td><ul style="margin:0;padding-left:1.2em"><li>Image is marked decorative (aria-hidden or role=&quot;presentation/none&quot;) but has non-empty alt text</li></ul></td>
+          <td style="font-size:0.85em"><a href="https://ontario.ca/" target="_blank" rel="noopener">https://ontario.ca/</a><br><a href="https://ontario.ca/page/benefits-and-taxes" target="_blank" rel="noopener">https://ontario.ca/page/benefits-and-taxes</a><br><a href="https://ontario.ca/page/business-and-economy" target="_blank" rel="noopener">https://ontario.ca/page/business-and-economy</a></td>
+        </tr></tbody>
+  </table>
+
+  <dialog id="image-preview-dialog" class="preview-dialog" aria-labelledby="image-preview-title">
+    <div class="preview-dialog__inner">
+      <div class="preview-dialog__header">
+        <h2 id="image-preview-title" class="preview-dialog__title">Image preview</h2>
+        <form method="dialog">
+          <button type="submit" class="preview-dialog__close" id="close-image-preview">Close</button>
+        </form>
+      </div>
+      <figure class="preview-dialog__figure">
+        <img id="image-preview-image" class="preview-dialog__image" alt="">
+        <figcaption id="image-preview-caption" class="preview-dialog__caption"></figcaption>
+      </figure>
+      <p class="preview-dialog__actions">
+        <a id="image-preview-view-full" href="#" target="_blank" rel="noopener" class="preview-dialog__view-full">View full image ↗</a>
+      </p>
+    </div>
+  </dialog>
+
+  <script>
+    (() => {
+      const toggleButton = document.getElementById("toggle-thumbnails");
+      const thumbnailColumns = Array.from(document.querySelectorAll(".thumbnail-column"));
+      const dialog = document.getElementById("image-preview-dialog");
+      const previewImage = document.getElementById("image-preview-image");
+      const previewCaption = document.getElementById("image-preview-caption");
+      const previewTitle = document.getElementById("image-preview-title");
+      const closeButton = document.getElementById("close-image-preview");
+      const viewFullLink = document.getElementById("image-preview-view-full");
+      const previewTriggers = Array.from(document.querySelectorAll(".thumbnail-trigger"));
+      let lastTrigger = null;
+      let lastOpenMode = "click";
+      let skipNextFocusTrigger = null;
+
+      if (toggleButton) {
+        toggleButton.addEventListener("click", () => {
+          const shouldShow = toggleButton.getAttribute("aria-pressed") !== "true";
+          toggleButton.setAttribute("aria-pressed", String(shouldShow));
+          toggleButton.textContent = shouldShow ? "Hide thumbnails" : "Show thumbnails";
+          thumbnailColumns.forEach((column) => {
+            column.hidden = !shouldShow;
+          });
+        });
+      }
+
+      if (!(dialog instanceof HTMLDialogElement) || !previewImage || !previewCaption || !previewTitle) {
+        return;
+      }
+
+      const setPreviewContent = (trigger) => {
+        const src = trigger.dataset.previewSrc || "";
+        const alt = trigger.dataset.previewAlt || "";
+        const label = trigger.dataset.previewLabel || src;
+        const width = Number(trigger.dataset.previewWidth || 0);
+        const height = Number(trigger.dataset.previewHeight || 0);
+        const availableWidth = Math.max(window.innerWidth - 80, 320);
+
+        previewImage.src = src;
+        previewImage.alt = alt;
+        previewImage.style.width = width > 0 ? String(Math.min(width, availableWidth)) + "px" : "auto";
+        previewImage.style.height = "auto";
+        previewImage.style.maxWidth = "100%";
+        previewTitle.textContent = label;
+
+        if (viewFullLink) {
+          viewFullLink.href = src;
+        }
+
+        const altInfo = alt ? "Alt text: " + alt : "Alt text: none";
+        const sizeInfo = width > 0 && height > 0 ? "Displayed size: " + width + " × " + height + "px" : "Displayed size: not captured";
+        previewCaption.textContent = [altInfo, sizeInfo, src].join(" | ");
+
+        previewImage.onload = function() {
+          const nw = this.naturalWidth;
+          const nh = this.naturalHeight;
+          const naturalInfo = nw > 0 && nh > 0 ? "Natural size: " + nw + " × " + nh + "px" : "";
+          previewCaption.textContent = [altInfo, sizeInfo, naturalInfo, src].filter(Boolean).join(" | ");
+        };
+      };
+
+      const openPreview = (trigger, mode) => {
+        lastTrigger = trigger;
+        lastOpenMode = mode;
+        setPreviewContent(trigger);
+        if (!dialog.open) {
+          dialog.showModal();
+        }
+        if (mode === "click") {
+          closeButton.focus();
+        }
+      };
+
+      previewTriggers.forEach((trigger) => {
+        trigger.addEventListener("click", (event) => {
+          event.preventDefault();
+          openPreview(trigger, "click");
+        });
+
+        trigger.addEventListener("focus", () => {
+          if (skipNextFocusTrigger === trigger) {
+            skipNextFocusTrigger = null;
+            return;
+          }
+          openPreview(trigger, "focus");
+        });
+      });
+
+      dialog.addEventListener("click", (event) => {
+        const bounds = dialog.getBoundingClientRect();
+        const isOutside = event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom;
+        if (isOutside) {
+          dialog.close();
+        }
+      });
+
+      dialog.addEventListener("close", () => {
+        previewImage.removeAttribute("src");
+        if (lastOpenMode === "click" && lastTrigger && document.contains(lastTrigger)) {
+          skipNextFocusTrigger = lastTrigger;
+          lastTrigger.focus();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
