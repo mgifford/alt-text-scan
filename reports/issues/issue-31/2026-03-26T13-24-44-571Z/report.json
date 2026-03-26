@@ -1,0 +1,69 @@
+{
+  "reportType": "alt-text",
+  "issueNumber": 31,
+  "issueUrl": "https://github.com/mgifford/alt-text-scan/issues/31",
+  "scanTitle": "Drupal",
+  "scanDomain": null,
+  "discoveryMethod": "explicit",
+  "discoveredTotal": 1,
+  "requestedCount": 1,
+  "acceptedCount": 1,
+  "rejectedCount": 0,
+  "scannedCount": 1,
+  "skippedDueToTimeout": 0,
+  "urlsRequested": 1,
+  "urlsScanned": 1,
+  "scannedAt": "2026-03-26T13:24:43.785Z",
+  "totalImages": 0,
+  "uniqueImages": 0,
+  "imagesWithIssues": 0,
+  "statusCounts": {
+    "MISSING": 0,
+    "DECORATIVE": 0,
+    "SUSPICIOUS": 0,
+    "FILENAME": 0,
+    "TOO_SHORT": 0,
+    "TOO_LONG": 0,
+    "GOOD": 0
+  },
+  "urlResults": [
+    {
+      "url": "https://www.drupal.org/",
+      "finalUrl": "https://www.drupal.org/",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    }
+  ],
+  "uniqueImageList": [],
+  "meta": {
+    "ok": true,
+    "reportType": "alt-text",
+    "issueNumber": 31,
+    "issueUrl": "https://github.com/mgifford/alt-text-scan/issues/31",
+    "scanTitle": "Drupal",
+    "scanDomain": null,
+    "discoveryMethod": "explicit",
+    "discoveredTotal": 1,
+    "requestedCount": 1,
+    "acceptedCount": 1,
+    "rejectedCount": 0,
+    "scannedCount": 1,
+    "skippedDueToTimeout": 0,
+    "urlsRequested": 1,
+    "urlsScanned": 1,
+    "totalImages": 0,
+    "uniqueImages": 0,
+    "imagesWithIssues": 0,
+    "statusCounts": {
+      "MISSING": 0,
+      "DECORATIVE": 0,
+      "SUSPICIOUS": 0,
+      "FILENAME": 0,
+      "TOO_SHORT": 0,
+      "TOO_LONG": 0,
+      "GOOD": 0
+    },
+    "scannedAt": "2026-03-26T13:24:43.785Z"
+  }
+}
