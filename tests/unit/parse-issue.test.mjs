@@ -531,6 +531,8 @@ test("parseScanIssue extracts URLs from Markdown link syntax", () => {
 });
 
 test("parseScanIssue unwraps Google search wrapper URLs", () => {
+  // Two Google-wrapped URLs so we exercise unwrapping without triggering single-URL
+  // domain-scan mode (which needs exactly one URL to activate).
   const payload = {
     issue: {
       number: 202,
@@ -538,13 +540,14 @@ test("parseScanIssue unwraps Google search wrapper URLs", () => {
       title: "SCAN: Google URL unwrapping",
       created_at: "2026-02-20T20:00:00Z",
       user: { login: "octocat" },
-      body: '<a href="https://www.google.com/search?q=https://example.com/target">link text</a>'
+      body: '<a href="https://www.google.com/search?q=https://example.com/target">link text</a>\n<a href="https://www.google.com/search?q=https://example.com/other">other link</a>'
     }
   };
 
   const result = parseScanIssue(payload);
   assert.equal(result.ok, true);
   assert.ok(result.value.requestedUrls.includes("https://example.com/target"), "should unwrap Google search wrapper");
+  assert.ok(result.value.requestedUrls.includes("https://example.com/other"), "should unwrap second Google search wrapper");
   assert.ok(!result.value.requestedUrls.some((u) => u.includes("google.com")), "should not include Google wrapper URL");
 });
 
@@ -854,4 +857,80 @@ test("validateScanRequest accepts maxPages within valid range", () => {
   const result = validateScanRequest(request);
   assert.equal(result.ok, true);
   assert.equal(result.errors.length, 0);
+});
+
+// ── single-URL domain scan tests ──────────────────────────────────────────────
+
+test("parseScanIssue treats a single body URL as a domain scan", () => {
+  const payload = {
+    issue: {
+      number: 500,
+      html_url: "https://github.com/example/repo/issues/500",
+      title: "SCAN: single URL domain scan",
+      created_at: "2026-02-20T20:00:00Z",
+      user: { login: "octocat" },
+      body: "# URLs\nhttps://example.com/some/page"
+    }
+  };
+
+  const result = parseScanIssue(payload);
+  assert.equal(result.ok, true, `unexpected errors: ${result.errors.join(", ")}`);
+  assert.equal(result.scanDomain, "https://example.com");
+  assert.equal(result.value.scanDomain, "https://example.com");
+  assert.deepEqual(result.value.requestedUrls, []);
+});
+
+test("parseScanIssue single URL domain scan strips path to origin", () => {
+  const payload = {
+    issue: {
+      number: 501,
+      html_url: "https://github.com/example/repo/issues/501",
+      title: "SCAN: subdirectory URL",
+      created_at: "2026-02-20T20:00:00Z",
+      user: { login: "octocat" },
+      body: "https://www.example.org/blog/post-1"
+    }
+  };
+
+  const result = parseScanIssue(payload);
+  assert.equal(result.ok, true, `unexpected errors: ${result.errors.join(", ")}`);
+  assert.equal(result.scanDomain, "https://www.example.org");
+  assert.deepEqual(result.value.requestedUrls, []);
+});
+
+test("parseScanIssue does NOT trigger domain scan when two or more body URLs are provided", () => {
+  const payload = {
+    issue: {
+      number: 502,
+      html_url: "https://github.com/example/repo/issues/502",
+      title: "SCAN: multi-URL test",
+      created_at: "2026-02-20T20:00:00Z",
+      user: { login: "octocat" },
+      body: "# URLs\nhttps://example.com/page1\nhttps://example.com/page2"
+    }
+  };
+
+  const result = parseScanIssue(payload);
+  assert.equal(result.ok, true);
+  assert.equal(result.scanDomain, null);
+  assert.equal(result.value.requestedUrls.length, 2);
+  assert.equal(result.value.scanDomain, undefined);
+});
+
+test("parseScanIssue single-URL domain scan respects Max Pages override", () => {
+  const payload = {
+    issue: {
+      number: 503,
+      html_url: "https://github.com/example/repo/issues/503",
+      title: "SCAN: single URL with max pages",
+      created_at: "2026-02-20T20:00:00Z",
+      user: { login: "octocat" },
+      body: "https://example.com/\nMax Pages: 50"
+    }
+  };
+
+  const result = parseScanIssue(payload);
+  assert.equal(result.ok, true, `unexpected errors: ${result.errors.join(", ")}`);
+  assert.equal(result.scanDomain, "https://example.com");
+  assert.equal(result.maxPages, 50);
 });

@@ -15,6 +15,23 @@
 // Prevents runaway processing when a sitemap index has thousands of entries.
 const MAX_SITEMAP_CHILDREN = parseInt(process.env.MAX_SITEMAP_CHILDREN || "50", 10);
 
+/**
+ * Randomly sample up to `count` items from an array using a partial Fisher-Yates shuffle.
+ * Returns a new array; the source array is not modified.
+ * @param {string[]} arr - The source array
+ * @param {number} count - Maximum number of items to return
+ * @returns {string[]}
+ */
+export function randomSample(arr, count) {
+  if (count >= arr.length) return arr.slice();
+  const copy = arr.slice();
+  for (let i = 0; i < count; i++) {
+    const j = i + Math.floor(Math.random() * (copy.length - i));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy.slice(0, count);
+}
+
 // Maximum wall-clock time (ms) to spend on sitemap-based URL discovery.
 // If exceeded, the partially-collected URL list is returned (or the crawl
 // fallback is skipped) so the scan can proceed with what was found.
@@ -306,11 +323,15 @@ export async function discoverUrls(domain, maxUrls = 100) {
   const sitemapPages = await fetchSitemap(sitemapUrl, origin, maxUrls, 3, deadline);
 
   if (sitemapPages.length > 0) {
-    console.error(`[discover-urls] Found ${sitemapPages.length} URLs via sitemap`);
+    const total = sitemapPages.length;
+    const sampled = sitemapPages.length > maxUrls
+      ? randomSample(sitemapPages, maxUrls)
+      : sitemapPages;
+    console.error(`[discover-urls] Found ${total} URLs via sitemap, selected ${sampled.length}`);
     return {
-      urls: sitemapPages.slice(0, maxUrls),
+      urls: sampled,
       method: "sitemap",
-      total: sitemapPages.length
+      total
     };
   }
 

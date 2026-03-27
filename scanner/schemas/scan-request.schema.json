@@ -14,7 +14,7 @@
     "scanDomain": {
       "type": "string",
       "format": "uri",
-      "description": "Root domain to discover URLs from (sitemap or crawl). Set when the issue title contains a URL and the body has no explicit URLs."
+      "description": "Root domain to discover URLs from (sitemap or crawl). Set when the issue title contains a URL and the body has no explicit URLs, or when exactly one URL is provided in the body."
     },
     "requestId": {
       "type": "string",
