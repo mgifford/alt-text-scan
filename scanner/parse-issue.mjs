@@ -245,6 +245,8 @@ export function parseScanIssue(issueEvent) {
 
   // If no body URLs and the scanTitle itself is a valid http/https URL,
   // treat it as a domain scan — discover pages from sitemap or crawl.
+  // Also treat a single body URL the same way: use its origin as the scan domain
+  // and discover a representative set of pages (up to maxPages, default 100).
   let scanDomain = null;
   if (requestedUrls.length === 0 && titleInfo.scanTitle) {
     try {
@@ -254,6 +256,20 @@ export function parseScanIssue(issueEvent) {
       }
     } catch {
       // scanTitle is not a URL — leave scanDomain null
+    }
+  } else if (requestedUrls.length === 1) {
+    // Single URL provided — upgrade to domain scan: look for sitemap.xml and pick a
+    // random set of URLs (default 100), falling back to crawling if no sitemap exists.
+    // The user can override the page count with "Max Pages: N" in the issue body.
+    try {
+      const parsed = new URL(requestedUrls[0]);
+      if (["http:", "https:"].includes(parsed.protocol) && parsed.hostname) {
+        scanDomain = parsed.origin;
+        // requestedUrls is const — splice(0) clears it in place; domain discovery finds pages.
+        requestedUrls.splice(0);
+      }
+    } catch {
+      // Not a valid URL — keep as explicit single URL
     }
   }
 

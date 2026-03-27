@@ -114,3 +114,31 @@ test("parseSitemapXml handles mixed sitemap index where entries look like articl
   assert.ok(sitemapUrls.includes("https://example.gov/articles/page-one"));
   assert.ok(sitemapUrls.includes("https://example.gov/sitemap.xml?page=2"));
 });
+
+import { randomSample } from "../../scanner/discover-urls.mjs";
+
+test("randomSample returns a copy of all items when count >= array length", () => {
+  const arr = ["a", "b", "c"];
+  const sampled = randomSample(arr, 5);
+  assert.equal(sampled.length, 3);
+  assert.ok(["a", "b", "c"].every((x) => sampled.includes(x)));
+});
+
+test("randomSample returns exactly count items when count < array length", () => {
+  const arr = ["a", "b", "c", "d", "e"];
+  const sampled = randomSample(arr, 3);
+  assert.equal(sampled.length, 3);
+  sampled.forEach((item) => assert.ok(arr.includes(item), `${item} should be from original array`));
+  assert.equal(new Set(sampled).size, 3, "no duplicates");
+});
+
+test("randomSample does not modify the source array", () => {
+  const arr = ["a", "b", "c", "d", "e"];
+  const original = arr.slice();
+  randomSample(arr, 3);
+  assert.deepEqual(arr, original);
+});
+
+test("randomSample returns empty array for empty input", () => {
+  assert.deepEqual(randomSample([], 5), []);
+});
