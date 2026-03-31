@@ -86,8 +86,8 @@ test("assessAltText flags very short alt text", () => {
   assert.ok(result.issues.some((i) => i.includes("too short")));
 });
 
-test("assessAltText accepts 3+ character non-meaningless alt text", () => {
-  const result = assessAltText({ alt: "Dog", role: null, ariaHidden: null });
+test("assessAltText accepts multi-word non-meaningless alt text as GOOD", () => {
+  const result = assessAltText({ alt: "A golden dog running in a field", role: null, ariaHidden: null });
   assert.equal(result.status, "GOOD");
 });
 
@@ -117,4 +117,65 @@ test("assessAltText returns GOOD for a normal descriptive alt text", () => {
 test("assessAltText handles whitespace-only alt as decorative", () => {
   const result = assessAltText({ alt: "   ", role: null, ariaHidden: null });
   assert.equal(result.status, "DECORATIVE");
+});
+
+// ── Single-word detection (§6.3, §6.8) ──────────────────────────────────────
+
+test("assessAltText flags single-word alt text as suspicious", () => {
+  const result = assessAltText({ alt: "Dog", role: null, ariaHidden: null });
+  assert.equal(result.status, "SUSPICIOUS");
+  assert.ok(result.issues.some((i) => i.includes("single word")));
+});
+
+test("assessAltText flags single-word alt text regardless of case", () => {
+  const result = assessAltText({ alt: "Mountain", role: null, ariaHidden: null });
+  assert.equal(result.status, "SUSPICIOUS");
+  assert.ok(result.issues.some((i) => i.includes("single word")));
+});
+
+test("assessAltText does not flag multi-word alt text as single-word", () => {
+  const result = assessAltText({ alt: "A mountain at sunset", role: null, ariaHidden: null });
+  assert.equal(result.status, "GOOD");
+  assert.ok(!result.issues.some((i) => i.includes("single word")));
+});
+
+test("assessAltText uses MEANINGLESS_VALUES path (not single-word) for known generic labels", () => {
+  // "photo" is in MEANINGLESS_VALUES so it returns early with "not descriptive",
+  // and the single-word check further down is never reached.
+  const result = assessAltText({ alt: "photo", role: null, ariaHidden: null });
+  assert.equal(result.status, "SUSPICIOUS");
+  assert.ok(result.issues.some((i) => i.includes("not descriptive")));
+  assert.ok(!result.issues.some((i) => i.includes("single word")));
+  assert.equal(result.issues.length, 1);
+});
+
+// ── Additional MEANINGLESS_VALUES (§6.3 medium labels, §6.4 placeholders) ───
+
+test("assessAltText flags newly added meaningless values", () => {
+  for (const val of ["untitled", "alt text", "screenshot", "thumbnail", "banner", "divider", "separator", "border", "test"]) {
+    const result = assessAltText({ alt: val, role: null, ariaHidden: null });
+    assert.equal(result.status, "SUSPICIOUS", `Expected SUSPICIOUS for alt="${val}"`);
+    assert.ok(result.issues.some((i) => i.includes("not descriptive")));
+  }
+});
+
+// ── CMS-generated code detection (§6.6) ──────────────────────────────────────
+
+test("assessAltText flags CMS-generated double-hyphen codes as FILENAME", () => {
+  const result = assessAltText({
+    alt: "node--article--field-image--hero--full",
+    role: null,
+    ariaHidden: null
+  });
+  assert.equal(result.status, "FILENAME");
+  assert.ok(result.issues.some((i) => i.includes("CMS-generated")));
+});
+
+test("assessAltText does not flag hyphenated text with spaces as CMS code", () => {
+  const result = assessAltText({
+    alt: "A well-written, up-to-date summary of the report",
+    role: null,
+    ariaHidden: null
+  });
+  assert.notEqual(result.status, "FILENAME");
 });
