@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alt Text Scan – https://bendoregon.gov</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 1200px; margin: 2rem auto; padding: 0 1rem; color: #222; }
+    h1 { font-size: 1.5rem; }
+    .summary { display: flex; gap: 1.5rem; flex-wrap: wrap; margin: 1rem 0; }
+    .stat { background: #f5f5f5; border-radius: 6px; padding: 0.75rem 1.25rem; }
+    .stat strong { display: block; font-size: 1.8rem; }
+    .report-controls { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; margin: 1rem 0; }
+    .toggle-thumbnails { border: 1px solid #333; background: #fff; color: #222; border-radius: 999px; padding: 0.55rem 0.95rem; font: inherit; cursor: pointer; }
+    .toggle-thumbnails[aria-pressed="true"] { background: #222; color: #fff; }
+    table { border-collapse: collapse; width: 100%; margin-top: 1.5rem; }
+    th { background: #333; color: #fff; text-align: left; padding: 0.5rem 0.75rem; }
+    td { padding: 0.5rem 0.75rem; border-bottom: 1px solid #ddd; vertical-align: top; }
+    tr:hover td { background: #fafafa; }
+    code { background: #f0f0f0; padding: 0.1em 0.3em; border-radius: 3px; font-size: 0.9em; }
+    .thumbnail-column { width: 8.5rem; }
+    .thumbnail-column-decorative { width: 8.5rem; }
+    .review-callout { background: #e8f4fd; border-left: 4px solid #1565c0; padding: 0.75rem 1rem; margin: 1rem 0; font-size: 0.95em; border-radius: 0 6px 6px 0; }
+    .thumbnail-trigger { display: inline-flex; flex-direction: column; align-items: center; gap: 0.35rem; width: 7rem; padding: 0.45rem; border: 1px solid #ccc; border-radius: 8px; background: #fff; cursor: pointer; }
+    .thumbnail-trigger:hover, .thumbnail-trigger:focus-visible { border-color: #333; box-shadow: 0 0 0 3px rgba(33, 33, 33, 0.15); outline: none; }
+    .thumbnail-trigger__image { display: block; width: 100%; height: 4.5rem; object-fit: contain; background: #f5f5f5; border-radius: 4px; }
+    .thumbnail-trigger__text { font-size: 0.8rem; color: #444; }
+    .url-cell { position: relative; max-width: 20rem; }
+    .url-tooltip { display: none; position: absolute; z-index: 10; left: 0; top: 100%; margin-top: 0.2rem; background: #333; color: #fff; padding: 0.4rem 0.6rem; border-radius: 4px; font-size: 0.8rem; max-width: 44rem; word-break: break-all; white-space: normal; pointer-events: none; box-shadow: 0 2px 8px rgba(0,0,0,0.35); }
+    .url-cell:hover .url-tooltip, .url-cell:focus-within .url-tooltip { display: block; }
+    dialog::backdrop { background: rgba(17, 24, 39, 0.72); }
+    .preview-dialog { border: none; border-radius: 12px; padding: 0; width: min(92vw, 960px); max-height: 90vh; overflow: hidden; }
+    .preview-dialog__inner { display: grid; gap: 0.75rem; padding: 1rem; background: #fff; }
+    .preview-dialog__header { display: flex; justify-content: space-between; gap: 1rem; align-items: start; }
+    .preview-dialog__title { margin: 0; font-size: 1.1rem; }
+    .preview-dialog__close { border: 1px solid #333; background: #fff; color: #222; border-radius: 999px; padding: 0.45rem 0.8rem; font: inherit; cursor: pointer; }
+    .preview-dialog__figure { margin: 0; display: grid; gap: 0.5rem; justify-items: center; }
+    .preview-dialog__image { display: block; max-width: min(88vw, 100%); max-height: 70vh; width: auto; height: auto; background: #f5f5f5; }
+    .preview-dialog__caption { font-size: 0.9rem; color: #444; word-break: break-word; }
+    .preview-dialog__actions { margin: 0; font-size: 0.9rem; }
+    .preview-dialog__view-full { color: #1565c0; }
+    .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    @media (max-width: 720px) {
+      .summary { gap: 0.75rem; }
+      .stat { flex: 1 1 9rem; }
+      .thumbnail-trigger { width: 5.75rem; }
+      .thumbnail-trigger__image { height: 3.75rem; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Alt Text Scan Report</h1>
+  <p><strong>Domain:</strong> https://bendoregon.gov &nbsp;|&nbsp;
+     <strong>Scanned:</strong> 3/31/2026, 1:22:27 AM &nbsp;|&nbsp;
+     <strong>Discovery method:</strong> sitemap</p>
+  <p><a href="report.csv">Download image inventory CSV</a> &nbsp;|&nbsp; <a href="report.json">View full JSON</a></p>
+
+  <div class="summary">
+    <div class="stat"><strong>100</strong> Pages scanned</div>
+    <div class="stat"><strong>34</strong> Images found</div>
+    <div class="stat"><strong>21</strong> Unique images</div>
+    <div class="stat"><strong style="color:#d32f2f">2</strong> Images with issues</div>
+  </div>
+
+  <h2>Status breakdown</h2>
+  <table>
+    <thead><tr><th>Status</th><th>Count</th></tr></thead>
+    <tbody><tr><td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td><td>11</td></tr>
+<tr><td><span style="color:#f57c00;font-weight:bold">Suspicious</span></td><td>3</td></tr>
+<tr><td><span style="color:#2e7d32;font-weight:bold">Good</span></td><td>20</td></tr></tbody>
+  </table>
+
+  <h2>Unique image inventory</h2>
+  <div class="report-controls">
+    <button type="button" id="toggle-thumbnails" class="toggle-thumbnails" aria-pressed="false">Show thumbnails for images with alt text</button>
+    <span id="thumbnail-help">Thumbnails for images with alt text are hidden by default. Decorative images always show thumbnails for visual review.</span>
+  </div>
+  <p>Showing 18 images with alt text, with flagged items listed first. Use the CSV for a complete export.</p>
+  <table>
+    <thead><tr>
+      <th>Image</th>
+      <th class="thumbnail-column" hidden>Thumbnail</th>
+      <th>Status</th>
+      <th>Alt Text</th>
+      <th title="All distinct alt text values found for this image across all scanned pages, with how many times each value appeared. A Consistent result means the same alt text was used everywhere. Multiple entries mean the same image has different alt text on different pages and may need review.">Alt Variants</th>
+      <th>Title</th>
+      <th>ARIA Label</th>
+      <th>Pages</th>
+    </tr></thead>
+    <tbody>
+        <tr>
+          <td class="url-cell"><a href="https://bendoregon.gov/wp-content/uploads/2025/12/A-Wheelchair.png" target="_blank" rel="noopener" title="https://bendoregon.gov/wp-content/uploads/2025/12/A-Wheelchair.png">https://bendoregon.gov/wp-content/upload … /A-Wheelchair.png</a><span class="url-tooltip" aria-hidden="true">https://bendoregon.gov/wp-content/uploads/2025/12/A-Wheelchair.png</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://bendoregon.gov/wp-content/uploads/2025/12/A-Wheelchair.png" data-preview-alt="Wheelchair" data-preview-label="Wheelchair" data-preview-width="120" data-preview-height="120" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Wheelchair"><img src="https://bendoregon.gov/wp-content/uploads/2025/12/A-Wheelchair.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#f57c00;font-weight:bold">Suspicious</span></td>
+          <td><code>Wheelchair</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 2 occurrences of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>2<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://bendoregon.gov/news/latino-community-association-and-city-of-bend-launch-office-hours-la-asociacion-de-la-comunidad-latina-y-la-ciudad-de-bend-lanzan-un-horario-de-atencion-al-publico/" target="_blank" rel="noopener">https://bendoregon.gov/news/latino-community-association-and-city-of-bend-launch-office-hours-la-asociacion-de-la-comunidad-latina-y-la-ciudad-de-bend-lanzan-un-horario-de-atencion-al-publico/</a><br><a href="https://bendoregon.gov/news/bend-fire-rescue-announces-melissa-steele-as-new-deputy-fire-marshal-of-wildfire-preparedness/" target="_blank" rel="noopener">https://bendoregon.gov/news/bend-fire-rescue-announces-melissa-steele-as-new-deputy-fire-marshal-of-wildfire-preparedness/</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://bendoregon.gov/wp-content/uploads/2025/12/bendmpoboundary.jpeg" target="_blank" rel="noopener" title="https://bendoregon.gov/wp-content/uploads/2025/12/bendmpoboundary.jpeg">https://bendoregon.gov/wp-content/up … /bendmpoboundary.jpeg</a><span class="url-tooltip" aria-hidden="true">https://bendoregon.gov/wp-content/uploads/2025/12/bendmpoboundary.jpeg</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://bendoregon.gov/wp-content/uploads/2025/12/bendmpoboundary.jpeg" data-preview-alt="bendmpoboundary" data-preview-label="bendmpoboundary" data-preview-width="488" data-preview-height="754" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: bendmpoboundary"><img src="https://bendoregon.gov/wp-content/uploads/2025/12/bendmpoboundary.jpeg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#f57c00;font-weight:bold">Suspicious</span></td>
+          <td><code>bendmpoboundary</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://bendoregon.gov/news/bend-metropolitan-planning-is-seeking-committee-members-date-extended/" target="_blank" rel="noopener">https://bendoregon.gov/news/bend-metropolitan-planning-is-seeking-committee-members-date-extended/</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://bendoregon.gov/wp-content/uploads/2025/12/IAFF-Logo.jpeg" target="_blank" rel="noopener" title="https://bendoregon.gov/wp-content/uploads/2025/12/IAFF-Logo.jpeg">https://bendoregon.gov/wp-content/uploads/ … /IAFF-Logo.jpeg</a><span class="url-tooltip" aria-hidden="true">https://bendoregon.gov/wp-content/uploads/2025/12/IAFF-Logo.jpeg</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://bendoregon.gov/wp-content/uploads/2025/12/IAFF-Logo.jpeg" data-preview-alt="IAFF Logo" data-preview-label="IAFF Logo" data-preview-width="156" data-preview-height="155" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: IAFF Logo"><img src="https://bendoregon.gov/wp-content/uploads/2025/12/IAFF-Logo.jpeg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>IAFF Logo</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 2 occurrences of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>2<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://bendoregon.gov/news/help-the-bend-firefighters-fight-cancer/" target="_blank" rel="noopener">https://bendoregon.gov/news/help-the-bend-firefighters-fight-cancer/</a><br><a href="https://bendoregon.gov/news/help-bend-firefighters-fight-cancer/" target="_blank" rel="noopener">https://bendoregon.gov/news/help-bend-firefighters-fight-cancer/</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://bendoregon.gov/wp-content/uploads/2025/12/Santas-Express.jpeg" target="_blank" rel="noopener" title="https://bendoregon.gov/wp-content/uploads/2025/12/Santas-Express.jpeg">https://bendoregon.gov/wp-content/upl … /Santas-Express.jpeg</a><span class="url-tooltip" aria-hidden="true">https://bendoregon.gov/wp-content/uploads/2025/12/Santas-Express.jpeg</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://bendoregon.gov/wp-content/uploads/2025/12/Santas-Express.jpeg" data-preview-alt="Santa&#039;s Express" data-preview-label="Santa&#039;s Express" data-preview-width="357" data-preview-height="272" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Santa&#039;s Express"><img src="https://bendoregon.gov/wp-content/uploads/2025/12/Santas-Express.jpeg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Santa&#039;s Express</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 2 occurrences of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>2<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://bendoregon.gov/news/santa-express-2013/" target="_blank" rel="noopener">https://bendoregon.gov/news/santa-express-2013/</a><br><a href="https://bendoregon.gov/news/santas-express-2011/" target="_blank" rel="noopener">https://bendoregon.gov/news/santas-express-2011/</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://bendoregon.gov/wp-content/uploads/2025/12/20240328-BMPO-FY24-Supplemental-Budget-table.png" target="_blank" rel="noopener" title="https://bendoregon.gov/wp-content/uploads/2025/12/20240328-BMPO-FY24-Supplemental-Budget-table.png">https://bendoregon.gov/wp-content/uploads/2025/12/20240328-B…</a><span class="url-tooltip" aria-hidden="true">https://bendoregon.gov/wp-content/uploads/2025/12/20240328-BMPO-FY24-Supplemental-Budget-table.png</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://bendoregon.gov/wp-content/uploads/2025/12/20240328-BMPO-FY24-Supplemental-Budget-table.png" data-preview-alt="20240328 BMPO FY24 Supplemental Budget table" data-preview-label="20240328 BMPO FY24 Supplemental Budget table" data-preview-width="391" data-preview-height="148" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: 20240328 BMPO FY24 Supplemental Budget table"><img src="https://bendoregon.gov/wp-content/uploads/2025/12/20240328-BMPO-FY24-Supplemental-Budget-table.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>20240328 BMPO FY24 Supplemental Budget table</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://bendoregon.gov/news/bmpo-notice-of-budget-hearing-and-supplemental-budget-public-comment-period/" target="_blank" rel="noopener">https://bendoregon.gov/news/bmpo-notice-of-budget-hearing-and-supplemental-budget-public-comment-period/</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://bendoregon.gov/wp-content/uploads/2025/12/20240328-BMPO-FY25-Budget-table.png" target="_blank" rel="noopener" title="https://bendoregon.gov/wp-content/uploads/2025/12/20240328-BMPO-FY25-Budget-table.png">https://bendoregon.go … /20240328-BMPO-FY25-Budget-table.png</a><span class="url-tooltip" aria-hidden="true">https://bendoregon.gov/wp-content/uploads/2025/12/20240328-BMPO-FY25-Budget-table.png</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://bendoregon.gov/wp-content/uploads/2025/12/20240328-BMPO-FY25-Budget-table.png" data-preview-alt="20240328 BMPO FY25 Budget table" data-preview-label="20240328 BMPO FY25 Budget table" data-preview-width="408" data-preview-height="156" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: 20240328 BMPO FY25 Budget table"><img src="https://bendoregon.gov/wp-content/uploads/2025/12/20240328-BMPO-FY25-Budget-table.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>20240328 BMPO FY25 Budget table</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://bendoregon.gov/news/bmpo-notice-of-budget-hearing-and-supplemental-budget-public-comment-period/" target="_blank" rel="noopener">https://bendoregon.gov/news/bmpo-notice-of-budget-hearing-and-supplemental-budget-public-comment-period/</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://bendoregon.gov/wp-content/uploads/2025/12/Bend-MPO-FY24-Supplemental-Budget-2024-01.png" target="_blank" rel="noopener" title="https://bendoregon.gov/wp-content/uploads/2025/12/Bend-MPO-FY24-Supplemental-Budget-2024-01.png">https://ben … /Bend-MPO-FY24-Supplemental-Budget-2024-01.png</a><span class="url-tooltip" aria-hidden="true">https://bendoregon.gov/wp-content/uploads/2025/12/Bend-MPO-FY24-Supplemental-Budget-2024-01.png</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://bendoregon.gov/wp-content/uploads/2025/12/Bend-MPO-FY24-Supplemental-Budget-2024-01.png" data-preview-alt="Bend MPO FY24 Supplemental Budget 2024-01" data-preview-label="Bend MPO FY24 Supplemental Budget 2024-01" data-preview-width="327" data-preview-height="108" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Bend MPO FY24 Supplemental Budget 2024-01"><img src="https://bendoregon.gov/wp-content/uploads/2025/12/Bend-MPO-FY24-Supplemental-Budget-2024-01.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Bend MPO FY24 Supplemental Budget 2024-01</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://bendoregon.gov/news/bend-mpo-notice-of-supplemental-budget-public-comment-period/" target="_blank" rel="noopener">https://bendoregon.gov/news/bend-mpo-notice-of-supplemental-budget-public-comment-period/</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://bendoregon.gov/wp-content/uploads/2025/12/Burn-To-learn-Image.jpeg" target="_blank" rel="noopener" title="https://bendoregon.gov/wp-content/uploads/2025/12/Burn-To-learn-Image.jpeg">https://bendoregon.gov/wp-conten … /Burn-To-learn-Image.jpeg</a><span class="url-tooltip" aria-hidden="true">https://bendoregon.gov/wp-content/uploads/2025/12/Burn-To-learn-Image.jpeg</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://bendoregon.gov/wp-content/uploads/2025/12/Burn-To-learn-Image.jpeg" data-preview-alt="Firefighter spraying water on fire, burn to learn" data-preview-label="Firefighter spraying water on fire, burn to learn" data-preview-width="640" data-preview-height="480" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Firefighter spraying water on fire, burn to learn"><img src="https://bendoregon.gov/wp-content/uploads/2025/12/Burn-To-learn-Image.jpeg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Firefighter spraying water on fire, burn to learn</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://bendoregon.gov/news/structural-fire-training-exercise-on-tumalo-reservoir-road/" target="_blank" rel="noopener">https://bendoregon.gov/news/structural-fire-training-exercise-on-tumalo-reservoir-road/</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://bendoregon.gov/wp-content/uploads/2025/12/Camp-Fire-Axe-Car-Training.jpeg" target="_blank" rel="noopener" title="https://bendoregon.gov/wp-content/uploads/2025/12/Camp-Fire-Axe-Car-Training.jpeg">https://bendoregon.gov/wp … /Camp-Fire-Axe-Car-Training.jpeg</a><span class="url-tooltip" aria-hidden="true">https://bendoregon.gov/wp-content/uploads/2025/12/Camp-Fire-Axe-Car-Training.jpeg</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://bendoregon.gov/wp-content/uploads/2025/12/Camp-Fire-Axe-Car-Training.jpeg" data-preview-alt="Camp Fire Axe Car Training" data-preview-label="Camp Fire Axe Car Training" data-preview-width="723" data-preview-height="1086" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Camp Fire Axe Car Training"><img src="https://bendoregon.gov/wp-content/uploads/2025/12/Camp-Fire-Axe-Car-Training.jpeg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Camp Fire Axe Car Training</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://bendoregon.gov/news/camp-fire-axe-2013/" target="_blank" rel="noopener">https://bendoregon.gov/news/camp-fire-axe-2013/</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://bendoregon.gov/wp-content/uploads/2025/12/Celebrate_safely_and_legally.png" target="_blank" rel="noopener" title="https://bendoregon.gov/wp-content/uploads/2025/12/Celebrate_safely_and_legally.png">https://bendoregon.gov/w … /Celebrate_safely_and_legally.png</a><span class="url-tooltip" aria-hidden="true">https://bendoregon.gov/wp-content/uploads/2025/12/Celebrate_safely_and_legally.png</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://bendoregon.gov/wp-content/uploads/2025/12/Celebrate_safely_and_legally.png" data-preview-alt="Up to $750 fine, Call to report Illegal Fireworks 541-693-6911, No Illegal Fireworks in this neighborhood! Only fireworks purchased in Oregon are legal in Oregon. Bend Fire and Rescue Logo, City of Bend Logo, Bend Police Logo, Bend Neighborhood Association Logo. Celebrate Safely and Legally" data-preview-label="Up to $750 fine, Call to report Illegal Fireworks 541-693-6911, No Illegal Fireworks in this neighborhood! Only fireworks purchased in Oregon are legal in Oregon. Bend Fire and Rescue Logo, City of Bend Logo, Bend Police Logo, Bend Neighborhood Association Logo. Celebrate Safely and Legally" data-preview-width="1080" data-preview-height="1080" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Up to $750 fine, Call to report Illegal Fireworks 541-693-6911, No Illegal Fireworks in this neighborhood! Only fireworks purchased in Oregon are legal in Oregon. Bend Fire and Rescue Logo, City of Bend Logo, Bend Police Logo, Bend Neighborhood Association Logo. Celebrate Safely and Legally"><img src="https://bendoregon.gov/wp-content/uploads/2025/12/Celebrate_safely_and_legally.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Up to $750 fine, Call to report Illegal Fireworks 541-693-6911, No Illegal Fireworks in this neighborhood! Only fireworks purchased in Oregon are legal in Oregon. Bend Fire and Rescue Logo, City of Bend Logo, Bend Police Logo, Bend Neighborhood Association Logo. Celebrate Safely and Legally</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://bendoregon.gov/news/celebrate-safely-and-legally-this-4th-of-july/" target="_blank" rel="noopener">https://bendoregon.gov/news/celebrate-safely-and-legally-this-4th-of-july/</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://bendoregon.gov/wp-content/uploads/2025/12/Core-Area-TIF-Plan-pic.jpeg" target="_blank" rel="noopener" title="https://bendoregon.gov/wp-content/uploads/2025/12/Core-Area-TIF-Plan-pic.jpeg">https://bendoregon.gov/wp-con … /Core-Area-TIF-Plan-pic.jpeg</a><span class="url-tooltip" aria-hidden="true">https://bendoregon.gov/wp-content/uploads/2025/12/Core-Area-TIF-Plan-pic.jpeg</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://bendoregon.gov/wp-content/uploads/2025/12/Core-Area-TIF-Plan-pic.jpeg" data-preview-alt="Core Area TIF Photo" data-preview-label="Core Area TIF Photo" data-preview-width="1920" data-preview-height="717" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Core Area TIF Photo"><img src="https://bendoregon.gov/wp-content/uploads/2025/12/Core-Area-TIF-Plan-pic.jpeg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Core Area TIF Photo</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://bendoregon.gov/news/core-area-tif-plan-august-5th-public-hearing-city-council/" target="_blank" rel="noopener">https://bendoregon.gov/news/core-area-tif-plan-august-5th-public-hearing-city-council/</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://bendoregon.gov/wp-content/uploads/2025/12/GMD-Banner.jpeg" target="_blank" rel="noopener" title="https://bendoregon.gov/wp-content/uploads/2025/12/GMD-Banner.jpeg">https://bendoregon.gov/wp-content/uploads … /GMD-Banner.jpeg</a><span class="url-tooltip" aria-hidden="true">https://bendoregon.gov/wp-content/uploads/2025/12/GMD-Banner.jpeg</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://bendoregon.gov/wp-content/uploads/2025/12/GMD-Banner.jpeg" data-preview-alt="Bend skyline" data-preview-label="Bend skyline" data-preview-width="840" data-preview-height="253" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Bend skyline"><img src="https://bendoregon.gov/wp-content/uploads/2025/12/GMD-Banner.jpeg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Bend skyline</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://bendoregon.gov/news/bends-transportation-online-open-house/" target="_blank" rel="noopener">https://bendoregon.gov/news/bends-transportation-online-open-house/</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://bendoregon.gov/wp-content/uploads/2025/12/MPO-Logo-EPS.jpeg" target="_blank" rel="noopener" title="https://bendoregon.gov/wp-content/uploads/2025/12/MPO-Logo-EPS.jpeg">https://bendoregon.gov/wp-content/uploa … /MPO-Logo-EPS.jpeg</a><span class="url-tooltip" aria-hidden="true">https://bendoregon.gov/wp-content/uploads/2025/12/MPO-Logo-EPS.jpeg</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://bendoregon.gov/wp-content/uploads/2025/12/MPO-Logo-EPS.jpeg" data-preview-alt="MPO Logo" data-preview-label="MPO Logo" data-preview-width="723" data-preview-height="578" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: MPO Logo"><img src="https://bendoregon.gov/wp-content/uploads/2025/12/MPO-Logo-EPS.jpeg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>MPO Logo</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://bendoregon.gov/news/budget-committee-openings-for-the-bend-metropolitan-planning-organization/" target="_blank" rel="noopener">https://bendoregon.gov/news/budget-committee-openings-for-the-bend-metropolitan-planning-organization/</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://bendoregon.gov/wp-content/uploads/2025/12/Santas-Express-2012.jpeg" target="_blank" rel="noopener" title="https://bendoregon.gov/wp-content/uploads/2025/12/Santas-Express-2012.jpeg">https://bendoregon.gov/wp-conten … /Santas-Express-2012.jpeg</a><span class="url-tooltip" aria-hidden="true">https://bendoregon.gov/wp-content/uploads/2025/12/Santas-Express-2012.jpeg</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://bendoregon.gov/wp-content/uploads/2025/12/Santas-Express-2012.jpeg" data-preview-alt="Santa&#039;s Express 2012" data-preview-label="Santa&#039;s Express 2012" data-preview-width="723" data-preview-height="481" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Santa&#039;s Express 2012"><img src="https://bendoregon.gov/wp-content/uploads/2025/12/Santas-Express-2012.jpeg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Santa&#039;s Express 2012</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://bendoregon.gov/news/santa-express-2012-a-huge-success/" target="_blank" rel="noopener">https://bendoregon.gov/news/santa-express-2012-a-huge-success/</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://bendoregon.gov/wp-content/uploads/2025/12/Seattle-Stair-Climb-2012.jpeg" target="_blank" rel="noopener" title="https://bendoregon.gov/wp-content/uploads/2025/12/Seattle-Stair-Climb-2012.jpeg">https://bendoregon.gov/wp-c … /Seattle-Stair-Climb-2012.jpeg</a><span class="url-tooltip" aria-hidden="true">https://bendoregon.gov/wp-content/uploads/2025/12/Seattle-Stair-Climb-2012.jpeg</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://bendoregon.gov/wp-content/uploads/2025/12/Seattle-Stair-Climb-2012.jpeg" data-preview-alt="Seattle Stair Climb 2012" data-preview-label="Seattle Stair Climb 2012" data-preview-width="723" data-preview-height="542" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Seattle Stair Climb 2012"><img src="https://bendoregon.gov/wp-content/uploads/2025/12/Seattle-Stair-Climb-2012.jpeg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Seattle Stair Climb 2012</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://bendoregon.gov/news/help-bend-firefighters-fight-cancer/" target="_blank" rel="noopener">https://bendoregon.gov/news/help-bend-firefighters-fight-cancer/</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://bendoregon.gov/wp-content/uploads/2025/12/Stair-climb-Fundraiser-Photo.jpeg" target="_blank" rel="noopener" title="https://bendoregon.gov/wp-content/uploads/2025/12/Stair-climb-Fundraiser-Photo.jpeg">https://bendoregon.gov/ … /Stair-climb-Fundraiser-Photo.jpeg</a><span class="url-tooltip" aria-hidden="true">https://bendoregon.gov/wp-content/uploads/2025/12/Stair-climb-Fundraiser-Photo.jpeg</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://bendoregon.gov/wp-content/uploads/2025/12/Stair-climb-Fundraiser-Photo.jpeg" data-preview-alt="Firefighter walking stairs for training" data-preview-label="Firefighter walking stairs for training" data-preview-width="723" data-preview-height="964" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Firefighter walking stairs for training"><img src="https://bendoregon.gov/wp-content/uploads/2025/12/Stair-climb-Fundraiser-Photo.jpeg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Firefighter walking stairs for training</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://bendoregon.gov/news/help-the-bend-firefighters-fight-cancer/" target="_blank" rel="noopener">https://bendoregon.gov/news/help-the-bend-firefighters-fight-cancer/</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://bendoregon.gov/wp-content/uploads/2025/12/us20atTumalo14892.jpeg" target="_blank" rel="noopener" title="https://bendoregon.gov/wp-content/uploads/2025/12/us20atTumalo14892.jpeg">https://bendoregon.gov/wp-content/ … /us20atTumalo14892.jpeg</a><span class="url-tooltip" aria-hidden="true">https://bendoregon.gov/wp-content/uploads/2025/12/us20atTumalo14892.jpeg</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://bendoregon.gov/wp-content/uploads/2025/12/us20atTumalo14892.jpeg" data-preview-alt="US-20 At Tumalo Project location Map" data-preview-label="US-20 At Tumalo Project location Map" data-preview-width="555" data-preview-height="747" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: US-20 At Tumalo Project location Map"><img src="https://bendoregon.gov/wp-content/uploads/2025/12/us20atTumalo14892.jpeg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>US-20 At Tumalo Project location Map</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://bendoregon.gov/news/mtip-amendment-us20-at-tumalo-comment-period/" target="_blank" rel="noopener">https://bendoregon.gov/news/mtip-amendment-us20-at-tumalo-comment-period/</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://bendoregon.gov/wp-content/uploads/2025/12/Volunteer-Vehicle.jpeg" target="_blank" rel="noopener" title="https://bendoregon.gov/wp-content/uploads/2025/12/Volunteer-Vehicle.jpeg">https://bendoregon.gov/wp-content/ … /Volunteer-Vehicle.jpeg</a><span class="url-tooltip" aria-hidden="true">https://bendoregon.gov/wp-content/uploads/2025/12/Volunteer-Vehicle.jpeg</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://bendoregon.gov/wp-content/uploads/2025/12/Volunteer-Vehicle.jpeg" data-preview-alt="White Ford Escape" data-preview-label="White Ford Escape" data-preview-width="723" data-preview-height="526" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: White Ford Escape"><img src="https://bendoregon.gov/wp-content/uploads/2025/12/Volunteer-Vehicle.jpeg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>White Ford Escape</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://bendoregon.gov/news/become-a-bend-fire-department-volunteer/" target="_blank" rel="noopener">https://bendoregon.gov/news/become-a-bend-fire-department-volunteer/</a></div></td>
+        </tr></tbody>
+  </table>
+
+  
+  <h2>Decorative images — please review</h2>
+  <div class="review-callout" role="note">
+    <strong>Review recommended:</strong> These 3 images have empty alt text and are marked as decorative.
+    Please look at each thumbnail: does it convey meaningful information that sighted users would benefit from knowing?
+    If so, it needs descriptive alt text. The <strong>Role</strong> and <strong>ARIA Label</strong> columns show any semantic markup that was applied.
+  </div>
+  <table>
+    <thead><tr><th>Image</th><th class="thumbnail-column-decorative">Thumbnail</th><th>Status</th><th>Role</th><th>ARIA Label</th><th>Pages</th></tr></thead>
+    <tbody>
+        <tr>
+          <td class="url-cell"><a href="https://bendoregon.gov/wp-content/uploads/2025/12/ADA-icon.png" target="_blank" rel="noopener" title="https://bendoregon.gov/wp-content/uploads/2025/12/ADA-icon.png">https://bendoregon.gov/wp-content/uploads/20 … /ADA-icon.png</a><span class="url-tooltip" aria-hidden="true">https://bendoregon.gov/wp-content/uploads/2025/12/ADA-icon.png</span></td>
+          <td class="thumbnail-column-decorative"><button type="button" class="thumbnail-trigger" data-preview-src="https://bendoregon.gov/wp-content/uploads/2025/12/ADA-icon.png" data-preview-alt="" data-preview-label="https://bendoregon.gov/wp-content/uploads/2025/12/ADA-icon.png" data-preview-width="154" data-preview-height="154" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://bendoregon.gov/wp-content/uploads/2025/12/ADA-icon.png"><img src="https://bendoregon.gov/wp-content/uploads/2025/12/ADA-icon.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>9<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://bendoregon.gov/news/bmpo-transportation-plan-update-public-comment-period/" target="_blank" rel="noopener">https://bendoregon.gov/news/bmpo-transportation-plan-update-public-comment-period/</a><br><a href="https://bendoregon.gov/news/apply-for-opening-on-bend-mpo-technical-advisory-committee-and-budget-committee/" target="_blank" rel="noopener">https://bendoregon.gov/news/apply-for-opening-on-bend-mpo-technical-advisory-committee-and-budget-committee/</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://bendoregon.gov/wp-content/uploads/2025/12/MPO_H1.png" target="_blank" rel="noopener">https://bendoregon.gov/wp-content/uploads/2025/12/MPO_H1.png</a></td>
+          <td class="thumbnail-column-decorative"><button type="button" class="thumbnail-trigger" data-preview-src="https://bendoregon.gov/wp-content/uploads/2025/12/MPO_H1.png" data-preview-alt="Bend MPO Logo Header" data-preview-label="Bend MPO Logo Header" data-preview-width="662" data-preview-height="86" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Bend MPO Logo Header"><img src="https://bendoregon.gov/wp-content/uploads/2025/12/MPO_H1.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>3<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://bendoregon.gov/news/bmpo-title-vi-plan-update/" target="_blank" rel="noopener">https://bendoregon.gov/news/bmpo-title-vi-plan-update/</a><br><a href="https://bendoregon.gov/news/transportation-planning-project-selection/" target="_blank" rel="noopener">https://bendoregon.gov/news/transportation-planning-project-selection/</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="file:///C:/Users/spyott/AppData/Local/Temp/msohtmlclip1/01/clip_image002.gif" target="_blank" rel="noopener" title="file:///C:/Users/spyott/AppData/Local/Temp/msohtmlclip1/01/clip_image002.gif">file:///C:/Users/spyott/AppData/Local/T … /clip_image002.gif</a><span class="url-tooltip" aria-hidden="true">file:///C:/Users/spyott/AppData/Local/Temp/msohtmlclip1/01/clip_image002.gif</span></td>
+          <td class="thumbnail-column-decorative"><button type="button" class="thumbnail-trigger" data-preview-src="file:///C:/Users/spyott/AppData/Local/Temp/msohtmlclip1/01/clip_image002.gif" data-preview-alt="" data-preview-label="file:///C:/Users/spyott/AppData/Local/Temp/msohtmlclip1/01/clip_image002.gif" data-preview-width="2" data-preview-height="64" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: file:///C:/Users/spyott/AppData/Local/Temp/msohtmlclip1/01/clip_image002.gif"><img src="file:///C:/Users/spyott/AppData/Local/Temp/msohtmlclip1/01/clip_image002.gif" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://bendoregon.gov/news/hb-458-amendments-effective-7-1-22/" target="_blank" rel="noopener">https://bendoregon.gov/news/hb-458-amendments-effective-7-1-22/</a></div></td>
+        </tr></tbody>
+  </table>
+
+  <h2>Images with issues</h2>
+  <table>
+    <thead><tr><th>Image</th><th class="thumbnail-column" hidden>Thumbnail</th><th>Alt Text</th><th>Status</th><th>Issues</th><th>Found on</th></tr></thead>
+    <tbody>
+        <tr>
+          <td class="url-cell"><a href="https://bendoregon.gov/wp-content/uploads/2025/12/A-Wheelchair.png" target="_blank" rel="noopener" title="https://bendoregon.gov/wp-content/uploads/2025/12/A-Wheelchair.png">https://bendoregon.gov/wp-content/upload … /A-Wheelchair.png</a><span class="url-tooltip" aria-hidden="true">https://bendoregon.gov/wp-content/uploads/2025/12/A-Wheelchair.png</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://bendoregon.gov/wp-content/uploads/2025/12/A-Wheelchair.png" data-preview-alt="Wheelchair" data-preview-label="Wheelchair" data-preview-width="120" data-preview-height="120" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Wheelchair"><img src="https://bendoregon.gov/wp-content/uploads/2025/12/A-Wheelchair.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><code>Wheelchair</code></td>
+          <td><span style="color:#f57c00;font-weight:bold">Suspicious</span></td>
+          <td><ul style="margin:0;padding-left:1.2em"><li>Alt text &quot;Wheelchair&quot; is a single word; consider a more descriptive phrase that explains the image&#039;s purpose in context</li></ul></td>
+          <td style="font-size:0.85em"><a href="https://bendoregon.gov/news/latino-community-association-and-city-of-bend-launch-office-hours-la-asociacion-de-la-comunidad-latina-y-la-ciudad-de-bend-lanzan-un-horario-de-atencion-al-publico/" target="_blank" rel="noopener">https://bendoregon.gov/news/latino-community-association-and-city-of-bend-launch-office-hours-la-asociacion-de-la-comunidad-latina-y-la-ciudad-de-bend-lanzan-un-horario-de-atencion-al-publico/</a><br><a href="https://bendoregon.gov/news/bend-fire-rescue-announces-melissa-steele-as-new-deputy-fire-marshal-of-wildfire-preparedness/" target="_blank" rel="noopener">https://bendoregon.gov/news/bend-fire-rescue-announces-melissa-steele-as-new-deputy-fire-marshal-of-wildfire-preparedness/</a></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://bendoregon.gov/wp-content/uploads/2025/12/bendmpoboundary.jpeg" target="_blank" rel="noopener" title="https://bendoregon.gov/wp-content/uploads/2025/12/bendmpoboundary.jpeg">https://bendoregon.gov/wp-content/up … /bendmpoboundary.jpeg</a><span class="url-tooltip" aria-hidden="true">https://bendoregon.gov/wp-content/uploads/2025/12/bendmpoboundary.jpeg</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://bendoregon.gov/wp-content/uploads/2025/12/bendmpoboundary.jpeg" data-preview-alt="bendmpoboundary" data-preview-label="bendmpoboundary" data-preview-width="488" data-preview-height="754" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: bendmpoboundary"><img src="https://bendoregon.gov/wp-content/uploads/2025/12/bendmpoboundary.jpeg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><code>bendmpoboundary</code></td>
+          <td><span style="color:#f57c00;font-weight:bold">Suspicious</span></td>
+          <td><ul style="margin:0;padding-left:1.2em"><li>Alt text &quot;bendmpoboundary&quot; is a single word; consider a more descriptive phrase that explains the image&#039;s purpose in context</li></ul></td>
+          <td style="font-size:0.85em"><a href="https://bendoregon.gov/news/bend-metropolitan-planning-is-seeking-committee-members-date-extended/" target="_blank" rel="noopener">https://bendoregon.gov/news/bend-metropolitan-planning-is-seeking-committee-members-date-extended/</a></td>
+        </tr></tbody>
+  </table>
+
+  <dialog id="image-preview-dialog" class="preview-dialog" aria-labelledby="image-preview-title">
+    <div class="preview-dialog__inner">
+      <div class="preview-dialog__header">
+        <h2 id="image-preview-title" class="preview-dialog__title">Image preview</h2>
+        <form method="dialog">
+          <button type="submit" class="preview-dialog__close" id="close-image-preview">Close</button>
+        </form>
+      </div>
+      <figure class="preview-dialog__figure">
+        <img id="image-preview-image" class="preview-dialog__image" alt="">
+        <figcaption id="image-preview-caption" class="preview-dialog__caption"></figcaption>
+      </figure>
+      <p class="preview-dialog__actions">
+        <a id="image-preview-view-full" href="#" target="_blank" rel="noopener" class="preview-dialog__view-full">View full image ↗</a>
+      </p>
+    </div>
+  </dialog>
+
+  <script>
+    (() => {
+      const toggleButton = document.getElementById("toggle-thumbnails");
+      const thumbnailColumns = Array.from(document.querySelectorAll(".thumbnail-column"));
+      const dialog = document.getElementById("image-preview-dialog");
+      const previewImage = document.getElementById("image-preview-image");
+      const previewCaption = document.getElementById("image-preview-caption");
+      const previewTitle = document.getElementById("image-preview-title");
+      const closeButton = document.getElementById("close-image-preview");
+      const viewFullLink = document.getElementById("image-preview-view-full");
+      const previewTriggers = Array.from(document.querySelectorAll(".thumbnail-trigger"));
+      let lastTrigger = null;
+      let lastOpenMode = "click";
+      let skipNextFocusTrigger = null;
+
+      if (toggleButton) {
+        toggleButton.addEventListener("click", () => {
+          const shouldShow = toggleButton.getAttribute("aria-pressed") !== "true";
+          toggleButton.setAttribute("aria-pressed", String(shouldShow));
+          toggleButton.textContent = shouldShow ? "Hide thumbnails for images with alt text" : "Show thumbnails for images with alt text";
+          thumbnailColumns.forEach((column) => {
+            column.hidden = !shouldShow;
+          });
+        });
+      }
+
+      if (!(dialog instanceof HTMLDialogElement) || !previewImage || !previewCaption || !previewTitle) {
+        return;
+      }
+
+      const setPreviewContent = (trigger) => {
+        const src = trigger.dataset.previewSrc || "";
+        const alt = trigger.dataset.previewAlt || "";
+        const label = trigger.dataset.previewLabel || src;
+        const width = Number(trigger.dataset.previewWidth || 0);
+        const height = Number(trigger.dataset.previewHeight || 0);
+        const availableWidth = Math.max(window.innerWidth - 80, 320);
+
+        previewImage.src = src;
+        previewImage.alt = alt;
+        previewImage.style.width = width > 0 ? String(Math.min(width, availableWidth)) + "px" : "auto";
+        previewImage.style.height = "auto";
+        previewImage.style.maxWidth = "100%";
+        previewTitle.textContent = label;
+
+        if (viewFullLink) {
+          viewFullLink.href = src;
+        }
+
+        const altInfo = alt ? "Alt text: " + alt : "Alt text: none";
+        const sizeInfo = width > 0 && height > 0 ? "Displayed size: " + width + " × " + height + "px" : "Displayed size: not captured";
+        previewCaption.textContent = [altInfo, sizeInfo, src].join(" | ");
+
+        previewImage.onload = function() {
+          const nw = this.naturalWidth;
+          const nh = this.naturalHeight;
+          const naturalInfo = nw > 0 && nh > 0 ? "Natural size: " + nw + " × " + nh + "px" : "";
+          previewCaption.textContent = [altInfo, sizeInfo, naturalInfo, src].filter(Boolean).join(" | ");
+        };
+      };
+
+      const openPreview = (trigger, mode) => {
+        lastTrigger = trigger;
+        lastOpenMode = mode;
+        setPreviewContent(trigger);
+        if (!dialog.open) {
+          dialog.showModal();
+        }
+        if (mode === "click") {
+          closeButton.focus();
+        }
+      };
+
+      previewTriggers.forEach((trigger) => {
+        trigger.addEventListener("click", (event) => {
+          event.preventDefault();
+          openPreview(trigger, "click");
+        });
+
+        trigger.addEventListener("focus", () => {
+          if (skipNextFocusTrigger === trigger) {
+            skipNextFocusTrigger = null;
+            return;
+          }
+          openPreview(trigger, "focus");
+        });
+      });
+
+      dialog.addEventListener("click", (event) => {
+        const bounds = dialog.getBoundingClientRect();
+        const isOutside = event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom;
+        if (isOutside) {
+          dialog.close();
+        }
+      });
+
+      dialog.addEventListener("close", () => {
+        previewImage.removeAttribute("src");
+        if (lastOpenMode === "click" && lastTrigger && document.contains(lastTrigger)) {
+          skipNextFocusTrigger = lastTrigger;
+          lastTrigger.focus();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

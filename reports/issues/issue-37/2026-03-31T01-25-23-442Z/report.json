@@ -1,0 +1,2955 @@
+{
+  "reportType": "alt-text",
+  "issueNumber": 37,
+  "issueUrl": "https://github.com/mgifford/alt-text-scan/issues/37",
+  "scanTitle": "https://bendoregon.gov/",
+  "scanDomain": "https://bendoregon.gov",
+  "discoveryMethod": "sitemap",
+  "discoveredTotal": 100,
+  "requestedCount": 100,
+  "acceptedCount": 100,
+  "rejectedCount": 0,
+  "scannedCount": 100,
+  "skippedDueToTimeout": 0,
+  "urlsRequested": 100,
+  "urlsScanned": 100,
+  "scannedAt": "2026-03-31T01:22:27.587Z",
+  "totalImages": 34,
+  "uniqueImages": 21,
+  "imagesWithIssues": 2,
+  "statusCounts": {
+    "MISSING": 0,
+    "DECORATIVE": 11,
+    "SUSPICIOUS": 3,
+    "FILENAME": 0,
+    "TOO_SHORT": 0,
+    "TOO_LONG": 0,
+    "GOOD": 20
+  },
+  "urlResults": [
+    {
+      "url": "https://bendoregon.gov/news/latino-community-association-and-city-of-bend-launch-office-hours-la-asociacion-de-la-comunidad-latina-y-la-ciudad-de-bend-lanzan-un-horario-de-atencion-al-publico/",
+      "finalUrl": "https://bendoregon.gov/news/latino-community-association-and-city-of-bend-launch-office-hours-la-asociacion-de-la-comunidad-latina-y-la-ciudad-de-bend-lanzan-un-horario-de-atencion-al-publico/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bendoregon.gov/wp-content/uploads/2025/12/A-Wheelchair.png",
+          "alt": "Wheelchair",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 120,
+          "height": 120,
+          "isVisible": true,
+          "pageUrl": "https://bendoregon.gov/news/latino-community-association-and-city-of-bend-launch-office-hours-la-asociacion-de-la-comunidad-latina-y-la-ciudad-de-bend-lanzan-un-horario-de-atencion-al-publico/",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Alt text \"Wheelchair\" is a single word; consider a more descriptive phrase that explains the image's purpose in context"
+          ]
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/city-of-bend-applies-for-pro-housing-grant/",
+      "finalUrl": "https://bendoregon.gov/news/city-of-bend-applies-for-pro-housing-grant/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/now-accepting-designer-applications-for-the-pre-approved-plan-library/",
+      "finalUrl": "https://bendoregon.gov/news/now-accepting-designer-applications-for-the-pre-approved-plan-library/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/ahac-december-8-2021-meeting-synopsis/",
+      "finalUrl": "https://bendoregon.gov/news/ahac-december-8-2021-meeting-synopsis/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/core-area-tif-plan-august-5th-public-hearing-city-council/",
+      "finalUrl": "https://bendoregon.gov/news/core-area-tif-plan-august-5th-public-hearing-city-council/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bendoregon.gov/wp-content/uploads/2025/12/Core-Area-TIF-Plan-pic.jpeg",
+          "alt": "Core Area TIF Photo",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1920,
+          "height": 717,
+          "isVisible": true,
+          "pageUrl": "https://bendoregon.gov/news/core-area-tif-plan-august-5th-public-hearing-city-council/",
+          "status": "GOOD",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/public-notice-bend-airport-dbe-update/",
+      "finalUrl": "https://bendoregon.gov/news/public-notice-bend-airport-dbe-update/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/affordable-housing-fund-request-for-proposals/",
+      "finalUrl": "https://bendoregon.gov/news/affordable-housing-fund-request-for-proposals/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/city-selling-excess-property-for/",
+      "finalUrl": "https://bendoregon.gov/news/city-selling-excess-property-for/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/bend-airport-master-plan-tac/",
+      "finalUrl": "https://bendoregon.gov/news/bend-airport-master-plan-tac/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/public-meeting-notice-bend-airport-master-plan/",
+      "finalUrl": "https://bendoregon.gov/news/public-meeting-notice-bend-airport-master-plan/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/fire-safety-education-resources-for-central-oregon-teachers/",
+      "finalUrl": "https://bendoregon.gov/news/fire-safety-education-resources-for-central-oregon-teachers/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/santa-express-2013/",
+      "finalUrl": "https://bendoregon.gov/news/santa-express-2013/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bendoregon.gov/wp-content/uploads/2025/12/Santas-Express.jpeg",
+          "alt": "Santa's Express",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 357,
+          "height": 272,
+          "isVisible": true,
+          "pageUrl": "https://bendoregon.gov/news/santa-express-2013/",
+          "status": "GOOD",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/bend-fire-rescue-announces-melissa-steele-as-new-deputy-fire-marshal-of-wildfire-preparedness/",
+      "finalUrl": "https://bendoregon.gov/news/bend-fire-rescue-announces-melissa-steele-as-new-deputy-fire-marshal-of-wildfire-preparedness/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bendoregon.gov/wp-content/uploads/2025/12/A-Wheelchair.png",
+          "alt": "Wheelchair",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 120,
+          "height": 120,
+          "isVisible": true,
+          "pageUrl": "https://bendoregon.gov/news/bend-fire-rescue-announces-melissa-steele-as-new-deputy-fire-marshal-of-wildfire-preparedness/",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Alt text \"Wheelchair\" is a single word; consider a more descriptive phrase that explains the image's purpose in context"
+          ]
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/deschutes-county-announces-grant-program-to-fund-projects-that-reduce-wildfire-risk/",
+      "finalUrl": "https://bendoregon.gov/news/deschutes-county-announces-grant-program-to-fund-projects-that-reduce-wildfire-risk/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/celebrate-safely-and-legally-this-4th-of-july/",
+      "finalUrl": "https://bendoregon.gov/news/celebrate-safely-and-legally-this-4th-of-july/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bendoregon.gov/wp-content/uploads/2025/12/Celebrate_safely_and_legally.png",
+          "alt": "Up to $750 fine, Call to report Illegal Fireworks 541-693-6911, No Illegal Fireworks in this neighborhood! Only fireworks purchased in Oregon are legal in Oregon. Bend Fire and Rescue Logo, City of Bend Logo, Bend Police Logo, Bend Neighborhood Association Logo. Celebrate Safely and Legally",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1080,
+          "height": 1080,
+          "isVisible": true,
+          "pageUrl": "https://bendoregon.gov/news/celebrate-safely-and-legally-this-4th-of-july/",
+          "status": "GOOD",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/become-a-bend-fire-department-volunteer/",
+      "finalUrl": "https://bendoregon.gov/news/become-a-bend-fire-department-volunteer/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bendoregon.gov/wp-content/uploads/2025/12/Volunteer-Vehicle.jpeg",
+          "alt": "White Ford Escape",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 723,
+          "height": 526,
+          "isVisible": true,
+          "pageUrl": "https://bendoregon.gov/news/become-a-bend-fire-department-volunteer/",
+          "status": "GOOD",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/structural-fire-training-exercise-on-tumalo-reservoir-road/",
+      "finalUrl": "https://bendoregon.gov/news/structural-fire-training-exercise-on-tumalo-reservoir-road/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bendoregon.gov/wp-content/uploads/2025/12/Burn-To-learn-Image.jpeg",
+          "alt": "Firefighter spraying water on fire, burn to learn",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 640,
+          "height": 480,
+          "isVisible": true,
+          "pageUrl": "https://bendoregon.gov/news/structural-fire-training-exercise-on-tumalo-reservoir-road/",
+          "status": "GOOD",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/santa-express/",
+      "finalUrl": "https://bendoregon.gov/news/santa-express/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/bend-fire-department-open-house/",
+      "finalUrl": "https://bendoregon.gov/news/bend-fire-department-open-house/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/camp-fire-axe-2013/",
+      "finalUrl": "https://bendoregon.gov/news/camp-fire-axe-2013/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bendoregon.gov/wp-content/uploads/2025/12/Camp-Fire-Axe-Car-Training.jpeg",
+          "alt": "Camp Fire Axe Car Training",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 723,
+          "height": 1086,
+          "isVisible": true,
+          "pageUrl": "https://bendoregon.gov/news/camp-fire-axe-2013/",
+          "status": "GOOD",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/preventing-bark-mulch-fires/",
+      "finalUrl": "https://bendoregon.gov/news/preventing-bark-mulch-fires/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/help-the-bend-firefighters-fight-cancer/",
+      "finalUrl": "https://bendoregon.gov/news/help-the-bend-firefighters-fight-cancer/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bendoregon.gov/wp-content/uploads/2025/12/IAFF-Logo.jpeg",
+          "alt": "IAFF Logo",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 156,
+          "height": 155,
+          "isVisible": true,
+          "pageUrl": "https://bendoregon.gov/news/help-the-bend-firefighters-fight-cancer/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://bendoregon.gov/wp-content/uploads/2025/12/Stair-climb-Fundraiser-Photo.jpeg",
+          "alt": "Firefighter walking stairs for training",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 723,
+          "height": 964,
+          "isVisible": true,
+          "pageUrl": "https://bendoregon.gov/news/help-the-bend-firefighters-fight-cancer/",
+          "status": "GOOD",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/help-bend-firefighters-fight-cancer/",
+      "finalUrl": "https://bendoregon.gov/news/help-bend-firefighters-fight-cancer/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bendoregon.gov/wp-content/uploads/2025/12/IAFF-Logo.jpeg",
+          "alt": "IAFF Logo",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 156,
+          "height": 155,
+          "isVisible": true,
+          "pageUrl": "https://bendoregon.gov/news/help-bend-firefighters-fight-cancer/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://bendoregon.gov/wp-content/uploads/2025/12/Seattle-Stair-Climb-2012.jpeg",
+          "alt": "Seattle Stair Climb 2012",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 723,
+          "height": 542,
+          "isVisible": true,
+          "pageUrl": "https://bendoregon.gov/news/help-bend-firefighters-fight-cancer/",
+          "status": "GOOD",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/santa-express-2012-a-huge-success/",
+      "finalUrl": "https://bendoregon.gov/news/santa-express-2012-a-huge-success/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bendoregon.gov/wp-content/uploads/2025/12/Santas-Express-2012.jpeg",
+          "alt": "Santa's Express 2012",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 723,
+          "height": 481,
+          "isVisible": true,
+          "pageUrl": "https://bendoregon.gov/news/santa-express-2012-a-huge-success/",
+          "status": "GOOD",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/santas-express/",
+      "finalUrl": "https://bendoregon.gov/news/santas-express/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/outdoor-debris-burning-opens/",
+      "finalUrl": "https://bendoregon.gov/news/outdoor-debris-burning-opens/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/heavy-smoke-in-the-bend-area/",
+      "finalUrl": "https://bendoregon.gov/news/heavy-smoke-in-the-bend-area/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/multi-family-building-fire/",
+      "finalUrl": "https://bendoregon.gov/news/multi-family-building-fire/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/2012-fireworks-on-pilot-butte/",
+      "finalUrl": "https://bendoregon.gov/news/2012-fireworks-on-pilot-butte/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/july-4th-fireworks-and-safety/",
+      "finalUrl": "https://bendoregon.gov/news/july-4th-fireworks-and-safety/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/job-oppertunity-firefighter-paramedic/",
+      "finalUrl": "https://bendoregon.gov/news/job-oppertunity-firefighter-paramedic/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/outdoor-debris-burning-will-close-sunday-june-3rd-at-dusk/",
+      "finalUrl": "https://bendoregon.gov/news/outdoor-debris-burning-will-close-sunday-june-3rd-at-dusk/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/keep-debris-burning-safe-and-legal/",
+      "finalUrl": "https://bendoregon.gov/news/keep-debris-burning-safe-and-legal/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/structure-fire-65135-n-hwy-97/",
+      "finalUrl": "https://bendoregon.gov/news/structure-fire-65135-n-hwy-97/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/hydrant-snow-removal/",
+      "finalUrl": "https://bendoregon.gov/news/hydrant-snow-removal/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/61060-billadeau-rd-structure-fire/",
+      "finalUrl": "https://bendoregon.gov/news/61060-billadeau-rd-structure-fire/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/se-daley-estates-dr-azalia-ave-fire/",
+      "finalUrl": "https://bendoregon.gov/news/se-daley-estates-dr-azalia-ave-fire/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/60898-granite-drive-deck-fire/",
+      "finalUrl": "https://bendoregon.gov/news/60898-granite-drive-deck-fire/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/63220-johnson-rd-structure-fire/",
+      "finalUrl": "https://bendoregon.gov/news/63220-johnson-rd-structure-fire/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/car-fire-on-mt-washington-drive/",
+      "finalUrl": "https://bendoregon.gov/news/car-fire-on-mt-washington-drive/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/animal-rescued-from-deschutes-river/",
+      "finalUrl": "https://bendoregon.gov/news/animal-rescued-from-deschutes-river/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/multiple-fires-in-romaine-village/",
+      "finalUrl": "https://bendoregon.gov/news/multiple-fires-in-romaine-village/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/post-holiday-safety-and-christmas-tree-disposal/",
+      "finalUrl": "https://bendoregon.gov/news/post-holiday-safety-and-christmas-tree-disposal/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/bethlehem-inn-fire/",
+      "finalUrl": "https://bendoregon.gov/news/bethlehem-inn-fire/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/colorado-arizona-ave-house-fires/",
+      "finalUrl": "https://bendoregon.gov/news/colorado-arizona-ave-house-fires/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/make-fire-safety-a-holiday-tradition/",
+      "finalUrl": "https://bendoregon.gov/news/make-fire-safety-a-holiday-tradition/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/emergency-incident-news-release-structure-fire/",
+      "finalUrl": "https://bendoregon.gov/news/emergency-incident-news-release-structure-fire/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/turkey-fryer-safety/",
+      "finalUrl": "https://bendoregon.gov/news/turkey-fryer-safety/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/santas-express-2011/",
+      "finalUrl": "https://bendoregon.gov/news/santas-express-2011/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bendoregon.gov/wp-content/uploads/2025/12/Santas-Express.jpeg",
+          "alt": "Santa's Express",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 357,
+          "height": 272,
+          "isVisible": true,
+          "pageUrl": "https://bendoregon.gov/news/santas-express-2011/",
+          "status": "GOOD",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/campus-school-fire-safety/",
+      "finalUrl": "https://bendoregon.gov/news/campus-school-fire-safety/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/spidr-tech-press-release/",
+      "finalUrl": "https://bendoregon.gov/news/spidr-tech-press-release/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/working-together-to-reduce-stolen-vehicles-in-bend/",
+      "finalUrl": "https://bendoregon.gov/news/working-together-to-reduce-stolen-vehicles-in-bend/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/bend-police-bike-theft-reduction-program/",
+      "finalUrl": "https://bendoregon.gov/news/bend-police-bike-theft-reduction-program/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/2016-law-enforcement-torch-run/",
+      "finalUrl": "https://bendoregon.gov/news/2016-law-enforcement-torch-run/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/crash-on-ne-8th-and-ne-greenwood/",
+      "finalUrl": "https://bendoregon.gov/news/crash-on-ne-8th-and-ne-greenwood/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/orchard-park-contact/",
+      "finalUrl": "https://bendoregon.gov/news/orchard-park-contact/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/commercial-burglary/",
+      "finalUrl": "https://bendoregon.gov/news/commercial-burglary/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/apply-for-bend-metropolitan-planning-organization-committees/",
+      "finalUrl": "https://bendoregon.gov/news/apply-for-bend-metropolitan-planning-organization-committees/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/apply-to-serve-on-the-bend-mpo-budget-committee/",
+      "finalUrl": "https://bendoregon.gov/news/apply-to-serve-on-the-bend-mpo-budget-committee/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/mpo-discretionary-funding-opportunity/",
+      "finalUrl": "https://bendoregon.gov/news/mpo-discretionary-funding-opportunity/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/bmpo-title-vi-plan-update/",
+      "finalUrl": "https://bendoregon.gov/news/bmpo-title-vi-plan-update/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bendoregon.gov/wp-content/uploads/2025/12/MPO_H1.png",
+          "alt": "Bend MPO Logo Header",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 662,
+          "height": 86,
+          "isVisible": true,
+          "pageUrl": "https://bendoregon.gov/news/bmpo-title-vi-plan-update/",
+          "status": "GOOD",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/mtip-amendment-us20-at-tumalo-comment-period/",
+      "finalUrl": "https://bendoregon.gov/news/mtip-amendment-us20-at-tumalo-comment-period/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bendoregon.gov/wp-content/uploads/2025/12/us20atTumalo14892.jpeg",
+          "alt": "US-20 At Tumalo Project location Map",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 555,
+          "height": 747,
+          "isVisible": true,
+          "pageUrl": "https://bendoregon.gov/news/mtip-amendment-us20-at-tumalo-comment-period/",
+          "status": "GOOD",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/bends-transportation-online-open-house/",
+      "finalUrl": "https://bendoregon.gov/news/bends-transportation-online-open-house/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bendoregon.gov/wp-content/uploads/2025/12/GMD-Banner.jpeg",
+          "alt": "Bend skyline",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 840,
+          "height": 253,
+          "isVisible": true,
+          "pageUrl": "https://bendoregon.gov/news/bends-transportation-online-open-house/",
+          "status": "GOOD",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/bend-mpo-draft-work-plan-seeks-your-public-comment/",
+      "finalUrl": "https://bendoregon.gov/news/bend-mpo-draft-work-plan-seeks-your-public-comment/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/bend-mpo-metropolitan-transportation-planning-mtp-kicks-off/",
+      "finalUrl": "https://bendoregon.gov/news/bend-mpo-metropolitan-transportation-planning-mtp-kicks-off/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/may-is-bike-more-challenge-month/",
+      "finalUrl": "https://bendoregon.gov/news/may-is-bike-more-challenge-month/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/bmpo-notice-of-state-highway-fund-shf-program-project-funding-awards/",
+      "finalUrl": "https://bendoregon.gov/news/bmpo-notice-of-state-highway-fund-shf-program-project-funding-awards/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/bmpo-notice-of-supplemental-budget-public-comment-period/",
+      "finalUrl": "https://bendoregon.gov/news/bmpo-notice-of-supplemental-budget-public-comment-period/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/bmpo-title-vi-plan-update-public-comment-period/",
+      "finalUrl": "https://bendoregon.gov/news/bmpo-title-vi-plan-update-public-comment-period/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/bmpo-biennial-unified-planning-work-program-upwp-public-comment-period/",
+      "finalUrl": "https://bendoregon.gov/news/bmpo-biennial-unified-planning-work-program-upwp-public-comment-period/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/bmpo-notice-of-budget-hearing-public-comment-period/",
+      "finalUrl": "https://bendoregon.gov/news/bmpo-notice-of-budget-hearing-public-comment-period/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/bmpo-transportation-plan-update-public-comment-period/",
+      "finalUrl": "https://bendoregon.gov/news/bmpo-transportation-plan-update-public-comment-period/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bendoregon.gov/wp-content/uploads/2025/12/ADA-icon.png",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 154,
+          "height": 154,
+          "isVisible": true,
+          "pageUrl": "https://bendoregon.gov/news/bmpo-transportation-plan-update-public-comment-period/",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/parking-amendments-2-climate-friendly-and-equitable-communities-effective-01-19-24/",
+      "finalUrl": "https://bendoregon.gov/news/parking-amendments-2-climate-friendly-and-equitable-communities-effective-01-19-24/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/amendments-to-facilitate-housing-effective-12-15-23/",
+      "finalUrl": "https://bendoregon.gov/news/amendments-to-facilitate-housing-effective-12-15-23/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/system-development-charges-reports-are-available/",
+      "finalUrl": "https://bendoregon.gov/news/system-development-charges-reports-are-available/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/apply-for-opening-on-bend-mpo-technical-advisory-committee-and-budget-committee/",
+      "finalUrl": "https://bendoregon.gov/news/apply-for-opening-on-bend-mpo-technical-advisory-committee-and-budget-committee/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bendoregon.gov/wp-content/uploads/2025/12/ADA-icon.png",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 154,
+          "height": 154,
+          "isVisible": true,
+          "pageUrl": "https://bendoregon.gov/news/apply-for-opening-on-bend-mpo-technical-advisory-committee-and-budget-committee/",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/bend-mpo-notice-of-supplemental-budget-public-comment-period/",
+      "finalUrl": "https://bendoregon.gov/news/bend-mpo-notice-of-supplemental-budget-public-comment-period/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bendoregon.gov/wp-content/uploads/2025/12/Bend-MPO-FY24-Supplemental-Budget-2024-01.png",
+          "alt": "Bend MPO FY24 Supplemental Budget 2024-01",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 327,
+          "height": 108,
+          "isVisible": true,
+          "pageUrl": "https://bendoregon.gov/news/bend-mpo-notice-of-supplemental-budget-public-comment-period/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://bendoregon.gov/wp-content/uploads/2025/12/ADA-icon.png",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 154,
+          "height": 154,
+          "isVisible": true,
+          "pageUrl": "https://bendoregon.gov/news/bend-mpo-notice-of-supplemental-budget-public-comment-period/",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/90-day-notice-of-consideration-of-system-development-charge-methodology-project-lists-and-fee-changes/",
+      "finalUrl": "https://bendoregon.gov/news/90-day-notice-of-consideration-of-system-development-charge-methodology-project-lists-and-fee-changes/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/bend-metropolitan-planning-organization-mpo-transportation-project-amendment/",
+      "finalUrl": "https://bendoregon.gov/news/bend-metropolitan-planning-organization-mpo-transportation-project-amendment/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/bmpo-transportation-project-amendment-public-comment-period/",
+      "finalUrl": "https://bendoregon.gov/news/bmpo-transportation-project-amendment-public-comment-period/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bendoregon.gov/wp-content/uploads/2025/12/ADA-icon.png",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 154,
+          "height": 154,
+          "isVisible": true,
+          "pageUrl": "https://bendoregon.gov/news/bmpo-transportation-project-amendment-public-comment-period/",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/bmpo-transportation-project-amendments-public-comment-period/",
+      "finalUrl": "https://bendoregon.gov/news/bmpo-transportation-project-amendments-public-comment-period/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bendoregon.gov/wp-content/uploads/2025/12/ADA-icon.png",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 154,
+          "height": 154,
+          "isVisible": true,
+          "pageUrl": "https://bendoregon.gov/news/bmpo-transportation-project-amendments-public-comment-period/",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/bmpo-notice-of-budget-hearing-and-supplemental-budget-public-comment-period/",
+      "finalUrl": "https://bendoregon.gov/news/bmpo-notice-of-budget-hearing-and-supplemental-budget-public-comment-period/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bendoregon.gov/wp-content/uploads/2025/12/20240328-BMPO-FY24-Supplemental-Budget-table.png",
+          "alt": "20240328 BMPO FY24 Supplemental Budget table",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 391,
+          "height": 148,
+          "isVisible": true,
+          "pageUrl": "https://bendoregon.gov/news/bmpo-notice-of-budget-hearing-and-supplemental-budget-public-comment-period/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://bendoregon.gov/wp-content/uploads/2025/12/20240328-BMPO-FY25-Budget-table.png",
+          "alt": "20240328 BMPO FY25 Budget table",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 408,
+          "height": 156,
+          "isVisible": true,
+          "pageUrl": "https://bendoregon.gov/news/bmpo-notice-of-budget-hearing-and-supplemental-budget-public-comment-period/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://bendoregon.gov/wp-content/uploads/2025/12/ADA-icon.png",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 154,
+          "height": 154,
+          "isVisible": true,
+          "pageUrl": "https://bendoregon.gov/news/bmpo-notice-of-budget-hearing-and-supplemental-budget-public-comment-period/",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/bend-mpo-transportation-project-amendments-public-comment-period/",
+      "finalUrl": "https://bendoregon.gov/news/bend-mpo-transportation-project-amendments-public-comment-period/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bendoregon.gov/wp-content/uploads/2025/12/ADA-icon.png",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 154,
+          "height": 154,
+          "isVisible": true,
+          "pageUrl": "https://bendoregon.gov/news/bend-mpo-transportation-project-amendments-public-comment-period/",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/bend-mpo-transportation-plan-update-review-of-existing-future-needs-draft-project-list-and-funding/",
+      "finalUrl": "https://bendoregon.gov/news/bend-mpo-transportation-plan-update-review-of-existing-future-needs-draft-project-list-and-funding/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bendoregon.gov/wp-content/uploads/2025/12/ADA-icon.png",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 154,
+          "height": 154,
+          "isVisible": true,
+          "pageUrl": "https://bendoregon.gov/news/bend-mpo-transportation-plan-update-review-of-existing-future-needs-draft-project-list-and-funding/",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/bend-mpo-transportation-project-amendment-public-comment-period/",
+      "finalUrl": "https://bendoregon.gov/news/bend-mpo-transportation-project-amendment-public-comment-period/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bendoregon.gov/wp-content/uploads/2025/12/ADA-icon.png",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 154,
+          "height": 154,
+          "isVisible": true,
+          "pageUrl": "https://bendoregon.gov/news/bend-mpo-transportation-project-amendment-public-comment-period/",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/right-of-way-amendments-effective-03-03-2023/",
+      "finalUrl": "https://bendoregon.gov/news/right-of-way-amendments-effective-03-03-2023/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/parking-amendments-climate-friendly-and-equitable-communities-effective-03-03-2023/",
+      "finalUrl": "https://bendoregon.gov/news/parking-amendments-climate-friendly-and-equitable-communities-effective-03-03-2023/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/gateway-north-master-plan-amendments-effective-01-20-23/",
+      "finalUrl": "https://bendoregon.gov/news/gateway-north-master-plan-amendments-effective-01-20-23/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/short-term-rental-amendments-effective-11-18-22/",
+      "finalUrl": "https://bendoregon.gov/news/short-term-rental-amendments-effective-11-18-22/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/bend-metropolitan-planning-organization-transportation-project-amendments-approved/",
+      "finalUrl": "https://bendoregon.gov/news/bend-metropolitan-planning-organization-transportation-project-amendments-approved/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/transportation-planning-project-selection/",
+      "finalUrl": "https://bendoregon.gov/news/transportation-planning-project-selection/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bendoregon.gov/wp-content/uploads/2025/12/MPO_H1.png",
+          "alt": "Bend MPO Logo Header",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 662,
+          "height": 86,
+          "isVisible": true,
+          "pageUrl": "https://bendoregon.gov/news/transportation-planning-project-selection/",
+          "status": "GOOD",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/bend-metropolitan-planning-is-seeking-committee-members-date-extended/",
+      "finalUrl": "https://bendoregon.gov/news/bend-metropolitan-planning-is-seeking-committee-members-date-extended/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bendoregon.gov/wp-content/uploads/2025/12/bendmpoboundary.jpeg",
+          "alt": "bendmpoboundary",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 488,
+          "height": 754,
+          "isVisible": true,
+          "pageUrl": "https://bendoregon.gov/news/bend-metropolitan-planning-is-seeking-committee-members-date-extended/",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Alt text \"bendmpoboundary\" is a single word; consider a more descriptive phrase that explains the image's purpose in context"
+          ]
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/correction-bend-metropolitan-planning-organization-transportation-project-amendments-public-comment-period/",
+      "finalUrl": "https://bendoregon.gov/news/correction-bend-metropolitan-planning-organization-transportation-project-amendments-public-comment-period/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/shelter-code-amendments-effective-7-1-22/",
+      "finalUrl": "https://bendoregon.gov/news/shelter-code-amendments-effective-7-1-22/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/hb-458-amendments-effective-7-1-22/",
+      "finalUrl": "https://bendoregon.gov/news/hb-458-amendments-effective-7-1-22/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "file:///C:/Users/spyott/AppData/Local/Temp/msohtmlclip1/01/clip_image002.gif",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 2,
+          "height": 64,
+          "isVisible": true,
+          "pageUrl": "https://bendoregon.gov/news/hb-458-amendments-effective-7-1-22/",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/text-amendments-for-juniper-ridge-large-tract-industrial-land-division-process-in-the-bdc-for-the-juniper-ridge-overlay-zone-effective-3-18-22/",
+      "finalUrl": "https://bendoregon.gov/news/text-amendments-for-juniper-ridge-large-tract-industrial-land-division-process-in-the-bdc-for-the-juniper-ridge-overlay-zone-effective-3-18-22/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/text-amendments-to-the-dean-swift-refinement-plan-effective-3-4-22/",
+      "finalUrl": "https://bendoregon.gov/news/text-amendments-to-the-dean-swift-refinement-plan-effective-3-4-22/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/modifications-to-the-treeline-master-plan-and-the-discovery-west-master-plan-effective-2-18-22/",
+      "finalUrl": "https://bendoregon.gov/news/modifications-to-the-treeline-master-plan-and-the-discovery-west-master-plan-effective-2-18-22/",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/bend-metropolitan-planning-organization-unified-planning-work-program/",
+      "finalUrl": "https://bendoregon.gov/news/bend-metropolitan-planning-organization-unified-planning-work-program/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bendoregon.gov/wp-content/uploads/2025/12/MPO_H1.png",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 662,
+          "height": 86,
+          "isVisible": true,
+          "pageUrl": "https://bendoregon.gov/news/bend-metropolitan-planning-organization-unified-planning-work-program/",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://bendoregon.gov/news/budget-committee-openings-for-the-bend-metropolitan-planning-organization/",
+      "finalUrl": "https://bendoregon.gov/news/budget-committee-openings-for-the-bend-metropolitan-planning-organization/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://bendoregon.gov/wp-content/uploads/2025/12/MPO-Logo-EPS.jpeg",
+          "alt": "MPO Logo",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 723,
+          "height": 578,
+          "isVisible": true,
+          "pageUrl": "https://bendoregon.gov/news/budget-committee-openings-for-the-bend-metropolitan-planning-organization/",
+          "status": "GOOD",
+          "issues": []
+        }
+      ],
+      "error": null
+    }
+  ],
+  "uniqueImageList": [
+    {
+      "src": "https://bendoregon.gov/wp-content/uploads/2025/12/A-Wheelchair.png",
+      "alt": "Wheelchair",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 120,
+      "height": 120,
+      "status": "SUSPICIOUS",
+      "issues": [
+        "Alt text \"Wheelchair\" is a single word; consider a more descriptive phrase that explains the image's purpose in context"
+      ],
+      "pages": [
+        "https://bendoregon.gov/news/latino-community-association-and-city-of-bend-launch-office-hours-la-asociacion-de-la-comunidad-latina-y-la-ciudad-de-bend-lanzan-un-horario-de-atencion-al-publico/",
+        "https://bendoregon.gov/news/bend-fire-rescue-announces-melissa-steele-as-new-deputy-fire-marshal-of-wildfire-preparedness/"
+      ],
+      "occurrences": 2,
+      "altVariants": [
+        {
+          "value": "Wheelchair",
+          "count": 2,
+          "pages": [
+            "https://bendoregon.gov/news/latino-community-association-and-city-of-bend-launch-office-hours-la-asociacion-de-la-comunidad-latina-y-la-ciudad-de-bend-lanzan-un-horario-de-atencion-al-publico/",
+            "https://bendoregon.gov/news/bend-fire-rescue-announces-melissa-steele-as-new-deputy-fire-marshal-of-wildfire-preparedness/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://bendoregon.gov/news/latino-community-association-and-city-of-bend-launch-office-hours-la-asociacion-de-la-comunidad-latina-y-la-ciudad-de-bend-lanzan-un-horario-de-atencion-al-publico/",
+            "https://bendoregon.gov/news/bend-fire-rescue-announces-melissa-steele-as-new-deputy-fire-marshal-of-wildfire-preparedness/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://bendoregon.gov/news/latino-community-association-and-city-of-bend-launch-office-hours-la-asociacion-de-la-comunidad-latina-y-la-ciudad-de-bend-lanzan-un-horario-de-atencion-al-publico/",
+            "https://bendoregon.gov/news/bend-fire-rescue-announces-melissa-steele-as-new-deputy-fire-marshal-of-wildfire-preparedness/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://bendoregon.gov/news/latino-community-association-and-city-of-bend-launch-office-hours-la-asociacion-de-la-comunidad-latina-y-la-ciudad-de-bend-lanzan-un-horario-de-atencion-al-publico/",
+            "https://bendoregon.gov/news/bend-fire-rescue-announces-melissa-steele-as-new-deputy-fire-marshal-of-wildfire-preparedness/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://bendoregon.gov/news/latino-community-association-and-city-of-bend-launch-office-hours-la-asociacion-de-la-comunidad-latina-y-la-ciudad-de-bend-lanzan-un-horario-de-atencion-al-publico/",
+            "https://bendoregon.gov/news/bend-fire-rescue-announces-melissa-steele-as-new-deputy-fire-marshal-of-wildfire-preparedness/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://bendoregon.gov/news/latino-community-association-and-city-of-bend-launch-office-hours-la-asociacion-de-la-comunidad-latina-y-la-ciudad-de-bend-lanzan-un-horario-de-atencion-al-publico/",
+            "https://bendoregon.gov/news/bend-fire-rescue-announces-melissa-steele-as-new-deputy-fire-marshal-of-wildfire-preparedness/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://bendoregon.gov/wp-content/uploads/2025/12/Core-Area-TIF-Plan-pic.jpeg",
+      "alt": "Core Area TIF Photo",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 1920,
+      "height": 717,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://bendoregon.gov/news/core-area-tif-plan-august-5th-public-hearing-city-council/"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "Core Area TIF Photo",
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/core-area-tif-plan-august-5th-public-hearing-city-council/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/core-area-tif-plan-august-5th-public-hearing-city-council/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/core-area-tif-plan-august-5th-public-hearing-city-council/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/core-area-tif-plan-august-5th-public-hearing-city-council/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/core-area-tif-plan-august-5th-public-hearing-city-council/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/core-area-tif-plan-august-5th-public-hearing-city-council/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://bendoregon.gov/wp-content/uploads/2025/12/Santas-Express.jpeg",
+      "alt": "Santa's Express",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 357,
+      "height": 272,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://bendoregon.gov/news/santa-express-2013/",
+        "https://bendoregon.gov/news/santas-express-2011/"
+      ],
+      "occurrences": 2,
+      "altVariants": [
+        {
+          "value": "Santa's Express",
+          "count": 2,
+          "pages": [
+            "https://bendoregon.gov/news/santa-express-2013/",
+            "https://bendoregon.gov/news/santas-express-2011/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://bendoregon.gov/news/santa-express-2013/",
+            "https://bendoregon.gov/news/santas-express-2011/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://bendoregon.gov/news/santa-express-2013/",
+            "https://bendoregon.gov/news/santas-express-2011/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://bendoregon.gov/news/santa-express-2013/",
+            "https://bendoregon.gov/news/santas-express-2011/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://bendoregon.gov/news/santa-express-2013/",
+            "https://bendoregon.gov/news/santas-express-2011/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://bendoregon.gov/news/santa-express-2013/",
+            "https://bendoregon.gov/news/santas-express-2011/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://bendoregon.gov/wp-content/uploads/2025/12/Celebrate_safely_and_legally.png",
+      "alt": "Up to $750 fine, Call to report Illegal Fireworks 541-693-6911, No Illegal Fireworks in this neighborhood! Only fireworks purchased in Oregon are legal in Oregon. Bend Fire and Rescue Logo, City of Bend Logo, Bend Police Logo, Bend Neighborhood Association Logo. Celebrate Safely and Legally",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 1080,
+      "height": 1080,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://bendoregon.gov/news/celebrate-safely-and-legally-this-4th-of-july/"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "Up to $750 fine, Call to report Illegal Fireworks 541-693-6911, No Illegal Fireworks in this neighborhood! Only fireworks purchased in Oregon are legal in Oregon. Bend Fire and Rescue Logo, City of Bend Logo, Bend Police Logo, Bend Neighborhood Association Logo. Celebrate Safely and Legally",
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/celebrate-safely-and-legally-this-4th-of-july/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/celebrate-safely-and-legally-this-4th-of-july/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/celebrate-safely-and-legally-this-4th-of-july/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/celebrate-safely-and-legally-this-4th-of-july/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/celebrate-safely-and-legally-this-4th-of-july/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/celebrate-safely-and-legally-this-4th-of-july/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://bendoregon.gov/wp-content/uploads/2025/12/Volunteer-Vehicle.jpeg",
+      "alt": "White Ford Escape",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 723,
+      "height": 526,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://bendoregon.gov/news/become-a-bend-fire-department-volunteer/"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "White Ford Escape",
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/become-a-bend-fire-department-volunteer/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/become-a-bend-fire-department-volunteer/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/become-a-bend-fire-department-volunteer/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/become-a-bend-fire-department-volunteer/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/become-a-bend-fire-department-volunteer/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/become-a-bend-fire-department-volunteer/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://bendoregon.gov/wp-content/uploads/2025/12/Burn-To-learn-Image.jpeg",
+      "alt": "Firefighter spraying water on fire, burn to learn",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 640,
+      "height": 480,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://bendoregon.gov/news/structural-fire-training-exercise-on-tumalo-reservoir-road/"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "Firefighter spraying water on fire, burn to learn",
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/structural-fire-training-exercise-on-tumalo-reservoir-road/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/structural-fire-training-exercise-on-tumalo-reservoir-road/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/structural-fire-training-exercise-on-tumalo-reservoir-road/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/structural-fire-training-exercise-on-tumalo-reservoir-road/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/structural-fire-training-exercise-on-tumalo-reservoir-road/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/structural-fire-training-exercise-on-tumalo-reservoir-road/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://bendoregon.gov/wp-content/uploads/2025/12/Camp-Fire-Axe-Car-Training.jpeg",
+      "alt": "Camp Fire Axe Car Training",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 723,
+      "height": 1086,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://bendoregon.gov/news/camp-fire-axe-2013/"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "Camp Fire Axe Car Training",
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/camp-fire-axe-2013/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/camp-fire-axe-2013/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/camp-fire-axe-2013/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/camp-fire-axe-2013/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/camp-fire-axe-2013/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/camp-fire-axe-2013/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://bendoregon.gov/wp-content/uploads/2025/12/IAFF-Logo.jpeg",
+      "alt": "IAFF Logo",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 156,
+      "height": 155,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://bendoregon.gov/news/help-the-bend-firefighters-fight-cancer/",
+        "https://bendoregon.gov/news/help-bend-firefighters-fight-cancer/"
+      ],
+      "occurrences": 2,
+      "altVariants": [
+        {
+          "value": "IAFF Logo",
+          "count": 2,
+          "pages": [
+            "https://bendoregon.gov/news/help-the-bend-firefighters-fight-cancer/",
+            "https://bendoregon.gov/news/help-bend-firefighters-fight-cancer/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://bendoregon.gov/news/help-the-bend-firefighters-fight-cancer/",
+            "https://bendoregon.gov/news/help-bend-firefighters-fight-cancer/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://bendoregon.gov/news/help-the-bend-firefighters-fight-cancer/",
+            "https://bendoregon.gov/news/help-bend-firefighters-fight-cancer/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://bendoregon.gov/news/help-the-bend-firefighters-fight-cancer/",
+            "https://bendoregon.gov/news/help-bend-firefighters-fight-cancer/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://bendoregon.gov/news/help-the-bend-firefighters-fight-cancer/",
+            "https://bendoregon.gov/news/help-bend-firefighters-fight-cancer/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://bendoregon.gov/news/help-the-bend-firefighters-fight-cancer/",
+            "https://bendoregon.gov/news/help-bend-firefighters-fight-cancer/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://bendoregon.gov/wp-content/uploads/2025/12/Stair-climb-Fundraiser-Photo.jpeg",
+      "alt": "Firefighter walking stairs for training",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 723,
+      "height": 964,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://bendoregon.gov/news/help-the-bend-firefighters-fight-cancer/"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "Firefighter walking stairs for training",
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/help-the-bend-firefighters-fight-cancer/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/help-the-bend-firefighters-fight-cancer/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/help-the-bend-firefighters-fight-cancer/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/help-the-bend-firefighters-fight-cancer/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/help-the-bend-firefighters-fight-cancer/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/help-the-bend-firefighters-fight-cancer/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://bendoregon.gov/wp-content/uploads/2025/12/Seattle-Stair-Climb-2012.jpeg",
+      "alt": "Seattle Stair Climb 2012",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 723,
+      "height": 542,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://bendoregon.gov/news/help-bend-firefighters-fight-cancer/"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "Seattle Stair Climb 2012",
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/help-bend-firefighters-fight-cancer/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/help-bend-firefighters-fight-cancer/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/help-bend-firefighters-fight-cancer/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/help-bend-firefighters-fight-cancer/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/help-bend-firefighters-fight-cancer/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/help-bend-firefighters-fight-cancer/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://bendoregon.gov/wp-content/uploads/2025/12/Santas-Express-2012.jpeg",
+      "alt": "Santa's Express 2012",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 723,
+      "height": 481,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://bendoregon.gov/news/santa-express-2012-a-huge-success/"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "Santa's Express 2012",
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/santa-express-2012-a-huge-success/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/santa-express-2012-a-huge-success/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/santa-express-2012-a-huge-success/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/santa-express-2012-a-huge-success/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/santa-express-2012-a-huge-success/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/santa-express-2012-a-huge-success/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://bendoregon.gov/wp-content/uploads/2025/12/MPO_H1.png",
+      "alt": "Bend MPO Logo Header",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 662,
+      "height": 86,
+      "status": "DECORATIVE",
+      "issues": [],
+      "pages": [
+        "https://bendoregon.gov/news/bmpo-title-vi-plan-update/",
+        "https://bendoregon.gov/news/transportation-planning-project-selection/",
+        "https://bendoregon.gov/news/bend-metropolitan-planning-organization-unified-planning-work-program/"
+      ],
+      "occurrences": 3,
+      "altVariants": [
+        {
+          "value": "Bend MPO Logo Header",
+          "count": 2,
+          "pages": [
+            "https://bendoregon.gov/news/bmpo-title-vi-plan-update/",
+            "https://bendoregon.gov/news/transportation-planning-project-selection/"
+          ]
+        },
+        {
+          "value": "",
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/bend-metropolitan-planning-organization-unified-planning-work-program/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 3,
+          "pages": [
+            "https://bendoregon.gov/news/bmpo-title-vi-plan-update/",
+            "https://bendoregon.gov/news/transportation-planning-project-selection/",
+            "https://bendoregon.gov/news/bend-metropolitan-planning-organization-unified-planning-work-program/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 3,
+          "pages": [
+            "https://bendoregon.gov/news/bmpo-title-vi-plan-update/",
+            "https://bendoregon.gov/news/transportation-planning-project-selection/",
+            "https://bendoregon.gov/news/bend-metropolitan-planning-organization-unified-planning-work-program/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 3,
+          "pages": [
+            "https://bendoregon.gov/news/bmpo-title-vi-plan-update/",
+            "https://bendoregon.gov/news/transportation-planning-project-selection/",
+            "https://bendoregon.gov/news/bend-metropolitan-planning-organization-unified-planning-work-program/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 3,
+          "pages": [
+            "https://bendoregon.gov/news/bmpo-title-vi-plan-update/",
+            "https://bendoregon.gov/news/transportation-planning-project-selection/",
+            "https://bendoregon.gov/news/bend-metropolitan-planning-organization-unified-planning-work-program/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 3,
+          "pages": [
+            "https://bendoregon.gov/news/bmpo-title-vi-plan-update/",
+            "https://bendoregon.gov/news/transportation-planning-project-selection/",
+            "https://bendoregon.gov/news/bend-metropolitan-planning-organization-unified-planning-work-program/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://bendoregon.gov/wp-content/uploads/2025/12/us20atTumalo14892.jpeg",
+      "alt": "US-20 At Tumalo Project location Map",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 555,
+      "height": 747,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://bendoregon.gov/news/mtip-amendment-us20-at-tumalo-comment-period/"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "US-20 At Tumalo Project location Map",
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/mtip-amendment-us20-at-tumalo-comment-period/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/mtip-amendment-us20-at-tumalo-comment-period/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/mtip-amendment-us20-at-tumalo-comment-period/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/mtip-amendment-us20-at-tumalo-comment-period/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/mtip-amendment-us20-at-tumalo-comment-period/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/mtip-amendment-us20-at-tumalo-comment-period/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://bendoregon.gov/wp-content/uploads/2025/12/GMD-Banner.jpeg",
+      "alt": "Bend skyline",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 840,
+      "height": 253,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://bendoregon.gov/news/bends-transportation-online-open-house/"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "Bend skyline",
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/bends-transportation-online-open-house/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/bends-transportation-online-open-house/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/bends-transportation-online-open-house/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/bends-transportation-online-open-house/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/bends-transportation-online-open-house/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/bends-transportation-online-open-house/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://bendoregon.gov/wp-content/uploads/2025/12/ADA-icon.png",
+      "alt": "",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 154,
+      "height": 154,
+      "status": "DECORATIVE",
+      "issues": [],
+      "pages": [
+        "https://bendoregon.gov/news/bmpo-transportation-plan-update-public-comment-period/",
+        "https://bendoregon.gov/news/apply-for-opening-on-bend-mpo-technical-advisory-committee-and-budget-committee/",
+        "https://bendoregon.gov/news/bend-mpo-notice-of-supplemental-budget-public-comment-period/",
+        "https://bendoregon.gov/news/bmpo-transportation-project-amendment-public-comment-period/",
+        "https://bendoregon.gov/news/bmpo-transportation-project-amendments-public-comment-period/",
+        "https://bendoregon.gov/news/bmpo-notice-of-budget-hearing-and-supplemental-budget-public-comment-period/",
+        "https://bendoregon.gov/news/bend-mpo-transportation-project-amendments-public-comment-period/",
+        "https://bendoregon.gov/news/bend-mpo-transportation-plan-update-review-of-existing-future-needs-draft-project-list-and-funding/",
+        "https://bendoregon.gov/news/bend-mpo-transportation-project-amendment-public-comment-period/"
+      ],
+      "occurrences": 9,
+      "altVariants": [
+        {
+          "value": "",
+          "count": 9,
+          "pages": [
+            "https://bendoregon.gov/news/bmpo-transportation-plan-update-public-comment-period/",
+            "https://bendoregon.gov/news/apply-for-opening-on-bend-mpo-technical-advisory-committee-and-budget-committee/",
+            "https://bendoregon.gov/news/bend-mpo-notice-of-supplemental-budget-public-comment-period/",
+            "https://bendoregon.gov/news/bmpo-transportation-project-amendment-public-comment-period/",
+            "https://bendoregon.gov/news/bmpo-transportation-project-amendments-public-comment-period/",
+            "https://bendoregon.gov/news/bmpo-notice-of-budget-hearing-and-supplemental-budget-public-comment-period/",
+            "https://bendoregon.gov/news/bend-mpo-transportation-project-amendments-public-comment-period/",
+            "https://bendoregon.gov/news/bend-mpo-transportation-plan-update-review-of-existing-future-needs-draft-project-list-and-funding/",
+            "https://bendoregon.gov/news/bend-mpo-transportation-project-amendment-public-comment-period/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 9,
+          "pages": [
+            "https://bendoregon.gov/news/bmpo-transportation-plan-update-public-comment-period/",
+            "https://bendoregon.gov/news/apply-for-opening-on-bend-mpo-technical-advisory-committee-and-budget-committee/",
+            "https://bendoregon.gov/news/bend-mpo-notice-of-supplemental-budget-public-comment-period/",
+            "https://bendoregon.gov/news/bmpo-transportation-project-amendment-public-comment-period/",
+            "https://bendoregon.gov/news/bmpo-transportation-project-amendments-public-comment-period/",
+            "https://bendoregon.gov/news/bmpo-notice-of-budget-hearing-and-supplemental-budget-public-comment-period/",
+            "https://bendoregon.gov/news/bend-mpo-transportation-project-amendments-public-comment-period/",
+            "https://bendoregon.gov/news/bend-mpo-transportation-plan-update-review-of-existing-future-needs-draft-project-list-and-funding/",
+            "https://bendoregon.gov/news/bend-mpo-transportation-project-amendment-public-comment-period/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 9,
+          "pages": [
+            "https://bendoregon.gov/news/bmpo-transportation-plan-update-public-comment-period/",
+            "https://bendoregon.gov/news/apply-for-opening-on-bend-mpo-technical-advisory-committee-and-budget-committee/",
+            "https://bendoregon.gov/news/bend-mpo-notice-of-supplemental-budget-public-comment-period/",
+            "https://bendoregon.gov/news/bmpo-transportation-project-amendment-public-comment-period/",
+            "https://bendoregon.gov/news/bmpo-transportation-project-amendments-public-comment-period/",
+            "https://bendoregon.gov/news/bmpo-notice-of-budget-hearing-and-supplemental-budget-public-comment-period/",
+            "https://bendoregon.gov/news/bend-mpo-transportation-project-amendments-public-comment-period/",
+            "https://bendoregon.gov/news/bend-mpo-transportation-plan-update-review-of-existing-future-needs-draft-project-list-and-funding/",
+            "https://bendoregon.gov/news/bend-mpo-transportation-project-amendment-public-comment-period/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 9,
+          "pages": [
+            "https://bendoregon.gov/news/bmpo-transportation-plan-update-public-comment-period/",
+            "https://bendoregon.gov/news/apply-for-opening-on-bend-mpo-technical-advisory-committee-and-budget-committee/",
+            "https://bendoregon.gov/news/bend-mpo-notice-of-supplemental-budget-public-comment-period/",
+            "https://bendoregon.gov/news/bmpo-transportation-project-amendment-public-comment-period/",
+            "https://bendoregon.gov/news/bmpo-transportation-project-amendments-public-comment-period/",
+            "https://bendoregon.gov/news/bmpo-notice-of-budget-hearing-and-supplemental-budget-public-comment-period/",
+            "https://bendoregon.gov/news/bend-mpo-transportation-project-amendments-public-comment-period/",
+            "https://bendoregon.gov/news/bend-mpo-transportation-plan-update-review-of-existing-future-needs-draft-project-list-and-funding/",
+            "https://bendoregon.gov/news/bend-mpo-transportation-project-amendment-public-comment-period/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 9,
+          "pages": [
+            "https://bendoregon.gov/news/bmpo-transportation-plan-update-public-comment-period/",
+            "https://bendoregon.gov/news/apply-for-opening-on-bend-mpo-technical-advisory-committee-and-budget-committee/",
+            "https://bendoregon.gov/news/bend-mpo-notice-of-supplemental-budget-public-comment-period/",
+            "https://bendoregon.gov/news/bmpo-transportation-project-amendment-public-comment-period/",
+            "https://bendoregon.gov/news/bmpo-transportation-project-amendments-public-comment-period/",
+            "https://bendoregon.gov/news/bmpo-notice-of-budget-hearing-and-supplemental-budget-public-comment-period/",
+            "https://bendoregon.gov/news/bend-mpo-transportation-project-amendments-public-comment-period/",
+            "https://bendoregon.gov/news/bend-mpo-transportation-plan-update-review-of-existing-future-needs-draft-project-list-and-funding/",
+            "https://bendoregon.gov/news/bend-mpo-transportation-project-amendment-public-comment-period/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 9,
+          "pages": [
+            "https://bendoregon.gov/news/bmpo-transportation-plan-update-public-comment-period/",
+            "https://bendoregon.gov/news/apply-for-opening-on-bend-mpo-technical-advisory-committee-and-budget-committee/",
+            "https://bendoregon.gov/news/bend-mpo-notice-of-supplemental-budget-public-comment-period/",
+            "https://bendoregon.gov/news/bmpo-transportation-project-amendment-public-comment-period/",
+            "https://bendoregon.gov/news/bmpo-transportation-project-amendments-public-comment-period/",
+            "https://bendoregon.gov/news/bmpo-notice-of-budget-hearing-and-supplemental-budget-public-comment-period/",
+            "https://bendoregon.gov/news/bend-mpo-transportation-project-amendments-public-comment-period/",
+            "https://bendoregon.gov/news/bend-mpo-transportation-plan-update-review-of-existing-future-needs-draft-project-list-and-funding/",
+            "https://bendoregon.gov/news/bend-mpo-transportation-project-amendment-public-comment-period/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://bendoregon.gov/wp-content/uploads/2025/12/Bend-MPO-FY24-Supplemental-Budget-2024-01.png",
+      "alt": "Bend MPO FY24 Supplemental Budget 2024-01",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 327,
+      "height": 108,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://bendoregon.gov/news/bend-mpo-notice-of-supplemental-budget-public-comment-period/"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "Bend MPO FY24 Supplemental Budget 2024-01",
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/bend-mpo-notice-of-supplemental-budget-public-comment-period/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/bend-mpo-notice-of-supplemental-budget-public-comment-period/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/bend-mpo-notice-of-supplemental-budget-public-comment-period/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/bend-mpo-notice-of-supplemental-budget-public-comment-period/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/bend-mpo-notice-of-supplemental-budget-public-comment-period/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/bend-mpo-notice-of-supplemental-budget-public-comment-period/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://bendoregon.gov/wp-content/uploads/2025/12/20240328-BMPO-FY24-Supplemental-Budget-table.png",
+      "alt": "20240328 BMPO FY24 Supplemental Budget table",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 391,
+      "height": 148,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://bendoregon.gov/news/bmpo-notice-of-budget-hearing-and-supplemental-budget-public-comment-period/"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "20240328 BMPO FY24 Supplemental Budget table",
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/bmpo-notice-of-budget-hearing-and-supplemental-budget-public-comment-period/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/bmpo-notice-of-budget-hearing-and-supplemental-budget-public-comment-period/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/bmpo-notice-of-budget-hearing-and-supplemental-budget-public-comment-period/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/bmpo-notice-of-budget-hearing-and-supplemental-budget-public-comment-period/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/bmpo-notice-of-budget-hearing-and-supplemental-budget-public-comment-period/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/bmpo-notice-of-budget-hearing-and-supplemental-budget-public-comment-period/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://bendoregon.gov/wp-content/uploads/2025/12/20240328-BMPO-FY25-Budget-table.png",
+      "alt": "20240328 BMPO FY25 Budget table",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 408,
+      "height": 156,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://bendoregon.gov/news/bmpo-notice-of-budget-hearing-and-supplemental-budget-public-comment-period/"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "20240328 BMPO FY25 Budget table",
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/bmpo-notice-of-budget-hearing-and-supplemental-budget-public-comment-period/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/bmpo-notice-of-budget-hearing-and-supplemental-budget-public-comment-period/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/bmpo-notice-of-budget-hearing-and-supplemental-budget-public-comment-period/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/bmpo-notice-of-budget-hearing-and-supplemental-budget-public-comment-period/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/bmpo-notice-of-budget-hearing-and-supplemental-budget-public-comment-period/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/bmpo-notice-of-budget-hearing-and-supplemental-budget-public-comment-period/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://bendoregon.gov/wp-content/uploads/2025/12/bendmpoboundary.jpeg",
+      "alt": "bendmpoboundary",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 488,
+      "height": 754,
+      "status": "SUSPICIOUS",
+      "issues": [
+        "Alt text \"bendmpoboundary\" is a single word; consider a more descriptive phrase that explains the image's purpose in context"
+      ],
+      "pages": [
+        "https://bendoregon.gov/news/bend-metropolitan-planning-is-seeking-committee-members-date-extended/"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "bendmpoboundary",
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/bend-metropolitan-planning-is-seeking-committee-members-date-extended/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/bend-metropolitan-planning-is-seeking-committee-members-date-extended/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/bend-metropolitan-planning-is-seeking-committee-members-date-extended/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/bend-metropolitan-planning-is-seeking-committee-members-date-extended/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/bend-metropolitan-planning-is-seeking-committee-members-date-extended/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/bend-metropolitan-planning-is-seeking-committee-members-date-extended/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "file:///C:/Users/spyott/AppData/Local/Temp/msohtmlclip1/01/clip_image002.gif",
+      "alt": "",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 2,
+      "height": 64,
+      "status": "DECORATIVE",
+      "issues": [],
+      "pages": [
+        "https://bendoregon.gov/news/hb-458-amendments-effective-7-1-22/"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "",
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/hb-458-amendments-effective-7-1-22/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/hb-458-amendments-effective-7-1-22/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/hb-458-amendments-effective-7-1-22/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/hb-458-amendments-effective-7-1-22/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/hb-458-amendments-effective-7-1-22/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/hb-458-amendments-effective-7-1-22/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://bendoregon.gov/wp-content/uploads/2025/12/MPO-Logo-EPS.jpeg",
+      "alt": "MPO Logo",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 723,
+      "height": 578,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://bendoregon.gov/news/budget-committee-openings-for-the-bend-metropolitan-planning-organization/"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "MPO Logo",
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/budget-committee-openings-for-the-bend-metropolitan-planning-organization/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/budget-committee-openings-for-the-bend-metropolitan-planning-organization/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/budget-committee-openings-for-the-bend-metropolitan-planning-organization/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/budget-committee-openings-for-the-bend-metropolitan-planning-organization/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/budget-committee-openings-for-the-bend-metropolitan-planning-organization/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://bendoregon.gov/news/budget-committee-openings-for-the-bend-metropolitan-planning-organization/"
+          ]
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "ok": true,
+    "reportType": "alt-text",
+    "issueNumber": 37,
+    "issueUrl": "https://github.com/mgifford/alt-text-scan/issues/37",
+    "scanTitle": "https://bendoregon.gov/",
+    "scanDomain": "https://bendoregon.gov",
+    "discoveryMethod": "sitemap",
+    "discoveredTotal": 100,
+    "requestedCount": 100,
+    "acceptedCount": 100,
+    "rejectedCount": 0,
+    "scannedCount": 100,
+    "skippedDueToTimeout": 0,
+    "urlsRequested": 100,
+    "urlsScanned": 100,
+    "totalImages": 34,
+    "uniqueImages": 21,
+    "imagesWithIssues": 2,
+    "statusCounts": {
+      "MISSING": 0,
+      "DECORATIVE": 11,
+      "SUSPICIOUS": 3,
+      "FILENAME": 0,
+      "TOO_SHORT": 0,
+      "TOO_LONG": 0,
+      "GOOD": 20
+    },
+    "scannedAt": "2026-03-31T01:22:27.587Z"
+  }
+}
