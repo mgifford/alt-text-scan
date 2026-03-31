@@ -20,6 +20,7 @@ async function loadPlaywright() {
 
 /**
  * Words/phrases that suggest bad alt text practice.
+ * See docs/IMAGE_ALT_TEXT_ACCESSIBILITY_BEST_PRACTICES.md §6.5
  */
 const SUSPICIOUS_PHRASES = [
   "image of",
@@ -32,8 +33,11 @@ const SUSPICIOUS_PHRASES = [
 
 /**
  * Alt text values that are meaningless (single-word non-descriptors).
+ * Covers §6.3 generic medium labels and §6.4 draft/placeholder text from
+ * docs/IMAGE_ALT_TEXT_ACCESSIBILITY_BEST_PRACTICES.md
  */
 const MEANINGLESS_VALUES = new Set([
+  // §6.3 – medium labels
   "alt",
   "chart",
   "decorative",
@@ -42,18 +46,36 @@ const MEANINGLESS_VALUES = new Set([
   "photo",
   "photograph",
   "picture",
-  "placeholder",
-  "placeholder image",
   "spacer",
-  "tbd",
-  "todo",
-  "undefined",
-  "none",
-  "null",
   "img",
   "icon",
-  "logo"
+  "logo",
+  "thumbnail",
+  "screenshot",
+  "banner",
+  "divider",
+  "separator",
+  "border",
+  // §6.4 – draft / placeholder text
+  "placeholder",
+  "placeholder image",
+  "tbd",
+  "todo",
+  "test",
+  "untitled",
+  "alt text",
+  "undefined",
+  "none",
+  "null"
 ]);
+
+/**
+ * Regex that matches CMS-generated or machine-generated codes used as alt text.
+ * Matches strings with no whitespace that contain a double-hyphen (e.g.
+ * "node--article--field-image--hero--full"), as documented in
+ * docs/IMAGE_ALT_TEXT_ACCESSIBILITY_BEST_PRACTICES.md §6.6
+ */
+const CMS_CODE_PATTERN = /^[^\s]+--[^\s]+$/;
 
 /**
  * Values that indicate alt text is intentionally empty (decorative images).
@@ -208,6 +230,13 @@ export function assessAltText(img) {
     return { status: "FILENAME", issues };
   }
 
+  // CMS-generated or machine-generated code (no whitespace, contains double-hyphens)
+  // e.g. "node--article--field-image--hero--full" — §6.6
+  if (CMS_CODE_PATTERN.test(trimmed)) {
+    issues.push(`Alt text "${trimmed}" appears to be a CMS-generated code rather than a description`);
+    return { status: "FILENAME", issues };
+  }
+
   // Suspicious phrases
   for (const phrase of SUSPICIOUS_PHRASES) {
     if (lower.includes(phrase)) {
@@ -224,6 +253,14 @@ export function assessAltText(img) {
       `Alt text is very long (${trimmed.length} chars); should this be shortened, or use aria-describedby for extended descriptions?`
     );
     return { status: "TOO_LONG", issues };
+  }
+
+  // Single-word alt text is rarely sufficient — §6.3, §6.8
+  // One word seldom conveys image purpose or context.
+  if (!/\s/.test(trimmed)) {
+    issues.push(
+      `Alt text "${trimmed}" is a single word; consider a more descriptive phrase that explains the image's purpose in context`
+    );
   }
 
   if (issues.length > 0) {

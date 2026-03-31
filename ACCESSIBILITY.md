@@ -180,7 +180,34 @@ This project follows guidance from established accessibility authorities:
 - [axe-core](https://github.com/dequelabs/axe-core) - Industry-standard accessibility engine
 - [Playwright](https://playwright.dev/) - Cross-browser testing framework
 
+### Alt Text Best Practices
+
+A full reference guide — including the WCAG decision tree, all image categories, common bad-pattern examples, and an automated vs. human-review table — is mirrored locally:
+
+📄 **[docs/IMAGE_ALT_TEXT_ACCESSIBILITY_BEST_PRACTICES.md](./docs/IMAGE_ALT_TEXT_ACCESSIBILITY_BEST_PRACTICES.md)**
+
+Upstream source: [mgifford/ACCESSIBILITY.md — IMAGE_ALT_TEXT_ACCESSIBILITY_BEST_PRACTICES.md](https://github.com/mgifford/ACCESSIBILITY.md/blob/main/examples/IMAGE_ALT_TEXT_ACCESSIBILITY_BEST_PRACTICES.md)
+
+#### Patterns detected automatically by `scan-alt-text.mjs`
+
+The scanner implements checks drawn directly from the best-practices guide:
+
+| Check | Section | Scanner status |
+|-------|---------|----------------|
+| `alt` attribute entirely absent | §6.1 | `MISSING` |
+| Alt text equals the filename (has image extension, no spaces) | §6.2 | `FILENAME` |
+| CMS-injected code (no spaces + double-hyphens, e.g. `node--field-image`) | §6.6 | `FILENAME` |
+| Known generic single-word labels (`image`, `photo`, `graphic`, `chart`, `alt`, `spacer`, `decorative`, `tbd`, `todo`, `placeholder`, `untitled`, `alt text`, `screenshot`, `thumbnail`, `banner`, `divider`, `separator`, `border`, `test`, `undefined`, `none`, `null`, `img`, `icon`, `logo`) | §6.3, §6.4 | `SUSPICIOUS` |
+| "Type" prefix phrases (`image of`, `photo of`, `graphic of`, `picture of`, `thumbnail of`, `screenshot of`) | §6.5 | `SUSPICIOUS` |
+| Single-word alt text (not in the generic-label list above) | §6.3, §6.8 | `SUSPICIOUS` |
+| Alt text shorter than 3 characters | §5 | `TOO_SHORT` |
+| Alt text longer than 500 characters | §6.9 | `TOO_LONG` |
+| Non-empty alt on an `aria-hidden` or `role="presentation/none"` image | §4.2 | `SUSPICIOUS` |
+
+Human review is always required to evaluate whether alt text is meaningful and appropriate in context.
+
 ### Community Resources
+
 For a comprehensive list of vetted accessibility resources, see:
 - [TRUSTED_SOURCES.yaml](https://github.com/mgifford/ACCESSIBILITY.md/blob/main/examples/TRUSTED_SOURCES.yaml) - Machine-readable accessibility resource registry
 
