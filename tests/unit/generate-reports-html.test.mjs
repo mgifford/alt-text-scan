@@ -476,3 +476,194 @@ describe('generate-reports-html', () => {
     });
   });
 });
+
+// ── Additional findAllReports edge cases ──────────────────────────────────────
+
+describe('findAllReports extra edge cases', () => {
+  it('should skip malformed JSON files gracefully', () => {
+    const tmp = mkdtempSync(join(tmpdir(), 'reports-test-'));
+    try {
+      const issueDir = join(tmp, 'issues', 'issue-99', '2026-01-01T00-00-00-000Z');
+      mkdirSync(issueDir, { recursive: true });
+      writeFileSync(join(issueDir, 'report.json'), '{ this is not valid json }');
+
+      const reports = findAllReports(tmp);
+      assert.equal(reports.length, 0, 'Malformed JSON should be skipped without throwing');
+    } finally {
+      rmSync(tmp, { recursive: true });
+    }
+  });
+
+  it('should return empty array when issues directory is empty', () => {
+    const tmp = mkdtempSync(join(tmpdir(), 'reports-test-'));
+    try {
+      mkdirSync(join(tmp, 'issues'), { recursive: true });
+      const reports = findAllReports(tmp);
+      assert.equal(reports.length, 0);
+    } finally {
+      rmSync(tmp, { recursive: true });
+    }
+  });
+
+  it('should handle multiple issues each with multiple timestamps', () => {
+    const tmp = mkdtempSync(join(tmpdir(), 'reports-test-'));
+    try {
+      const reportData = (n, ts) => JSON.stringify({
+        issueNumber: n, scanTitle: `Issue ${n}`, scannedAt: ts,
+        reportType: 'alt-text', totalImages: 10, statusCounts: {}
+      });
+
+      for (const [issue, stamp] of [
+        ['issue-1', '2026-01-01T10-00-00-000Z'],
+        ['issue-1', '2026-01-02T10-00-00-000Z'],
+        ['issue-2', '2026-01-03T10-00-00-000Z']
+      ]) {
+        const dir = join(tmp, 'issues', issue, stamp);
+        mkdirSync(dir, { recursive: true });
+        const num = issue === 'issue-1' ? 1 : 2;
+        writeFileSync(join(dir, 'report.json'), reportData(num, stamp.replace(/-/g, ':').slice(0, -3)));
+      }
+
+      const reports = findAllReports(tmp);
+      assert.equal(reports.length, 3, 'Should find all 3 report files');
+    } finally {
+      rmSync(tmp, { recursive: true });
+    }
+  });
+});
+
+// ── generateTableRows normalizeIssueUrl behaviour ─────────────────────────────
+
+describe('generateTableRows normalizeIssueUrl', () => {
+  it('should normalize issue URLs from forked repos to the canonical repo', () => {
+    const reports = [
+      {
+        path: 'reports/issues/issue-5/2026-01-01T10-00-00-000Z',
+        data: {
+          issueNumber: 5,
+          issueUrl: 'https://github.com/fork-owner/alt-text-scan/issues/5',
+          scanTitle: 'Fork test',
+          scannedAt: '2026-01-01T10:00:00.000Z',
+          reportType: 'alt-text',
+          totalImages: 0,
+          uniqueImages: 0,
+          imagesWithIssues: 0,
+          statusCounts: {}
+        }
+      }
+    ];
+
+    const originalRepo = process.env.GITHUB_REPOSITORY;
+    process.env.GITHUB_REPOSITORY = 'mgifford/alt-text-scan';
+    try {
+      const html = generateTableRows(reports);
+      assert.ok(
+        html.includes('https://github.com/mgifford/alt-text-scan/issues/5'),
+        'Issue URL should be normalized to canonical repo'
+      );
+      assert.ok(
+        !html.includes('fork-owner'),
+        'Fork owner should not appear in the normalized URL'
+      );
+    } finally {
+      if (originalRepo === undefined) {
+        delete process.env.GITHUB_REPOSITORY;
+      } else {
+        process.env.GITHUB_REPOSITORY = originalRepo;
+      }
+    }
+  });
+
+  it('should preserve issue URLs that already point to the canonical repo', () => {
+    const reports = [
+      {
+        path: 'reports/issues/issue-10/2026-01-01T10-00-00-000Z',
+        data: {
+          issueNumber: 10,
+          issueUrl: 'https://github.com/mgifford/alt-text-scan/issues/10',
+          scanTitle: 'Canonical test',
+          scannedAt: '2026-01-01T10:00:00.000Z',
+          reportType: 'alt-text',
+          totalImages: 0,
+          uniqueImages: 0,
+          imagesWithIssues: 0,
+          statusCounts: {}
+        }
+      }
+    ];
+
+    const originalRepo = process.env.GITHUB_REPOSITORY;
+    process.env.GITHUB_REPOSITORY = 'mgifford/alt-text-scan';
+    try {
+      const html = generateTableRows(reports);
+      assert.ok(
+        html.includes('https://github.com/mgifford/alt-text-scan/issues/10'),
+        'Canonical URL should be preserved unchanged'
+      );
+    } finally {
+      if (originalRepo === undefined) {
+        delete process.env.GITHUB_REPOSITORY;
+      } else {
+        process.env.GITHUB_REPOSITORY = originalRepo;
+      }
+    }
+  });
+
+  it('should fall back to constructed URL when issueUrl is null', () => {
+    const reports = [
+      {
+        path: 'reports/issues/issue-7/2026-01-01T10-00-00-000Z',
+        data: {
+          issueNumber: 7,
+          issueUrl: null,
+          scanTitle: 'No URL test',
+          scannedAt: '2026-01-01T10:00:00.000Z',
+          reportType: 'alt-text',
+          totalImages: 0,
+          uniqueImages: 0,
+          imagesWithIssues: 0,
+          statusCounts: {}
+        }
+      }
+    ];
+
+    const originalRepo = process.env.GITHUB_REPOSITORY;
+    process.env.GITHUB_REPOSITORY = 'mgifford/alt-text-scan';
+    try {
+      const html = generateTableRows(reports);
+      assert.ok(html.includes('#7'), 'Issue number should appear');
+      assert.ok(html.includes('github.com'), 'Fallback URL should include github.com');
+    } finally {
+      if (originalRepo === undefined) {
+        delete process.env.GITHUB_REPOSITORY;
+      } else {
+        process.env.GITHUB_REPOSITORY = originalRepo;
+      }
+    }
+  });
+});
+
+// ── deduplicateReports additional edge cases ──────────────────────────────────
+
+describe('deduplicateReports extra edge cases', () => {
+  it('should handle reports where issueNumber is undefined (pages reports)', () => {
+    const reports = [
+      { path: 'reports/pages/stamp1', data: { issueNumber: undefined, scannedAt: '2026-01-01T10:00:00.000Z' } },
+      { path: 'reports/pages/stamp2', data: { issueNumber: undefined, scannedAt: '2026-01-02T10:00:00.000Z' } }
+    ];
+    // Both have issueNumber === undefined, so the Set will treat them as the same key
+    const deduped = deduplicateReports(reports);
+    // Only one should remain (undefined === undefined in the Set)
+    assert.equal(deduped.length, 1, 'Pages reports with undefined issueNumber should be deduplicated');
+  });
+
+  it('should keep reports with different issueNumbers separately', () => {
+    const reports = [
+      { path: 'r1', data: { issueNumber: 1, scannedAt: '2026-01-01T10:00:00.000Z' } },
+      { path: 'r2', data: { issueNumber: 2, scannedAt: '2026-01-01T10:00:00.000Z' } },
+      { path: 'r3', data: { issueNumber: 3, scannedAt: '2026-01-01T10:00:00.000Z' } }
+    ];
+    const deduped = deduplicateReports(reports);
+    assert.equal(deduped.length, 3);
+  });
+});

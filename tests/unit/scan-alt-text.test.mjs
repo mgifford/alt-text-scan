@@ -179,3 +179,118 @@ test("assessAltText does not flag hyphenated text with spaces as CMS code", () =
   });
   assert.notEqual(result.status, "FILENAME");
 });
+
+// ── Boundary value tests ──────────────────────────────────────────────────────
+
+test("assessAltText accepts alt text of exactly 3 characters as not too short", () => {
+  const result = assessAltText({ alt: "Dog", role: null, ariaHidden: null });
+  assert.notEqual(result.status, "TOO_SHORT", "Exactly 3 chars should not be TOO_SHORT");
+});
+
+test("assessAltText flags alt text of exactly 2 characters as too short", () => {
+  const result = assessAltText({ alt: "Go", role: null, ariaHidden: null });
+  assert.equal(result.status, "TOO_SHORT");
+});
+
+test("assessAltText accepts alt text of exactly 500 characters as not too long", () => {
+  const exactly500 = "x".repeat(500);
+  assert.equal(exactly500.length, 500, "Test setup: string should be exactly 500 chars");
+  const result = assessAltText({ alt: exactly500, role: null, ariaHidden: null });
+  assert.notEqual(result.status, "TOO_LONG", "Exactly 500 chars should not be TOO_LONG");
+});
+
+test("assessAltText flags alt text of exactly 501 characters as too long", () => {
+  const alt501 = "A descriptive sentence that is quite long ".repeat(12).slice(0, 501);
+  assert.equal(alt501.length, 501);
+  const result = assessAltText({ alt: alt501, role: null, ariaHidden: null });
+  assert.equal(result.status, "TOO_LONG");
+});
+
+// ── Leading/trailing whitespace ───────────────────────────────────────────────
+
+test("assessAltText trims leading/trailing spaces before evaluating length", () => {
+  const result = assessAltText({ alt: "  A  ", role: null, ariaHidden: null });
+  assert.equal(result.status, "TOO_SHORT", "After trimming, 'A' is only 1 char and should be TOO_SHORT");
+});
+
+test("assessAltText trims leading/trailing spaces for descriptive text", () => {
+  const result = assessAltText({ alt: "  A golden dog running in a field  ", role: null, ariaHidden: null });
+  assert.equal(result.status, "GOOD", "Descriptive alt with surrounding spaces should be GOOD after trimming");
+});
+
+// ── Multiple suspicious phrases ───────────────────────────────────────────────
+
+test("assessAltText accumulates multiple suspicious phrase issues", () => {
+  const result = assessAltText({
+    alt: "A picture of a photo of a puppy",
+    role: null,
+    ariaHidden: null
+  });
+  assert.equal(result.status, "SUSPICIOUS");
+  const phraseIssues = result.issues.filter((i) => i.includes("redundant phrase"));
+  assert.ok(phraseIssues.length >= 2, "Should report both redundant phrases");
+});
+
+// ── Special characters and emoji ─────────────────────────────────────────────
+
+test("assessAltText accepts alt text containing emoji as GOOD when descriptive", () => {
+  const result = assessAltText({ alt: "A smiling face 😊 at the conference", role: null, ariaHidden: null });
+  assert.equal(result.status, "GOOD");
+});
+
+test("assessAltText accepts alt text with special punctuation", () => {
+  const result = assessAltText({ alt: "Dr. Smith's award — 2025 excellence", role: null, ariaHidden: null });
+  assert.equal(result.status, "GOOD");
+});
+
+// ── Additional meaningless values ─────────────────────────────────────────────
+
+test("assessAltText flags 'undefined' and 'none' and 'null' as suspicious", () => {
+  for (const val of ["undefined", "none", "null"]) {
+    const result = assessAltText({ alt: val, role: null, ariaHidden: null });
+    assert.equal(result.status, "SUSPICIOUS", `Expected SUSPICIOUS for alt="${val}"`);
+  }
+});
+
+// ── Role case-insensitivity ───────────────────────────────────────────────────
+
+test("assessAltText treats PRESENTATION role case-insensitively as decorative", () => {
+  const result = assessAltText({ alt: "", role: "PRESENTATION", ariaHidden: null });
+  assert.equal(result.status, "DECORATIVE");
+});
+
+test("assessAltText treats NONE role case-insensitively as decorative", () => {
+  const result = assessAltText({ alt: "", role: "NONE", ariaHidden: null });
+  assert.equal(result.status, "DECORATIVE");
+});
+
+// ── Filename extension variations ────────────────────────────────────────────
+
+test("assessAltText flags .PNG (uppercase extension) filenames as FILENAME", () => {
+  const result = assessAltText({ alt: "hero-banner.PNG", role: null, ariaHidden: null });
+  assert.equal(result.status, "FILENAME");
+});
+
+test("assessAltText flags .WEBP extension filenames as FILENAME", () => {
+  const result = assessAltText({ alt: "logo.WEBP", role: null, ariaHidden: null });
+  assert.equal(result.status, "FILENAME");
+});
+
+test("assessAltText flags .avif extension filenames as FILENAME", () => {
+  const result = assessAltText({ alt: "photo.avif", role: null, ariaHidden: null });
+  assert.equal(result.status, "FILENAME");
+});
+
+// ── thumbnail of and screenshot of suspicious phrases ────────────────────────
+
+test("assessAltText flags 'thumbnail of' and 'screenshot of' as suspicious", () => {
+  for (const phrase of ["thumbnail of", "screenshot of"]) {
+    const result = assessAltText({
+      alt: `A ${phrase} the home page`,
+      role: null,
+      ariaHidden: null
+    });
+    assert.equal(result.status, "SUSPICIOUS", `Expected SUSPICIOUS for phrase "${phrase}"`);
+    assert.ok(result.issues.some((i) => i.includes(phrase)));
+  }
+});

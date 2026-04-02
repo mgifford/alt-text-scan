@@ -1,7 +1,15 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 
-import { sortUniqueImageList, toHtml, truncateUrl, renderAltVariantsHtml, renderAltVariantsText } from "../../scanner/run-alt-text-scan.mjs";
+import {
+  sortUniqueImageList,
+  toHtml,
+  toMarkdown,
+  toCsv,
+  truncateUrl,
+  renderAltVariantsHtml,
+  renderAltVariantsText
+} from "../../scanner/run-alt-text-scan.mjs";
 
 function createImage(overrides = {}) {
   return {
@@ -296,4 +304,264 @@ test("toHtml shows Consistent in Alt Variants cell when only one variant", () =>
   const meta = { scanDomain: "https://example.com", discoveryMethod: "explicit URLs" };
   const html = toHtml(scanResult, meta);
   assert.match(html, /Consistent/, "Should show Consistent when only one alt variant exists");
+});
+// ── sortUniqueImageList edge cases ────────────────────────────────────────────
+
+test("sortUniqueImageList returns empty array for empty input", () => {
+  assert.deepEqual(sortUniqueImageList([]), []);
+});
+
+test("sortUniqueImageList returns single item unchanged", () => {
+  const img = createImage({ src: "https://example.com/single.png", status: "GOOD" });
+  const result = sortUniqueImageList([img]);
+  assert.equal(result.length, 1);
+  assert.equal(result[0].src, "https://example.com/single.png");
+});
+
+test("sortUniqueImageList does not mutate the input array", () => {
+  const imgs = [
+    createImage({ src: "https://example.com/good.png", status: "GOOD" }),
+    createImage({ src: "https://example.com/missing.png", status: "MISSING", issues: ["Missing alt"] })
+  ];
+  const originalOrder = imgs.map((i) => i.src);
+  sortUniqueImageList(imgs);
+  assert.deepEqual(imgs.map((i) => i.src), originalOrder, "Input array should not be mutated");
+});
+
+test("sortUniqueImageList orders by full STATUS_PRIORITY: MISSING < FILENAME < SUSPICIOUS < TOO_SHORT/TOO_LONG < DECORATIVE < GOOD", () => {
+  const imgs = [
+    createImage({ src: "g.png", status: "GOOD", issues: [] }),
+    createImage({ src: "d.png", status: "DECORATIVE", issues: [] }),
+    createImage({ src: "ts.png", status: "TOO_SHORT", issues: ["Too short"] }),
+    createImage({ src: "s.png", status: "SUSPICIOUS", issues: ["Suspicious"] }),
+    createImage({ src: "f.png", status: "FILENAME", issues: ["Filename"] }),
+    createImage({ src: "m.png", status: "MISSING", issues: ["Missing alt"] }),
+    createImage({ src: "tl.png", status: "TOO_LONG", issues: ["Too long"] })
+  ];
+
+  const sorted = sortUniqueImageList(imgs);
+  const order = sorted.map((i) => i.status);
+
+  // Images with issues come first, then non-issue images
+  const issueStatuses = order.slice(0, sorted.filter((i) => i.issues.length > 0).length);
+  for (const s of issueStatuses) {
+    assert.ok(["MISSING", "FILENAME", "SUSPICIOUS", "TOO_SHORT", "TOO_LONG"].includes(s));
+  }
+
+  // MISSING should be before FILENAME
+  assert.ok(order.indexOf("MISSING") < order.indexOf("FILENAME"), "MISSING before FILENAME");
+  // FILENAME before SUSPICIOUS
+  assert.ok(order.indexOf("FILENAME") < order.indexOf("SUSPICIOUS"), "FILENAME before SUSPICIOUS");
+  // DECORATIVE and GOOD are non-issue and come last
+  assert.ok(order.indexOf("DECORATIVE") > order.indexOf("SUSPICIOUS"), "DECORATIVE after issue statuses");
+  assert.ok(order.indexOf("GOOD") > order.indexOf("DECORATIVE"), "GOOD last");
+});
+
+test("sortUniqueImageList sorts images with same status by page count descending", () => {
+  const imgs = [
+    createImage({ src: "a.png", status: "SUSPICIOUS", issues: ["s"], pages: ["p1"], occurrences: 1 }),
+    createImage({ src: "b.png", status: "SUSPICIOUS", issues: ["s"], pages: ["p1", "p2", "p3"], occurrences: 3 }),
+    createImage({ src: "c.png", status: "SUSPICIOUS", issues: ["s"], pages: ["p1", "p2"], occurrences: 2 })
+  ];
+  const sorted = sortUniqueImageList(imgs);
+  assert.equal(sorted[0].src, "b.png", "Most pages first");
+  assert.equal(sorted[1].src, "c.png");
+  assert.equal(sorted[2].src, "a.png");
+});
+
+// ── toCsv ────────────────────────────────────────────────────────────────────
+
+test("toCsv produces a CSV with a header row and one data row per image", () => {
+  const images = [
+    createImage({ src: "https://example.com/img.png", alt: "A dog", status: "GOOD" })
+  ];
+  const csv = toCsv(images);
+  const lines = csv.split("\n");
+  assert.ok(lines.length >= 2, "Should have header + at least one data row");
+  assert.ok(lines[0].includes("Image URL"), "Header should contain Image URL");
+  assert.ok(lines[0].includes("Alt Text"), "Header should contain Alt Text");
+  assert.ok(lines[0].includes("Status"), "Header should contain Status");
+  assert.ok(lines[1].includes("https://example.com/img.png"), "Data row should contain image URL");
+  assert.ok(lines[1].includes("A dog"), "Data row should contain alt text");
+  assert.ok(lines[1].includes("GOOD"), "Data row should contain status");
+});
+
+test("toCsv returns only a header row for an empty image list", () => {
+  const csv = toCsv([]);
+  const lines = csv.split("\n");
+  assert.equal(lines.length, 1, "Only the header row should be present");
+  assert.ok(lines[0].includes("Image URL"), "Header should still be present");
+});
+
+test("toCsv escapes commas in alt text with double-quotes", () => {
+  const images = [
+    createImage({ alt: "A cat, a dog, and a bird" })
+  ];
+  const csv = toCsv(images);
+  assert.ok(csv.includes('"A cat, a dog, and a bird"'), "Comma-containing text should be quoted");
+});
+
+test("toCsv escapes double-quotes in alt text by doubling them", () => {
+  const images = [
+    createImage({ alt: 'He said "hello"' })
+  ];
+  const csv = toCsv(images);
+  assert.ok(csv.includes('He said ""hello""'), "Quotes should be doubled in CSV");
+});
+
+test("toCsv handles null alt text gracefully", () => {
+  const images = [
+    createImage({ alt: null, status: "MISSING", issues: ["Missing alt"] })
+  ];
+  const csv = toCsv(images);
+  const lines = csv.split("\n");
+  assert.equal(lines.length, 2, "Should still produce one data row");
+  assert.ok(!lines[1].includes("null"), "Should not include literal 'null' in CSV");
+});
+
+test("toCsv includes page count and page URLs", () => {
+  const pages = ["https://example.com/page1", "https://example.com/page2"];
+  const images = [
+    createImage({ pages, occurrences: 2 })
+  ];
+  const csv = toCsv(images);
+  assert.ok(csv.includes("https://example.com/page1"), "CSV should list found-on page");
+  assert.ok(csv.includes("2"), "CSV should include occurrences count");
+});
+
+test("toCsv sorts images by status priority (issues first)", () => {
+  const images = [
+    createImage({ src: "https://example.com/good.png", status: "GOOD" }),
+    createImage({ src: "https://example.com/missing.png", status: "MISSING", alt: null, issues: ["Missing alt"] })
+  ];
+  const csv = toCsv(images);
+  const missingPos = csv.indexOf("missing.png");
+  const goodPos = csv.indexOf("good.png");
+  assert.ok(missingPos < goodPos, "Images with issues should appear before GOOD images in CSV");
+});
+
+// ── toMarkdown ────────────────────────────────────────────────────────────────
+
+test("toMarkdown produces a markdown document with expected headings", () => {
+  const scanResult = {
+    statusCounts: { GOOD: 1, MISSING: 1 },
+    urlsScanned: 2,
+    totalImages: 2,
+    uniqueImages: 2,
+    imagesWithIssues: 1,
+    scannedAt: "2026-03-19T00:00:00.000Z",
+    uniqueImageList: [
+      createImage({ src: "https://example.com/missing.png", alt: null, status: "MISSING", issues: ["Missing alt"] }),
+      createImage({ src: "https://example.com/good.png", status: "GOOD" })
+    ]
+  };
+  const meta = { scanDomain: "https://example.com", discoveryMethod: "sitemap" };
+  const md = toMarkdown(scanResult, meta);
+
+  assert.ok(md.startsWith("# Alt Text Scan Report"), "Should start with H1 heading");
+  assert.ok(md.includes("## Status breakdown"), "Should include status breakdown section");
+  assert.ok(md.includes("## Images with issues"), "Should include issues section");
+  assert.ok(md.includes("## Unique image inventory"), "Should include inventory section");
+  assert.ok(md.includes("Missing Alt: 1"), "Should include MISSING status count");
+  assert.ok(md.includes("Good: 1"), "Should include GOOD status count");
+  assert.ok(md.includes("https://example.com/missing.png"), "Missing image should appear in issues table");
+  assert.ok(md.includes("(missing)"), "Null alt should render as (missing)");
+});
+
+test("toMarkdown includes scan metadata", () => {
+  const scanResult = {
+    statusCounts: { GOOD: 1 },
+    urlsScanned: 5,
+    totalImages: 10,
+    uniqueImages: 8,
+    imagesWithIssues: 0,
+    scannedAt: "2026-03-19T00:00:00.000Z",
+    uniqueImageList: [createImage()]
+  };
+  const meta = { scanDomain: "https://example.com", discoveryMethod: "sitemap", issueUrl: "https://github.com/mgifford/alt-text-scan/issues/42" };
+  const md = toMarkdown(scanResult, meta);
+
+  assert.ok(md.includes("Pages scanned: 5"), "Should include pages scanned");
+  assert.ok(md.includes("Images found: 10"), "Should include images found");
+  assert.ok(md.includes("Unique images: 8"), "Should include unique images");
+  assert.ok(md.includes("Images with issues: 0"), "Should include images with issues");
+  assert.ok(md.includes("Discovery method: sitemap"), "Should include discovery method");
+  assert.ok(md.includes("https://github.com/mgifford/alt-text-scan/issues/42"), "Should include issue URL");
+});
+
+test("toMarkdown shows 'No issues found' when there are no issue images", () => {
+  const scanResult = {
+    statusCounts: { GOOD: 1 },
+    urlsScanned: 1,
+    totalImages: 1,
+    uniqueImages: 1,
+    imagesWithIssues: 0,
+    scannedAt: "2026-03-19T00:00:00.000Z",
+    uniqueImageList: [createImage({ status: "GOOD", issues: [] })]
+  };
+  const meta = { scanDomain: "https://example.com", discoveryMethod: "explicit URLs" };
+  const md = toMarkdown(scanResult, meta);
+  assert.ok(md.includes("No issues found"), "Should show no-issues message");
+});
+
+test("toMarkdown shows 'No images found' for inventory when list is empty", () => {
+  const scanResult = {
+    statusCounts: {},
+    urlsScanned: 1,
+    totalImages: 0,
+    uniqueImages: 0,
+    imagesWithIssues: 0,
+    scannedAt: "2026-03-19T00:00:00.000Z",
+    uniqueImageList: []
+  };
+  const meta = { scanDomain: "https://example.com", discoveryMethod: "explicit URLs" };
+  const md = toMarkdown(scanResult, meta);
+  assert.ok(md.includes("No images found"), "Should show no-images message in inventory section");
+});
+
+test("toMarkdown escapes pipe characters in alt text for Markdown tables", () => {
+  const scanResult = {
+    statusCounts: { SUSPICIOUS: 1 },
+    urlsScanned: 1,
+    totalImages: 1,
+    uniqueImages: 1,
+    imagesWithIssues: 1,
+    scannedAt: "2026-03-19T00:00:00.000Z",
+    uniqueImageList: [
+      createImage({ alt: "A|B|C", status: "SUSPICIOUS", issues: ["Suspicious"] })
+    ]
+  };
+  const meta = { scanDomain: "https://example.com", discoveryMethod: "explicit URLs" };
+  const md = toMarkdown(scanResult, meta);
+  assert.ok(md.includes("A\\|B\\|C"), "Pipe characters should be escaped in Markdown");
+});
+
+test("toMarkdown produces valid Markdown table header rows", () => {
+  const scanResult = {
+    statusCounts: { GOOD: 1 },
+    urlsScanned: 1,
+    totalImages: 1,
+    uniqueImages: 1,
+    imagesWithIssues: 0,
+    scannedAt: "2026-03-19T00:00:00.000Z",
+    uniqueImageList: [createImage()]
+  };
+  const meta = { scanDomain: "https://example.com", discoveryMethod: "explicit URLs" };
+  const md = toMarkdown(scanResult, meta);
+  assert.ok(md.includes("| --- |"), "Should include Markdown table separator row");
+});
+
+// ── truncateUrl additional edge cases ─────────────────────────────────────────
+
+test("truncateUrl uses custom maxLength when provided", () => {
+  const url = "https://example.com/path/to/some-image.jpg";
+  const result = truncateUrl(url, 30);
+  assert.ok(result.length <= 31, "Should respect custom maxLength (with possible ellipsis)");
+});
+
+test("truncateUrl handles a URL with no slashes in path gracefully", () => {
+  // Degenerate URL where lastIndexOf('/') returns the start
+  const url = "https://example.com";
+  const result = truncateUrl(url, 60);
+  assert.equal(result, url, "Short URL should be returned unchanged");
 });

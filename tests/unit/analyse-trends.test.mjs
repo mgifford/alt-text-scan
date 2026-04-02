@@ -370,3 +370,114 @@ test("loadScanHistory skips directories without report.json", () => {
     rmSync(join(tmpDir, "issues", "issue-44"), { recursive: true, force: true });
   }
 });
+
+// ── computeDiff edge cases ────────────────────────────────────────────────────
+
+test("computeDiff labels improving when combined violations decrease", () => {
+  const baseline = {
+    scannedAt: "2026-01-01T00:00:00.000Z",
+    alfaTotals: { failed: 30 },
+    axeTotals: { failed: 20 }
+  };
+  const current = {
+    scannedAt: "2026-01-02T00:00:00.000Z",
+    alfaTotals: { failed: 20 },
+    axeTotals: { failed: 10 }
+  };
+  const diff = computeDiff(baseline, current);
+  assert.equal(diff.trend, "improving", "Decreasing failures should be improving");
+  assert.ok(diff.change < 0, "Change should be negative when improving");
+});
+
+test("computeDiff labels worsening when combined violations increase", () => {
+  const baseline = {
+    scannedAt: "2026-01-01T00:00:00.000Z",
+    alfaTotals: { failed: 20 },
+    axeTotals: { failed: 10 }
+  };
+  const current = {
+    scannedAt: "2026-01-02T00:00:00.000Z",
+    alfaTotals: { failed: 40 },
+    axeTotals: { failed: 20 }
+  };
+  const diff = computeDiff(baseline, current);
+  assert.equal(diff.trend, "worsening", "Increasing failures should be worsening");
+  assert.ok(diff.change > 0, "Change should be positive when worsening");
+});
+
+test("computeDiff labels stable when combined violations are equal", () => {
+  const report = {
+    scannedAt: "2026-01-01T00:00:00.000Z",
+    alfaTotals: { failed: 30 },
+    axeTotals: { failed: 20 }
+  };
+  const diff = computeDiff(report, report);
+  assert.equal(diff.trend, "stable", "Equal violations should be stable");
+  assert.equal(diff.change, 0, "Change should be zero when stable");
+});
+
+// ── detectSystemicPatterns edge cases ─────────────────────────────────────────
+
+test("detectSystemicPatterns returns empty array when no patterns exceed threshold", () => {
+  const report = {
+    results: [
+      { finalUrl: "https://example.com/page1", alfaFailures: [{ ruleUrl: "https://alfa.siteimprove.com/rules/sia-r78" }], axeViolations: [] },
+      { finalUrl: "https://example.com/page2", alfaFailures: [], axeViolations: [{ id: "image-alt" }] }
+    ]
+  };
+  const patterns = detectSystemicPatterns(report, 3);
+  assert.deepEqual(patterns, [], "No pattern should appear on fewer pages than threshold");
+});
+
+test("detectSystemicPatterns handles reports with no results array", () => {
+  const patterns = detectSystemicPatterns({}, 2);
+  assert.deepEqual(patterns, []);
+});
+
+test("detectSystemicPatterns handles empty results array", () => {
+  const patterns = detectSystemicPatterns({ results: [] }, 2);
+  assert.deepEqual(patterns, []);
+});
+
+// ── formatTrendComment edge cases ─────────────────────────────────────────────
+
+test("formatTrendComment works when scanTitle is null (uses empty suffix)", () => {
+  // analyseTrends({error: "No scan history available"}) structure
+  const analysis = { error: "No scan history available" };
+  const comment = formatTrendComment(analysis, null);
+  assert.ok(typeof comment === "string", "Should produce a string comment");
+  assert.ok(comment.length > 0, "Comment should not be empty");
+  assert.ok(comment.includes("No scan history"), "Should indicate no history");
+});
+
+test("formatTrendComment produces valid markdown for zero-violation scan", () => {
+  // Build a realistic analysis from analyseTrends with two scans
+  const scan1 = { scannedAt: "2026-01-01T00:00:00.000Z", alfaTotals: { failed: 0 }, axeTotals: { failed: 0 } };
+  const scan2 = { scannedAt: "2026-01-02T00:00:00.000Z", alfaTotals: { failed: 0 }, axeTotals: { failed: 0 } };
+  const analysis = analyseTrends([scan1, scan2]);
+  const comment = formatTrendComment(analysis, "Example Site");
+  assert.ok(comment.includes("0"), "Comment should mention zero failures");
+  assert.ok(comment.includes("stable") || comment.includes("Stable"), "Should indicate stable trend");
+});
+
+// ── analyseTrends with alternating trends ─────────────────────────────────────
+
+test("analyseTrends handles alternating improving/worsening scans", () => {
+  const makeH = (failed) => ({
+    scannedAt: new Date().toISOString(),
+    alfaTotals: { failed },
+    axeTotals: { failed: 0 }
+  });
+  const history = [
+    makeH(10), // oldest
+    makeH(5),  // improved
+    makeH(15), // worsened
+    makeH(8)   // latest improved again
+  ];
+  const analysis = analyseTrends(history);
+  assert.ok(["improving", "worsening", "stable"].includes(analysis.overallTrend), "Trend should be one of the valid values");
+  assert.ok(analysis.latestTotals, "Should produce latestTotals");
+  assert.equal(analysis.scansAnalysed, 4, "Should count all 4 scans");
+  assert.ok(analysis.improvingCount >= 1, "Should count at least one improving scan");
+  assert.ok(analysis.worseningCount >= 1, "Should count at least one worsening scan");
+});

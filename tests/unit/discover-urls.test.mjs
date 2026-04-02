@@ -142,3 +142,98 @@ test("randomSample does not modify the source array", () => {
 test("randomSample returns empty array for empty input", () => {
   assert.deepEqual(randomSample([], 5), []);
 });
+
+// ── extractLinksFromHtml edge cases ───────────────────────────────────────────
+
+test("extractLinksFromHtml skips anchors with empty href", () => {
+  const html = `<a href="">Empty href</a><a href="/about">About</a>`;
+  const links = extractLinksFromHtml(html, "https://example.com/", "https://example.com");
+  assert.ok(!links.some((l) => l === "https://example.com/"), "Empty href should not produce origin URL");
+  assert.ok(links.includes("https://example.com/about"), "Valid href should still be included");
+});
+
+test("extractLinksFromHtml skips javascript: protocol links", () => {
+  const html = `<a href="javascript:void(0)">Click</a><a href="/real">Real</a>`;
+  const links = extractLinksFromHtml(html, "https://example.com/", "https://example.com");
+  assert.ok(!links.some((l) => l.startsWith("javascript:")), "javascript: links should be excluded");
+  assert.ok(links.includes("https://example.com/real"), "Regular link should still be included");
+});
+
+test("extractLinksFromHtml handles relative URLs correctly", () => {
+  const html = `<a href="../other/page">Relative up</a>`;
+  const links = extractLinksFromHtml(html, "https://example.com/section/", "https://example.com");
+  assert.ok(links.includes("https://example.com/other/page"), "Should resolve relative URL correctly");
+});
+
+test("extractLinksFromHtml may return the same URL multiple times (dedup is caller's responsibility)", () => {
+  const html = `
+    <a href="/about">About 1</a>
+    <a href="/about">About 2</a>
+    <a href="/about">About 3</a>
+  `;
+  const links = extractLinksFromHtml(html, "https://example.com/", "https://example.com");
+  const aboutLinks = links.filter((l) => l === "https://example.com/about");
+  assert.ok(aboutLinks.length >= 1, "At least one about link should be present");
+  // Note: extractLinksFromHtml does not deduplicate — the crawler's visited Set handles that
+});
+
+test("extractLinksFromHtml filters uppercase non-HTML extensions case-insensitively", () => {
+  const html = `
+    <a href="/image.JPG">JPG Image</a>
+    <a href="/document.PDF">PDF</a>
+    <a href="/page.HTML">HTML page</a>
+  `;
+  const links = extractLinksFromHtml(html, "https://example.com/", "https://example.com");
+  assert.ok(!links.some((l) => l.endsWith(".JPG")), "Should exclude .JPG (uppercase)");
+  assert.ok(!links.some((l) => l.endsWith(".PDF")), "Should exclude .PDF (uppercase)");
+  assert.ok(links.some((l) => l.endsWith(".HTML")), "Should include .HTML page");
+});
+
+test("extractLinksFromHtml strips fragments from same-origin links", () => {
+  const html = `<a href="/page#section">Section link</a>`;
+  const links = extractLinksFromHtml(html, "https://example.com/", "https://example.com");
+  const match = links.find((l) => l.includes("/page"));
+  assert.ok(match, "Page link should be included");
+  assert.ok(!match.includes("#"), "Fragment should be stripped from the link");
+});
+
+// ── parseSitemapXml additional edge cases ──────────────────────────────────────
+
+test("parseSitemapXml handles completely empty string", () => {
+  const { pageUrls, sitemapUrls } = parseSitemapXml("");
+  assert.deepEqual(pageUrls, []);
+  assert.deepEqual(sitemapUrls, []);
+});
+
+test("parseSitemapXml handles sitemap with whitespace-only loc elements", () => {
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>   </loc></url>
+  <url><loc>https://example.com/about</loc></url>
+</urlset>`;
+  const { pageUrls } = parseSitemapXml(xml);
+  // Should include 'about' but not whitespace-only entry
+  assert.ok(pageUrls.includes("https://example.com/about"), "Valid URL should be included");
+});
+
+// ── randomSample edge cases ───────────────────────────────────────────────────
+
+test("randomSample with count of 0 returns empty array", () => {
+  const arr = ["a", "b", "c"];
+  const result = randomSample(arr, 0);
+  assert.deepEqual(result, []);
+});
+
+test("randomSample produces results only containing items from the source array", () => {
+  const arr = Array.from({ length: 100 }, (_, i) => `item-${i}`);
+  // Take two independent samples and verify all items are valid members
+  const sample1 = randomSample(arr, 10);
+  const sample2 = randomSample(arr, 10);
+  assert.equal(sample1.length, 10);
+  assert.equal(sample2.length, 10);
+  for (const item of [...sample1, ...sample2]) {
+    assert.ok(arr.includes(item), `${item} should be from the original array`);
+  }
+  // Verify no duplicates within a single sample
+  assert.equal(new Set(sample1).size, 10, "No duplicates in sample");
+});
