@@ -1,7 +1,15 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 
-import { sortUniqueImageList, toHtml, toMarkdown, toCsv, truncateUrl, renderAltVariantsHtml, renderAltVariantsText } from "../../scanner/run-alt-text-scan.mjs";
+import {
+  sortUniqueImageList,
+  toHtml,
+  toMarkdown,
+  toCsv,
+  truncateUrl,
+  renderAltVariantsHtml,
+  renderAltVariantsText
+} from "../../scanner/run-alt-text-scan.mjs";
 
 function createImage(overrides = {}) {
   return {

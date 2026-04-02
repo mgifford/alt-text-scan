@@ -193,13 +193,9 @@ test("assessAltText flags alt text of exactly 2 characters as too short", () => 
 });
 
 test("assessAltText accepts alt text of exactly 500 characters as not too long", () => {
-  // Build a multi-word string of exactly 500 chars (no trailing whitespace)
-  const base = "A descriptive sentence. ";
-  const exactly500 = (base.repeat(Math.ceil(500 / base.length))).slice(0, 500).trimEnd();
-  // Pad to exactly 500 non-whitespace-padded chars using a word that brings it up
-  const padded = exactly500.padEnd(500, "x");
-  assert.equal(padded.length, 500, "Test setup: string should be exactly 500 chars");
-  const result = assessAltText({ alt: padded, role: null, ariaHidden: null });
+  const exactly500 = "x".repeat(500);
+  assert.equal(exactly500.length, 500, "Test setup: string should be exactly 500 chars");
+  const result = assessAltText({ alt: exactly500, role: null, ariaHidden: null });
   assert.notEqual(result.status, "TOO_LONG", "Exactly 500 chars should not be TOO_LONG");
 });
 

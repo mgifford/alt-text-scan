@@ -479,40 +479,34 @@ describe('generate-reports-html', () => {
 
 // ── Additional findAllReports edge cases ──────────────────────────────────────
 
-import { describe as describe2, it as it2 } from 'node:test';
-import { mkdtempSync as mkdtempSync2, rmSync as rmSync2, mkdirSync as mkdirSync2, writeFileSync as writeFileSync2 } from 'node:fs';
-import { tmpdir as tmpdir2 } from 'node:os';
-import { join as join2 } from 'node:path';
-
-describe2('findAllReports extra edge cases', () => {
-  it2('should skip malformed JSON files gracefully', () => {
-    const tmp = mkdtempSync2(join2(tmpdir2(), 'reports-test-'));
+describe('findAllReports extra edge cases', () => {
+  it('should skip malformed JSON files gracefully', () => {
+    const tmp = mkdtempSync(join(tmpdir(), 'reports-test-'));
     try {
-      const issueDir = join2(tmp, 'issues', 'issue-99', '2026-01-01T00-00-00-000Z');
-      mkdirSync2(issueDir, { recursive: true });
-      writeFileSync2(join2(issueDir, 'report.json'), '{ this is not valid json }');
-      mkdirSync2(join2(tmp, 'issues'), { recursive: true });
+      const issueDir = join(tmp, 'issues', 'issue-99', '2026-01-01T00-00-00-000Z');
+      mkdirSync(issueDir, { recursive: true });
+      writeFileSync(join(issueDir, 'report.json'), '{ this is not valid json }');
 
       const reports = findAllReports(tmp);
       assert.equal(reports.length, 0, 'Malformed JSON should be skipped without throwing');
     } finally {
-      rmSync2(tmp, { recursive: true });
+      rmSync(tmp, { recursive: true });
     }
   });
 
-  it2('should return empty array when issues directory is empty', () => {
-    const tmp = mkdtempSync2(join2(tmpdir2(), 'reports-test-'));
+  it('should return empty array when issues directory is empty', () => {
+    const tmp = mkdtempSync(join(tmpdir(), 'reports-test-'));
     try {
-      mkdirSync2(join2(tmp, 'issues'), { recursive: true });
+      mkdirSync(join(tmp, 'issues'), { recursive: true });
       const reports = findAllReports(tmp);
       assert.equal(reports.length, 0);
     } finally {
-      rmSync2(tmp, { recursive: true });
+      rmSync(tmp, { recursive: true });
     }
   });
 
-  it2('should handle multiple issues each with multiple timestamps', () => {
-    const tmp = mkdtempSync2(join2(tmpdir2(), 'reports-test-'));
+  it('should handle multiple issues each with multiple timestamps', () => {
+    const tmp = mkdtempSync(join(tmpdir(), 'reports-test-'));
     try {
       const reportData = (n, ts) => JSON.stringify({
         issueNumber: n, scanTitle: `Issue ${n}`, scannedAt: ts,
@@ -524,25 +518,24 @@ describe2('findAllReports extra edge cases', () => {
         ['issue-1', '2026-01-02T10-00-00-000Z'],
         ['issue-2', '2026-01-03T10-00-00-000Z']
       ]) {
-        const dir = join2(tmp, 'issues', issue, stamp);
-        mkdirSync2(dir, { recursive: true });
+        const dir = join(tmp, 'issues', issue, stamp);
+        mkdirSync(dir, { recursive: true });
         const num = issue === 'issue-1' ? 1 : 2;
-        writeFileSync2(join2(dir, 'report.json'), reportData(num, stamp.replace(/-/g, ':').slice(0, -3)));
+        writeFileSync(join(dir, 'report.json'), reportData(num, stamp.replace(/-/g, ':').slice(0, -3)));
       }
-      mkdirSync2(join2(tmp, 'issues'), { recursive: true });
 
       const reports = findAllReports(tmp);
       assert.equal(reports.length, 3, 'Should find all 3 report files');
     } finally {
-      rmSync2(tmp, { recursive: true });
+      rmSync(tmp, { recursive: true });
     }
   });
 });
 
 // ── generateTableRows normalizeIssueUrl behaviour ─────────────────────────────
 
-describe2('generateTableRows normalizeIssueUrl', () => {
-  it2('should normalize issue URLs from forked repos to the canonical repo', () => {
+describe('generateTableRows normalizeIssueUrl', () => {
+  it('should normalize issue URLs from forked repos to the canonical repo', () => {
     const reports = [
       {
         path: 'reports/issues/issue-5/2026-01-01T10-00-00-000Z',
@@ -560,7 +553,6 @@ describe2('generateTableRows normalizeIssueUrl', () => {
       }
     ];
 
-    // Set canonical repo env var temporarily
     const originalRepo = process.env.GITHUB_REPOSITORY;
     process.env.GITHUB_REPOSITORY = 'mgifford/alt-text-scan';
     try {
@@ -582,7 +574,7 @@ describe2('generateTableRows normalizeIssueUrl', () => {
     }
   });
 
-  it2('should preserve issue URLs that already point to the canonical repo', () => {
+  it('should preserve issue URLs that already point to the canonical repo', () => {
     const reports = [
       {
         path: 'reports/issues/issue-10/2026-01-01T10-00-00-000Z',
@@ -617,7 +609,7 @@ describe2('generateTableRows normalizeIssueUrl', () => {
     }
   });
 
-  it2('should fall back to constructed URL when issueUrl is null', () => {
+  it('should fall back to constructed URL when issueUrl is null', () => {
     const reports = [
       {
         path: 'reports/issues/issue-7/2026-01-01T10-00-00-000Z',
@@ -653,8 +645,8 @@ describe2('generateTableRows normalizeIssueUrl', () => {
 
 // ── deduplicateReports additional edge cases ──────────────────────────────────
 
-describe2('deduplicateReports extra edge cases', () => {
-  it2('should handle reports where issueNumber is undefined (pages reports)', () => {
+describe('deduplicateReports extra edge cases', () => {
+  it('should handle reports where issueNumber is undefined (pages reports)', () => {
     const reports = [
       { path: 'reports/pages/stamp1', data: { issueNumber: undefined, scannedAt: '2026-01-01T10:00:00.000Z' } },
       { path: 'reports/pages/stamp2', data: { issueNumber: undefined, scannedAt: '2026-01-02T10:00:00.000Z' } }
@@ -665,7 +657,7 @@ describe2('deduplicateReports extra edge cases', () => {
     assert.equal(deduped.length, 1, 'Pages reports with undefined issueNumber should be deduplicated');
   });
 
-  it2('should keep reports with different issueNumbers separately', () => {
+  it('should keep reports with different issueNumbers separately', () => {
     const reports = [
       { path: 'r1', data: { issueNumber: 1, scannedAt: '2026-01-01T10:00:00.000Z' } },
       { path: 'r2', data: { issueNumber: 2, scannedAt: '2026-01-01T10:00:00.000Z' } },

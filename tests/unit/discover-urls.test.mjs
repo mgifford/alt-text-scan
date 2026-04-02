@@ -218,22 +218,22 @@ test("parseSitemapXml handles sitemap with whitespace-only loc elements", () => 
 
 // ── randomSample edge cases ───────────────────────────────────────────────────
 
-test("randomSample returns different items on repeated calls (probabilistic)", () => {
+test("randomSample with count of 0 returns empty array", () => {
+  const arr = ["a", "b", "c"];
+  const result = randomSample(arr, 0);
+  assert.deepEqual(result, []);
+});
+
+test("randomSample produces results only containing items from the source array", () => {
   const arr = Array.from({ length: 100 }, (_, i) => `item-${i}`);
+  // Take two independent samples and verify all items are valid members
   const sample1 = randomSample(arr, 10);
   const sample2 = randomSample(arr, 10);
-  // Not guaranteed but extremely unlikely to be equal with 100 items choosing 10
-  const setsAreIdentical = sample1.every((v) => sample2.includes(v)) && sample2.every((v) => sample1.includes(v));
-  // We don't assert this (flaky), but we do verify both samples are valid
   assert.equal(sample1.length, 10);
   assert.equal(sample2.length, 10);
   for (const item of [...sample1, ...sample2]) {
     assert.ok(arr.includes(item), `${item} should be from the original array`);
   }
-});
-
-test("randomSample with count of 0 returns empty array", () => {
-  const arr = ["a", "b", "c"];
-  const result = randomSample(arr, 0);
-  assert.deepEqual(result, []);
+  // Verify no duplicates within a single sample
+  assert.equal(new Set(sample1).size, 10, "No duplicates in sample");
 });
