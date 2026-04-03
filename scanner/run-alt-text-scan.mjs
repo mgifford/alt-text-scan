@@ -761,7 +761,7 @@ async function main() {
       );
     }
   } else {
-    const reason = "Issue has no body URLs and no domain URL in title";
+    const reason = "Issue contains no URLs in the body and no valid domain URL in the title (expected format: SCAN: https://example.com)";
     console.error(`[run-alt-text-scan] No URLs to scan — ${reason}`);
     const metaError = {
       ok: false,
