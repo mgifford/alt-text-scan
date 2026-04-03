@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { parseSitemapXml, extractLinksFromHtml } from "../../scanner/discover-urls.mjs";
+import { parseSitemapXml, extractLinksFromHtml, parseRobotsTxt } from "../../scanner/discover-urls.mjs";
 
 test("parseSitemapXml extracts page URLs from a standard sitemap", () => {
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -236,4 +236,57 @@ test("randomSample produces results only containing items from the source array"
   }
   // Verify no duplicates within a single sample
   assert.equal(new Set(sample1).size, 10, "No duplicates in sample");
+});
+
+// ── parseRobotsTxt ────────────────────────────────────────────────────────────
+
+test("parseRobotsTxt extracts a single Sitemap directive", () => {
+  const robots = `User-agent: *\nDisallow: /admin\nSitemap: https://example.com/sitemap.xml\n`;
+  const sitemaps = parseRobotsTxt(robots);
+  assert.deepEqual(sitemaps, ["https://example.com/sitemap.xml"]);
+});
+
+test("parseRobotsTxt extracts multiple Sitemap directives", () => {
+  const robots = [
+    "User-agent: *",
+    "Disallow: /private/",
+    "Sitemap: https://example.com/sitemap-en.xml",
+    "Sitemap: https://example.com/sitemap-fr.xml",
+  ].join("\n");
+  const sitemaps = parseRobotsTxt(robots);
+  assert.deepEqual(sitemaps, [
+    "https://example.com/sitemap-en.xml",
+    "https://example.com/sitemap-fr.xml",
+  ]);
+});
+
+test("parseRobotsTxt is case-insensitive for the Sitemap: key", () => {
+  const robots = "sitemap: https://example.com/sitemap.xml\nSITEMAP: https://example.com/sitemap2.xml\n";
+  const sitemaps = parseRobotsTxt(robots);
+  assert.deepEqual(sitemaps, [
+    "https://example.com/sitemap.xml",
+    "https://example.com/sitemap2.xml",
+  ]);
+});
+
+test("parseRobotsTxt returns empty array when no Sitemap directives present", () => {
+  const robots = "User-agent: *\nDisallow: /\n";
+  const sitemaps = parseRobotsTxt(robots);
+  assert.deepEqual(sitemaps, []);
+});
+
+test("parseRobotsTxt returns empty array for empty string", () => {
+  assert.deepEqual(parseRobotsTxt(""), []);
+});
+
+test("parseRobotsTxt trims whitespace around sitemap URLs", () => {
+  const robots = "Sitemap:   https://example.com/sitemap.xml   \n";
+  const sitemaps = parseRobotsTxt(robots);
+  assert.deepEqual(sitemaps, ["https://example.com/sitemap.xml"]);
+});
+
+test("parseRobotsTxt handles Windows-style CRLF line endings", () => {
+  const robots = "User-agent: *\r\nDisallow: /\r\nSitemap: https://example.com/sitemap.xml\r\n";
+  const sitemaps = parseRobotsTxt(robots);
+  assert.deepEqual(sitemaps, ["https://example.com/sitemap.xml"]);
 });

@@ -15,6 +15,14 @@
 // Prevents runaway processing when a sitemap index has thousands of entries.
 const MAX_SITEMAP_CHILDREN = parseInt(process.env.MAX_SITEMAP_CHILDREN || "50", 10);
 
+// Common alternative sitemap paths to try when /sitemap.xml fails.
+const ALTERNATIVE_SITEMAP_PATHS = [
+  "/sitemap_index.xml",
+  "/sitemap-index.xml",
+  "/sitemaps/sitemap.xml",
+  "/wp-sitemap.xml",
+];
+
 /**
  * Randomly sample up to `count` items from an array using a partial Fisher-Yates shuffle.
  * Returns a new array; the source array is not modified.
@@ -160,6 +168,50 @@ export function parseSitemapXml(xmlText) {
 }
 
 /**
+ * Extract `Sitemap:` directives from a robots.txt string.
+ * @param {string} robotsText
+ * @returns {string[]}  Array of sitemap URLs found in robots.txt
+ */
+export function parseRobotsTxt(robotsText) {
+  const sitemapUrls = [];
+  for (const line of robotsText.split(/\r?\n/)) {
+    const trimmed = line.trim();
+    if (trimmed.toLowerCase().startsWith("sitemap:")) {
+      const url = trimmed.slice("sitemap:".length).trim();
+      if (url) sitemapUrls.push(url);
+    }
+  }
+  return sitemapUrls;
+}
+
+/**
+ * Fetch and parse robots.txt, returning any sitemap URLs listed there.
+ * @param {string} origin  e.g. "https://example.com"
+ * @returns {Promise<string[]>}
+ */
+async function fetchRobotsTxt(origin) {
+  const robotsUrl = `${origin}/robots.txt`;
+  console.error(`[discover-urls] Checking robots.txt at ${robotsUrl}`);
+  const resp = await fetchWithTimeout(robotsUrl, 10000);
+  if (!resp || !resp.ok) {
+    console.error(`[discover-urls] robots.txt fetch failed: ${robotsUrl} (${resp?.status ?? "no response"})`);
+    return [];
+  }
+  let text;
+  try {
+    text = await resp.text();
+  } catch (err) {
+    console.error(`[discover-urls] robots.txt body read failed: ${robotsUrl} (${err.message || err})`);
+    return [];
+  }
+  const found = parseRobotsTxt(text);
+  if (found.length > 0) {
+    console.error(`[discover-urls] Found ${found.length} sitemap(s) in robots.txt`);
+  }
+  return found;
+}
+
+/**
  * Recursively fetch a sitemap (and any nested sitemaps) and collect page URLs.
  * @param {string} sitemapUrl
  * @param {string} origin  Root origin (used to filter off-domain URLs)
@@ -274,7 +326,10 @@ async function crawlDomain(startUrl, maxPages = 100) {
 
     console.error(`[discover-urls] Crawling ${url}`);
     const resp = await fetchWithTimeout(url, 20000);
-    if (!resp || !resp.ok) continue;
+    if (!resp || !resp.ok) {
+      console.error(`[discover-urls] Crawl fetch failed: ${url} (${resp?.status ?? "no response"})`);
+      continue;
+    }
 
     const contentType = resp.headers.get("content-type") ?? "";
     if (!contentType.includes("text/html")) continue;
@@ -304,7 +359,9 @@ async function crawlDomain(startUrl, maxPages = 100) {
  *
  * Strategy:
  *   1. Try /sitemap.xml (including sitemap indexes)
- *   2. If no sitemap pages found, fall back to BFS crawl
+ *   2. If that fails, check robots.txt for Sitemap: directives and try each
+ *   3. If still no URLs, try common alternative sitemap paths
+ *   4. If all sitemap approaches fail, fall back to BFS crawl
  *
  * Sitemap discovery is bounded by SITEMAP_DISCOVERY_TIMEOUT_MS (default 5 min)
  * and MAX_SITEMAP_CHILDREN (default 50) to prevent runaway processing on sites
@@ -318,9 +375,34 @@ export async function discoverUrls(domain, maxUrls = 100) {
   const origin = new URL(domain).origin;
   const sitemapUrl = `${origin}/sitemap.xml`;
   const deadline = Date.now() + SITEMAP_DISCOVERY_TIMEOUT_MS;
+  const attemptedSitemapUrls = new Set([sitemapUrl]);
 
   console.error(`[discover-urls] Trying sitemap at ${sitemapUrl}`);
-  const sitemapPages = await fetchSitemap(sitemapUrl, origin, maxUrls, 3, deadline);
+  let sitemapPages = await fetchSitemap(sitemapUrl, origin, maxUrls, 3, deadline);
+
+  // If /sitemap.xml failed, check robots.txt for Sitemap: directives
+  if (sitemapPages.length === 0) {
+    const robotsSitemaps = await fetchRobotsTxt(origin);
+    for (const robotsSitemapUrl of robotsSitemaps) {
+      if (sitemapPages.length > 0) break;
+      if (attemptedSitemapUrls.has(robotsSitemapUrl)) continue;
+      attemptedSitemapUrls.add(robotsSitemapUrl);
+      console.error(`[discover-urls] Trying sitemap from robots.txt: ${robotsSitemapUrl}`);
+      sitemapPages = await fetchSitemap(robotsSitemapUrl, origin, maxUrls, 3, deadline);
+    }
+  }
+
+  // If still no URLs, try common alternative sitemap paths
+  if (sitemapPages.length === 0) {
+    for (const path of ALTERNATIVE_SITEMAP_PATHS) {
+      if (sitemapPages.length > 0) break;
+      const altUrl = `${origin}${path}`;
+      if (attemptedSitemapUrls.has(altUrl)) continue;
+      attemptedSitemapUrls.add(altUrl);
+      console.error(`[discover-urls] Trying alternative sitemap: ${altUrl}`);
+      sitemapPages = await fetchSitemap(altUrl, origin, maxUrls, 3, deadline);
+    }
+  }
 
   if (sitemapPages.length > 0) {
     const total = sitemapPages.length;
