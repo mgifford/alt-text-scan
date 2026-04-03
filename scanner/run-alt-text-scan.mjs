@@ -761,9 +761,12 @@ async function main() {
       );
     }
   } else {
-    console.error("[run-alt-text-scan] No URLs to scan — issue has no body URLs and no domain URL in title");
+    const reason = "Issue has no body URLs and no domain URL in title";
+    console.error(`[run-alt-text-scan] No URLs to scan — ${reason}`);
     const metaError = {
       ok: false,
+      skipped: true,
+      reason,
       errors: parsed.errors,
       reportType: "alt-text",
       scanTitle: parsed.value?.scanTitle ?? "",
@@ -774,14 +777,16 @@ async function main() {
       scannedAt: new Date().toISOString()
     };
     process.stdout.write(JSON.stringify(metaError));
-    process.exitCode = 1;
     return;
   }
 
   if (urlsToScan.length === 0) {
-    console.error("[run-alt-text-scan] URL discovery returned 0 URLs");
+    const reason = `URL discovery returned 0 URLs via ${discoveryMethod} — the site may be blocking automated access (e.g. returning HTTP 403)`;
+    console.error(`[run-alt-text-scan] ${reason}`);
     const metaEmpty = {
       ok: false,
+      skipped: true,
+      reason,
       errors: ["No URLs discovered"],
       reportType: "alt-text",
       scanTitle: parsed.value?.scanTitle ?? scanDomain ?? "",
@@ -792,7 +797,6 @@ async function main() {
       scannedAt: new Date().toISOString()
     };
     process.stdout.write(JSON.stringify(metaEmpty));
-    process.exitCode = 1;
     return;
   }
 

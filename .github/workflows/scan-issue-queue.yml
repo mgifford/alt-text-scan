@@ -318,6 +318,40 @@ jobs:
                 // Clean up temporary files
                 fs.rmSync(eventPath, { force: true });
                 fs.rmSync(scanOutputDir, { recursive: true, force: true });
+
+                // Post a comment explaining why the scan was skipped and close the issue
+                // to prevent it from being retried indefinitely by the daily queue.
+                const owner = context.repo.owner;
+                const repo = context.repo.repo;
+                try {
+                  await github.rest.issues.createComment({
+                    owner,
+                    repo,
+                    issue_number: issueNumber,
+                    body: [
+                      `⚠️ **Scan skipped**: ${meta.reason}`,
+                      '',
+                      'This issue has been closed to avoid repeated retries. If the site becomes accessible, please reopen this issue to trigger a new scan.'
+                    ].join('\n')
+                  });
+                } catch (commentError) {
+                  console.warn(`Failed to post skip comment for issue #${issueNumber}:`, commentError.message);
+                }
+
+                // Remove in-progress / failed labels and close the issue
+                for (const name of ['scan-in-progress', 'scan-failed']) {
+                  try {
+                    await github.rest.issues.removeLabel({ owner, repo, issue_number: issueNumber, name });
+                  } catch (labelError) {
+                    if (labelError.status !== 404) throw labelError;
+                  }
+                }
+                try {
+                  await github.rest.issues.update({ owner, repo, issue_number: issueNumber, state: 'closed' });
+                  console.log(`Issue #${issueNumber} closed (scan skipped: ${meta.reason})`);
+                } catch (closeError) {
+                  console.warn(`Failed to close issue #${issueNumber}:`, closeError.message);
+                }
                 return;
               }
 
