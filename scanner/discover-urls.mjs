@@ -375,7 +375,7 @@ export async function discoverUrls(domain, maxUrls = 100) {
   const origin = new URL(domain).origin;
   const sitemapUrl = `${origin}/sitemap.xml`;
   const deadline = Date.now() + SITEMAP_DISCOVERY_TIMEOUT_MS;
-  const triedSitemaps = new Set([sitemapUrl]);
+  const attemptedSitemapUrls = new Set([sitemapUrl]);
 
   console.error(`[discover-urls] Trying sitemap at ${sitemapUrl}`);
   let sitemapPages = await fetchSitemap(sitemapUrl, origin, maxUrls, 3, deadline);
@@ -383,12 +383,12 @@ export async function discoverUrls(domain, maxUrls = 100) {
   // If /sitemap.xml failed, check robots.txt for Sitemap: directives
   if (sitemapPages.length === 0) {
     const robotsSitemaps = await fetchRobotsTxt(origin);
-    for (const rsUrl of robotsSitemaps) {
+    for (const robotsSitemapUrl of robotsSitemaps) {
       if (sitemapPages.length > 0) break;
-      if (triedSitemaps.has(rsUrl)) continue;
-      triedSitemaps.add(rsUrl);
-      console.error(`[discover-urls] Trying sitemap from robots.txt: ${rsUrl}`);
-      sitemapPages = await fetchSitemap(rsUrl, origin, maxUrls, 3, deadline);
+      if (attemptedSitemapUrls.has(robotsSitemapUrl)) continue;
+      attemptedSitemapUrls.add(robotsSitemapUrl);
+      console.error(`[discover-urls] Trying sitemap from robots.txt: ${robotsSitemapUrl}`);
+      sitemapPages = await fetchSitemap(robotsSitemapUrl, origin, maxUrls, 3, deadline);
     }
   }
 
@@ -397,8 +397,8 @@ export async function discoverUrls(domain, maxUrls = 100) {
     for (const path of ALTERNATIVE_SITEMAP_PATHS) {
       if (sitemapPages.length > 0) break;
       const altUrl = `${origin}${path}`;
-      if (triedSitemaps.has(altUrl)) continue;
-      triedSitemaps.add(altUrl);
+      if (attemptedSitemapUrls.has(altUrl)) continue;
+      attemptedSitemapUrls.add(altUrl);
       console.error(`[discover-urls] Trying alternative sitemap: ${altUrl}`);
       sitemapPages = await fetchSitemap(altUrl, origin, maxUrls, 3, deadline);
     }
