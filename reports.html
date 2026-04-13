@@ -27,6 +27,7 @@
       --color-page-btn-hover: #f3f4f6;
       --color-page-btn-active-bg: #0969da;
       --color-page-btn-active-text: #ffffff;
+      --color-page-btn-active-hover-bg: #0860ca;
       --color-sort-btn: #24292f;
       --color-skip-bg: #000000;
       --color-skip-text: #ffffff;
@@ -55,6 +56,7 @@
         --color-page-btn-hover: #30363d;
         --color-page-btn-active-bg: #58a6ff;
         --color-page-btn-active-text: #0d1117;
+        --color-page-btn-active-hover-bg: #79b8ff;
         --color-sort-btn: #e6edf3;
         --color-skip-bg: #ffffff;
         --color-skip-text: #000000;
@@ -83,6 +85,7 @@
       --color-page-btn-hover: #f3f4f6;
       --color-page-btn-active-bg: #0969da;
       --color-page-btn-active-text: #ffffff;
+      --color-page-btn-active-hover-bg: #0860ca;
       --color-sort-btn: #24292f;
       --color-skip-bg: #000000;
       --color-skip-text: #ffffff;
@@ -110,6 +113,7 @@
       --color-page-btn-hover: #30363d;
       --color-page-btn-active-bg: #58a6ff;
       --color-page-btn-active-text: #0d1117;
+      --color-page-btn-active-hover-bg: #79b8ff;
       --color-sort-btn: #e6edf3;
       --color-skip-bg: #ffffff;
       --color-skip-text: #000000;
@@ -526,8 +530,7 @@
     }
     
     .page-btn-active:hover {
-      background: var(--color-page-btn-active-bg);
-      opacity: 0.9;
+      background: var(--color-page-btn-active-hover-bg);
     }
     
     .page-ellipsis {
@@ -549,7 +552,7 @@
       <button id="theme-toggle" type="button" aria-label="Switch to dark mode">
         <svg aria-hidden="true" focusable="false" class="theme-icon sun-icon" viewBox="0 0 24 24" width="20" height="20">
           <circle cx="12" cy="12" r="5" fill="currentColor"/>
-          <path fill="currentColor" d="M12 1v3M12 20v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M1 12h3M20 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path fill="none" d="M12 1v3M12 20v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M1 12h3M20 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
         </svg>
         <svg aria-hidden="true" focusable="false" class="theme-icon moon-icon" viewBox="0 0 24 24" width="20" height="20">
           <path fill="currentColor" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
