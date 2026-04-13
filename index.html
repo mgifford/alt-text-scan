@@ -17,6 +17,145 @@
   <meta property="og:image:alt" content="Alt Text Scan - Alt Text Quality Review">
   <meta property="og:site_name" content="Alt Text Scan">
   <style>
+    :root {
+      --color-text: #24292f;
+      --color-text-muted: #57606a;
+      --color-bg: #f6f8fa;
+      --color-surface: #ffffff;
+      --color-link: #0969da;
+      --color-focus: #004499;
+      --color-border: #d0d7de;
+      --color-hover-bg: #f3f4f6;
+      --color-input-bg: #ffffff;
+      --color-preview-bg: #f6f8fa;
+      --color-heading: #0969da;
+      --color-shadow: rgba(0, 0, 0, 0.12);
+      --color-success-bg: #dafbe1;
+      --color-success-text: #1a7f37;
+      --color-success-border: #4ac26b;
+      --color-error-bg: #ffebe9;
+      --color-error-text: #cf222e;
+      --color-error-border: #ff8182;
+      --color-url-accepted-bg: #dafbe1;
+      --color-url-accepted-text: #1a7f37;
+      --color-url-rejected-bg: #ffebe9;
+      --color-url-rejected-text: #cf222e;
+      --color-btn-bg: #1f883d;
+      --color-btn-hover: #1a7f37;
+      --color-btn-disabled: #94d3a2;
+      --color-spinner-border: rgba(0, 0, 0, 0.1);
+      --color-spinner-top: #0969da;
+      --color-skip-bg: #000000;
+      --color-skip-text: #ffffff;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --color-text: #e6edf3;
+        --color-text-muted: #8b949e;
+        --color-bg: #0d1117;
+        --color-surface: #161b22;
+        --color-link: #58a6ff;
+        --color-focus: #99ccff;
+        --color-border: #30363d;
+        --color-hover-bg: #21262d;
+        --color-input-bg: #0d1117;
+        --color-preview-bg: #21262d;
+        --color-heading: #58a6ff;
+        --color-shadow: rgba(0, 0, 0, 0.4);
+        --color-success-bg: #0f2a1a;
+        --color-success-text: #3fb950;
+        --color-success-border: #238636;
+        --color-error-bg: #2a0a0a;
+        --color-error-text: #f85149;
+        --color-error-border: #da3633;
+        --color-url-accepted-bg: #0f2a1a;
+        --color-url-accepted-text: #3fb950;
+        --color-url-rejected-bg: #2a0a0a;
+        --color-url-rejected-text: #f85149;
+        --color-btn-bg: #238636;
+        --color-btn-hover: #2ea043;
+        --color-btn-disabled: #0f2a1a;
+        --color-spinner-border: rgba(255, 255, 255, 0.1);
+        --color-spinner-top: #58a6ff;
+        --color-skip-bg: #ffffff;
+        --color-skip-text: #000000;
+      }
+    }
+
+    [data-theme="light"] {
+      --color-text: #24292f;
+      --color-text-muted: #57606a;
+      --color-bg: #f6f8fa;
+      --color-surface: #ffffff;
+      --color-link: #0969da;
+      --color-focus: #004499;
+      --color-border: #d0d7de;
+      --color-hover-bg: #f3f4f6;
+      --color-input-bg: #ffffff;
+      --color-preview-bg: #f6f8fa;
+      --color-heading: #0969da;
+      --color-shadow: rgba(0, 0, 0, 0.12);
+      --color-success-bg: #dafbe1;
+      --color-success-text: #1a7f37;
+      --color-success-border: #4ac26b;
+      --color-error-bg: #ffebe9;
+      --color-error-text: #cf222e;
+      --color-error-border: #ff8182;
+      --color-url-accepted-bg: #dafbe1;
+      --color-url-accepted-text: #1a7f37;
+      --color-url-rejected-bg: #ffebe9;
+      --color-url-rejected-text: #cf222e;
+      --color-btn-bg: #1f883d;
+      --color-btn-hover: #1a7f37;
+      --color-btn-disabled: #94d3a2;
+      --color-spinner-border: rgba(0, 0, 0, 0.1);
+      --color-spinner-top: #0969da;
+      --color-skip-bg: #000000;
+      --color-skip-text: #ffffff;
+    }
+
+    [data-theme="dark"] {
+      --color-text: #e6edf3;
+      --color-text-muted: #8b949e;
+      --color-bg: #0d1117;
+      --color-surface: #161b22;
+      --color-link: #58a6ff;
+      --color-focus: #99ccff;
+      --color-border: #30363d;
+      --color-hover-bg: #21262d;
+      --color-input-bg: #0d1117;
+      --color-preview-bg: #21262d;
+      --color-heading: #58a6ff;
+      --color-shadow: rgba(0, 0, 0, 0.4);
+      --color-success-bg: #0f2a1a;
+      --color-success-text: #3fb950;
+      --color-success-border: #238636;
+      --color-error-bg: #2a0a0a;
+      --color-error-text: #f85149;
+      --color-error-border: #da3633;
+      --color-url-accepted-bg: #0f2a1a;
+      --color-url-accepted-text: #3fb950;
+      --color-url-rejected-bg: #2a0a0a;
+      --color-url-rejected-text: #f85149;
+      --color-btn-bg: #238636;
+      --color-btn-hover: #2ea043;
+      --color-btn-disabled: #0f2a1a;
+      --color-spinner-border: rgba(255, 255, 255, 0.1);
+      --color-spinner-top: #58a6ff;
+      --color-skip-bg: #ffffff;
+      --color-skip-text: #000000;
+    }
+
+    @media (forced-colors: active) {
+      #theme-toggle {
+        forced-color-adjust: none;
+        border: 1px solid ButtonText;
+        color: ButtonText;
+        background-color: ButtonFace;
+      }
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -28,8 +167,8 @@
       top: -100%;
       left: 1rem;
       padding: 0.5rem 1rem;
-      background: #000;
-      color: #fff;
+      background: var(--color-skip-bg);
+      color: var(--color-skip-text);
       font-weight: bold;
       text-decoration: none;
       z-index: 9999;
@@ -59,7 +198,7 @@
     h1:focus,
     h2:focus,
     h3:focus {
-      outline: 3px solid #005fcc;
+      outline: 3px solid var(--color-focus);
       outline-offset: 2px;
       scroll-margin-top: 1rem;
     }
@@ -73,46 +212,95 @@
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
       line-height: 1.6;
-      color: #24292f;
-      background-color: #f6f8fa;
+      color: var(--color-text);
+      background-color: var(--color-bg);
       padding: 2rem;
     }
     
     .container {
       max-width: 900px;
       margin: 0 auto;
-      background: white;
+      background: var(--color-surface);
       padding: 2rem;
       border-radius: 8px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+      box-shadow: 0 1px 3px var(--color-shadow);
     }
     
     h1 {
-      color: #0969da;
+      color: var(--color-heading);
       margin-bottom: 0.5rem;
       font-size: 2rem;
     }
     
     .subtitle {
-      color: #57606a;
+      color: var(--color-text-muted);
       margin-bottom: 2rem;
     }
     
     .nav {
+      display: flex;
+      align-items: center;
       margin-bottom: 1.5rem;
       padding-bottom: 1rem;
-      border-bottom: 1px solid #d0d7de;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0 1.5rem;
     }
     
     .nav a {
-      color: #0969da;
+      color: var(--color-link);
       text-decoration: none;
-      margin-right: 1.5rem;
     }
     
     .nav a:hover {
       text-decoration: underline;
     }
+
+    #theme-toggle {
+      margin-left: auto;
+      padding: 0.5rem;
+      border: 1px solid var(--color-border);
+      background-color: var(--color-surface);
+      color: var(--color-text);
+      cursor: pointer;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    #theme-toggle:hover {
+      background-color: var(--color-hover-bg);
+    }
+
+    #theme-toggle:focus {
+      outline: 2px solid var(--color-focus);
+      outline-offset: 2px;
+    }
+
+    .theme-icon {
+      display: block;
+      width: 20px;
+      height: 20px;
+    }
+
+    .sun-icon { display: none; }
+    .moon-icon { display: block; }
+
+    @media (prefers-color-scheme: dark) {
+      .sun-icon { display: block; }
+      .moon-icon { display: none; }
+    }
+
+    [data-theme="dark"] .sun-icon { display: block; }
+    [data-theme="dark"] .moon-icon { display: none; }
+    [data-theme="light"] .sun-icon { display: none; }
+    [data-theme="light"] .moon-icon { display: block; }
     
     .form-group {
       margin-bottom: 1.5rem;
@@ -122,23 +310,25 @@
       display: block;
       font-weight: 600;
       margin-bottom: 0.5rem;
-      color: #24292f;
+      color: var(--color-text);
     }
     
     .help-text {
       font-size: 0.875rem;
-      color: #57606a;
+      color: var(--color-text-muted);
       margin-bottom: 0.5rem;
     }
     
-    textarea, input[type="text"] {
+    textarea, input[type="text"], input[type="number"] {
       width: 100%;
       padding: 0.75rem;
-      border: 1px solid #d0d7de;
+      border: 1px solid var(--color-border);
       border-radius: 6px;
       font-family: ui-monospace, monospace;
       font-size: 0.875rem;
       line-height: 1.5;
+      background-color: var(--color-input-bg);
+      color: var(--color-text);
     }
     
     textarea {
@@ -146,16 +336,16 @@
       resize: vertical;
     }
     
-    textarea:focus, input[type="text"]:focus {
+    textarea:focus, input[type="text"]:focus, input[type="number"]:focus {
       outline: none;
-      border-color: #0969da;
-      box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.1);
+      border-color: var(--color-link);
+      box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.15);
     }
     
     .preview {
       margin-top: 1.5rem;
       padding: 1rem;
-      background-color: #f6f8fa;
+      background-color: var(--color-preview-bg);
       border-radius: 6px;
       display: none;
     }
@@ -167,7 +357,7 @@
     .preview h3 {
       font-size: 1rem;
       margin-bottom: 0.75rem;
-      color: #24292f;
+      color: var(--color-text);
     }
     
     .url-count {
@@ -176,11 +366,11 @@
     }
     
     .url-count.valid {
-      color: #1a7f37;
+      color: var(--color-success-text);
     }
     
     .url-count.invalid {
-      color: #cf222e;
+      color: var(--color-error-text);
     }
     
     .url-list {
@@ -198,13 +388,13 @@
     }
     
     .url-item.accepted {
-      background-color: #dafbe1;
-      color: #1a7f37;
+      background-color: var(--color-url-accepted-bg);
+      color: var(--color-url-accepted-text);
     }
     
     .url-item.rejected {
-      background-color: #ffebe9;
-      color: #cf222e;
+      background-color: var(--color-url-rejected-bg);
+      color: var(--color-url-rejected-text);
     }
     
     .url-item .reason {
@@ -214,7 +404,7 @@
     }
     
     button {
-      background-color: #1f883d;
+      background-color: var(--color-btn-bg);
       color: white;
       border: none;
       padding: 0.75rem 1.5rem;
@@ -226,11 +416,11 @@
     }
     
     button:hover:not(:disabled) {
-      background-color: #1a7f37;
+      background-color: var(--color-btn-hover);
     }
     
     button:disabled {
-      background-color: #94d3a2;
+      background-color: var(--color-btn-disabled);
       cursor: not-allowed;
     }
     
@@ -246,19 +436,19 @@
     }
     
     .error-message {
-      background-color: #ffebe9;
-      color: #cf222e;
-      border: 1px solid #ff8182;
+      background-color: var(--color-error-bg);
+      color: var(--color-error-text);
+      border: 1px solid var(--color-error-border);
     }
     
     .success-message {
-      background-color: #dafbe1;
-      color: #1a7f37;
-      border: 1px solid #4ac26b;
+      background-color: var(--color-success-bg);
+      color: var(--color-success-text);
+      border: 1px solid var(--color-success-border);
     }
     
     .success-message a {
-      color: #1a7f37;
+      color: var(--color-success-text);
       font-weight: 600;
     }
     
@@ -266,7 +456,7 @@
       display: none;
       text-align: center;
       padding: 1rem;
-      color: #57606a;
+      color: var(--color-text-muted);
     }
     
     .loading.visible {
@@ -277,9 +467,9 @@
       display: inline-block;
       width: 20px;
       height: 20px;
-      border: 3px solid rgba(0, 0, 0, 0.1);
+      border: 3px solid var(--color-spinner-border);
       border-radius: 50%;
-      border-top-color: #0969da;
+      border-top-color: var(--color-spinner-top);
       animation: spin 1s ease-in-out infinite;
     }
     
@@ -290,13 +480,13 @@
     footer {
       margin-top: 2rem;
       padding-top: 1.5rem;
-      border-top: 1px solid #d0d7de;
+      border-top: 1px solid var(--color-border);
       text-align: center;
-      color: #57606a;
+      color: var(--color-text-muted);
     }
     
     footer a {
-      color: #0969da;
+      color: var(--color-link);
       text-decoration: none;
       font-weight: 600;
     }
@@ -333,9 +523,20 @@
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
   <main class="container" id="main-content" tabindex="-1">
-    <nav class="nav">
-      <a href="index.html">Submit URLs</a>
-      <a href="reports.html">View Reports</a>
+    <nav class="nav" aria-label="Site navigation">
+      <div class="nav-links">
+        <a href="index.html">Submit URLs</a>
+        <a href="reports.html">View Reports</a>
+      </div>
+      <button id="theme-toggle" type="button" aria-label="Switch to dark mode">
+        <svg aria-hidden="true" focusable="false" class="theme-icon sun-icon" viewBox="0 0 24 24" width="20" height="20">
+          <circle cx="12" cy="12" r="5" fill="currentColor"/>
+          <path fill="currentColor" d="M12 1v3M12 20v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M1 12h3M20 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <svg aria-hidden="true" focusable="false" class="theme-icon moon-icon" viewBox="0 0 24 24" width="20" height="20">
+          <path fill="currentColor" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
     </nav>
     
     <h1>Submit URLs for Alt Text Review</h1>
@@ -408,5 +609,35 @@
   </main>
   
   <script type="module" src="submit.js"></script>
+  <script>
+    (function () {
+      const toggle = document.getElementById('theme-toggle');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+      const saved = localStorage.getItem('theme');
+      let current = saved || (prefersDark.matches ? 'dark' : 'light');
+      let userOverride = !!saved;
+
+      function applyTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        toggle.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+      }
+
+      toggle.addEventListener('click', function () {
+        current = current === 'light' ? 'dark' : 'light';
+        userOverride = true;
+        localStorage.setItem('theme', current);
+        applyTheme(current);
+      });
+
+      prefersDark.addEventListener('change', function (e) {
+        if (!userOverride) {
+          current = e.matches ? 'dark' : 'light';
+          applyTheme(current);
+        }
+      });
+
+      applyTheme(current);
+    }());
+  </script>
 </body>
 </html>
