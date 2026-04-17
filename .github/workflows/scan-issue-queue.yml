@@ -694,7 +694,12 @@ jobs:
                 }
 
                 // Count previous scan error comments to decide whether to auto-close.
-                const MAX_SCAN_RETRIES = 3;
+                // 3 retries balances giving transient errors a chance to resolve on their own
+                // (network blips, temporary site outages) against letting persistently-blocked
+                // or misconfigured scans run indefinitely and consume Actions minutes every day.
+                // Override by setting MAX_SCAN_RETRIES as a repo variable if a different
+                // threshold suits your workflow.
+                const MAX_SCAN_RETRIES = Number(process.env.MAX_SCAN_RETRIES || '3');
                 let priorErrorCount = 0;
                 try {
                   const { data: allComments } = await github.rest.issues.listComments({

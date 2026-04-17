@@ -15,6 +15,21 @@
 // Prevents runaway processing when a sitemap index has thousands of entries.
 const MAX_SITEMAP_CHILDREN = parseInt(process.env.MAX_SITEMAP_CHILDREN || "50", 10);
 
+// Wayback Machine CDX API base URL for archived URL discovery.
+const WAYBACK_CDX_BASE = "https://web.archive.org/cdx/search/cdx";
+
+// Fetch timeout for Wayback Machine CDX API requests (ms).
+const WAYBACK_TIMEOUT_MS = 20000; // 20 seconds
+
+// Fetch timeout for Bing Web Search API requests (ms).
+const BING_TIMEOUT_MS = 15000; // 15 seconds
+
+// Maximum results per Bing Web Search API request (hard API limit).
+const BING_MAX_RESULTS_PER_REQUEST = 50;
+
+// CDX JSON responses with fewer than 2 rows (header + at least one URL) have no data.
+const MIN_CDX_RESPONSE_LENGTH = 2;
+
 // Common alternative sitemap paths to try when /sitemap.xml fails.
 const ALTERNATIVE_SITEMAP_PATHS = [
   "/sitemap_index.xml",
@@ -184,9 +199,6 @@ export function parseRobotsTxt(robotsText) {
   return sitemapUrls;
 }
 
-// Wayback Machine CDX API base URL for archived URL discovery.
-const WAYBACK_CDX_BASE = "https://web.archive.org/cdx/search/cdx";
-
 /**
  * Parse a Wayback Machine CDX API JSON response into an array of page URLs.
  *
@@ -198,7 +210,7 @@ const WAYBACK_CDX_BASE = "https://web.archive.org/cdx/search/cdx";
  * @returns {string[]}
  */
 export function parseWaybackResponse(rows) {
-  if (!Array.isArray(rows) || rows.length < 2) return [];
+  if (!Array.isArray(rows) || rows.length < MIN_CDX_RESPONSE_LENGTH) return [];
   // Skip the header row (index 0)
   return rows
     .slice(1)
@@ -241,7 +253,7 @@ async function fetchWaybackUrls(origin, maxUrls) {
   });
   const cdxUrl = `${WAYBACK_CDX_BASE}?${params}`;
   console.error(`[discover-urls] Trying Wayback Machine CDX API: ${cdxUrl}`);
-  const resp = await fetchWithTimeout(cdxUrl, 20000);
+  const resp = await fetchWithTimeout(cdxUrl, WAYBACK_TIMEOUT_MS);
   if (!resp || !resp.ok) {
     console.error(
       `[discover-urls] Wayback CDX fetch failed (${resp?.status ?? "no response"})`
@@ -277,12 +289,12 @@ async function fetchBingUrls(origin, maxUrls) {
     return [];
   }
   const hostname = new URL(origin).hostname;
-  const count = Math.min(maxUrls, 50); // Bing API max per request is 50
+  const count = Math.min(maxUrls, BING_MAX_RESULTS_PER_REQUEST);
   const query = `site:${hostname}`;
   const bingUrl = `https://api.bing.microsoft.com/v7.0/search?q=${encodeURIComponent(query)}&count=${count}&responseFilter=Webpages`;
   console.error(`[discover-urls] Trying Bing Web Search API for ${query}`);
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), 15000);
+  const timer = setTimeout(() => controller.abort(), BING_TIMEOUT_MS);
   let resp;
   try {
     resp = await fetch(bingUrl, {
