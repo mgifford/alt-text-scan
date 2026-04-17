@@ -15,6 +15,21 @@
 // Prevents runaway processing when a sitemap index has thousands of entries.
 const MAX_SITEMAP_CHILDREN = parseInt(process.env.MAX_SITEMAP_CHILDREN || "50", 10);
 
+// Wayback Machine CDX API base URL for archived URL discovery.
+const WAYBACK_CDX_BASE = "https://web.archive.org/cdx/search/cdx";
+
+// Fetch timeout for Wayback Machine CDX API requests (ms).
+const WAYBACK_TIMEOUT_MS = 20000; // 20 seconds
+
+// Fetch timeout for Bing Web Search API requests (ms).
+const BING_TIMEOUT_MS = 15000; // 15 seconds
+
+// Maximum results per Bing Web Search API request (hard API limit).
+const BING_MAX_RESULTS_PER_REQUEST = 50;
+
+// CDX JSON responses with fewer than 2 rows (header + at least one URL) have no data.
+const MIN_CDX_RESPONSE_LENGTH = 2;
+
 // Common alternative sitemap paths to try when /sitemap.xml fails.
 const ALTERNATIVE_SITEMAP_PATHS = [
   "/sitemap_index.xml",
@@ -182,6 +197,134 @@ export function parseRobotsTxt(robotsText) {
     }
   }
   return sitemapUrls;
+}
+
+/**
+ * Parse a Wayback Machine CDX API JSON response into an array of page URLs.
+ *
+ * The CDX API with `output=json&fl=original` returns a 2-D array where
+ * row 0 is the header (`["original"]`) and each subsequent row is a
+ * single-element array containing the archived URL.
+ *
+ * @param {unknown} rows - Parsed JSON from CDX API
+ * @returns {string[]}
+ */
+export function parseWaybackResponse(rows) {
+  if (!Array.isArray(rows) || rows.length < MIN_CDX_RESPONSE_LENGTH) return [];
+  // Skip the header row (index 0)
+  return rows
+    .slice(1)
+    .map((row) => (Array.isArray(row) ? row[0] : null))
+    .filter((url) => typeof url === "string" && url.startsWith("http"));
+}
+
+/**
+ * Parse a Bing Web Search API v7 JSON response into an array of page URLs.
+ *
+ * @param {unknown} json - Parsed JSON from Bing Search API
+ * @returns {string[]}
+ */
+export function parseBingSearchResponse(json) {
+  if (!json || typeof json !== "object") return [];
+  const values = json?.webPages?.value;
+  if (!Array.isArray(values)) return [];
+  return values
+    .map((item) => (item && typeof item.url === "string" ? item.url : null))
+    .filter(Boolean);
+}
+
+/**
+ * Discover URLs for a domain using the Wayback Machine CDX API.
+ * Only returns pages that were successfully archived (HTTP status 200).
+ *
+ * @param {string} origin  e.g. "https://example.com"
+ * @param {number} maxUrls
+ * @returns {Promise<string[]>}
+ */
+async function fetchWaybackUrls(origin, maxUrls) {
+  const hostname = new URL(origin).hostname;
+  const params = new URLSearchParams({
+    url: `${hostname}/*`,
+    output: "json",
+    fl: "original",
+    collapse: "urlkey",
+    limit: String(maxUrls),
+    filter: "statuscode:200",
+  });
+  const cdxUrl = `${WAYBACK_CDX_BASE}?${params}`;
+  console.error(`[discover-urls] Trying Wayback Machine CDX API: ${cdxUrl}`);
+  const resp = await fetchWithTimeout(cdxUrl, WAYBACK_TIMEOUT_MS);
+  if (!resp || !resp.ok) {
+    console.error(
+      `[discover-urls] Wayback CDX fetch failed (${resp?.status ?? "no response"})`
+    );
+    return [];
+  }
+  let json;
+  try {
+    json = await resp.json();
+  } catch (err) {
+    console.error(`[discover-urls] Wayback CDX parse failed: ${err.message || err}`);
+    return [];
+  }
+  const urls = parseWaybackResponse(json)
+    .filter((u) => isSameOrigin(u, origin) && !isNonHtmlUrl(u))
+    .slice(0, maxUrls);
+  console.error(`[discover-urls] Found ${urls.length} URLs via Wayback Machine`);
+  return urls;
+}
+
+/**
+ * Discover URLs for a domain using the Bing Web Search API.
+ * Requires the BING_API_KEY environment variable; silently skips if not set.
+ *
+ * @param {string} origin  e.g. "https://example.com"
+ * @param {number} maxUrls
+ * @returns {Promise<string[]>}
+ */
+async function fetchBingUrls(origin, maxUrls) {
+  const apiKey = process.env.BING_API_KEY;
+  if (!apiKey) {
+    console.error("[discover-urls] Bing discovery skipped: BING_API_KEY not set");
+    return [];
+  }
+  const hostname = new URL(origin).hostname;
+  const count = Math.min(maxUrls, BING_MAX_RESULTS_PER_REQUEST);
+  const query = `site:${hostname}`;
+  const bingUrl = `https://api.bing.microsoft.com/v7.0/search?q=${encodeURIComponent(query)}&count=${count}&responseFilter=Webpages`;
+  console.error(`[discover-urls] Trying Bing Web Search API for ${query}`);
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), BING_TIMEOUT_MS);
+  let resp;
+  try {
+    resp = await fetch(bingUrl, {
+      signal: controller.signal,
+      headers: {
+        "Ocp-Apim-Subscription-Key": apiKey,
+        Accept: "application/json",
+      },
+    });
+  } catch {
+    resp = null;
+  } finally {
+    clearTimeout(timer);
+  }
+  if (!resp || !resp.ok) {
+    console.error(`[discover-urls] Bing API fetch failed (${resp?.status ?? "no response"})`);
+    return [];
+  }
+  let json;
+  try {
+    json = await resp.json();
+  } catch (err) {
+    console.error(`[discover-urls] Bing API parse failed: ${err.message || err}`);
+    return [];
+  }
+  const urls = parseBingSearchResponse(json)
+    .filter((u) => isSameOrigin(u, origin) && !isNonHtmlUrl(u))
+    .slice(0, maxUrls);
+  console.error(`[discover-urls] Found ${urls.length} URLs via Bing`);
+  return urls;
 }
 
 /**
@@ -421,11 +564,36 @@ export async function discoverUrls(domain, maxUrls = 100) {
   const crawlPages = await crawlDomain(origin, maxUrls);
   console.error(`[discover-urls] Found ${crawlPages.length} URLs via crawl`);
 
-  return {
-    urls: crawlPages,
-    method: "crawl",
-    total: crawlPages.length
-  };
+  if (crawlPages.length > 0) {
+    return { urls: crawlPages, method: "crawl", total: crawlPages.length };
+  }
+
+  // Crawl blocked — try Wayback Machine CDX archive as fallback
+  const waybackPages = await fetchWaybackUrls(origin, maxUrls);
+  if (waybackPages.length > 0) {
+    const sampled = waybackPages.length > maxUrls
+      ? randomSample(waybackPages, maxUrls)
+      : waybackPages;
+    console.error(
+      `[discover-urls] Found ${waybackPages.length} URLs via Wayback Machine, selected ${sampled.length}`
+    );
+    return { urls: sampled, method: "wayback", total: waybackPages.length };
+  }
+
+  // Wayback also empty — try Bing as last resort
+  const bingPages = await fetchBingUrls(origin, maxUrls);
+  if (bingPages.length > 0) {
+    const sampled = bingPages.length > maxUrls
+      ? randomSample(bingPages, maxUrls)
+      : bingPages;
+    console.error(
+      `[discover-urls] Found ${bingPages.length} URLs via Bing, selected ${sampled.length}`
+    );
+    return { urls: sampled, method: "bing", total: bingPages.length };
+  }
+
+  // All strategies exhausted
+  return { urls: [], method: "crawl", total: 0 };
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {

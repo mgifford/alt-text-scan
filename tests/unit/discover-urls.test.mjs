@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { parseSitemapXml, extractLinksFromHtml, parseRobotsTxt } from "../../scanner/discover-urls.mjs";
+import { parseSitemapXml, extractLinksFromHtml, parseRobotsTxt, parseWaybackResponse, parseBingSearchResponse } from "../../scanner/discover-urls.mjs";
 
 test("parseSitemapXml extracts page URLs from a standard sitemap", () => {
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -289,4 +289,108 @@ test("parseRobotsTxt handles Windows-style CRLF line endings", () => {
   const robots = "User-agent: *\r\nDisallow: /\r\nSitemap: https://example.com/sitemap.xml\r\n";
   const sitemaps = parseRobotsTxt(robots);
   assert.deepEqual(sitemaps, ["https://example.com/sitemap.xml"]);
+});
+
+// ── parseWaybackResponse ───────────────────────────────────────────────────────
+
+test("parseWaybackResponse extracts URLs from a CDX JSON response", () => {
+  const rows = [
+    ["original"],
+    ["https://example.com/"],
+    ["https://example.com/about"],
+    ["https://example.com/contact"],
+  ];
+  const urls = parseWaybackResponse(rows);
+  assert.deepEqual(urls, [
+    "https://example.com/",
+    "https://example.com/about",
+    "https://example.com/contact",
+  ]);
+});
+
+test("parseWaybackResponse skips the header row", () => {
+  const rows = [["original"], ["https://example.com/page"]];
+  const urls = parseWaybackResponse(rows);
+  assert.equal(urls.length, 1);
+  assert.equal(urls[0], "https://example.com/page");
+});
+
+test("parseWaybackResponse returns empty array when only header row present", () => {
+  assert.deepEqual(parseWaybackResponse([["original"]]), []);
+});
+
+test("parseWaybackResponse returns empty array for empty input", () => {
+  assert.deepEqual(parseWaybackResponse([]), []);
+});
+
+test("parseWaybackResponse returns empty array for non-array input", () => {
+  assert.deepEqual(parseWaybackResponse(null), []);
+  assert.deepEqual(parseWaybackResponse("not an array"), []);
+  assert.deepEqual(parseWaybackResponse({}), []);
+});
+
+test("parseWaybackResponse filters out non-http entries", () => {
+  const rows = [
+    ["original"],
+    ["https://example.com/page"],
+    [null],
+    [42],
+    ["ftp://example.com/file"],
+    ["https://example.com/other"],
+  ];
+  const urls = parseWaybackResponse(rows);
+  assert.deepEqual(urls, ["https://example.com/page", "https://example.com/other"]);
+});
+
+// ── parseBingSearchResponse ───────────────────────────────────────────────────
+
+test("parseBingSearchResponse extracts URLs from a Bing API response", () => {
+  const json = {
+    _type: "SearchResponse",
+    webPages: {
+      value: [
+        { url: "https://example.com/", name: "Example Home" },
+        { url: "https://example.com/about", name: "About" },
+        { url: "https://example.com/contact", name: "Contact" },
+      ],
+    },
+  };
+  const urls = parseBingSearchResponse(json);
+  assert.deepEqual(urls, [
+    "https://example.com/",
+    "https://example.com/about",
+    "https://example.com/contact",
+  ]);
+});
+
+test("parseBingSearchResponse returns empty array when webPages missing", () => {
+  assert.deepEqual(parseBingSearchResponse({}), []);
+  assert.deepEqual(parseBingSearchResponse({ webPages: {} }), []);
+});
+
+test("parseBingSearchResponse returns empty array for non-object input", () => {
+  assert.deepEqual(parseBingSearchResponse(null), []);
+  assert.deepEqual(parseBingSearchResponse("string"), []);
+  assert.deepEqual(parseBingSearchResponse(42), []);
+});
+
+test("parseBingSearchResponse filters out entries with missing or non-string url", () => {
+  const json = {
+    webPages: {
+      value: [
+        { url: "https://example.com/valid" },
+        { name: "No URL field" },
+        { url: null },
+        { url: 42 },
+        { url: "https://example.com/also-valid" },
+      ],
+    },
+  };
+  const urls = parseBingSearchResponse(json);
+  assert.deepEqual(urls, ["https://example.com/valid", "https://example.com/also-valid"]);
+});
+
+test("parseBingSearchResponse returns empty array when value array is empty", () => {
+  const json = { webPages: { value: [] } };
+  assert.deepEqual(parseBingSearchResponse(json), []);
 });

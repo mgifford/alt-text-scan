@@ -183,6 +183,13 @@ jobs:
             const issue = JSON.parse(readFileSync('.tmp/issue-row.json', 'utf8'));
             const meta = JSON.parse(readFileSync('.scan-output/meta.json', 'utf8'));
             if (meta.skipped) {
+              appendFileSync('.tmp/scheduled-skipped.ndjson', JSON.stringify({
+                issueNumber: issue.number,
+                issueTitle: issue.title,
+                scanTitle: meta.scanTitle || issue.title,
+                skipReason: meta.skipReason || null,
+                reason: meta.reason || 'Unknown reason'
+              }) + '\n', 'utf8');
               process.exit(0);
             }
 
@@ -330,4 +337,80 @@ jobs:
                 issue_number: item.issueNumber,
                 body
               });
+            }
+
+      - name: Comment on blocked timed issues
+        if: ${{ steps.due.outputs.due_count != '0' }}
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const fs = require('fs');
+            const path = '.tmp/scheduled-skipped.ndjson';
+            if (!fs.existsSync(path)) {
+              core.info('No skipped timed issues this run.');
+              return;
+            }
+
+            const lines = fs.readFileSync(path, 'utf8').trim().split('\n').filter(Boolean);
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+
+            for (const line of lines) {
+              const item = JSON.parse(line);
+              const domain = item.scanTitle || '<domain>';
+
+              let body;
+              if (item.skipReason === 'no_urls_discovered') {
+                body = [
+                  '🚫 **Scheduled scan blocked – URL discovery failed**',
+                  '',
+                  'This site blocked all automated URL discovery attempts (HTTP 403 / firewall). ' +
+                  'The scanner tried sitemaps, robots.txt, page crawl, Wayback Machine, and Bing — all returned 0 pages.',
+                  '',
+                  '**This scheduled scan will keep failing** until specific page URLs are provided.',
+                  '',
+                  '**What you can do:**',
+                  '',
+                  '1. **Provide specific URLs** — Edit this issue and add the exact page URLs you want scanned ' +
+                  '(one per line) in the `## URLs` section, then save. The next scheduled run will use those URLs directly.',
+                  '',
+                  '2. **Remove this recurring issue** — If this domain is consistently inaccessible, ' +
+                  'close this issue permanently to stop generating failed workflow runs.',
+                  '',
+                  '> ⚠️ Each failed run consumes GitHub Actions minutes. ' +
+                  'Leaving this issue open without fixing the URL list will repeat this failure on every scheduled run.',
+                ].join('\n');
+              } else {
+                body = [
+                  `⚠️ **Scheduled scan skipped**: ${item.reason}`,
+                  '',
+                  'This timed issue will be retried on the next scheduled run. ' +
+                  'If the problem persists, consider editing the issue to add specific page URLs or closing it to stop retries.',
+                ].join('\n');
+              }
+
+              try {
+                await github.rest.issues.createComment({ owner, repo, issue_number: item.issueNumber, body });
+              } catch (err) {
+                core.warning(`Failed to comment on issue #${item.issueNumber}: ${err.message}`);
+              }
+
+              // Apply scan-blocked label for WAF-blocked issues (ensure it exists first)
+              if (item.skipReason === 'no_urls_discovered') {
+                try {
+                  await github.rest.issues.createLabel({
+                    owner, repo,
+                    name: 'scan-blocked',
+                    color: 'e4e669',
+                    description: 'URL discovery was blocked by the site (e.g. HTTP 403 / WAF)'
+                  });
+                } catch (err) {
+                  if (err.status !== 422) core.warning(`Failed to create scan-blocked label: ${err.message}`);
+                }
+                try {
+                  await github.rest.issues.addLabels({ owner, repo, issue_number: item.issueNumber, labels: ['scan-blocked'] });
+                } catch (err) {
+                  core.warning(`Failed to apply scan-blocked label to #${item.issueNumber}: ${err.message}`);
+                }
+              }
             }

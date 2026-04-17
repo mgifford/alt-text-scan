@@ -33,12 +33,26 @@ jobs:
             const issueTitle = process.env.ISSUE_TITLE || context.payload.issue.title;
             const scanLabel = issueTitle.replace(/^SCAN:\s*/i, '').trim() || issueTitle;
             const isRestart = process.env.ISSUE_ACTION === 'reopened';
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
 
-            for (const name of ['scan-failed', 'scan-complete']) {
+            // Ensure scan-pending label exists before applying it
+            try {
+              await github.rest.issues.createLabel({
+                owner, repo,
+                name: 'scan-pending',
+                color: 'cfd3d7',
+                description: 'Scan request is waiting in the queue'
+              });
+            } catch (err) {
+              if (err.status !== 422) throw err; // 422 = already exists
+            }
+
+            for (const name of ['scan-failed', 'scan-complete', 'scan-blocked']) {
               try {
                 await github.rest.issues.removeLabel({
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
+                  owner,
+                  repo,
                   issue_number: context.issue.number,
                   name
                 });
@@ -66,17 +80,17 @@ jobs:
                 ];
 
             await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
+              owner,
+              repo,
               issue_number: context.issue.number,
               body: commentLines.join('\n')
             });
 
             await github.rest.issues.addLabels({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
+              owner,
+              repo,
               issue_number: context.issue.number,
-              labels: ['scan-in-progress']
+              labels: ['scan-pending']
             });
       - name: Trigger queue worker
         uses: actions/github-script@v8

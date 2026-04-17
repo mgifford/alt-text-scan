@@ -786,6 +786,7 @@ async function main() {
     const metaEmpty = {
       ok: false,
       skipped: true,
+      skipReason: "no_urls_discovered",
       reason,
       errors: ["No URLs discovered"],
       reportType: "alt-text",

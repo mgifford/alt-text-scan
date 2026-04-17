@@ -78,6 +78,27 @@ jobs:
             return queuedIssues.map(issue => issue.number);
           result-encoding: json
 
+      - name: Ensure required labels exist
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const required = [
+              { name: 'scan-pending',  color: 'cfd3d7', description: 'Scan request is waiting in the queue' },
+              { name: 'scan-blocked',  color: 'e4e669', description: 'URL discovery was blocked by the site (e.g. HTTP 403 / WAF)' },
+              { name: 'scan-in-progress', color: '0075ca', description: 'Scan is currently running' },
+              { name: 'scan-complete', color: '0e8a16', description: 'Scan completed successfully' },
+              { name: 'scan-failed',   color: 'd93f0b', description: 'Scan encountered an error' },
+            ];
+            for (const label of required) {
+              try {
+                await github.rest.issues.createLabel({ owner, repo, ...label });
+              } catch (err) {
+                if (err.status !== 422) throw err; // 422 = label already exists
+              }
+            }
+
       - name: Mark queued issues as active
         if: steps.fetch-issues.outputs.result != '[]'
         uses: actions/github-script@v8
@@ -86,7 +107,7 @@ jobs:
             const issueNumbers = ${{ steps.fetch-issues.outputs.result }};
 
             for (const issueNumber of issueNumbers) {
-              for (const name of ['scan-failed', 'scan-complete']) {
+              for (const name of ['scan-failed', 'scan-complete', 'scan-pending', 'scan-blocked']) {
                 try {
                   await github.rest.issues.removeLabel({
                     owner: context.repo.owner,
@@ -319,31 +340,86 @@ jobs:
                 fs.rmSync(eventPath, { force: true });
                 fs.rmSync(scanOutputDir, { recursive: true, force: true });
 
-                // Post a comment explaining why the scan was skipped and close the issue
-                // to prevent it from being retried indefinitely by the daily queue.
+                // Build a context-aware comment:
+                //   - no_urls_discovered → site blocked all automated access; guide user toward explicit URLs
+                //   - anything else      → generic skip message
                 const owner = context.repo.owner;
                 const repo = context.repo.repo;
+                let skipCommentBody;
+                if (meta.skipReason === 'no_urls_discovered') {
+                  const domain = meta.scanTitle || '<domain>';
+                  skipCommentBody = [
+                    '🚫 **Scan blocked – URL discovery failed**',
+                    '',
+                    'This site returned HTTP 403 (Forbidden) for every automated access attempt. ' +
+                    'The scanner tried all of the following strategies and found 0 pages:',
+                    '',
+                    '- Standard and alternative sitemap paths (`/sitemap.xml`, `/sitemap_index.xml`, …)',
+                    '- `robots.txt` sitemap directives',
+                    '- Direct page crawl',
+                    '- [Wayback Machine](https://web.archive.org/) CDX archive index',
+                    '- [Bing Web Search API](https://www.microsoft.com/en-us/bing/apis/bing-web-search-api) *(if `BING_API_KEY` is configured)*',
+                    '',
+                    'Many government and enterprise sites actively block automated scanners at the CDN or WAF level ' +
+                    '(e.g. Akamai, Cloudflare). This is not a bug — the scanner cannot bypass these protections.',
+                    '',
+                    '**What you can do:**',
+                    '',
+                    '**Option 1 – Provide specific page URLs** *(recommended)*',
+                    'Edit this issue, add the exact page URLs you want scanned (one per line) ' +
+                    'in the `## URLs` section below, then reopen it to trigger a new scan:',
+                    '',
+                    '```',
+                    `SCAN: ${domain}`,
+                    '## URLs',
+                    `${domain.replace(/\/$/, '')}/page-one`,
+                    `${domain.replace(/\/$/, '')}/page-two`,
+                    `${domain.replace(/\/$/, '')}/page-three`,
+                    '```',
+                    '',
+                    '**Option 2 – Retry after the block lifts**',
+                    'If the site was temporarily unavailable, reopen this issue to try again. ' +
+                    'The scanner will attempt all discovery strategies once more.',
+                    '',
+                    '> ⚠️ **Recurring scan warning:** If you have set up `WEEKLY:`, `MONTHLY:`, or other ' +
+                    'scheduled recurring scans for this domain, they will fail the same way on every run — ' +
+                    'generating workflow failures without results. Please update those issues to include ' +
+                    'explicit page URLs, or remove the recurring issue to avoid unnecessary workflow runs.',
+                    '',
+                    'This issue has been closed to prevent indefinite automated retries.',
+                  ].join('\n');
+                } else {
+                  skipCommentBody = [
+                    `⚠️ **Scan skipped**: ${meta.reason}`,
+                    '',
+                    'This issue has been closed to avoid repeated retries. If the site becomes accessible, please reopen this issue to trigger a new scan.'
+                  ].join('\n');
+                }
+
                 try {
                   await github.rest.issues.createComment({
                     owner,
                     repo,
                     issue_number: issueNumber,
-                    body: [
-                      `⚠️ **Scan skipped**: ${meta.reason}`,
-                      '',
-                      'This issue has been closed to avoid repeated retries. If the site becomes accessible, please reopen this issue to trigger a new scan.'
-                    ].join('\n')
+                    body: skipCommentBody
                   });
                 } catch (commentError) {
                   console.warn(`Failed to post skip comment for issue #${issueNumber}:`, commentError.message);
                 }
 
-                // Remove in-progress / failed labels and close the issue
-                for (const name of ['scan-in-progress', 'scan-failed']) {
+                // Remove in-progress label; apply scan-blocked for WAF blocks, otherwise no failure label
+                for (const name of ['scan-in-progress', 'scan-failed', 'scan-pending']) {
                   try {
                     await github.rest.issues.removeLabel({ owner, repo, issue_number: issueNumber, name });
                   } catch (labelError) {
                     if (labelError.status !== 404) throw labelError;
+                  }
+                }
+                if (meta.skipReason === 'no_urls_discovered') {
+                  try {
+                    await github.rest.issues.addLabels({ owner, repo, issue_number: issueNumber, labels: ['scan-blocked'] });
+                  } catch (labelError) {
+                    console.warn(`Failed to apply scan-blocked label:`, labelError.message);
                   }
                 }
                 try {
@@ -617,6 +693,29 @@ jobs:
                   detailLines.push(`- Last git error: ${failureState.lastGitError}`);
                 }
 
+                // Count previous scan error comments to decide whether to auto-close.
+                // 3 retries balances giving transient errors a chance to resolve on their own
+                // (network blips, temporary site outages) against letting persistently-blocked
+                // or misconfigured scans run indefinitely and consume Actions minutes every day.
+                // Override by setting MAX_SCAN_RETRIES as a repo variable if a different
+                // threshold suits your workflow.
+                const MAX_SCAN_RETRIES = Number(process.env.MAX_SCAN_RETRIES || '3');
+                let priorErrorCount = 0;
+                try {
+                  const { data: allComments } = await github.rest.issues.listComments({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: issueNumber,
+                    per_page: 100
+                  });
+                  priorErrorCount = allComments.filter(c =>
+                    c.user.login === 'github-actions[bot]' &&
+                    c.body.startsWith('❌ Scheduled scan encountered an error')
+                  ).length;
+                } catch (countError) {
+                  console.warn(`Failed to count prior scan errors:`, countError.message);
+                }
+
                 await github.rest.issues.createComment({
                   owner: context.repo.owner,
                   repo: context.repo.repo,
@@ -630,7 +729,7 @@ jobs:
                   ].join('\n')
                 });
 
-                for (const name of ['scan-in-progress', 'scan-complete']) {
+                for (const name of ['scan-in-progress', 'scan-complete', 'scan-pending']) {
                   try {
                     await github.rest.issues.removeLabel({
                       owner: context.repo.owner,
@@ -651,6 +750,38 @@ jobs:
                   issue_number: issueNumber,
                   labels: ['scan-failed']
                 });
+
+                // Auto-close after MAX_SCAN_RETRIES consecutive failures to prevent indefinite retries.
+                // priorErrorCount is the number of errors BEFORE this one, so the total including this
+                // error is priorErrorCount + 1.
+                if (priorErrorCount + 1 >= MAX_SCAN_RETRIES) {
+                  try {
+                    await github.rest.issues.createComment({
+                      owner: context.repo.owner,
+                      repo: context.repo.repo,
+                      issue_number: issueNumber,
+                      body: [
+                        `🔒 **Scan automatically closed** after ${MAX_SCAN_RETRIES} consecutive failures.`,
+                        '',
+                        'Possible causes:',
+                        '- The site is blocking automated access — try providing specific page URLs in the `## URLs` section of the issue body',
+                        '- The scan is timing out — try reducing the number of URLs or splitting into smaller batches',
+                        '- A transient infrastructure error occurred',
+                        '',
+                        'Reopen this issue to try again, or edit it to add specific page URLs before reopening.',
+                      ].join('\n')
+                    });
+                    await github.rest.issues.update({
+                      owner: context.repo.owner,
+                      repo: context.repo.repo,
+                      issue_number: issueNumber,
+                      state: 'closed'
+                    });
+                    console.log(`Issue #${issueNumber} auto-closed after ${MAX_SCAN_RETRIES} consecutive failures`);
+                  } catch (autoCloseError) {
+                    console.warn(`Failed to auto-close issue #${issueNumber} after retry cap:`, autoCloseError.message);
+                  }
+                }
               } catch (commentError) {
                 console.error(`Failed to post error comment:`, commentError.message);
               }
