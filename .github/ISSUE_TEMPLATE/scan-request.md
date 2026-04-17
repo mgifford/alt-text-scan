@@ -6,13 +6,20 @@ labels: scan-request
 assignees: ""
 ---
 
-<!-- The title must start with "SCAN: ". You can leave it as-is or add a short label after the prefix. -->
-<!-- For the most reliable scan request, add one full URL per line in the URLs section below. -->
-<!-- Optional legacy engine override: put `Engine: axe, alfa` on the first non-comment line before the headings below. -->
+<!-- The title must start with "SCAN: ". You can add a short label after the prefix, e.g. "SCAN: My Site Homepage". -->
+
+<!-- IMPORTANT: Add specific page URLs below — one per line. -->
+<!-- A domain-only title (e.g. SCAN: https://example.com) without URLs will attempt to auto-discover -->
+<!-- pages via sitemap or crawl. Many government and enterprise sites block this; if discovery fails, -->
+<!-- the scan will close automatically. Providing explicit URLs always works. -->
 
 ## URLs
 
-<!-- Add one full URL per line, for example: https://example.com/ -->
+<!-- Add one full URL per line, for example:
+https://example.com/
+https://example.com/about
+https://example.com/contact
+-->
 
 ## Request Label
 
