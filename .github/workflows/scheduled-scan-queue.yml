@@ -213,6 +213,10 @@ jobs:
               acceptedCount: meta.acceptedCount ?? 0,
               rejectedCount: meta.rejectedCount ?? 0,
               scannedCount: meta.scannedCount ?? 0,
+              totalImages: meta.totalImages ?? 0,
+              uniqueImages: meta.uniqueImages ?? 0,
+              imagesWithIssues: meta.imagesWithIssues ?? 0,
+              statusCounts: meta.statusCounts || {},
               jsonPath,
               markdownPath,
               htmlPath,
@@ -314,6 +318,31 @@ jobs:
               if (item.acceptedCount === 1) {
                 commentLines.push(`💡 **Only 1 URL was scanned.** Alt Text Scan works best with multiple URLs. To generate a list of related URLs for a more thorough alt text review, try the [Top Task Finder](https://mgifford.github.io/top-task-finder/). You can edit this issue to add more URLs and reopen it to trigger a new scan.`);
                 commentLines.push('');
+              }
+
+              // Add image statistics
+              const totalImages = item.totalImages ?? 0;
+              const statusCounts = item.statusCounts || {};
+              commentLines.push(
+                `- Images found: ${totalImages}`,
+                `- Images with alt text: ${statusCounts.GOOD ?? 0}`,
+                `- Decorative images: ${statusCounts.DECORATIVE ?? 0}`,
+                `- Missing alt text: ${statusCounts.MISSING ?? 0}`,
+                ''
+              );
+
+              // Add debugging info when 0 images were found despite URLs being scanned
+              if (totalImages === 0 && item.scannedCount > 0) {
+                commentLines.push(
+                  '⚠️ **0 images detected.** Possible reasons:',
+                  '- The site uses JavaScript-heavy rendering or lazy loading that the scanner did not wait for',
+                  '- Images are loaded via CSS backgrounds (`background-image`) rather than `<img>` elements',
+                  '- The site may have blocked or rate-limited the scanner mid-scan',
+                  '- Pages returned empty or error responses',
+                  '',
+                  'Check the HTML report and workflow logs for details. You can also try providing specific page URLs and reopening the issue to rescan.',
+                  ''
+                );
               }
               
               commentLines.push(

@@ -401,8 +401,33 @@ async function scanIssue({ github, context, core }) {
       body.push(``);
     }
 
+    // Add image statistics
+    const totalImages = meta.totalImages ?? 0;
+    const statusCounts = meta.statusCounts || {};
     body.push(
       `- Rejected URLs: ${meta.rejectedCount}`,
+      "",
+      `- Images found: ${totalImages}`,
+      `- Images with alt text: ${statusCounts.GOOD ?? 0}`,
+      `- Decorative images: ${statusCounts.DECORATIVE ?? 0}`,
+      `- Missing alt text: ${statusCounts.MISSING ?? 0}`
+    );
+
+    // Add debugging info when 0 images were found despite URLs being scanned
+    if (totalImages === 0 && (meta.scannedCount ?? meta.acceptedCount) > 0) {
+      body.push(
+        "",
+        "⚠️ **0 images detected.** Possible reasons:",
+        "- The site uses JavaScript-heavy rendering or lazy loading that the scanner did not wait for",
+        "- Images are loaded via CSS backgrounds (`background-image`) rather than `<img>` elements",
+        "- The site may have blocked or rate-limited the scanner mid-scan",
+        "- Pages returned empty or error responses",
+        "",
+        "Check the HTML report and workflow logs for details. You can also try providing specific page URLs and reopening the issue to rescan."
+      );
+    }
+
+    body.push(
       "",
       '- Image inventory CSV contains one row per unique image with alt text and semantic metadata (title, aria-label, aria-describedby, longdesc, role, dimensions, source pages).',
       `Report (Pages, HTML): ${pagesUrl}`,
