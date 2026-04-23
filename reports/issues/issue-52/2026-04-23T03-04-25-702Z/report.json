@@ -1,0 +1,230 @@
+{
+  "reportType": "alt-text",
+  "issueNumber": 52,
+  "issueUrl": "https://github.com/mgifford/alt-text-scan/issues/52",
+  "scanTitle": "https://www.parliament.uk/",
+  "scanDomain": "https://www.parliament.uk",
+  "discoveryMethod": "wayback",
+  "discoveredTotal": 24,
+  "requestedCount": 24,
+  "acceptedCount": 24,
+  "rejectedCount": 0,
+  "scannedCount": 24,
+  "skippedDueToTimeout": 0,
+  "urlsRequested": 24,
+  "urlsScanned": 24,
+  "scannedAt": "2026-04-23T03:04:22.792Z",
+  "totalImages": 0,
+  "uniqueImages": 0,
+  "imagesWithIssues": 0,
+  "statusCounts": {
+    "MISSING": 0,
+    "DECORATIVE": 0,
+    "SUSPICIOUS": 0,
+    "FILENAME": 0,
+    "TOO_SHORT": 0,
+    "TOO_LONG": 0,
+    "GOOD": 0
+  },
+  "urlResults": [
+    {
+      "url": "https://www.parliament.uk/.well-known/security.txt",
+      "finalUrl": "https://www.parliament.uk/.well-known/security.txt",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.parliament.uk/2/attend/committees/",
+      "finalUrl": "https://www.parliament.uk/2/attend/committees/?__cf_chl_rt_tk=InT7zLMDYR66amtY79Pzqk82ArsV4GDG.W882ZFUwzo-1776913463-1.0.1.1-uY.EuhKIZOcCLWLyDL5UhdrqcQ3eSMHB2ceb2ZT_L5Q",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.parliament.uk/2/attend/debates/",
+      "finalUrl": "https://www.parliament.uk/2/attend/debates/?__cf_chl_rt_tk=KAcLFKCY4PBX5WVtYG9NactIvYpkq5o_Hm3rO5xm.oI-1776913463-1.0.1.1-hLec7XjdGgMlKwveteqzHfpFxVnrO0oGYdC7aKYfE5s",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.parliament.uk/2/directions/",
+      "finalUrl": "https://www.parliament.uk/2/directions/?__cf_chl_rt_tk=1iz89PDctQGPvw2wKE3fb.aabufOGTmM0gICwXujz.Y-1776913463-1.0.1.1-yt5_sb6SPp0cyg9PMj_obbPBJfrFeVOymG2SqZlair4",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.parliament.uk/2/directions/directions/",
+      "finalUrl": "https://www.parliament.uk/2/directions/directions/?__cf_chl_rt_tk=T9JPzlAZyJ2IcNOgjneCoLOdnVnNjR.yxR6CSsvQjuw-1776913463-1.0.1.1-_jEtPuvzjNY2RsfO91j_KvaKEQNFw38hWrlCr3lAH7Q",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.parliament.uk/209-women",
+      "finalUrl": "https://www.parliament.uk/209-women?__cf_chl_rt_tk=rrSvgrc.eT2tinxt5N6nrBNjTJ64z4SlAGLNH46jOKw-1776913463-1.0.1.1-hkBw2P7aNi76koU43GDEL1hQ5i5N3MPf15fgRDUA_V4",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.parliament.uk/50f/",
+      "finalUrl": "https://www.parliament.uk/50f/?__cf_chl_rt_tk=Fu3hSAglAyQNJRsX8OJyAB8KKLgxWDw6fw829QXisxo-1776913464-1.0.1.1-GYxYf6XoOdndx_E18.YBsu.8aeKvxMCpliEDsILKanA",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.parliament.uk/?__cf_chl_rt_tk=i2bQBCVj0vjj.QbxqEh_j1rCC5xlK0CB5gnAt_Fi0Bk-1709668927-0.0.1.1-1578",
+      "finalUrl": "https://www.parliament.uk/?__cf_chl_rt_tk=i2bQBCVj0vjj.QbxqEh_j1rCC5xlK0CB5gnAt_Fi0Bk-1709668927-0.0.1.1-1578",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.parliament.uk/?a=1",
+      "finalUrl": "https://www.parliament.uk/?a=1&__cf_chl_rt_tk=GXkNM_vmFTlffjmsAql.ThKQy8lMxp5_zdUBICP70GI-1776913464-1.0.1.1-L.YxDs_HRrFj3RqA_8Dx5rRhHvfmDzZuH6AWKZkdU8Q",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.parliament.uk/?cc=us&selLanguage=en",
+      "finalUrl": "https://www.parliament.uk/?cc=us&selLanguage=en",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.parliament.uk/?p=1777",
+      "finalUrl": "https://www.parliament.uk/?p=1777",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.parliament.uk/?p=281",
+      "finalUrl": "https://www.parliament.uk/?p=281",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.parliament.uk/?p=317",
+      "finalUrl": "https://www.parliament.uk/?p=317",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.parliament.uk/?p=320",
+      "finalUrl": "https://www.parliament.uk/?p=320",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.parliament.uk/?p=326",
+      "finalUrl": "https://www.parliament.uk/?p=326",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.parliament.uk/?p=335",
+      "finalUrl": "https://www.parliament.uk/?p=335",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.parliament.uk/?p=410",
+      "finalUrl": "https://www.parliament.uk/?p=410",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.parliament.uk/?p=422",
+      "finalUrl": "https://www.parliament.uk/?p=422",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.parliament.uk/?p=43",
+      "finalUrl": "https://www.parliament.uk/?p=43",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.parliament.uk/?p=456",
+      "finalUrl": "https://www.parliament.uk/?p=456",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.parliament.uk/?p=47",
+      "finalUrl": "https://www.parliament.uk/?p=47",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.parliament.uk/?p=53",
+      "finalUrl": "https://www.parliament.uk/?p=53",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.parliament.uk/%5C",
+      "finalUrl": "https://www.parliament.uk/%5C?__cf_chl_rt_tk=zMv5mCj8wtonWUKfGEnqDhRgbDM4qoaCDpfOBIKSBQA-1776913465-1.0.1.1-onMeEmpqFRR.vFXWZ5Xb17vWL.v.ANzBn.ZG1YZIz9c",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://www.parliament.uk/%5C%5C%5C",
+      "finalUrl": "https://www.parliament.uk/%5C%5C%5C?__cf_chl_rt_tk=QfGeRaOfVLIEvNeJT7S2JvXbqBQLbRPWXuaib6kLtN0-1776913465-1.0.1.1-3D40KI1nEYDLUpRzEeGhhPttBcVe_CY5PILScRCqf.k",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    }
+  ],
+  "uniqueImageList": [],
+  "meta": {
+    "ok": true,
+    "reportType": "alt-text",
+    "issueNumber": 52,
+    "issueUrl": "https://github.com/mgifford/alt-text-scan/issues/52",
+    "scanTitle": "https://www.parliament.uk/",
+    "scanDomain": "https://www.parliament.uk",
+    "discoveryMethod": "wayback",
+    "discoveredTotal": 24,
+    "requestedCount": 24,
+    "acceptedCount": 24,
+    "rejectedCount": 0,
+    "scannedCount": 24,
+    "skippedDueToTimeout": 0,
+    "urlsRequested": 24,
+    "urlsScanned": 24,
+    "totalImages": 0,
+    "uniqueImages": 0,
+    "imagesWithIssues": 0,
+    "statusCounts": {
+      "MISSING": 0,
+      "DECORATIVE": 0,
+      "SUSPICIOUS": 0,
+      "FILENAME": 0,
+      "TOO_SHORT": 0,
+      "TOO_LONG": 0,
+      "GOOD": 0
+    },
+    "scannedAt": "2026-04-23T03:04:22.792Z"
+  }
+}
