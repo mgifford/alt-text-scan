@@ -110,16 +110,50 @@ function normalizeUrl(urlStr) {
 }
 
 /**
- * Return true if `url` belongs to `origin` (same scheme+host+port).
+ * Strip a leading "www." from a hostname, if present.
+ * @param {string} hostname
+ * @returns {string}
+ */
+export function bareHostname(hostname) {
+  return hostname.startsWith("www.") ? hostname.slice(4) : hostname;
+}
+
+/**
+ * Return true if `urlStr` belongs to the same domain as `origin`,
+ * treating www/non-www and http/https variants as equivalent.
+ * For example, `http://legislation.gov.uk/page` and
+ * `https://www.legislation.gov.uk/page` are considered the same domain.
  * @param {string} urlStr
- * @param {string} origin  e.g. "https://example.com"
+ * @param {string} origin  e.g. "https://www.example.com"
  * @returns {boolean}
  */
-function isSameOrigin(urlStr, origin) {
+export function isSameDomain(urlStr, origin) {
   try {
-    return new URL(urlStr).origin === origin;
+    return bareHostname(new URL(urlStr).hostname) === bareHostname(new URL(origin).hostname);
   } catch {
     return false;
+  }
+}
+
+/**
+ * Rewrite `urlStr` to use the scheme, hostname, and port from `origin`.
+ * Preserves the path, query string, and hash of the original URL.
+ * Used to normalise sitemap / crawl URLs that reference the canonical
+ * domain under a different scheme or www-prefix, avoiding duplicate scanning.
+ * @param {string} urlStr
+ * @param {string} origin  Canonical origin, e.g. "https://www.example.com"
+ * @returns {string}  Rewritten URL, or the original string if either arg is unparseable.
+ */
+export function rewriteToOrigin(urlStr, origin) {
+  try {
+    const src = new URL(urlStr);
+    const dst = new URL(origin);
+    src.protocol = dst.protocol;
+    src.hostname = dst.hostname;
+    src.port = dst.port;
+    return src.toString();
+  } catch {
+    return urlStr;
   }
 }
 
@@ -242,7 +276,8 @@ export function parseBingSearchResponse(json) {
  * @returns {Promise<string[]>}
  */
 async function fetchWaybackUrls(origin, maxUrls) {
-  const hostname = new URL(origin).hostname;
+  // Use bare hostname (without www.) so the CDX query covers both www and non-www variants.
+  const hostname = bareHostname(new URL(origin).hostname);
   const params = new URLSearchParams({
     url: `${hostname}/*`,
     output: "json",
@@ -268,7 +303,7 @@ async function fetchWaybackUrls(origin, maxUrls) {
     return [];
   }
   const urls = parseWaybackResponse(json)
-    .filter((u) => isSameOrigin(u, origin) && !isNonHtmlUrl(u))
+    .filter((u) => isSameDomain(u, origin) && !isNonHtmlUrl(u))
     .slice(0, maxUrls);
   console.error(`[discover-urls] Found ${urls.length} URLs via Wayback Machine`);
   return urls;
@@ -288,7 +323,8 @@ async function fetchBingUrls(origin, maxUrls) {
     console.error("[discover-urls] Bing discovery skipped: BING_API_KEY not set");
     return [];
   }
-  const hostname = new URL(origin).hostname;
+  // Use bare hostname (without www.) so the site: query covers both www and non-www variants.
+  const hostname = bareHostname(new URL(origin).hostname);
   const count = Math.min(maxUrls, BING_MAX_RESULTS_PER_REQUEST);
   const query = `site:${hostname}`;
   const bingUrl = `https://api.bing.microsoft.com/v7.0/search?q=${encodeURIComponent(query)}&count=${count}&responseFilter=Webpages`;
@@ -321,7 +357,7 @@ async function fetchBingUrls(origin, maxUrls) {
     return [];
   }
   const urls = parseBingSearchResponse(json)
-    .filter((u) => isSameOrigin(u, origin) && !isNonHtmlUrl(u))
+    .filter((u) => isSameDomain(u, origin) && !isNonHtmlUrl(u))
     .slice(0, maxUrls);
   console.error(`[discover-urls] Found ${urls.length} URLs via Bing`);
   return urls;
@@ -413,10 +449,19 @@ async function fetchSitemap(sitemapUrl, origin, maxUrls, depth = 3, deadline = I
     return all;
   }
 
-  // Filter to same-origin HTML pages only
-  return pageUrls
-    .filter((u) => isSameOrigin(u, origin) && !isNonHtmlUrl(u))
-    .slice(0, maxUrls);
+  // Filter to same-domain HTML pages and normalise to canonical origin to avoid
+  // duplicate scanning when sitemap URLs use a different scheme or www-prefix.
+  const seen = new Set();
+  const result = [];
+  for (const u of pageUrls) {
+    if (!isSameDomain(u, origin) || isNonHtmlUrl(u)) continue;
+    const rewritten = normalizeUrl(rewriteToOrigin(u, origin));
+    if (!rewritten || seen.has(rewritten)) continue;
+    seen.add(rewritten);
+    result.push(rewritten);
+    if (result.length >= maxUrls) break;
+  }
+  return result;
 }
 
 /**
@@ -440,8 +485,10 @@ export function extractLinksFromHtml(html, pageUrl, origin) {
     try {
       const abs = new URL(raw, pageUrl).toString();
       const norm = normalizeUrl(abs);
-      if (norm && isSameOrigin(norm, origin) && !isNonHtmlUrl(norm)) {
-        links.push(norm);
+      if (norm && isSameDomain(norm, origin) && !isNonHtmlUrl(norm)) {
+        // Rewrite to canonical origin so the crawler's visited Set correctly
+        // deduplicates pages that appear under both www and non-www variants.
+        links.push(normalizeUrl(rewriteToOrigin(norm, origin)) || norm);
       }
     } catch {
       // skip malformed

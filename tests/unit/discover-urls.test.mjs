@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { parseSitemapXml, extractLinksFromHtml, parseRobotsTxt, parseWaybackResponse, parseBingSearchResponse } from "../../scanner/discover-urls.mjs";
+import { parseSitemapXml, extractLinksFromHtml, parseRobotsTxt, parseWaybackResponse, parseBingSearchResponse, bareHostname, isSameDomain, rewriteToOrigin } from "../../scanner/discover-urls.mjs";
 
 test("parseSitemapXml extracts page URLs from a standard sitemap", () => {
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -393,4 +393,97 @@ test("parseBingSearchResponse filters out entries with missing or non-string url
 test("parseBingSearchResponse returns empty array when value array is empty", () => {
   const json = { webPages: { value: [] } };
   assert.deepEqual(parseBingSearchResponse(json), []);
+});
+
+// ── bareHostname ──────────────────────────────────────────────────────────────
+
+test("bareHostname strips www. prefix", () => {
+  assert.equal(bareHostname("www.example.com"), "example.com");
+});
+
+test("bareHostname leaves non-www hostnames unchanged", () => {
+  assert.equal(bareHostname("example.com"), "example.com");
+  assert.equal(bareHostname("sub.example.com"), "sub.example.com");
+});
+
+test("bareHostname only strips the leading www., not www anywhere else", () => {
+  assert.equal(bareHostname("www.example.com"), "example.com");
+  assert.equal(bareHostname("notwww.example.com"), "notwww.example.com");
+});
+
+// ── isSameDomain ──────────────────────────────────────────────────────────────
+
+test("isSameDomain returns true for identical origins", () => {
+  assert.ok(isSameDomain("https://example.com/page", "https://example.com"));
+});
+
+test("isSameDomain returns true for www vs non-www variants", () => {
+  assert.ok(isSameDomain("http://legislation.gov.uk/accessibility", "https://www.legislation.gov.uk"));
+  assert.ok(isSameDomain("https://www.legislation.gov.uk/search", "https://legislation.gov.uk"));
+});
+
+test("isSameDomain returns true for http vs https variants on same host", () => {
+  assert.ok(isSameDomain("http://example.com/page", "https://example.com"));
+  assert.ok(isSameDomain("https://example.com/page", "http://example.com"));
+});
+
+test("isSameDomain returns false for different domains", () => {
+  assert.ok(!isSameDomain("https://other.com/page", "https://example.com"));
+  assert.ok(!isSameDomain("https://api.example.com/page", "https://example.com"));
+});
+
+test("isSameDomain returns false for malformed URLs", () => {
+  assert.ok(!isSameDomain("not-a-url", "https://example.com"));
+  assert.ok(!isSameDomain("https://example.com/page", "not-an-origin"));
+});
+
+// ── rewriteToOrigin ───────────────────────────────────────────────────────────
+
+test("rewriteToOrigin rewrites http to https and strips www variant", () => {
+  const result = rewriteToOrigin("http://legislation.gov.uk/accessibility", "https://www.legislation.gov.uk");
+  assert.equal(result, "https://www.legislation.gov.uk/accessibility");
+});
+
+test("rewriteToOrigin rewrites non-www to www", () => {
+  const result = rewriteToOrigin("https://legislation.gov.uk/search", "https://www.legislation.gov.uk");
+  assert.equal(result, "https://www.legislation.gov.uk/search");
+});
+
+test("rewriteToOrigin preserves query string and path", () => {
+  const result = rewriteToOrigin("http://example.com/path?q=1&r=2", "https://www.example.com");
+  assert.equal(result, "https://www.example.com/path?q=1&r=2");
+});
+
+test("rewriteToOrigin returns original string for malformed input", () => {
+  const result = rewriteToOrigin("not-a-url", "https://example.com");
+  assert.equal(result, "not-a-url");
+});
+
+// ── extractLinksFromHtml: www/non-www handling ────────────────────────────────
+
+test("extractLinksFromHtml accepts and normalises links with different scheme/www from origin", () => {
+  const html = `
+    <a href="http://legislation.gov.uk/accessibility">Accessibility</a>
+    <a href="https://legislation.gov.uk/search">Search</a>
+    <a href="https://www.legislation.gov.uk/help">Help</a>
+  `;
+  // pageUrl is a sub-page, which is the realistic scenario
+  const links = extractLinksFromHtml(html, "https://www.legislation.gov.uk/about", "https://www.legislation.gov.uk");
+  // All three links belong to legislation.gov.uk and should be accepted
+  assert.ok(links.some((l) => l.includes("/accessibility")), "should include /accessibility");
+  assert.ok(links.some((l) => l.includes("/search")), "should include /search");
+  assert.ok(links.some((l) => l.includes("/help")), "should include /help");
+  // All links should be rewritten to the canonical origin
+  assert.ok(links.every((l) => l.startsWith("https://www.legislation.gov.uk")), "all links should use canonical origin");
+});
+
+test("extractLinksFromHtml still excludes truly external links", () => {
+  const html = `
+    <a href="http://legislation.gov.uk/accessibility">Same domain</a>
+    <a href="https://other.com/page">External</a>
+  `;
+  // pageUrl is a sub-page, which is the realistic scenario
+  const links = extractLinksFromHtml(html, "https://www.legislation.gov.uk/home", "https://www.legislation.gov.uk");
+  assert.ok(links.some((l) => l.includes("/accessibility")), "should include same-domain link");
+  assert.ok(!links.some((l) => l.includes("other.com")), "should exclude external link");
 });
