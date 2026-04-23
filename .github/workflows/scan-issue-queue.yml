@@ -183,5 +183,5 @@ jobs:
           ISSUE_NUMBER: ${{ matrix.issue_number }}
         with:
           script: |
-            const { scanIssue } = require('./.github/scripts/scan-issue.js');
+            const { scanIssue } = require('./.github/scripts/scan-issue.cjs');
             return await scanIssue({ github, context, core });

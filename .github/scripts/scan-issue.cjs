@@ -1,11 +1,15 @@
 // External script for the "Scan issue" step in scan-issue-queue.yml.
 // Extracted to stay within GitHub Actions' 21,000-character inline-script limit.
 //
+// Named .cjs so Node.js treats it as CommonJS even when the repo's package.json
+// has "type": "module" (which would otherwise make .js files ES modules and break
+// require() calls made by actions/github-script).
+//
 // Called by actions/github-script with:
 //   env:
 //     ISSUE_NUMBER: ${{ matrix.issue_number }}
 //   script: |
-//     const { scanIssue } = require('./.github/scripts/scan-issue.js');
+//     const { scanIssue } = require('./.github/scripts/scan-issue.cjs');
 //     return await scanIssue({ github, context, core });
 
 // Use spawn (not execSync) to avoid command-injection risks with user-supplied input.
