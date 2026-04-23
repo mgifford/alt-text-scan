@@ -1,0 +1,76 @@
+{
+  "reportType": "alt-text",
+  "issueNumber": 38,
+  "issueUrl": "https://github.com/mgifford/alt-text-scan/issues/38",
+  "scanTitle": "https://ottawa.ca/",
+  "scanDomain": "https://ottawa.ca",
+  "discoveryMethod": "wayback",
+  "discoveredTotal": 2,
+  "requestedCount": 2,
+  "acceptedCount": 2,
+  "rejectedCount": 0,
+  "scannedCount": 2,
+  "skippedDueToTimeout": 0,
+  "urlsRequested": 2,
+  "urlsScanned": 2,
+  "scannedAt": "2026-04-23T02:26:48.819Z",
+  "totalImages": 0,
+  "uniqueImages": 0,
+  "imagesWithIssues": 0,
+  "statusCounts": {
+    "MISSING": 0,
+    "DECORATIVE": 0,
+    "SUSPICIOUS": 0,
+    "FILENAME": 0,
+    "TOO_SHORT": 0,
+    "TOO_LONG": 0,
+    "GOOD": 0
+  },
+  "urlResults": [
+    {
+      "url": "https://ottawa.ca/../fr",
+      "finalUrl": "https://ottawa.ca/fr",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://ottawa.ca/2/en/city-hall/public-engagement/public-engagement-project-search",
+      "finalUrl": "https://ottawa.ca/2/en/city-hall/public-engagement/public-engagement-project-search",
+      "httpStatus": 403,
+      "images": [],
+      "error": "HTTP 403"
+    }
+  ],
+  "uniqueImageList": [],
+  "meta": {
+    "ok": true,
+    "reportType": "alt-text",
+    "issueNumber": 38,
+    "issueUrl": "https://github.com/mgifford/alt-text-scan/issues/38",
+    "scanTitle": "https://ottawa.ca/",
+    "scanDomain": "https://ottawa.ca",
+    "discoveryMethod": "wayback",
+    "discoveredTotal": 2,
+    "requestedCount": 2,
+    "acceptedCount": 2,
+    "rejectedCount": 0,
+    "scannedCount": 2,
+    "skippedDueToTimeout": 0,
+    "urlsRequested": 2,
+    "urlsScanned": 2,
+    "totalImages": 0,
+    "uniqueImages": 0,
+    "imagesWithIssues": 0,
+    "statusCounts": {
+      "MISSING": 0,
+      "DECORATIVE": 0,
+      "SUSPICIOUS": 0,
+      "FILENAME": 0,
+      "TOO_SHORT": 0,
+      "TOO_LONG": 0,
+      "GOOD": 0
+    },
+    "scannedAt": "2026-04-23T02:26:48.819Z"
+  }
+}
