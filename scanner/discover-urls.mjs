@@ -455,10 +455,10 @@ async function fetchSitemap(sitemapUrl, origin, maxUrls, depth = 3, deadline = I
   const result = [];
   for (const u of pageUrls) {
     if (!isSameDomain(u, origin) || isNonHtmlUrl(u)) continue;
-    const canonical = normalizeUrl(rewriteToOrigin(u, origin));
-    if (!canonical || seen.has(canonical)) continue;
-    seen.add(canonical);
-    result.push(canonical);
+    const rewritten = normalizeUrl(rewriteToOrigin(u, origin));
+    if (!rewritten || seen.has(rewritten)) continue;
+    seen.add(rewritten);
+    result.push(rewritten);
     if (result.length >= maxUrls) break;
   }
   return result;

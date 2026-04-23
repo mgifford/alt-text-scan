@@ -467,7 +467,8 @@ test("extractLinksFromHtml accepts and normalises links with different scheme/ww
     <a href="https://legislation.gov.uk/search">Search</a>
     <a href="https://www.legislation.gov.uk/help">Help</a>
   `;
-  const links = extractLinksFromHtml(html, "https://www.legislation.gov.uk/", "https://www.legislation.gov.uk");
+  // pageUrl is a sub-page, which is the realistic scenario
+  const links = extractLinksFromHtml(html, "https://www.legislation.gov.uk/about", "https://www.legislation.gov.uk");
   // All three links belong to legislation.gov.uk and should be accepted
   assert.ok(links.some((l) => l.includes("/accessibility")), "should include /accessibility");
   assert.ok(links.some((l) => l.includes("/search")), "should include /search");
@@ -481,7 +482,8 @@ test("extractLinksFromHtml still excludes truly external links", () => {
     <a href="http://legislation.gov.uk/accessibility">Same domain</a>
     <a href="https://other.com/page">External</a>
   `;
-  const links = extractLinksFromHtml(html, "https://www.legislation.gov.uk/", "https://www.legislation.gov.uk");
+  // pageUrl is a sub-page, which is the realistic scenario
+  const links = extractLinksFromHtml(html, "https://www.legislation.gov.uk/home", "https://www.legislation.gov.uk");
   assert.ok(links.some((l) => l.includes("/accessibility")), "should include same-domain link");
   assert.ok(!links.some((l) => l.includes("other.com")), "should exclude external link");
 });
