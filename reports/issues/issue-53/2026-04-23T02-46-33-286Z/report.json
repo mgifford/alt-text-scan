@@ -1,0 +1,1086 @@
+{
+  "reportType": "alt-text",
+  "issueNumber": 53,
+  "issueUrl": "https://github.com/mgifford/alt-text-scan/issues/53",
+  "scanTitle": "https://www.legislation.gov.uk/",
+  "scanDomain": "https://www.legislation.gov.uk",
+  "discoveryMethod": "wayback",
+  "discoveredTotal": 2,
+  "requestedCount": 2,
+  "acceptedCount": 2,
+  "rejectedCount": 0,
+  "scannedCount": 2,
+  "skippedDueToTimeout": 0,
+  "urlsRequested": 2,
+  "urlsScanned": 2,
+  "scannedAt": "2026-04-23T02:46:30.612Z",
+  "totalImages": 30,
+  "uniqueImages": 6,
+  "imagesWithIssues": 1,
+  "statusCounts": {
+    "MISSING": 0,
+    "DECORATIVE": 3,
+    "SUSPICIOUS": 14,
+    "FILENAME": 0,
+    "TOO_SHORT": 0,
+    "TOO_LONG": 0,
+    "GOOD": 13
+  },
+  "urlResults": [
+    {
+      "url": "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted",
+      "finalUrl": "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/helpIcon.gif",
+          "alt": " Help about More Resources",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 16,
+          "height": 16,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/closeIcon.gif",
+          "alt": "Close",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 22,
+          "height": 23,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Alt text \"Close\" is a single word; consider a more descriptive phrase that explains the image's purpose in context"
+          ]
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/helpIcon.gif",
+          "alt": " Help about what version",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 16,
+          "height": 16,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/closeIcon.gif",
+          "alt": "Close",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 22,
+          "height": 23,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Alt text \"Close\" is a single word; consider a more descriptive phrase that explains the image's purpose in context"
+          ]
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/helpIcon.gif",
+          "alt": " Help about opening options",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 16,
+          "height": 16,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/closeIcon.gif",
+          "alt": "Close",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 22,
+          "height": 23,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Alt text \"Close\" is a single word; consider a more descriptive phrase that explains the image's purpose in context"
+          ]
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/closeIcon.gif",
+          "alt": "Close",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 22,
+          "height": 23,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Alt text \"Close\" is a single word; consider a more descriptive phrase that explains the image's purpose in context"
+          ]
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/crests/ukpga.gif",
+          "alt": "Legislation Crest",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 160,
+          "height": 139,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/closeIcon.gif",
+          "alt": "Close",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 22,
+          "height": 23,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Alt text \"Close\" is a single word; consider a more descriptive phrase that explains the image's purpose in context"
+          ]
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/ogl-symbol.gif",
+          "alt": "OGL logo",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 41,
+          "height": 17,
+          "isVisible": false,
+          "pageUrl": "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/analytics/cookiesBannerIgnored.gif",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1,
+          "height": 1,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250",
+      "finalUrl": "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/helpIcon.gif",
+          "alt": " Help about Explanatory Notes",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 16,
+          "height": 16,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/closeIcon.gif",
+          "alt": "Close",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 22,
+          "height": 23,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Alt text \"Close\" is a single word; consider a more descriptive phrase that explains the image's purpose in context"
+          ]
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/helpIcon.gif",
+          "alt": " Help about More Resources",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 16,
+          "height": 16,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/closeIcon.gif",
+          "alt": "Close",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 22,
+          "height": 23,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Alt text \"Close\" is a single word; consider a more descriptive phrase that explains the image's purpose in context"
+          ]
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/helpIcon.gif",
+          "alt": " Help about what version",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 16,
+          "height": 16,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/closeIcon.gif",
+          "alt": "Close",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 22,
+          "height": 23,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Alt text \"Close\" is a single word; consider a more descriptive phrase that explains the image's purpose in context"
+          ]
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/helpIcon.gif",
+          "alt": " Help about advanced features",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 16,
+          "height": 16,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/closeIcon.gif",
+          "alt": "Close",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 22,
+          "height": 23,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Alt text \"Close\" is a single word; consider a more descriptive phrase that explains the image's purpose in context"
+          ]
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/helpIcon.gif",
+          "alt": " Help about opening options",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 16,
+          "height": 16,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/closeIcon.gif",
+          "alt": "Close",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 22,
+          "height": 23,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Alt text \"Close\" is a single word; consider a more descriptive phrase that explains the image's purpose in context"
+          ]
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/closeIcon.gif",
+          "alt": "Close",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 22,
+          "height": 23,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Alt text \"Close\" is a single word; consider a more descriptive phrase that explains the image's purpose in context"
+          ]
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/helpIcon.gif",
+          "alt": " Help about opening options",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 16,
+          "height": 16,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/closeIcon.gif",
+          "alt": "Close",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 22,
+          "height": 23,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Alt text \"Close\" is a single word; consider a more descriptive phrase that explains the image's purpose in context"
+          ]
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/helpIcon.gif",
+          "alt": " Help about Changes to Legislation",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 16,
+          "height": 16,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/closeIcon.gif",
+          "alt": "Close",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 22,
+          "height": 23,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Alt text \"Close\" is a single word; consider a more descriptive phrase that explains the image's purpose in context"
+          ]
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/closeIcon.gif",
+          "alt": "Close",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 22,
+          "height": 23,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Alt text \"Close\" is a single word; consider a more descriptive phrase that explains the image's purpose in context"
+          ]
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/ogl-symbol.gif",
+          "alt": "OGL logo",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 41,
+          "height": 17,
+          "isVisible": false,
+          "pageUrl": "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/analytics/upToDate.gif",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1,
+          "height": 1,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250",
+          "status": "DECORATIVE",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/analytics/cookiesBannerIgnored.gif",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1,
+          "height": 1,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    }
+  ],
+  "uniqueImageList": [
+    {
+      "src": "https://www.legislation.gov.uk/images/chrome/helpIcon.gif",
+      "alt": "Help about opening options",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 16,
+      "height": 16,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted",
+        "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250"
+      ],
+      "occurrences": 10,
+      "altVariants": [
+        {
+          "value": "Help about opening options",
+          "count": 3,
+          "pages": [
+            "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted",
+            "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250"
+          ]
+        },
+        {
+          "value": "Help about More Resources",
+          "count": 2,
+          "pages": [
+            "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted",
+            "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250"
+          ]
+        },
+        {
+          "value": "Help about what version",
+          "count": 2,
+          "pages": [
+            "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted",
+            "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250"
+          ]
+        },
+        {
+          "value": "Help about advanced features",
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250"
+          ]
+        },
+        {
+          "value": "Help about Changes to Legislation",
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250"
+          ]
+        },
+        {
+          "value": "Help about Explanatory Notes",
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 10,
+          "pages": [
+            "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted",
+            "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 10,
+          "pages": [
+            "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted",
+            "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 10,
+          "pages": [
+            "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted",
+            "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 10,
+          "pages": [
+            "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted",
+            "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 10,
+          "pages": [
+            "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted",
+            "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://www.legislation.gov.uk/images/chrome/closeIcon.gif",
+      "alt": "Close",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 22,
+      "height": 23,
+      "status": "SUSPICIOUS",
+      "issues": [
+        "Alt text \"Close\" is a single word; consider a more descriptive phrase that explains the image's purpose in context"
+      ],
+      "pages": [
+        "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted",
+        "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250"
+      ],
+      "occurrences": 14,
+      "altVariants": [
+        {
+          "value": "Close",
+          "count": 14,
+          "pages": [
+            "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted",
+            "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 14,
+          "pages": [
+            "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted",
+            "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 14,
+          "pages": [
+            "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted",
+            "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 14,
+          "pages": [
+            "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted",
+            "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 14,
+          "pages": [
+            "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted",
+            "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 14,
+          "pages": [
+            "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted",
+            "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://www.legislation.gov.uk/images/crests/ukpga.gif",
+      "alt": "Legislation Crest",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 160,
+      "height": 139,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "Legislation Crest",
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://www.legislation.gov.uk/images/chrome/ogl-symbol.gif",
+      "alt": "OGL logo",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": false,
+      "width": 41,
+      "height": 17,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted",
+        "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250"
+      ],
+      "occurrences": 2,
+      "altVariants": [
+        {
+          "value": "OGL logo",
+          "count": 2,
+          "pages": [
+            "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted",
+            "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted",
+            "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted",
+            "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted",
+            "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted",
+            "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted",
+            "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://www.legislation.gov.uk/images/analytics/cookiesBannerIgnored.gif",
+      "alt": "",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 1,
+      "height": 1,
+      "status": "DECORATIVE",
+      "issues": [],
+      "pages": [
+        "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted",
+        "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250"
+      ],
+      "occurrences": 2,
+      "altVariants": [
+        {
+          "value": "",
+          "count": 2,
+          "pages": [
+            "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted",
+            "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted",
+            "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted",
+            "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted",
+            "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted",
+            "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://www.legislation.gov.uk/%C2%ADukpga/1967/66/enacted",
+            "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://www.legislation.gov.uk/images/analytics/upToDate.gif",
+      "alt": "",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 1,
+      "height": 1,
+      "status": "DECORATIVE",
+      "issues": [],
+      "pages": [
+        "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "",
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/%E2%80%8Cukpga/2012/7/section/250"
+          ]
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "ok": true,
+    "reportType": "alt-text",
+    "issueNumber": 53,
+    "issueUrl": "https://github.com/mgifford/alt-text-scan/issues/53",
+    "scanTitle": "https://www.legislation.gov.uk/",
+    "scanDomain": "https://www.legislation.gov.uk",
+    "discoveryMethod": "wayback",
+    "discoveredTotal": 2,
+    "requestedCount": 2,
+    "acceptedCount": 2,
+    "rejectedCount": 0,
+    "scannedCount": 2,
+    "skippedDueToTimeout": 0,
+    "urlsRequested": 2,
+    "urlsScanned": 2,
+    "totalImages": 30,
+    "uniqueImages": 6,
+    "imagesWithIssues": 1,
+    "statusCounts": {
+      "MISSING": 0,
+      "DECORATIVE": 3,
+      "SUSPICIOUS": 14,
+      "FILENAME": 0,
+      "TOO_SHORT": 0,
+      "TOO_LONG": 0,
+      "GOOD": 13
+    },
+    "scannedAt": "2026-04-23T02:46:30.612Z"
+  }
+}
