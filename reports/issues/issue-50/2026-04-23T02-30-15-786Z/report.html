@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alt Text Scan – https://www.gov.uk</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 1200px; margin: 2rem auto; padding: 0 1rem; color: #222; }
+    h1 { font-size: 1.5rem; }
+    .summary { display: flex; gap: 1.5rem; flex-wrap: wrap; margin: 1rem 0; }
+    .stat { background: #f5f5f5; border-radius: 6px; padding: 0.75rem 1.25rem; }
+    .stat strong { display: block; font-size: 1.8rem; }
+    .report-controls { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; margin: 1rem 0; }
+    .toggle-thumbnails { border: 1px solid #333; background: #fff; color: #222; border-radius: 999px; padding: 0.55rem 0.95rem; font: inherit; cursor: pointer; }
+    .toggle-thumbnails[aria-pressed="true"] { background: #222; color: #fff; }
+    table { border-collapse: collapse; width: 100%; margin-top: 1.5rem; }
+    th { background: #333; color: #fff; text-align: left; padding: 0.5rem 0.75rem; }
+    td { padding: 0.5rem 0.75rem; border-bottom: 1px solid #ddd; vertical-align: top; }
+    tr:hover td { background: #fafafa; }
+    code { background: #f0f0f0; padding: 0.1em 0.3em; border-radius: 3px; font-size: 0.9em; }
+    .thumbnail-column { width: 8.5rem; }
+    .thumbnail-column-decorative { width: 8.5rem; }
+    .review-callout { background: #e8f4fd; border-left: 4px solid #1565c0; padding: 0.75rem 1rem; margin: 1rem 0; font-size: 0.95em; border-radius: 0 6px 6px 0; }
+    .thumbnail-trigger { display: inline-flex; flex-direction: column; align-items: center; gap: 0.35rem; width: 7rem; padding: 0.45rem; border: 1px solid #ccc; border-radius: 8px; background: #fff; cursor: pointer; }
+    .thumbnail-trigger:hover, .thumbnail-trigger:focus-visible { border-color: #333; box-shadow: 0 0 0 3px rgba(33, 33, 33, 0.15); outline: none; }
+    .thumbnail-trigger__image { display: block; width: 100%; height: 4.5rem; object-fit: contain; background: #f5f5f5; border-radius: 4px; }
+    .thumbnail-trigger__text { font-size: 0.8rem; color: #444; }
+    .url-cell { position: relative; max-width: 20rem; }
+    .url-tooltip { display: none; position: absolute; z-index: 10; left: 0; top: 100%; margin-top: 0.2rem; background: #333; color: #fff; padding: 0.4rem 0.6rem; border-radius: 4px; font-size: 0.8rem; max-width: 44rem; word-break: break-all; white-space: normal; pointer-events: none; box-shadow: 0 2px 8px rgba(0,0,0,0.35); }
+    .url-cell:hover .url-tooltip, .url-cell:focus-within .url-tooltip { display: block; }
+    dialog::backdrop { background: rgba(17, 24, 39, 0.72); }
+    .preview-dialog { border: none; border-radius: 12px; padding: 0; width: min(92vw, 960px); max-height: 90vh; overflow: hidden; }
+    .preview-dialog__inner { display: grid; gap: 0.75rem; padding: 1rem; background: #fff; }
+    .preview-dialog__header { display: flex; justify-content: space-between; gap: 1rem; align-items: start; }
+    .preview-dialog__title { margin: 0; font-size: 1.1rem; }
+    .preview-dialog__close { border: 1px solid #333; background: #fff; color: #222; border-radius: 999px; padding: 0.45rem 0.8rem; font: inherit; cursor: pointer; }
+    .preview-dialog__figure { margin: 0; display: grid; gap: 0.5rem; justify-items: center; }
+    .preview-dialog__image { display: block; max-width: min(88vw, 100%); max-height: 70vh; width: auto; height: auto; background: #f5f5f5; }
+    .preview-dialog__caption { font-size: 0.9rem; color: #444; word-break: break-word; }
+    .preview-dialog__actions { margin: 0; font-size: 0.9rem; }
+    .preview-dialog__view-full { color: #1565c0; }
+    .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    @media (max-width: 720px) {
+      .summary { gap: 0.75rem; }
+      .stat { flex: 1 1 9rem; }
+      .thumbnail-trigger { width: 5.75rem; }
+      .thumbnail-trigger__image { height: 3.75rem; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Alt Text Scan Report</h1>
+  <p><strong>Domain:</strong> https://www.gov.uk &nbsp;|&nbsp;
+     <strong>Scanned:</strong> 4/23/2026, 2:28:03 AM &nbsp;|&nbsp;
+     <strong>Discovery method:</strong> sitemap</p>
+  <p><a href="report.csv">Download image inventory CSV</a> &nbsp;|&nbsp; <a href="report.json">View full JSON</a></p>
+
+  <div class="summary">
+    <div class="stat"><strong>100</strong> Pages scanned</div>
+    <div class="stat"><strong>37</strong> Images found</div>
+    <div class="stat"><strong>22</strong> Unique images</div>
+    <div class="stat"><strong style="color:#d32f2f">1</strong> Images with issues</div>
+  </div>
+
+  <h2>Status breakdown</h2>
+  <table>
+    <thead><tr><th>Status</th><th>Count</th></tr></thead>
+    <tbody><tr><td><span style="color:#d32f2f;font-weight:bold">Missing Alt</span></td><td>8</td></tr>
+<tr><td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td><td>22</td></tr>
+<tr><td><span style="color:#2e7d32;font-weight:bold">Good</span></td><td>7</td></tr></tbody>
+  </table>
+
+  <h2>Unique image inventory</h2>
+  <div class="report-controls">
+    <button type="button" id="toggle-thumbnails" class="toggle-thumbnails" aria-pressed="false">Show thumbnails for images with alt text</button>
+    <span id="thumbnail-help">Thumbnails for images with alt text are hidden by default. Decorative images always show thumbnails for visual review.</span>
+  </div>
+  <p>Showing 4 images with alt text, with flagged items listed first. Use the CSV for a complete export.</p>
+  <table>
+    <thead><tr>
+      <th>Image</th>
+      <th class="thumbnail-column" hidden>Thumbnail</th>
+      <th>Status</th>
+      <th>Alt Text</th>
+      <th title="All distinct alt text values found for this image across all scanned pages, with how many times each value appeared. A Consistent result means the same alt text was used everywhere. Multiple entries mean the same image has different alt text on different pages and may need review.">Alt Variants</th>
+      <th>Title</th>
+      <th>ARIA Label</th>
+      <th>Pages</th>
+    </tr></thead>
+    <tbody>
+        <tr>
+          <td class="url-cell"><a href="https://www.gov.uk/assets/frontend/open-government-licence-min-93b6a51b518ff99714a1aa2a7d2162735c155ec3cb073c75fb88b2a332fa83d3.png" target="_blank" rel="noopener" title="https://www.gov.uk/assets/frontend/open-government-licence-min-93b6a51b518ff99714a1aa2a7d2162735c155ec3cb073c75fb88b2a332fa83d3.png">https://www.gov.uk/assets/frontend/open-government-licence-m…</a><span class="url-tooltip" aria-hidden="true">https://www.gov.uk/assets/frontend/open-government-licence-min-93b6a51b518ff99714a1aa2a7d2162735c155ec3cb073c75fb88b2a332fa83d3.png</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.gov.uk/assets/frontend/open-government-licence-min-93b6a51b518ff99714a1aa2a7d2162735c155ec3cb073c75fb88b2a332fa83d3.png" data-preview-alt="" data-preview-label="https://www.gov.uk/assets/frontend/open-government-licence-min-93b6a51b518ff99714a1aa2a7d2162735c155ec3cb073c75fb88b2a332fa83d3.png" data-preview-width="854" data-preview-height="346" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://www.gov.uk/assets/frontend/open-government-licence-min-93b6a51b518ff99714a1aa2a7d2162735c155ec3cb073c75fb88b2a332fa83d3.png"><img src="https://www.gov.uk/assets/frontend/open-government-licence-min-93b6a51b518ff99714a1aa2a7d2162735c155ec3cb073c75fb88b2a332fa83d3.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#d32f2f;font-weight:bold">Missing Alt</span></td>
+          <td><em style="color:#999">missing</em></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 8 occurrences of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>8<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.gov.uk/government/publications/decision-for-kirkham-box-nw-ltd-oc2063608/decision-for-kirkham-box-nw-ltd-oc2063608" target="_blank" rel="noopener">https://www.gov.uk/government/publications/decision-for-kirkham-box-nw-ltd-oc2063608/decision-for-kirkham-box-nw-ltd-oc2063608</a><br><a href="https://www.gov.uk/government/publications/specialised-committee-on-participation-in-union-programmes-provisional-agenda-15-december-2025/specialised-committee-on-participation-in-union-programmes-scpup-established-by-the-eu-uk-trade-and-cooperation-agreement" target="_blank" rel="noopener">https://www.gov.uk/government/publications/specialised-committee-on-participation-in-union-programmes-provisional-agenda-15-december-2025/specialised-committee-on-participation-in-union-programmes-scpup-established-by-the-eu-uk-trade-and-cooperation-agreement</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.gov.uk/assets/frontend/accredited-official-statistics-en-b3d3577a769b80457deb908876a896f336331eac8da8f82451903dbaf907cef3.png" target="_blank" rel="noopener" title="https://www.gov.uk/assets/frontend/accredited-official-statistics-en-b3d3577a769b80457deb908876a896f336331eac8da8f82451903dbaf907cef3.png">https://www.gov.uk/assets/frontend/accredited-official-stati…</a><span class="url-tooltip" aria-hidden="true">https://www.gov.uk/assets/frontend/accredited-official-statistics-en-b3d3577a769b80457deb908876a896f336331eac8da8f82451903dbaf907cef3.png</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.gov.uk/assets/frontend/accredited-official-statistics-en-b3d3577a769b80457deb908876a896f336331eac8da8f82451903dbaf907cef3.png" data-preview-alt="Accredited official statistics" data-preview-label="Accredited official statistics" data-preview-width="248" data-preview-height="302" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Accredited official statistics"><img src="https://www.gov.uk/assets/frontend/accredited-official-statistics-en-b3d3577a769b80457deb908876a896f336331eac8da8f82451903dbaf907cef3.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Accredited official statistics</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 5 occurrences of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>5<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.gov.uk/government/statistics/baby-names-in-england-and-wales-2017" target="_blank" rel="noopener">https://www.gov.uk/government/statistics/baby-names-in-england-and-wales-2017</a><br><a href="https://www.gov.uk/government/statistics/emergency-care-waiting-time-statistics-in-northern-ireland-july-to-september-2019" target="_blank" rel="noopener">https://www.gov.uk/government/statistics/emergency-care-waiting-time-statistics-in-northern-ireland-july-to-september-2019</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://assets.publishing.service.gov.uk/media/5a8c3d56e5274a5e64c544db/PM_education.jpg" target="_blank" rel="noopener" title="https://assets.publishing.service.gov.uk/media/5a8c3d56e5274a5e64c544db/PM_education.jpg">https://assets.publishing.service.gov.uk … /PM_education.jpg</a><span class="url-tooltip" aria-hidden="true">https://assets.publishing.service.gov.uk/media/5a8c3d56e5274a5e64c544db/PM_education.jpg</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://assets.publishing.service.gov.uk/media/5a8c3d56e5274a5e64c544db/PM_education.jpg" data-preview-alt="PM Theresa May meets schoolchildren on a day of visits as she launches a review into post-18 education and funding." data-preview-label="PM Theresa May meets schoolchildren on a day of visits as she launches a review into post-18 education and funding." data-preview-width="" data-preview-height="" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: PM Theresa May meets schoolchildren on a day of visits as she launches a review into post-18 education and funding."><img src="https://assets.publishing.service.gov.uk/media/5a8c3d56e5274a5e64c544db/PM_education.jpg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>PM Theresa May meets schoolchildren on a day of visits as she launches a review into post-18 education and funding.</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.gov.uk/government/speeches/pm-the-right-education-for-everyone" target="_blank" rel="noopener">https://www.gov.uk/government/speeches/pm-the-right-education-for-everyone</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://assets.publishing.service.gov.uk/media/66a0cba1a3c2a28abb50d60c/minister_bryant_govuk.jpg" target="_blank" rel="noopener" title="https://assets.publishing.service.gov.uk/media/66a0cba1a3c2a28abb50d60c/minister_bryant_govuk.jpg">https://assets.publishing.servi … /minister_bryant_govuk.jpg</a><span class="url-tooltip" aria-hidden="true">https://assets.publishing.service.gov.uk/media/66a0cba1a3c2a28abb50d60c/minister_bryant_govuk.jpg</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://assets.publishing.service.gov.uk/media/66a0cba1a3c2a28abb50d60c/minister_bryant_govuk.jpg" data-preview-alt="Sir Chris Bryant MP" data-preview-label="Sir Chris Bryant MP" data-preview-width="" data-preview-height="" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Sir Chris Bryant MP"><img src="https://assets.publishing.service.gov.uk/media/66a0cba1a3c2a28abb50d60c/minister_bryant_govuk.jpg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Sir Chris Bryant MP</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.gov.uk/government/speeches/minister-sir-chris-bryant-speech-at-lead-advertising-conference" target="_blank" rel="noopener">https://www.gov.uk/government/speeches/minister-sir-chris-bryant-speech-at-lead-advertising-conference</a></div></td>
+        </tr></tbody>
+  </table>
+
+  
+  <h2>Decorative images — please review</h2>
+  <div class="review-callout" role="note">
+    <strong>Review recommended:</strong> These 18 images have empty alt text and are marked as decorative.
+    Please look at each thumbnail: does it convey meaningful information that sighted users would benefit from knowing?
+    If so, it needs descriptive alt text. The <strong>Role</strong> and <strong>ARIA Label</strong> columns show any semantic markup that was applied.
+  </div>
+  <table>
+    <thead><tr><th>Image</th><th class="thumbnail-column-decorative">Thumbnail</th><th>Status</th><th>Role</th><th>ARIA Label</th><th>Pages</th></tr></thead>
+    <tbody>
+        <tr>
+          <td class="url-cell"><a href="https://assets.publishing.service.gov.uk/media/5a37dab9ed915d5a5f965fd5/s300_beis-sign-1vs.jpg" target="_blank" rel="noopener" title="https://assets.publishing.service.gov.uk/media/5a37dab9ed915d5a5f965fd5/s300_beis-sign-1vs.jpg">https://assets.publishing.service. … /s300_beis-sign-1vs.jpg</a><span class="url-tooltip" aria-hidden="true">https://assets.publishing.service.gov.uk/media/5a37dab9ed915d5a5f965fd5/s300_beis-sign-1vs.jpg</span></td>
+          <td class="thumbnail-column-decorative"><button type="button" class="thumbnail-trigger" data-preview-src="https://assets.publishing.service.gov.uk/media/5a37dab9ed915d5a5f965fd5/s300_beis-sign-1vs.jpg" data-preview-alt="" data-preview-label="https://assets.publishing.service.gov.uk/media/5a37dab9ed915d5a5f965fd5/s300_beis-sign-1vs.jpg" data-preview-width="300" data-preview-height="195" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://assets.publishing.service.gov.uk/media/5a37dab9ed915d5a5f965fd5/s300_beis-sign-1vs.jpg"><img src="https://assets.publishing.service.gov.uk/media/5a37dab9ed915d5a5f965fd5/s300_beis-sign-1vs.jpg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>2<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.gov.uk/government/news/new-fellowships-for-exceptional-students-launched-in-memory-of-professor-stephen-hawking" target="_blank" rel="noopener">https://www.gov.uk/government/news/new-fellowships-for-exceptional-students-launched-in-memory-of-professor-stephen-hawking</a><br><a href="https://www.gov.uk/government/news/projects-lay-the-groundwork-for-a-future-of-robolawyers-and-flying-cars" target="_blank" rel="noopener">https://www.gov.uk/government/news/projects-lay-the-groundwork-for-a-future-of-robolawyers-and-flying-cars</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://assets.publishing.service.gov.uk/media/5a37dac7ed915d5a5f965ff0/s300_M42_960x640.jpg" target="_blank" rel="noopener" title="https://assets.publishing.service.gov.uk/media/5a37dac7ed915d5a5f965ff0/s300_M42_960x640.jpg">https://assets.publishing.service.go … /s300_M42_960x640.jpg</a><span class="url-tooltip" aria-hidden="true">https://assets.publishing.service.gov.uk/media/5a37dac7ed915d5a5f965ff0/s300_M42_960x640.jpg</span></td>
+          <td class="thumbnail-column-decorative"><button type="button" class="thumbnail-trigger" data-preview-src="https://assets.publishing.service.gov.uk/media/5a37dac7ed915d5a5f965ff0/s300_M42_960x640.jpg" data-preview-alt="" data-preview-label="https://assets.publishing.service.gov.uk/media/5a37dac7ed915d5a5f965ff0/s300_M42_960x640.jpg" data-preview-width="300" data-preview-height="195" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://assets.publishing.service.gov.uk/media/5a37dac7ed915d5a5f965ff0/s300_M42_960x640.jpg"><img src="https://assets.publishing.service.gov.uk/media/5a37dac7ed915d5a5f965ff0/s300_M42_960x640.jpg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>2<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.gov.uk/government/news/planned-roadworks-in-devon-and-cornwall-weekly-summary-for-monday-12-january-sunday-18-january-2015" target="_blank" rel="noopener">https://www.gov.uk/government/news/planned-roadworks-in-devon-and-cornwall-weekly-summary-for-monday-12-january-sunday-18-january-2015</a><br><a href="https://www.gov.uk/government/news/planned-roadworks-in-yorkshire-and-the-humber-weekly-summary-for-monday-12-january-to-sunday-18-january" target="_blank" rel="noopener">https://www.gov.uk/government/news/planned-roadworks-in-yorkshire-and-the-humber-weekly-summary-for-monday-12-january-to-sunday-18-january</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://assets.publishing.service.gov.uk/media/5a37dad1ed915d5a62fdc6d6/s300_defra-sign-grey.jpg" target="_blank" rel="noopener" title="https://assets.publishing.service.gov.uk/media/5a37dad1ed915d5a62fdc6d6/s300_defra-sign-grey.jpg">https://assets.publishing.servic … /s300_defra-sign-grey.jpg</a><span class="url-tooltip" aria-hidden="true">https://assets.publishing.service.gov.uk/media/5a37dad1ed915d5a62fdc6d6/s300_defra-sign-grey.jpg</span></td>
+          <td class="thumbnail-column-decorative"><button type="button" class="thumbnail-trigger" data-preview-src="https://assets.publishing.service.gov.uk/media/5a37dad1ed915d5a62fdc6d6/s300_defra-sign-grey.jpg" data-preview-alt="" data-preview-label="https://assets.publishing.service.gov.uk/media/5a37dad1ed915d5a62fdc6d6/s300_defra-sign-grey.jpg" data-preview-width="300" data-preview-height="195" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://assets.publishing.service.gov.uk/media/5a37dad1ed915d5a62fdc6d6/s300_defra-sign-grey.jpg"><img src="https://assets.publishing.service.gov.uk/media/5a37dad1ed915d5a62fdc6d6/s300_defra-sign-grey.jpg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>2<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.gov.uk/government/news/spelman-launches-fightback-against-tree-disease" target="_blank" rel="noopener">https://www.gov.uk/government/news/spelman-launches-fightback-against-tree-disease</a><br><a href="https://www.gov.uk/government/news/reappointment-to-the-joint-nature-conservation-committee" target="_blank" rel="noopener">https://www.gov.uk/government/news/reappointment-to-the-joint-nature-conservation-committee</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://assets.publishing.service.gov.uk/media/5a37db36e5274a79051c927d/s300_2_Marsham_Street_960x640.jpg" target="_blank" rel="noopener" title="https://assets.publishing.service.gov.uk/media/5a37db36e5274a79051c927d/s300_2_Marsham_Street_960x640.jpg">https://assets.publishi … /s300_2_Marsham_Street_960x640.jpg</a><span class="url-tooltip" aria-hidden="true">https://assets.publishing.service.gov.uk/media/5a37db36e5274a79051c927d/s300_2_Marsham_Street_960x640.jpg</span></td>
+          <td class="thumbnail-column-decorative"><button type="button" class="thumbnail-trigger" data-preview-src="https://assets.publishing.service.gov.uk/media/5a37db36e5274a79051c927d/s300_2_Marsham_Street_960x640.jpg" data-preview-alt="" data-preview-label="https://assets.publishing.service.gov.uk/media/5a37db36e5274a79051c927d/s300_2_Marsham_Street_960x640.jpg" data-preview-width="300" data-preview-height="195" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://assets.publishing.service.gov.uk/media/5a37db36e5274a79051c927d/s300_2_Marsham_Street_960x640.jpg"><img src="https://assets.publishing.service.gov.uk/media/5a37db36e5274a79051c927d/s300_2_Marsham_Street_960x640.jpg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>2<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.gov.uk/government/news/eric-pickles-statement-on-the-budget-2014" target="_blank" rel="noopener">https://www.gov.uk/government/news/eric-pickles-statement-on-the-budget-2014</a><br><a href="https://www.gov.uk/government/news/apprenticeships-in-the-home-for-tenants--2" target="_blank" rel="noopener">https://www.gov.uk/government/news/apprenticeships-in-the-home-for-tenants--2</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://assets.publishing.service.gov.uk/media/5a37dae240f0b649cceb1839/s300_Main-building-gov.uk.jpg" target="_blank" rel="noopener" title="https://assets.publishing.service.gov.uk/media/5a37dae240f0b649cceb1839/s300_Main-building-gov.uk.jpg">https://assets.publishing.s … /s300_Main-building-gov.uk.jpg</a><span class="url-tooltip" aria-hidden="true">https://assets.publishing.service.gov.uk/media/5a37dae240f0b649cceb1839/s300_Main-building-gov.uk.jpg</span></td>
+          <td class="thumbnail-column-decorative"><button type="button" class="thumbnail-trigger" data-preview-src="https://assets.publishing.service.gov.uk/media/5a37dae240f0b649cceb1839/s300_Main-building-gov.uk.jpg" data-preview-alt="" data-preview-label="https://assets.publishing.service.gov.uk/media/5a37dae240f0b649cceb1839/s300_Main-building-gov.uk.jpg" data-preview-width="" data-preview-height="" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://assets.publishing.service.gov.uk/media/5a37dae240f0b649cceb1839/s300_Main-building-gov.uk.jpg"><img src="https://assets.publishing.service.gov.uk/media/5a37dae240f0b649cceb1839/s300_Main-building-gov.uk.jpg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.gov.uk/government/news/foreign-secretary-statement-on-the-return-of-karl-andree-to-the-uk" target="_blank" rel="noopener">https://www.gov.uk/government/news/foreign-secretary-statement-on-the-return-of-karl-andree-to-the-uk</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://assets.publishing.service.gov.uk/media/5a37db3340f0b649cceb18cb/s300_Generic_works_photo.jpg" target="_blank" rel="noopener" title="https://assets.publishing.service.gov.uk/media/5a37db3340f0b649cceb18cb/s300_Generic_works_photo.jpg">https://assets.publishing.se … /s300_Generic_works_photo.jpg</a><span class="url-tooltip" aria-hidden="true">https://assets.publishing.service.gov.uk/media/5a37db3340f0b649cceb18cb/s300_Generic_works_photo.jpg</span></td>
+          <td class="thumbnail-column-decorative"><button type="button" class="thumbnail-trigger" data-preview-src="https://assets.publishing.service.gov.uk/media/5a37db3340f0b649cceb18cb/s300_Generic_works_photo.jpg" data-preview-alt="" data-preview-label="https://assets.publishing.service.gov.uk/media/5a37db3340f0b649cceb18cb/s300_Generic_works_photo.jpg" data-preview-width="" data-preview-height="" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://assets.publishing.service.gov.uk/media/5a37db3340f0b649cceb18cb/s300_Generic_works_photo.jpg"><img src="https://assets.publishing.service.gov.uk/media/5a37db3340f0b649cceb18cb/s300_Generic_works_photo.jpg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.gov.uk/government/news/agreement-reached-on-dartford-traffic-improvements" target="_blank" rel="noopener">https://www.gov.uk/government/news/agreement-reached-on-dartford-traffic-improvements</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://assets.publishing.service.gov.uk/media/5a6183c3e5274a0a20484e49/s300_s960_bus-tc.jpg" target="_blank" rel="noopener" title="https://assets.publishing.service.gov.uk/media/5a6183c3e5274a0a20484e49/s300_s960_bus-tc.jpg">https://assets.publishing.service.go … /s300_s960_bus-tc.jpg</a><span class="url-tooltip" aria-hidden="true">https://assets.publishing.service.gov.uk/media/5a6183c3e5274a0a20484e49/s300_s960_bus-tc.jpg</span></td>
+          <td class="thumbnail-column-decorative"><button type="button" class="thumbnail-trigger" data-preview-src="https://assets.publishing.service.gov.uk/media/5a6183c3e5274a0a20484e49/s300_s960_bus-tc.jpg" data-preview-alt="" data-preview-label="https://assets.publishing.service.gov.uk/media/5a6183c3e5274a0a20484e49/s300_s960_bus-tc.jpg" data-preview-width="" data-preview-height="" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://assets.publishing.service.gov.uk/media/5a6183c3e5274a0a20484e49/s300_s960_bus-tc.jpg"><img src="https://assets.publishing.service.gov.uk/media/5a6183c3e5274a0a20484e49/s300_s960_bus-tc.jpg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.gov.uk/government/news/qcs-board-announces-change-to-oral-evidence-hearing-dates" target="_blank" rel="noopener">https://www.gov.uk/government/news/qcs-board-announces-change-to-oral-evidence-hearing-dates</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://assets.publishing.service.gov.uk/media/5b1e74dced915d2cc0270ce9/s300_Pakistan-heat-wave.jpeg" target="_blank" rel="noopener" title="https://assets.publishing.service.gov.uk/media/5b1e74dced915d2cc0270ce9/s300_Pakistan-heat-wave.jpeg">https://assets.publishing.se … /s300_Pakistan-heat-wave.jpeg</a><span class="url-tooltip" aria-hidden="true">https://assets.publishing.service.gov.uk/media/5b1e74dced915d2cc0270ce9/s300_Pakistan-heat-wave.jpeg</span></td>
+          <td class="thumbnail-column-decorative"><button type="button" class="thumbnail-trigger" data-preview-src="https://assets.publishing.service.gov.uk/media/5b1e74dced915d2cc0270ce9/s300_Pakistan-heat-wave.jpeg" data-preview-alt="" data-preview-label="https://assets.publishing.service.gov.uk/media/5b1e74dced915d2cc0270ce9/s300_Pakistan-heat-wave.jpeg" data-preview-width="" data-preview-height="" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://assets.publishing.service.gov.uk/media/5b1e74dced915d2cc0270ce9/s300_Pakistan-heat-wave.jpeg"><img src="https://assets.publishing.service.gov.uk/media/5b1e74dced915d2cc0270ce9/s300_Pakistan-heat-wave.jpeg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.gov.uk/government/news/uk-aid-gives-emergency-medical-treatment-to-worlds-poorest-in-deadly-heatwave" target="_blank" rel="noopener">https://www.gov.uk/government/news/uk-aid-gives-emergency-medical-treatment-to-worlds-poorest-in-deadly-heatwave</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://assets.publishing.service.gov.uk/media/5e985599d3bf7f3fc943bbd8/UK_government_logo.jpg" target="_blank" rel="noopener" title="https://assets.publishing.service.gov.uk/media/5e985599d3bf7f3fc943bbd8/UK_government_logo.jpg">https://assets.publishing.service. … /UK_government_logo.jpg</a><span class="url-tooltip" aria-hidden="true">https://assets.publishing.service.gov.uk/media/5e985599d3bf7f3fc943bbd8/UK_government_logo.jpg</span></td>
+          <td class="thumbnail-column-decorative"><button type="button" class="thumbnail-trigger" data-preview-src="https://assets.publishing.service.gov.uk/media/5e985599d3bf7f3fc943bbd8/UK_government_logo.jpg" data-preview-alt="" data-preview-label="https://assets.publishing.service.gov.uk/media/5e985599d3bf7f3fc943bbd8/UK_government_logo.jpg" data-preview-width="" data-preview-height="" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://assets.publishing.service.gov.uk/media/5e985599d3bf7f3fc943bbd8/UK_government_logo.jpg"><img src="https://assets.publishing.service.gov.uk/media/5e985599d3bf7f3fc943bbd8/UK_government_logo.jpg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.gov.uk/government/world-location-news/261575.pt" target="_blank" rel="noopener">https://www.gov.uk/government/world-location-news/261575.pt</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://assets.publishing.service.gov.uk/media/61656325e90e07197a68c219/s300_960-manchester-picaddilly.jpg" target="_blank" rel="noopener" title="https://assets.publishing.service.gov.uk/media/61656325e90e07197a68c219/s300_960-manchester-picaddilly.jpg">https://assets.publish … /s300_960-manchester-picaddilly.jpg</a><span class="url-tooltip" aria-hidden="true">https://assets.publishing.service.gov.uk/media/61656325e90e07197a68c219/s300_960-manchester-picaddilly.jpg</span></td>
+          <td class="thumbnail-column-decorative"><button type="button" class="thumbnail-trigger" data-preview-src="https://assets.publishing.service.gov.uk/media/61656325e90e07197a68c219/s300_960-manchester-picaddilly.jpg" data-preview-alt="" data-preview-label="https://assets.publishing.service.gov.uk/media/61656325e90e07197a68c219/s300_960-manchester-picaddilly.jpg" data-preview-width="" data-preview-height="" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://assets.publishing.service.gov.uk/media/61656325e90e07197a68c219/s300_960-manchester-picaddilly.jpg"><img src="https://assets.publishing.service.gov.uk/media/61656325e90e07197a68c219/s300_960-manchester-picaddilly.jpg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.gov.uk/government/news/high-performing-rail-timetable-announced-for-manchester" target="_blank" rel="noopener">https://www.gov.uk/government/news/high-performing-rail-timetable-announced-for-manchester</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://assets.publishing.service.gov.uk/media/63761353d3bf7f72115a82a3/s960_Haverfordwest_castle_-_image_2_960.jpg" target="_blank" rel="noopener" title="https://assets.publishing.service.gov.uk/media/63761353d3bf7f72115a82a3/s960_Haverfordwest_castle_-_image_2_960.jpg">https://asset … /s960_Haverfordwest_castle_-_image_2_960.jpg</a><span class="url-tooltip" aria-hidden="true">https://assets.publishing.service.gov.uk/media/63761353d3bf7f72115a82a3/s960_Haverfordwest_castle_-_image_2_960.jpg</span></td>
+          <td class="thumbnail-column-decorative"><button type="button" class="thumbnail-trigger" data-preview-src="https://assets.publishing.service.gov.uk/media/63761353d3bf7f72115a82a3/s960_Haverfordwest_castle_-_image_2_960.jpg" data-preview-alt="" data-preview-label="https://assets.publishing.service.gov.uk/media/63761353d3bf7f72115a82a3/s960_Haverfordwest_castle_-_image_2_960.jpg" data-preview-width="" data-preview-height="" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://assets.publishing.service.gov.uk/media/63761353d3bf7f72115a82a3/s960_Haverfordwest_castle_-_image_2_960.jpg"><img src="https://assets.publishing.service.gov.uk/media/63761353d3bf7f72115a82a3/s960_Haverfordwest_castle_-_image_2_960.jpg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.gov.uk/government/case-studies/177-million-awarded-to-regenerate-haverfordwest" target="_blank" rel="noopener">https://www.gov.uk/government/case-studies/177-million-awarded-to-regenerate-haverfordwest</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://assets.publishing.service.gov.uk/media/63761353e90e07284a146cbf/s960_Haverfordwest_castle_-_image_1_960.jpg" target="_blank" rel="noopener" title="https://assets.publishing.service.gov.uk/media/63761353e90e07284a146cbf/s960_Haverfordwest_castle_-_image_1_960.jpg">https://asset … /s960_Haverfordwest_castle_-_image_1_960.jpg</a><span class="url-tooltip" aria-hidden="true">https://assets.publishing.service.gov.uk/media/63761353e90e07284a146cbf/s960_Haverfordwest_castle_-_image_1_960.jpg</span></td>
+          <td class="thumbnail-column-decorative"><button type="button" class="thumbnail-trigger" data-preview-src="https://assets.publishing.service.gov.uk/media/63761353e90e07284a146cbf/s960_Haverfordwest_castle_-_image_1_960.jpg" data-preview-alt="" data-preview-label="https://assets.publishing.service.gov.uk/media/63761353e90e07284a146cbf/s960_Haverfordwest_castle_-_image_1_960.jpg" data-preview-width="" data-preview-height="" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://assets.publishing.service.gov.uk/media/63761353e90e07284a146cbf/s960_Haverfordwest_castle_-_image_1_960.jpg"><img src="https://assets.publishing.service.gov.uk/media/63761353e90e07284a146cbf/s960_Haverfordwest_castle_-_image_1_960.jpg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.gov.uk/government/case-studies/177-million-awarded-to-regenerate-haverfordwest" target="_blank" rel="noopener">https://www.gov.uk/government/case-studies/177-million-awarded-to-regenerate-haverfordwest</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://assets.publishing.service.gov.uk/media/63d1113ae90e071ba8dcecbd/vaccine-covid.jpg" target="_blank" rel="noopener" title="https://assets.publishing.service.gov.uk/media/63d1113ae90e071ba8dcecbd/vaccine-covid.jpg">https://assets.publishing.service.gov.u … /vaccine-covid.jpg</a><span class="url-tooltip" aria-hidden="true">https://assets.publishing.service.gov.uk/media/63d1113ae90e071ba8dcecbd/vaccine-covid.jpg</span></td>
+          <td class="thumbnail-column-decorative"><button type="button" class="thumbnail-trigger" data-preview-src="https://assets.publishing.service.gov.uk/media/63d1113ae90e071ba8dcecbd/vaccine-covid.jpg" data-preview-alt="" data-preview-label="https://assets.publishing.service.gov.uk/media/63d1113ae90e071ba8dcecbd/vaccine-covid.jpg" data-preview-width="" data-preview-height="" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://assets.publishing.service.gov.uk/media/63d1113ae90e071ba8dcecbd/vaccine-covid.jpg"><img src="https://assets.publishing.service.gov.uk/media/63d1113ae90e071ba8dcecbd/vaccine-covid.jpg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.gov.uk/government/news/jcvi-advises-an-autumn-covid-19-vaccine-booster" target="_blank" rel="noopener">https://www.gov.uk/government/news/jcvi-advises-an-autumn-covid-19-vaccine-booster</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://assets.publishing.service.gov.uk/media/68a6dbb69dc94e840696a422/s300_New25TCs.jpg" target="_blank" rel="noopener" title="https://assets.publishing.service.gov.uk/media/68a6dbb69dc94e840696a422/s300_New25TCs.jpg">https://assets.publishing.service.gov.u … /s300_New25TCs.jpg</a><span class="url-tooltip" aria-hidden="true">https://assets.publishing.service.gov.uk/media/68a6dbb69dc94e840696a422/s300_New25TCs.jpg</span></td>
+          <td class="thumbnail-column-decorative"><button type="button" class="thumbnail-trigger" data-preview-src="https://assets.publishing.service.gov.uk/media/68a6dbb69dc94e840696a422/s300_New25TCs.jpg" data-preview-alt="" data-preview-label="https://assets.publishing.service.gov.uk/media/68a6dbb69dc94e840696a422/s300_New25TCs.jpg" data-preview-width="" data-preview-height="" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://assets.publishing.service.gov.uk/media/68a6dbb69dc94e840696a422/s300_New25TCs.jpg"><img src="https://assets.publishing.service.gov.uk/media/68a6dbb69dc94e840696a422/s300_New25TCs.jpg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.gov.uk/government/news/transport-manager-turnover-and-underage-drivers" target="_blank" rel="noopener">https://www.gov.uk/government/news/transport-manager-turnover-and-underage-drivers</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.gov.uk/assets/frontend/app-promo/govuk-app-icon-0bca94cf05737106d8e80f32a66f773d7b6ff9b9652fc555917d855914309af0.png" target="_blank" rel="noopener" title="https://www.gov.uk/assets/frontend/app-promo/govuk-app-icon-0bca94cf05737106d8e80f32a66f773d7b6ff9b9652fc555917d855914309af0.png">https://www.gov.uk/assets/frontend/app-promo/govuk-app-icon-…</a><span class="url-tooltip" aria-hidden="true">https://www.gov.uk/assets/frontend/app-promo/govuk-app-icon-0bca94cf05737106d8e80f32a66f773d7b6ff9b9652fc555917d855914309af0.png</span></td>
+          <td class="thumbnail-column-decorative"><button type="button" class="thumbnail-trigger" data-preview-src="https://www.gov.uk/assets/frontend/app-promo/govuk-app-icon-0bca94cf05737106d8e80f32a66f773d7b6ff9b9652fc555917d855914309af0.png" data-preview-alt="" data-preview-label="https://www.gov.uk/assets/frontend/app-promo/govuk-app-icon-0bca94cf05737106d8e80f32a66f773d7b6ff9b9652fc555917d855914309af0.png" data-preview-width="240" data-preview-height="240" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://www.gov.uk/assets/frontend/app-promo/govuk-app-icon-0bca94cf05737106d8e80f32a66f773d7b6ff9b9652fc555917d855914309af0.png"><img src="https://www.gov.uk/assets/frontend/app-promo/govuk-app-icon-0bca94cf05737106d8e80f32a66f773d7b6ff9b9652fc555917d855914309af0.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.gov.uk/" target="_blank" rel="noopener">https://www.gov.uk/</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.gov.uk/assets/frontend/homepage/find-a-job-4d38717b0451da3bb223ddea7f681d79e48c1c022da5a08f16aba3f681503150.png" target="_blank" rel="noopener" title="https://www.gov.uk/assets/frontend/homepage/find-a-job-4d38717b0451da3bb223ddea7f681d79e48c1c022da5a08f16aba3f681503150.png">https://www.gov.uk/assets/frontend/homepage/find-a-job-4d387…</a><span class="url-tooltip" aria-hidden="true">https://www.gov.uk/assets/frontend/homepage/find-a-job-4d38717b0451da3bb223ddea7f681d79e48c1c022da5a08f16aba3f681503150.png</span></td>
+          <td class="thumbnail-column-decorative"><button type="button" class="thumbnail-trigger" data-preview-src="https://www.gov.uk/assets/frontend/homepage/find-a-job-4d38717b0451da3bb223ddea7f681d79e48c1c022da5a08f16aba3f681503150.png" data-preview-alt="" data-preview-label="https://www.gov.uk/assets/frontend/homepage/find-a-job-4d38717b0451da3bb223ddea7f681d79e48c1c022da5a08f16aba3f681503150.png" data-preview-width="160" data-preview-height="160" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://www.gov.uk/assets/frontend/homepage/find-a-job-4d38717b0451da3bb223ddea7f681d79e48c1c022da5a08f16aba3f681503150.png"><img src="https://www.gov.uk/assets/frontend/homepage/find-a-job-4d38717b0451da3bb223ddea7f681d79e48c1c022da5a08f16aba3f681503150.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.gov.uk/" target="_blank" rel="noopener">https://www.gov.uk/</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.gov.uk/assets/frontend/homepage/photo-id-featured-9e48313e57cbf07cdcc1e3773dacf538c0489be9b54d6cb43ff0cad41076e22b.png" target="_blank" rel="noopener" title="https://www.gov.uk/assets/frontend/homepage/photo-id-featured-9e48313e57cbf07cdcc1e3773dacf538c0489be9b54d6cb43ff0cad41076e22b.png">https://www.gov.uk/assets/frontend/homepage/photo-id-feature…</a><span class="url-tooltip" aria-hidden="true">https://www.gov.uk/assets/frontend/homepage/photo-id-featured-9e48313e57cbf07cdcc1e3773dacf538c0489be9b54d6cb43ff0cad41076e22b.png</span></td>
+          <td class="thumbnail-column-decorative"><button type="button" class="thumbnail-trigger" data-preview-src="https://www.gov.uk/assets/frontend/homepage/photo-id-featured-9e48313e57cbf07cdcc1e3773dacf538c0489be9b54d6cb43ff0cad41076e22b.png" data-preview-alt="" data-preview-label="https://www.gov.uk/assets/frontend/homepage/photo-id-featured-9e48313e57cbf07cdcc1e3773dacf538c0489be9b54d6cb43ff0cad41076e22b.png" data-preview-width="160" data-preview-height="160" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://www.gov.uk/assets/frontend/homepage/photo-id-featured-9e48313e57cbf07cdcc1e3773dacf538c0489be9b54d6cb43ff0cad41076e22b.png"><img src="https://www.gov.uk/assets/frontend/homepage/photo-id-featured-9e48313e57cbf07cdcc1e3773dacf538c0489be9b54d6cb43ff0cad41076e22b.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.gov.uk/" target="_blank" rel="noopener">https://www.gov.uk/</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.gov.uk/assets/frontend/homepage/travel-advice-blue-icon-featured-a03f6981ba9d86e6b84ecfe7bb28557dad14cf00b5270082cd3d3e264e6e63e0.png" target="_blank" rel="noopener" title="https://www.gov.uk/assets/frontend/homepage/travel-advice-blue-icon-featured-a03f6981ba9d86e6b84ecfe7bb28557dad14cf00b5270082cd3d3e264e6e63e0.png">https://www.gov.uk/assets/frontend/homepage/travel-advice-bl…</a><span class="url-tooltip" aria-hidden="true">https://www.gov.uk/assets/frontend/homepage/travel-advice-blue-icon-featured-a03f6981ba9d86e6b84ecfe7bb28557dad14cf00b5270082cd3d3e264e6e63e0.png</span></td>
+          <td class="thumbnail-column-decorative"><button type="button" class="thumbnail-trigger" data-preview-src="https://www.gov.uk/assets/frontend/homepage/travel-advice-blue-icon-featured-a03f6981ba9d86e6b84ecfe7bb28557dad14cf00b5270082cd3d3e264e6e63e0.png" data-preview-alt="" data-preview-label="https://www.gov.uk/assets/frontend/homepage/travel-advice-blue-icon-featured-a03f6981ba9d86e6b84ecfe7bb28557dad14cf00b5270082cd3d3e264e6e63e0.png" data-preview-width="160" data-preview-height="160" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://www.gov.uk/assets/frontend/homepage/travel-advice-blue-icon-featured-a03f6981ba9d86e6b84ecfe7bb28557dad14cf00b5270082cd3d3e264e6e63e0.png"><img src="https://www.gov.uk/assets/frontend/homepage/travel-advice-blue-icon-featured-a03f6981ba9d86e6b84ecfe7bb28557dad14cf00b5270082cd3d3e264e6e63e0.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.gov.uk/" target="_blank" rel="noopener">https://www.gov.uk/</a></div></td>
+        </tr></tbody>
+  </table>
+
+  <h2>Images with issues</h2>
+  <table>
+    <thead><tr><th>Image</th><th class="thumbnail-column" hidden>Thumbnail</th><th>Alt Text</th><th>Status</th><th>Issues</th><th>Found on</th></tr></thead>
+    <tbody>
+        <tr>
+          <td class="url-cell"><a href="https://www.gov.uk/assets/frontend/open-government-licence-min-93b6a51b518ff99714a1aa2a7d2162735c155ec3cb073c75fb88b2a332fa83d3.png" target="_blank" rel="noopener" title="https://www.gov.uk/assets/frontend/open-government-licence-min-93b6a51b518ff99714a1aa2a7d2162735c155ec3cb073c75fb88b2a332fa83d3.png">https://www.gov.uk/assets/frontend/open-government-licence-m…</a><span class="url-tooltip" aria-hidden="true">https://www.gov.uk/assets/frontend/open-government-licence-min-93b6a51b518ff99714a1aa2a7d2162735c155ec3cb073c75fb88b2a332fa83d3.png</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.gov.uk/assets/frontend/open-government-licence-min-93b6a51b518ff99714a1aa2a7d2162735c155ec3cb073c75fb88b2a332fa83d3.png" data-preview-alt="" data-preview-label="https://www.gov.uk/assets/frontend/open-government-licence-min-93b6a51b518ff99714a1aa2a7d2162735c155ec3cb073c75fb88b2a332fa83d3.png" data-preview-width="854" data-preview-height="346" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://www.gov.uk/assets/frontend/open-government-licence-min-93b6a51b518ff99714a1aa2a7d2162735c155ec3cb073c75fb88b2a332fa83d3.png"><img src="https://www.gov.uk/assets/frontend/open-government-licence-min-93b6a51b518ff99714a1aa2a7d2162735c155ec3cb073c75fb88b2a332fa83d3.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><em style="color:#999">missing</em></td>
+          <td><span style="color:#d32f2f;font-weight:bold">Missing Alt</span></td>
+          <td><ul style="margin:0;padding-left:1.2em"><li>WCAG 1.1.1 Failure: alt attribute is missing entirely</li></ul></td>
+          <td style="font-size:0.85em"><a href="https://www.gov.uk/government/publications/decision-for-kirkham-box-nw-ltd-oc2063608/decision-for-kirkham-box-nw-ltd-oc2063608" target="_blank" rel="noopener">https://www.gov.uk/government/publications/decision-for-kirkham-box-nw-ltd-oc2063608/decision-for-kirkham-box-nw-ltd-oc2063608</a><br><a href="https://www.gov.uk/government/publications/specialised-committee-on-participation-in-union-programmes-provisional-agenda-15-december-2025/specialised-committee-on-participation-in-union-programmes-scpup-established-by-the-eu-uk-trade-and-cooperation-agreement" target="_blank" rel="noopener">https://www.gov.uk/government/publications/specialised-committee-on-participation-in-union-programmes-provisional-agenda-15-december-2025/specialised-committee-on-participation-in-union-programmes-scpup-established-by-the-eu-uk-trade-and-cooperation-agreement</a><br><a href="https://www.gov.uk/government/publications/sheffield-city-council/sheffield-city-council-00cg-regulatory-judgement-9-july-2024" target="_blank" rel="noopener">https://www.gov.uk/government/publications/sheffield-city-council/sheffield-city-council-00cg-regulatory-judgement-9-july-2024</a></td>
+        </tr></tbody>
+  </table>
+
+  <dialog id="image-preview-dialog" class="preview-dialog" aria-labelledby="image-preview-title">
+    <div class="preview-dialog__inner">
+      <div class="preview-dialog__header">
+        <h2 id="image-preview-title" class="preview-dialog__title">Image preview</h2>
+        <form method="dialog">
+          <button type="submit" class="preview-dialog__close" id="close-image-preview">Close</button>
+        </form>
+      </div>
+      <figure class="preview-dialog__figure">
+        <img id="image-preview-image" class="preview-dialog__image" alt="">
+        <figcaption id="image-preview-caption" class="preview-dialog__caption"></figcaption>
+      </figure>
+      <p class="preview-dialog__actions">
+        <a id="image-preview-view-full" href="#" target="_blank" rel="noopener" class="preview-dialog__view-full">View full image ↗</a>
+      </p>
+    </div>
+  </dialog>
+
+  <script>
+    (() => {
+      const toggleButton = document.getElementById("toggle-thumbnails");
+      const thumbnailColumns = Array.from(document.querySelectorAll(".thumbnail-column"));
+      const dialog = document.getElementById("image-preview-dialog");
+      const previewImage = document.getElementById("image-preview-image");
+      const previewCaption = document.getElementById("image-preview-caption");
+      const previewTitle = document.getElementById("image-preview-title");
+      const closeButton = document.getElementById("close-image-preview");
+      const viewFullLink = document.getElementById("image-preview-view-full");
+      const previewTriggers = Array.from(document.querySelectorAll(".thumbnail-trigger"));
+      let lastTrigger = null;
+      let lastOpenMode = "click";
+      let skipNextFocusTrigger = null;
+
+      if (toggleButton) {
+        toggleButton.addEventListener("click", () => {
+          const shouldShow = toggleButton.getAttribute("aria-pressed") !== "true";
+          toggleButton.setAttribute("aria-pressed", String(shouldShow));
+          toggleButton.textContent = shouldShow ? "Hide thumbnails for images with alt text" : "Show thumbnails for images with alt text";
+          thumbnailColumns.forEach((column) => {
+            column.hidden = !shouldShow;
+          });
+        });
+      }
+
+      if (!(dialog instanceof HTMLDialogElement) || !previewImage || !previewCaption || !previewTitle) {
+        return;
+      }
+
+      const setPreviewContent = (trigger) => {
+        const src = trigger.dataset.previewSrc || "";
+        const alt = trigger.dataset.previewAlt || "";
+        const label = trigger.dataset.previewLabel || src;
+        const width = Number(trigger.dataset.previewWidth || 0);
+        const height = Number(trigger.dataset.previewHeight || 0);
+        const availableWidth = Math.max(window.innerWidth - 80, 320);
+
+        previewImage.src = src;
+        previewImage.alt = alt;
+        previewImage.style.width = width > 0 ? String(Math.min(width, availableWidth)) + "px" : "auto";
+        previewImage.style.height = "auto";
+        previewImage.style.maxWidth = "100%";
+        previewTitle.textContent = label;
+
+        if (viewFullLink) {
+          viewFullLink.href = src;
+        }
+
+        const altInfo = alt ? "Alt text: " + alt : "Alt text: none";
+        const sizeInfo = width > 0 && height > 0 ? "Displayed size: " + width + " × " + height + "px" : "Displayed size: not captured";
+        previewCaption.textContent = [altInfo, sizeInfo, src].join(" | ");
+
+        previewImage.onload = function() {
+          const nw = this.naturalWidth;
+          const nh = this.naturalHeight;
+          const naturalInfo = nw > 0 && nh > 0 ? "Natural size: " + nw + " × " + nh + "px" : "";
+          previewCaption.textContent = [altInfo, sizeInfo, naturalInfo, src].filter(Boolean).join(" | ");
+        };
+      };
+
+      const openPreview = (trigger, mode) => {
+        lastTrigger = trigger;
+        lastOpenMode = mode;
+        setPreviewContent(trigger);
+        if (!dialog.open) {
+          dialog.showModal();
+        }
+        if (mode === "click") {
+          closeButton.focus();
+        }
+      };
+
+      previewTriggers.forEach((trigger) => {
+        trigger.addEventListener("click", (event) => {
+          event.preventDefault();
+          openPreview(trigger, "click");
+        });
+
+        trigger.addEventListener("focus", () => {
+          if (skipNextFocusTrigger === trigger) {
+            skipNextFocusTrigger = null;
+            return;
+          }
+          openPreview(trigger, "focus");
+        });
+      });
+
+      dialog.addEventListener("click", (event) => {
+        const bounds = dialog.getBoundingClientRect();
+        const isOutside = event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom;
+        if (isOutside) {
+          dialog.close();
+        }
+      });
+
+      dialog.addEventListener("close", () => {
+        previewImage.removeAttribute("src");
+        if (lastOpenMode === "click" && lastTrigger && document.contains(lastTrigger)) {
+          skipNextFocusTrigger = lastTrigger;
+          lastTrigger.focus();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

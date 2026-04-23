@@ -1,0 +1,3095 @@
+{
+  "reportType": "alt-text",
+  "issueNumber": 50,
+  "issueUrl": "https://github.com/mgifford/alt-text-scan/issues/50",
+  "scanTitle": "https://www.gov.uk/",
+  "scanDomain": "https://www.gov.uk",
+  "discoveryMethod": "sitemap",
+  "discoveredTotal": 100,
+  "requestedCount": 100,
+  "acceptedCount": 100,
+  "rejectedCount": 0,
+  "scannedCount": 100,
+  "skippedDueToTimeout": 0,
+  "urlsRequested": 100,
+  "urlsScanned": 100,
+  "scannedAt": "2026-04-23T02:28:03.302Z",
+  "totalImages": 37,
+  "uniqueImages": 22,
+  "imagesWithIssues": 1,
+  "statusCounts": {
+    "MISSING": 8,
+    "DECORATIVE": 22,
+    "SUSPICIOUS": 0,
+    "FILENAME": 0,
+    "TOO_SHORT": 0,
+    "TOO_LONG": 0,
+    "GOOD": 7
+  },
+  "urlResults": [
+    {
+      "url": "https://www.gov.uk/",
+      "finalUrl": "https://www.gov.uk/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.gov.uk/assets/frontend/homepage/travel-advice-blue-icon-featured-a03f6981ba9d86e6b84ecfe7bb28557dad14cf00b5270082cd3d3e264e6e63e0.png",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 160,
+          "height": 160,
+          "isVisible": true,
+          "pageUrl": "https://www.gov.uk/",
+          "status": "DECORATIVE",
+          "issues": []
+        },
+        {
+          "src": "https://www.gov.uk/assets/frontend/homepage/photo-id-featured-9e48313e57cbf07cdcc1e3773dacf538c0489be9b54d6cb43ff0cad41076e22b.png",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 160,
+          "height": 160,
+          "isVisible": true,
+          "pageUrl": "https://www.gov.uk/",
+          "status": "DECORATIVE",
+          "issues": []
+        },
+        {
+          "src": "https://www.gov.uk/assets/frontend/homepage/find-a-job-4d38717b0451da3bb223ddea7f681d79e48c1c022da5a08f16aba3f681503150.png",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 160,
+          "height": 160,
+          "isVisible": true,
+          "pageUrl": "https://www.gov.uk/",
+          "status": "DECORATIVE",
+          "issues": []
+        },
+        {
+          "src": "https://www.gov.uk/assets/frontend/app-promo/govuk-app-icon-0bca94cf05737106d8e80f32a66f773d7b6ff9b9652fc555917d855914309af0.png",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 240,
+          "height": 240,
+          "isVisible": true,
+          "pageUrl": "https://www.gov.uk/",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/guidance/the-patent-act-1977/section-122-supplemental-crown-s-right-to-sell-forfeited-articles",
+      "finalUrl": "https://www.gov.uk/guidance/the-patent-act-1977/section-122-supplemental-crown-s-right-to-sell-forfeited-articles",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/statistics/baby-names-in-england-and-wales-2017",
+      "finalUrl": "https://www.gov.uk/government/statistics/baby-names-in-england-and-wales-2017",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.gov.uk/assets/frontend/accredited-official-statistics-en-b3d3577a769b80457deb908876a896f336331eac8da8f82451903dbaf907cef3.png",
+          "alt": "Accredited official statistics",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 248,
+          "height": 302,
+          "isVisible": true,
+          "pageUrl": "https://www.gov.uk/government/statistics/baby-names-in-england-and-wales-2017",
+          "status": "GOOD",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/statistics/emergency-care-waiting-time-statistics-in-northern-ireland-july-to-september-2019",
+      "finalUrl": "https://www.gov.uk/government/statistics/emergency-care-waiting-time-statistics-in-northern-ireland-july-to-september-2019",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.gov.uk/assets/frontend/accredited-official-statistics-en-b3d3577a769b80457deb908876a896f336331eac8da8f82451903dbaf907cef3.png",
+          "alt": "Accredited official statistics",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 248,
+          "height": 302,
+          "isVisible": true,
+          "pageUrl": "https://www.gov.uk/government/statistics/emergency-care-waiting-time-statistics-in-northern-ireland-july-to-september-2019",
+          "status": "GOOD",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/news/eric-pickles-statement-on-the-budget-2014",
+      "finalUrl": "https://www.gov.uk/government/news/eric-pickles-statement-on-the-budget-2014",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://assets.publishing.service.gov.uk/media/5a37db36e5274a79051c927d/s300_2_Marsham_Street_960x640.jpg",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": null,
+          "height": null,
+          "isVisible": true,
+          "pageUrl": "https://www.gov.uk/government/news/eric-pickles-statement-on-the-budget-2014",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/news/jcvi-advises-an-autumn-covid-19-vaccine-booster",
+      "finalUrl": "https://www.gov.uk/government/news/jcvi-advises-an-autumn-covid-19-vaccine-booster",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://assets.publishing.service.gov.uk/media/63d1113ae90e071ba8dcecbd/vaccine-covid.jpg",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": null,
+          "height": null,
+          "isVisible": true,
+          "pageUrl": "https://www.gov.uk/government/news/jcvi-advises-an-autumn-covid-19-vaccine-booster",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/collections/desnz-special-advisers-gifts-hospitality-and-meetings",
+      "finalUrl": "https://www.gov.uk/government/collections/desnz-special-advisers-gifts-hospitality-and-meetings",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/hmrc-internal-manuals/labour-provider-operational-guidance/lpog4253",
+      "finalUrl": "https://www.gov.uk/hmrc-internal-manuals/labour-provider-operational-guidance/lpog4253",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/statistics/nhs-workforce-statistics-july-2016-provisional-statistics",
+      "finalUrl": "https://www.gov.uk/government/statistics/nhs-workforce-statistics-july-2016-provisional-statistics",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/statistics/labour-demand-volumes-by-standard-occupation-classification-soc2020-uk-january-2017-november-2025",
+      "finalUrl": "https://www.gov.uk/government/statistics/labour-demand-volumes-by-standard-occupation-classification-soc2020-uk-january-2017-november-2025",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/statistics/uk-inclusive-wealth-and-income-accounts-2005-to-2023",
+      "finalUrl": "https://www.gov.uk/government/statistics/uk-inclusive-wealth-and-income-accounts-2005-to-2023",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/publications/bis-sixth-statement-of-new-regulation-regulations-covering-july-to-december-2013",
+      "finalUrl": "https://www.gov.uk/government/publications/bis-sixth-statement-of-new-regulation-regulations-covering-july-to-december-2013",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/publications/decision-for-kirkham-box-nw-ltd-oc2063608/decision-for-kirkham-box-nw-ltd-oc2063608",
+      "finalUrl": "https://www.gov.uk/government/publications/decision-for-kirkham-box-nw-ltd-oc2063608/decision-for-kirkham-box-nw-ltd-oc2063608",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.gov.uk/assets/frontend/open-government-licence-min-93b6a51b518ff99714a1aa2a7d2162735c155ec3cb073c75fb88b2a332fa83d3.png",
+          "alt": null,
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 854,
+          "height": 346,
+          "isVisible": true,
+          "pageUrl": "https://www.gov.uk/government/publications/decision-for-kirkham-box-nw-ltd-oc2063608/decision-for-kirkham-box-nw-ltd-oc2063608",
+          "status": "MISSING",
+          "issues": [
+            "WCAG 1.1.1 Failure: alt attribute is missing entirely"
+          ]
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/publications/decision-for-kirkham-box-nw-ltd-oc2063608",
+      "finalUrl": "https://www.gov.uk/government/publications/decision-for-kirkham-box-nw-ltd-oc2063608",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/news/spelman-launches-fightback-against-tree-disease",
+      "finalUrl": "https://www.gov.uk/government/news/spelman-launches-fightback-against-tree-disease",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://assets.publishing.service.gov.uk/media/5a37dad1ed915d5a62fdc6d6/s300_defra-sign-grey.jpg",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": null,
+          "height": null,
+          "isVisible": true,
+          "pageUrl": "https://www.gov.uk/government/news/spelman-launches-fightback-against-tree-disease",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/news/reappointment-to-the-joint-nature-conservation-committee",
+      "finalUrl": "https://www.gov.uk/government/news/reappointment-to-the-joint-nature-conservation-committee",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://assets.publishing.service.gov.uk/media/5a37dad1ed915d5a62fdc6d6/s300_defra-sign-grey.jpg",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 300,
+          "height": 195,
+          "isVisible": true,
+          "pageUrl": "https://www.gov.uk/government/news/reappointment-to-the-joint-nature-conservation-committee",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/statistics/nhs-health-check-quarterly-statistics-august-2015",
+      "finalUrl": "https://www.gov.uk/government/statistics/nhs-health-check-quarterly-statistics-august-2015",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/publications/research-excellence-in-uk-universities",
+      "finalUrl": "https://www.gov.uk/government/publications/research-excellence-in-uk-universities",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/publications/olympic-delivery-authority-senior-staff-structure",
+      "finalUrl": "https://www.gov.uk/government/publications/olympic-delivery-authority-senior-staff-structure",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/news/new-fellowships-for-exceptional-students-launched-in-memory-of-professor-stephen-hawking",
+      "finalUrl": "https://www.gov.uk/government/news/new-fellowships-for-exceptional-students-launched-in-memory-of-professor-stephen-hawking",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://assets.publishing.service.gov.uk/media/5a37dab9ed915d5a5f965fd5/s300_beis-sign-1vs.jpg",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": null,
+          "height": null,
+          "isVisible": true,
+          "pageUrl": "https://www.gov.uk/government/news/new-fellowships-for-exceptional-students-launched-in-memory-of-professor-stephen-hawking",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/news/uk-aid-gives-emergency-medical-treatment-to-worlds-poorest-in-deadly-heatwave",
+      "finalUrl": "https://www.gov.uk/government/news/uk-aid-gives-emergency-medical-treatment-to-worlds-poorest-in-deadly-heatwave",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://assets.publishing.service.gov.uk/media/5b1e74dced915d2cc0270ce9/s300_Pakistan-heat-wave.jpeg",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": null,
+          "height": null,
+          "isVisible": true,
+          "pageUrl": "https://www.gov.uk/government/news/uk-aid-gives-emergency-medical-treatment-to-worlds-poorest-in-deadly-heatwave",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/publications/specialised-committee-on-participation-in-union-programmes-provisional-agenda-15-december-2025/specialised-committee-on-participation-in-union-programmes-scpup-established-by-the-eu-uk-trade-and-cooperation-agreement",
+      "finalUrl": "https://www.gov.uk/government/publications/specialised-committee-on-participation-in-union-programmes-provisional-agenda-15-december-2025/specialised-committee-on-participation-in-union-programmes-scpup-established-by-the-eu-uk-trade-and-cooperation-agreement",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.gov.uk/assets/frontend/open-government-licence-min-93b6a51b518ff99714a1aa2a7d2162735c155ec3cb073c75fb88b2a332fa83d3.png",
+          "alt": null,
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 854,
+          "height": 346,
+          "isVisible": true,
+          "pageUrl": "https://www.gov.uk/government/publications/specialised-committee-on-participation-in-union-programmes-provisional-agenda-15-december-2025/specialised-committee-on-participation-in-union-programmes-scpup-established-by-the-eu-uk-trade-and-cooperation-agreement",
+          "status": "MISSING",
+          "issues": [
+            "WCAG 1.1.1 Failure: alt attribute is missing entirely"
+          ]
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/publications/specialised-committee-on-participation-in-union-programmes-provisional-agenda-15-december-2025",
+      "finalUrl": "https://www.gov.uk/government/publications/specialised-committee-on-participation-in-union-programmes-provisional-agenda-15-december-2025",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/collections/international-climate-fund-case-studies",
+      "finalUrl": "https://www.gov.uk/government/collections/international-climate-fund-case-studies",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/case-studies/177-million-awarded-to-regenerate-haverfordwest",
+      "finalUrl": "https://www.gov.uk/government/case-studies/177-million-awarded-to-regenerate-haverfordwest",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://assets.publishing.service.gov.uk/media/63761353d3bf7f72115a82a3/s960_Haverfordwest_castle_-_image_2_960.jpg",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": null,
+          "height": null,
+          "isVisible": true,
+          "pageUrl": "https://www.gov.uk/government/case-studies/177-million-awarded-to-regenerate-haverfordwest",
+          "status": "DECORATIVE",
+          "issues": []
+        },
+        {
+          "src": "https://assets.publishing.service.gov.uk/media/63761353e90e07284a146cbf/s960_Haverfordwest_castle_-_image_1_960.jpg",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": null,
+          "height": null,
+          "isVisible": true,
+          "pageUrl": "https://www.gov.uk/government/case-studies/177-million-awarded-to-regenerate-haverfordwest",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/statistics/road-fuel-prices-14-december-2015",
+      "finalUrl": "https://www.gov.uk/government/statistics/road-fuel-prices-14-december-2015",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.gov.uk/assets/frontend/accredited-official-statistics-en-b3d3577a769b80457deb908876a896f336331eac8da8f82451903dbaf907cef3.png",
+          "alt": "Accredited official statistics",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 248,
+          "height": 302,
+          "isVisible": true,
+          "pageUrl": "https://www.gov.uk/government/statistics/road-fuel-prices-14-december-2015",
+          "status": "GOOD",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/statistics/announcements/gambling-industry-statistics",
+      "finalUrl": "https://www.gov.uk/government/statistics/announcements/gambling-industry-statistics",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/statistics/announcements/business-population-estimates-2021",
+      "finalUrl": "https://www.gov.uk/government/statistics/announcements/business-population-estimates-2021",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.gov.uk/assets/frontend/accredited-official-statistics-en-b3d3577a769b80457deb908876a896f336331eac8da8f82451903dbaf907cef3.png",
+          "alt": "Accredited official statistics",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 248,
+          "height": 302,
+          "isVisible": true,
+          "pageUrl": "https://www.gov.uk/government/statistics/announcements/business-population-estimates-2021",
+          "status": "GOOD",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/speeches/minister-sir-chris-bryant-speech-at-lead-advertising-conference",
+      "finalUrl": "https://www.gov.uk/government/speeches/minister-sir-chris-bryant-speech-at-lead-advertising-conference",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://assets.publishing.service.gov.uk/media/66a0cba1a3c2a28abb50d60c/minister_bryant_govuk.jpg",
+          "alt": "Sir Chris Bryant MP",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": null,
+          "height": null,
+          "isVisible": true,
+          "pageUrl": "https://www.gov.uk/government/speeches/minister-sir-chris-bryant-speech-at-lead-advertising-conference",
+          "status": "GOOD",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/news/apprenticeships-in-the-home-for-tenants--2",
+      "finalUrl": "https://www.gov.uk/government/news/apprenticeships-in-the-home-for-tenants--2",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://assets.publishing.service.gov.uk/media/5a37db36e5274a79051c927d/s300_2_Marsham_Street_960x640.jpg",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 300,
+          "height": 195,
+          "isVisible": true,
+          "pageUrl": "https://www.gov.uk/government/news/apprenticeships-in-the-home-for-tenants--2",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/publications/cdc-covid-19-trends-among-school-aged-children-in-the-united-states-1-march-to-19-september-2020-28-september-2020",
+      "finalUrl": "https://www.gov.uk/government/publications/cdc-covid-19-trends-among-school-aged-children-in-the-united-states-1-march-to-19-september-2020-28-september-2020",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/publications/tyne-and-wear-fire-and-rescue-service",
+      "finalUrl": "https://www.gov.uk/government/publications/tyne-and-wear-fire-and-rescue-service",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/publications/sheffield-city-council/sheffield-city-council-00cg-regulatory-judgement-9-july-2024",
+      "finalUrl": "https://www.gov.uk/government/publications/sheffield-city-council/sheffield-city-council-00cg-regulatory-judgement-9-july-2024",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.gov.uk/assets/frontend/open-government-licence-min-93b6a51b518ff99714a1aa2a7d2162735c155ec3cb073c75fb88b2a332fa83d3.png",
+          "alt": null,
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 854,
+          "height": 346,
+          "isVisible": true,
+          "pageUrl": "https://www.gov.uk/government/publications/sheffield-city-council/sheffield-city-council-00cg-regulatory-judgement-9-july-2024",
+          "status": "MISSING",
+          "issues": [
+            "WCAG 1.1.1 Failure: alt attribute is missing entirely"
+          ]
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/publications/sheffield-city-council/regulatory-notice-sheffield-city-council-25-january-2023",
+      "finalUrl": "https://www.gov.uk/government/publications/sheffield-city-council/regulatory-notice-sheffield-city-council-25-january-2023",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.gov.uk/assets/frontend/open-government-licence-min-93b6a51b518ff99714a1aa2a7d2162735c155ec3cb073c75fb88b2a332fa83d3.png",
+          "alt": null,
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 854,
+          "height": 346,
+          "isVisible": true,
+          "pageUrl": "https://www.gov.uk/government/publications/sheffield-city-council/regulatory-notice-sheffield-city-council-25-january-2023",
+          "status": "MISSING",
+          "issues": [
+            "WCAG 1.1.1 Failure: alt attribute is missing entirely"
+          ]
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/publications/sheffield-city-council",
+      "finalUrl": "https://www.gov.uk/government/publications/sheffield-city-council",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/publications/regulatory-judgement-bpha-limited--2/bpha-limited-lh3887-regulatory-judgement-18-december-2024",
+      "finalUrl": "https://www.gov.uk/government/publications/regulatory-judgement-bpha-limited--2/bpha-limited-lh3887-regulatory-judgement-18-december-2024",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.gov.uk/assets/frontend/open-government-licence-min-93b6a51b518ff99714a1aa2a7d2162735c155ec3cb073c75fb88b2a332fa83d3.png",
+          "alt": null,
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 854,
+          "height": 346,
+          "isVisible": true,
+          "pageUrl": "https://www.gov.uk/government/publications/regulatory-judgement-bpha-limited--2/bpha-limited-lh3887-regulatory-judgement-18-december-2024",
+          "status": "MISSING",
+          "issues": [
+            "WCAG 1.1.1 Failure: alt attribute is missing entirely"
+          ]
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/publications/regulatory-judgement-bpha-limited--2",
+      "finalUrl": "https://www.gov.uk/government/publications/regulatory-judgement-bpha-limited--2",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/employment-tribunal-decisions/mrs-b-fenton-v-dukes-aldridge-academy-3304780-2018",
+      "finalUrl": "https://www.gov.uk/employment-tribunal-decisions/mrs-b-fenton-v-dukes-aldridge-academy-3304780-2018",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/residential-property-tribunal-decisions/flat-9-denne-park-house-denne-park-horsham-west-sussex-rh13-0az-chi-slash-45uf-slash-mnr-slash-2022-slash-0087",
+      "finalUrl": "https://www.gov.uk/residential-property-tribunal-decisions/flat-9-denne-park-house-denne-park-horsham-west-sussex-rh13-0az-chi-slash-45uf-slash-mnr-slash-2022-slash-0087",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/employment-tribunal-decisions/ms-k-walker-v-genevac-ltd-3326465-2019",
+      "finalUrl": "https://www.gov.uk/employment-tribunal-decisions/ms-k-walker-v-genevac-ltd-3326465-2019",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/employment-tribunal-decisions/mr-b-campbell-v-manning-gottlieb-omd-2300282-slash-2022",
+      "finalUrl": "https://www.gov.uk/employment-tribunal-decisions/mr-b-campbell-v-manning-gottlieb-omd-2300282-slash-2022",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/employment-tribunal-decisions/miss-c-thomas-v-my-life-quote-ltd-2411058-2019",
+      "finalUrl": "https://www.gov.uk/employment-tribunal-decisions/miss-c-thomas-v-my-life-quote-ltd-2411058-2019",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/residential-property-tribunal-decisions/flat-4-1-santanita-road-westcliff-on-sea-essex-ss0-8dd-cam-slash-00kf-slash-olr-slash-2020-slash-0100",
+      "finalUrl": "https://www.gov.uk/residential-property-tribunal-decisions/flat-4-1-santanita-road-westcliff-on-sea-essex-ss0-8dd-cam-slash-00kf-slash-olr-slash-2020-slash-0100",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/employment-tribunal-decisions/mr-w-britten-v-the-lion-hotel-berriew-ltd-1600911-slash-2022",
+      "finalUrl": "https://www.gov.uk/employment-tribunal-decisions/mr-w-britten-v-the-lion-hotel-berriew-ltd-1600911-slash-2022",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/armed-forces-covenant-businesses/york-centre-for-voluntary-service",
+      "finalUrl": "https://www.gov.uk/armed-forces-covenant-businesses/york-centre-for-voluntary-service",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/aaib-reports/cessna-310k-g-onbf-17-april-1995",
+      "finalUrl": "https://www.gov.uk/aaib-reports/cessna-310k-g-onbf-17-april-1995",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/aaib-reports/beech-b60-duke-n1024l-15-june-1995",
+      "finalUrl": "https://www.gov.uk/aaib-reports/beech-b60-duke-n1024l-15-june-1995",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/armed-forces-covenant-businesses/newquay-surf-veterans",
+      "finalUrl": "https://www.gov.uk/armed-forces-covenant-businesses/newquay-surf-veterans",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/world-location-news/261575.pt",
+      "finalUrl": "https://www.gov.uk/government/news/261575.pt",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://assets.publishing.service.gov.uk/media/5e985599d3bf7f3fc943bbd8/UK_government_logo.jpg",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": null,
+          "height": null,
+          "isVisible": true,
+          "pageUrl": "https://www.gov.uk/government/news/261575.pt",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/aaib-reports/piper-pa-34-200t-g-bmut-3-february-2001",
+      "finalUrl": "https://www.gov.uk/aaib-reports/piper-pa-34-200t-g-bmut-3-february-2001",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/aaib-reports/aaib-investigation-to-raytheon-390-premier-i-g-oomc",
+      "finalUrl": "https://www.gov.uk/aaib-reports/aaib-investigation-to-raytheon-390-premier-i-g-oomc",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/aaib-reports/jodel-d117-g-atiz-and-piper-pa-28-180-cherokee-g-atlw-30-june-1995",
+      "finalUrl": "https://www.gov.uk/aaib-reports/jodel-d117-g-atiz-and-piper-pa-28-180-cherokee-g-atlw-30-june-1995",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/armed-forces-covenant-businesses/the-late-night-veterans-show",
+      "finalUrl": "https://www.gov.uk/armed-forces-covenant-businesses/the-late-night-veterans-show",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/aaib-reports/sikorsky-s61n-g-bcea-23-november-1985",
+      "finalUrl": "https://www.gov.uk/aaib-reports/sikorsky-s61n-g-bcea-23-november-1985",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/armed-forces-covenant-businesses/brighton-and-hove-buses",
+      "finalUrl": "https://www.gov.uk/armed-forces-covenant-businesses/brighton-and-hove-buses",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/armed-forces-covenant-businesses/alma-risk-ltd",
+      "finalUrl": "https://www.gov.uk/armed-forces-covenant-businesses/alma-risk-ltd",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/armed-forces-covenant-businesses/working-with-integrity-ltd",
+      "finalUrl": "https://www.gov.uk/armed-forces-covenant-businesses/working-with-integrity-ltd",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/aaib-reports/cessna-180k-g-boia-3-november-1990",
+      "finalUrl": "https://www.gov.uk/aaib-reports/cessna-180k-g-boia-3-november-1990",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/armed-forces-covenant-businesses/mokomboso-uk-limited",
+      "finalUrl": "https://www.gov.uk/armed-forces-covenant-businesses/mokomboso-uk-limited",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/aaib-reports/aaib-investigation-to-escapade-g-cgnv-141121",
+      "finalUrl": "https://www.gov.uk/aaib-reports/aaib-investigation-to-escapade-g-cgnv-141121",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/aaib-reports/aaib-investigation-to-eurocopter-ec225-lp-super-puma-g-redu-special-bulletin-s4-2009",
+      "finalUrl": "https://www.gov.uk/aaib-reports/aaib-investigation-to-eurocopter-ec225-lp-super-puma-g-redu-special-bulletin-s4-2009",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/armed-forces-covenant-businesses/oak-security-services",
+      "finalUrl": "https://www.gov.uk/armed-forces-covenant-businesses/oak-security-services",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/armed-forces-covenant-businesses/north-northamptonshire-council",
+      "finalUrl": "https://www.gov.uk/armed-forces-covenant-businesses/north-northamptonshire-council",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/aaib-reports/reims-cessna-fa152-aerobat-g-bfmk-27-august-1995",
+      "finalUrl": "https://www.gov.uk/aaib-reports/reims-cessna-fa152-aerobat-g-bfmk-27-august-1995",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/news/projects-lay-the-groundwork-for-a-future-of-robolawyers-and-flying-cars",
+      "finalUrl": "https://www.gov.uk/government/news/projects-lay-the-groundwork-for-a-future-of-robolawyers-and-flying-cars",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://assets.publishing.service.gov.uk/media/5a37dab9ed915d5a5f965fd5/s300_beis-sign-1vs.jpg",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 300,
+          "height": 195,
+          "isVisible": true,
+          "pageUrl": "https://www.gov.uk/government/news/projects-lay-the-groundwork-for-a-future-of-robolawyers-and-flying-cars",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/publications/annual-report-to-parliament-on-public-libraries-activities-from-april-2024-to-march-2025/annual-libraries-report-2024-to-2025",
+      "finalUrl": "https://www.gov.uk/government/publications/annual-report-to-parliament-on-public-libraries-activities-from-april-2024-to-march-2025/annual-libraries-report-2024-to-2025",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.gov.uk/assets/frontend/open-government-licence-min-93b6a51b518ff99714a1aa2a7d2162735c155ec3cb073c75fb88b2a332fa83d3.png",
+          "alt": null,
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 854,
+          "height": 346,
+          "isVisible": true,
+          "pageUrl": "https://www.gov.uk/government/publications/annual-report-to-parliament-on-public-libraries-activities-from-april-2024-to-march-2025/annual-libraries-report-2024-to-2025",
+          "status": "MISSING",
+          "issues": [
+            "WCAG 1.1.1 Failure: alt attribute is missing entirely"
+          ]
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/publications/annual-report-to-parliament-on-public-libraries-activities-from-april-2024-to-march-2025",
+      "finalUrl": "https://www.gov.uk/government/publications/annual-report-to-parliament-on-public-libraries-activities-from-april-2024-to-march-2025",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/publications/audit-and-risk-committee-agendaminutes-27-september-2018",
+      "finalUrl": "https://www.gov.uk/government/publications/audit-and-risk-committee-agendaminutes-27-september-2018",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/speeches/pm-the-right-education-for-everyone",
+      "finalUrl": "https://www.gov.uk/government/speeches/pm-the-right-education-for-everyone",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://assets.publishing.service.gov.uk/media/5a8c3d56e5274a5e64c544db/PM_education.jpg",
+          "alt": "PM Theresa May meets schoolchildren on a day of visits as she launches a review into post-18 education and funding.",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": null,
+          "height": null,
+          "isVisible": true,
+          "pageUrl": "https://www.gov.uk/government/speeches/pm-the-right-education-for-everyone",
+          "status": "GOOD",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/employment-tribunal-decisions/mr-g-fordman-v-brake-bros-ltd-4109522-2014",
+      "finalUrl": "https://www.gov.uk/employment-tribunal-decisions/mr-g-fordman-v-brake-bros-ltd-4109522-2014",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/employment-tribunal-decisions/mrs-p-bailey-v-wolverhampton-city-council-130038-2018",
+      "finalUrl": "https://www.gov.uk/employment-tribunal-decisions/mrs-p-bailey-v-wolverhampton-city-council-130038-2018",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/employment-tribunal-decisions/mr-m-hon-hui-v-sainsburys-supermarkets-ltd-3303833-slash-2023",
+      "finalUrl": "https://www.gov.uk/employment-tribunal-decisions/mr-m-hon-hui-v-sainsburys-supermarkets-ltd-3303833-slash-2023",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/employment-tribunal-decisions/mr-b-hawkes-v-secretary-of-state-for-business-and-trade-3201360-slash-2023",
+      "finalUrl": "https://www.gov.uk/employment-tribunal-decisions/mr-b-hawkes-v-secretary-of-state-for-business-and-trade-3201360-slash-2023",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/residential-property-tribunal-decisions/flats-a-d-35-rose-valley-brentwood-essex-cm14-4hz-cam-slash-22ud-slash-ldc-slash-2023-slash-0008",
+      "finalUrl": "https://www.gov.uk/residential-property-tribunal-decisions/flats-a-d-35-rose-valley-brentwood-essex-cm14-4hz-cam-slash-22ud-slash-ldc-slash-2023-slash-0008",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/employment-tribunal-decisions/mr-h-smith-v-anchor-3220498-slash-2020",
+      "finalUrl": "https://www.gov.uk/employment-tribunal-decisions/mr-h-smith-v-anchor-3220498-slash-2020",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/residential-property-tribunal-decisions/blenheim-court-20-denham-street-london-se10-0sj-lon-00al-ldc-2020-0071",
+      "finalUrl": "https://www.gov.uk/residential-property-tribunal-decisions/blenheim-court-20-denham-street-london-se10-0sj-lon-00al-ldc-2020-0071",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/employment-tribunal-decisions/mr-m-kloczkowski-v-ikea-distribution-services-ltd-3322439-slash-2021",
+      "finalUrl": "https://www.gov.uk/employment-tribunal-decisions/mr-m-kloczkowski-v-ikea-distribution-services-ltd-3322439-slash-2021",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/employment-tribunal-decisions/mr-r-gull-v-gmb-3204300-slash-2022",
+      "finalUrl": "https://www.gov.uk/employment-tribunal-decisions/mr-r-gull-v-gmb-3204300-slash-2022",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/employment-tribunal-decisions/mr-d-walton-v-allied-site-services-ltd-2400689-slash-2024",
+      "finalUrl": "https://www.gov.uk/employment-tribunal-decisions/mr-d-walton-v-allied-site-services-ltd-2400689-slash-2024",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/employment-tribunal-decisions/mr-j-odiase-v-world-of-books-ltd-1309059-slash-2022",
+      "finalUrl": "https://www.gov.uk/employment-tribunal-decisions/mr-j-odiase-v-world-of-books-ltd-1309059-slash-2022",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/news/planned-roadworks-in-devon-and-cornwall-weekly-summary-for-monday-12-january-sunday-18-january-2015",
+      "finalUrl": "https://www.gov.uk/government/news/planned-roadworks-in-devon-and-cornwall-weekly-summary-for-monday-12-january-sunday-18-january-2015",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://assets.publishing.service.gov.uk/media/5a37dac7ed915d5a5f965ff0/s300_M42_960x640.jpg",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": null,
+          "height": null,
+          "isVisible": true,
+          "pageUrl": "https://www.gov.uk/government/news/planned-roadworks-in-devon-and-cornwall-weekly-summary-for-monday-12-january-sunday-18-january-2015",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/news/planned-roadworks-in-yorkshire-and-the-humber-weekly-summary-for-monday-12-january-to-sunday-18-january",
+      "finalUrl": "https://www.gov.uk/government/news/planned-roadworks-in-yorkshire-and-the-humber-weekly-summary-for-monday-12-january-to-sunday-18-january",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://assets.publishing.service.gov.uk/media/5a37dac7ed915d5a5f965ff0/s300_M42_960x640.jpg",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 300,
+          "height": 195,
+          "isVisible": true,
+          "pageUrl": "https://www.gov.uk/government/news/planned-roadworks-in-yorkshire-and-the-humber-weekly-summary-for-monday-12-january-to-sunday-18-january",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/collections/2018-rpc-register-of-interests",
+      "finalUrl": "https://www.gov.uk/government/collections/2018-rpc-register-of-interests",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/publications/pass-and-fail-rates-for-theory-tests-in-2011-2012-and-2013/pass-and-fail-rates-for-theory-tests-in-2011-2012-and-2013",
+      "finalUrl": "https://www.gov.uk/government/publications/pass-and-fail-rates-for-theory-tests-in-2011-2012-and-2013/pass-and-fail-rates-for-theory-tests-in-2011-2012-and-2013",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.gov.uk/assets/frontend/open-government-licence-min-93b6a51b518ff99714a1aa2a7d2162735c155ec3cb073c75fb88b2a332fa83d3.png",
+          "alt": null,
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 854,
+          "height": 346,
+          "isVisible": true,
+          "pageUrl": "https://www.gov.uk/government/publications/pass-and-fail-rates-for-theory-tests-in-2011-2012-and-2013/pass-and-fail-rates-for-theory-tests-in-2011-2012-and-2013",
+          "status": "MISSING",
+          "issues": [
+            "WCAG 1.1.1 Failure: alt attribute is missing entirely"
+          ]
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/publications/pass-and-fail-rates-for-theory-tests-in-2011-2012-and-2013",
+      "finalUrl": "https://www.gov.uk/government/publications/pass-and-fail-rates-for-theory-tests-in-2011-2012-and-2013",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/hmrc-internal-manuals/stamp-duty-land-tax-manual/sdltm54140",
+      "finalUrl": "https://www.gov.uk/hmrc-internal-manuals/stamp-duty-land-tax-manual/sdltm54140",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/hmrc-internal-manuals/vat-supply-and-consideration/vatsc11151",
+      "finalUrl": "https://www.gov.uk/hmrc-internal-manuals/vat-supply-and-consideration/vatsc11151",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/hmrc-internal-manuals/trusts-settlements-and-estates-manual/tsem10060",
+      "finalUrl": "https://www.gov.uk/hmrc-internal-manuals/trusts-settlements-and-estates-manual/tsem10060",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/hmrc-internal-manuals/corporate-intangibles-research-and-development-manual/cird27020",
+      "finalUrl": "https://www.gov.uk/hmrc-internal-manuals/corporate-intangibles-research-and-development-manual/cird27020",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/hmrc-internal-manuals/company-taxation-manual/ctmupdate140523",
+      "finalUrl": "https://www.gov.uk/hmrc-internal-manuals/company-taxation-manual/ctmupdate140523",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/news/foreign-secretary-statement-on-the-return-of-karl-andree-to-the-uk",
+      "finalUrl": "https://www.gov.uk/government/news/foreign-secretary-statement-on-the-return-of-karl-andree-to-the-uk",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://assets.publishing.service.gov.uk/media/5a37dae240f0b649cceb1839/s300_Main-building-gov.uk.jpg",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": null,
+          "height": null,
+          "isVisible": true,
+          "pageUrl": "https://www.gov.uk/government/news/foreign-secretary-statement-on-the-return-of-karl-andree-to-the-uk",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/publications/dhsc-business-appointment-rules-advice-january-to-march-2024/dhsc-business-appointment-rules-advice-january-to-march-2024",
+      "finalUrl": "https://www.gov.uk/government/publications/dhsc-business-appointment-rules-advice-january-to-march-2024/dhsc-business-appointment-rules-advice-january-to-march-2024",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.gov.uk/assets/frontend/open-government-licence-min-93b6a51b518ff99714a1aa2a7d2162735c155ec3cb073c75fb88b2a332fa83d3.png",
+          "alt": null,
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 854,
+          "height": 346,
+          "isVisible": true,
+          "pageUrl": "https://www.gov.uk/government/publications/dhsc-business-appointment-rules-advice-january-to-march-2024/dhsc-business-appointment-rules-advice-january-to-march-2024",
+          "status": "MISSING",
+          "issues": [
+            "WCAG 1.1.1 Failure: alt attribute is missing entirely"
+          ]
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/publications/dhsc-business-appointment-rules-advice-january-to-march-2024",
+      "finalUrl": "https://www.gov.uk/government/publications/dhsc-business-appointment-rules-advice-january-to-march-2024",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/news/agreement-reached-on-dartford-traffic-improvements",
+      "finalUrl": "https://www.gov.uk/government/news/agreement-reached-on-dartford-traffic-improvements",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://assets.publishing.service.gov.uk/media/5a37db3340f0b649cceb18cb/s300_Generic_works_photo.jpg",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": null,
+          "height": null,
+          "isVisible": true,
+          "pageUrl": "https://www.gov.uk/government/news/agreement-reached-on-dartford-traffic-improvements",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/news/high-performing-rail-timetable-announced-for-manchester",
+      "finalUrl": "https://www.gov.uk/government/news/high-performing-rail-timetable-announced-for-manchester",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://assets.publishing.service.gov.uk/media/61656325e90e07197a68c219/s300_960-manchester-picaddilly.jpg",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": null,
+          "height": null,
+          "isVisible": true,
+          "pageUrl": "https://www.gov.uk/government/news/high-performing-rail-timetable-announced-for-manchester",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/statistics/announcements/national-travel-survey-factsheet-trip-chaining-2024",
+      "finalUrl": "https://www.gov.uk/government/statistics/announcements/national-travel-survey-factsheet-trip-chaining-2024",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.gov.uk/assets/frontend/accredited-official-statistics-en-b3d3577a769b80457deb908876a896f336331eac8da8f82451903dbaf907cef3.png",
+          "alt": "Accredited official statistics",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 248,
+          "height": 302,
+          "isVisible": true,
+          "pageUrl": "https://www.gov.uk/government/statistics/announcements/national-travel-survey-factsheet-trip-chaining-2024",
+          "status": "GOOD",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/publications/traffic-commissioners-triennial-review",
+      "finalUrl": "https://www.gov.uk/government/publications/traffic-commissioners-triennial-review",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/news/qcs-board-announces-change-to-oral-evidence-hearing-dates",
+      "finalUrl": "https://www.gov.uk/government/news/qcs-board-announces-change-to-oral-evidence-hearing-dates",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://assets.publishing.service.gov.uk/media/5a6183c3e5274a0a20484e49/s300_s960_bus-tc.jpg",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": null,
+          "height": null,
+          "isVisible": true,
+          "pageUrl": "https://www.gov.uk/government/news/qcs-board-announces-change-to-oral-evidence-hearing-dates",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/news/transport-manager-turnover-and-underage-drivers",
+      "finalUrl": "https://www.gov.uk/government/news/transport-manager-turnover-and-underage-drivers",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://assets.publishing.service.gov.uk/media/68a6dbb69dc94e840696a422/s300_New25TCs.jpg",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": null,
+          "height": null,
+          "isVisible": true,
+          "pageUrl": "https://www.gov.uk/government/news/transport-manager-turnover-and-underage-drivers",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/government/publications/bringstye-honey-farm-ltd-and-gavin-charlesworth",
+      "finalUrl": "https://www.gov.uk/government/publications/bringstye-honey-farm-ltd-and-gavin-charlesworth",
+      "httpStatus": 200,
+      "images": [],
+      "error": null
+    }
+  ],
+  "uniqueImageList": [
+    {
+      "src": "https://www.gov.uk/assets/frontend/homepage/travel-advice-blue-icon-featured-a03f6981ba9d86e6b84ecfe7bb28557dad14cf00b5270082cd3d3e264e6e63e0.png",
+      "alt": "",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 160,
+      "height": 160,
+      "status": "DECORATIVE",
+      "issues": [],
+      "pages": [
+        "https://www.gov.uk/"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "",
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://www.gov.uk/assets/frontend/homepage/photo-id-featured-9e48313e57cbf07cdcc1e3773dacf538c0489be9b54d6cb43ff0cad41076e22b.png",
+      "alt": "",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 160,
+      "height": 160,
+      "status": "DECORATIVE",
+      "issues": [],
+      "pages": [
+        "https://www.gov.uk/"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "",
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://www.gov.uk/assets/frontend/homepage/find-a-job-4d38717b0451da3bb223ddea7f681d79e48c1c022da5a08f16aba3f681503150.png",
+      "alt": "",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 160,
+      "height": 160,
+      "status": "DECORATIVE",
+      "issues": [],
+      "pages": [
+        "https://www.gov.uk/"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "",
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://www.gov.uk/assets/frontend/app-promo/govuk-app-icon-0bca94cf05737106d8e80f32a66f773d7b6ff9b9652fc555917d855914309af0.png",
+      "alt": "",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 240,
+      "height": 240,
+      "status": "DECORATIVE",
+      "issues": [],
+      "pages": [
+        "https://www.gov.uk/"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "",
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://www.gov.uk/assets/frontend/accredited-official-statistics-en-b3d3577a769b80457deb908876a896f336331eac8da8f82451903dbaf907cef3.png",
+      "alt": "Accredited official statistics",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 248,
+      "height": 302,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://www.gov.uk/government/statistics/baby-names-in-england-and-wales-2017",
+        "https://www.gov.uk/government/statistics/emergency-care-waiting-time-statistics-in-northern-ireland-july-to-september-2019",
+        "https://www.gov.uk/government/statistics/road-fuel-prices-14-december-2015",
+        "https://www.gov.uk/government/statistics/announcements/business-population-estimates-2021",
+        "https://www.gov.uk/government/statistics/announcements/national-travel-survey-factsheet-trip-chaining-2024"
+      ],
+      "occurrences": 5,
+      "altVariants": [
+        {
+          "value": "Accredited official statistics",
+          "count": 5,
+          "pages": [
+            "https://www.gov.uk/government/statistics/baby-names-in-england-and-wales-2017",
+            "https://www.gov.uk/government/statistics/emergency-care-waiting-time-statistics-in-northern-ireland-july-to-september-2019",
+            "https://www.gov.uk/government/statistics/road-fuel-prices-14-december-2015",
+            "https://www.gov.uk/government/statistics/announcements/business-population-estimates-2021",
+            "https://www.gov.uk/government/statistics/announcements/national-travel-survey-factsheet-trip-chaining-2024"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 5,
+          "pages": [
+            "https://www.gov.uk/government/statistics/baby-names-in-england-and-wales-2017",
+            "https://www.gov.uk/government/statistics/emergency-care-waiting-time-statistics-in-northern-ireland-july-to-september-2019",
+            "https://www.gov.uk/government/statistics/road-fuel-prices-14-december-2015",
+            "https://www.gov.uk/government/statistics/announcements/business-population-estimates-2021",
+            "https://www.gov.uk/government/statistics/announcements/national-travel-survey-factsheet-trip-chaining-2024"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 5,
+          "pages": [
+            "https://www.gov.uk/government/statistics/baby-names-in-england-and-wales-2017",
+            "https://www.gov.uk/government/statistics/emergency-care-waiting-time-statistics-in-northern-ireland-july-to-september-2019",
+            "https://www.gov.uk/government/statistics/road-fuel-prices-14-december-2015",
+            "https://www.gov.uk/government/statistics/announcements/business-population-estimates-2021",
+            "https://www.gov.uk/government/statistics/announcements/national-travel-survey-factsheet-trip-chaining-2024"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 5,
+          "pages": [
+            "https://www.gov.uk/government/statistics/baby-names-in-england-and-wales-2017",
+            "https://www.gov.uk/government/statistics/emergency-care-waiting-time-statistics-in-northern-ireland-july-to-september-2019",
+            "https://www.gov.uk/government/statistics/road-fuel-prices-14-december-2015",
+            "https://www.gov.uk/government/statistics/announcements/business-population-estimates-2021",
+            "https://www.gov.uk/government/statistics/announcements/national-travel-survey-factsheet-trip-chaining-2024"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 5,
+          "pages": [
+            "https://www.gov.uk/government/statistics/baby-names-in-england-and-wales-2017",
+            "https://www.gov.uk/government/statistics/emergency-care-waiting-time-statistics-in-northern-ireland-july-to-september-2019",
+            "https://www.gov.uk/government/statistics/road-fuel-prices-14-december-2015",
+            "https://www.gov.uk/government/statistics/announcements/business-population-estimates-2021",
+            "https://www.gov.uk/government/statistics/announcements/national-travel-survey-factsheet-trip-chaining-2024"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 5,
+          "pages": [
+            "https://www.gov.uk/government/statistics/baby-names-in-england-and-wales-2017",
+            "https://www.gov.uk/government/statistics/emergency-care-waiting-time-statistics-in-northern-ireland-july-to-september-2019",
+            "https://www.gov.uk/government/statistics/road-fuel-prices-14-december-2015",
+            "https://www.gov.uk/government/statistics/announcements/business-population-estimates-2021",
+            "https://www.gov.uk/government/statistics/announcements/national-travel-survey-factsheet-trip-chaining-2024"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://assets.publishing.service.gov.uk/media/5a37db36e5274a79051c927d/s300_2_Marsham_Street_960x640.jpg",
+      "alt": "",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 300,
+      "height": 195,
+      "status": "DECORATIVE",
+      "issues": [],
+      "pages": [
+        "https://www.gov.uk/government/news/eric-pickles-statement-on-the-budget-2014",
+        "https://www.gov.uk/government/news/apprenticeships-in-the-home-for-tenants--2"
+      ],
+      "occurrences": 2,
+      "altVariants": [
+        {
+          "value": "",
+          "count": 2,
+          "pages": [
+            "https://www.gov.uk/government/news/eric-pickles-statement-on-the-budget-2014",
+            "https://www.gov.uk/government/news/apprenticeships-in-the-home-for-tenants--2"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://www.gov.uk/government/news/eric-pickles-statement-on-the-budget-2014",
+            "https://www.gov.uk/government/news/apprenticeships-in-the-home-for-tenants--2"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://www.gov.uk/government/news/eric-pickles-statement-on-the-budget-2014",
+            "https://www.gov.uk/government/news/apprenticeships-in-the-home-for-tenants--2"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://www.gov.uk/government/news/eric-pickles-statement-on-the-budget-2014",
+            "https://www.gov.uk/government/news/apprenticeships-in-the-home-for-tenants--2"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://www.gov.uk/government/news/eric-pickles-statement-on-the-budget-2014",
+            "https://www.gov.uk/government/news/apprenticeships-in-the-home-for-tenants--2"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://www.gov.uk/government/news/eric-pickles-statement-on-the-budget-2014",
+            "https://www.gov.uk/government/news/apprenticeships-in-the-home-for-tenants--2"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://assets.publishing.service.gov.uk/media/63d1113ae90e071ba8dcecbd/vaccine-covid.jpg",
+      "alt": "",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": null,
+      "height": null,
+      "status": "DECORATIVE",
+      "issues": [],
+      "pages": [
+        "https://www.gov.uk/government/news/jcvi-advises-an-autumn-covid-19-vaccine-booster"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "",
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/news/jcvi-advises-an-autumn-covid-19-vaccine-booster"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/news/jcvi-advises-an-autumn-covid-19-vaccine-booster"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/news/jcvi-advises-an-autumn-covid-19-vaccine-booster"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/news/jcvi-advises-an-autumn-covid-19-vaccine-booster"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/news/jcvi-advises-an-autumn-covid-19-vaccine-booster"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/news/jcvi-advises-an-autumn-covid-19-vaccine-booster"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://www.gov.uk/assets/frontend/open-government-licence-min-93b6a51b518ff99714a1aa2a7d2162735c155ec3cb073c75fb88b2a332fa83d3.png",
+      "alt": null,
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 854,
+      "height": 346,
+      "status": "MISSING",
+      "issues": [
+        "WCAG 1.1.1 Failure: alt attribute is missing entirely"
+      ],
+      "pages": [
+        "https://www.gov.uk/government/publications/decision-for-kirkham-box-nw-ltd-oc2063608/decision-for-kirkham-box-nw-ltd-oc2063608",
+        "https://www.gov.uk/government/publications/specialised-committee-on-participation-in-union-programmes-provisional-agenda-15-december-2025/specialised-committee-on-participation-in-union-programmes-scpup-established-by-the-eu-uk-trade-and-cooperation-agreement",
+        "https://www.gov.uk/government/publications/sheffield-city-council/sheffield-city-council-00cg-regulatory-judgement-9-july-2024",
+        "https://www.gov.uk/government/publications/sheffield-city-council/regulatory-notice-sheffield-city-council-25-january-2023",
+        "https://www.gov.uk/government/publications/regulatory-judgement-bpha-limited--2/bpha-limited-lh3887-regulatory-judgement-18-december-2024",
+        "https://www.gov.uk/government/publications/annual-report-to-parliament-on-public-libraries-activities-from-april-2024-to-march-2025/annual-libraries-report-2024-to-2025",
+        "https://www.gov.uk/government/publications/pass-and-fail-rates-for-theory-tests-in-2011-2012-and-2013/pass-and-fail-rates-for-theory-tests-in-2011-2012-and-2013",
+        "https://www.gov.uk/government/publications/dhsc-business-appointment-rules-advice-january-to-march-2024/dhsc-business-appointment-rules-advice-january-to-march-2024"
+      ],
+      "occurrences": 8,
+      "altVariants": [
+        {
+          "value": null,
+          "count": 8,
+          "pages": [
+            "https://www.gov.uk/government/publications/decision-for-kirkham-box-nw-ltd-oc2063608/decision-for-kirkham-box-nw-ltd-oc2063608",
+            "https://www.gov.uk/government/publications/specialised-committee-on-participation-in-union-programmes-provisional-agenda-15-december-2025/specialised-committee-on-participation-in-union-programmes-scpup-established-by-the-eu-uk-trade-and-cooperation-agreement",
+            "https://www.gov.uk/government/publications/sheffield-city-council/sheffield-city-council-00cg-regulatory-judgement-9-july-2024",
+            "https://www.gov.uk/government/publications/sheffield-city-council/regulatory-notice-sheffield-city-council-25-january-2023",
+            "https://www.gov.uk/government/publications/regulatory-judgement-bpha-limited--2/bpha-limited-lh3887-regulatory-judgement-18-december-2024",
+            "https://www.gov.uk/government/publications/annual-report-to-parliament-on-public-libraries-activities-from-april-2024-to-march-2025/annual-libraries-report-2024-to-2025",
+            "https://www.gov.uk/government/publications/pass-and-fail-rates-for-theory-tests-in-2011-2012-and-2013/pass-and-fail-rates-for-theory-tests-in-2011-2012-and-2013",
+            "https://www.gov.uk/government/publications/dhsc-business-appointment-rules-advice-january-to-march-2024/dhsc-business-appointment-rules-advice-january-to-march-2024"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 8,
+          "pages": [
+            "https://www.gov.uk/government/publications/decision-for-kirkham-box-nw-ltd-oc2063608/decision-for-kirkham-box-nw-ltd-oc2063608",
+            "https://www.gov.uk/government/publications/specialised-committee-on-participation-in-union-programmes-provisional-agenda-15-december-2025/specialised-committee-on-participation-in-union-programmes-scpup-established-by-the-eu-uk-trade-and-cooperation-agreement",
+            "https://www.gov.uk/government/publications/sheffield-city-council/sheffield-city-council-00cg-regulatory-judgement-9-july-2024",
+            "https://www.gov.uk/government/publications/sheffield-city-council/regulatory-notice-sheffield-city-council-25-january-2023",
+            "https://www.gov.uk/government/publications/regulatory-judgement-bpha-limited--2/bpha-limited-lh3887-regulatory-judgement-18-december-2024",
+            "https://www.gov.uk/government/publications/annual-report-to-parliament-on-public-libraries-activities-from-april-2024-to-march-2025/annual-libraries-report-2024-to-2025",
+            "https://www.gov.uk/government/publications/pass-and-fail-rates-for-theory-tests-in-2011-2012-and-2013/pass-and-fail-rates-for-theory-tests-in-2011-2012-and-2013",
+            "https://www.gov.uk/government/publications/dhsc-business-appointment-rules-advice-january-to-march-2024/dhsc-business-appointment-rules-advice-january-to-march-2024"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 8,
+          "pages": [
+            "https://www.gov.uk/government/publications/decision-for-kirkham-box-nw-ltd-oc2063608/decision-for-kirkham-box-nw-ltd-oc2063608",
+            "https://www.gov.uk/government/publications/specialised-committee-on-participation-in-union-programmes-provisional-agenda-15-december-2025/specialised-committee-on-participation-in-union-programmes-scpup-established-by-the-eu-uk-trade-and-cooperation-agreement",
+            "https://www.gov.uk/government/publications/sheffield-city-council/sheffield-city-council-00cg-regulatory-judgement-9-july-2024",
+            "https://www.gov.uk/government/publications/sheffield-city-council/regulatory-notice-sheffield-city-council-25-january-2023",
+            "https://www.gov.uk/government/publications/regulatory-judgement-bpha-limited--2/bpha-limited-lh3887-regulatory-judgement-18-december-2024",
+            "https://www.gov.uk/government/publications/annual-report-to-parliament-on-public-libraries-activities-from-april-2024-to-march-2025/annual-libraries-report-2024-to-2025",
+            "https://www.gov.uk/government/publications/pass-and-fail-rates-for-theory-tests-in-2011-2012-and-2013/pass-and-fail-rates-for-theory-tests-in-2011-2012-and-2013",
+            "https://www.gov.uk/government/publications/dhsc-business-appointment-rules-advice-january-to-march-2024/dhsc-business-appointment-rules-advice-january-to-march-2024"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 8,
+          "pages": [
+            "https://www.gov.uk/government/publications/decision-for-kirkham-box-nw-ltd-oc2063608/decision-for-kirkham-box-nw-ltd-oc2063608",
+            "https://www.gov.uk/government/publications/specialised-committee-on-participation-in-union-programmes-provisional-agenda-15-december-2025/specialised-committee-on-participation-in-union-programmes-scpup-established-by-the-eu-uk-trade-and-cooperation-agreement",
+            "https://www.gov.uk/government/publications/sheffield-city-council/sheffield-city-council-00cg-regulatory-judgement-9-july-2024",
+            "https://www.gov.uk/government/publications/sheffield-city-council/regulatory-notice-sheffield-city-council-25-january-2023",
+            "https://www.gov.uk/government/publications/regulatory-judgement-bpha-limited--2/bpha-limited-lh3887-regulatory-judgement-18-december-2024",
+            "https://www.gov.uk/government/publications/annual-report-to-parliament-on-public-libraries-activities-from-april-2024-to-march-2025/annual-libraries-report-2024-to-2025",
+            "https://www.gov.uk/government/publications/pass-and-fail-rates-for-theory-tests-in-2011-2012-and-2013/pass-and-fail-rates-for-theory-tests-in-2011-2012-and-2013",
+            "https://www.gov.uk/government/publications/dhsc-business-appointment-rules-advice-january-to-march-2024/dhsc-business-appointment-rules-advice-january-to-march-2024"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 8,
+          "pages": [
+            "https://www.gov.uk/government/publications/decision-for-kirkham-box-nw-ltd-oc2063608/decision-for-kirkham-box-nw-ltd-oc2063608",
+            "https://www.gov.uk/government/publications/specialised-committee-on-participation-in-union-programmes-provisional-agenda-15-december-2025/specialised-committee-on-participation-in-union-programmes-scpup-established-by-the-eu-uk-trade-and-cooperation-agreement",
+            "https://www.gov.uk/government/publications/sheffield-city-council/sheffield-city-council-00cg-regulatory-judgement-9-july-2024",
+            "https://www.gov.uk/government/publications/sheffield-city-council/regulatory-notice-sheffield-city-council-25-january-2023",
+            "https://www.gov.uk/government/publications/regulatory-judgement-bpha-limited--2/bpha-limited-lh3887-regulatory-judgement-18-december-2024",
+            "https://www.gov.uk/government/publications/annual-report-to-parliament-on-public-libraries-activities-from-april-2024-to-march-2025/annual-libraries-report-2024-to-2025",
+            "https://www.gov.uk/government/publications/pass-and-fail-rates-for-theory-tests-in-2011-2012-and-2013/pass-and-fail-rates-for-theory-tests-in-2011-2012-and-2013",
+            "https://www.gov.uk/government/publications/dhsc-business-appointment-rules-advice-january-to-march-2024/dhsc-business-appointment-rules-advice-january-to-march-2024"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 8,
+          "pages": [
+            "https://www.gov.uk/government/publications/decision-for-kirkham-box-nw-ltd-oc2063608/decision-for-kirkham-box-nw-ltd-oc2063608",
+            "https://www.gov.uk/government/publications/specialised-committee-on-participation-in-union-programmes-provisional-agenda-15-december-2025/specialised-committee-on-participation-in-union-programmes-scpup-established-by-the-eu-uk-trade-and-cooperation-agreement",
+            "https://www.gov.uk/government/publications/sheffield-city-council/sheffield-city-council-00cg-regulatory-judgement-9-july-2024",
+            "https://www.gov.uk/government/publications/sheffield-city-council/regulatory-notice-sheffield-city-council-25-january-2023",
+            "https://www.gov.uk/government/publications/regulatory-judgement-bpha-limited--2/bpha-limited-lh3887-regulatory-judgement-18-december-2024",
+            "https://www.gov.uk/government/publications/annual-report-to-parliament-on-public-libraries-activities-from-april-2024-to-march-2025/annual-libraries-report-2024-to-2025",
+            "https://www.gov.uk/government/publications/pass-and-fail-rates-for-theory-tests-in-2011-2012-and-2013/pass-and-fail-rates-for-theory-tests-in-2011-2012-and-2013",
+            "https://www.gov.uk/government/publications/dhsc-business-appointment-rules-advice-january-to-march-2024/dhsc-business-appointment-rules-advice-january-to-march-2024"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://assets.publishing.service.gov.uk/media/5a37dad1ed915d5a62fdc6d6/s300_defra-sign-grey.jpg",
+      "alt": "",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 300,
+      "height": 195,
+      "status": "DECORATIVE",
+      "issues": [],
+      "pages": [
+        "https://www.gov.uk/government/news/spelman-launches-fightback-against-tree-disease",
+        "https://www.gov.uk/government/news/reappointment-to-the-joint-nature-conservation-committee"
+      ],
+      "occurrences": 2,
+      "altVariants": [
+        {
+          "value": "",
+          "count": 2,
+          "pages": [
+            "https://www.gov.uk/government/news/spelman-launches-fightback-against-tree-disease",
+            "https://www.gov.uk/government/news/reappointment-to-the-joint-nature-conservation-committee"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://www.gov.uk/government/news/spelman-launches-fightback-against-tree-disease",
+            "https://www.gov.uk/government/news/reappointment-to-the-joint-nature-conservation-committee"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://www.gov.uk/government/news/spelman-launches-fightback-against-tree-disease",
+            "https://www.gov.uk/government/news/reappointment-to-the-joint-nature-conservation-committee"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://www.gov.uk/government/news/spelman-launches-fightback-against-tree-disease",
+            "https://www.gov.uk/government/news/reappointment-to-the-joint-nature-conservation-committee"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://www.gov.uk/government/news/spelman-launches-fightback-against-tree-disease",
+            "https://www.gov.uk/government/news/reappointment-to-the-joint-nature-conservation-committee"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://www.gov.uk/government/news/spelman-launches-fightback-against-tree-disease",
+            "https://www.gov.uk/government/news/reappointment-to-the-joint-nature-conservation-committee"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://assets.publishing.service.gov.uk/media/5a37dab9ed915d5a5f965fd5/s300_beis-sign-1vs.jpg",
+      "alt": "",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 300,
+      "height": 195,
+      "status": "DECORATIVE",
+      "issues": [],
+      "pages": [
+        "https://www.gov.uk/government/news/new-fellowships-for-exceptional-students-launched-in-memory-of-professor-stephen-hawking",
+        "https://www.gov.uk/government/news/projects-lay-the-groundwork-for-a-future-of-robolawyers-and-flying-cars"
+      ],
+      "occurrences": 2,
+      "altVariants": [
+        {
+          "value": "",
+          "count": 2,
+          "pages": [
+            "https://www.gov.uk/government/news/new-fellowships-for-exceptional-students-launched-in-memory-of-professor-stephen-hawking",
+            "https://www.gov.uk/government/news/projects-lay-the-groundwork-for-a-future-of-robolawyers-and-flying-cars"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://www.gov.uk/government/news/new-fellowships-for-exceptional-students-launched-in-memory-of-professor-stephen-hawking",
+            "https://www.gov.uk/government/news/projects-lay-the-groundwork-for-a-future-of-robolawyers-and-flying-cars"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://www.gov.uk/government/news/new-fellowships-for-exceptional-students-launched-in-memory-of-professor-stephen-hawking",
+            "https://www.gov.uk/government/news/projects-lay-the-groundwork-for-a-future-of-robolawyers-and-flying-cars"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://www.gov.uk/government/news/new-fellowships-for-exceptional-students-launched-in-memory-of-professor-stephen-hawking",
+            "https://www.gov.uk/government/news/projects-lay-the-groundwork-for-a-future-of-robolawyers-and-flying-cars"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://www.gov.uk/government/news/new-fellowships-for-exceptional-students-launched-in-memory-of-professor-stephen-hawking",
+            "https://www.gov.uk/government/news/projects-lay-the-groundwork-for-a-future-of-robolawyers-and-flying-cars"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://www.gov.uk/government/news/new-fellowships-for-exceptional-students-launched-in-memory-of-professor-stephen-hawking",
+            "https://www.gov.uk/government/news/projects-lay-the-groundwork-for-a-future-of-robolawyers-and-flying-cars"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://assets.publishing.service.gov.uk/media/5b1e74dced915d2cc0270ce9/s300_Pakistan-heat-wave.jpeg",
+      "alt": "",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": null,
+      "height": null,
+      "status": "DECORATIVE",
+      "issues": [],
+      "pages": [
+        "https://www.gov.uk/government/news/uk-aid-gives-emergency-medical-treatment-to-worlds-poorest-in-deadly-heatwave"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "",
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/news/uk-aid-gives-emergency-medical-treatment-to-worlds-poorest-in-deadly-heatwave"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/news/uk-aid-gives-emergency-medical-treatment-to-worlds-poorest-in-deadly-heatwave"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/news/uk-aid-gives-emergency-medical-treatment-to-worlds-poorest-in-deadly-heatwave"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/news/uk-aid-gives-emergency-medical-treatment-to-worlds-poorest-in-deadly-heatwave"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/news/uk-aid-gives-emergency-medical-treatment-to-worlds-poorest-in-deadly-heatwave"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/news/uk-aid-gives-emergency-medical-treatment-to-worlds-poorest-in-deadly-heatwave"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://assets.publishing.service.gov.uk/media/63761353d3bf7f72115a82a3/s960_Haverfordwest_castle_-_image_2_960.jpg",
+      "alt": "",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": null,
+      "height": null,
+      "status": "DECORATIVE",
+      "issues": [],
+      "pages": [
+        "https://www.gov.uk/government/case-studies/177-million-awarded-to-regenerate-haverfordwest"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "",
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/case-studies/177-million-awarded-to-regenerate-haverfordwest"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/case-studies/177-million-awarded-to-regenerate-haverfordwest"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/case-studies/177-million-awarded-to-regenerate-haverfordwest"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/case-studies/177-million-awarded-to-regenerate-haverfordwest"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/case-studies/177-million-awarded-to-regenerate-haverfordwest"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/case-studies/177-million-awarded-to-regenerate-haverfordwest"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://assets.publishing.service.gov.uk/media/63761353e90e07284a146cbf/s960_Haverfordwest_castle_-_image_1_960.jpg",
+      "alt": "",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": null,
+      "height": null,
+      "status": "DECORATIVE",
+      "issues": [],
+      "pages": [
+        "https://www.gov.uk/government/case-studies/177-million-awarded-to-regenerate-haverfordwest"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "",
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/case-studies/177-million-awarded-to-regenerate-haverfordwest"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/case-studies/177-million-awarded-to-regenerate-haverfordwest"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/case-studies/177-million-awarded-to-regenerate-haverfordwest"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/case-studies/177-million-awarded-to-regenerate-haverfordwest"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/case-studies/177-million-awarded-to-regenerate-haverfordwest"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/case-studies/177-million-awarded-to-regenerate-haverfordwest"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://assets.publishing.service.gov.uk/media/66a0cba1a3c2a28abb50d60c/minister_bryant_govuk.jpg",
+      "alt": "Sir Chris Bryant MP",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": null,
+      "height": null,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://www.gov.uk/government/speeches/minister-sir-chris-bryant-speech-at-lead-advertising-conference"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "Sir Chris Bryant MP",
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/speeches/minister-sir-chris-bryant-speech-at-lead-advertising-conference"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/speeches/minister-sir-chris-bryant-speech-at-lead-advertising-conference"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/speeches/minister-sir-chris-bryant-speech-at-lead-advertising-conference"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/speeches/minister-sir-chris-bryant-speech-at-lead-advertising-conference"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/speeches/minister-sir-chris-bryant-speech-at-lead-advertising-conference"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/speeches/minister-sir-chris-bryant-speech-at-lead-advertising-conference"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://assets.publishing.service.gov.uk/media/5e985599d3bf7f3fc943bbd8/UK_government_logo.jpg",
+      "alt": "",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": null,
+      "height": null,
+      "status": "DECORATIVE",
+      "issues": [],
+      "pages": [
+        "https://www.gov.uk/government/world-location-news/261575.pt"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "",
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/world-location-news/261575.pt"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/world-location-news/261575.pt"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/world-location-news/261575.pt"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/world-location-news/261575.pt"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/world-location-news/261575.pt"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/world-location-news/261575.pt"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://assets.publishing.service.gov.uk/media/5a8c3d56e5274a5e64c544db/PM_education.jpg",
+      "alt": "PM Theresa May meets schoolchildren on a day of visits as she launches a review into post-18 education and funding.",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": null,
+      "height": null,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://www.gov.uk/government/speeches/pm-the-right-education-for-everyone"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "PM Theresa May meets schoolchildren on a day of visits as she launches a review into post-18 education and funding.",
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/speeches/pm-the-right-education-for-everyone"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/speeches/pm-the-right-education-for-everyone"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/speeches/pm-the-right-education-for-everyone"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/speeches/pm-the-right-education-for-everyone"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/speeches/pm-the-right-education-for-everyone"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/speeches/pm-the-right-education-for-everyone"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://assets.publishing.service.gov.uk/media/5a37dac7ed915d5a5f965ff0/s300_M42_960x640.jpg",
+      "alt": "",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 300,
+      "height": 195,
+      "status": "DECORATIVE",
+      "issues": [],
+      "pages": [
+        "https://www.gov.uk/government/news/planned-roadworks-in-devon-and-cornwall-weekly-summary-for-monday-12-january-sunday-18-january-2015",
+        "https://www.gov.uk/government/news/planned-roadworks-in-yorkshire-and-the-humber-weekly-summary-for-monday-12-january-to-sunday-18-january"
+      ],
+      "occurrences": 2,
+      "altVariants": [
+        {
+          "value": "",
+          "count": 2,
+          "pages": [
+            "https://www.gov.uk/government/news/planned-roadworks-in-devon-and-cornwall-weekly-summary-for-monday-12-january-sunday-18-january-2015",
+            "https://www.gov.uk/government/news/planned-roadworks-in-yorkshire-and-the-humber-weekly-summary-for-monday-12-january-to-sunday-18-january"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://www.gov.uk/government/news/planned-roadworks-in-devon-and-cornwall-weekly-summary-for-monday-12-january-sunday-18-january-2015",
+            "https://www.gov.uk/government/news/planned-roadworks-in-yorkshire-and-the-humber-weekly-summary-for-monday-12-january-to-sunday-18-january"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://www.gov.uk/government/news/planned-roadworks-in-devon-and-cornwall-weekly-summary-for-monday-12-january-sunday-18-january-2015",
+            "https://www.gov.uk/government/news/planned-roadworks-in-yorkshire-and-the-humber-weekly-summary-for-monday-12-january-to-sunday-18-january"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://www.gov.uk/government/news/planned-roadworks-in-devon-and-cornwall-weekly-summary-for-monday-12-january-sunday-18-january-2015",
+            "https://www.gov.uk/government/news/planned-roadworks-in-yorkshire-and-the-humber-weekly-summary-for-monday-12-january-to-sunday-18-january"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://www.gov.uk/government/news/planned-roadworks-in-devon-and-cornwall-weekly-summary-for-monday-12-january-sunday-18-january-2015",
+            "https://www.gov.uk/government/news/planned-roadworks-in-yorkshire-and-the-humber-weekly-summary-for-monday-12-january-to-sunday-18-january"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://www.gov.uk/government/news/planned-roadworks-in-devon-and-cornwall-weekly-summary-for-monday-12-january-sunday-18-january-2015",
+            "https://www.gov.uk/government/news/planned-roadworks-in-yorkshire-and-the-humber-weekly-summary-for-monday-12-january-to-sunday-18-january"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://assets.publishing.service.gov.uk/media/5a37dae240f0b649cceb1839/s300_Main-building-gov.uk.jpg",
+      "alt": "",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": null,
+      "height": null,
+      "status": "DECORATIVE",
+      "issues": [],
+      "pages": [
+        "https://www.gov.uk/government/news/foreign-secretary-statement-on-the-return-of-karl-andree-to-the-uk"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "",
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/news/foreign-secretary-statement-on-the-return-of-karl-andree-to-the-uk"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/news/foreign-secretary-statement-on-the-return-of-karl-andree-to-the-uk"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/news/foreign-secretary-statement-on-the-return-of-karl-andree-to-the-uk"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/news/foreign-secretary-statement-on-the-return-of-karl-andree-to-the-uk"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/news/foreign-secretary-statement-on-the-return-of-karl-andree-to-the-uk"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/news/foreign-secretary-statement-on-the-return-of-karl-andree-to-the-uk"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://assets.publishing.service.gov.uk/media/5a37db3340f0b649cceb18cb/s300_Generic_works_photo.jpg",
+      "alt": "",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": null,
+      "height": null,
+      "status": "DECORATIVE",
+      "issues": [],
+      "pages": [
+        "https://www.gov.uk/government/news/agreement-reached-on-dartford-traffic-improvements"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "",
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/news/agreement-reached-on-dartford-traffic-improvements"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/news/agreement-reached-on-dartford-traffic-improvements"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/news/agreement-reached-on-dartford-traffic-improvements"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/news/agreement-reached-on-dartford-traffic-improvements"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/news/agreement-reached-on-dartford-traffic-improvements"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/news/agreement-reached-on-dartford-traffic-improvements"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://assets.publishing.service.gov.uk/media/61656325e90e07197a68c219/s300_960-manchester-picaddilly.jpg",
+      "alt": "",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": null,
+      "height": null,
+      "status": "DECORATIVE",
+      "issues": [],
+      "pages": [
+        "https://www.gov.uk/government/news/high-performing-rail-timetable-announced-for-manchester"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "",
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/news/high-performing-rail-timetable-announced-for-manchester"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/news/high-performing-rail-timetable-announced-for-manchester"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/news/high-performing-rail-timetable-announced-for-manchester"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/news/high-performing-rail-timetable-announced-for-manchester"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/news/high-performing-rail-timetable-announced-for-manchester"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/news/high-performing-rail-timetable-announced-for-manchester"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://assets.publishing.service.gov.uk/media/5a6183c3e5274a0a20484e49/s300_s960_bus-tc.jpg",
+      "alt": "",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": null,
+      "height": null,
+      "status": "DECORATIVE",
+      "issues": [],
+      "pages": [
+        "https://www.gov.uk/government/news/qcs-board-announces-change-to-oral-evidence-hearing-dates"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "",
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/news/qcs-board-announces-change-to-oral-evidence-hearing-dates"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/news/qcs-board-announces-change-to-oral-evidence-hearing-dates"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/news/qcs-board-announces-change-to-oral-evidence-hearing-dates"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/news/qcs-board-announces-change-to-oral-evidence-hearing-dates"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/news/qcs-board-announces-change-to-oral-evidence-hearing-dates"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/news/qcs-board-announces-change-to-oral-evidence-hearing-dates"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://assets.publishing.service.gov.uk/media/68a6dbb69dc94e840696a422/s300_New25TCs.jpg",
+      "alt": "",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": null,
+      "height": null,
+      "status": "DECORATIVE",
+      "issues": [],
+      "pages": [
+        "https://www.gov.uk/government/news/transport-manager-turnover-and-underage-drivers"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "",
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/news/transport-manager-turnover-and-underage-drivers"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/news/transport-manager-turnover-and-underage-drivers"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/news/transport-manager-turnover-and-underage-drivers"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/news/transport-manager-turnover-and-underage-drivers"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/news/transport-manager-turnover-and-underage-drivers"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.gov.uk/government/news/transport-manager-turnover-and-underage-drivers"
+          ]
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "ok": true,
+    "reportType": "alt-text",
+    "issueNumber": 50,
+    "issueUrl": "https://github.com/mgifford/alt-text-scan/issues/50",
+    "scanTitle": "https://www.gov.uk/",
+    "scanDomain": "https://www.gov.uk",
+    "discoveryMethod": "sitemap",
+    "discoveredTotal": 100,
+    "requestedCount": 100,
+    "acceptedCount": 100,
+    "rejectedCount": 0,
+    "scannedCount": 100,
+    "skippedDueToTimeout": 0,
+    "urlsRequested": 100,
+    "urlsScanned": 100,
+    "totalImages": 37,
+    "uniqueImages": 22,
+    "imagesWithIssues": 1,
+    "statusCounts": {
+      "MISSING": 8,
+      "DECORATIVE": 22,
+      "SUSPICIOUS": 0,
+      "FILENAME": 0,
+      "TOO_SHORT": 0,
+      "TOO_LONG": 0,
+      "GOOD": 7
+    },
+    "scannedAt": "2026-04-23T02:28:03.302Z"
+  }
+}
