@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alt Text Scan – https://www.data.gov.uk</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 1200px; margin: 2rem auto; padding: 0 1rem; color: #222; }
+    h1 { font-size: 1.5rem; }
+    .summary { display: flex; gap: 1.5rem; flex-wrap: wrap; margin: 1rem 0; }
+    .stat { background: #f5f5f5; border-radius: 6px; padding: 0.75rem 1.25rem; }
+    .stat strong { display: block; font-size: 1.8rem; }
+    .report-controls { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; margin: 1rem 0; }
+    .toggle-thumbnails { border: 1px solid #333; background: #fff; color: #222; border-radius: 999px; padding: 0.55rem 0.95rem; font: inherit; cursor: pointer; }
+    .toggle-thumbnails[aria-pressed="true"] { background: #222; color: #fff; }
+    table { border-collapse: collapse; width: 100%; margin-top: 1.5rem; }
+    th { background: #333; color: #fff; text-align: left; padding: 0.5rem 0.75rem; }
+    td { padding: 0.5rem 0.75rem; border-bottom: 1px solid #ddd; vertical-align: top; }
+    tr:hover td { background: #fafafa; }
+    code { background: #f0f0f0; padding: 0.1em 0.3em; border-radius: 3px; font-size: 0.9em; }
+    .thumbnail-column { width: 8.5rem; }
+    .thumbnail-column-decorative { width: 8.5rem; }
+    .review-callout { background: #e8f4fd; border-left: 4px solid #1565c0; padding: 0.75rem 1rem; margin: 1rem 0; font-size: 0.95em; border-radius: 0 6px 6px 0; }
+    .thumbnail-trigger { display: inline-flex; flex-direction: column; align-items: center; gap: 0.35rem; width: 7rem; padding: 0.45rem; border: 1px solid #ccc; border-radius: 8px; background: #fff; cursor: pointer; }
+    .thumbnail-trigger:hover, .thumbnail-trigger:focus-visible { border-color: #333; box-shadow: 0 0 0 3px rgba(33, 33, 33, 0.15); outline: none; }
+    .thumbnail-trigger__image { display: block; width: 100%; height: 4.5rem; object-fit: contain; background: #f5f5f5; border-radius: 4px; }
+    .thumbnail-trigger__text { font-size: 0.8rem; color: #444; }
+    .url-cell { position: relative; max-width: 20rem; }
+    .url-tooltip { display: none; position: absolute; z-index: 10; left: 0; top: 100%; margin-top: 0.2rem; background: #333; color: #fff; padding: 0.4rem 0.6rem; border-radius: 4px; font-size: 0.8rem; max-width: 44rem; word-break: break-all; white-space: normal; pointer-events: none; box-shadow: 0 2px 8px rgba(0,0,0,0.35); }
+    .url-cell:hover .url-tooltip, .url-cell:focus-within .url-tooltip { display: block; }
+    dialog::backdrop { background: rgba(17, 24, 39, 0.72); }
+    .preview-dialog { border: none; border-radius: 12px; padding: 0; width: min(92vw, 960px); max-height: 90vh; overflow: hidden; }
+    .preview-dialog__inner { display: grid; gap: 0.75rem; padding: 1rem; background: #fff; }
+    .preview-dialog__header { display: flex; justify-content: space-between; gap: 1rem; align-items: start; }
+    .preview-dialog__title { margin: 0; font-size: 1.1rem; }
+    .preview-dialog__close { border: 1px solid #333; background: #fff; color: #222; border-radius: 999px; padding: 0.45rem 0.8rem; font: inherit; cursor: pointer; }
+    .preview-dialog__figure { margin: 0; display: grid; gap: 0.5rem; justify-items: center; }
+    .preview-dialog__image { display: block; max-width: min(88vw, 100%); max-height: 70vh; width: auto; height: auto; background: #f5f5f5; }
+    .preview-dialog__caption { font-size: 0.9rem; color: #444; word-break: break-word; }
+    .preview-dialog__actions { margin: 0; font-size: 0.9rem; }
+    .preview-dialog__view-full { color: #1565c0; }
+    .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    @media (max-width: 720px) {
+      .summary { gap: 0.75rem; }
+      .stat { flex: 1 1 9rem; }
+      .thumbnail-trigger { width: 5.75rem; }
+      .thumbnail-trigger__image { height: 3.75rem; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Alt Text Scan Report</h1>
+  <p><strong>Domain:</strong> https://www.data.gov.uk &nbsp;|&nbsp;
+     <strong>Scanned:</strong> 4/23/2026, 2:52:02 AM &nbsp;|&nbsp;
+     <strong>Discovery method:</strong> crawl</p>
+  <p><a href="report.csv">Download image inventory CSV</a> &nbsp;|&nbsp; <a href="report.json">View full JSON</a></p>
+
+  <div class="summary">
+    <div class="stat"><strong>100</strong> Pages scanned</div>
+    <div class="stat"><strong>376</strong> Images found</div>
+    <div class="stat"><strong>14</strong> Unique images</div>
+    <div class="stat"><strong style="color:#d32f2f">1</strong> Images with issues</div>
+  </div>
+
+  <h2>Status breakdown</h2>
+  <table>
+    <thead><tr><th>Status</th><th>Count</th></tr></thead>
+    <tbody><tr><td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td><td>269</td></tr>
+<tr><td><span style="color:#f57c00;font-weight:bold">Suspicious</span></td><td>100</td></tr>
+<tr><td><span style="color:#2e7d32;font-weight:bold">Good</span></td><td>7</td></tr></tbody>
+  </table>
+
+  <h2>Unique image inventory</h2>
+  <div class="report-controls">
+    <button type="button" id="toggle-thumbnails" class="toggle-thumbnails" aria-pressed="false">Show thumbnails for images with alt text</button>
+    <span id="thumbnail-help">Thumbnails for images with alt text are hidden by default. Decorative images always show thumbnails for visual review.</span>
+  </div>
+  <p>Showing 4 images with alt text, with flagged items listed first. Use the CSV for a complete export.</p>
+  <table>
+    <thead><tr>
+      <th>Image</th>
+      <th class="thumbnail-column" hidden>Thumbnail</th>
+      <th>Status</th>
+      <th>Alt Text</th>
+      <th title="All distinct alt text values found for this image across all scanned pages, with how many times each value appeared. A Consistent result means the same alt text was used everywhere. Multiple entries mean the same image has different alt text on different pages and may need review.">Alt Variants</th>
+      <th>Title</th>
+      <th>ARIA Label</th>
+      <th>Pages</th>
+    </tr></thead>
+    <tbody>
+        <tr>
+          <td class="url-cell"><a href="https://www.data.gov.uk/find-assets/v2/logo-88716c60b936e0bded570b436eff6274cf6b65d37abf21ac7ebbf1563ef3a257.svg" target="_blank" rel="noopener" title="https://www.data.gov.uk/find-assets/v2/logo-88716c60b936e0bded570b436eff6274cf6b65d37abf21ac7ebbf1563ef3a257.svg">https://www.data.gov.uk/find-assets/v2/logo-88716c60b936e0bd…</a><span class="url-tooltip" aria-hidden="true">https://www.data.gov.uk/find-assets/v2/logo-88716c60b936e0bded570b436eff6274cf6b65d37abf21ac7ebbf1563ef3a257.svg</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.data.gov.uk/find-assets/v2/logo-88716c60b936e0bded570b436eff6274cf6b65d37abf21ac7ebbf1563ef3a257.svg" data-preview-alt="Home" data-preview-label="Home" data-preview-width="231" data-preview-height="35" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Home"><img src="https://www.data.gov.uk/find-assets/v2/logo-88716c60b936e0bded570b436eff6274cf6b65d37abf21ac7ebbf1563ef3a257.svg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#f57c00;font-weight:bold">Suspicious</span></td>
+          <td><code>Home</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 100 occurrences of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>100<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.data.gov.uk/" target="_blank" rel="noopener">https://www.data.gov.uk/</a><br><a href="https://www.data.gov.uk/cookies" target="_blank" rel="noopener">https://www.data.gov.uk/cookies</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.data.gov.uk/find-assets/v2/up_arrow-054d77c044a73999bf6500fc68fbc31cff53ac5f3d6890c50399505d3b0b7cf6.svg" target="_blank" rel="noopener" title="https://www.data.gov.uk/find-assets/v2/up_arrow-054d77c044a73999bf6500fc68fbc31cff53ac5f3d6890c50399505d3b0b7cf6.svg">https://www.data.gov.uk/find-assets/v2/up_arrow-054d77c044a7…</a><span class="url-tooltip" aria-hidden="true">https://www.data.gov.uk/find-assets/v2/up_arrow-054d77c044a73999bf6500fc68fbc31cff53ac5f3d6890c50399505d3b0b7cf6.svg</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.data.gov.uk/find-assets/v2/up_arrow-054d77c044a73999bf6500fc68fbc31cff53ac5f3d6890c50399505d3b0b7cf6.svg" data-preview-alt="Trending up" data-preview-label="Trending up" data-preview-width="19" data-preview-height="11" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Trending up"><img src="https://www.data.gov.uk/find-assets/v2/up_arrow-054d77c044a73999bf6500fc68fbc31cff53ac5f3d6890c50399505d3b0b7cf6.svg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Trending up</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 5 occurrences of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>3<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.data.gov.uk/collections/transport" target="_blank" rel="noopener">https://www.data.gov.uk/collections/transport</a><br><a href="https://www.data.gov.uk/collections/business-and-economy/get-company-information" target="_blank" rel="noopener">https://www.data.gov.uk/collections/business-and-economy/get-company-information</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.data.gov.uk/find-assets/v2/down_arrow-a52ea6d7a1233d57b7f8908c7873e3ac9638d54cdf5fbf076a8a687cf632936e.svg" target="_blank" rel="noopener" title="https://www.data.gov.uk/find-assets/v2/down_arrow-a52ea6d7a1233d57b7f8908c7873e3ac9638d54cdf5fbf076a8a687cf632936e.svg">https://www.data.gov.uk/find-assets/v2/down_arrow-a52ea6d7a1…</a><span class="url-tooltip" aria-hidden="true">https://www.data.gov.uk/find-assets/v2/down_arrow-a52ea6d7a1233d57b7f8908c7873e3ac9638d54cdf5fbf076a8a687cf632936e.svg</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.data.gov.uk/find-assets/v2/down_arrow-a52ea6d7a1233d57b7f8908c7873e3ac9638d54cdf5fbf076a8a687cf632936e.svg" data-preview-alt="Trending down" data-preview-label="Trending down" data-preview-width="19" data-preview-height="11" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Trending down"><img src="https://www.data.gov.uk/find-assets/v2/down_arrow-a52ea6d7a1233d57b7f8908c7873e3ac9638d54cdf5fbf076a8a687cf632936e.svg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Trending down</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.data.gov.uk/collections/business-and-economy/get-company-information" target="_blank" rel="noopener">https://www.data.gov.uk/collections/business-and-economy/get-company-information</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.data.gov.uk/find-assets/v2/plant-shoot-36332ea5158eb9bdb4717183eab678b23cb2a69350e8cbe0cab160a76fb5593d.svg" target="_blank" rel="noopener" title="https://www.data.gov.uk/find-assets/v2/plant-shoot-36332ea5158eb9bdb4717183eab678b23cb2a69350e8cbe0cab160a76fb5593d.svg">https://www.data.gov.uk/find-assets/v2/plant-shoot-36332ea51…</a><span class="url-tooltip" aria-hidden="true">https://www.data.gov.uk/find-assets/v2/plant-shoot-36332ea5158eb9bdb4717183eab678b23cb2a69350e8cbe0cab160a76fb5593d.svg</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.data.gov.uk/find-assets/v2/plant-shoot-36332ea5158eb9bdb4717183eab678b23cb2a69350e8cbe0cab160a76fb5593d.svg" data-preview-alt="A young plant sprouting from the ground" data-preview-label="A young plant sprouting from the ground" data-preview-width="165" data-preview-height="154" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: A young plant sprouting from the ground"><img src="https://www.data.gov.uk/find-assets/v2/plant-shoot-36332ea5158eb9bdb4717183eab678b23cb2a69350e8cbe0cab160a76fb5593d.svg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>A young plant sprouting from the ground</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.data.gov.uk/roadmap" target="_blank" rel="noopener">https://www.data.gov.uk/roadmap</a></div></td>
+        </tr></tbody>
+  </table>
+
+  
+  <h2>Decorative images — please review</h2>
+  <div class="review-callout" role="note">
+    <strong>Review recommended:</strong> These 10 images have empty alt text and are marked as decorative.
+    Please look at each thumbnail: does it convey meaningful information that sighted users would benefit from knowing?
+    If so, it needs descriptive alt text. The <strong>Role</strong> and <strong>ARIA Label</strong> columns show any semantic markup that was applied.
+  </div>
+  <table>
+    <thead><tr><th>Image</th><th class="thumbnail-column-decorative">Thumbnail</th><th>Status</th><th>Role</th><th>ARIA Label</th><th>Pages</th></tr></thead>
+    <tbody>
+        <tr>
+          <td class="url-cell"><a href="https://www.data.gov.uk/find-assets/v2/icons/arrow-ba123f756c40e42f82f406673d77fcefe873a42aa121e6a952cbfb2eea3e0d4e.svg" target="_blank" rel="noopener" title="https://www.data.gov.uk/find-assets/v2/icons/arrow-ba123f756c40e42f82f406673d77fcefe873a42aa121e6a952cbfb2eea3e0d4e.svg">https://www.data.gov.uk/find-assets/v2/icons/arrow-ba123f756…</a><span class="url-tooltip" aria-hidden="true">https://www.data.gov.uk/find-assets/v2/icons/arrow-ba123f756c40e42f82f406673d77fcefe873a42aa121e6a952cbfb2eea3e0d4e.svg</span></td>
+          <td class="thumbnail-column-decorative"><button type="button" class="thumbnail-trigger" data-preview-src="https://www.data.gov.uk/find-assets/v2/icons/arrow-ba123f756c40e42f82f406673d77fcefe873a42aa121e6a952cbfb2eea3e0d4e.svg" data-preview-alt="" data-preview-label="https://www.data.gov.uk/find-assets/v2/icons/arrow-ba123f756c40e42f82f406673d77fcefe873a42aa121e6a952cbfb2eea3e0d4e.svg" data-preview-width="30" data-preview-height="30" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://www.data.gov.uk/find-assets/v2/icons/arrow-ba123f756c40e42f82f406673d77fcefe873a42aa121e6a952cbfb2eea3e0d4e.svg"><img src="https://www.data.gov.uk/find-assets/v2/icons/arrow-ba123f756c40e42f82f406673d77fcefe873a42aa121e6a952cbfb2eea3e0d4e.svg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>79<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.data.gov.uk/collections/business-and-economy" target="_blank" rel="noopener">https://www.data.gov.uk/collections/business-and-economy</a><br><a href="https://www.data.gov.uk/collections/environment" target="_blank" rel="noopener">https://www.data.gov.uk/collections/environment</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.data.gov.uk/find-assets/v2/collections/badge-environment-0c106b83ab005b42b32c2fa46bca1be923c5c35a3b2cca9b4398790b4bb41cd6.png" target="_blank" rel="noopener" title="https://www.data.gov.uk/find-assets/v2/collections/badge-environment-0c106b83ab005b42b32c2fa46bca1be923c5c35a3b2cca9b4398790b4bb41cd6.png">https://www.data.gov.uk/find-assets/v2/collections/badge-env…</a><span class="url-tooltip" aria-hidden="true">https://www.data.gov.uk/find-assets/v2/collections/badge-environment-0c106b83ab005b42b32c2fa46bca1be923c5c35a3b2cca9b4398790b4bb41cd6.png</span></td>
+          <td class="thumbnail-column-decorative"><button type="button" class="thumbnail-trigger" data-preview-src="https://www.data.gov.uk/find-assets/v2/collections/badge-environment-0c106b83ab005b42b32c2fa46bca1be923c5c35a3b2cca9b4398790b4bb41cd6.png" data-preview-alt="" data-preview-label="https://www.data.gov.uk/find-assets/v2/collections/badge-environment-0c106b83ab005b42b32c2fa46bca1be923c5c35a3b2cca9b4398790b4bb41cd6.png" data-preview-width="216" data-preview-height="216" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://www.data.gov.uk/find-assets/v2/collections/badge-environment-0c106b83ab005b42b32c2fa46bca1be923c5c35a3b2cca9b4398790b4bb41cd6.png"><img src="https://www.data.gov.uk/find-assets/v2/collections/badge-environment-0c106b83ab005b42b32c2fa46bca1be923c5c35a3b2cca9b4398790b4bb41cd6.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>20<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.data.gov.uk/" target="_blank" rel="noopener">https://www.data.gov.uk/</a><br><a href="https://www.data.gov.uk/collections/environment" target="_blank" rel="noopener">https://www.data.gov.uk/collections/environment</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.data.gov.uk/find-assets/v2/collections/badge-people-ea1d57564368da33d1ecdbd2f5fcafe76fe4f84bcceb3a6ee80bd453ef70206a.png" target="_blank" rel="noopener" title="https://www.data.gov.uk/find-assets/v2/collections/badge-people-ea1d57564368da33d1ecdbd2f5fcafe76fe4f84bcceb3a6ee80bd453ef70206a.png">https://www.data.gov.uk/find-assets/v2/collections/badge-peo…</a><span class="url-tooltip" aria-hidden="true">https://www.data.gov.uk/find-assets/v2/collections/badge-people-ea1d57564368da33d1ecdbd2f5fcafe76fe4f84bcceb3a6ee80bd453ef70206a.png</span></td>
+          <td class="thumbnail-column-decorative"><button type="button" class="thumbnail-trigger" data-preview-src="https://www.data.gov.uk/find-assets/v2/collections/badge-people-ea1d57564368da33d1ecdbd2f5fcafe76fe4f84bcceb3a6ee80bd453ef70206a.png" data-preview-alt="" data-preview-label="https://www.data.gov.uk/find-assets/v2/collections/badge-people-ea1d57564368da33d1ecdbd2f5fcafe76fe4f84bcceb3a6ee80bd453ef70206a.png" data-preview-width="216" data-preview-height="216" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://www.data.gov.uk/find-assets/v2/collections/badge-people-ea1d57564368da33d1ecdbd2f5fcafe76fe4f84bcceb3a6ee80bd453ef70206a.png"><img src="https://www.data.gov.uk/find-assets/v2/collections/badge-people-ea1d57564368da33d1ecdbd2f5fcafe76fe4f84bcceb3a6ee80bd453ef70206a.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>19<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.data.gov.uk/" target="_blank" rel="noopener">https://www.data.gov.uk/</a><br><a href="https://www.data.gov.uk/collections/people" target="_blank" rel="noopener">https://www.data.gov.uk/collections/people</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.data.gov.uk/find-assets/v2/collections/badge-land-and-property-e6d19aa54a44fa2e0852610fd4a6459888f1dd2863a327c7e0d936085d4d33e7.png" target="_blank" rel="noopener" title="https://www.data.gov.uk/find-assets/v2/collections/badge-land-and-property-e6d19aa54a44fa2e0852610fd4a6459888f1dd2863a327c7e0d936085d4d33e7.png">https://www.data.gov.uk/find-assets/v2/collections/badge-lan…</a><span class="url-tooltip" aria-hidden="true">https://www.data.gov.uk/find-assets/v2/collections/badge-land-and-property-e6d19aa54a44fa2e0852610fd4a6459888f1dd2863a327c7e0d936085d4d33e7.png</span></td>
+          <td class="thumbnail-column-decorative"><button type="button" class="thumbnail-trigger" data-preview-src="https://www.data.gov.uk/find-assets/v2/collections/badge-land-and-property-e6d19aa54a44fa2e0852610fd4a6459888f1dd2863a327c7e0d936085d4d33e7.png" data-preview-alt="" data-preview-label="https://www.data.gov.uk/find-assets/v2/collections/badge-land-and-property-e6d19aa54a44fa2e0852610fd4a6459888f1dd2863a327c7e0d936085d4d33e7.png" data-preview-width="216" data-preview-height="216" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://www.data.gov.uk/find-assets/v2/collections/badge-land-and-property-e6d19aa54a44fa2e0852610fd4a6459888f1dd2863a327c7e0d936085d4d33e7.png"><img src="https://www.data.gov.uk/find-assets/v2/collections/badge-land-and-property-e6d19aa54a44fa2e0852610fd4a6459888f1dd2863a327c7e0d936085d4d33e7.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>13<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.data.gov.uk/" target="_blank" rel="noopener">https://www.data.gov.uk/</a><br><a href="https://www.data.gov.uk/collections/land-and-property" target="_blank" rel="noopener">https://www.data.gov.uk/collections/land-and-property</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.data.gov.uk/find-assets/v2/collections/badge-transport-0c2fc879379f035cff33466dba87aa4f02a74ea2e014ea54ac9b5e053fbf2fa3.png" target="_blank" rel="noopener" title="https://www.data.gov.uk/find-assets/v2/collections/badge-transport-0c2fc879379f035cff33466dba87aa4f02a74ea2e014ea54ac9b5e053fbf2fa3.png">https://www.data.gov.uk/find-assets/v2/collections/badge-tra…</a><span class="url-tooltip" aria-hidden="true">https://www.data.gov.uk/find-assets/v2/collections/badge-transport-0c2fc879379f035cff33466dba87aa4f02a74ea2e014ea54ac9b5e053fbf2fa3.png</span></td>
+          <td class="thumbnail-column-decorative"><button type="button" class="thumbnail-trigger" data-preview-src="https://www.data.gov.uk/find-assets/v2/collections/badge-transport-0c2fc879379f035cff33466dba87aa4f02a74ea2e014ea54ac9b5e053fbf2fa3.png" data-preview-alt="" data-preview-label="https://www.data.gov.uk/find-assets/v2/collections/badge-transport-0c2fc879379f035cff33466dba87aa4f02a74ea2e014ea54ac9b5e053fbf2fa3.png" data-preview-width="216" data-preview-height="216" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://www.data.gov.uk/find-assets/v2/collections/badge-transport-0c2fc879379f035cff33466dba87aa4f02a74ea2e014ea54ac9b5e053fbf2fa3.png"><img src="https://www.data.gov.uk/find-assets/v2/collections/badge-transport-0c2fc879379f035cff33466dba87aa4f02a74ea2e014ea54ac9b5e053fbf2fa3.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>13<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.data.gov.uk/" target="_blank" rel="noopener">https://www.data.gov.uk/</a><br><a href="https://www.data.gov.uk/collections/transport" target="_blank" rel="noopener">https://www.data.gov.uk/collections/transport</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.data.gov.uk/find-assets/v2/collections/badge-business-and-economy-c2eb9beb047b1f97db66307343bdd77c4c54ec9f9e7bc830d491ab2ade99f0bb.png" target="_blank" rel="noopener" title="https://www.data.gov.uk/find-assets/v2/collections/badge-business-and-economy-c2eb9beb047b1f97db66307343bdd77c4c54ec9f9e7bc830d491ab2ade99f0bb.png">https://www.data.gov.uk/find-assets/v2/collections/badge-bus…</a><span class="url-tooltip" aria-hidden="true">https://www.data.gov.uk/find-assets/v2/collections/badge-business-and-economy-c2eb9beb047b1f97db66307343bdd77c4c54ec9f9e7bc830d491ab2ade99f0bb.png</span></td>
+          <td class="thumbnail-column-decorative"><button type="button" class="thumbnail-trigger" data-preview-src="https://www.data.gov.uk/find-assets/v2/collections/badge-business-and-economy-c2eb9beb047b1f97db66307343bdd77c4c54ec9f9e7bc830d491ab2ade99f0bb.png" data-preview-alt="" data-preview-label="https://www.data.gov.uk/find-assets/v2/collections/badge-business-and-economy-c2eb9beb047b1f97db66307343bdd77c4c54ec9f9e7bc830d491ab2ade99f0bb.png" data-preview-width="216" data-preview-height="216" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://www.data.gov.uk/find-assets/v2/collections/badge-business-and-economy-c2eb9beb047b1f97db66307343bdd77c4c54ec9f9e7bc830d491ab2ade99f0bb.png"><img src="https://www.data.gov.uk/find-assets/v2/collections/badge-business-and-economy-c2eb9beb047b1f97db66307343bdd77c4c54ec9f9e7bc830d491ab2ade99f0bb.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>12<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.data.gov.uk/" target="_blank" rel="noopener">https://www.data.gov.uk/</a><br><a href="https://www.data.gov.uk/collections/business-and-economy" target="_blank" rel="noopener">https://www.data.gov.uk/collections/business-and-economy</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.data.gov.uk/find-assets/v2/icons/community-d556cfd94699b7c0ee43b786ad34cbff301eb390d1aa512dfe8b32ce7bfa7ddb.svg" target="_blank" rel="noopener" title="https://www.data.gov.uk/find-assets/v2/icons/community-d556cfd94699b7c0ee43b786ad34cbff301eb390d1aa512dfe8b32ce7bfa7ddb.svg">https://www.data.gov.uk/find-assets/v2/icons/community-d556c…</a><span class="url-tooltip" aria-hidden="true">https://www.data.gov.uk/find-assets/v2/icons/community-d556cfd94699b7c0ee43b786ad34cbff301eb390d1aa512dfe8b32ce7bfa7ddb.svg</span></td>
+          <td class="thumbnail-column-decorative"><button type="button" class="thumbnail-trigger" data-preview-src="https://www.data.gov.uk/find-assets/v2/icons/community-d556cfd94699b7c0ee43b786ad34cbff301eb390d1aa512dfe8b32ce7bfa7ddb.svg" data-preview-alt="" data-preview-label="https://www.data.gov.uk/find-assets/v2/icons/community-d556cfd94699b7c0ee43b786ad34cbff301eb390d1aa512dfe8b32ce7bfa7ddb.svg" data-preview-width="21" data-preview-height="21" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://www.data.gov.uk/find-assets/v2/icons/community-d556cfd94699b7c0ee43b786ad34cbff301eb390d1aa512dfe8b32ce7bfa7ddb.svg"><img src="https://www.data.gov.uk/find-assets/v2/icons/community-d556cfd94699b7c0ee43b786ad34cbff301eb390d1aa512dfe8b32ce7bfa7ddb.svg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>11<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.data.gov.uk/data-manual/who-this-manual-is-for" target="_blank" rel="noopener">https://www.data.gov.uk/data-manual/who-this-manual-is-for</a><br><a href="https://www.data.gov.uk/data-manual/data-management" target="_blank" rel="noopener">https://www.data.gov.uk/data-manual/data-management</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.data.gov.uk/find-assets/v2/icons/form-3f6cc7add00b7733dc3ae67dd27eff30f77de49755475e798fd3a14f2dced94f.svg" target="_blank" rel="noopener" title="https://www.data.gov.uk/find-assets/v2/icons/form-3f6cc7add00b7733dc3ae67dd27eff30f77de49755475e798fd3a14f2dced94f.svg">https://www.data.gov.uk/find-assets/v2/icons/form-3f6cc7add0…</a><span class="url-tooltip" aria-hidden="true">https://www.data.gov.uk/find-assets/v2/icons/form-3f6cc7add00b7733dc3ae67dd27eff30f77de49755475e798fd3a14f2dced94f.svg</span></td>
+          <td class="thumbnail-column-decorative"><button type="button" class="thumbnail-trigger" data-preview-src="https://www.data.gov.uk/find-assets/v2/icons/form-3f6cc7add00b7733dc3ae67dd27eff30f77de49755475e798fd3a14f2dced94f.svg" data-preview-alt="" data-preview-label="https://www.data.gov.uk/find-assets/v2/icons/form-3f6cc7add00b7733dc3ae67dd27eff30f77de49755475e798fd3a14f2dced94f.svg" data-preview-width="30" data-preview-height="30" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://www.data.gov.uk/find-assets/v2/icons/form-3f6cc7add00b7733dc3ae67dd27eff30f77de49755475e798fd3a14f2dced94f.svg"><img src="https://www.data.gov.uk/find-assets/v2/icons/form-3f6cc7add00b7733dc3ae67dd27eff30f77de49755475e798fd3a14f2dced94f.svg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>11<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.data.gov.uk/data-manual/who-this-manual-is-for" target="_blank" rel="noopener">https://www.data.gov.uk/data-manual/who-this-manual-is-for</a><br><a href="https://www.data.gov.uk/data-manual/data-management" target="_blank" rel="noopener">https://www.data.gov.uk/data-manual/data-management</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.data.gov.uk/find-assets/v2/collections/badge-government-441d78215c73847114f66cb82406c50b4e35df9af6e31f3abc1134bdc097f08e.png" target="_blank" rel="noopener" title="https://www.data.gov.uk/find-assets/v2/collections/badge-government-441d78215c73847114f66cb82406c50b4e35df9af6e31f3abc1134bdc097f08e.png">https://www.data.gov.uk/find-assets/v2/collections/badge-gov…</a><span class="url-tooltip" aria-hidden="true">https://www.data.gov.uk/find-assets/v2/collections/badge-government-441d78215c73847114f66cb82406c50b4e35df9af6e31f3abc1134bdc097f08e.png</span></td>
+          <td class="thumbnail-column-decorative"><button type="button" class="thumbnail-trigger" data-preview-src="https://www.data.gov.uk/find-assets/v2/collections/badge-government-441d78215c73847114f66cb82406c50b4e35df9af6e31f3abc1134bdc097f08e.png" data-preview-alt="" data-preview-label="https://www.data.gov.uk/find-assets/v2/collections/badge-government-441d78215c73847114f66cb82406c50b4e35df9af6e31f3abc1134bdc097f08e.png" data-preview-width="110" data-preview-height="110" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://www.data.gov.uk/find-assets/v2/collections/badge-government-441d78215c73847114f66cb82406c50b4e35df9af6e31f3abc1134bdc097f08e.png"><img src="https://www.data.gov.uk/find-assets/v2/collections/badge-government-441d78215c73847114f66cb82406c50b4e35df9af6e31f3abc1134bdc097f08e.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>8<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.data.gov.uk/" target="_blank" rel="noopener">https://www.data.gov.uk/</a><br><a href="https://www.data.gov.uk/collections/government" target="_blank" rel="noopener">https://www.data.gov.uk/collections/government</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.data.gov.uk/find-assets/v2/icons/arrow-white-right-964a518feb97e05729517ad8dbe5cf077a8e108788ee20697057f9353cb80013.svg" target="_blank" rel="noopener" title="https://www.data.gov.uk/find-assets/v2/icons/arrow-white-right-964a518feb97e05729517ad8dbe5cf077a8e108788ee20697057f9353cb80013.svg">https://www.data.gov.uk/find-assets/v2/icons/arrow-white-rig…</a><span class="url-tooltip" aria-hidden="true">https://www.data.gov.uk/find-assets/v2/icons/arrow-white-right-964a518feb97e05729517ad8dbe5cf077a8e108788ee20697057f9353cb80013.svg</span></td>
+          <td class="thumbnail-column-decorative"><button type="button" class="thumbnail-trigger" data-preview-src="https://www.data.gov.uk/find-assets/v2/icons/arrow-white-right-964a518feb97e05729517ad8dbe5cf077a8e108788ee20697057f9353cb80013.svg" data-preview-alt="" data-preview-label="https://www.data.gov.uk/find-assets/v2/icons/arrow-white-right-964a518feb97e05729517ad8dbe5cf077a8e108788ee20697057f9353cb80013.svg" data-preview-width="20" data-preview-height="20" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://www.data.gov.uk/find-assets/v2/icons/arrow-white-right-964a518feb97e05729517ad8dbe5cf077a8e108788ee20697057f9353cb80013.svg"><img src="https://www.data.gov.uk/find-assets/v2/icons/arrow-white-right-964a518feb97e05729517ad8dbe5cf077a8e108788ee20697057f9353cb80013.svg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.data.gov.uk/" target="_blank" rel="noopener">https://www.data.gov.uk/</a></div></td>
+        </tr></tbody>
+  </table>
+
+  <h2>Images with issues</h2>
+  <table>
+    <thead><tr><th>Image</th><th class="thumbnail-column" hidden>Thumbnail</th><th>Alt Text</th><th>Status</th><th>Issues</th><th>Found on</th></tr></thead>
+    <tbody>
+        <tr>
+          <td class="url-cell"><a href="https://www.data.gov.uk/find-assets/v2/logo-88716c60b936e0bded570b436eff6274cf6b65d37abf21ac7ebbf1563ef3a257.svg" target="_blank" rel="noopener" title="https://www.data.gov.uk/find-assets/v2/logo-88716c60b936e0bded570b436eff6274cf6b65d37abf21ac7ebbf1563ef3a257.svg">https://www.data.gov.uk/find-assets/v2/logo-88716c60b936e0bd…</a><span class="url-tooltip" aria-hidden="true">https://www.data.gov.uk/find-assets/v2/logo-88716c60b936e0bded570b436eff6274cf6b65d37abf21ac7ebbf1563ef3a257.svg</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.data.gov.uk/find-assets/v2/logo-88716c60b936e0bded570b436eff6274cf6b65d37abf21ac7ebbf1563ef3a257.svg" data-preview-alt="Home" data-preview-label="Home" data-preview-width="231" data-preview-height="35" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Home"><img src="https://www.data.gov.uk/find-assets/v2/logo-88716c60b936e0bded570b436eff6274cf6b65d37abf21ac7ebbf1563ef3a257.svg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><code>Home</code></td>
+          <td><span style="color:#f57c00;font-weight:bold">Suspicious</span></td>
+          <td><ul style="margin:0;padding-left:1.2em"><li>Alt text &quot;Home&quot; is a single word; consider a more descriptive phrase that explains the image&#039;s purpose in context</li></ul></td>
+          <td style="font-size:0.85em"><a href="https://www.data.gov.uk/" target="_blank" rel="noopener">https://www.data.gov.uk/</a><br><a href="https://www.data.gov.uk/cookies" target="_blank" rel="noopener">https://www.data.gov.uk/cookies</a><br><a href="https://www.data.gov.uk/collections/business-and-economy" target="_blank" rel="noopener">https://www.data.gov.uk/collections/business-and-economy</a></td>
+        </tr></tbody>
+  </table>
+
+  <dialog id="image-preview-dialog" class="preview-dialog" aria-labelledby="image-preview-title">
+    <div class="preview-dialog__inner">
+      <div class="preview-dialog__header">
+        <h2 id="image-preview-title" class="preview-dialog__title">Image preview</h2>
+        <form method="dialog">
+          <button type="submit" class="preview-dialog__close" id="close-image-preview">Close</button>
+        </form>
+      </div>
+      <figure class="preview-dialog__figure">
+        <img id="image-preview-image" class="preview-dialog__image" alt="">
+        <figcaption id="image-preview-caption" class="preview-dialog__caption"></figcaption>
+      </figure>
+      <p class="preview-dialog__actions">
+        <a id="image-preview-view-full" href="#" target="_blank" rel="noopener" class="preview-dialog__view-full">View full image ↗</a>
+      </p>
+    </div>
+  </dialog>
+
+  <script>
+    (() => {
+      const toggleButton = document.getElementById("toggle-thumbnails");
+      const thumbnailColumns = Array.from(document.querySelectorAll(".thumbnail-column"));
+      const dialog = document.getElementById("image-preview-dialog");
+      const previewImage = document.getElementById("image-preview-image");
+      const previewCaption = document.getElementById("image-preview-caption");
+      const previewTitle = document.getElementById("image-preview-title");
+      const closeButton = document.getElementById("close-image-preview");
+      const viewFullLink = document.getElementById("image-preview-view-full");
+      const previewTriggers = Array.from(document.querySelectorAll(".thumbnail-trigger"));
+      let lastTrigger = null;
+      let lastOpenMode = "click";
+      let skipNextFocusTrigger = null;
+
+      if (toggleButton) {
+        toggleButton.addEventListener("click", () => {
+          const shouldShow = toggleButton.getAttribute("aria-pressed") !== "true";
+          toggleButton.setAttribute("aria-pressed", String(shouldShow));
+          toggleButton.textContent = shouldShow ? "Hide thumbnails for images with alt text" : "Show thumbnails for images with alt text";
+          thumbnailColumns.forEach((column) => {
+            column.hidden = !shouldShow;
+          });
+        });
+      }
+
+      if (!(dialog instanceof HTMLDialogElement) || !previewImage || !previewCaption || !previewTitle) {
+        return;
+      }
+
+      const setPreviewContent = (trigger) => {
+        const src = trigger.dataset.previewSrc || "";
+        const alt = trigger.dataset.previewAlt || "";
+        const label = trigger.dataset.previewLabel || src;
+        const width = Number(trigger.dataset.previewWidth || 0);
+        const height = Number(trigger.dataset.previewHeight || 0);
+        const availableWidth = Math.max(window.innerWidth - 80, 320);
+
+        previewImage.src = src;
+        previewImage.alt = alt;
+        previewImage.style.width = width > 0 ? String(Math.min(width, availableWidth)) + "px" : "auto";
+        previewImage.style.height = "auto";
+        previewImage.style.maxWidth = "100%";
+        previewTitle.textContent = label;
+
+        if (viewFullLink) {
+          viewFullLink.href = src;
+        }
+
+        const altInfo = alt ? "Alt text: " + alt : "Alt text: none";
+        const sizeInfo = width > 0 && height > 0 ? "Displayed size: " + width + " × " + height + "px" : "Displayed size: not captured";
+        previewCaption.textContent = [altInfo, sizeInfo, src].join(" | ");
+
+        previewImage.onload = function() {
+          const nw = this.naturalWidth;
+          const nh = this.naturalHeight;
+          const naturalInfo = nw > 0 && nh > 0 ? "Natural size: " + nw + " × " + nh + "px" : "";
+          previewCaption.textContent = [altInfo, sizeInfo, naturalInfo, src].filter(Boolean).join(" | ");
+        };
+      };
+
+      const openPreview = (trigger, mode) => {
+        lastTrigger = trigger;
+        lastOpenMode = mode;
+        setPreviewContent(trigger);
+        if (!dialog.open) {
+          dialog.showModal();
+        }
+        if (mode === "click") {
+          closeButton.focus();
+        }
+      };
+
+      previewTriggers.forEach((trigger) => {
+        trigger.addEventListener("click", (event) => {
+          event.preventDefault();
+          openPreview(trigger, "click");
+        });
+
+        trigger.addEventListener("focus", () => {
+          if (skipNextFocusTrigger === trigger) {
+            skipNextFocusTrigger = null;
+            return;
+          }
+          openPreview(trigger, "focus");
+        });
+      });
+
+      dialog.addEventListener("click", (event) => {
+        const bounds = dialog.getBoundingClientRect();
+        const isOutside = event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom;
+        if (isOutside) {
+          dialog.close();
+        }
+      });
+
+      dialog.addEventListener("close", () => {
+        previewImage.removeAttribute("src");
+        if (lastOpenMode === "click" && lastTrigger && document.contains(lastTrigger)) {
+          skipNextFocusTrigger = lastTrigger;
+          lastTrigger.focus();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
