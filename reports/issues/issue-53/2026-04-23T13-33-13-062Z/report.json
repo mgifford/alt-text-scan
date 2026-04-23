@@ -1,0 +1,3125 @@
+{
+  "reportType": "alt-text",
+  "issueNumber": 53,
+  "issueUrl": "https://github.com/mgifford/alt-text-scan/issues/53",
+  "scanTitle": "https://www.legislation.gov.uk/",
+  "scanDomain": "https://www.legislation.gov.uk",
+  "discoveryMethod": "sitemap",
+  "discoveredTotal": 22,
+  "requestedCount": 22,
+  "acceptedCount": 22,
+  "rejectedCount": 0,
+  "scannedCount": 22,
+  "skippedDueToTimeout": 0,
+  "urlsRequested": 22,
+  "urlsScanned": 22,
+  "scannedAt": "2026-04-23T13:32:54.330Z",
+  "totalImages": 93,
+  "uniqueImages": 12,
+  "imagesWithIssues": 2,
+  "statusCounts": {
+    "MISSING": 0,
+    "DECORATIVE": 22,
+    "SUSPICIOUS": 20,
+    "FILENAME": 0,
+    "TOO_SHORT": 0,
+    "TOO_LONG": 0,
+    "GOOD": 51
+  },
+  "urlResults": [
+    {
+      "url": "https://www.legislation.gov.uk/",
+      "finalUrl": "https://www.legislation.gov.uk/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/site_logo_legislation.gif",
+          "alt": "legislation.gov.uk homepage call-to-action widget",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 319,
+          "height": 97,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/ogl-symbol.gif",
+          "alt": "OGL logo",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 41,
+          "height": 17,
+          "isVisible": false,
+          "pageUrl": "https://www.legislation.gov.uk/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/analytics/cookiesBannerIgnored.gif",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1,
+          "height": 1,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.legislation.gov.uk/new",
+      "finalUrl": "https://www.legislation.gov.uk/new",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/atomFeedIcon.gif",
+          "alt": "Atom feed help",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 77,
+          "height": 17,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/new",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/atomHelpIcon.gif",
+          "alt": "Atom feed help",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 18,
+          "height": 17,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/new",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/closeIcon.gif",
+          "alt": "Close",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 22,
+          "height": 23,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/new",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Alt text \"Close\" is a single word; consider a more descriptive phrase that explains the image's purpose in context"
+          ]
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/icon_feed_small.png",
+          "alt": "Icon for Data Feed Link",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 14,
+          "height": 14,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/new",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/ogl-symbol.gif",
+          "alt": "OGL logo",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 41,
+          "height": 17,
+          "isVisible": false,
+          "pageUrl": "https://www.legislation.gov.uk/new",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/analytics/cookiesBannerIgnored.gif",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1,
+          "height": 1,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/new",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.legislation.gov.uk/new/uk",
+      "finalUrl": "https://www.legislation.gov.uk/new/uk",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/atomFeedIcon.gif",
+          "alt": "Atom feed help",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 77,
+          "height": 17,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/new/uk",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/atomHelpIcon.gif",
+          "alt": "Atom feed help",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 18,
+          "height": 17,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/new/uk",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/closeIcon.gif",
+          "alt": "Close",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 22,
+          "height": 23,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/new/uk",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Alt text \"Close\" is a single word; consider a more descriptive phrase that explains the image's purpose in context"
+          ]
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/icon_feed_small.png",
+          "alt": "UK Statutory Instruments Feed",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 14,
+          "height": 14,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/new/uk",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/ogl-symbol.gif",
+          "alt": "OGL logo",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 41,
+          "height": 17,
+          "isVisible": false,
+          "pageUrl": "https://www.legislation.gov.uk/new/uk",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/analytics/cookiesBannerIgnored.gif",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1,
+          "height": 1,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/new/uk",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.legislation.gov.uk/new/scotland",
+      "finalUrl": "https://www.legislation.gov.uk/new/scotland",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/atomFeedIcon.gif",
+          "alt": "Atom feed help",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 77,
+          "height": 17,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/new/scotland",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/atomHelpIcon.gif",
+          "alt": "Atom feed help",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 18,
+          "height": 17,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/new/scotland",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/closeIcon.gif",
+          "alt": "Close",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 22,
+          "height": 23,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/new/scotland",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Alt text \"Close\" is a single word; consider a more descriptive phrase that explains the image's purpose in context"
+          ]
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/ogl-symbol.gif",
+          "alt": "OGL logo",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 41,
+          "height": 17,
+          "isVisible": false,
+          "pageUrl": "https://www.legislation.gov.uk/new/scotland",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/analytics/cookiesBannerIgnored.gif",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1,
+          "height": 1,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/new/scotland",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.legislation.gov.uk/new/wales",
+      "finalUrl": "https://www.legislation.gov.uk/new/wales",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/atomFeedIcon.gif",
+          "alt": "Atom feed help",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 77,
+          "height": 17,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/new/wales",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/atomHelpIcon.gif",
+          "alt": "Atom feed help",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 18,
+          "height": 17,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/new/wales",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/closeIcon.gif",
+          "alt": "Close",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 22,
+          "height": 23,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/new/wales",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Alt text \"Close\" is a single word; consider a more descriptive phrase that explains the image's purpose in context"
+          ]
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/ogl-symbol.gif",
+          "alt": "OGL logo",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 41,
+          "height": 17,
+          "isVisible": false,
+          "pageUrl": "https://www.legislation.gov.uk/new/wales",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/analytics/cookiesBannerIgnored.gif",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1,
+          "height": 1,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/new/wales",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.legislation.gov.uk/new/ni",
+      "finalUrl": "https://www.legislation.gov.uk/new/ni",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/atomFeedIcon.gif",
+          "alt": "Atom feed help",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 77,
+          "height": 17,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/new/ni",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/atomHelpIcon.gif",
+          "alt": "Atom feed help",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 18,
+          "height": 17,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/new/ni",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/closeIcon.gif",
+          "alt": "Close",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 22,
+          "height": 23,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/new/ni",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Alt text \"Close\" is a single word; consider a more descriptive phrase that explains the image's purpose in context"
+          ]
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/ogl-symbol.gif",
+          "alt": "OGL logo",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 41,
+          "height": 17,
+          "isVisible": false,
+          "pageUrl": "https://www.legislation.gov.uk/new/ni",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/analytics/cookiesBannerIgnored.gif",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1,
+          "height": 1,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/new/ni",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.legislation.gov.uk/explore",
+      "finalUrl": "https://www.legislation.gov.uk/explore",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/ogl-symbol.gif",
+          "alt": "OGL logo",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 41,
+          "height": 17,
+          "isVisible": false,
+          "pageUrl": "https://www.legislation.gov.uk/explore",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/analytics/cookiesBannerIgnored.gif",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1,
+          "height": 1,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/explore",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.legislation.gov.uk/explore/uk",
+      "finalUrl": "https://www.legislation.gov.uk/explore/legislatures/uk",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.legislation.gov.uk/images/maps/activeUk.gif",
+          "alt": "United Kingdom (UK)",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 255,
+          "height": 237,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/explore/legislatures/uk",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/ogl-symbol.gif",
+          "alt": "OGL logo",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 41,
+          "height": 17,
+          "isVisible": false,
+          "pageUrl": "https://www.legislation.gov.uk/explore/legislatures/uk",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/analytics/cookiesBannerIgnored.gif",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1,
+          "height": 1,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/explore/legislatures/uk",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.legislation.gov.uk/explore/scotland",
+      "finalUrl": "https://www.legislation.gov.uk/explore/legislatures/scotland",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.legislation.gov.uk/images/maps/activeScotland.gif",
+          "alt": "Scotland",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 255,
+          "height": 237,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/explore/legislatures/scotland",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Alt text \"Scotland\" is a single word; consider a more descriptive phrase that explains the image's purpose in context"
+          ]
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/ogl-symbol.gif",
+          "alt": "OGL logo",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 41,
+          "height": 17,
+          "isVisible": false,
+          "pageUrl": "https://www.legislation.gov.uk/explore/legislatures/scotland",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/analytics/cookiesBannerIgnored.gif",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1,
+          "height": 1,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/explore/legislatures/scotland",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.legislation.gov.uk/explore/wales",
+      "finalUrl": "https://www.legislation.gov.uk/explore/legislatures/wales",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.legislation.gov.uk/images/maps/activeWales.gif",
+          "alt": "Wales Map, active",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 255,
+          "height": 237,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/explore/legislatures/wales",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/ogl-symbol.gif",
+          "alt": "OGL logo",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 41,
+          "height": 17,
+          "isVisible": false,
+          "pageUrl": "https://www.legislation.gov.uk/explore/legislatures/wales",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/analytics/cookiesBannerIgnored.gif",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1,
+          "height": 1,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/explore/legislatures/wales",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.legislation.gov.uk/explore/ni",
+      "finalUrl": "https://www.legislation.gov.uk/explore/legislatures/ni",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.legislation.gov.uk/images/maps/activeNi.gif",
+          "alt": "Northern Ireland",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 255,
+          "height": 237,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/explore/legislatures/ni",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/ogl-symbol.gif",
+          "alt": "OGL logo",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 41,
+          "height": 17,
+          "isVisible": false,
+          "pageUrl": "https://www.legislation.gov.uk/explore/legislatures/ni",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/analytics/cookiesBannerIgnored.gif",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1,
+          "height": 1,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/explore/legislatures/ni",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.legislation.gov.uk/search",
+      "finalUrl": "https://www.legislation.gov.uk/search",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/helpIcon.gif",
+          "alt": " Help about Title searching",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 16,
+          "height": 16,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/search",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/closeIcon.gif",
+          "alt": "Close",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 22,
+          "height": 23,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/search",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Alt text \"Close\" is a single word; consider a more descriptive phrase that explains the image's purpose in context"
+          ]
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/helpIcon.gif",
+          "alt": " Help about language searching",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 16,
+          "height": 16,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/search",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/closeIcon.gif",
+          "alt": "Close",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 22,
+          "height": 23,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/search",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Alt text \"Close\" is a single word; consider a more descriptive phrase that explains the image's purpose in context"
+          ]
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/helpIcon.gif",
+          "alt": " Help about Year Range searching",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 16,
+          "height": 16,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/search",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/closeIcon.gif",
+          "alt": "Close",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 22,
+          "height": 23,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/search",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Alt text \"Close\" is a single word; consider a more descriptive phrase that explains the image's purpose in context"
+          ]
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/helpIcon.gif",
+          "alt": " Help about Number and Series searching",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 16,
+          "height": 16,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/search",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/closeIcon.gif",
+          "alt": "Close",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 22,
+          "height": 23,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/search",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Alt text \"Close\" is a single word; consider a more descriptive phrase that explains the image's purpose in context"
+          ]
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/helpIcon.gif",
+          "alt": " Help about Legislation Type searching",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 16,
+          "height": 16,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/search",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/closeIcon.gif",
+          "alt": "Close",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 22,
+          "height": 23,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/search",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Alt text \"Close\" is a single word; consider a more descriptive phrase that explains the image's purpose in context"
+          ]
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/ogl-symbol.gif",
+          "alt": "OGL logo",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 41,
+          "height": 17,
+          "isVisible": false,
+          "pageUrl": "https://www.legislation.gov.uk/search",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/analytics/cookiesBannerIgnored.gif",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1,
+          "height": 1,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/search",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.legislation.gov.uk/search/point-in-time",
+      "finalUrl": "https://www.legislation.gov.uk/search/point-in-time",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/helpIcon.gif",
+          "alt": " Help about Title searching",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 16,
+          "height": 16,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/search/point-in-time",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/closeIcon.gif",
+          "alt": "Close",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 22,
+          "height": 23,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/search/point-in-time",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Alt text \"Close\" is a single word; consider a more descriptive phrase that explains the image's purpose in context"
+          ]
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/helpIcon.gif",
+          "alt": " Help about Specific Year searching",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 16,
+          "height": 16,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/search/point-in-time",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/closeIcon.gif",
+          "alt": "Close",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 22,
+          "height": 23,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/search/point-in-time",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Alt text \"Close\" is a single word; consider a more descriptive phrase that explains the image's purpose in context"
+          ]
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/helpIcon.gif",
+          "alt": " Help about Number and Series searching",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 16,
+          "height": 16,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/search/point-in-time",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/closeIcon.gif",
+          "alt": "Close",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 22,
+          "height": 23,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/search/point-in-time",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Alt text \"Close\" is a single word; consider a more descriptive phrase that explains the image's purpose in context"
+          ]
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/helpIcon.gif",
+          "alt": " Help about Legislation Type searching",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 16,
+          "height": 16,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/search/point-in-time",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/closeIcon.gif",
+          "alt": "Close",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 22,
+          "height": 23,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/search/point-in-time",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Alt text \"Close\" is a single word; consider a more descriptive phrase that explains the image's purpose in context"
+          ]
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/helpIcon.gif",
+          "alt": " Help about Point In Time searching",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 16,
+          "height": 16,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/search/point-in-time",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/closeIcon.gif",
+          "alt": "Close",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 22,
+          "height": 23,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/search/point-in-time",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Alt text \"Close\" is a single word; consider a more descriptive phrase that explains the image's purpose in context"
+          ]
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/closeIcon.gif",
+          "alt": "Close",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 22,
+          "height": 23,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/search/point-in-time",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Alt text \"Close\" is a single word; consider a more descriptive phrase that explains the image's purpose in context"
+          ]
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/ogl-symbol.gif",
+          "alt": "OGL logo",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 41,
+          "height": 17,
+          "isVisible": false,
+          "pageUrl": "https://www.legislation.gov.uk/search/point-in-time",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/analytics/cookiesBannerIgnored.gif",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1,
+          "height": 1,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/search/point-in-time",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.legislation.gov.uk/changestolegislation",
+      "finalUrl": "https://www.legislation.gov.uk/changes",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/helpIcon.gif",
+          "alt": "Changes that affect help",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 16,
+          "height": 16,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/changes",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/closeIcon.gif",
+          "alt": "Close",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 22,
+          "height": 23,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/changes",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Alt text \"Close\" is a single word; consider a more descriptive phrase that explains the image's purpose in context"
+          ]
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/helpIcon.gif",
+          "alt": "Made by help",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 16,
+          "height": 16,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/changes",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/closeIcon.gif",
+          "alt": "Close",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 22,
+          "height": 23,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/changes",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Alt text \"Close\" is a single word; consider a more descriptive phrase that explains the image's purpose in context"
+          ]
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/helpIcon.gif",
+          "alt": "Results showing help",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 16,
+          "height": 16,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/changes",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/closeIcon.gif",
+          "alt": "Close",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 22,
+          "height": 23,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/changes",
+          "status": "SUSPICIOUS",
+          "issues": [
+            "Alt text \"Close\" is a single word; consider a more descriptive phrase that explains the image's purpose in context"
+          ]
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/ogl-symbol.gif",
+          "alt": "OGL logo",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 41,
+          "height": 17,
+          "isVisible": false,
+          "pageUrl": "https://www.legislation.gov.uk/changes",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/analytics/cookiesBannerIgnored.gif",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1,
+          "height": 1,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/changes",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.legislation.gov.uk/about-us",
+      "finalUrl": "https://www.legislation.gov.uk/about-us",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/ogl-symbol.gif",
+          "alt": "OGL logo",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 41,
+          "height": 17,
+          "isVisible": false,
+          "pageUrl": "https://www.legislation.gov.uk/about-us",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/analytics/cookiesBannerIgnored.gif",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1,
+          "height": 1,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/about-us",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.legislation.gov.uk/faqs",
+      "finalUrl": "https://www.legislation.gov.uk/faqs",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/ogl-symbol.gif",
+          "alt": "OGL logo",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 41,
+          "height": 17,
+          "isVisible": false,
+          "pageUrl": "https://www.legislation.gov.uk/faqs",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/analytics/cookiesBannerIgnored.gif",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1,
+          "height": 1,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/faqs",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.legislation.gov.uk/help",
+      "finalUrl": "https://www.legislation.gov.uk/help",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/ogl-symbol.gif",
+          "alt": "OGL logo",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 41,
+          "height": 17,
+          "isVisible": false,
+          "pageUrl": "https://www.legislation.gov.uk/help",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/analytics/cookiesBannerIgnored.gif",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1,
+          "height": 1,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/help",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.legislation.gov.uk/sitemap",
+      "finalUrl": "https://www.legislation.gov.uk/sitemap",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/ogl-symbol.gif",
+          "alt": "OGL logo",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 41,
+          "height": 17,
+          "isVisible": false,
+          "pageUrl": "https://www.legislation.gov.uk/sitemap",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/analytics/cookiesBannerIgnored.gif",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1,
+          "height": 1,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/sitemap",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.legislation.gov.uk/glossary",
+      "finalUrl": "https://www.legislation.gov.uk/glossary",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/ogl-symbol.gif",
+          "alt": "OGL logo",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 41,
+          "height": 17,
+          "isVisible": false,
+          "pageUrl": "https://www.legislation.gov.uk/glossary",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/analytics/cookiesBannerIgnored.gif",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1,
+          "height": 1,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/glossary",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.legislation.gov.uk/accessibility",
+      "finalUrl": "https://www.legislation.gov.uk/accessibility",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/ogl-symbol.gif",
+          "alt": "OGL logo",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 41,
+          "height": 17,
+          "isVisible": false,
+          "pageUrl": "https://www.legislation.gov.uk/accessibility",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/analytics/cookiesBannerIgnored.gif",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1,
+          "height": 1,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/accessibility",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.legislation.gov.uk/usefullinks",
+      "finalUrl": "https://www.legislation.gov.uk/usefullinks",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/ogl-symbol.gif",
+          "alt": "OGL logo",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 41,
+          "height": 17,
+          "isVisible": false,
+          "pageUrl": "https://www.legislation.gov.uk/usefullinks",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/analytics/cookiesBannerIgnored.gif",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1,
+          "height": 1,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/usefullinks",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    },
+    {
+      "url": "https://www.legislation.gov.uk/contact-us",
+      "finalUrl": "https://www.legislation.gov.uk/contact-us",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://www.legislation.gov.uk/images/chrome/ogl-symbol.gif",
+          "alt": "OGL logo",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 41,
+          "height": 17,
+          "isVisible": false,
+          "pageUrl": "https://www.legislation.gov.uk/contact-us",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://www.legislation.gov.uk/images/analytics/cookiesBannerIgnored.gif",
+          "alt": "",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1,
+          "height": 1,
+          "isVisible": true,
+          "pageUrl": "https://www.legislation.gov.uk/contact-us",
+          "status": "DECORATIVE",
+          "issues": []
+        }
+      ],
+      "error": null
+    }
+  ],
+  "uniqueImageList": [
+    {
+      "src": "https://www.legislation.gov.uk/images/chrome/site_logo_legislation.gif",
+      "alt": "legislation.gov.uk homepage call-to-action widget",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 319,
+      "height": 97,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://www.legislation.gov.uk/"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "legislation.gov.uk homepage call-to-action widget",
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://www.legislation.gov.uk/images/chrome/ogl-symbol.gif",
+      "alt": "OGL logo",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": false,
+      "width": 41,
+      "height": 17,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://www.legislation.gov.uk/",
+        "https://www.legislation.gov.uk/new",
+        "https://www.legislation.gov.uk/new/uk",
+        "https://www.legislation.gov.uk/new/scotland",
+        "https://www.legislation.gov.uk/new/wales",
+        "https://www.legislation.gov.uk/new/ni",
+        "https://www.legislation.gov.uk/explore",
+        "https://www.legislation.gov.uk/explore/uk",
+        "https://www.legislation.gov.uk/explore/scotland",
+        "https://www.legislation.gov.uk/explore/wales",
+        "https://www.legislation.gov.uk/explore/ni",
+        "https://www.legislation.gov.uk/search",
+        "https://www.legislation.gov.uk/search/point-in-time",
+        "https://www.legislation.gov.uk/changestolegislation",
+        "https://www.legislation.gov.uk/about-us",
+        "https://www.legislation.gov.uk/faqs",
+        "https://www.legislation.gov.uk/help",
+        "https://www.legislation.gov.uk/sitemap",
+        "https://www.legislation.gov.uk/glossary",
+        "https://www.legislation.gov.uk/accessibility",
+        "https://www.legislation.gov.uk/usefullinks",
+        "https://www.legislation.gov.uk/contact-us"
+      ],
+      "occurrences": 22,
+      "altVariants": [
+        {
+          "value": "OGL logo",
+          "count": 22,
+          "pages": [
+            "https://www.legislation.gov.uk/",
+            "https://www.legislation.gov.uk/new",
+            "https://www.legislation.gov.uk/new/uk",
+            "https://www.legislation.gov.uk/new/scotland",
+            "https://www.legislation.gov.uk/new/wales",
+            "https://www.legislation.gov.uk/new/ni",
+            "https://www.legislation.gov.uk/explore",
+            "https://www.legislation.gov.uk/explore/uk",
+            "https://www.legislation.gov.uk/explore/scotland",
+            "https://www.legislation.gov.uk/explore/wales",
+            "https://www.legislation.gov.uk/explore/ni",
+            "https://www.legislation.gov.uk/search",
+            "https://www.legislation.gov.uk/search/point-in-time",
+            "https://www.legislation.gov.uk/changestolegislation",
+            "https://www.legislation.gov.uk/about-us",
+            "https://www.legislation.gov.uk/faqs",
+            "https://www.legislation.gov.uk/help",
+            "https://www.legislation.gov.uk/sitemap",
+            "https://www.legislation.gov.uk/glossary",
+            "https://www.legislation.gov.uk/accessibility",
+            "https://www.legislation.gov.uk/usefullinks",
+            "https://www.legislation.gov.uk/contact-us"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 22,
+          "pages": [
+            "https://www.legislation.gov.uk/",
+            "https://www.legislation.gov.uk/new",
+            "https://www.legislation.gov.uk/new/uk",
+            "https://www.legislation.gov.uk/new/scotland",
+            "https://www.legislation.gov.uk/new/wales",
+            "https://www.legislation.gov.uk/new/ni",
+            "https://www.legislation.gov.uk/explore",
+            "https://www.legislation.gov.uk/explore/uk",
+            "https://www.legislation.gov.uk/explore/scotland",
+            "https://www.legislation.gov.uk/explore/wales",
+            "https://www.legislation.gov.uk/explore/ni",
+            "https://www.legislation.gov.uk/search",
+            "https://www.legislation.gov.uk/search/point-in-time",
+            "https://www.legislation.gov.uk/changestolegislation",
+            "https://www.legislation.gov.uk/about-us",
+            "https://www.legislation.gov.uk/faqs",
+            "https://www.legislation.gov.uk/help",
+            "https://www.legislation.gov.uk/sitemap",
+            "https://www.legislation.gov.uk/glossary",
+            "https://www.legislation.gov.uk/accessibility",
+            "https://www.legislation.gov.uk/usefullinks",
+            "https://www.legislation.gov.uk/contact-us"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 22,
+          "pages": [
+            "https://www.legislation.gov.uk/",
+            "https://www.legislation.gov.uk/new",
+            "https://www.legislation.gov.uk/new/uk",
+            "https://www.legislation.gov.uk/new/scotland",
+            "https://www.legislation.gov.uk/new/wales",
+            "https://www.legislation.gov.uk/new/ni",
+            "https://www.legislation.gov.uk/explore",
+            "https://www.legislation.gov.uk/explore/uk",
+            "https://www.legislation.gov.uk/explore/scotland",
+            "https://www.legislation.gov.uk/explore/wales",
+            "https://www.legislation.gov.uk/explore/ni",
+            "https://www.legislation.gov.uk/search",
+            "https://www.legislation.gov.uk/search/point-in-time",
+            "https://www.legislation.gov.uk/changestolegislation",
+            "https://www.legislation.gov.uk/about-us",
+            "https://www.legislation.gov.uk/faqs",
+            "https://www.legislation.gov.uk/help",
+            "https://www.legislation.gov.uk/sitemap",
+            "https://www.legislation.gov.uk/glossary",
+            "https://www.legislation.gov.uk/accessibility",
+            "https://www.legislation.gov.uk/usefullinks",
+            "https://www.legislation.gov.uk/contact-us"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 22,
+          "pages": [
+            "https://www.legislation.gov.uk/",
+            "https://www.legislation.gov.uk/new",
+            "https://www.legislation.gov.uk/new/uk",
+            "https://www.legislation.gov.uk/new/scotland",
+            "https://www.legislation.gov.uk/new/wales",
+            "https://www.legislation.gov.uk/new/ni",
+            "https://www.legislation.gov.uk/explore",
+            "https://www.legislation.gov.uk/explore/uk",
+            "https://www.legislation.gov.uk/explore/scotland",
+            "https://www.legislation.gov.uk/explore/wales",
+            "https://www.legislation.gov.uk/explore/ni",
+            "https://www.legislation.gov.uk/search",
+            "https://www.legislation.gov.uk/search/point-in-time",
+            "https://www.legislation.gov.uk/changestolegislation",
+            "https://www.legislation.gov.uk/about-us",
+            "https://www.legislation.gov.uk/faqs",
+            "https://www.legislation.gov.uk/help",
+            "https://www.legislation.gov.uk/sitemap",
+            "https://www.legislation.gov.uk/glossary",
+            "https://www.legislation.gov.uk/accessibility",
+            "https://www.legislation.gov.uk/usefullinks",
+            "https://www.legislation.gov.uk/contact-us"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 22,
+          "pages": [
+            "https://www.legislation.gov.uk/",
+            "https://www.legislation.gov.uk/new",
+            "https://www.legislation.gov.uk/new/uk",
+            "https://www.legislation.gov.uk/new/scotland",
+            "https://www.legislation.gov.uk/new/wales",
+            "https://www.legislation.gov.uk/new/ni",
+            "https://www.legislation.gov.uk/explore",
+            "https://www.legislation.gov.uk/explore/uk",
+            "https://www.legislation.gov.uk/explore/scotland",
+            "https://www.legislation.gov.uk/explore/wales",
+            "https://www.legislation.gov.uk/explore/ni",
+            "https://www.legislation.gov.uk/search",
+            "https://www.legislation.gov.uk/search/point-in-time",
+            "https://www.legislation.gov.uk/changestolegislation",
+            "https://www.legislation.gov.uk/about-us",
+            "https://www.legislation.gov.uk/faqs",
+            "https://www.legislation.gov.uk/help",
+            "https://www.legislation.gov.uk/sitemap",
+            "https://www.legislation.gov.uk/glossary",
+            "https://www.legislation.gov.uk/accessibility",
+            "https://www.legislation.gov.uk/usefullinks",
+            "https://www.legislation.gov.uk/contact-us"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 22,
+          "pages": [
+            "https://www.legislation.gov.uk/",
+            "https://www.legislation.gov.uk/new",
+            "https://www.legislation.gov.uk/new/uk",
+            "https://www.legislation.gov.uk/new/scotland",
+            "https://www.legislation.gov.uk/new/wales",
+            "https://www.legislation.gov.uk/new/ni",
+            "https://www.legislation.gov.uk/explore",
+            "https://www.legislation.gov.uk/explore/uk",
+            "https://www.legislation.gov.uk/explore/scotland",
+            "https://www.legislation.gov.uk/explore/wales",
+            "https://www.legislation.gov.uk/explore/ni",
+            "https://www.legislation.gov.uk/search",
+            "https://www.legislation.gov.uk/search/point-in-time",
+            "https://www.legislation.gov.uk/changestolegislation",
+            "https://www.legislation.gov.uk/about-us",
+            "https://www.legislation.gov.uk/faqs",
+            "https://www.legislation.gov.uk/help",
+            "https://www.legislation.gov.uk/sitemap",
+            "https://www.legislation.gov.uk/glossary",
+            "https://www.legislation.gov.uk/accessibility",
+            "https://www.legislation.gov.uk/usefullinks",
+            "https://www.legislation.gov.uk/contact-us"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://www.legislation.gov.uk/images/analytics/cookiesBannerIgnored.gif",
+      "alt": "",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 1,
+      "height": 1,
+      "status": "DECORATIVE",
+      "issues": [],
+      "pages": [
+        "https://www.legislation.gov.uk/",
+        "https://www.legislation.gov.uk/new",
+        "https://www.legislation.gov.uk/new/uk",
+        "https://www.legislation.gov.uk/new/scotland",
+        "https://www.legislation.gov.uk/new/wales",
+        "https://www.legislation.gov.uk/new/ni",
+        "https://www.legislation.gov.uk/explore",
+        "https://www.legislation.gov.uk/explore/uk",
+        "https://www.legislation.gov.uk/explore/scotland",
+        "https://www.legislation.gov.uk/explore/wales",
+        "https://www.legislation.gov.uk/explore/ni",
+        "https://www.legislation.gov.uk/search",
+        "https://www.legislation.gov.uk/search/point-in-time",
+        "https://www.legislation.gov.uk/changestolegislation",
+        "https://www.legislation.gov.uk/about-us",
+        "https://www.legislation.gov.uk/faqs",
+        "https://www.legislation.gov.uk/help",
+        "https://www.legislation.gov.uk/sitemap",
+        "https://www.legislation.gov.uk/glossary",
+        "https://www.legislation.gov.uk/accessibility",
+        "https://www.legislation.gov.uk/usefullinks",
+        "https://www.legislation.gov.uk/contact-us"
+      ],
+      "occurrences": 22,
+      "altVariants": [
+        {
+          "value": "",
+          "count": 22,
+          "pages": [
+            "https://www.legislation.gov.uk/",
+            "https://www.legislation.gov.uk/new",
+            "https://www.legislation.gov.uk/new/uk",
+            "https://www.legislation.gov.uk/new/scotland",
+            "https://www.legislation.gov.uk/new/wales",
+            "https://www.legislation.gov.uk/new/ni",
+            "https://www.legislation.gov.uk/explore",
+            "https://www.legislation.gov.uk/explore/uk",
+            "https://www.legislation.gov.uk/explore/scotland",
+            "https://www.legislation.gov.uk/explore/wales",
+            "https://www.legislation.gov.uk/explore/ni",
+            "https://www.legislation.gov.uk/search",
+            "https://www.legislation.gov.uk/search/point-in-time",
+            "https://www.legislation.gov.uk/changestolegislation",
+            "https://www.legislation.gov.uk/about-us",
+            "https://www.legislation.gov.uk/faqs",
+            "https://www.legislation.gov.uk/help",
+            "https://www.legislation.gov.uk/sitemap",
+            "https://www.legislation.gov.uk/glossary",
+            "https://www.legislation.gov.uk/accessibility",
+            "https://www.legislation.gov.uk/usefullinks",
+            "https://www.legislation.gov.uk/contact-us"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 22,
+          "pages": [
+            "https://www.legislation.gov.uk/",
+            "https://www.legislation.gov.uk/new",
+            "https://www.legislation.gov.uk/new/uk",
+            "https://www.legislation.gov.uk/new/scotland",
+            "https://www.legislation.gov.uk/new/wales",
+            "https://www.legislation.gov.uk/new/ni",
+            "https://www.legislation.gov.uk/explore",
+            "https://www.legislation.gov.uk/explore/uk",
+            "https://www.legislation.gov.uk/explore/scotland",
+            "https://www.legislation.gov.uk/explore/wales",
+            "https://www.legislation.gov.uk/explore/ni",
+            "https://www.legislation.gov.uk/search",
+            "https://www.legislation.gov.uk/search/point-in-time",
+            "https://www.legislation.gov.uk/changestolegislation",
+            "https://www.legislation.gov.uk/about-us",
+            "https://www.legislation.gov.uk/faqs",
+            "https://www.legislation.gov.uk/help",
+            "https://www.legislation.gov.uk/sitemap",
+            "https://www.legislation.gov.uk/glossary",
+            "https://www.legislation.gov.uk/accessibility",
+            "https://www.legislation.gov.uk/usefullinks",
+            "https://www.legislation.gov.uk/contact-us"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 22,
+          "pages": [
+            "https://www.legislation.gov.uk/",
+            "https://www.legislation.gov.uk/new",
+            "https://www.legislation.gov.uk/new/uk",
+            "https://www.legislation.gov.uk/new/scotland",
+            "https://www.legislation.gov.uk/new/wales",
+            "https://www.legislation.gov.uk/new/ni",
+            "https://www.legislation.gov.uk/explore",
+            "https://www.legislation.gov.uk/explore/uk",
+            "https://www.legislation.gov.uk/explore/scotland",
+            "https://www.legislation.gov.uk/explore/wales",
+            "https://www.legislation.gov.uk/explore/ni",
+            "https://www.legislation.gov.uk/search",
+            "https://www.legislation.gov.uk/search/point-in-time",
+            "https://www.legislation.gov.uk/changestolegislation",
+            "https://www.legislation.gov.uk/about-us",
+            "https://www.legislation.gov.uk/faqs",
+            "https://www.legislation.gov.uk/help",
+            "https://www.legislation.gov.uk/sitemap",
+            "https://www.legislation.gov.uk/glossary",
+            "https://www.legislation.gov.uk/accessibility",
+            "https://www.legislation.gov.uk/usefullinks",
+            "https://www.legislation.gov.uk/contact-us"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 22,
+          "pages": [
+            "https://www.legislation.gov.uk/",
+            "https://www.legislation.gov.uk/new",
+            "https://www.legislation.gov.uk/new/uk",
+            "https://www.legislation.gov.uk/new/scotland",
+            "https://www.legislation.gov.uk/new/wales",
+            "https://www.legislation.gov.uk/new/ni",
+            "https://www.legislation.gov.uk/explore",
+            "https://www.legislation.gov.uk/explore/uk",
+            "https://www.legislation.gov.uk/explore/scotland",
+            "https://www.legislation.gov.uk/explore/wales",
+            "https://www.legislation.gov.uk/explore/ni",
+            "https://www.legislation.gov.uk/search",
+            "https://www.legislation.gov.uk/search/point-in-time",
+            "https://www.legislation.gov.uk/changestolegislation",
+            "https://www.legislation.gov.uk/about-us",
+            "https://www.legislation.gov.uk/faqs",
+            "https://www.legislation.gov.uk/help",
+            "https://www.legislation.gov.uk/sitemap",
+            "https://www.legislation.gov.uk/glossary",
+            "https://www.legislation.gov.uk/accessibility",
+            "https://www.legislation.gov.uk/usefullinks",
+            "https://www.legislation.gov.uk/contact-us"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 22,
+          "pages": [
+            "https://www.legislation.gov.uk/",
+            "https://www.legislation.gov.uk/new",
+            "https://www.legislation.gov.uk/new/uk",
+            "https://www.legislation.gov.uk/new/scotland",
+            "https://www.legislation.gov.uk/new/wales",
+            "https://www.legislation.gov.uk/new/ni",
+            "https://www.legislation.gov.uk/explore",
+            "https://www.legislation.gov.uk/explore/uk",
+            "https://www.legislation.gov.uk/explore/scotland",
+            "https://www.legislation.gov.uk/explore/wales",
+            "https://www.legislation.gov.uk/explore/ni",
+            "https://www.legislation.gov.uk/search",
+            "https://www.legislation.gov.uk/search/point-in-time",
+            "https://www.legislation.gov.uk/changestolegislation",
+            "https://www.legislation.gov.uk/about-us",
+            "https://www.legislation.gov.uk/faqs",
+            "https://www.legislation.gov.uk/help",
+            "https://www.legislation.gov.uk/sitemap",
+            "https://www.legislation.gov.uk/glossary",
+            "https://www.legislation.gov.uk/accessibility",
+            "https://www.legislation.gov.uk/usefullinks",
+            "https://www.legislation.gov.uk/contact-us"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 22,
+          "pages": [
+            "https://www.legislation.gov.uk/",
+            "https://www.legislation.gov.uk/new",
+            "https://www.legislation.gov.uk/new/uk",
+            "https://www.legislation.gov.uk/new/scotland",
+            "https://www.legislation.gov.uk/new/wales",
+            "https://www.legislation.gov.uk/new/ni",
+            "https://www.legislation.gov.uk/explore",
+            "https://www.legislation.gov.uk/explore/uk",
+            "https://www.legislation.gov.uk/explore/scotland",
+            "https://www.legislation.gov.uk/explore/wales",
+            "https://www.legislation.gov.uk/explore/ni",
+            "https://www.legislation.gov.uk/search",
+            "https://www.legislation.gov.uk/search/point-in-time",
+            "https://www.legislation.gov.uk/changestolegislation",
+            "https://www.legislation.gov.uk/about-us",
+            "https://www.legislation.gov.uk/faqs",
+            "https://www.legislation.gov.uk/help",
+            "https://www.legislation.gov.uk/sitemap",
+            "https://www.legislation.gov.uk/glossary",
+            "https://www.legislation.gov.uk/accessibility",
+            "https://www.legislation.gov.uk/usefullinks",
+            "https://www.legislation.gov.uk/contact-us"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://www.legislation.gov.uk/images/chrome/atomFeedIcon.gif",
+      "alt": "Atom feed help",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 77,
+      "height": 17,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://www.legislation.gov.uk/new",
+        "https://www.legislation.gov.uk/new/uk",
+        "https://www.legislation.gov.uk/new/scotland",
+        "https://www.legislation.gov.uk/new/wales",
+        "https://www.legislation.gov.uk/new/ni"
+      ],
+      "occurrences": 5,
+      "altVariants": [
+        {
+          "value": "Atom feed help",
+          "count": 5,
+          "pages": [
+            "https://www.legislation.gov.uk/new",
+            "https://www.legislation.gov.uk/new/uk",
+            "https://www.legislation.gov.uk/new/scotland",
+            "https://www.legislation.gov.uk/new/wales",
+            "https://www.legislation.gov.uk/new/ni"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 5,
+          "pages": [
+            "https://www.legislation.gov.uk/new",
+            "https://www.legislation.gov.uk/new/uk",
+            "https://www.legislation.gov.uk/new/scotland",
+            "https://www.legislation.gov.uk/new/wales",
+            "https://www.legislation.gov.uk/new/ni"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 5,
+          "pages": [
+            "https://www.legislation.gov.uk/new",
+            "https://www.legislation.gov.uk/new/uk",
+            "https://www.legislation.gov.uk/new/scotland",
+            "https://www.legislation.gov.uk/new/wales",
+            "https://www.legislation.gov.uk/new/ni"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 5,
+          "pages": [
+            "https://www.legislation.gov.uk/new",
+            "https://www.legislation.gov.uk/new/uk",
+            "https://www.legislation.gov.uk/new/scotland",
+            "https://www.legislation.gov.uk/new/wales",
+            "https://www.legislation.gov.uk/new/ni"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 5,
+          "pages": [
+            "https://www.legislation.gov.uk/new",
+            "https://www.legislation.gov.uk/new/uk",
+            "https://www.legislation.gov.uk/new/scotland",
+            "https://www.legislation.gov.uk/new/wales",
+            "https://www.legislation.gov.uk/new/ni"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 5,
+          "pages": [
+            "https://www.legislation.gov.uk/new",
+            "https://www.legislation.gov.uk/new/uk",
+            "https://www.legislation.gov.uk/new/scotland",
+            "https://www.legislation.gov.uk/new/wales",
+            "https://www.legislation.gov.uk/new/ni"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://www.legislation.gov.uk/images/chrome/atomHelpIcon.gif",
+      "alt": "Atom feed help",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 18,
+      "height": 17,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://www.legislation.gov.uk/new",
+        "https://www.legislation.gov.uk/new/uk",
+        "https://www.legislation.gov.uk/new/scotland",
+        "https://www.legislation.gov.uk/new/wales",
+        "https://www.legislation.gov.uk/new/ni"
+      ],
+      "occurrences": 5,
+      "altVariants": [
+        {
+          "value": "Atom feed help",
+          "count": 5,
+          "pages": [
+            "https://www.legislation.gov.uk/new",
+            "https://www.legislation.gov.uk/new/uk",
+            "https://www.legislation.gov.uk/new/scotland",
+            "https://www.legislation.gov.uk/new/wales",
+            "https://www.legislation.gov.uk/new/ni"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 5,
+          "pages": [
+            "https://www.legislation.gov.uk/new",
+            "https://www.legislation.gov.uk/new/uk",
+            "https://www.legislation.gov.uk/new/scotland",
+            "https://www.legislation.gov.uk/new/wales",
+            "https://www.legislation.gov.uk/new/ni"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 5,
+          "pages": [
+            "https://www.legislation.gov.uk/new",
+            "https://www.legislation.gov.uk/new/uk",
+            "https://www.legislation.gov.uk/new/scotland",
+            "https://www.legislation.gov.uk/new/wales",
+            "https://www.legislation.gov.uk/new/ni"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 5,
+          "pages": [
+            "https://www.legislation.gov.uk/new",
+            "https://www.legislation.gov.uk/new/uk",
+            "https://www.legislation.gov.uk/new/scotland",
+            "https://www.legislation.gov.uk/new/wales",
+            "https://www.legislation.gov.uk/new/ni"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 5,
+          "pages": [
+            "https://www.legislation.gov.uk/new",
+            "https://www.legislation.gov.uk/new/uk",
+            "https://www.legislation.gov.uk/new/scotland",
+            "https://www.legislation.gov.uk/new/wales",
+            "https://www.legislation.gov.uk/new/ni"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 5,
+          "pages": [
+            "https://www.legislation.gov.uk/new",
+            "https://www.legislation.gov.uk/new/uk",
+            "https://www.legislation.gov.uk/new/scotland",
+            "https://www.legislation.gov.uk/new/wales",
+            "https://www.legislation.gov.uk/new/ni"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://www.legislation.gov.uk/images/chrome/closeIcon.gif",
+      "alt": "Close",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 22,
+      "height": 23,
+      "status": "SUSPICIOUS",
+      "issues": [
+        "Alt text \"Close\" is a single word; consider a more descriptive phrase that explains the image's purpose in context"
+      ],
+      "pages": [
+        "https://www.legislation.gov.uk/new",
+        "https://www.legislation.gov.uk/new/uk",
+        "https://www.legislation.gov.uk/new/scotland",
+        "https://www.legislation.gov.uk/new/wales",
+        "https://www.legislation.gov.uk/new/ni",
+        "https://www.legislation.gov.uk/search",
+        "https://www.legislation.gov.uk/search/point-in-time",
+        "https://www.legislation.gov.uk/changestolegislation"
+      ],
+      "occurrences": 19,
+      "altVariants": [
+        {
+          "value": "Close",
+          "count": 19,
+          "pages": [
+            "https://www.legislation.gov.uk/new",
+            "https://www.legislation.gov.uk/new/uk",
+            "https://www.legislation.gov.uk/new/scotland",
+            "https://www.legislation.gov.uk/new/wales",
+            "https://www.legislation.gov.uk/new/ni",
+            "https://www.legislation.gov.uk/search",
+            "https://www.legislation.gov.uk/search/point-in-time",
+            "https://www.legislation.gov.uk/changestolegislation"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 19,
+          "pages": [
+            "https://www.legislation.gov.uk/new",
+            "https://www.legislation.gov.uk/new/uk",
+            "https://www.legislation.gov.uk/new/scotland",
+            "https://www.legislation.gov.uk/new/wales",
+            "https://www.legislation.gov.uk/new/ni",
+            "https://www.legislation.gov.uk/search",
+            "https://www.legislation.gov.uk/search/point-in-time",
+            "https://www.legislation.gov.uk/changestolegislation"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 19,
+          "pages": [
+            "https://www.legislation.gov.uk/new",
+            "https://www.legislation.gov.uk/new/uk",
+            "https://www.legislation.gov.uk/new/scotland",
+            "https://www.legislation.gov.uk/new/wales",
+            "https://www.legislation.gov.uk/new/ni",
+            "https://www.legislation.gov.uk/search",
+            "https://www.legislation.gov.uk/search/point-in-time",
+            "https://www.legislation.gov.uk/changestolegislation"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 19,
+          "pages": [
+            "https://www.legislation.gov.uk/new",
+            "https://www.legislation.gov.uk/new/uk",
+            "https://www.legislation.gov.uk/new/scotland",
+            "https://www.legislation.gov.uk/new/wales",
+            "https://www.legislation.gov.uk/new/ni",
+            "https://www.legislation.gov.uk/search",
+            "https://www.legislation.gov.uk/search/point-in-time",
+            "https://www.legislation.gov.uk/changestolegislation"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 19,
+          "pages": [
+            "https://www.legislation.gov.uk/new",
+            "https://www.legislation.gov.uk/new/uk",
+            "https://www.legislation.gov.uk/new/scotland",
+            "https://www.legislation.gov.uk/new/wales",
+            "https://www.legislation.gov.uk/new/ni",
+            "https://www.legislation.gov.uk/search",
+            "https://www.legislation.gov.uk/search/point-in-time",
+            "https://www.legislation.gov.uk/changestolegislation"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 19,
+          "pages": [
+            "https://www.legislation.gov.uk/new",
+            "https://www.legislation.gov.uk/new/uk",
+            "https://www.legislation.gov.uk/new/scotland",
+            "https://www.legislation.gov.uk/new/wales",
+            "https://www.legislation.gov.uk/new/ni",
+            "https://www.legislation.gov.uk/search",
+            "https://www.legislation.gov.uk/search/point-in-time",
+            "https://www.legislation.gov.uk/changestolegislation"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://www.legislation.gov.uk/images/chrome/icon_feed_small.png",
+      "alt": "Icon for Data Feed Link",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 14,
+      "height": 14,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://www.legislation.gov.uk/new",
+        "https://www.legislation.gov.uk/new/uk"
+      ],
+      "occurrences": 2,
+      "altVariants": [
+        {
+          "value": "Icon for Data Feed Link",
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/new"
+          ]
+        },
+        {
+          "value": "UK Statutory Instruments Feed",
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/new/uk"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://www.legislation.gov.uk/new",
+            "https://www.legislation.gov.uk/new/uk"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://www.legislation.gov.uk/new",
+            "https://www.legislation.gov.uk/new/uk"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://www.legislation.gov.uk/new",
+            "https://www.legislation.gov.uk/new/uk"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://www.legislation.gov.uk/new",
+            "https://www.legislation.gov.uk/new/uk"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 2,
+          "pages": [
+            "https://www.legislation.gov.uk/new",
+            "https://www.legislation.gov.uk/new/uk"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://www.legislation.gov.uk/images/maps/activeUk.gif",
+      "alt": "United Kingdom (UK)",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 255,
+      "height": 237,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://www.legislation.gov.uk/explore/uk"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "United Kingdom (UK)",
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/explore/uk"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/explore/uk"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/explore/uk"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/explore/uk"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/explore/uk"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/explore/uk"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://www.legislation.gov.uk/images/maps/activeScotland.gif",
+      "alt": "Scotland",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 255,
+      "height": 237,
+      "status": "SUSPICIOUS",
+      "issues": [
+        "Alt text \"Scotland\" is a single word; consider a more descriptive phrase that explains the image's purpose in context"
+      ],
+      "pages": [
+        "https://www.legislation.gov.uk/explore/scotland"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "Scotland",
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/explore/scotland"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/explore/scotland"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/explore/scotland"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/explore/scotland"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/explore/scotland"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/explore/scotland"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://www.legislation.gov.uk/images/maps/activeWales.gif",
+      "alt": "Wales Map, active",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 255,
+      "height": 237,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://www.legislation.gov.uk/explore/wales"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "Wales Map, active",
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/explore/wales"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/explore/wales"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/explore/wales"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/explore/wales"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/explore/wales"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/explore/wales"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://www.legislation.gov.uk/images/maps/activeNi.gif",
+      "alt": "Northern Ireland",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 255,
+      "height": 237,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://www.legislation.gov.uk/explore/ni"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "Northern Ireland",
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/explore/ni"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/explore/ni"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/explore/ni"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/explore/ni"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/explore/ni"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/explore/ni"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://www.legislation.gov.uk/images/chrome/helpIcon.gif",
+      "alt": "Help about Legislation Type searching",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 16,
+      "height": 16,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://www.legislation.gov.uk/search",
+        "https://www.legislation.gov.uk/search/point-in-time",
+        "https://www.legislation.gov.uk/changestolegislation"
+      ],
+      "occurrences": 13,
+      "altVariants": [
+        {
+          "value": "Help about Legislation Type searching",
+          "count": 2,
+          "pages": [
+            "https://www.legislation.gov.uk/search",
+            "https://www.legislation.gov.uk/search/point-in-time"
+          ]
+        },
+        {
+          "value": "Help about Number and Series searching",
+          "count": 2,
+          "pages": [
+            "https://www.legislation.gov.uk/search",
+            "https://www.legislation.gov.uk/search/point-in-time"
+          ]
+        },
+        {
+          "value": "Help about Title searching",
+          "count": 2,
+          "pages": [
+            "https://www.legislation.gov.uk/search",
+            "https://www.legislation.gov.uk/search/point-in-time"
+          ]
+        },
+        {
+          "value": "Changes that affect help",
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/changestolegislation"
+          ]
+        },
+        {
+          "value": "Help about language searching",
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/search"
+          ]
+        },
+        {
+          "value": "Help about Point In Time searching",
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/search/point-in-time"
+          ]
+        },
+        {
+          "value": "Help about Specific Year searching",
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/search/point-in-time"
+          ]
+        },
+        {
+          "value": "Help about Year Range searching",
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/search"
+          ]
+        },
+        {
+          "value": "Made by help",
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/changestolegislation"
+          ]
+        },
+        {
+          "value": "Results showing help",
+          "count": 1,
+          "pages": [
+            "https://www.legislation.gov.uk/changestolegislation"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 13,
+          "pages": [
+            "https://www.legislation.gov.uk/search",
+            "https://www.legislation.gov.uk/search/point-in-time",
+            "https://www.legislation.gov.uk/changestolegislation"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 13,
+          "pages": [
+            "https://www.legislation.gov.uk/search",
+            "https://www.legislation.gov.uk/search/point-in-time",
+            "https://www.legislation.gov.uk/changestolegislation"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 13,
+          "pages": [
+            "https://www.legislation.gov.uk/search",
+            "https://www.legislation.gov.uk/search/point-in-time",
+            "https://www.legislation.gov.uk/changestolegislation"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 13,
+          "pages": [
+            "https://www.legislation.gov.uk/search",
+            "https://www.legislation.gov.uk/search/point-in-time",
+            "https://www.legislation.gov.uk/changestolegislation"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 13,
+          "pages": [
+            "https://www.legislation.gov.uk/search",
+            "https://www.legislation.gov.uk/search/point-in-time",
+            "https://www.legislation.gov.uk/changestolegislation"
+          ]
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "ok": true,
+    "reportType": "alt-text",
+    "issueNumber": 53,
+    "issueUrl": "https://github.com/mgifford/alt-text-scan/issues/53",
+    "scanTitle": "https://www.legislation.gov.uk/",
+    "scanDomain": "https://www.legislation.gov.uk",
+    "discoveryMethod": "sitemap",
+    "discoveredTotal": 22,
+    "requestedCount": 22,
+    "acceptedCount": 22,
+    "rejectedCount": 0,
+    "scannedCount": 22,
+    "skippedDueToTimeout": 0,
+    "urlsRequested": 22,
+    "urlsScanned": 22,
+    "totalImages": 93,
+    "uniqueImages": 12,
+    "imagesWithIssues": 2,
+    "statusCounts": {
+      "MISSING": 0,
+      "DECORATIVE": 22,
+      "SUSPICIOUS": 20,
+      "FILENAME": 0,
+      "TOO_SHORT": 0,
+      "TOO_LONG": 0,
+      "GOOD": 51
+    },
+    "scannedAt": "2026-04-23T13:32:54.330Z"
+  }
+}

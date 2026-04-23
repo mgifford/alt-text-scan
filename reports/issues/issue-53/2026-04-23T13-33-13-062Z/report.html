@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alt Text Scan – https://www.legislation.gov.uk</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 1200px; margin: 2rem auto; padding: 0 1rem; color: #222; }
+    h1 { font-size: 1.5rem; }
+    .summary { display: flex; gap: 1.5rem; flex-wrap: wrap; margin: 1rem 0; }
+    .stat { background: #f5f5f5; border-radius: 6px; padding: 0.75rem 1.25rem; }
+    .stat strong { display: block; font-size: 1.8rem; }
+    .report-controls { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; margin: 1rem 0; }
+    .toggle-thumbnails { border: 1px solid #333; background: #fff; color: #222; border-radius: 999px; padding: 0.55rem 0.95rem; font: inherit; cursor: pointer; }
+    .toggle-thumbnails[aria-pressed="true"] { background: #222; color: #fff; }
+    table { border-collapse: collapse; width: 100%; margin-top: 1.5rem; }
+    th { background: #333; color: #fff; text-align: left; padding: 0.5rem 0.75rem; }
+    td { padding: 0.5rem 0.75rem; border-bottom: 1px solid #ddd; vertical-align: top; }
+    tr:hover td { background: #fafafa; }
+    code { background: #f0f0f0; padding: 0.1em 0.3em; border-radius: 3px; font-size: 0.9em; }
+    .thumbnail-column { width: 8.5rem; }
+    .thumbnail-column-decorative { width: 8.5rem; }
+    .review-callout { background: #e8f4fd; border-left: 4px solid #1565c0; padding: 0.75rem 1rem; margin: 1rem 0; font-size: 0.95em; border-radius: 0 6px 6px 0; }
+    .thumbnail-trigger { display: inline-flex; flex-direction: column; align-items: center; gap: 0.35rem; width: 7rem; padding: 0.45rem; border: 1px solid #ccc; border-radius: 8px; background: #fff; cursor: pointer; }
+    .thumbnail-trigger:hover, .thumbnail-trigger:focus-visible { border-color: #333; box-shadow: 0 0 0 3px rgba(33, 33, 33, 0.15); outline: none; }
+    .thumbnail-trigger__image { display: block; width: 100%; height: 4.5rem; object-fit: contain; background: #f5f5f5; border-radius: 4px; }
+    .thumbnail-trigger__text { font-size: 0.8rem; color: #444; }
+    .url-cell { position: relative; max-width: 20rem; }
+    .url-tooltip { display: none; position: absolute; z-index: 10; left: 0; top: 100%; margin-top: 0.2rem; background: #333; color: #fff; padding: 0.4rem 0.6rem; border-radius: 4px; font-size: 0.8rem; max-width: 44rem; word-break: break-all; white-space: normal; pointer-events: none; box-shadow: 0 2px 8px rgba(0,0,0,0.35); }
+    .url-cell:hover .url-tooltip, .url-cell:focus-within .url-tooltip { display: block; }
+    dialog::backdrop { background: rgba(17, 24, 39, 0.72); }
+    .preview-dialog { border: none; border-radius: 12px; padding: 0; width: min(92vw, 960px); max-height: 90vh; overflow: hidden; }
+    .preview-dialog__inner { display: grid; gap: 0.75rem; padding: 1rem; background: #fff; }
+    .preview-dialog__header { display: flex; justify-content: space-between; gap: 1rem; align-items: start; }
+    .preview-dialog__title { margin: 0; font-size: 1.1rem; }
+    .preview-dialog__close { border: 1px solid #333; background: #fff; color: #222; border-radius: 999px; padding: 0.45rem 0.8rem; font: inherit; cursor: pointer; }
+    .preview-dialog__figure { margin: 0; display: grid; gap: 0.5rem; justify-items: center; }
+    .preview-dialog__image { display: block; max-width: min(88vw, 100%); max-height: 70vh; width: auto; height: auto; background: #f5f5f5; }
+    .preview-dialog__caption { font-size: 0.9rem; color: #444; word-break: break-word; }
+    .preview-dialog__actions { margin: 0; font-size: 0.9rem; }
+    .preview-dialog__view-full { color: #1565c0; }
+    .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    @media (max-width: 720px) {
+      .summary { gap: 0.75rem; }
+      .stat { flex: 1 1 9rem; }
+      .thumbnail-trigger { width: 5.75rem; }
+      .thumbnail-trigger__image { height: 3.75rem; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Alt Text Scan Report</h1>
+  <p><strong>Domain:</strong> https://www.legislation.gov.uk &nbsp;|&nbsp;
+     <strong>Scanned:</strong> 4/23/2026, 1:32:54 PM &nbsp;|&nbsp;
+     <strong>Discovery method:</strong> sitemap</p>
+  <p><a href="report.csv">Download image inventory CSV</a> &nbsp;|&nbsp; <a href="report.json">View full JSON</a></p>
+
+  <div class="summary">
+    <div class="stat"><strong>22</strong> Pages scanned</div>
+    <div class="stat"><strong>93</strong> Images found</div>
+    <div class="stat"><strong>12</strong> Unique images</div>
+    <div class="stat"><strong style="color:#d32f2f">2</strong> Images with issues</div>
+  </div>
+
+  <h2>Status breakdown</h2>
+  <table>
+    <thead><tr><th>Status</th><th>Count</th></tr></thead>
+    <tbody><tr><td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td><td>22</td></tr>
+<tr><td><span style="color:#f57c00;font-weight:bold">Suspicious</span></td><td>20</td></tr>
+<tr><td><span style="color:#2e7d32;font-weight:bold">Good</span></td><td>51</td></tr></tbody>
+  </table>
+
+  <h2>Unique image inventory</h2>
+  <div class="report-controls">
+    <button type="button" id="toggle-thumbnails" class="toggle-thumbnails" aria-pressed="false">Show thumbnails for images with alt text</button>
+    <span id="thumbnail-help">Thumbnails for images with alt text are hidden by default. Decorative images always show thumbnails for visual review.</span>
+  </div>
+  <p>Showing 11 images with alt text, with flagged items listed first. Use the CSV for a complete export.</p>
+  <table>
+    <thead><tr>
+      <th>Image</th>
+      <th class="thumbnail-column" hidden>Thumbnail</th>
+      <th>Status</th>
+      <th>Alt Text</th>
+      <th title="All distinct alt text values found for this image across all scanned pages, with how many times each value appeared. A Consistent result means the same alt text was used everywhere. Multiple entries mean the same image has different alt text on different pages and may need review.">Alt Variants</th>
+      <th>Title</th>
+      <th>ARIA Label</th>
+      <th>Pages</th>
+    </tr></thead>
+    <tbody>
+        <tr>
+          <td class="url-cell"><a href="https://www.legislation.gov.uk/images/chrome/closeIcon.gif" target="_blank" rel="noopener">https://www.legislation.gov.uk/images/chrome/closeIcon.gif</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.legislation.gov.uk/images/chrome/closeIcon.gif" data-preview-alt="Close" data-preview-label="Close" data-preview-width="22" data-preview-height="23" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Close"><img src="https://www.legislation.gov.uk/images/chrome/closeIcon.gif" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#f57c00;font-weight:bold">Suspicious</span></td>
+          <td><code>Close</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 19 occurrences of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>8<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.legislation.gov.uk/new" target="_blank" rel="noopener">https://www.legislation.gov.uk/new</a><br><a href="https://www.legislation.gov.uk/new/uk" target="_blank" rel="noopener">https://www.legislation.gov.uk/new/uk</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.legislation.gov.uk/images/maps/activeScotland.gif" target="_blank" rel="noopener" title="https://www.legislation.gov.uk/images/maps/activeScotland.gif">https://www.legislation.gov.uk/images/ … /activeScotland.gif</a><span class="url-tooltip" aria-hidden="true">https://www.legislation.gov.uk/images/maps/activeScotland.gif</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.legislation.gov.uk/images/maps/activeScotland.gif" data-preview-alt="Scotland" data-preview-label="Scotland" data-preview-width="255" data-preview-height="237" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Scotland"><img src="https://www.legislation.gov.uk/images/maps/activeScotland.gif" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#f57c00;font-weight:bold">Suspicious</span></td>
+          <td><code>Scotland</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.legislation.gov.uk/explore/scotland" target="_blank" rel="noopener">https://www.legislation.gov.uk/explore/scotland</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.legislation.gov.uk/images/chrome/ogl-symbol.gif" target="_blank" rel="noopener">https://www.legislation.gov.uk/images/chrome/ogl-symbol.gif</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.legislation.gov.uk/images/chrome/ogl-symbol.gif" data-preview-alt="OGL logo" data-preview-label="OGL logo" data-preview-width="41" data-preview-height="17" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: OGL logo"><img src="https://www.legislation.gov.uk/images/chrome/ogl-symbol.gif" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>OGL logo</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 22 occurrences of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>22<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.legislation.gov.uk/" target="_blank" rel="noopener">https://www.legislation.gov.uk/</a><br><a href="https://www.legislation.gov.uk/new" target="_blank" rel="noopener">https://www.legislation.gov.uk/new</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.legislation.gov.uk/images/chrome/atomFeedIcon.gif" target="_blank" rel="noopener" title="https://www.legislation.gov.uk/images/chrome/atomFeedIcon.gif">https://www.legislation.gov.uk/images/ch … /atomFeedIcon.gif</a><span class="url-tooltip" aria-hidden="true">https://www.legislation.gov.uk/images/chrome/atomFeedIcon.gif</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.legislation.gov.uk/images/chrome/atomFeedIcon.gif" data-preview-alt="Atom feed help" data-preview-label="Atom feed help" data-preview-width="77" data-preview-height="17" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Atom feed help"><img src="https://www.legislation.gov.uk/images/chrome/atomFeedIcon.gif" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Atom feed help</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 5 occurrences of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>5<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.legislation.gov.uk/new" target="_blank" rel="noopener">https://www.legislation.gov.uk/new</a><br><a href="https://www.legislation.gov.uk/new/uk" target="_blank" rel="noopener">https://www.legislation.gov.uk/new/uk</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.legislation.gov.uk/images/chrome/atomHelpIcon.gif" target="_blank" rel="noopener" title="https://www.legislation.gov.uk/images/chrome/atomHelpIcon.gif">https://www.legislation.gov.uk/images/ch … /atomHelpIcon.gif</a><span class="url-tooltip" aria-hidden="true">https://www.legislation.gov.uk/images/chrome/atomHelpIcon.gif</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.legislation.gov.uk/images/chrome/atomHelpIcon.gif" data-preview-alt="Atom feed help" data-preview-label="Atom feed help" data-preview-width="18" data-preview-height="17" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Atom feed help"><img src="https://www.legislation.gov.uk/images/chrome/atomHelpIcon.gif" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Atom feed help</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 5 occurrences of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>5<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.legislation.gov.uk/new" target="_blank" rel="noopener">https://www.legislation.gov.uk/new</a><br><a href="https://www.legislation.gov.uk/new/uk" target="_blank" rel="noopener">https://www.legislation.gov.uk/new/uk</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.legislation.gov.uk/images/chrome/helpIcon.gif" target="_blank" rel="noopener">https://www.legislation.gov.uk/images/chrome/helpIcon.gif</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.legislation.gov.uk/images/chrome/helpIcon.gif" data-preview-alt="Help about Legislation Type searching" data-preview-label="Help about Legislation Type searching" data-preview-width="16" data-preview-height="16" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Help about Legislation Type searching"><img src="https://www.legislation.gov.uk/images/chrome/helpIcon.gif" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Help about Legislation Type searching</code></td>
+          <td style="font-size:0.85em">Help about Legislation Type searching <span style="color:#888"><span aria-hidden="true">×2</span><span class="visually-hidden"> (2 occurrences)</span></span><br>Help about Number and Series searching <span style="color:#888"><span aria-hidden="true">×2</span><span class="visually-hidden"> (2 occurrences)</span></span><br>Help about Title searching <span style="color:#888"><span aria-hidden="true">×2</span><span class="visually-hidden"> (2 occurrences)</span></span><br>Changes that affect help <span style="color:#888"><span aria-hidden="true">×1</span><span class="visually-hidden"> (1 occurrence)</span></span><br>Help about language searching <span style="color:#888"><span aria-hidden="true">×1</span><span class="visually-hidden"> (1 occurrence)</span></span><br>Help about Point In Time searching <span style="color:#888"><span aria-hidden="true">×1</span><span class="visually-hidden"> (1 occurrence)</span></span><br>Help about Specific Year searching <span style="color:#888"><span aria-hidden="true">×1</span><span class="visually-hidden"> (1 occurrence)</span></span><br>Help about Year Range searching <span style="color:#888"><span aria-hidden="true">×1</span><span class="visually-hidden"> (1 occurrence)</span></span><br>Made by help <span style="color:#888"><span aria-hidden="true">×1</span><span class="visually-hidden"> (1 occurrence)</span></span><br>Results showing help <span style="color:#888"><span aria-hidden="true">×1</span><span class="visually-hidden"> (1 occurrence)</span></span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>3<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.legislation.gov.uk/search" target="_blank" rel="noopener">https://www.legislation.gov.uk/search</a><br><a href="https://www.legislation.gov.uk/search/point-in-time" target="_blank" rel="noopener">https://www.legislation.gov.uk/search/point-in-time</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.legislation.gov.uk/images/chrome/icon_feed_small.png" target="_blank" rel="noopener" title="https://www.legislation.gov.uk/images/chrome/icon_feed_small.png">https://www.legislation.gov.uk/images … /icon_feed_small.png</a><span class="url-tooltip" aria-hidden="true">https://www.legislation.gov.uk/images/chrome/icon_feed_small.png</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.legislation.gov.uk/images/chrome/icon_feed_small.png" data-preview-alt="Icon for Data Feed Link" data-preview-label="Icon for Data Feed Link" data-preview-width="14" data-preview-height="14" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Icon for Data Feed Link"><img src="https://www.legislation.gov.uk/images/chrome/icon_feed_small.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Icon for Data Feed Link</code></td>
+          <td style="font-size:0.85em">Icon for Data Feed Link <span style="color:#888"><span aria-hidden="true">×1</span><span class="visually-hidden"> (1 occurrence)</span></span><br>UK Statutory Instruments Feed <span style="color:#888"><span aria-hidden="true">×1</span><span class="visually-hidden"> (1 occurrence)</span></span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>2<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.legislation.gov.uk/new" target="_blank" rel="noopener">https://www.legislation.gov.uk/new</a><br><a href="https://www.legislation.gov.uk/new/uk" target="_blank" rel="noopener">https://www.legislation.gov.uk/new/uk</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.legislation.gov.uk/images/chrome/site_logo_legislation.gif" target="_blank" rel="noopener" title="https://www.legislation.gov.uk/images/chrome/site_logo_legislation.gif">https://www.legislation.gov.uk/ … /site_logo_legislation.gif</a><span class="url-tooltip" aria-hidden="true">https://www.legislation.gov.uk/images/chrome/site_logo_legislation.gif</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.legislation.gov.uk/images/chrome/site_logo_legislation.gif" data-preview-alt="legislation.gov.uk homepage call-to-action widget" data-preview-label="legislation.gov.uk homepage call-to-action widget" data-preview-width="319" data-preview-height="97" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: legislation.gov.uk homepage call-to-action widget"><img src="https://www.legislation.gov.uk/images/chrome/site_logo_legislation.gif" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>legislation.gov.uk homepage call-to-action widget</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.legislation.gov.uk/" target="_blank" rel="noopener">https://www.legislation.gov.uk/</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.legislation.gov.uk/images/maps/activeNi.gif" target="_blank" rel="noopener">https://www.legislation.gov.uk/images/maps/activeNi.gif</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.legislation.gov.uk/images/maps/activeNi.gif" data-preview-alt="Northern Ireland" data-preview-label="Northern Ireland" data-preview-width="255" data-preview-height="237" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Northern Ireland"><img src="https://www.legislation.gov.uk/images/maps/activeNi.gif" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Northern Ireland</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.legislation.gov.uk/explore/ni" target="_blank" rel="noopener">https://www.legislation.gov.uk/explore/ni</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.legislation.gov.uk/images/maps/activeUk.gif" target="_blank" rel="noopener">https://www.legislation.gov.uk/images/maps/activeUk.gif</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.legislation.gov.uk/images/maps/activeUk.gif" data-preview-alt="United Kingdom (UK)" data-preview-label="United Kingdom (UK)" data-preview-width="255" data-preview-height="237" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: United Kingdom (UK)"><img src="https://www.legislation.gov.uk/images/maps/activeUk.gif" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>United Kingdom (UK)</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.legislation.gov.uk/explore/uk" target="_blank" rel="noopener">https://www.legislation.gov.uk/explore/uk</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.legislation.gov.uk/images/maps/activeWales.gif" target="_blank" rel="noopener">https://www.legislation.gov.uk/images/maps/activeWales.gif</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.legislation.gov.uk/images/maps/activeWales.gif" data-preview-alt="Wales Map, active" data-preview-label="Wales Map, active" data-preview-width="255" data-preview-height="237" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Wales Map, active"><img src="https://www.legislation.gov.uk/images/maps/activeWales.gif" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Wales Map, active</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.legislation.gov.uk/explore/wales" target="_blank" rel="noopener">https://www.legislation.gov.uk/explore/wales</a></div></td>
+        </tr></tbody>
+  </table>
+
+  
+  <h2>Decorative images — please review</h2>
+  <div class="review-callout" role="note">
+    <strong>Review recommended:</strong> These 1 image have empty alt text and are marked as decorative.
+    Please look at each thumbnail: does it convey meaningful information that sighted users would benefit from knowing?
+    If so, it needs descriptive alt text. The <strong>Role</strong> and <strong>ARIA Label</strong> columns show any semantic markup that was applied.
+  </div>
+  <table>
+    <thead><tr><th>Image</th><th class="thumbnail-column-decorative">Thumbnail</th><th>Status</th><th>Role</th><th>ARIA Label</th><th>Pages</th></tr></thead>
+    <tbody>
+        <tr>
+          <td class="url-cell"><a href="https://www.legislation.gov.uk/images/analytics/cookiesBannerIgnored.gif" target="_blank" rel="noopener" title="https://www.legislation.gov.uk/images/analytics/cookiesBannerIgnored.gif">https://www.legislation.gov.uk/i … /cookiesBannerIgnored.gif</a><span class="url-tooltip" aria-hidden="true">https://www.legislation.gov.uk/images/analytics/cookiesBannerIgnored.gif</span></td>
+          <td class="thumbnail-column-decorative"><button type="button" class="thumbnail-trigger" data-preview-src="https://www.legislation.gov.uk/images/analytics/cookiesBannerIgnored.gif" data-preview-alt="" data-preview-label="https://www.legislation.gov.uk/images/analytics/cookiesBannerIgnored.gif" data-preview-width="1" data-preview-height="1" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: https://www.legislation.gov.uk/images/analytics/cookiesBannerIgnored.gif"><img src="https://www.legislation.gov.uk/images/analytics/cookiesBannerIgnored.gif" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#1565c0;font-weight:bold">Decorative (empty alt)</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>22<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://www.legislation.gov.uk/" target="_blank" rel="noopener">https://www.legislation.gov.uk/</a><br><a href="https://www.legislation.gov.uk/new" target="_blank" rel="noopener">https://www.legislation.gov.uk/new</a></div></td>
+        </tr></tbody>
+  </table>
+
+  <h2>Images with issues</h2>
+  <table>
+    <thead><tr><th>Image</th><th class="thumbnail-column" hidden>Thumbnail</th><th>Alt Text</th><th>Status</th><th>Issues</th><th>Found on</th></tr></thead>
+    <tbody>
+        <tr>
+          <td class="url-cell"><a href="https://www.legislation.gov.uk/images/chrome/closeIcon.gif" target="_blank" rel="noopener">https://www.legislation.gov.uk/images/chrome/closeIcon.gif</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.legislation.gov.uk/images/chrome/closeIcon.gif" data-preview-alt="Close" data-preview-label="Close" data-preview-width="22" data-preview-height="23" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Close"><img src="https://www.legislation.gov.uk/images/chrome/closeIcon.gif" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><code>Close</code></td>
+          <td><span style="color:#f57c00;font-weight:bold">Suspicious</span></td>
+          <td><ul style="margin:0;padding-left:1.2em"><li>Alt text &quot;Close&quot; is a single word; consider a more descriptive phrase that explains the image&#039;s purpose in context</li></ul></td>
+          <td style="font-size:0.85em"><a href="https://www.legislation.gov.uk/new" target="_blank" rel="noopener">https://www.legislation.gov.uk/new</a><br><a href="https://www.legislation.gov.uk/new/uk" target="_blank" rel="noopener">https://www.legislation.gov.uk/new/uk</a><br><a href="https://www.legislation.gov.uk/new/scotland" target="_blank" rel="noopener">https://www.legislation.gov.uk/new/scotland</a></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://www.legislation.gov.uk/images/maps/activeScotland.gif" target="_blank" rel="noopener" title="https://www.legislation.gov.uk/images/maps/activeScotland.gif">https://www.legislation.gov.uk/images/ … /activeScotland.gif</a><span class="url-tooltip" aria-hidden="true">https://www.legislation.gov.uk/images/maps/activeScotland.gif</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://www.legislation.gov.uk/images/maps/activeScotland.gif" data-preview-alt="Scotland" data-preview-label="Scotland" data-preview-width="255" data-preview-height="237" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Scotland"><img src="https://www.legislation.gov.uk/images/maps/activeScotland.gif" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><code>Scotland</code></td>
+          <td><span style="color:#f57c00;font-weight:bold">Suspicious</span></td>
+          <td><ul style="margin:0;padding-left:1.2em"><li>Alt text &quot;Scotland&quot; is a single word; consider a more descriptive phrase that explains the image&#039;s purpose in context</li></ul></td>
+          <td style="font-size:0.85em"><a href="https://www.legislation.gov.uk/explore/scotland" target="_blank" rel="noopener">https://www.legislation.gov.uk/explore/scotland</a></td>
+        </tr></tbody>
+  </table>
+
+  <dialog id="image-preview-dialog" class="preview-dialog" aria-labelledby="image-preview-title">
+    <div class="preview-dialog__inner">
+      <div class="preview-dialog__header">
+        <h2 id="image-preview-title" class="preview-dialog__title">Image preview</h2>
+        <form method="dialog">
+          <button type="submit" class="preview-dialog__close" id="close-image-preview">Close</button>
+        </form>
+      </div>
+      <figure class="preview-dialog__figure">
+        <img id="image-preview-image" class="preview-dialog__image" alt="">
+        <figcaption id="image-preview-caption" class="preview-dialog__caption"></figcaption>
+      </figure>
+      <p class="preview-dialog__actions">
+        <a id="image-preview-view-full" href="#" target="_blank" rel="noopener" class="preview-dialog__view-full">View full image ↗</a>
+      </p>
+    </div>
+  </dialog>
+
+  <script>
+    (() => {
+      const toggleButton = document.getElementById("toggle-thumbnails");
+      const thumbnailColumns = Array.from(document.querySelectorAll(".thumbnail-column"));
+      const dialog = document.getElementById("image-preview-dialog");
+      const previewImage = document.getElementById("image-preview-image");
+      const previewCaption = document.getElementById("image-preview-caption");
+      const previewTitle = document.getElementById("image-preview-title");
+      const closeButton = document.getElementById("close-image-preview");
+      const viewFullLink = document.getElementById("image-preview-view-full");
+      const previewTriggers = Array.from(document.querySelectorAll(".thumbnail-trigger"));
+      let lastTrigger = null;
+      let lastOpenMode = "click";
+      let skipNextFocusTrigger = null;
+
+      if (toggleButton) {
+        toggleButton.addEventListener("click", () => {
+          const shouldShow = toggleButton.getAttribute("aria-pressed") !== "true";
+          toggleButton.setAttribute("aria-pressed", String(shouldShow));
+          toggleButton.textContent = shouldShow ? "Hide thumbnails for images with alt text" : "Show thumbnails for images with alt text";
+          thumbnailColumns.forEach((column) => {
+            column.hidden = !shouldShow;
+          });
+        });
+      }
+
+      if (!(dialog instanceof HTMLDialogElement) || !previewImage || !previewCaption || !previewTitle) {
+        return;
+      }
+
+      const setPreviewContent = (trigger) => {
+        const src = trigger.dataset.previewSrc || "";
+        const alt = trigger.dataset.previewAlt || "";
+        const label = trigger.dataset.previewLabel || src;
+        const width = Number(trigger.dataset.previewWidth || 0);
+        const height = Number(trigger.dataset.previewHeight || 0);
+        const availableWidth = Math.max(window.innerWidth - 80, 320);
+
+        previewImage.src = src;
+        previewImage.alt = alt;
+        previewImage.style.width = width > 0 ? String(Math.min(width, availableWidth)) + "px" : "auto";
+        previewImage.style.height = "auto";
+        previewImage.style.maxWidth = "100%";
+        previewTitle.textContent = label;
+
+        if (viewFullLink) {
+          viewFullLink.href = src;
+        }
+
+        const altInfo = alt ? "Alt text: " + alt : "Alt text: none";
+        const sizeInfo = width > 0 && height > 0 ? "Displayed size: " + width + " × " + height + "px" : "Displayed size: not captured";
+        previewCaption.textContent = [altInfo, sizeInfo, src].join(" | ");
+
+        previewImage.onload = function() {
+          const nw = this.naturalWidth;
+          const nh = this.naturalHeight;
+          const naturalInfo = nw > 0 && nh > 0 ? "Natural size: " + nw + " × " + nh + "px" : "";
+          previewCaption.textContent = [altInfo, sizeInfo, naturalInfo, src].filter(Boolean).join(" | ");
+        };
+      };
+
+      const openPreview = (trigger, mode) => {
+        lastTrigger = trigger;
+        lastOpenMode = mode;
+        setPreviewContent(trigger);
+        if (!dialog.open) {
+          dialog.showModal();
+        }
+        if (mode === "click") {
+          closeButton.focus();
+        }
+      };
+
+      previewTriggers.forEach((trigger) => {
+        trigger.addEventListener("click", (event) => {
+          event.preventDefault();
+          openPreview(trigger, "click");
+        });
+
+        trigger.addEventListener("focus", () => {
+          if (skipNextFocusTrigger === trigger) {
+            skipNextFocusTrigger = null;
+            return;
+          }
+          openPreview(trigger, "focus");
+        });
+      });
+
+      dialog.addEventListener("click", (event) => {
+        const bounds = dialog.getBoundingClientRect();
+        const isOutside = event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom;
+        if (isOutside) {
+          dialog.close();
+        }
+      });
+
+      dialog.addEventListener("close", () => {
+        previewImage.removeAttribute("src");
+        if (lastOpenMode === "click" && lastTrigger && document.contains(lastTrigger)) {
+          skipNextFocusTrigger = lastTrigger;
+          lastTrigger.focus();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
