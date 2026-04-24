@@ -518,6 +518,52 @@
       text-decoration: none;
       color: white;
     }
+
+    /* Suite navigation bar */
+    .suite-nav {
+      border-bottom: 1px solid var(--color-border);
+      margin-bottom: 1.5rem;
+    }
+
+    .suite-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+    }
+
+    .suite-nav__link {
+      display: flex;
+      align-items: center;
+      min-height: 2.75rem;
+      padding: 0.5rem 0.85rem;
+      color: var(--color-link);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border-bottom: 3px solid transparent;
+      transition: color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .suite-nav__link:hover {
+      color: var(--color-heading);
+      border-bottom-color: var(--color-border);
+      text-decoration: none;
+    }
+
+    .suite-nav__link[aria-current="page"] {
+      color: var(--color-heading);
+      border-bottom-color: var(--color-link);
+      font-weight: 700;
+    }
+
+    .suite-nav__link:focus-visible {
+      outline: 2px solid var(--color-focus);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
   </style>
 </head>
 <body>
@@ -537,6 +583,20 @@
           <path fill="currentColor" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
         </svg>
       </button>
+    </nav>
+
+    <nav class="suite-nav" aria-label="Accessibility tools suite">
+      <ul>
+        <li>
+          <a href="https://mgifford.github.io/top-task-finder/" class="suite-nav__link">Top Task Finder</a>
+        </li>
+        <li>
+          <a href="https://mgifford.github.io/open-scans/" class="suite-nav__link">Open Scans</a>
+        </li>
+        <li>
+          <a href="https://mgifford.github.io/alt-text-scan/" class="suite-nav__link" aria-current="page">Alt Text Scan</a>
+        </li>
+      </ul>
     </nav>
     
     <h1>Submit URLs for Alt Text Review</h1>
