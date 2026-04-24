@@ -131,7 +131,14 @@ This project implements accessible light/dark mode theming following the [Light/
   - Sun icon shown in dark mode (click to switch to light)
   - Moon icon shown in light mode (click to switch to dark)
   - `aria-label` reflects the *action* ("Switch to dark mode" / "Switch to light mode")
-  - Tab order places toggle after navigation links
+  - Tab order places toggle after navigation links, before suite navigation
+- **Suite navigation bar** links the three related accessibility tools:
+  - `aria-label="Accessibility tools suite"` on the `<nav>` element identifies its purpose
+  - `aria-current="page"` marks the active tool (Alt Text Scan) for screen readers
+  - Links: Top Task Finder → Open Scans → Alt Text Scan
+  - Active link: bottom border + bold weight, driven by `[aria-current="page"]` selector
+  - Minimum touch target height: 2.75 rem (≥ 44 px, WCAG 2.5.5)
+  - `:focus-visible` 2 px outline for keyboard users
 - **Forced-colors mode** (`forced-colors: active`) support for Windows High Contrast
 
 ### Contrast Requirements
@@ -180,6 +187,7 @@ const child = spawn(command, [arg1, arg2, arg3]);
 - Use proper heading hierarchy (h1 → h2 → h3)
 - Use semantic elements (`<nav>`, `<main>`, `<footer>`, `<article>`)
 - Provide labels for all form inputs
+- Suite navigation uses a dedicated `<nav aria-label="Accessibility tools suite">` landmark
 
 **Form Validation**
 - Real-time URL validation with clear error messages
