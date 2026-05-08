@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { parseSitemapXml, extractLinksFromHtml, parseRobotsTxt, parseWaybackResponse, parseBingSearchResponse, bareHostname, isSameDomain, rewriteToOrigin } from "../../scanner/discover-urls.mjs";
+import { parseSitemapXml, extractLinksFromHtml, parseRobotsTxt, parseWaybackResponse, parseBingSearchResponse, bareHostname, isSameDomain, rewriteToOrigin, discoveryOrigins, discoverUrls } from "../../scanner/discover-urls.mjs";
 
 test("parseSitemapXml extracts page URLs from a standard sitemap", () => {
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -457,6 +457,62 @@ test("rewriteToOrigin preserves query string and path", () => {
 test("rewriteToOrigin returns original string for malformed input", () => {
   const result = rewriteToOrigin("not-a-url", "https://example.com");
   assert.equal(result, "not-a-url");
+});
+
+// ── discoveryOrigins ──────────────────────────────────────────────────────────
+
+test("discoveryOrigins adds bare-host fallback when origin uses www", () => {
+  assert.deepEqual(
+    discoveryOrigins("https://www.adlnet.gov/path?q=1"),
+    ["https://www.adlnet.gov", "https://adlnet.gov"]
+  );
+});
+
+test("discoveryOrigins keeps a single origin when hostname does not use www", () => {
+  assert.deepEqual(discoveryOrigins("https://example.com/path"), ["https://example.com"]);
+});
+
+test("discoveryOrigins throws for malformed URL input", () => {
+  assert.throws(() => discoveryOrigins("not-a-url"), /Invalid URL/);
+});
+
+test("discoverUrls retries bare host when www origin finds no URLs", { concurrency: false }, async () => {
+  const originalFetch = globalThis.fetch;
+  const originalBingApiKey = process.env.BING_API_KEY;
+
+  const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://example.com/page</loc></url>
+</urlset>`;
+
+  globalThis.fetch = async (url) => {
+    const requestUrl = String(url);
+
+    if (requestUrl === "https://example.com/sitemap.xml") {
+      return new Response(sitemapXml, {
+        status: 200,
+        headers: { "content-type": "application/xml" }
+      });
+    }
+
+    return new Response("not found", { status: 404 });
+  };
+
+  delete process.env.BING_API_KEY;
+
+  try {
+    const result = await discoverUrls("https://www.example.com", 10);
+    assert.equal(result.method, "sitemap");
+    assert.equal(result.total, 1);
+    assert.deepEqual(result.urls, ["https://example.com/page"]);
+  } finally {
+    globalThis.fetch = originalFetch;
+    if (originalBingApiKey === undefined) {
+      delete process.env.BING_API_KEY;
+    } else {
+      process.env.BING_API_KEY = originalBingApiKey;
+    }
+  }
 });
 
 // ── extractLinksFromHtml: www/non-www handling ────────────────────────────────
