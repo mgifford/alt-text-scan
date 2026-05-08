@@ -158,6 +158,22 @@ export function rewriteToOrigin(urlStr, origin) {
 }
 
 /**
+ * Build the ordered list of origins to try for discovery.
+ * Uses the provided origin first, then falls back from `www.` to the bare host.
+ * @param {string} domain
+ * @returns {string[]}
+ */
+export function discoveryOrigins(domain) {
+  const primary = new URL(domain).origin;
+  const parsed = new URL(primary);
+  if (parsed.hostname.startsWith("www.")) {
+    parsed.hostname = parsed.hostname.slice(4);
+    return [primary, parsed.origin];
+  }
+  return [primary];
+}
+
+/**
  * Fetch a URL with a timeout, returning the response or null on error.
  * @param {string} urlStr
  * @param {number} timeoutMs
@@ -545,7 +561,7 @@ async function crawlDomain(startUrl, maxPages = 100) {
 }
 
 /**
- * Discover page URLs for a given domain.
+ * Discover page URLs for a given origin.
  *
  * Strategy:
  *   1. Try /sitemap.xml (including sitemap indexes)
@@ -557,12 +573,11 @@ async function crawlDomain(startUrl, maxPages = 100) {
  * and MAX_SITEMAP_CHILDREN (default 50) to prevent runaway processing on sites
  * with huge or malformed sitemap indexes.
  *
- * @param {string} domain   Root domain, e.g. "https://example.com"
+ * @param {string} origin   Root origin, e.g. "https://example.com"
  * @param {number} maxUrls  Maximum number of page URLs to return (default 100)
- * @returns {Promise<{urls: string[], method: "sitemap"|"crawl", total: number}>}
+ * @returns {Promise<{urls: string[], method: "sitemap"|"crawl"|"wayback"|"bing", total: number}>}
  */
-export async function discoverUrls(domain, maxUrls = 100) {
-  const origin = new URL(domain).origin;
+async function discoverUrlsForOrigin(origin, maxUrls = 100) {
   const sitemapUrl = `${origin}/sitemap.xml`;
   const deadline = Date.now() + SITEMAP_DISCOVERY_TIMEOUT_MS;
   const attemptedSitemapUrls = new Set([sitemapUrl]);
@@ -641,6 +656,24 @@ export async function discoverUrls(domain, maxUrls = 100) {
 
   // All strategies exhausted
   return { urls: [], method: "crawl", total: 0 };
+}
+
+export async function discoverUrls(domain, maxUrls = 100) {
+  const origins = discoveryOrigins(domain);
+  let lastResult = { urls: [], method: "crawl", total: 0 };
+
+  for (let i = 0; i < origins.length; i++) {
+    const origin = origins[i];
+    if (i > 0) {
+      console.error(`[discover-urls] Retrying discovery with fallback origin: ${origin}`);
+    }
+    lastResult = await discoverUrlsForOrigin(origin, maxUrls);
+    if (lastResult.urls.length > 0) {
+      return lastResult;
+    }
+  }
+
+  return lastResult;
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {

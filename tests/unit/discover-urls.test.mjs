@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { parseSitemapXml, extractLinksFromHtml, parseRobotsTxt, parseWaybackResponse, parseBingSearchResponse, bareHostname, isSameDomain, rewriteToOrigin } from "../../scanner/discover-urls.mjs";
+import { parseSitemapXml, extractLinksFromHtml, parseRobotsTxt, parseWaybackResponse, parseBingSearchResponse, bareHostname, isSameDomain, rewriteToOrigin, discoveryOrigins } from "../../scanner/discover-urls.mjs";
 
 test("parseSitemapXml extracts page URLs from a standard sitemap", () => {
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -457,6 +457,19 @@ test("rewriteToOrigin preserves query string and path", () => {
 test("rewriteToOrigin returns original string for malformed input", () => {
   const result = rewriteToOrigin("not-a-url", "https://example.com");
   assert.equal(result, "not-a-url");
+});
+
+// ── discoveryOrigins ──────────────────────────────────────────────────────────
+
+test("discoveryOrigins adds bare-host fallback when origin uses www", () => {
+  assert.deepEqual(
+    discoveryOrigins("https://www.adlnet.gov/path?q=1"),
+    ["https://www.adlnet.gov", "https://adlnet.gov"]
+  );
+});
+
+test("discoveryOrigins keeps a single origin when hostname does not use www", () => {
+  assert.deepEqual(discoveryOrigins("https://example.com/path"), ["https://example.com"]);
 });
 
 // ── extractLinksFromHtml: www/non-www handling ────────────────────────────────

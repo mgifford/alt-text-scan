@@ -271,7 +271,7 @@ Documentation, policy text, and code were drafted and edited with AI assistance,
 | Ollama (local models, as available) | local | Preferred default for local drafting and coding support during development |
 | GitHub Copilot (OpenAI Codex / GPT-4-class) | commercial | Code assistance, PR support, and workflow configuration |
 | OpenAI GPT-4-class via Copilot Chat | commercial | Content drafting, documentation, and policy editing |
-| GitHub Copilot coding agent (gpt-5.3-codex) | commercial | Automated code changes in response to issues (e.g., this disclosure section) |
+| GitHub Copilot coding agent (gpt-5.3-codex) | commercial | Automated code changes in response to issues (e.g., parser fixes and `www`/non-`www` discovery fallback) |
 | GitHub Copilot coding agent (claude-sonnet-4.5) | commercial | Added suite navigation bar linking Top Task Finder, Open Scans, and Alt Text Scan; updated `index.html`, `reports.html`, and `ACCESSIBILITY.md` |
 
 ### AI used at runtime
