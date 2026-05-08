@@ -160,12 +160,12 @@ export function rewriteToOrigin(urlStr, origin) {
 /**
  * Build the ordered list of origins to try for discovery.
  * Uses the provided origin first, then falls back from `www.` to the bare host.
- * @param {string} domain
+ * @param {string} urlStr
  * @returns {string[]}
  */
-export function discoveryOrigins(domain) {
-  const primary = new URL(domain).origin;
-  const parsed = new URL(primary);
+export function discoveryOrigins(urlStr) {
+  const parsed = new URL(urlStr);
+  const primary = parsed.origin;
   if (parsed.hostname.startsWith("www.")) {
     parsed.hostname = parsed.hostname.slice(4);
     return [primary, parsed.origin];
@@ -658,22 +658,25 @@ async function discoverUrlsForOrigin(origin, maxUrls = 100) {
   return { urls: [], method: "crawl", total: 0 };
 }
 
-export async function discoverUrls(domain, maxUrls = 100) {
-  const origins = discoveryOrigins(domain);
-  let lastResult = { urls: [], method: "crawl", total: 0 };
+export async function discoverUrls(targetUrl, maxUrls = 100) {
+  const origins = discoveryOrigins(targetUrl);
+  let result = { urls: [], method: "crawl", total: 0 };
 
-  for (let i = 0; i < origins.length; i++) {
-    const origin = origins[i];
-    if (i > 0) {
-      console.error(`[discover-urls] Retrying discovery with fallback origin: ${origin}`);
+  for (const [originIndex, origin] of origins.entries()) {
+    if (originIndex > 0) {
+      const previousOrigin = origins[originIndex - 1];
+      console.error(
+        `[discover-urls] No URLs discovered via ${previousOrigin}; ` +
+        `retrying with fallback origin: ${origin}`
+      );
     }
-    lastResult = await discoverUrlsForOrigin(origin, maxUrls);
-    if (lastResult.urls.length > 0) {
-      return lastResult;
+    result = await discoverUrlsForOrigin(origin, maxUrls);
+    if (result.urls.length > 0) {
+      return result;
     }
   }
 
-  return lastResult;
+  return result;
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {
