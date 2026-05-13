@@ -33,7 +33,7 @@ The report should also help a user decide where to start. That means surfacing p
 
 The summary counts in the report must match the generated scan data.
 
-If a page redirected, failed, timed out, or was blocked, that fact must be represented clearly enough that a reader does not mistake an incomplete scan for a clean result.
+If a page redirected, failed, timed out, or was blocked, that fact must be represented clearly. A reader must not mistake an incomplete scan for a clean result.
 
 The report must not imply that automated output alone proves alt text is good. In this repository, human review remains part of done because meaningfulness, context, and author intent cannot be fully determined automatically.
 
@@ -81,7 +81,7 @@ If a reader can see that something is "suspicious" but cannot tell why that matt
 
 The format should remain stable enough for both people and automation to consume consistently over time.
 
-If a reporting change alters structure, labels, or output expectations, any directly related documentation should be updated alongside it. For this repository, that includes report-facing docs and any guidance that describes what users should expect from published outputs.
+If a reporting change alters structure, labels, or output expectations, any directly related documentation should be updated alongside it. For this repository, that includes report-facing docs and guidance describing what users should expect from published outputs.
 
 ### 8. Quality gates are satisfied
 
