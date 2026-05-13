@@ -10,7 +10,7 @@ A public report is done when all of the following are true.
 
 The report identifies the scan it represents, including the issue or request it came from, the scan date, and the URL set or discovery scope used for the run.
 
-It stays aligned with the actual purpose of this project: reviewing alt-text quality at scale, not just detecting whether an `alt` attribute exists. A finished report should therefore highlight likely quality problems such as missing alt text, filename-based alt text, suspicious wording, decorative conflicts, and other review categories already used by the scanner.
+It stays aligned with the actual purpose of this project: reviewing alt-text quality at scale, not just detecting whether an `alt` attribute exists. A finished report should therefore highlight likely quality problems. These include missing alt text, filename-based alt text, suspicious wording, decorative conflicts, and other review categories already used by the scanner.
 
 It also makes clear which findings are automated classifications and which still need human judgment.
 
@@ -66,7 +66,7 @@ Public usefulness matters here too: a report that technically exists but cannot 
 
 ### 6. The report tells people what to do next
 
-A done report does not stop at classification. It explains the meaning of its categories well enough that a reviewer, editor, or developer can act on them.
+A done report goes beyond classification. It explains the meaning of its categories well enough that a reviewer, editor, or developer can act on them.
 
 For this project, that means the report should:
 
