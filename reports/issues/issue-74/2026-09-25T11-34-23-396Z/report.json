@@ -1,0 +1,3011 @@
+{
+  "reportType": "alt-text",
+  "issueNumber": 74,
+  "issueUrl": "https://github.com/mgifford/alt-text-scan/issues/74",
+  "scanTitle": "https://mgifford.github.io/neighbourhood-solar/",
+  "scanDomain": "https://mgifford.github.io",
+  "discoveryMethod": "crawl",
+  "discoveredTotal": 1,
+  "requestedCount": 1,
+  "acceptedCount": 1,
+  "rejectedCount": 0,
+  "scannedCount": 1,
+  "skippedDueToTimeout": 0,
+  "urlsRequested": 1,
+  "urlsScanned": 1,
+  "scannedAt": "2026-09-25T11:34:22.288Z",
+  "totalImages": 60,
+  "uniqueImages": 24,
+  "imagesWithIssues": 0,
+  "statusCounts": {
+    "MISSING": 0,
+    "DECORATIVE": 0,
+    "SUSPICIOUS": 0,
+    "FILENAME": 0,
+    "TOO_SHORT": 0,
+    "TOO_LONG": 0,
+    "GOOD": 60
+  },
+  "urlResults": [
+    {
+      "url": "https://mgifford.github.io/",
+      "finalUrl": "https://mgifford.github.io/",
+      "httpStatus": 200,
+      "images": [
+        {
+          "src": "https://mgifford.github.io/src/assets/screenshots/EchoLocate.png",
+          "alt": "Preview of EchoLocate",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1400,
+          "height": 900,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/placeholder.svg",
+          "alt": "Preview of accessibility-skills",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1200,
+          "height": 700,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/screenshots/pdf-crawler.png",
+          "alt": "Preview of pdf-crawler",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1400,
+          "height": 900,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/screenshots/daily-dap.png",
+          "alt": "Preview of daily-dap",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1400,
+          "height": 900,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/screenshots/open-scans.png",
+          "alt": "Preview of open-scans",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1400,
+          "height": 900,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/screenshots/ACCESSIBILITY.md.png",
+          "alt": "Preview of ACCESSIBILITY.md",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1400,
+          "height": 900,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/screenshots/content-first-wireframe.png",
+          "alt": "Preview of content-first-wireframe",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1400,
+          "height": 900,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/placeholder.svg",
+          "alt": "Preview of Find-Overlays",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1200,
+          "height": 700,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/screenshots/contrast-plus.png",
+          "alt": "Preview of contrast-plus",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1400,
+          "height": 900,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/screenshots/airtime2.png",
+          "alt": "Preview of airtime2",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1400,
+          "height": 900,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/placeholder.svg",
+          "alt": "Preview of Personas",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1200,
+          "height": 700,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/placeholder.svg",
+          "alt": "Preview of Drupal-Accessibility-Quicksheet",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1200,
+          "height": 700,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/placeholder.svg",
+          "alt": "Preview of a11y-courses",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1200,
+          "height": 700,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/screenshots/a11y-contracting.png",
+          "alt": "Preview of a11y-contracting",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1400,
+          "height": 900,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/screenshots/open-source-contracting.png",
+          "alt": "Preview of open-source-contracting",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1400,
+          "height": 900,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/placeholder.svg",
+          "alt": "Preview of mgifford.github.io",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1200,
+          "height": 700,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/placeholder.svg",
+          "alt": "Preview of medblocks-ui",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1200,
+          "height": 700,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/placeholder.svg",
+          "alt": "Preview of whisper-web",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1200,
+          "height": 700,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/placeholder.svg",
+          "alt": "Preview of SOW-PWS-Builder",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1200,
+          "height": 700,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/placeholder.svg",
+          "alt": "Preview of audio-news",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1200,
+          "height": 700,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/placeholder.svg",
+          "alt": "Preview of sunclipse",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1200,
+          "height": 700,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/placeholder.svg",
+          "alt": "Preview of medicare_monthly_enrollment_dashboard",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1200,
+          "height": 700,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/placeholder.svg",
+          "alt": "Preview of year-in-review-cif",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1200,
+          "height": 700,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/placeholder.svg",
+          "alt": "Preview of open-accessibility-workbench",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1200,
+          "height": 700,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/placeholder.svg",
+          "alt": "Preview of open-data-guide",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1200,
+          "height": 700,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/placeholder.svg",
+          "alt": "Preview of accessibility-sandbox",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1200,
+          "height": 700,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/placeholder.svg",
+          "alt": "Preview of firefox-energy-scanner",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1200,
+          "height": 700,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/placeholder.svg",
+          "alt": "Preview of ontario-home-energy-futures",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1200,
+          "height": 700,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/placeholder.svg",
+          "alt": "Preview of upstream-first",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1200,
+          "height": 700,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/placeholder.svg",
+          "alt": "Preview of ContractingHQ",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1200,
+          "height": 700,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/placeholder.svg",
+          "alt": "Preview of generated_content_a11y",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1200,
+          "height": 700,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/placeholder.svg",
+          "alt": "Preview of uswds-sandbox",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1200,
+          "height": 700,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/screenshots/bellwether.png",
+          "alt": "Preview of bellwether",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 340,
+          "height": 150,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/screenshots/publiccode-editor.png",
+          "alt": "Preview of publiccode-editor",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 340,
+          "height": 150,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/placeholder.svg",
+          "alt": "Preview of un-web-tv-downloader",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1200,
+          "height": 700,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/screenshots/neighbourhood-solar.png",
+          "alt": "Preview of neighbourhood-solar",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 340,
+          "height": 150,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/placeholder.svg",
+          "alt": "Preview of awesome-webmcp",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1200,
+          "height": 700,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/placeholder.svg",
+          "alt": "Preview of wsg-webmcp-experiment",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1200,
+          "height": 700,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/screenshots/susty-house.png",
+          "alt": "Preview of susty-house",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 340,
+          "height": 150,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/screenshots/vital-core.png",
+          "alt": "Preview of vital-core",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 340,
+          "height": 150,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/screenshots/contractwatch.png",
+          "alt": "Preview of contractwatch",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 340,
+          "height": 150,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/screenshots/drupal-diff.png",
+          "alt": "Preview of drupal-diff",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 340,
+          "height": 150,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/screenshots/unosw.plus.png",
+          "alt": "Preview of unosw.plus",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 340,
+          "height": 150,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/placeholder.svg",
+          "alt": "Preview of dpg-dpi-govstack-map",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1200,
+          "height": 700,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/placeholder.svg",
+          "alt": "Preview of aedesproject-uif",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1200,
+          "height": 700,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/placeholder.svg",
+          "alt": "Preview of A11yFirst-CKEditor5-Plugin",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1200,
+          "height": 700,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/placeholder.svg",
+          "alt": "Preview of drupal-cms",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1200,
+          "height": 700,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/placeholder.svg",
+          "alt": "Preview of codenames-game",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1200,
+          "height": 700,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/placeholder.svg",
+          "alt": "Preview of cribbage-grid",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1200,
+          "height": 700,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/placeholder.svg",
+          "alt": "Preview of keyboard-vibes",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1200,
+          "height": 700,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/screenshots/accessibility-tools.png",
+          "alt": "Preview of accessibility-tools",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 340,
+          "height": 150,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/placeholder.svg",
+          "alt": "Preview of edu-scans",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1200,
+          "height": 700,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/placeholder.svg",
+          "alt": "Preview of dot-gov-scans",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1200,
+          "height": 700,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/screenshots/inclusive-design-personas.png",
+          "alt": "Preview of inclusive-design-personas",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 340,
+          "height": 150,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/screenshots/awesome-copilot.png",
+          "alt": "Preview of awesome-copilot",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 340,
+          "height": 150,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/screenshots/Hex-Bicup-Rotor.png",
+          "alt": "Preview of Hex-Bicup-Rotor",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 340,
+          "height": 150,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/placeholder.svg",
+          "alt": "Preview of pen-archive",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1200,
+          "height": 700,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/screenshots/DigitalPolicies.png",
+          "alt": "Preview of DigitalPolicies",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 340,
+          "height": 150,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/placeholder.svg",
+          "alt": "Preview of html2html",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1200,
+          "height": 700,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        },
+        {
+          "src": "https://mgifford.github.io/src/assets/placeholder.svg",
+          "alt": "Preview of daily-hhs",
+          "title": null,
+          "role": null,
+          "ariaHidden": null,
+          "ariaLabel": null,
+          "ariaDescribedby": null,
+          "longdesc": null,
+          "width": 1200,
+          "height": 700,
+          "isVisible": true,
+          "pageUrl": "https://mgifford.github.io/",
+          "status": "GOOD",
+          "issues": []
+        }
+      ],
+      "error": null
+    }
+  ],
+  "uniqueImageList": [
+    {
+      "src": "https://mgifford.github.io/src/assets/screenshots/EchoLocate.png",
+      "alt": "Preview of EchoLocate",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 1400,
+      "height": 900,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://mgifford.github.io/"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "Preview of EchoLocate",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://mgifford.github.io/src/assets/placeholder.svg",
+      "alt": "Preview of a11y-courses",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 1200,
+      "height": 700,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://mgifford.github.io/"
+      ],
+      "occurrences": 37,
+      "altVariants": [
+        {
+          "value": "Preview of a11y-courses",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        },
+        {
+          "value": "Preview of A11yFirst-CKEditor5-Plugin",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        },
+        {
+          "value": "Preview of accessibility-sandbox",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        },
+        {
+          "value": "Preview of accessibility-skills",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        },
+        {
+          "value": "Preview of aedesproject-uif",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        },
+        {
+          "value": "Preview of audio-news",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        },
+        {
+          "value": "Preview of awesome-webmcp",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        },
+        {
+          "value": "Preview of codenames-game",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        },
+        {
+          "value": "Preview of ContractingHQ",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        },
+        {
+          "value": "Preview of cribbage-grid",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        },
+        {
+          "value": "Preview of daily-hhs",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        },
+        {
+          "value": "Preview of dot-gov-scans",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        },
+        {
+          "value": "Preview of dpg-dpi-govstack-map",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        },
+        {
+          "value": "Preview of Drupal-Accessibility-Quicksheet",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        },
+        {
+          "value": "Preview of drupal-cms",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        },
+        {
+          "value": "Preview of edu-scans",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        },
+        {
+          "value": "Preview of Find-Overlays",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        },
+        {
+          "value": "Preview of firefox-energy-scanner",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        },
+        {
+          "value": "Preview of generated_content_a11y",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        },
+        {
+          "value": "Preview of html2html",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        },
+        {
+          "value": "Preview of keyboard-vibes",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        },
+        {
+          "value": "Preview of medblocks-ui",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        },
+        {
+          "value": "Preview of medicare_monthly_enrollment_dashboard",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        },
+        {
+          "value": "Preview of mgifford.github.io",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        },
+        {
+          "value": "Preview of ontario-home-energy-futures",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        },
+        {
+          "value": "Preview of open-accessibility-workbench",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        },
+        {
+          "value": "Preview of open-data-guide",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        },
+        {
+          "value": "Preview of pen-archive",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        },
+        {
+          "value": "Preview of Personas",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        },
+        {
+          "value": "Preview of SOW-PWS-Builder",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        },
+        {
+          "value": "Preview of sunclipse",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        },
+        {
+          "value": "Preview of un-web-tv-downloader",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        },
+        {
+          "value": "Preview of upstream-first",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        },
+        {
+          "value": "Preview of uswds-sandbox",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        },
+        {
+          "value": "Preview of whisper-web",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        },
+        {
+          "value": "Preview of wsg-webmcp-experiment",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        },
+        {
+          "value": "Preview of year-in-review-cif",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 37,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 37,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 37,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 37,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 37,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://mgifford.github.io/src/assets/screenshots/pdf-crawler.png",
+      "alt": "Preview of pdf-crawler",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 1400,
+      "height": 900,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://mgifford.github.io/"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "Preview of pdf-crawler",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://mgifford.github.io/src/assets/screenshots/daily-dap.png",
+      "alt": "Preview of daily-dap",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 1400,
+      "height": 900,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://mgifford.github.io/"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "Preview of daily-dap",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://mgifford.github.io/src/assets/screenshots/open-scans.png",
+      "alt": "Preview of open-scans",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 1400,
+      "height": 900,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://mgifford.github.io/"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "Preview of open-scans",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://mgifford.github.io/src/assets/screenshots/ACCESSIBILITY.md.png",
+      "alt": "Preview of ACCESSIBILITY.md",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 1400,
+      "height": 900,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://mgifford.github.io/"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "Preview of ACCESSIBILITY.md",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://mgifford.github.io/src/assets/screenshots/content-first-wireframe.png",
+      "alt": "Preview of content-first-wireframe",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 1400,
+      "height": 900,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://mgifford.github.io/"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "Preview of content-first-wireframe",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://mgifford.github.io/src/assets/screenshots/contrast-plus.png",
+      "alt": "Preview of contrast-plus",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 1400,
+      "height": 900,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://mgifford.github.io/"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "Preview of contrast-plus",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://mgifford.github.io/src/assets/screenshots/airtime2.png",
+      "alt": "Preview of airtime2",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 1400,
+      "height": 900,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://mgifford.github.io/"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "Preview of airtime2",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://mgifford.github.io/src/assets/screenshots/a11y-contracting.png",
+      "alt": "Preview of a11y-contracting",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 1400,
+      "height": 900,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://mgifford.github.io/"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "Preview of a11y-contracting",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://mgifford.github.io/src/assets/screenshots/open-source-contracting.png",
+      "alt": "Preview of open-source-contracting",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 1400,
+      "height": 900,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://mgifford.github.io/"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "Preview of open-source-contracting",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://mgifford.github.io/src/assets/screenshots/bellwether.png",
+      "alt": "Preview of bellwether",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 340,
+      "height": 150,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://mgifford.github.io/"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "Preview of bellwether",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://mgifford.github.io/src/assets/screenshots/publiccode-editor.png",
+      "alt": "Preview of publiccode-editor",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 340,
+      "height": 150,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://mgifford.github.io/"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "Preview of publiccode-editor",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://mgifford.github.io/src/assets/screenshots/neighbourhood-solar.png",
+      "alt": "Preview of neighbourhood-solar",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 340,
+      "height": 150,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://mgifford.github.io/"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "Preview of neighbourhood-solar",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://mgifford.github.io/src/assets/screenshots/susty-house.png",
+      "alt": "Preview of susty-house",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 340,
+      "height": 150,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://mgifford.github.io/"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "Preview of susty-house",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://mgifford.github.io/src/assets/screenshots/vital-core.png",
+      "alt": "Preview of vital-core",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 340,
+      "height": 150,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://mgifford.github.io/"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "Preview of vital-core",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://mgifford.github.io/src/assets/screenshots/contractwatch.png",
+      "alt": "Preview of contractwatch",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 340,
+      "height": 150,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://mgifford.github.io/"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "Preview of contractwatch",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://mgifford.github.io/src/assets/screenshots/drupal-diff.png",
+      "alt": "Preview of drupal-diff",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 340,
+      "height": 150,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://mgifford.github.io/"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "Preview of drupal-diff",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://mgifford.github.io/src/assets/screenshots/unosw.plus.png",
+      "alt": "Preview of unosw.plus",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 340,
+      "height": 150,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://mgifford.github.io/"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "Preview of unosw.plus",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://mgifford.github.io/src/assets/screenshots/accessibility-tools.png",
+      "alt": "Preview of accessibility-tools",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 340,
+      "height": 150,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://mgifford.github.io/"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "Preview of accessibility-tools",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://mgifford.github.io/src/assets/screenshots/inclusive-design-personas.png",
+      "alt": "Preview of inclusive-design-personas",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 340,
+      "height": 150,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://mgifford.github.io/"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "Preview of inclusive-design-personas",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://mgifford.github.io/src/assets/screenshots/awesome-copilot.png",
+      "alt": "Preview of awesome-copilot",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 340,
+      "height": 150,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://mgifford.github.io/"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "Preview of awesome-copilot",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://mgifford.github.io/src/assets/screenshots/Hex-Bicup-Rotor.png",
+      "alt": "Preview of Hex-Bicup-Rotor",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 340,
+      "height": 150,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://mgifford.github.io/"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "Preview of Hex-Bicup-Rotor",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ]
+    },
+    {
+      "src": "https://mgifford.github.io/src/assets/screenshots/DigitalPolicies.png",
+      "alt": "Preview of DigitalPolicies",
+      "title": null,
+      "ariaLabel": null,
+      "ariaDescribedby": null,
+      "longdesc": null,
+      "role": null,
+      "isVisible": true,
+      "width": 340,
+      "height": 150,
+      "status": "GOOD",
+      "issues": [],
+      "pages": [
+        "https://mgifford.github.io/"
+      ],
+      "occurrences": 1,
+      "altVariants": [
+        {
+          "value": "Preview of DigitalPolicies",
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "titleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "ariaLabelVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "ariaDescribedbyVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "longdescVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ],
+      "roleVariants": [
+        {
+          "value": null,
+          "count": 1,
+          "pages": [
+            "https://mgifford.github.io/"
+          ]
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "ok": true,
+    "reportType": "alt-text",
+    "issueNumber": 74,
+    "issueUrl": "https://github.com/mgifford/alt-text-scan/issues/74",
+    "scanTitle": "https://mgifford.github.io/neighbourhood-solar/",
+    "scanDomain": "https://mgifford.github.io",
+    "discoveryMethod": "crawl",
+    "discoveredTotal": 1,
+    "requestedCount": 1,
+    "acceptedCount": 1,
+    "rejectedCount": 0,
+    "scannedCount": 1,
+    "skippedDueToTimeout": 0,
+    "urlsRequested": 1,
+    "urlsScanned": 1,
+    "totalImages": 60,
+    "uniqueImages": 24,
+    "imagesWithIssues": 0,
+    "statusCounts": {
+      "MISSING": 0,
+      "DECORATIVE": 0,
+      "SUSPICIOUS": 0,
+      "FILENAME": 0,
+      "TOO_SHORT": 0,
+      "TOO_LONG": 0,
+      "GOOD": 60
+    },
+    "scannedAt": "2026-09-25T11:34:22.288Z"
+  }
+}

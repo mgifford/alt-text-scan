@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alt Text Scan – https://mgifford.github.io</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 1200px; margin: 2rem auto; padding: 0 1rem; color: #222; }
+    h1 { font-size: 1.5rem; }
+    .summary { display: flex; gap: 1.5rem; flex-wrap: wrap; margin: 1rem 0; }
+    .stat { background: #f5f5f5; border-radius: 6px; padding: 0.75rem 1.25rem; }
+    .stat strong { display: block; font-size: 1.8rem; }
+    .report-controls { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; margin: 1rem 0; }
+    .toggle-thumbnails { border: 1px solid #333; background: #fff; color: #222; border-radius: 999px; padding: 0.55rem 0.95rem; font: inherit; cursor: pointer; }
+    .toggle-thumbnails[aria-pressed="true"] { background: #222; color: #fff; }
+    table { border-collapse: collapse; width: 100%; margin-top: 1.5rem; }
+    th { background: #333; color: #fff; text-align: left; padding: 0.5rem 0.75rem; }
+    td { padding: 0.5rem 0.75rem; border-bottom: 1px solid #ddd; vertical-align: top; }
+    tr:hover td { background: #fafafa; }
+    code { background: #f0f0f0; padding: 0.1em 0.3em; border-radius: 3px; font-size: 0.9em; }
+    .thumbnail-column { width: 8.5rem; }
+    .thumbnail-column-decorative { width: 8.5rem; }
+    .review-callout { background: #e8f4fd; border-left: 4px solid #1565c0; padding: 0.75rem 1rem; margin: 1rem 0; font-size: 0.95em; border-radius: 0 6px 6px 0; }
+    .thumbnail-trigger { display: inline-flex; flex-direction: column; align-items: center; gap: 0.35rem; width: 7rem; padding: 0.45rem; border: 1px solid #ccc; border-radius: 8px; background: #fff; cursor: pointer; }
+    .thumbnail-trigger:hover, .thumbnail-trigger:focus-visible { border-color: #333; box-shadow: 0 0 0 3px rgba(33, 33, 33, 0.15); outline: none; }
+    .thumbnail-trigger__image { display: block; width: 100%; height: 4.5rem; object-fit: contain; background: #f5f5f5; border-radius: 4px; }
+    .thumbnail-trigger__text { font-size: 0.8rem; color: #444; }
+    .url-cell { position: relative; max-width: 20rem; }
+    .url-tooltip { display: none; position: absolute; z-index: 10; left: 0; top: 100%; margin-top: 0.2rem; background: #333; color: #fff; padding: 0.4rem 0.6rem; border-radius: 4px; font-size: 0.8rem; max-width: 44rem; word-break: break-all; white-space: normal; pointer-events: none; box-shadow: 0 2px 8px rgba(0,0,0,0.35); }
+    .url-cell:hover .url-tooltip, .url-cell:focus-within .url-tooltip { display: block; }
+    dialog::backdrop { background: rgba(17, 24, 39, 0.72); }
+    .preview-dialog { border: none; border-radius: 12px; padding: 0; width: min(92vw, 960px); max-height: 90vh; overflow: hidden; }
+    .preview-dialog__inner { display: grid; gap: 0.75rem; padding: 1rem; background: #fff; }
+    .preview-dialog__header { display: flex; justify-content: space-between; gap: 1rem; align-items: start; }
+    .preview-dialog__title { margin: 0; font-size: 1.1rem; }
+    .preview-dialog__close { border: 1px solid #333; background: #fff; color: #222; border-radius: 999px; padding: 0.45rem 0.8rem; font: inherit; cursor: pointer; }
+    .preview-dialog__figure { margin: 0; display: grid; gap: 0.5rem; justify-items: center; }
+    .preview-dialog__image { display: block; max-width: min(88vw, 100%); max-height: 70vh; width: auto; height: auto; background: #f5f5f5; }
+    .preview-dialog__caption { font-size: 0.9rem; color: #444; word-break: break-word; }
+    .preview-dialog__actions { margin: 0; font-size: 0.9rem; }
+    .preview-dialog__view-full { color: #1565c0; }
+    .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    @media (max-width: 720px) {
+      .summary { gap: 0.75rem; }
+      .stat { flex: 1 1 9rem; }
+      .thumbnail-trigger { width: 5.75rem; }
+      .thumbnail-trigger__image { height: 3.75rem; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Alt Text Scan Report</h1>
+  <p><strong>Domain:</strong> https://mgifford.github.io &nbsp;|&nbsp;
+     <strong>Scanned:</strong> 9/25/2026, 11:34:22 AM &nbsp;|&nbsp;
+     <strong>Discovery method:</strong> crawl</p>
+  <p><a href="report.csv">Download image inventory CSV</a> &nbsp;|&nbsp; <a href="report.json">View full JSON</a></p>
+
+  <div class="summary">
+    <div class="stat"><strong>1</strong> Pages scanned</div>
+    <div class="stat"><strong>60</strong> Images found</div>
+    <div class="stat"><strong>24</strong> Unique images</div>
+    <div class="stat"><strong style="color:#2e7d32">0</strong> Images with issues</div>
+  </div>
+
+  <h2>Status breakdown</h2>
+  <table>
+    <thead><tr><th>Status</th><th>Count</th></tr></thead>
+    <tbody><tr><td><span style="color:#2e7d32;font-weight:bold">Good</span></td><td>60</td></tr></tbody>
+  </table>
+
+  <h2>Unique image inventory</h2>
+  <div class="report-controls">
+    <button type="button" id="toggle-thumbnails" class="toggle-thumbnails" aria-pressed="false">Show thumbnails for images with alt text</button>
+    <span id="thumbnail-help">Thumbnails for images with alt text are hidden by default. Decorative images always show thumbnails for visual review.</span>
+  </div>
+  <p>Showing 24 images with alt text, with flagged items listed first. Use the CSV for a complete export.</p>
+  <table>
+    <thead><tr>
+      <th>Image</th>
+      <th class="thumbnail-column" hidden>Thumbnail</th>
+      <th>Status</th>
+      <th>Alt Text</th>
+      <th title="All distinct alt text values found for this image across all scanned pages, with how many times each value appeared. A Consistent result means the same alt text was used everywhere. Multiple entries mean the same image has different alt text on different pages and may need review.">Alt Variants</th>
+      <th>Title</th>
+      <th>ARIA Label</th>
+      <th>Pages</th>
+    </tr></thead>
+    <tbody>
+        <tr>
+          <td class="url-cell"><a href="https://mgifford.github.io/src/assets/placeholder.svg" target="_blank" rel="noopener">https://mgifford.github.io/src/assets/placeholder.svg</a></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://mgifford.github.io/src/assets/placeholder.svg" data-preview-alt="Preview of a11y-courses" data-preview-label="Preview of a11y-courses" data-preview-width="1200" data-preview-height="700" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Preview of a11y-courses"><img src="https://mgifford.github.io/src/assets/placeholder.svg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Preview of a11y-courses</code></td>
+          <td style="font-size:0.85em">Preview of a11y-courses <span style="color:#888"><span aria-hidden="true">×1</span><span class="visually-hidden"> (1 occurrence)</span></span><br>Preview of A11yFirst-CKEditor5-Plugin <span style="color:#888"><span aria-hidden="true">×1</span><span class="visually-hidden"> (1 occurrence)</span></span><br>Preview of accessibility-sandbox <span style="color:#888"><span aria-hidden="true">×1</span><span class="visually-hidden"> (1 occurrence)</span></span><br>Preview of accessibility-skills <span style="color:#888"><span aria-hidden="true">×1</span><span class="visually-hidden"> (1 occurrence)</span></span><br>Preview of aedesproject-uif <span style="color:#888"><span aria-hidden="true">×1</span><span class="visually-hidden"> (1 occurrence)</span></span><br>Preview of audio-news <span style="color:#888"><span aria-hidden="true">×1</span><span class="visually-hidden"> (1 occurrence)</span></span><br>Preview of awesome-webmcp <span style="color:#888"><span aria-hidden="true">×1</span><span class="visually-hidden"> (1 occurrence)</span></span><br>Preview of codenames-game <span style="color:#888"><span aria-hidden="true">×1</span><span class="visually-hidden"> (1 occurrence)</span></span><br>Preview of ContractingHQ <span style="color:#888"><span aria-hidden="true">×1</span><span class="visually-hidden"> (1 occurrence)</span></span><br>Preview of cribbage-grid <span style="color:#888"><span aria-hidden="true">×1</span><span class="visually-hidden"> (1 occurrence)</span></span><br>Preview of daily-hhs <span style="color:#888"><span aria-hidden="true">×1</span><span class="visually-hidden"> (1 occurrence)</span></span><br>Preview of dot-gov-scans <span style="color:#888"><span aria-hidden="true">×1</span><span class="visually-hidden"> (1 occurrence)</span></span><br>Preview of dpg-dpi-govstack-map <span style="color:#888"><span aria-hidden="true">×1</span><span class="visually-hidden"> (1 occurrence)</span></span><br>Preview of Drupal-Accessibility-Quicksheet <span style="color:#888"><span aria-hidden="true">×1</span><span class="visually-hidden"> (1 occurrence)</span></span><br>Preview of drupal-cms <span style="color:#888"><span aria-hidden="true">×1</span><span class="visually-hidden"> (1 occurrence)</span></span><br>Preview of edu-scans <span style="color:#888"><span aria-hidden="true">×1</span><span class="visually-hidden"> (1 occurrence)</span></span><br>Preview of Find-Overlays <span style="color:#888"><span aria-hidden="true">×1</span><span class="visually-hidden"> (1 occurrence)</span></span><br>Preview of firefox-energy-scanner <span style="color:#888"><span aria-hidden="true">×1</span><span class="visually-hidden"> (1 occurrence)</span></span><br>Preview of generated_content_a11y <span style="color:#888"><span aria-hidden="true">×1</span><span class="visually-hidden"> (1 occurrence)</span></span><br>Preview of html2html <span style="color:#888"><span aria-hidden="true">×1</span><span class="visually-hidden"> (1 occurrence)</span></span><br>Preview of keyboard-vibes <span style="color:#888"><span aria-hidden="true">×1</span><span class="visually-hidden"> (1 occurrence)</span></span><br>Preview of medblocks-ui <span style="color:#888"><span aria-hidden="true">×1</span><span class="visually-hidden"> (1 occurrence)</span></span><br>Preview of medicare_monthly_enrollment_dashboard <span style="color:#888"><span aria-hidden="true">×1</span><span class="visually-hidden"> (1 occurrence)</span></span><br>Preview of mgifford.github.io <span style="color:#888"><span aria-hidden="true">×1</span><span class="visually-hidden"> (1 occurrence)</span></span><br>Preview of ontario-home-energy-futures <span style="color:#888"><span aria-hidden="true">×1</span><span class="visually-hidden"> (1 occurrence)</span></span><br>Preview of open-accessibility-workbench <span style="color:#888"><span aria-hidden="true">×1</span><span class="visually-hidden"> (1 occurrence)</span></span><br>Preview of open-data-guide <span style="color:#888"><span aria-hidden="true">×1</span><span class="visually-hidden"> (1 occurrence)</span></span><br>Preview of pen-archive <span style="color:#888"><span aria-hidden="true">×1</span><span class="visually-hidden"> (1 occurrence)</span></span><br>Preview of Personas <span style="color:#888"><span aria-hidden="true">×1</span><span class="visually-hidden"> (1 occurrence)</span></span><br>Preview of SOW-PWS-Builder <span style="color:#888"><span aria-hidden="true">×1</span><span class="visually-hidden"> (1 occurrence)</span></span><br>Preview of sunclipse <span style="color:#888"><span aria-hidden="true">×1</span><span class="visually-hidden"> (1 occurrence)</span></span><br>Preview of un-web-tv-downloader <span style="color:#888"><span aria-hidden="true">×1</span><span class="visually-hidden"> (1 occurrence)</span></span><br>Preview of upstream-first <span style="color:#888"><span aria-hidden="true">×1</span><span class="visually-hidden"> (1 occurrence)</span></span><br>Preview of uswds-sandbox <span style="color:#888"><span aria-hidden="true">×1</span><span class="visually-hidden"> (1 occurrence)</span></span><br>Preview of whisper-web <span style="color:#888"><span aria-hidden="true">×1</span><span class="visually-hidden"> (1 occurrence)</span></span><br>Preview of wsg-webmcp-experiment <span style="color:#888"><span aria-hidden="true">×1</span><span class="visually-hidden"> (1 occurrence)</span></span><br>Preview of year-in-review-cif <span style="color:#888"><span aria-hidden="true">×1</span><span class="visually-hidden"> (1 occurrence)</span></span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://mgifford.github.io/" target="_blank" rel="noopener">https://mgifford.github.io/</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://mgifford.github.io/src/assets/screenshots/a11y-contracting.png" target="_blank" rel="noopener" title="https://mgifford.github.io/src/assets/screenshots/a11y-contracting.png">https://mgifford.github.io/src/asset … /a11y-contracting.png</a><span class="url-tooltip" aria-hidden="true">https://mgifford.github.io/src/assets/screenshots/a11y-contracting.png</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://mgifford.github.io/src/assets/screenshots/a11y-contracting.png" data-preview-alt="Preview of a11y-contracting" data-preview-label="Preview of a11y-contracting" data-preview-width="1400" data-preview-height="900" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Preview of a11y-contracting"><img src="https://mgifford.github.io/src/assets/screenshots/a11y-contracting.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Preview of a11y-contracting</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://mgifford.github.io/" target="_blank" rel="noopener">https://mgifford.github.io/</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://mgifford.github.io/src/assets/screenshots/accessibility-tools.png" target="_blank" rel="noopener" title="https://mgifford.github.io/src/assets/screenshots/accessibility-tools.png">https://mgifford.github.io/src/as … /accessibility-tools.png</a><span class="url-tooltip" aria-hidden="true">https://mgifford.github.io/src/assets/screenshots/accessibility-tools.png</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://mgifford.github.io/src/assets/screenshots/accessibility-tools.png" data-preview-alt="Preview of accessibility-tools" data-preview-label="Preview of accessibility-tools" data-preview-width="340" data-preview-height="150" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Preview of accessibility-tools"><img src="https://mgifford.github.io/src/assets/screenshots/accessibility-tools.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Preview of accessibility-tools</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://mgifford.github.io/" target="_blank" rel="noopener">https://mgifford.github.io/</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://mgifford.github.io/src/assets/screenshots/ACCESSIBILITY.md.png" target="_blank" rel="noopener" title="https://mgifford.github.io/src/assets/screenshots/ACCESSIBILITY.md.png">https://mgifford.github.io/src/asset … /ACCESSIBILITY.md.png</a><span class="url-tooltip" aria-hidden="true">https://mgifford.github.io/src/assets/screenshots/ACCESSIBILITY.md.png</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://mgifford.github.io/src/assets/screenshots/ACCESSIBILITY.md.png" data-preview-alt="Preview of ACCESSIBILITY.md" data-preview-label="Preview of ACCESSIBILITY.md" data-preview-width="1400" data-preview-height="900" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Preview of ACCESSIBILITY.md"><img src="https://mgifford.github.io/src/assets/screenshots/ACCESSIBILITY.md.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Preview of ACCESSIBILITY.md</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://mgifford.github.io/" target="_blank" rel="noopener">https://mgifford.github.io/</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://mgifford.github.io/src/assets/screenshots/airtime2.png" target="_blank" rel="noopener" title="https://mgifford.github.io/src/assets/screenshots/airtime2.png">https://mgifford.github.io/src/assets/screen … /airtime2.png</a><span class="url-tooltip" aria-hidden="true">https://mgifford.github.io/src/assets/screenshots/airtime2.png</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://mgifford.github.io/src/assets/screenshots/airtime2.png" data-preview-alt="Preview of airtime2" data-preview-label="Preview of airtime2" data-preview-width="1400" data-preview-height="900" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Preview of airtime2"><img src="https://mgifford.github.io/src/assets/screenshots/airtime2.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Preview of airtime2</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://mgifford.github.io/" target="_blank" rel="noopener">https://mgifford.github.io/</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://mgifford.github.io/src/assets/screenshots/awesome-copilot.png" target="_blank" rel="noopener" title="https://mgifford.github.io/src/assets/screenshots/awesome-copilot.png">https://mgifford.github.io/src/assets … /awesome-copilot.png</a><span class="url-tooltip" aria-hidden="true">https://mgifford.github.io/src/assets/screenshots/awesome-copilot.png</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://mgifford.github.io/src/assets/screenshots/awesome-copilot.png" data-preview-alt="Preview of awesome-copilot" data-preview-label="Preview of awesome-copilot" data-preview-width="340" data-preview-height="150" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Preview of awesome-copilot"><img src="https://mgifford.github.io/src/assets/screenshots/awesome-copilot.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Preview of awesome-copilot</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://mgifford.github.io/" target="_blank" rel="noopener">https://mgifford.github.io/</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://mgifford.github.io/src/assets/screenshots/bellwether.png" target="_blank" rel="noopener" title="https://mgifford.github.io/src/assets/screenshots/bellwether.png">https://mgifford.github.io/src/assets/scre … /bellwether.png</a><span class="url-tooltip" aria-hidden="true">https://mgifford.github.io/src/assets/screenshots/bellwether.png</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://mgifford.github.io/src/assets/screenshots/bellwether.png" data-preview-alt="Preview of bellwether" data-preview-label="Preview of bellwether" data-preview-width="340" data-preview-height="150" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Preview of bellwether"><img src="https://mgifford.github.io/src/assets/screenshots/bellwether.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Preview of bellwether</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://mgifford.github.io/" target="_blank" rel="noopener">https://mgifford.github.io/</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://mgifford.github.io/src/assets/screenshots/content-first-wireframe.png" target="_blank" rel="noopener" title="https://mgifford.github.io/src/assets/screenshots/content-first-wireframe.png">https://mgifford.github.io/sr … /content-first-wireframe.png</a><span class="url-tooltip" aria-hidden="true">https://mgifford.github.io/src/assets/screenshots/content-first-wireframe.png</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://mgifford.github.io/src/assets/screenshots/content-first-wireframe.png" data-preview-alt="Preview of content-first-wireframe" data-preview-label="Preview of content-first-wireframe" data-preview-width="1400" data-preview-height="900" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Preview of content-first-wireframe"><img src="https://mgifford.github.io/src/assets/screenshots/content-first-wireframe.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Preview of content-first-wireframe</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://mgifford.github.io/" target="_blank" rel="noopener">https://mgifford.github.io/</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://mgifford.github.io/src/assets/screenshots/contractwatch.png" target="_blank" rel="noopener" title="https://mgifford.github.io/src/assets/screenshots/contractwatch.png">https://mgifford.github.io/src/assets/s … /contractwatch.png</a><span class="url-tooltip" aria-hidden="true">https://mgifford.github.io/src/assets/screenshots/contractwatch.png</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://mgifford.github.io/src/assets/screenshots/contractwatch.png" data-preview-alt="Preview of contractwatch" data-preview-label="Preview of contractwatch" data-preview-width="340" data-preview-height="150" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Preview of contractwatch"><img src="https://mgifford.github.io/src/assets/screenshots/contractwatch.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Preview of contractwatch</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://mgifford.github.io/" target="_blank" rel="noopener">https://mgifford.github.io/</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://mgifford.github.io/src/assets/screenshots/contrast-plus.png" target="_blank" rel="noopener" title="https://mgifford.github.io/src/assets/screenshots/contrast-plus.png">https://mgifford.github.io/src/assets/s … /contrast-plus.png</a><span class="url-tooltip" aria-hidden="true">https://mgifford.github.io/src/assets/screenshots/contrast-plus.png</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://mgifford.github.io/src/assets/screenshots/contrast-plus.png" data-preview-alt="Preview of contrast-plus" data-preview-label="Preview of contrast-plus" data-preview-width="1400" data-preview-height="900" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Preview of contrast-plus"><img src="https://mgifford.github.io/src/assets/screenshots/contrast-plus.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Preview of contrast-plus</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://mgifford.github.io/" target="_blank" rel="noopener">https://mgifford.github.io/</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://mgifford.github.io/src/assets/screenshots/daily-dap.png" target="_blank" rel="noopener" title="https://mgifford.github.io/src/assets/screenshots/daily-dap.png">https://mgifford.github.io/src/assets/scree … /daily-dap.png</a><span class="url-tooltip" aria-hidden="true">https://mgifford.github.io/src/assets/screenshots/daily-dap.png</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://mgifford.github.io/src/assets/screenshots/daily-dap.png" data-preview-alt="Preview of daily-dap" data-preview-label="Preview of daily-dap" data-preview-width="1400" data-preview-height="900" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Preview of daily-dap"><img src="https://mgifford.github.io/src/assets/screenshots/daily-dap.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Preview of daily-dap</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://mgifford.github.io/" target="_blank" rel="noopener">https://mgifford.github.io/</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://mgifford.github.io/src/assets/screenshots/DigitalPolicies.png" target="_blank" rel="noopener" title="https://mgifford.github.io/src/assets/screenshots/DigitalPolicies.png">https://mgifford.github.io/src/assets … /DigitalPolicies.png</a><span class="url-tooltip" aria-hidden="true">https://mgifford.github.io/src/assets/screenshots/DigitalPolicies.png</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://mgifford.github.io/src/assets/screenshots/DigitalPolicies.png" data-preview-alt="Preview of DigitalPolicies" data-preview-label="Preview of DigitalPolicies" data-preview-width="340" data-preview-height="150" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Preview of DigitalPolicies"><img src="https://mgifford.github.io/src/assets/screenshots/DigitalPolicies.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Preview of DigitalPolicies</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://mgifford.github.io/" target="_blank" rel="noopener">https://mgifford.github.io/</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://mgifford.github.io/src/assets/screenshots/drupal-diff.png" target="_blank" rel="noopener" title="https://mgifford.github.io/src/assets/screenshots/drupal-diff.png">https://mgifford.github.io/src/assets/scr … /drupal-diff.png</a><span class="url-tooltip" aria-hidden="true">https://mgifford.github.io/src/assets/screenshots/drupal-diff.png</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://mgifford.github.io/src/assets/screenshots/drupal-diff.png" data-preview-alt="Preview of drupal-diff" data-preview-label="Preview of drupal-diff" data-preview-width="340" data-preview-height="150" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Preview of drupal-diff"><img src="https://mgifford.github.io/src/assets/screenshots/drupal-diff.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Preview of drupal-diff</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://mgifford.github.io/" target="_blank" rel="noopener">https://mgifford.github.io/</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://mgifford.github.io/src/assets/screenshots/EchoLocate.png" target="_blank" rel="noopener" title="https://mgifford.github.io/src/assets/screenshots/EchoLocate.png">https://mgifford.github.io/src/assets/scre … /EchoLocate.png</a><span class="url-tooltip" aria-hidden="true">https://mgifford.github.io/src/assets/screenshots/EchoLocate.png</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://mgifford.github.io/src/assets/screenshots/EchoLocate.png" data-preview-alt="Preview of EchoLocate" data-preview-label="Preview of EchoLocate" data-preview-width="1400" data-preview-height="900" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Preview of EchoLocate"><img src="https://mgifford.github.io/src/assets/screenshots/EchoLocate.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Preview of EchoLocate</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://mgifford.github.io/" target="_blank" rel="noopener">https://mgifford.github.io/</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://mgifford.github.io/src/assets/screenshots/Hex-Bicup-Rotor.png" target="_blank" rel="noopener" title="https://mgifford.github.io/src/assets/screenshots/Hex-Bicup-Rotor.png">https://mgifford.github.io/src/assets … /Hex-Bicup-Rotor.png</a><span class="url-tooltip" aria-hidden="true">https://mgifford.github.io/src/assets/screenshots/Hex-Bicup-Rotor.png</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://mgifford.github.io/src/assets/screenshots/Hex-Bicup-Rotor.png" data-preview-alt="Preview of Hex-Bicup-Rotor" data-preview-label="Preview of Hex-Bicup-Rotor" data-preview-width="340" data-preview-height="150" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Preview of Hex-Bicup-Rotor"><img src="https://mgifford.github.io/src/assets/screenshots/Hex-Bicup-Rotor.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Preview of Hex-Bicup-Rotor</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://mgifford.github.io/" target="_blank" rel="noopener">https://mgifford.github.io/</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://mgifford.github.io/src/assets/screenshots/inclusive-design-personas.png" target="_blank" rel="noopener" title="https://mgifford.github.io/src/assets/screenshots/inclusive-design-personas.png">https://mgifford.github.io/ … /inclusive-design-personas.png</a><span class="url-tooltip" aria-hidden="true">https://mgifford.github.io/src/assets/screenshots/inclusive-design-personas.png</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://mgifford.github.io/src/assets/screenshots/inclusive-design-personas.png" data-preview-alt="Preview of inclusive-design-personas" data-preview-label="Preview of inclusive-design-personas" data-preview-width="340" data-preview-height="150" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Preview of inclusive-design-personas"><img src="https://mgifford.github.io/src/assets/screenshots/inclusive-design-personas.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Preview of inclusive-design-personas</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://mgifford.github.io/" target="_blank" rel="noopener">https://mgifford.github.io/</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://mgifford.github.io/src/assets/screenshots/neighbourhood-solar.png" target="_blank" rel="noopener" title="https://mgifford.github.io/src/assets/screenshots/neighbourhood-solar.png">https://mgifford.github.io/src/as … /neighbourhood-solar.png</a><span class="url-tooltip" aria-hidden="true">https://mgifford.github.io/src/assets/screenshots/neighbourhood-solar.png</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://mgifford.github.io/src/assets/screenshots/neighbourhood-solar.png" data-preview-alt="Preview of neighbourhood-solar" data-preview-label="Preview of neighbourhood-solar" data-preview-width="340" data-preview-height="150" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Preview of neighbourhood-solar"><img src="https://mgifford.github.io/src/assets/screenshots/neighbourhood-solar.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Preview of neighbourhood-solar</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://mgifford.github.io/" target="_blank" rel="noopener">https://mgifford.github.io/</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://mgifford.github.io/src/assets/screenshots/open-scans.png" target="_blank" rel="noopener" title="https://mgifford.github.io/src/assets/screenshots/open-scans.png">https://mgifford.github.io/src/assets/scre … /open-scans.png</a><span class="url-tooltip" aria-hidden="true">https://mgifford.github.io/src/assets/screenshots/open-scans.png</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://mgifford.github.io/src/assets/screenshots/open-scans.png" data-preview-alt="Preview of open-scans" data-preview-label="Preview of open-scans" data-preview-width="1400" data-preview-height="900" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Preview of open-scans"><img src="https://mgifford.github.io/src/assets/screenshots/open-scans.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Preview of open-scans</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://mgifford.github.io/" target="_blank" rel="noopener">https://mgifford.github.io/</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://mgifford.github.io/src/assets/screenshots/open-source-contracting.png" target="_blank" rel="noopener" title="https://mgifford.github.io/src/assets/screenshots/open-source-contracting.png">https://mgifford.github.io/sr … /open-source-contracting.png</a><span class="url-tooltip" aria-hidden="true">https://mgifford.github.io/src/assets/screenshots/open-source-contracting.png</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://mgifford.github.io/src/assets/screenshots/open-source-contracting.png" data-preview-alt="Preview of open-source-contracting" data-preview-label="Preview of open-source-contracting" data-preview-width="1400" data-preview-height="900" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Preview of open-source-contracting"><img src="https://mgifford.github.io/src/assets/screenshots/open-source-contracting.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Preview of open-source-contracting</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://mgifford.github.io/" target="_blank" rel="noopener">https://mgifford.github.io/</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://mgifford.github.io/src/assets/screenshots/pdf-crawler.png" target="_blank" rel="noopener" title="https://mgifford.github.io/src/assets/screenshots/pdf-crawler.png">https://mgifford.github.io/src/assets/scr … /pdf-crawler.png</a><span class="url-tooltip" aria-hidden="true">https://mgifford.github.io/src/assets/screenshots/pdf-crawler.png</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://mgifford.github.io/src/assets/screenshots/pdf-crawler.png" data-preview-alt="Preview of pdf-crawler" data-preview-label="Preview of pdf-crawler" data-preview-width="1400" data-preview-height="900" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Preview of pdf-crawler"><img src="https://mgifford.github.io/src/assets/screenshots/pdf-crawler.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Preview of pdf-crawler</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://mgifford.github.io/" target="_blank" rel="noopener">https://mgifford.github.io/</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://mgifford.github.io/src/assets/screenshots/publiccode-editor.png" target="_blank" rel="noopener" title="https://mgifford.github.io/src/assets/screenshots/publiccode-editor.png">https://mgifford.github.io/src/asse … /publiccode-editor.png</a><span class="url-tooltip" aria-hidden="true">https://mgifford.github.io/src/assets/screenshots/publiccode-editor.png</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://mgifford.github.io/src/assets/screenshots/publiccode-editor.png" data-preview-alt="Preview of publiccode-editor" data-preview-label="Preview of publiccode-editor" data-preview-width="340" data-preview-height="150" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Preview of publiccode-editor"><img src="https://mgifford.github.io/src/assets/screenshots/publiccode-editor.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Preview of publiccode-editor</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://mgifford.github.io/" target="_blank" rel="noopener">https://mgifford.github.io/</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://mgifford.github.io/src/assets/screenshots/susty-house.png" target="_blank" rel="noopener" title="https://mgifford.github.io/src/assets/screenshots/susty-house.png">https://mgifford.github.io/src/assets/scr … /susty-house.png</a><span class="url-tooltip" aria-hidden="true">https://mgifford.github.io/src/assets/screenshots/susty-house.png</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://mgifford.github.io/src/assets/screenshots/susty-house.png" data-preview-alt="Preview of susty-house" data-preview-label="Preview of susty-house" data-preview-width="340" data-preview-height="150" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Preview of susty-house"><img src="https://mgifford.github.io/src/assets/screenshots/susty-house.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Preview of susty-house</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://mgifford.github.io/" target="_blank" rel="noopener">https://mgifford.github.io/</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://mgifford.github.io/src/assets/screenshots/unosw.plus.png" target="_blank" rel="noopener" title="https://mgifford.github.io/src/assets/screenshots/unosw.plus.png">https://mgifford.github.io/src/assets/scre … /unosw.plus.png</a><span class="url-tooltip" aria-hidden="true">https://mgifford.github.io/src/assets/screenshots/unosw.plus.png</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://mgifford.github.io/src/assets/screenshots/unosw.plus.png" data-preview-alt="Preview of unosw.plus" data-preview-label="Preview of unosw.plus" data-preview-width="340" data-preview-height="150" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Preview of unosw.plus"><img src="https://mgifford.github.io/src/assets/screenshots/unosw.plus.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Preview of unosw.plus</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://mgifford.github.io/" target="_blank" rel="noopener">https://mgifford.github.io/</a></div></td>
+        </tr>
+
+        <tr>
+          <td class="url-cell"><a href="https://mgifford.github.io/src/assets/screenshots/vital-core.png" target="_blank" rel="noopener" title="https://mgifford.github.io/src/assets/screenshots/vital-core.png">https://mgifford.github.io/src/assets/scre … /vital-core.png</a><span class="url-tooltip" aria-hidden="true">https://mgifford.github.io/src/assets/screenshots/vital-core.png</span></td>
+          <td class="thumbnail-column" hidden><button type="button" class="thumbnail-trigger" data-preview-src="https://mgifford.github.io/src/assets/screenshots/vital-core.png" data-preview-alt="Preview of vital-core" data-preview-label="Preview of vital-core" data-preview-width="340" data-preview-height="150" aria-haspopup="dialog" aria-controls="image-preview-dialog" aria-label="Preview image: Preview of vital-core"><img src="https://mgifford.github.io/src/assets/screenshots/vital-core.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="thumbnail-trigger__image"><span class="thumbnail-trigger__text">Preview</span></button></td>
+          <td><span style="color:#2e7d32;font-weight:bold">Good</span></td>
+          <td><code>Preview of vital-core</code></td>
+          <td style="font-size:0.85em"><span style="color:#2e7d32" title="The same alt text was found on all 1 occurrence of this image"><span aria-hidden="true">✓</span> Consistent</span></td>
+          <td><em style="color:#999">none</em></td>
+          <td><em style="color:#999">none</em></td>
+          <td>1<div style="font-size:0.8em;margin-top:0.35rem"><a href="https://mgifford.github.io/" target="_blank" rel="noopener">https://mgifford.github.io/</a></div></td>
+        </tr></tbody>
+  </table>
+
+  
+
+  <h2>Images with issues</h2>
+  <p>No issues found! 🎉</p>
+
+  <dialog id="image-preview-dialog" class="preview-dialog" aria-labelledby="image-preview-title">
+    <div class="preview-dialog__inner">
+      <div class="preview-dialog__header">
+        <h2 id="image-preview-title" class="preview-dialog__title">Image preview</h2>
+        <form method="dialog">
+          <button type="submit" class="preview-dialog__close" id="close-image-preview">Close</button>
+        </form>
+      </div>
+      <figure class="preview-dialog__figure">
+        <img id="image-preview-image" class="preview-dialog__image" alt="">
+        <figcaption id="image-preview-caption" class="preview-dialog__caption"></figcaption>
+      </figure>
+      <p class="preview-dialog__actions">
+        <a id="image-preview-view-full" href="#" target="_blank" rel="noopener" class="preview-dialog__view-full">View full image ↗</a>
+      </p>
+    </div>
+  </dialog>
+
+  <script>
+    (() => {
+      const toggleButton = document.getElementById("toggle-thumbnails");
+      const thumbnailColumns = Array.from(document.querySelectorAll(".thumbnail-column"));
+      const dialog = document.getElementById("image-preview-dialog");
+      const previewImage = document.getElementById("image-preview-image");
+      const previewCaption = document.getElementById("image-preview-caption");
+      const previewTitle = document.getElementById("image-preview-title");
+      const closeButton = document.getElementById("close-image-preview");
+      const viewFullLink = document.getElementById("image-preview-view-full");
+      const previewTriggers = Array.from(document.querySelectorAll(".thumbnail-trigger"));
+      let lastTrigger = null;
+      let lastOpenMode = "click";
+      let skipNextFocusTrigger = null;
+
+      if (toggleButton) {
+        toggleButton.addEventListener("click", () => {
+          const shouldShow = toggleButton.getAttribute("aria-pressed") !== "true";
+          toggleButton.setAttribute("aria-pressed", String(shouldShow));
+          toggleButton.textContent = shouldShow ? "Hide thumbnails for images with alt text" : "Show thumbnails for images with alt text";
+          thumbnailColumns.forEach((column) => {
+            column.hidden = !shouldShow;
+          });
+        });
+      }
+
+      if (!(dialog instanceof HTMLDialogElement) || !previewImage || !previewCaption || !previewTitle) {
+        return;
+      }
+
+      const setPreviewContent = (trigger) => {
+        const src = trigger.dataset.previewSrc || "";
+        const alt = trigger.dataset.previewAlt || "";
+        const label = trigger.dataset.previewLabel || src;
+        const width = Number(trigger.dataset.previewWidth || 0);
+        const height = Number(trigger.dataset.previewHeight || 0);
+        const availableWidth = Math.max(window.innerWidth - 80, 320);
+
+        previewImage.src = src;
+        previewImage.alt = alt;
+        previewImage.style.width = width > 0 ? String(Math.min(width, availableWidth)) + "px" : "auto";
+        previewImage.style.height = "auto";
+        previewImage.style.maxWidth = "100%";
+        previewTitle.textContent = label;
+
+        if (viewFullLink) {
+          viewFullLink.href = src;
+        }
+
+        const altInfo = alt ? "Alt text: " + alt : "Alt text: none";
+        const sizeInfo = width > 0 && height > 0 ? "Displayed size: " + width + " × " + height + "px" : "Displayed size: not captured";
+        previewCaption.textContent = [altInfo, sizeInfo, src].join(" | ");
+
+        previewImage.onload = function() {
+          const nw = this.naturalWidth;
+          const nh = this.naturalHeight;
+          const naturalInfo = nw > 0 && nh > 0 ? "Natural size: " + nw + " × " + nh + "px" : "";
+          previewCaption.textContent = [altInfo, sizeInfo, naturalInfo, src].filter(Boolean).join(" | ");
+        };
+      };
+
+      const openPreview = (trigger, mode) => {
+        lastTrigger = trigger;
+        lastOpenMode = mode;
+        setPreviewContent(trigger);
+        if (!dialog.open) {
+          dialog.showModal();
+        }
+        if (mode === "click") {
+          closeButton.focus();
+        }
+      };
+
+      previewTriggers.forEach((trigger) => {
+        trigger.addEventListener("click", (event) => {
+          event.preventDefault();
+          openPreview(trigger, "click");
+        });
+
+        trigger.addEventListener("focus", () => {
+          if (skipNextFocusTrigger === trigger) {
+            skipNextFocusTrigger = null;
+            return;
+          }
+          openPreview(trigger, "focus");
+        });
+      });
+
+      dialog.addEventListener("click", (event) => {
+        const bounds = dialog.getBoundingClientRect();
+        const isOutside = event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom;
+        if (isOutside) {
+          dialog.close();
+        }
+      });
+
+      dialog.addEventListener("close", () => {
+        previewImage.removeAttribute("src");
+        if (lastOpenMode === "click" && lastTrigger && document.contains(lastTrigger)) {
+          skipNextFocusTrigger = lastTrigger;
+          lastTrigger.focus();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
